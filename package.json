@@ -1,0 +1,12 @@
+{
+  "name": "oktasdk-php",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "generator": "okta-sdk-generator -t generator -o ./sample"
+  },
+  "devDependencies": {
+    "@okta/openapi": "0.1.0-beta.3",
+    "lodash": "^4.17.4"
+  }
+}
