@@ -7,11 +7,12 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopdOnError="false"
+         stopOnError="false"
          stopOnFailure="false"
          syntaxCheck="true"
          verbose="true"
 >
+
     <testsuites>
         <testsuite name="Okta SDK Test Suite">
             <directory suffix="Test.php">./tests</directory>
@@ -19,9 +20,11 @@
     </testsuites>
 
     <filter>
-        <whitelist addUncoverdFilesFromWhitelist="true">
+        <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
+    <php>
 
+    </php>
 </phpunit>

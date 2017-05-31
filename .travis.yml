@@ -1,0 +1,17 @@
+language: php
+php:
+- 7.1
+- 7.0
+services:
+- redis-server
+- memcached
+before_script:
+- composer self-update
+- travis_retry composer install --prefer-dist --no-interaction
+- mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
+- echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+script:
+- travis_retry vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+after_success:
+- bash <(curl -s https://codecov.io/bash)
