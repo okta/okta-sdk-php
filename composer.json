@@ -34,6 +34,10 @@
     },
     "scripts": {
         "test": "phpunit",
-        "rebuild-resources": "cd ./openapi && npm run generator"
+        "rebuild-resources": [
+            "cd ./openapi && npm install && npm run generator",
+            "@fix-code"
+        ],
+        "fix-code": "phpcbf ."
     }
 }

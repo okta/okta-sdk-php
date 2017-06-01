@@ -17,7 +17,6 @@
 
 namespace Okta\\{{namespace}};
 
-
 use Okta\Resource\AbstractResource;
 
 class {{modelName}} extends AbstractResource
@@ -33,7 +32,11 @@ class {{modelName}} extends AbstractResource
     {{#if isObject}}
     public function get{{pascalCase propertyName}}(array $options = [])
     {
-        return $this->getResourceProperty(self::{{upperSnakeCase propertyName}}, {{model}}::class, $options);
+        return $this->getResourceProperty(
+                        self::{{upperSnakeCase propertyName}},
+                        {{model}}::class,
+                        $options
+                    );
     }
 
     {{#unless readOnly}}
@@ -42,7 +45,10 @@ class {{modelName}} extends AbstractResource
      */
     public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
     {
-        $this->setResourceProperty(self::{{upperSnakeCase propertyName}}, ${{propertyName}});
+        $this->setResourceProperty(
+                        self::{{upperSnakeCase propertyName}},
+                        ${{propertyName}}
+                    );
         
         return $this;
     }
@@ -59,15 +65,25 @@ class {{modelName}} extends AbstractResource
     {{#if operation.isArray}}
     public function {{getMethodArrayName alias}}(array $options = [])
     {
-        return $this->getDataStore()->getCollection("{{{getMethodPath this}}}", {{operation.responseModel}}::class, Collection::class, $options);
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "{{{getMethodPath this}}}",
+                    {{operation.responseModel}}::class,
+                    Collection::class,
+                    $options
+                );
     }
     {{else}}
     public function {{camelCase alias}}({{{getMethodParams this}}})
     {
         $uri = "{$this->getDataStore()->getOrganizationUrl}{{{getMethodPath this}}}";
-        return $this->getDataStore()->executeRequest({{{getMethodRequestParams this}}});
+        return $this
+                ->getDataStore()
+                ->executeRequest(
+                    {{{getMethodRequestParams this}}}{{path}}
+                );
     }
     {{/if}}
-
     {{/each}}
 }

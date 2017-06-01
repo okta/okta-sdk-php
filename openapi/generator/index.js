@@ -1,4 +1,5 @@
 const _ = require('lodash');
+_.mixin(require("lodash-inflection"));
 
 const php = module.exports;
 
@@ -79,11 +80,16 @@ php.process = ({spec, operations, models, handlebars}) => {
     // Order the properties by length
     model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
 
-    model.namespace = model.tags[0] || 'Shared';
+
+
+    if(model.tags[0]) {
+        tag = _.pluralize(model.tags[0]);
+    }
+    model.namespace = tag || 'Shared';
 
     templates.push({
       src: 'templates/model.php.hbs',
-      dest: `src/Resources/${model.namespace}/${model.modelName}.php`,
+      dest: `${model.namespace}/${model.modelName}.php`,
       context: model
     });
   }
