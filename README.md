@@ -1,6 +1,6 @@
 # Okta PHP SDK 
 
-[![Build Status](https://api.travis-ci.org/okta/okta-sdk-php.svg?branch=master,dev)](https://travis-ci.org/okta/okta-sdk-php) 
+[![Build Status](https://api.travis-ci.org/okta/okta-sdk-php.svg?branch=master,develop)](https://travis-ci.org/okta/okta-sdk-php) 
 [![Codecov](https://img.shields.io/codecov/c/github/okta/okta-sdk-php.svg)](https://codecov.io/github/okta/okta-sdk-php)
 [![License](https://poser.pugx.org/okta/sdk/license.svg)](https://packagist.org/packages/okta/sdk)
 [![Support](https://img.shields.io/badge/support-devex@okta.com-blue.svg)](mailto:devex@okta.com?subject=Stormpath+PHP+SDK)
