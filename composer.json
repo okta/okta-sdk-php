@@ -31,5 +31,9 @@
         "psr-4": {
             "Okta\\": "src/"
         }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "rebuild-resources": "cd ./openapi && npm run generator"
     }
 }
