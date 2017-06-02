@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -28,7 +28,7 @@ class FactorDevice extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -36,13 +36,13 @@ class FactorDevice extends AbstractResource
     /**
      * @return
      */
-    public function getLinks(array $options = [])
+    public function getLinks(array $options = []): undefined
     {
         return $this->getResourceProperty(
-            self::LINKS,
-            ::class,
-            $options
-        );
+                        self::LINKS,
+                        ::class,
+                        $options
+                    );
     }
 
     /**
@@ -51,9 +51,9 @@ class FactorDevice extends AbstractResource
     public function setLinks($links)
     {
         $this->setResourceProperty(
-            self::LINKS,
-            $links
-        );
+                        self::LINKS,
+                        $links
+                    );
         
         return $this;
     }
@@ -61,7 +61,7 @@ class FactorDevice extends AbstractResource
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }

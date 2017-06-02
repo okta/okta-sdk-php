@@ -31,7 +31,7 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return string
      */
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->getProperty(self::SCHEME);
     }
@@ -39,13 +39,13 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return PublicAppInstanceCredentialsSigning
      */
-    public function getSigning(array $options = [])
+    public function getSigning(array $options = []): PublicAppInstanceCredentialsSigning
     {
         return $this->getResourceProperty(
-            self::SIGNING,
-            PublicAppInstanceCredentialsSigning::class,
-            $options
-        );
+                        self::SIGNING,
+                        PublicAppInstanceCredentialsSigning::class,
+                        $options
+                    );
     }
 
     /**
@@ -54,9 +54,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     public function setSigning(PublicAppInstanceCredentialsSigning $signing)
     {
         $this->setResourceProperty(
-            self::SIGNING,
-            $signing
-        );
+                        self::SIGNING,
+                        $signing
+                    );
         
         return $this;
     }
@@ -64,13 +64,13 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return PasswordCredential
      */
-    public function getPassword(array $options = [])
+    public function getPassword(array $options = []): PasswordCredential
     {
         return $this->getResourceProperty(
-            self::PASSWORD,
-            PasswordCredential::class,
-            $options
-        );
+                        self::PASSWORD,
+                        PasswordCredential::class,
+                        $options
+                    );
     }
 
     /**
@@ -79,9 +79,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     public function setPassword(PasswordCredential $password)
     {
         $this->setResourceProperty(
-            self::PASSWORD,
-            $password
-        );
+                        self::PASSWORD,
+                        $password
+                    );
         
         return $this;
     }
@@ -89,7 +89,7 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return string
      */
-    public function getUserName()
+    public function getUserName(): string
     {
         return $this->getProperty(self::USER_NAME);
     }
@@ -97,7 +97,7 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return boolean
      */
-    public function getRevealPassword()
+    public function getRevealPassword(): boolean
     {
         return $this->getProperty(self::REVEAL_PASSWORD);
     }
@@ -105,13 +105,13 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * @return PublicAppInstanceCredentialsUsernameTemplate
      */
-    public function getUserNameTemplate(array $options = [])
+    public function getUserNameTemplate(array $options = []): PublicAppInstanceCredentialsUsernameTemplate
     {
         return $this->getResourceProperty(
-            self::USER_NAME_TEMPLATE,
-            PublicAppInstanceCredentialsUsernameTemplate::class,
-            $options
-        );
+                        self::USER_NAME_TEMPLATE,
+                        PublicAppInstanceCredentialsUsernameTemplate::class,
+                        $options
+                    );
     }
 
     /**
@@ -120,9 +120,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     public function setUserNameTemplate(PublicAppInstanceCredentialsUsernameTemplate $userNameTemplate)
     {
         $this->setResourceProperty(
-            self::USER_NAME_TEMPLATE,
-            $userNameTemplate
-        );
+                        self::USER_NAME_TEMPLATE,
+                        $userNameTemplate
+                    );
         
         return $this;
     }

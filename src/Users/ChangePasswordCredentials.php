@@ -27,13 +27,13 @@ class ChangePasswordCredentials extends AbstractResource
     /**
      * @return PasswordCredential
      */
-    public function getNewPassword(array $options = [])
+    public function getNewPassword(array $options = []): PasswordCredential
     {
         return $this->getResourceProperty(
-            self::NEW_PASSWORD,
-            PasswordCredential::class,
-            $options
-        );
+                        self::NEW_PASSWORD,
+                        PasswordCredential::class,
+                        $options
+                    );
     }
 
     /**
@@ -42,9 +42,9 @@ class ChangePasswordCredentials extends AbstractResource
     public function setNewPassword(PasswordCredential $newPassword)
     {
         $this->setResourceProperty(
-            self::NEW_PASSWORD,
-            $newPassword
-        );
+                        self::NEW_PASSWORD,
+                        $newPassword
+                    );
         
         return $this;
     }
@@ -52,13 +52,13 @@ class ChangePasswordCredentials extends AbstractResource
     /**
      * @return PasswordCredential
      */
-    public function getOldPassword(array $options = [])
+    public function getOldPassword(array $options = []): PasswordCredential
     {
         return $this->getResourceProperty(
-            self::OLD_PASSWORD,
-            PasswordCredential::class,
-            $options
-        );
+                        self::OLD_PASSWORD,
+                        PasswordCredential::class,
+                        $options
+                    );
     }
 
     /**
@@ -67,9 +67,9 @@ class ChangePasswordCredentials extends AbstractResource
     public function setOldPassword(PasswordCredential $oldPassword)
     {
         $this->setResourceProperty(
-            self::OLD_PASSWORD,
-            $oldPassword
-        );
+                        self::OLD_PASSWORD,
+                        $oldPassword
+                    );
         
         return $this;
     }

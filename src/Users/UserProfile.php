@@ -31,7 +31,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->getProperty(self::EMAIL);
     }
@@ -39,7 +39,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getLogin()
+    public function getLogin(): string
     {
         return $this->getProperty(self::LOGIN);
     }
@@ -47,7 +47,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getLastName()
+    public function getLastName(): string
     {
         return $this->getProperty(self::LAST_NAME);
     }
@@ -55,7 +55,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName(): string
     {
         return $this->getProperty(self::FIRST_NAME);
     }
@@ -63,7 +63,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getMobilePhone()
+    public function getMobilePhone(): string
     {
         return $this->getProperty(self::MOBILE_PHONE);
     }
@@ -71,7 +71,7 @@ class UserProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getSecondEmail()
+    public function getSecondEmail(): string
     {
         return $this->getProperty(self::SECOND_EMAIL);
     }

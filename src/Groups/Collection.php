@@ -15,19 +15,11 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Groups;
 
-use Okta\Resource\AbstractResource;
+use Okta\Resource\AbstractCollection;
 
-class AssignUserToGroupsMediationAction extends AbstractResource
+class Collection extends AbstractCollection
 {
-    const GROUP_IDS = 'groupIds';
 
-    /**
-     * @return array
-     */
-    public function getGroupIds()
-    {
-        return $this->getProperty(self::GROUP_IDS);
-    }
 }

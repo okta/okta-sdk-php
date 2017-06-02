@@ -17,6 +17,7 @@
 
 namespace Okta\Groups;
 
+use Okta\Users\User;
 use Okta\Resource\AbstractResource;
 
 class UserGroup extends AbstractResource
@@ -34,7 +35,7 @@ class UserGroup extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -42,15 +43,15 @@ class UserGroup extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->getProperty(self::LINKS);
     }
@@ -66,13 +67,13 @@ class UserGroup extends AbstractResource
     /**
      * @return UserGroupProfile
      */
-    public function getProfile(array $options = [])
+    public function getProfile(array $options = []): UserGroupProfile
     {
         return $this->getResourceProperty(
-            self::PROFILE,
-            UserGroupProfile::class,
-            $options
-        );
+                        self::PROFILE,
+                        UserGroupProfile::class,
+                        $options
+                    );
     }
 
     /**
@@ -81,17 +82,17 @@ class UserGroup extends AbstractResource
     public function setProfile(UserGroupProfile $profile)
     {
         $this->setResourceProperty(
-            self::PROFILE,
-            $profile
-        );
+                        self::PROFILE,
+                        $profile
+                    );
         
         return $this;
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getEmbedded()
+    public function getEmbedded(): array
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -107,7 +108,7 @@ class UserGroup extends AbstractResource
     /**
      * @return array
      */
-    public function getObjectClass()
+    public function getObjectClass(): array
     {
         return $this->getProperty(self::OBJECT_CLASS);
     }
@@ -120,7 +121,10 @@ class UserGroup extends AbstractResource
         return $this->getDateProperty(self::LAST_MEMBERSHIP_UPDATED);
     }
     
-    public function getUsers(array $options = [])
+    /**
+    * @return Collection
+    */
+    public function getUsers(array $options = []): Collection
     {
         return $this
                 ->getDataStore()

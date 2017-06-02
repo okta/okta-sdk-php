@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -33,7 +33,7 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getRel()
+    public function getRel(): string
     {
         return $this->getProperty(self::REL);
     }
@@ -41,7 +41,7 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getHref()
+    public function getHref(): string
     {
         return $this->getProperty(self::HREF);
     }
@@ -49,7 +49,7 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getProperty(self::NAME);
     }
@@ -57,15 +57,15 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getHints()
+    public function getHints(): array
     {
         return $this->getProperty(self::HINTS);
     }
@@ -73,7 +73,7 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->getProperty(self::TITLE);
     }
@@ -81,7 +81,7 @@ class Link extends AbstractResource
     /**
      * @return string
      */
-    public function getMethod()
+    public function getMethod(): string
     {
         return $this->getProperty(self::METHOD);
     }
@@ -89,7 +89,7 @@ class Link extends AbstractResource
     /**
      * @return boolean
      */
-    public function getTemplated()
+    public function getTemplated(): boolean
     {
         return $this->getProperty(self::TEMPLATED);
     }

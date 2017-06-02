@@ -26,13 +26,13 @@ class PasswordCredential extends AbstractResource
     /**
      * @return HashedPassword
      */
-    public function getHash(array $options = [])
+    public function getHash(array $options = []): HashedPassword
     {
         return $this->getResourceProperty(
-            self::HASH,
-            HashedPassword::class,
-            $options
-        );
+                        self::HASH,
+                        HashedPassword::class,
+                        $options
+                    );
     }
 
     /**
@@ -41,9 +41,9 @@ class PasswordCredential extends AbstractResource
     public function setHash(HashedPassword $hash)
     {
         $this->setResourceProperty(
-            self::HASH,
-            $hash
-        );
+                        self::HASH,
+                        $hash
+                    );
         
         return $this;
     }

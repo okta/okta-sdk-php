@@ -28,13 +28,13 @@ class PublicAppInstanceVisibility extends AbstractResource
     /**
      * @return PublicAppInstanceVisibilityHide
      */
-    public function getHide(array $options = [])
+    public function getHide(array $options = []): PublicAppInstanceVisibilityHide
     {
         return $this->getResourceProperty(
-            self::HIDE,
-            PublicAppInstanceVisibilityHide::class,
-            $options
-        );
+                        self::HIDE,
+                        PublicAppInstanceVisibilityHide::class,
+                        $options
+                    );
     }
 
     /**
@@ -43,17 +43,17 @@ class PublicAppInstanceVisibility extends AbstractResource
     public function setHide(PublicAppInstanceVisibilityHide $hide)
     {
         $this->setResourceProperty(
-            self::HIDE,
-            $hide
-        );
+                        self::HIDE,
+                        $hide
+                    );
         
         return $this;
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getAppLinks()
+    public function getAppLinks(): array
     {
         return $this->getProperty(self::APP_LINKS);
     }
@@ -61,7 +61,7 @@ class PublicAppInstanceVisibility extends AbstractResource
     /**
      * @return boolean
      */
-    public function getAutoSubmitToolbar()
+    public function getAutoSubmitToolbar(): boolean
     {
         return $this->getProperty(self::AUTO_SUBMIT_TOOLBAR);
     }

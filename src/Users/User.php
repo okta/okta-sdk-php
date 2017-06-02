@@ -17,6 +17,7 @@
 
 namespace Okta\Users;
 
+use Okta\Groups\UserGroup;
 use Okta\Resource\AbstractResource;
 
 class User extends AbstractResource
@@ -38,15 +39,15 @@ class User extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->getProperty(self::LINKS);
     }
@@ -54,7 +55,7 @@ class User extends AbstractResource
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }
@@ -70,13 +71,13 @@ class User extends AbstractResource
     /**
      * @return UserProfile
      */
-    public function getProfile(array $options = [])
+    public function getProfile(array $options = []): UserProfile
     {
         return $this->getResourceProperty(
-            self::PROFILE,
-            UserProfile::class,
-            $options
-        );
+                        self::PROFILE,
+                        UserProfile::class,
+                        $options
+                    );
     }
 
     /**
@@ -85,17 +86,17 @@ class User extends AbstractResource
     public function setProfile(UserProfile $profile)
     {
         $this->setResourceProperty(
-            self::PROFILE,
-            $profile
-        );
+                        self::PROFILE,
+                        $profile
+                    );
         
         return $this;
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getEmbedded()
+    public function getEmbedded(): array
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -119,13 +120,13 @@ class User extends AbstractResource
     /**
      * @return UserCredentials
      */
-    public function getCredentials(array $options = [])
+    public function getCredentials(array $options = []): UserCredentials
     {
         return $this->getResourceProperty(
-            self::CREDENTIALS,
-            UserCredentials::class,
-            $options
-        );
+                        self::CREDENTIALS,
+                        UserCredentials::class,
+                        $options
+                    );
     }
 
     /**
@@ -134,9 +135,9 @@ class User extends AbstractResource
     public function setCredentials(UserCredentials $credentials)
     {
         $this->setResourceProperty(
-            self::CREDENTIALS,
-            $credentials
-        );
+                        self::CREDENTIALS,
+                        $credentials
+                    );
         
         return $this;
     }
@@ -168,12 +169,15 @@ class User extends AbstractResource
     /**
      * @return string
      */
-    public function getTransitioningToStatus()
+    public function getTransitioningToStatus(): string
     {
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
     
-    public function getGroups(array $options = [])
+    /**
+    * @return Collection
+    */
+    public function getGroups(array $options = []): Collection
     {
         return $this
                 ->getDataStore()
@@ -184,88 +188,124 @@ class User extends AbstractResource
                     $options
                 );
     }
+    /**
+    * Sends a request to the activate endpoint.
+    * @param bool $sendEmail Sets the sendEmail flag.
+    * @return mixed|null
+    */
     public function activate($sendEmail = true)
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/activate";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/activate";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
+                    'POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]
                 );
     }
+    /**
+    * Sends a request to the deactivate endpoint.
+    *
+    * @return mixed|null
+    */
     public function deactivate()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/deactivate";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/deactivate";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    'POST', $uri
                 );
     }
+    /**
+    * Sends a request to the suspend endpoint.
+    *
+    * @return mixed|null
+    */
     public function suspend()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/suspend";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/suspend";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    'POST', $uri
                 );
     }
+    /**
+    * Sends a request to the unsuspend endpoint.
+    *
+    * @return mixed|null
+    */
     public function unsuspend()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/unsuspend";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/unsuspend";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    'POST', $uri
                 );
     }
+    /**
+    * Sends a request to the unlock endpoint.
+    *
+    * @return mixed|null
+    */
     public function unlock()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/unlock";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/unlock";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    'POST', $uri
                 );
     }
+    /**
+    * Sends a request to the forgotPassword endpoint.
+    * @param bool $sendEmail Sets the sendEmail flag.
+    * @return mixed|null
+    */
     public function forgotPassword($sendEmail = true)
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/forgot_password";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/forgot_password";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
+                    'POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]
                 );
     }
+    /**
+    * Sends a request to the resetFactors endpoint.
+    *
+    * @return mixed|null
+    */
     public function resetFactors()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/users/{$this->getId()}/lifecycle/reset_factors";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/reset_factors";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    'POST', $uri
                 );
     }
+    /**
+    * Sends a request to the addToGroup endpoint.
+    *
+    * @return mixed|null
+    */
     public function addToGroup()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}/api/v1/groups/{groupId}/users/{$this->getId()}";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/groups/{groupId}/users/{$this->getId()}";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'PUT',
-                    $uri
+                    'PUT', $uri
                 );
     }
 }

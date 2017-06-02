@@ -198,11 +198,11 @@ class ClientBuilder
         $token = getenv('OKTA_CLIENT_TOKEN');
         $orgUrl = getenv('OKTA_CLIENT_ORGURL');
 
-        if(false !== $token) {
+        if (false !== $token) {
             $this->setToken($token);
         }
 
-        if(false !== $orgUrl) {
+        if (false !== $orgUrl) {
             $this->setOrganizationUrl($orgUrl);
         }
     }

@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -26,13 +26,13 @@ class GroupMembershipMediationActions extends AbstractResource
     /**
      * @return AssignUserToGroupsMediationAction
      */
-    public function getAssignUserToGroups(array $options = [])
+    public function getAssignUserToGroups(array $options = []): AssignUserToGroupsMediationAction
     {
         return $this->getResourceProperty(
-            self::ASSIGN_USER_TO_GROUPS,
-            AssignUserToGroupsMediationAction::class,
-            $options
-        );
+                        self::ASSIGN_USER_TO_GROUPS,
+                        AssignUserToGroupsMediationAction::class,
+                        $options
+                    );
     }
 
     /**
@@ -41,9 +41,9 @@ class GroupMembershipMediationActions extends AbstractResource
     public function setAssignUserToGroups(AssignUserToGroupsMediationAction $assignUserToGroups)
     {
         $this->setResourceProperty(
-            self::ASSIGN_USER_TO_GROUPS,
-            $assignUserToGroups
-        );
+                        self::ASSIGN_USER_TO_GROUPS,
+                        $assignUserToGroups
+                    );
         
         return $this;
     }

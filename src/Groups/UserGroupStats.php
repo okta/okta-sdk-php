@@ -27,9 +27,9 @@ class UserGroupStats extends AbstractResource
     const GROUP_PUSH_MAPPINGS_COUNT = 'groupPushMappingsCount';
 
     /**
-     * @return hash
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->getProperty(self::LINKS);
     }
@@ -37,7 +37,7 @@ class UserGroupStats extends AbstractResource
     /**
      * @return
      */
-    public function getAppsCount()
+    public function getAppsCount(): undefined
     {
         return $this->getProperty(self::APPS_COUNT);
     }
@@ -45,7 +45,7 @@ class UserGroupStats extends AbstractResource
     /**
      * @return
      */
-    public function getUsersCount()
+    public function getUsersCount(): undefined
     {
         return $this->getProperty(self::USERS_COUNT);
     }
@@ -53,7 +53,7 @@ class UserGroupStats extends AbstractResource
     /**
      * @return
      */
-    public function getGroupPushMappingsCount()
+    public function getGroupPushMappingsCount(): undefined
     {
         return $this->getProperty(self::GROUP_PUSH_MAPPINGS_COUNT);
     }

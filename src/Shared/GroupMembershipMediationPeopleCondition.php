@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -27,13 +27,13 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     /**
      * @return GroupMembershipMediationUserCondition
      */
-    public function getUsers(array $options = [])
+    public function getUsers(array $options = []): GroupMembershipMediationUserCondition
     {
         return $this->getResourceProperty(
-            self::USERS,
-            GroupMembershipMediationUserCondition::class,
-            $options
-        );
+                        self::USERS,
+                        GroupMembershipMediationUserCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -42,9 +42,9 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     public function setUsers(GroupMembershipMediationUserCondition $users)
     {
         $this->setResourceProperty(
-            self::USERS,
-            $users
-        );
+                        self::USERS,
+                        $users
+                    );
         
         return $this;
     }
@@ -52,13 +52,13 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     /**
      * @return GroupMembershipMediationGroupCondition
      */
-    public function getGroups(array $options = [])
+    public function getGroups(array $options = []): GroupMembershipMediationGroupCondition
     {
         return $this->getResourceProperty(
-            self::GROUPS,
-            GroupMembershipMediationGroupCondition::class,
-            $options
-        );
+                        self::GROUPS,
+                        GroupMembershipMediationGroupCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -67,9 +67,9 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     public function setGroups(GroupMembershipMediationGroupCondition $groups)
     {
         $this->setResourceProperty(
-            self::GROUPS,
-            $groups
-        );
+                        self::GROUPS,
+                        $groups
+                    );
         
         return $this;
     }

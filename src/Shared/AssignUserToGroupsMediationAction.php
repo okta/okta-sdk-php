@@ -15,28 +15,19 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
-class ActivationToken extends AbstractResource
+class AssignUserToGroupsMediationAction extends AbstractResource
 {
-    const ACTIVATION_URL = 'activationUrl';
-    const ACTIVATION_TOKEN = 'activationToken';
+    const GROUP_IDS = 'groupIds';
 
     /**
-     * @return string
+     * @return array
      */
-    public function getActivationUrl(): string
+    public function getGroupIds(): array
     {
-        return $this->getProperty(self::ACTIVATION_URL);
-    }
-    
-    /**
-     * @return string
-     */
-    public function getActivationToken(): string
-    {
-        return $this->getProperty(self::ACTIVATION_TOKEN);
+        return $this->getProperty(self::GROUP_IDS);
     }
 }

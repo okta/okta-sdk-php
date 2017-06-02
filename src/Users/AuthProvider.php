@@ -27,7 +27,7 @@ class AuthProvider extends AbstractResource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getProperty(self::NAME);
     }
@@ -35,7 +35,7 @@ class AuthProvider extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }

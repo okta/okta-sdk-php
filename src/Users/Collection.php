@@ -17,26 +17,9 @@
 
 namespace Okta\Users;
 
-use Okta\Resource\AbstractResource;
+use Okta\Resource\AbstractCollection;
 
-class GroupMembershipMediationExpressionCondition extends AbstractResource
+class Collection extends AbstractCollection
 {
-    const TYPE = 'type';
-    const VALUE = 'value';
 
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->getProperty(self::TYPE);
-    }
-    
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->getProperty(self::VALUE);
-    }
 }

@@ -17,6 +17,9 @@
 
 namespace Okta\\{{namespace}};
 
+{{#each namespacedModels as |namespacedModel|}}
+use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
+{{/each}}
 use Okta\Resource\AbstractResource;
 
 class {{modelName}} extends AbstractResource
@@ -30,7 +33,7 @@ class {{modelName}} extends AbstractResource
      * @return {{getType this}}
      */
     {{#if isObject}}
-    public function get{{pascalCase propertyName}}(array $options = [])
+    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
     {
         return $this->getResourceProperty(
                         self::{{upperSnakeCase propertyName}},
@@ -54,7 +57,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/unless}}
     {{else}}
-    public function get{{pascalCase propertyName}}()
+    public function get{{pascalCase propertyName}}(){{getSafeType this}}
     {
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
@@ -63,7 +66,10 @@ class {{modelName}} extends AbstractResource
     {{/each}}
     {{#each methods}}
     {{#if operation.isArray}}
-    public function {{getMethodArrayName alias}}(array $options = [])
+    /**
+    * @return Collection
+    */
+    public function {{getMethodArrayName alias}}(array $options = []): Collection
     {
         return $this
                 ->getDataStore()
@@ -75,9 +81,15 @@ class {{modelName}} extends AbstractResource
                 );
     }
     {{else}}
+    /**
+    * Sends a request to the {{camelCase alias}} endpoint.
+    {{getMethodParamsComment this}}
+    * @return mixed|null
+    */
     public function {{camelCase alias}}({{{getMethodParams this}}})
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl}{{{getMethodPath this}}}";
+        $uri = "{$this->getDataStore()->getOrganizationUrl()}{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri($uri);
         return $this
                 ->getDataStore()
                 ->executeRequest(
