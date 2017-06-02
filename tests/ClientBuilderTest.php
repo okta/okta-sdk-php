@@ -22,6 +22,20 @@ use Symfony\Component\Yaml\Parser;
 
 class ClientBuilderTest extends TestCase
 {
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        file_put_contents(
+            posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml',
+            '{okta: { client: { token:"defaultToken", orgUrl:"https://default-org.okta.com"}}}');
+    }
+
+    public static function tearDownAfterClass()
+    {
+        unlink(posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml');
+        parent::tearDownAfterClass();
+    }
+
     /** @test */
     public function it_returns_self_when_setting_the_token()
     {
@@ -143,6 +157,7 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_lets_you_override_defaults_by_setting_config_file_location()
     {
+
         $parser = $this->createMock(Parser::class);
         $parser->expects($this->at(0))
             ->method('parse')
@@ -197,7 +212,6 @@ class ClientBuilderTest extends TestCase
 
         $this->assertContains('Token: TokenSetByMethod', (string)$clientBuilder);
         $this->assertContains('OrgUrl: https://okta.com', (string)$clientBuilder);
-
     }
 
     /** @test */

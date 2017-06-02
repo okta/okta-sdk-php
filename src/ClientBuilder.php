@@ -62,7 +62,7 @@ class ClientBuilder
         $this->yamlParser = (null === $yamlParser) ? new Parser() : $yamlParser;
 
         // Read Base Configuration
-        if (is_file($this->defaultFile) && is_readable($this->defaultFile)) {
+        if ((is_file($this->defaultFile) && is_readable($this->defaultFile))) {
             $this->setOptionsBasedOnFile($this->defaultFile);
         }
 
