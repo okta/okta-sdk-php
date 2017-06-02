@@ -66,6 +66,8 @@ class ClientBuilder
             $this->setOptionsBasedOnFile($this->defaultFile);
         }
 
+        $this->overrideOptionsWithEnvironmentVariables();
+
         $this->httpClient = new \Http\Client\Curl\Client();
     }
 
@@ -188,6 +190,20 @@ class ClientBuilder
 
         if (key_exists('orgUrl', $parsed['okta']['client'])) {
             $this->setOrganizationUrl($parsed['okta']['client']['orgUrl']);
+        }
+    }
+
+    private function overrideOptionsWithEnvironmentVariables()
+    {
+        $token = getenv('OKTA_CLIENT_TOKEN');
+        $orgUrl = getenv('OKTA_CLIENT_ORGURL');
+
+        if(false !== $token) {
+            $this->setToken($token);
+        }
+
+        if(false !== $orgUrl) {
+            $this->setOrganizationUrl($orgUrl);
         }
     }
 }

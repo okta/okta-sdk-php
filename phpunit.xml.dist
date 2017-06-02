@@ -25,6 +25,7 @@
         </whitelist>
     </filter>
     <php>
-
+        <env name="OKTA_CLIENT_TOKEN" value="dummyToken"/>
+        <env name="OKTA_CLIENT_ORGURL" value="https://dev-dummy.okta.com"/>
     </php>
 </phpunit>

@@ -114,6 +114,12 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_builds_a_client_with_the_default_configuration()
     {
+        $oldToken = getenv('OKTA_CLIENT_TOKEN');
+        $oldOrgUrl = getenv('OKTA_CLIENT_ORGURL');
+
+        putenv('OKTA_CLIENT_TOKEN');
+        putenv('OKTA_CLIENT_ORGURL');
+
         $parser = $this->createMock(Parser::class);
         $parser->method('parse')->willReturn([
             'okta' => [
@@ -128,6 +134,9 @@ class ClientBuilderTest extends TestCase
 
         $this->assertContains('Token: abc123', (string)$clientBuilder);
         $this->assertContains('OrgUrl: https://example.com', (string)$clientBuilder);
+
+        putenv("OKTA_CLIENT_TOKEN={$oldToken}");
+        putenv("OKTA_CLIENT_ORGURL={$oldOrgUrl}");
 
     }
 
