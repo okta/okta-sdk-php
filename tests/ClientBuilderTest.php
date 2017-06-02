@@ -130,8 +130,10 @@ class ClientBuilderTest extends TestCase
             ]
         ]);
 
+        dump($parser->parse(''));
         $clientBuilder = new ClientBuilder($parser);
-
+        dump($clientBuilder);
+        
         $this->assertContains('Token: abc123', (string)$clientBuilder);
         $this->assertContains('OrgUrl: https://example.com', (string)$clientBuilder);
 
