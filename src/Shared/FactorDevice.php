@@ -39,7 +39,7 @@ class FactorDevice extends AbstractResource
     /**
      * Get the links.
      *
-     * @return 
+     * @return
      */
     public function getLinks(array $options = []): undefined
     {
@@ -56,7 +56,7 @@ class FactorDevice extends AbstractResource
      * @param  $links The  instance.
      * @return self
      */
-    public function setLinks( $links)
+    public function setLinks($links)
     {
         $this->setResourceProperty(
                         self::LINKS,
@@ -75,5 +75,4 @@ class FactorDevice extends AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
-    
 }

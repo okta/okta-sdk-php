@@ -44,5 +44,4 @@ class ActivationToken extends AbstractResource
     {
         return $this->getProperty(self::ACTIVATION_TOKEN);
     }
-    
 }

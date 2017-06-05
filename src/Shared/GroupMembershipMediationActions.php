@@ -53,5 +53,4 @@ class GroupMembershipMediationActions extends AbstractResource
         
         return $this;
     }
-    
 }

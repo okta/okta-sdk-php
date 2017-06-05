@@ -84,5 +84,4 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
         
         return $this;
     }
-    
 }

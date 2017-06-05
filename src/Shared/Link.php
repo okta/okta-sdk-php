@@ -110,5 +110,4 @@ class Link extends AbstractResource
     {
         return $this->getProperty(self::TEMPLATED);
     }
-    
 }

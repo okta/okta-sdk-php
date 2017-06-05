@@ -106,5 +106,4 @@ class PublicAppInstanceSettings extends AbstractResource
     {
         return $this->getProperty(self::MANUAL_PROVISIONING);
     }
-    
 }

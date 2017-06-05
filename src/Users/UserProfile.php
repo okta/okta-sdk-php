@@ -88,5 +88,4 @@ class UserProfile extends AbstractResource
     {
         return $this->getProperty(self::SECOND_EMAIL);
     }
-    
 }

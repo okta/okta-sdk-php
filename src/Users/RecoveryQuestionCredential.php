@@ -33,5 +33,4 @@ class RecoveryQuestionCredential extends AbstractResource
     {
         return $this->getProperty(self::QUESTION);
     }
-    
 }

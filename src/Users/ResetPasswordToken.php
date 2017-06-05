@@ -33,5 +33,4 @@ class ResetPasswordToken extends AbstractResource
     {
         return $this->getProperty(self::RESET_PASSWORD_URL);
     }
-    
 }

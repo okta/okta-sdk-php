@@ -53,5 +53,4 @@ class PublicAppInstanceSettingsNotifications extends AbstractResource
         
         return $this;
     }
-    
 }

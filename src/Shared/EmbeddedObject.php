@@ -33,5 +33,4 @@ class EmbeddedObject extends AbstractResource
     {
         return $this->getProperty(self::KEY);
     }
-    
 }

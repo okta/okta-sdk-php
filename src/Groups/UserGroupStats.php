@@ -40,7 +40,7 @@ class UserGroupStats extends AbstractResource
     /**
      * Get the appsCount.
      *
-     * @return 
+     * @return
      */
     public function getAppsCount(): undefined
     {
@@ -50,7 +50,7 @@ class UserGroupStats extends AbstractResource
     /**
      * Get the usersCount.
      *
-     * @return 
+     * @return
      */
     public function getUsersCount(): undefined
     {
@@ -60,11 +60,10 @@ class UserGroupStats extends AbstractResource
     /**
      * Get the groupPushMappingsCount.
      *
-     * @return 
+     * @return
      */
     public function getGroupPushMappingsCount(): undefined
     {
         return $this->getProperty(self::GROUP_PUSH_MAPPINGS_COUNT);
     }
-    
 }

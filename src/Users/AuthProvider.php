@@ -44,5 +44,4 @@ class AuthProvider extends AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
-    
 }

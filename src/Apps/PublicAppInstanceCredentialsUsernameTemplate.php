@@ -55,5 +55,4 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     {
         return $this->getProperty(self::TEMPLATE);
     }
-    
 }

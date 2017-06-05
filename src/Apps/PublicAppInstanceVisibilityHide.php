@@ -44,5 +44,4 @@ class PublicAppInstanceVisibilityHide extends AbstractResource
     {
         return $this->getProperty(self::WEB);
     }
-    
 }

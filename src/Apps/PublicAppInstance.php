@@ -287,5 +287,4 @@ class PublicAppInstance extends AbstractResource
         
         return $this;
     }
-    
 }

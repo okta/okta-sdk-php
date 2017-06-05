@@ -110,5 +110,4 @@ class MediationRoleAssignment extends AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
-    
 }

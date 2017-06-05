@@ -66,5 +66,4 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     {
         return $this->getProperty(self::ROTATION_MODE);
     }
-    
 }

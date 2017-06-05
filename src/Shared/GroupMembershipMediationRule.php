@@ -150,5 +150,4 @@ class GroupMembershipMediationRule extends AbstractResource
     {
         return $this->getProperty(self::LAST_UPDATED);
     }
-    
 }

@@ -27,11 +27,10 @@ class PublicAppInstanceLicensing extends AbstractResource
     /**
      * Get the seatCount.
      *
-     * @return 
+     * @return
      */
     public function getSeatCount(): undefined
     {
         return $this->getProperty(self::SEAT_COUNT);
     }
-    
 }

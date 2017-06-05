@@ -44,5 +44,4 @@ class UserGroupProfile extends AbstractResource
     {
         return $this->getProperty(self::DESCRIPTION);
     }
-    
 }

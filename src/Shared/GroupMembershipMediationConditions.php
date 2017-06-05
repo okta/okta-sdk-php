@@ -146,5 +146,4 @@ class GroupMembershipMediationConditions extends AbstractResource
         
         return $this;
     }
-    
 }

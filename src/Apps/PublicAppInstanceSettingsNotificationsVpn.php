@@ -75,5 +75,4 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
         
         return $this;
     }
-    
 }

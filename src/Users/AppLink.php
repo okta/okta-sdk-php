@@ -96,7 +96,7 @@ class AppLink extends AbstractResource
     /**
      * Get the sortOrder.
      *
-     * @return 
+     * @return
      */
     public function getSortOrder(): undefined
     {
@@ -132,5 +132,4 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
     }
-    
 }

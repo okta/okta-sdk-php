@@ -75,5 +75,4 @@ class PublicAppInstanceVisibility extends AbstractResource
     {
         return $this->getProperty(self::AUTO_SUBMIT_TOOLBAR);
     }
-    
 }

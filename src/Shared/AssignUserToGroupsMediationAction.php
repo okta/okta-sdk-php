@@ -33,5 +33,4 @@ class AssignUserToGroupsMediationAction extends AbstractResource
     {
         return $this->getProperty(self::GROUP_IDS);
     }
-    
 }

@@ -55,5 +55,4 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     {
         return $this->getProperty(self::CONNECTION);
     }
-    
 }

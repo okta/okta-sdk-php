@@ -55,5 +55,4 @@ class PublicAppInstanceAccessibility extends AbstractResource
     {
         return $this->getProperty(self::LOGIN_REDIRECT_URL);
     }
-    
 }

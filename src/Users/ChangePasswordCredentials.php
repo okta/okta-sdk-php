@@ -84,5 +84,4 @@ class ChangePasswordCredentials extends AbstractResource
         
         return $this;
     }
-    
 }

@@ -136,7 +136,7 @@ class PublicAppInstanceCredentials extends AbstractResource
     /**
      * Set the userNameTemplate.
      *
-     * @param PublicAppInstanceCredentialsUsernameTemplate $userNameTemplate The PublicAppInstanceCredentialsUsernameTemplate instance.
+     * @param PublicAppInstanceCredentialsUsernameTemplate $userNameTemplateThe PublicAppInstanceCredentialsUsernameTemplate instance.
      * @return self
      */
     public function setUserNameTemplate(PublicAppInstanceCredentialsUsernameTemplate $userNameTemplate)
@@ -148,5 +148,4 @@ class PublicAppInstanceCredentials extends AbstractResource
         
         return $this;
     }
-    
 }

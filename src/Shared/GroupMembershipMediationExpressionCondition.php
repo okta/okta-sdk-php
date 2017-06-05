@@ -44,5 +44,4 @@ class GroupMembershipMediationExpressionCondition extends AbstractResource
     {
         return $this->getProperty(self::VALUE);
     }
-    
 }

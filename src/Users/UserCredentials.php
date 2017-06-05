@@ -100,5 +100,4 @@ class UserCredentials extends AbstractResource
         
         return $this;
     }
-    
 }

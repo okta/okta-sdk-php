@@ -53,5 +53,4 @@ class PasswordCredential extends AbstractResource
         
         return $this;
     }
-    
 }
