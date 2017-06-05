@@ -26,7 +26,10 @@ class GroupMembershipMediationConditions extends AbstractResource
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
 
+
     /**
+     * Get the users.
+     *
      * @return GroupMembershipMediationUserCondition
      */
     public function getUsers(array $options = []): GroupMembershipMediationUserCondition
@@ -39,6 +42,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
 
     /**
+     * Set the users.
+     *
+     * @param GroupMembershipMediationUserCondition $users The GroupMembershipMediationUserCondition instance.
      * @return self
      */
     public function setUsers(GroupMembershipMediationUserCondition $users)
@@ -52,6 +58,8 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
     
     /**
+     * Get the groups.
+     *
      * @return GroupMembershipMediationGroupCondition
      */
     public function getGroups(array $options = []): GroupMembershipMediationGroupCondition
@@ -64,6 +72,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
 
     /**
+     * Set the groups.
+     *
+     * @param GroupMembershipMediationGroupCondition $groups The GroupMembershipMediationGroupCondition instance.
      * @return self
      */
     public function setGroups(GroupMembershipMediationGroupCondition $groups)
@@ -77,6 +88,8 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
     
     /**
+     * Get the people.
+     *
      * @return GroupMembershipMediationPeopleCondition
      */
     public function getPeople(array $options = []): GroupMembershipMediationPeopleCondition
@@ -89,6 +102,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
 
     /**
+     * Set the people.
+     *
+     * @param GroupMembershipMediationPeopleCondition $people The GroupMembershipMediationPeopleCondition instance.
      * @return self
      */
     public function setPeople(GroupMembershipMediationPeopleCondition $people)
@@ -102,6 +118,8 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
     
     /**
+     * Get the expression.
+     *
      * @return GroupMembershipMediationExpressionCondition
      */
     public function getExpression(array $options = []): GroupMembershipMediationExpressionCondition
@@ -114,6 +132,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     }
 
     /**
+     * Set the expression.
+     *
+     * @param GroupMembershipMediationExpressionCondition $expression The GroupMembershipMediationExpressionCondition instance.
      * @return self
      */
     public function setExpression(GroupMembershipMediationExpressionCondition $expression)
@@ -125,4 +146,5 @@ class GroupMembershipMediationConditions extends AbstractResource
         
         return $this;
     }
+    
 }

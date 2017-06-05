@@ -24,7 +24,10 @@ class ChangePasswordCredentials extends AbstractResource
     const NEW_PASSWORD = 'newPassword';
     const OLD_PASSWORD = 'oldPassword';
 
+
     /**
+     * Get the newPassword.
+     *
      * @return PasswordCredential
      */
     public function getNewPassword(array $options = []): PasswordCredential
@@ -37,6 +40,9 @@ class ChangePasswordCredentials extends AbstractResource
     }
 
     /**
+     * Set the newPassword.
+     *
+     * @param PasswordCredential $newPassword The PasswordCredential instance.
      * @return self
      */
     public function setNewPassword(PasswordCredential $newPassword)
@@ -50,6 +56,8 @@ class ChangePasswordCredentials extends AbstractResource
     }
     
     /**
+     * Get the oldPassword.
+     *
      * @return PasswordCredential
      */
     public function getOldPassword(array $options = []): PasswordCredential
@@ -62,6 +70,9 @@ class ChangePasswordCredentials extends AbstractResource
     }
 
     /**
+     * Set the oldPassword.
+     *
+     * @param PasswordCredential $oldPassword The PasswordCredential instance.
      * @return self
      */
     public function setOldPassword(PasswordCredential $oldPassword)
@@ -73,4 +84,5 @@ class ChangePasswordCredentials extends AbstractResource
         
         return $this;
     }
+    
 }

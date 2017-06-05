@@ -28,8 +28,63 @@ class {{modelName}} extends AbstractResource
     const {{upperSnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
+    {{#each crudOperations}}
+    {{#if (hasCrudOperation this "read")}}
+    public function get($query)
+    {
+        return \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        self::class,
+                        '{{getCrudOperationPath this}}'
+                    );
+    }
+    {{/if}}
+
+    {{#if (hasCrudOperation this "create")}}
+    public function create()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    '{{getCrudOperationPath this}}',
+                    $this,
+                    self::class
+                );
+    }
+    {{/if}}
+
+    {{#if (hasCrudOperation this "update")}}
+    public function save()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    '{{getCrudOperationPath this}}',
+                    $this,
+                    self::class
+                );
+    }
+    {{/if}}
+
+    {{#if (hasCrudOperation this "delete")}}
+    public function delete()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->deleteResource(
+                    '{{getCrudOperationPath this}}',
+                    $this
+                );
+    }
+    {{/if}}
+    {{/each}}
+
     {{#each properties}}
     /**
+     * Get the {{propertyName}}.
+     *
      * @return {{getType this}}
      */
     {{#if isObject}}
@@ -44,6 +99,9 @@ class {{modelName}} extends AbstractResource
 
     {{#unless readOnly}}
     /**
+     * Set the {{propertyName}}.
+     *
+     * @param {{model}} ${{propertyName}} The {{model}} instance.
      * @return self
      */
     public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
@@ -67,6 +125,9 @@ class {{modelName}} extends AbstractResource
     {{#each methods}}
     {{#if operation.isArray}}
     /**
+    * Get the {{operation.responseModel}} object.
+    *
+    * @param array $options The options for the request.
     * @return Collection
     */
     public function {{getMethodArrayName alias}}(array $options = []): Collection
@@ -83,6 +144,7 @@ class {{modelName}} extends AbstractResource
     {{else}}
     /**
     * Sends a request to the {{camelCase alias}} endpoint.
+    *
     {{getMethodParamsComment this}}
     * @return mixed|null
     */

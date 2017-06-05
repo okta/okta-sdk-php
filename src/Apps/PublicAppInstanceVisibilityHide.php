@@ -24,7 +24,10 @@ class PublicAppInstanceVisibilityHide extends AbstractResource
     const I_OS = 'iOS';
     const WEB = 'web';
 
+
     /**
+     * Get the iOS.
+     *
      * @return boolean
      */
     public function getIOs(): boolean
@@ -33,10 +36,13 @@ class PublicAppInstanceVisibilityHide extends AbstractResource
     }
     
     /**
+     * Get the web.
+     *
      * @return boolean
      */
     public function getWeb(): boolean
     {
         return $this->getProperty(self::WEB);
     }
+    
 }

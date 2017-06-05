@@ -24,7 +24,10 @@ class GroupMembershipMediationGroupCondition extends AbstractResource
     const EXCLUDE = 'exclude';
     const INCLUDE = 'include';
 
+
     /**
+     * Get the exclude.
+     *
      * @return array
      */
     public function getExclude(): array
@@ -33,10 +36,13 @@ class GroupMembershipMediationGroupCondition extends AbstractResource
     }
     
     /**
+     * Get the include.
+     *
      * @return array
      */
     public function getInclude(): array
     {
         return $this->getProperty(self::INCLUDE);
     }
+    
 }

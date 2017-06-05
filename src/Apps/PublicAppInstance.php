@@ -37,7 +37,10 @@ class PublicAppInstance extends AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const ACCESSIBILITY = 'accessibility';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -46,6 +49,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the name.
+     *
      * @return string
      */
     public function getName(): string
@@ -54,6 +59,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the label.
+     *
      * @return string
      */
     public function getLabel(): string
@@ -62,6 +69,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the _links.
+     *
      * @return array
      */
     public function getLinks(): array
@@ -70,6 +79,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the status.
+     *
      * @return string
      */
     public function getStatus(): string
@@ -78,6 +89,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the created.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getCreated()
@@ -86,6 +99,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the features.
+     *
      * @return array
      */
     public function getFeatures(): array
@@ -94,6 +109,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the settings.
+     *
      * @return PublicAppInstanceSettings
      */
     public function getSettings(array $options = []): PublicAppInstanceSettings
@@ -106,6 +123,9 @@ class PublicAppInstance extends AbstractResource
     }
 
     /**
+     * Set the settings.
+     *
+     * @param PublicAppInstanceSettings $settings The PublicAppInstanceSettings instance.
      * @return self
      */
     public function setSettings(PublicAppInstanceSettings $settings)
@@ -119,6 +139,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the _embedded.
+     *
      * @return array
      */
     public function getEmbedded(): array
@@ -127,6 +149,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the licensing.
+     *
      * @return PublicAppInstanceLicensing
      */
     public function getLicensing(array $options = []): PublicAppInstanceLicensing
@@ -139,6 +163,9 @@ class PublicAppInstance extends AbstractResource
     }
 
     /**
+     * Set the licensing.
+     *
+     * @param PublicAppInstanceLicensing $licensing The PublicAppInstanceLicensing instance.
      * @return self
      */
     public function setLicensing(PublicAppInstanceLicensing $licensing)
@@ -152,6 +179,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the signOnMode.
+     *
      * @return string
      */
     public function getSignOnMode(): string
@@ -160,6 +189,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the visibility.
+     *
      * @return PublicAppInstanceVisibility
      */
     public function getVisibility(array $options = []): PublicAppInstanceVisibility
@@ -172,6 +203,9 @@ class PublicAppInstance extends AbstractResource
     }
 
     /**
+     * Set the visibility.
+     *
+     * @param PublicAppInstanceVisibility $visibility The PublicAppInstanceVisibility instance.
      * @return self
      */
     public function setVisibility(PublicAppInstanceVisibility $visibility)
@@ -185,6 +219,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the credentials.
+     *
      * @return PublicAppInstanceCredentials
      */
     public function getCredentials(array $options = []): PublicAppInstanceCredentials
@@ -197,6 +233,9 @@ class PublicAppInstance extends AbstractResource
     }
 
     /**
+     * Set the credentials.
+     *
+     * @param PublicAppInstanceCredentials $credentials The PublicAppInstanceCredentials instance.
      * @return self
      */
     public function setCredentials(PublicAppInstanceCredentials $credentials)
@@ -210,6 +249,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the lastUpdated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastUpdated()
@@ -218,6 +259,8 @@ class PublicAppInstance extends AbstractResource
     }
     
     /**
+     * Get the accessibility.
+     *
      * @return PublicAppInstanceAccessibility
      */
     public function getAccessibility(array $options = []): PublicAppInstanceAccessibility
@@ -230,6 +273,9 @@ class PublicAppInstance extends AbstractResource
     }
 
     /**
+     * Set the accessibility.
+     *
+     * @param PublicAppInstanceAccessibility $accessibility The PublicAppInstanceAccessibility instance.
      * @return self
      */
     public function setAccessibility(PublicAppInstanceAccessibility $accessibility)
@@ -241,4 +287,5 @@ class PublicAppInstance extends AbstractResource
         
         return $this;
     }
+    
 }

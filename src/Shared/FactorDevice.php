@@ -25,7 +25,10 @@ class FactorDevice extends AbstractResource
     const LINKS = 'links';
     const STATUS = 'status';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -34,7 +37,9 @@ class FactorDevice extends AbstractResource
     }
     
     /**
-     * @return
+     * Get the links.
+     *
+     * @return 
      */
     public function getLinks(array $options = []): undefined
     {
@@ -46,9 +51,12 @@ class FactorDevice extends AbstractResource
     }
 
     /**
+     * Set the links.
+     *
+     * @param  $links The  instance.
      * @return self
      */
-    public function setLinks($links)
+    public function setLinks( $links)
     {
         $this->setResourceProperty(
                         self::LINKS,
@@ -59,10 +67,13 @@ class FactorDevice extends AbstractResource
     }
     
     /**
+     * Get the status.
+     *
      * @return string
      */
     public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }
+    
 }

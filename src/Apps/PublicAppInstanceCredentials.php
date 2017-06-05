@@ -28,7 +28,10 @@ class PublicAppInstanceCredentials extends AbstractResource
     const REVEAL_PASSWORD = 'revealPassword';
     const USER_NAME_TEMPLATE = 'userNameTemplate';
 
+
     /**
+     * Get the scheme.
+     *
      * @return string
      */
     public function getScheme(): string
@@ -37,6 +40,8 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
     
     /**
+     * Get the signing.
+     *
      * @return PublicAppInstanceCredentialsSigning
      */
     public function getSigning(array $options = []): PublicAppInstanceCredentialsSigning
@@ -49,6 +54,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
 
     /**
+     * Set the signing.
+     *
+     * @param PublicAppInstanceCredentialsSigning $signing The PublicAppInstanceCredentialsSigning instance.
      * @return self
      */
     public function setSigning(PublicAppInstanceCredentialsSigning $signing)
@@ -62,6 +70,8 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
     
     /**
+     * Get the password.
+     *
      * @return PasswordCredential
      */
     public function getPassword(array $options = []): PasswordCredential
@@ -74,6 +84,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
 
     /**
+     * Set the password.
+     *
+     * @param PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
     public function setPassword(PasswordCredential $password)
@@ -87,6 +100,8 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
     
     /**
+     * Get the userName.
+     *
      * @return string
      */
     public function getUserName(): string
@@ -95,6 +110,8 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
     
     /**
+     * Get the revealPassword.
+     *
      * @return boolean
      */
     public function getRevealPassword(): boolean
@@ -103,6 +120,8 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
     
     /**
+     * Get the userNameTemplate.
+     *
      * @return PublicAppInstanceCredentialsUsernameTemplate
      */
     public function getUserNameTemplate(array $options = []): PublicAppInstanceCredentialsUsernameTemplate
@@ -115,6 +134,9 @@ class PublicAppInstanceCredentials extends AbstractResource
     }
 
     /**
+     * Set the userNameTemplate.
+     *
+     * @param PublicAppInstanceCredentialsUsernameTemplate $userNameTemplate The PublicAppInstanceCredentialsUsernameTemplate instance.
      * @return self
      */
     public function setUserNameTemplate(PublicAppInstanceCredentialsUsernameTemplate $userNameTemplate)
@@ -126,4 +148,5 @@ class PublicAppInstanceCredentials extends AbstractResource
         
         return $this;
     }
+    
 }

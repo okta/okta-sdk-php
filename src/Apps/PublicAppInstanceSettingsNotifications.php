@@ -23,7 +23,10 @@ class PublicAppInstanceSettingsNotifications extends AbstractResource
 {
     const VPN = 'vpn';
 
+
     /**
+     * Get the vpn.
+     *
      * @return PublicAppInstanceSettingsNotificationsVpn
      */
     public function getVpn(array $options = []): PublicAppInstanceSettingsNotificationsVpn
@@ -36,6 +39,9 @@ class PublicAppInstanceSettingsNotifications extends AbstractResource
     }
 
     /**
+     * Set the vpn.
+     *
+     * @param PublicAppInstanceSettingsNotificationsVpn $vpn The PublicAppInstanceSettingsNotificationsVpn instance.
      * @return self
      */
     public function setVpn(PublicAppInstanceSettingsNotificationsVpn $vpn)
@@ -47,4 +53,5 @@ class PublicAppInstanceSettingsNotifications extends AbstractResource
         
         return $this;
     }
+    
 }

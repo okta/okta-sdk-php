@@ -23,11 +23,15 @@ class AssignUserToGroupsMediationAction extends AbstractResource
 {
     const GROUP_IDS = 'groupIds';
 
+
     /**
+     * Get the groupIds.
+     *
      * @return array
      */
     public function getGroupIds(): array
     {
         return $this->getProperty(self::GROUP_IDS);
     }
+    
 }

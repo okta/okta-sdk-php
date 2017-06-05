@@ -26,7 +26,10 @@ class UserGroupStats extends AbstractResource
     const USERS_COUNT = 'usersCount';
     const GROUP_PUSH_MAPPINGS_COUNT = 'groupPushMappingsCount';
 
+
     /**
+     * Get the _links.
+     *
      * @return array
      */
     public function getLinks(): array
@@ -35,7 +38,9 @@ class UserGroupStats extends AbstractResource
     }
     
     /**
-     * @return
+     * Get the appsCount.
+     *
+     * @return 
      */
     public function getAppsCount(): undefined
     {
@@ -43,7 +48,9 @@ class UserGroupStats extends AbstractResource
     }
     
     /**
-     * @return
+     * Get the usersCount.
+     *
+     * @return 
      */
     public function getUsersCount(): undefined
     {
@@ -51,10 +58,13 @@ class UserGroupStats extends AbstractResource
     }
     
     /**
-     * @return
+     * Get the groupPushMappingsCount.
+     *
+     * @return 
      */
     public function getGroupPushMappingsCount(): undefined
     {
         return $this->getProperty(self::GROUP_PUSH_MAPPINGS_COUNT);
     }
+    
 }

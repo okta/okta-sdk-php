@@ -26,7 +26,10 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     const NEXT_ROTATION = 'nextRotation';
     const ROTATION_MODE = 'rotationMode';
 
+
     /**
+     * Get the kid.
+     *
      * @return string
      */
     public function getKid(): string
@@ -35,6 +38,8 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     }
     
     /**
+     * Get the lastRotated.
+     *
      * @return string
      */
     public function getLastRotated(): string
@@ -43,6 +48,8 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     }
     
     /**
+     * Get the nextRotation.
+     *
      * @return string
      */
     public function getNextRotation(): string
@@ -51,10 +58,13 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     }
     
     /**
+     * Get the rotationMode.
+     *
      * @return string
      */
     public function getRotationMode(): string
     {
         return $this->getProperty(self::ROTATION_MODE);
     }
+    
 }

@@ -25,7 +25,10 @@ class UserCredentials extends AbstractResource
     const PROVIDER = 'provider';
     const RECOVERY_QUESTION = 'recovery_question';
 
+
     /**
+     * Get the password.
+     *
      * @return PasswordCredential
      */
     public function getPassword(array $options = []): PasswordCredential
@@ -38,6 +41,9 @@ class UserCredentials extends AbstractResource
     }
 
     /**
+     * Set the password.
+     *
+     * @param PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
     public function setPassword(PasswordCredential $password)
@@ -51,6 +57,8 @@ class UserCredentials extends AbstractResource
     }
     
     /**
+     * Get the provider.
+     *
      * @return AuthProvider
      */
     public function getProvider(array $options = []): AuthProvider
@@ -64,6 +72,8 @@ class UserCredentials extends AbstractResource
 
     
     /**
+     * Get the recovery_question.
+     *
      * @return RecoveryQuestionCredential
      */
     public function getRecoveryQuestion(array $options = []): RecoveryQuestionCredential
@@ -76,6 +86,9 @@ class UserCredentials extends AbstractResource
     }
 
     /**
+     * Set the recovery_question.
+     *
+     * @param RecoveryQuestionCredential $recovery_question The RecoveryQuestionCredential instance.
      * @return self
      */
     public function setRecoveryQuestion(RecoveryQuestionCredential $recovery_question)
@@ -87,4 +100,5 @@ class UserCredentials extends AbstractResource
         
         return $this;
     }
+    
 }

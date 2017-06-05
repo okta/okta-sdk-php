@@ -24,7 +24,10 @@ class ActivationToken extends AbstractResource
     const ACTIVATION_URL = 'activationUrl';
     const ACTIVATION_TOKEN = 'activationToken';
 
+
     /**
+     * Get the activationUrl.
+     *
      * @return string
      */
     public function getActivationUrl(): string
@@ -33,10 +36,13 @@ class ActivationToken extends AbstractResource
     }
     
     /**
+     * Get the activationToken.
+     *
      * @return string
      */
     public function getActivationToken(): string
     {
         return $this->getProperty(self::ACTIVATION_TOKEN);
     }
+    
 }

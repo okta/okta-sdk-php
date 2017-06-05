@@ -25,7 +25,10 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     const MESSAGE = 'message';
     const NETWORK = 'network';
 
+
     /**
+     * Get the helpUrl.
+     *
      * @return string
      */
     public function getHelpUrl(): string
@@ -34,6 +37,8 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     }
     
     /**
+     * Get the message.
+     *
      * @return string
      */
     public function getMessage(): string
@@ -42,6 +47,8 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     }
     
     /**
+     * Get the network.
+     *
      * @return PublicAppInstanceSettingsNotificationsVpnNetwork
      */
     public function getNetwork(array $options = []): PublicAppInstanceSettingsNotificationsVpnNetwork
@@ -54,6 +61,9 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     }
 
     /**
+     * Set the network.
+     *
+     * @param PublicAppInstanceSettingsNotificationsVpnNetwork $network The PublicAppInstanceSettingsNotificationsVpnNetwork instance.
      * @return self
      */
     public function setNetwork(PublicAppInstanceSettingsNotificationsVpnNetwork $network)
@@ -65,4 +75,5 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
         
         return $this;
     }
+    
 }

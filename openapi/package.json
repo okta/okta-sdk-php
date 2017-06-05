@@ -1,5 +1,5 @@
 {
-  "name": "oktasdk-php",
+  "name": "okta-sdk-php",
   "private": true,
   "version": "0.0.0",
   "scripts": {

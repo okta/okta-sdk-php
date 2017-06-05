@@ -23,11 +23,15 @@ class PublicAppInstanceLicensing extends AbstractResource
 {
     const SEAT_COUNT = 'seatCount';
 
+
     /**
-     * @return
+     * Get the seatCount.
+     *
+     * @return 
      */
     public function getSeatCount(): undefined
     {
         return $this->getProperty(self::SEAT_COUNT);
     }
+    
 }

@@ -25,7 +25,10 @@ class PublicAppInstanceVisibility extends AbstractResource
     const APP_LINKS = 'appLinks';
     const AUTO_SUBMIT_TOOLBAR = 'autoSubmitToolbar';
 
+
     /**
+     * Get the hide.
+     *
      * @return PublicAppInstanceVisibilityHide
      */
     public function getHide(array $options = []): PublicAppInstanceVisibilityHide
@@ -38,6 +41,9 @@ class PublicAppInstanceVisibility extends AbstractResource
     }
 
     /**
+     * Set the hide.
+     *
+     * @param PublicAppInstanceVisibilityHide $hide The PublicAppInstanceVisibilityHide instance.
      * @return self
      */
     public function setHide(PublicAppInstanceVisibilityHide $hide)
@@ -51,6 +57,8 @@ class PublicAppInstanceVisibility extends AbstractResource
     }
     
     /**
+     * Get the appLinks.
+     *
      * @return array
      */
     public function getAppLinks(): array
@@ -59,10 +67,13 @@ class PublicAppInstanceVisibility extends AbstractResource
     }
     
     /**
+     * Get the autoSubmitToolbar.
+     *
      * @return boolean
      */
     public function getAutoSubmitToolbar(): boolean
     {
         return $this->getProperty(self::AUTO_SUBMIT_TOOLBAR);
     }
+    
 }

@@ -30,7 +30,10 @@ class GroupMembershipMediationRule extends AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -39,6 +42,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the name.
+     *
      * @return string
      */
     public function getName(): string
@@ -47,6 +52,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -55,6 +62,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the status.
+     *
      * @return string
      */
     public function getStatus(): string
@@ -63,6 +72,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the actions.
+     *
      * @return GroupMembershipMediationActions
      */
     public function getActions(array $options = []): GroupMembershipMediationActions
@@ -75,6 +86,9 @@ class GroupMembershipMediationRule extends AbstractResource
     }
 
     /**
+     * Set the actions.
+     *
+     * @param GroupMembershipMediationActions $actions The GroupMembershipMediationActions instance.
      * @return self
      */
     public function setActions(GroupMembershipMediationActions $actions)
@@ -88,6 +102,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the created.
+     *
      * @return string
      */
     public function getCreated(): string
@@ -96,6 +112,8 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the conditions.
+     *
      * @return GroupMembershipMediationConditions
      */
     public function getConditions(array $options = []): GroupMembershipMediationConditions
@@ -108,6 +126,9 @@ class GroupMembershipMediationRule extends AbstractResource
     }
 
     /**
+     * Set the conditions.
+     *
+     * @param GroupMembershipMediationConditions $conditions The GroupMembershipMediationConditions instance.
      * @return self
      */
     public function setConditions(GroupMembershipMediationConditions $conditions)
@@ -121,10 +142,13 @@ class GroupMembershipMediationRule extends AbstractResource
     }
     
     /**
+     * Get the lastUpdated.
+     *
      * @return string
      */
     public function getLastUpdated(): string
     {
         return $this->getProperty(self::LAST_UPDATED);
     }
+    
 }

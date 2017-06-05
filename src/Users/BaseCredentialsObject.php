@@ -22,4 +22,5 @@ use Okta\Resource\AbstractResource;
 class BaseCredentialsObject extends AbstractResource
 {
 
+
 }

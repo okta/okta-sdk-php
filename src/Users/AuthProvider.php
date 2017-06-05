@@ -24,7 +24,10 @@ class AuthProvider extends AbstractResource
     const NAME = 'name';
     const TYPE = 'type';
 
+
     /**
+     * Get the name.
+     *
      * @return string
      */
     public function getName(): string
@@ -33,10 +36,13 @@ class AuthProvider extends AbstractResource
     }
     
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
+    
 }

@@ -32,7 +32,10 @@ class UserGroup extends AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -41,6 +44,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -49,6 +54,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the _links.
+     *
      * @return array
      */
     public function getLinks(): array
@@ -57,6 +64,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the created.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getCreated()
@@ -65,6 +74,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the profile.
+     *
      * @return UserGroupProfile
      */
     public function getProfile(array $options = []): UserGroupProfile
@@ -77,6 +88,9 @@ class UserGroup extends AbstractResource
     }
 
     /**
+     * Set the profile.
+     *
+     * @param UserGroupProfile $profile The UserGroupProfile instance.
      * @return self
      */
     public function setProfile(UserGroupProfile $profile)
@@ -90,6 +104,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the _embedded.
+     *
      * @return array
      */
     public function getEmbedded(): array
@@ -98,6 +114,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the lastUpdated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastUpdated()
@@ -106,6 +124,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the objectClass.
+     *
      * @return array
      */
     public function getObjectClass(): array
@@ -114,6 +134,8 @@ class UserGroup extends AbstractResource
     }
     
     /**
+     * Get the lastMembershipUpdated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastMembershipUpdated()
@@ -122,6 +144,9 @@ class UserGroup extends AbstractResource
     }
     
     /**
+    * Get the User object.
+    *
+    * @param array $options The options for the request.
     * @return Collection
     */
     public function getUsers(array $options = []): Collection

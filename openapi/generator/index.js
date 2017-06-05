@@ -113,11 +113,35 @@ function getMethodArrayName(str) {
 }
 
 function getOperationReturnType(model) {
-    if(method.operation.responseModel) {
-        return method.operation.responseModel;
+    if(model.operation.responseModel) {
+        return model.operation.responseModel;
     }
 
     return `void`;
+}
+
+function getCrudMethodName(alias) {
+    switch (alias) {
+        case 'create':
+            return 'create';
+        case 'read':
+            return 'find';
+        case 'update':
+            return 'save';
+        case 'delete':
+            return 'delete';
+    }
+}
+
+function hasCrudOperation(operations, op, block) {
+    if(operations.alias === op) {
+        return true;
+    }
+}
+
+function getCrudOperationPath(method) {
+    let parts = _.split(method.operation.path, '/');
+    return '/'+parts[3];
 }
 
 php.process = ({spec, operations, models, handlebars}) => {
@@ -127,7 +151,6 @@ php.process = ({spec, operations, models, handlebars}) => {
   const namespaces = [];
 
   for (let model of models) {
-
     // Order the properties by length
     model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
 
@@ -138,21 +161,26 @@ php.process = ({spec, operations, models, handlebars}) => {
         namespaces.push(model.namespace);
     }
 
-
-
     modelMap[model.modelName] = model;
-
 
   }
 
   for (let model of models) {
 
       model.namespacedModels = [];
+      model.crudOperations = [];
       for (let method of model.methods) {
           const responseModel = method.operation.responseModel;
 
           if (modelMap[responseModel] && model.namespace !== modelMap[responseModel].namespace) {
             model.namespacedModels.push(modelMap[responseModel]);
+          }
+      }
+
+      if(model.modelName === 'User' ) {
+          for (let crud of model.crud) {
+              model.crudOperations.push(crud);
+
           }
       }
 
@@ -182,7 +210,10 @@ php.process = ({spec, operations, models, handlebars}) => {
     getMethodRequestParams,
     getMethodArrayName,
     getOperationReturnType,
-    getMethodParamsComment
+    getMethodParamsComment,
+    getCrudMethodName,
+    hasCrudOperation,
+    getCrudOperationPath
   });
 
   return templates;
