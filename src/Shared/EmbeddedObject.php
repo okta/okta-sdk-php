@@ -23,7 +23,10 @@ class EmbeddedObject extends AbstractResource
 {
     const KEY = 'key';
 
+
     /**
+     * Get the key.
+     *
      * @return string
      */
     public function getKey(): string

@@ -25,7 +25,10 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     const SUFFIX = 'suffix';
     const TEMPLATE = 'template';
 
+
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -34,6 +37,8 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     }
     
     /**
+     * Get the suffix.
+     *
      * @return string
      */
     public function getSuffix(): string
@@ -42,6 +47,8 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     }
     
     /**
+     * Get the template.
+     *
      * @return string
      */
     public function getTemplate(): string

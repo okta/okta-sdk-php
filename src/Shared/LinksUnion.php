@@ -22,4 +22,5 @@ use Okta\Resource\AbstractResource;
 class LinksUnion extends AbstractResource
 {
 
+
 }

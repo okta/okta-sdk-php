@@ -25,7 +25,12 @@ use Http\Discovery\MessageFactoryDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Http\Message\UriFactory;
+use Okta\Client;
+use Okta\Exceptions\Error;
+use Okta\Exceptions\ResourceException;
+use Okta\Resource\AbstractResource;
 use Okta\Utilities\SswsAuth;
+use Okta\Utilities\UserAgentBuilder;
 use Psr\Http\Message\UriInterface;
 
 class DefaultDataStore
@@ -46,7 +51,7 @@ class DefaultDataStore
     private $token;
 
     /**
-     * @var string $orgUrl The organization Url.
+     * @var string $organizationUrl The organization Url.
      */
     private $organizationUrl;
 
@@ -88,12 +93,24 @@ class DefaultDataStore
         $this->baseUrl = $this->organizationUrl . '/api/v1';
     }
 
+    public function instantiate(string $class, \stdClass $properties = null, array $options = [])
+    {
+        $propertiesArr = array($properties, $options);
+
+        $class = new \ReflectionClass($class);
+        array_unshift($propertiesArr, Client::getInstance()->getDataStore());
+
+        $newClass = $class->newInstanceArgs($propertiesArr);
+
+        return $newClass;
+    }
+
 
     public function getResource($href, $className, $path, array $options = [])
     {
         $queryString = $this->getQueryString($options);
 
-        $uri = $this->uriFactory->createUri($this->orgUrl . '/api/v1' . $path . '/' . $href);
+        $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $path . '/' . $href);
         $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
 
         $result = $this->executeRequest('GET', $uri);
@@ -106,7 +123,7 @@ class DefaultDataStore
 
         $queryString = $this->getQueryString($options['query']);
 
-        $uri = $this->uriFactory->createUri($this->orgUrl . '/api/v1' . $href);
+        $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
         $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
 
 
@@ -123,7 +140,7 @@ class DefaultDataStore
 
     public function saveResource($href, $resource, $returnType)
     {
-        $uri = $this->uriFactory->createUri($this->orgUrl . '/api/v1' . $href . '/' . $resource->getId());
+        $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
 
@@ -133,7 +150,7 @@ class DefaultDataStore
     public function deleteResource($href, $resource)
     {
 
-        $uri = $this->uriFactory->createUri($this->orgUrl . '/api/v1' . $href . '/' . $resource->getId());
+        $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('DELETE', $uri);
 

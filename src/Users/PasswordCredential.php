@@ -23,7 +23,10 @@ class PasswordCredential extends AbstractResource
 {
     const HASH = 'hash';
 
+
     /**
+     * Get the hash.
+     *
      * @return HashedPassword
      */
     public function getHash(array $options = []): HashedPassword
@@ -36,6 +39,9 @@ class PasswordCredential extends AbstractResource
     }
 
     /**
+     * Set the hash.
+     *
+     * @param HashedPassword $hash The HashedPassword instance.
      * @return self
      */
     public function setHash(HashedPassword $hash)

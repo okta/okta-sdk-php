@@ -36,7 +36,61 @@ class User extends AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
+
+    public function create()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    '/users',
+                    $this,
+                    self::class
+                );
+    }
+
+
+    public function get($query)
+    {
+        return \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        self::class,
+                        '/users'
+                    );
+    }
+
+
+
+
+
+    public function save()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    '/users',
+                    $this,
+                    self::class
+                );
+    }
+
+
+
+
+    public function delete()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->deleteResource(
+                    '/users',
+                    $this
+                );
+    }
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -45,6 +99,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the _links.
+     *
      * @return array
      */
     public function getLinks(): array
@@ -53,6 +109,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the status.
+     *
      * @return string
      */
     public function getStatus(): string
@@ -61,6 +119,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the created.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getCreated()
@@ -69,6 +129,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the profile.
+     *
      * @return UserProfile
      */
     public function getProfile(array $options = []): UserProfile
@@ -81,6 +143,9 @@ class User extends AbstractResource
     }
 
     /**
+     * Set the profile.
+     *
+     * @param UserProfile $profile The UserProfile instance.
      * @return self
      */
     public function setProfile(UserProfile $profile)
@@ -94,6 +159,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the _embedded.
+     *
      * @return array
      */
     public function getEmbedded(): array
@@ -102,6 +169,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the activated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getActivated()
@@ -110,6 +179,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the lastLogin.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastLogin()
@@ -118,6 +189,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the credentials.
+     *
      * @return UserCredentials
      */
     public function getCredentials(array $options = []): UserCredentials
@@ -130,6 +203,9 @@ class User extends AbstractResource
     }
 
     /**
+     * Set the credentials.
+     *
+     * @param UserCredentials $credentials The UserCredentials instance.
      * @return self
      */
     public function setCredentials(UserCredentials $credentials)
@@ -143,6 +219,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the lastUpdated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastUpdated()
@@ -151,6 +229,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the statusChanged.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getStatusChanged()
@@ -159,6 +239,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the passwordChanged.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getPasswordChanged()
@@ -167,6 +249,8 @@ class User extends AbstractResource
     }
     
     /**
+     * Get the transitioningToStatus.
+     *
      * @return string
      */
     public function getTransitioningToStatus(): string
@@ -175,6 +259,9 @@ class User extends AbstractResource
     }
     
     /**
+    * Get the UserGroup object.
+    *
+    * @param array $options The options for the request.
     * @return Collection
     */
     public function getGroups(array $options = []): Collection
@@ -190,6 +277,7 @@ class User extends AbstractResource
     }
     /**
     * Sends a request to the activate endpoint.
+    *
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
@@ -206,6 +294,7 @@ class User extends AbstractResource
     /**
     * Sends a request to the deactivate endpoint.
     *
+    *
     * @return mixed|null
     */
     public function deactivate()
@@ -220,6 +309,7 @@ class User extends AbstractResource
     }
     /**
     * Sends a request to the suspend endpoint.
+    *
     *
     * @return mixed|null
     */
@@ -236,6 +326,7 @@ class User extends AbstractResource
     /**
     * Sends a request to the unsuspend endpoint.
     *
+    *
     * @return mixed|null
     */
     public function unsuspend()
@@ -251,6 +342,7 @@ class User extends AbstractResource
     /**
     * Sends a request to the unlock endpoint.
     *
+    *
     * @return mixed|null
     */
     public function unlock()
@@ -265,6 +357,7 @@ class User extends AbstractResource
     }
     /**
     * Sends a request to the forgotPassword endpoint.
+    *
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
@@ -281,6 +374,7 @@ class User extends AbstractResource
     /**
     * Sends a request to the resetFactors endpoint.
     *
+    *
     * @return mixed|null
     */
     public function resetFactors()
@@ -295,6 +389,7 @@ class User extends AbstractResource
     }
     /**
     * Sends a request to the addToGroup endpoint.
+    *
     *
     * @return mixed|null
     */

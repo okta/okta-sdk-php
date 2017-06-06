@@ -30,7 +30,10 @@ class MediationRoleAssignment extends AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -39,6 +42,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -47,6 +52,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the label.
+     *
      * @return string
      */
     public function getLabel(): string
@@ -55,6 +62,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the status.
+     *
      * @return string
      */
     public function getStatus(): string
@@ -63,6 +72,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the created.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getCreated()
@@ -71,6 +82,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the _embedded.
+     *
      * @return array
      */
     public function getEmbedded(): array
@@ -79,6 +92,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the description.
+     *
      * @return string
      */
     public function getDescription(): string
@@ -87,6 +102,8 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
+     * Get the lastUpdated.
+     *
      * @return \Carbon\Carbon|null
      */
     public function getLastUpdated()

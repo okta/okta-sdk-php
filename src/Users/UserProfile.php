@@ -28,7 +28,10 @@ class UserProfile extends AbstractResource
     const MOBILE_PHONE = 'mobilePhone';
     const SECOND_EMAIL = 'secondEmail';
 
+
     /**
+     * Get the email.
+     *
      * @return string
      */
     public function getEmail(): string
@@ -37,6 +40,8 @@ class UserProfile extends AbstractResource
     }
     
     /**
+     * Get the login.
+     *
      * @return string
      */
     public function getLogin(): string
@@ -45,6 +50,8 @@ class UserProfile extends AbstractResource
     }
     
     /**
+     * Get the lastName.
+     *
      * @return string
      */
     public function getLastName(): string
@@ -53,6 +60,8 @@ class UserProfile extends AbstractResource
     }
     
     /**
+     * Get the firstName.
+     *
      * @return string
      */
     public function getFirstName(): string
@@ -61,6 +70,8 @@ class UserProfile extends AbstractResource
     }
     
     /**
+     * Get the mobilePhone.
+     *
      * @return string
      */
     public function getMobilePhone(): string
@@ -69,6 +80,8 @@ class UserProfile extends AbstractResource
     }
     
     /**
+     * Get the secondEmail.
+     *
      * @return string
      */
     public function getSecondEmail(): string

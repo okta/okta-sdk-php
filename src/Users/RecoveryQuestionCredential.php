@@ -23,7 +23,10 @@ class RecoveryQuestionCredential extends AbstractResource
 {
     const QUESTION = 'question';
 
+
     /**
+     * Get the question.
+     *
      * @return string
      */
     public function getQuestion(): string

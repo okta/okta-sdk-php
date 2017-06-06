@@ -24,7 +24,10 @@ class GroupMembershipMediationExpressionCondition extends AbstractResource
     const TYPE = 'type';
     const VALUE = 'value';
 
+
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -33,6 +36,8 @@ class GroupMembershipMediationExpressionCondition extends AbstractResource
     }
     
     /**
+     * Get the value.
+     *
      * @return string
      */
     public function getValue(): string

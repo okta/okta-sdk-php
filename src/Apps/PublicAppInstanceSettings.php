@@ -26,7 +26,10 @@ class PublicAppInstanceSettings extends AbstractResource
     const NOTIFICATIONS = 'notifications';
     const MANUAL_PROVISIONING = 'manualProvisioning';
 
+
     /**
+     * Get the app.
+     *
      * @return array
      */
     public function getApp(): array
@@ -35,6 +38,8 @@ class PublicAppInstanceSettings extends AbstractResource
     }
     
     /**
+     * Get the signOn.
+     *
      * @return PublicSignOnModeMediated
      */
     public function getSignOn(array $options = []): PublicSignOnModeMediated
@@ -47,6 +52,9 @@ class PublicAppInstanceSettings extends AbstractResource
     }
 
     /**
+     * Set the signOn.
+     *
+     * @param PublicSignOnModeMediated $signOn The PublicSignOnModeMediated instance.
      * @return self
      */
     public function setSignOn(PublicSignOnModeMediated $signOn)
@@ -60,6 +68,8 @@ class PublicAppInstanceSettings extends AbstractResource
     }
     
     /**
+     * Get the notifications.
+     *
      * @return PublicAppInstanceSettingsNotifications
      */
     public function getNotifications(array $options = []): PublicAppInstanceSettingsNotifications
@@ -72,6 +82,9 @@ class PublicAppInstanceSettings extends AbstractResource
     }
 
     /**
+     * Set the notifications.
+     *
+     * @param PublicAppInstanceSettingsNotifications $notifications The PublicAppInstanceSettingsNotifications instance.
      * @return self
      */
     public function setNotifications(PublicAppInstanceSettingsNotifications $notifications)
@@ -85,6 +98,8 @@ class PublicAppInstanceSettings extends AbstractResource
     }
     
     /**
+     * Get the manualProvisioning.
+     *
      * @return boolean
      */
     public function getManualProvisioning(): boolean

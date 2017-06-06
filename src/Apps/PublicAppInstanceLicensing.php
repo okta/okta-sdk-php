@@ -23,7 +23,10 @@ class PublicAppInstanceLicensing extends AbstractResource
 {
     const SEAT_COUNT = 'seatCount';
 
+
     /**
+     * Get the seatCount.
+     *
      * @return
      */
     public function getSeatCount(): undefined

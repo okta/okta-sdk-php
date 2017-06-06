@@ -24,7 +24,10 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     const USERS = 'users';
     const GROUPS = 'groups';
 
+
     /**
+     * Get the users.
+     *
      * @return GroupMembershipMediationUserCondition
      */
     public function getUsers(array $options = []): GroupMembershipMediationUserCondition
@@ -37,6 +40,9 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     }
 
     /**
+     * Set the users.
+     *
+     * @param GroupMembershipMediationUserCondition $users The GroupMembershipMediationUserCondition instance.
      * @return self
      */
     public function setUsers(GroupMembershipMediationUserCondition $users)
@@ -50,6 +56,8 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     }
     
     /**
+     * Get the groups.
+     *
      * @return GroupMembershipMediationGroupCondition
      */
     public function getGroups(array $options = []): GroupMembershipMediationGroupCondition
@@ -62,6 +70,9 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     }
 
     /**
+     * Set the groups.
+     *
+     * @param GroupMembershipMediationGroupCondition $groups The GroupMembershipMediationGroupCondition instance.
      * @return self
      */
     public function setGroups(GroupMembershipMediationGroupCondition $groups)

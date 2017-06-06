@@ -25,7 +25,10 @@ class PublicAppInstanceAccessibility extends AbstractResource
     const ERROR_REDIRECT_URL = 'errorRedirectUrl';
     const LOGIN_REDIRECT_URL = 'loginRedirectUrl';
 
+
     /**
+     * Get the selfService.
+     *
      * @return boolean
      */
     public function getSelfService(): boolean
@@ -34,6 +37,8 @@ class PublicAppInstanceAccessibility extends AbstractResource
     }
     
     /**
+     * Get the errorRedirectUrl.
+     *
      * @return string
      */
     public function getErrorRedirectUrl(): string
@@ -42,6 +47,8 @@ class PublicAppInstanceAccessibility extends AbstractResource
     }
     
     /**
+     * Get the loginRedirectUrl.
+     *
      * @return string
      */
     public function getLoginRedirectUrl(): string

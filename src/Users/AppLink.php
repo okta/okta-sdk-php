@@ -32,7 +32,10 @@ class AppLink extends AbstractResource
     const APP_ASSIGNMENT_ID = 'appAssignmentId';
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
+
     /**
+     * Get the id.
+     *
      * @return string
      */
     public function getId(): string
@@ -41,6 +44,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the label.
+     *
      * @return string
      */
     public function getLabel(): string
@@ -49,6 +54,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the hidden.
+     *
      * @return boolean
      */
     public function getHidden(): boolean
@@ -57,6 +64,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the appName.
+     *
      * @return string
      */
     public function getAppName(): string
@@ -65,6 +74,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the linkUrl.
+     *
      * @return string
      */
     public function getLinkUrl(): string
@@ -73,6 +84,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the logoUrl.
+     *
      * @return string
      */
     public function getLogoUrl(): string
@@ -81,6 +94,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the sortOrder.
+     *
      * @return
      */
     public function getSortOrder(): undefined
@@ -89,6 +104,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the appInstanceId.
+     *
      * @return string
      */
     public function getAppInstanceId(): string
@@ -97,6 +114,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the appAssignmentId.
+     *
      * @return string
      */
     public function getAppAssignmentId(): string
@@ -105,6 +124,8 @@ class AppLink extends AbstractResource
     }
     
     /**
+     * Get the credentialsSetup.
+     *
      * @return boolean
      */
     public function getCredentialsSetup(): boolean

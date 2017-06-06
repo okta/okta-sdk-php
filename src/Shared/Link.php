@@ -30,7 +30,10 @@ class Link extends AbstractResource
     const METHOD = 'method';
     const TEMPLATED = 'templated';
 
+
     /**
+     * Get the rel.
+     *
      * @return string
      */
     public function getRel(): string
@@ -39,6 +42,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the href.
+     *
      * @return string
      */
     public function getHref(): string
@@ -47,6 +52,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the name.
+     *
      * @return string
      */
     public function getName(): string
@@ -55,6 +62,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the type.
+     *
      * @return string
      */
     public function getType(): string
@@ -63,6 +72,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the hints.
+     *
      * @return array
      */
     public function getHints(): array
@@ -71,6 +82,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the title.
+     *
      * @return string
      */
     public function getTitle(): string
@@ -79,6 +92,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the method.
+     *
      * @return string
      */
     public function getMethod(): string
@@ -87,6 +102,8 @@ class Link extends AbstractResource
     }
     
     /**
+     * Get the templated.
+     *
      * @return boolean
      */
     public function getTemplated(): boolean

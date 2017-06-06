@@ -23,7 +23,10 @@ class AssignUserToGroupsMediationAction extends AbstractResource
 {
     const GROUP_IDS = 'groupIds';
 
+
     /**
+     * Get the groupIds.
+     *
      * @return array
      */
     public function getGroupIds(): array

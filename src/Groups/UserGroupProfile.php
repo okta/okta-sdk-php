@@ -24,7 +24,10 @@ class UserGroupProfile extends AbstractResource
     const NAME = 'name';
     const DESCRIPTION = 'description';
 
+
     /**
+     * Get the name.
+     *
      * @return string
      */
     public function getName(): string
@@ -33,6 +36,8 @@ class UserGroupProfile extends AbstractResource
     }
     
     /**
+     * Get the description.
+     *
      * @return string
      */
     public function getDescription(): string

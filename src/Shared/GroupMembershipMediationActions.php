@@ -23,7 +23,10 @@ class GroupMembershipMediationActions extends AbstractResource
 {
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';
 
+
     /**
+     * Get the assignUserToGroups.
+     *
      * @return AssignUserToGroupsMediationAction
      */
     public function getAssignUserToGroups(array $options = []): AssignUserToGroupsMediationAction
@@ -36,6 +39,9 @@ class GroupMembershipMediationActions extends AbstractResource
     }
 
     /**
+     * Set the assignUserToGroups.
+     *
+     * @param AssignUserToGroupsMediationAction $assignUserToGroups The AssignUserToGroupsMediationAction instance.
      * @return self
      */
     public function setAssignUserToGroups(AssignUserToGroupsMediationAction $assignUserToGroups)

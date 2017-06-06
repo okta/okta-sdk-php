@@ -25,7 +25,10 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     const INCLUDE = 'include';
     const CONNECTION = 'connection';
 
+
     /**
+     * Get the exclude.
+     *
      * @return array
      */
     public function getExclude(): array
@@ -34,6 +37,8 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     }
     
     /**
+     * Get the include.
+     *
      * @return array
      */
     public function getInclude(): array
@@ -42,6 +47,8 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     }
     
     /**
+     * Get the connection.
+     *
      * @return string
      */
     public function getConnection(): string
