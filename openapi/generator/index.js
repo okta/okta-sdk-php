@@ -21,11 +21,11 @@ function getSafeType(obj) {
         case 'dateTime':
             return ``;
         case 'object':
-            return `: ` + obj.model;
+            return `: ${obj.model}`;
         case 'hash':
             return String.raw`: array`;
         default:
-            return `: ` + obj.commonType;
+            return `: ${obj. commonType}`;
     }
 }
 
