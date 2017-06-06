@@ -15,28 +15,11 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Apps;
 
-use Okta\Resource\AbstractResource;
+use Okta\Resource\AbstractCollection;
 
-class GroupMembershipMediationGroupCondition extends AbstractResource
+class Collection extends AbstractCollection
 {
-    const EXCLUDE = 'exclude';
-    const INCLUDE = 'include';
 
-    /**
-     * @return array
-     */
-    public function getExclude()
-    {
-        return $this->getProperty(self::EXCLUDE);
-    }
-    
-    /**
-     * @return array
-     */
-    public function getInclude()
-    {
-        return $this->getProperty(self::INCLUDE);
-    }
 }

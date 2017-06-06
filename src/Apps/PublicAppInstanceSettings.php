@@ -27,9 +27,9 @@ class PublicAppInstanceSettings extends AbstractResource
     const MANUAL_PROVISIONING = 'manualProvisioning';
 
     /**
-     * @return hash
+     * @return array
      */
-    public function getApp()
+    public function getApp(): array
     {
         return $this->getProperty(self::APP);
     }
@@ -37,13 +37,13 @@ class PublicAppInstanceSettings extends AbstractResource
     /**
      * @return PublicSignOnModeMediated
      */
-    public function getSignOn(array $options = [])
+    public function getSignOn(array $options = []): PublicSignOnModeMediated
     {
         return $this->getResourceProperty(
-            self::SIGN_ON,
-            PublicSignOnModeMediated::class,
-            $options
-        );
+                        self::SIGN_ON,
+                        PublicSignOnModeMediated::class,
+                        $options
+                    );
     }
 
     /**
@@ -52,9 +52,9 @@ class PublicAppInstanceSettings extends AbstractResource
     public function setSignOn(PublicSignOnModeMediated $signOn)
     {
         $this->setResourceProperty(
-            self::SIGN_ON,
-            $signOn
-        );
+                        self::SIGN_ON,
+                        $signOn
+                    );
         
         return $this;
     }
@@ -62,13 +62,13 @@ class PublicAppInstanceSettings extends AbstractResource
     /**
      * @return PublicAppInstanceSettingsNotifications
      */
-    public function getNotifications(array $options = [])
+    public function getNotifications(array $options = []): PublicAppInstanceSettingsNotifications
     {
         return $this->getResourceProperty(
-            self::NOTIFICATIONS,
-            PublicAppInstanceSettingsNotifications::class,
-            $options
-        );
+                        self::NOTIFICATIONS,
+                        PublicAppInstanceSettingsNotifications::class,
+                        $options
+                    );
     }
 
     /**
@@ -77,9 +77,9 @@ class PublicAppInstanceSettings extends AbstractResource
     public function setNotifications(PublicAppInstanceSettingsNotifications $notifications)
     {
         $this->setResourceProperty(
-            self::NOTIFICATIONS,
-            $notifications
-        );
+                        self::NOTIFICATIONS,
+                        $notifications
+                    );
         
         return $this;
     }
@@ -87,7 +87,7 @@ class PublicAppInstanceSettings extends AbstractResource
     /**
      * @return boolean
      */
-    public function getManualProvisioning()
+    public function getManualProvisioning(): boolean
     {
         return $this->getProperty(self::MANUAL_PROVISIONING);
     }

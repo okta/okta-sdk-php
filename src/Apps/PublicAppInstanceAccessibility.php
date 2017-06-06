@@ -28,7 +28,7 @@ class PublicAppInstanceAccessibility extends AbstractResource
     /**
      * @return boolean
      */
-    public function getSelfService()
+    public function getSelfService(): boolean
     {
         return $this->getProperty(self::SELF_SERVICE);
     }
@@ -36,7 +36,7 @@ class PublicAppInstanceAccessibility extends AbstractResource
     /**
      * @return string
      */
-    public function getErrorRedirectUrl()
+    public function getErrorRedirectUrl(): string
     {
         return $this->getProperty(self::ERROR_REDIRECT_URL);
     }
@@ -44,7 +44,7 @@ class PublicAppInstanceAccessibility extends AbstractResource
     /**
      * @return string
      */
-    public function getLoginRedirectUrl()
+    public function getLoginRedirectUrl(): string
     {
         return $this->getProperty(self::LOGIN_REDIRECT_URL);
     }

@@ -29,7 +29,7 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     /**
      * @return string
      */
-    public function getKid()
+    public function getKid(): string
     {
         return $this->getProperty(self::KID);
     }
@@ -37,7 +37,7 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     /**
      * @return string
      */
-    public function getLastRotated()
+    public function getLastRotated(): string
     {
         return $this->getProperty(self::LAST_ROTATED);
     }
@@ -45,7 +45,7 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     /**
      * @return string
      */
-    public function getNextRotation()
+    public function getNextRotation(): string
     {
         return $this->getProperty(self::NEXT_ROTATION);
     }
@@ -53,7 +53,7 @@ class PublicAppInstanceCredentialsSigning extends AbstractResource
     /**
      * @return string
      */
-    public function getRotationMode()
+    public function getRotationMode(): string
     {
         return $this->getProperty(self::ROTATION_MODE);
     }

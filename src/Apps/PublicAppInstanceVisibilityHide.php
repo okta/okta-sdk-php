@@ -27,7 +27,7 @@ class PublicAppInstanceVisibilityHide extends AbstractResource
     /**
      * @return boolean
      */
-    public function getIOs()
+    public function getIOs(): boolean
     {
         return $this->getProperty(self::I_OS);
     }
@@ -35,7 +35,7 @@ class PublicAppInstanceVisibilityHide extends AbstractResource
     /**
      * @return boolean
      */
-    public function getWeb()
+    public function getWeb(): boolean
     {
         return $this->getProperty(self::WEB);
     }

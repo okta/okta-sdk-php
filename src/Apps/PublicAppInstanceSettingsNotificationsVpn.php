@@ -28,7 +28,7 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     /**
      * @return string
      */
-    public function getHelpUrl()
+    public function getHelpUrl(): string
     {
         return $this->getProperty(self::HELP_URL);
     }
@@ -36,7 +36,7 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->getProperty(self::MESSAGE);
     }
@@ -44,13 +44,13 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     /**
      * @return PublicAppInstanceSettingsNotificationsVpnNetwork
      */
-    public function getNetwork(array $options = [])
+    public function getNetwork(array $options = []): PublicAppInstanceSettingsNotificationsVpnNetwork
     {
         return $this->getResourceProperty(
-            self::NETWORK,
-            PublicAppInstanceSettingsNotificationsVpnNetwork::class,
-            $options
-        );
+                        self::NETWORK,
+                        PublicAppInstanceSettingsNotificationsVpnNetwork::class,
+                        $options
+                    );
     }
 
     /**
@@ -59,9 +59,9 @@ class PublicAppInstanceSettingsNotificationsVpn extends AbstractResource
     public function setNetwork(PublicAppInstanceSettingsNotificationsVpnNetwork $network)
     {
         $this->setResourceProperty(
-            self::NETWORK,
-            $network
-        );
+                        self::NETWORK,
+                        $network
+                    );
         
         return $this;
     }

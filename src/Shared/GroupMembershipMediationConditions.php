@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -29,13 +29,13 @@ class GroupMembershipMediationConditions extends AbstractResource
     /**
      * @return GroupMembershipMediationUserCondition
      */
-    public function getUsers(array $options = [])
+    public function getUsers(array $options = []): GroupMembershipMediationUserCondition
     {
         return $this->getResourceProperty(
-            self::USERS,
-            GroupMembershipMediationUserCondition::class,
-            $options
-        );
+                        self::USERS,
+                        GroupMembershipMediationUserCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -44,9 +44,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     public function setUsers(GroupMembershipMediationUserCondition $users)
     {
         $this->setResourceProperty(
-            self::USERS,
-            $users
-        );
+                        self::USERS,
+                        $users
+                    );
         
         return $this;
     }
@@ -54,13 +54,13 @@ class GroupMembershipMediationConditions extends AbstractResource
     /**
      * @return GroupMembershipMediationGroupCondition
      */
-    public function getGroups(array $options = [])
+    public function getGroups(array $options = []): GroupMembershipMediationGroupCondition
     {
         return $this->getResourceProperty(
-            self::GROUPS,
-            GroupMembershipMediationGroupCondition::class,
-            $options
-        );
+                        self::GROUPS,
+                        GroupMembershipMediationGroupCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -69,9 +69,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     public function setGroups(GroupMembershipMediationGroupCondition $groups)
     {
         $this->setResourceProperty(
-            self::GROUPS,
-            $groups
-        );
+                        self::GROUPS,
+                        $groups
+                    );
         
         return $this;
     }
@@ -79,13 +79,13 @@ class GroupMembershipMediationConditions extends AbstractResource
     /**
      * @return GroupMembershipMediationPeopleCondition
      */
-    public function getPeople(array $options = [])
+    public function getPeople(array $options = []): GroupMembershipMediationPeopleCondition
     {
         return $this->getResourceProperty(
-            self::PEOPLE,
-            GroupMembershipMediationPeopleCondition::class,
-            $options
-        );
+                        self::PEOPLE,
+                        GroupMembershipMediationPeopleCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -94,9 +94,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     public function setPeople(GroupMembershipMediationPeopleCondition $people)
     {
         $this->setResourceProperty(
-            self::PEOPLE,
-            $people
-        );
+                        self::PEOPLE,
+                        $people
+                    );
         
         return $this;
     }
@@ -104,13 +104,13 @@ class GroupMembershipMediationConditions extends AbstractResource
     /**
      * @return GroupMembershipMediationExpressionCondition
      */
-    public function getExpression(array $options = [])
+    public function getExpression(array $options = []): GroupMembershipMediationExpressionCondition
     {
         return $this->getResourceProperty(
-            self::EXPRESSION,
-            GroupMembershipMediationExpressionCondition::class,
-            $options
-        );
+                        self::EXPRESSION,
+                        GroupMembershipMediationExpressionCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -119,9 +119,9 @@ class GroupMembershipMediationConditions extends AbstractResource
     public function setExpression(GroupMembershipMediationExpressionCondition $expression)
     {
         $this->setResourceProperty(
-            self::EXPRESSION,
-            $expression
-        );
+                        self::EXPRESSION,
+                        $expression
+                    );
         
         return $this;
     }

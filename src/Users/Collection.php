@@ -17,9 +17,9 @@
 
 namespace Okta\Users;
 
-use Okta\Resource\AbstractResource;
+use Okta\Resource\AbstractCollection;
 
-class LinksUnion extends AbstractResource
+class Collection extends AbstractCollection
 {
 
 }

@@ -28,7 +28,7 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
@@ -36,7 +36,7 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     /**
      * @return string
      */
-    public function getSuffix()
+    public function getSuffix(): string
     {
         return $this->getProperty(self::SUFFIX);
     }
@@ -44,7 +44,7 @@ class PublicAppInstanceCredentialsUsernameTemplate extends AbstractResource
     /**
      * @return string
      */
-    public function getTemplate()
+    public function getTemplate(): string
     {
         return $this->getProperty(self::TEMPLATE);
     }

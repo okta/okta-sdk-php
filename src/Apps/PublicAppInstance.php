@@ -40,7 +40,7 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -48,7 +48,7 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getProperty(self::NAME);
     }
@@ -56,15 +56,15 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->getProperty(self::LABEL);
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getLinks()
+    public function getLinks(): array
     {
         return $this->getProperty(self::LINKS);
     }
@@ -72,7 +72,7 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }
@@ -88,7 +88,7 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return array
      */
-    public function getFeatures()
+    public function getFeatures(): array
     {
         return $this->getProperty(self::FEATURES);
     }
@@ -96,13 +96,13 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return PublicAppInstanceSettings
      */
-    public function getSettings(array $options = [])
+    public function getSettings(array $options = []): PublicAppInstanceSettings
     {
         return $this->getResourceProperty(
-            self::SETTINGS,
-            PublicAppInstanceSettings::class,
-            $options
-        );
+                        self::SETTINGS,
+                        PublicAppInstanceSettings::class,
+                        $options
+                    );
     }
 
     /**
@@ -111,17 +111,17 @@ class PublicAppInstance extends AbstractResource
     public function setSettings(PublicAppInstanceSettings $settings)
     {
         $this->setResourceProperty(
-            self::SETTINGS,
-            $settings
-        );
+                        self::SETTINGS,
+                        $settings
+                    );
         
         return $this;
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getEmbedded()
+    public function getEmbedded(): array
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -129,13 +129,13 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return PublicAppInstanceLicensing
      */
-    public function getLicensing(array $options = [])
+    public function getLicensing(array $options = []): PublicAppInstanceLicensing
     {
         return $this->getResourceProperty(
-            self::LICENSING,
-            PublicAppInstanceLicensing::class,
-            $options
-        );
+                        self::LICENSING,
+                        PublicAppInstanceLicensing::class,
+                        $options
+                    );
     }
 
     /**
@@ -144,9 +144,9 @@ class PublicAppInstance extends AbstractResource
     public function setLicensing(PublicAppInstanceLicensing $licensing)
     {
         $this->setResourceProperty(
-            self::LICENSING,
-            $licensing
-        );
+                        self::LICENSING,
+                        $licensing
+                    );
         
         return $this;
     }
@@ -154,7 +154,7 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return string
      */
-    public function getSignOnMode()
+    public function getSignOnMode(): string
     {
         return $this->getProperty(self::SIGN_ON_MODE);
     }
@@ -162,13 +162,13 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return PublicAppInstanceVisibility
      */
-    public function getVisibility(array $options = [])
+    public function getVisibility(array $options = []): PublicAppInstanceVisibility
     {
         return $this->getResourceProperty(
-            self::VISIBILITY,
-            PublicAppInstanceVisibility::class,
-            $options
-        );
+                        self::VISIBILITY,
+                        PublicAppInstanceVisibility::class,
+                        $options
+                    );
     }
 
     /**
@@ -177,9 +177,9 @@ class PublicAppInstance extends AbstractResource
     public function setVisibility(PublicAppInstanceVisibility $visibility)
     {
         $this->setResourceProperty(
-            self::VISIBILITY,
-            $visibility
-        );
+                        self::VISIBILITY,
+                        $visibility
+                    );
         
         return $this;
     }
@@ -187,13 +187,13 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return PublicAppInstanceCredentials
      */
-    public function getCredentials(array $options = [])
+    public function getCredentials(array $options = []): PublicAppInstanceCredentials
     {
         return $this->getResourceProperty(
-            self::CREDENTIALS,
-            PublicAppInstanceCredentials::class,
-            $options
-        );
+                        self::CREDENTIALS,
+                        PublicAppInstanceCredentials::class,
+                        $options
+                    );
     }
 
     /**
@@ -202,9 +202,9 @@ class PublicAppInstance extends AbstractResource
     public function setCredentials(PublicAppInstanceCredentials $credentials)
     {
         $this->setResourceProperty(
-            self::CREDENTIALS,
-            $credentials
-        );
+                        self::CREDENTIALS,
+                        $credentials
+                    );
         
         return $this;
     }
@@ -220,13 +220,13 @@ class PublicAppInstance extends AbstractResource
     /**
      * @return PublicAppInstanceAccessibility
      */
-    public function getAccessibility(array $options = [])
+    public function getAccessibility(array $options = []): PublicAppInstanceAccessibility
     {
         return $this->getResourceProperty(
-            self::ACCESSIBILITY,
-            PublicAppInstanceAccessibility::class,
-            $options
-        );
+                        self::ACCESSIBILITY,
+                        PublicAppInstanceAccessibility::class,
+                        $options
+                    );
     }
 
     /**
@@ -235,9 +235,9 @@ class PublicAppInstance extends AbstractResource
     public function setAccessibility(PublicAppInstanceAccessibility $accessibility)
     {
         $this->setResourceProperty(
-            self::ACCESSIBILITY,
-            $accessibility
-        );
+                        self::ACCESSIBILITY,
+                        $accessibility
+                    );
         
         return $this;
     }

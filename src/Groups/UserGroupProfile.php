@@ -27,7 +27,7 @@ class UserGroupProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getProperty(self::NAME);
     }
@@ -35,7 +35,7 @@ class UserGroupProfile extends AbstractResource
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->getProperty(self::DESCRIPTION);
     }

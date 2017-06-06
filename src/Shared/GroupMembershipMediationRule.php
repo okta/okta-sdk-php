@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -33,7 +33,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -41,7 +41,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->getProperty(self::NAME);
     }
@@ -49,7 +49,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
@@ -57,7 +57,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }
@@ -65,13 +65,13 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return GroupMembershipMediationActions
      */
-    public function getActions(array $options = [])
+    public function getActions(array $options = []): GroupMembershipMediationActions
     {
         return $this->getResourceProperty(
-            self::ACTIONS,
-            GroupMembershipMediationActions::class,
-            $options
-        );
+                        self::ACTIONS,
+                        GroupMembershipMediationActions::class,
+                        $options
+                    );
     }
 
     /**
@@ -80,9 +80,9 @@ class GroupMembershipMediationRule extends AbstractResource
     public function setActions(GroupMembershipMediationActions $actions)
     {
         $this->setResourceProperty(
-            self::ACTIONS,
-            $actions
-        );
+                        self::ACTIONS,
+                        $actions
+                    );
         
         return $this;
     }
@@ -90,7 +90,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->getProperty(self::CREATED);
     }
@@ -98,13 +98,13 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return GroupMembershipMediationConditions
      */
-    public function getConditions(array $options = [])
+    public function getConditions(array $options = []): GroupMembershipMediationConditions
     {
         return $this->getResourceProperty(
-            self::CONDITIONS,
-            GroupMembershipMediationConditions::class,
-            $options
-        );
+                        self::CONDITIONS,
+                        GroupMembershipMediationConditions::class,
+                        $options
+                    );
     }
 
     /**
@@ -113,9 +113,9 @@ class GroupMembershipMediationRule extends AbstractResource
     public function setConditions(GroupMembershipMediationConditions $conditions)
     {
         $this->setResourceProperty(
-            self::CONDITIONS,
-            $conditions
-        );
+                        self::CONDITIONS,
+                        $conditions
+                    );
         
         return $this;
     }
@@ -123,7 +123,7 @@ class GroupMembershipMediationRule extends AbstractResource
     /**
      * @return string
      */
-    public function getLastUpdated()
+    public function getLastUpdated(): string
     {
         return $this->getProperty(self::LAST_UPDATED);
     }

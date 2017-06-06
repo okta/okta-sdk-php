@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
@@ -33,7 +33,7 @@ class MediationRoleAssignment extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -41,7 +41,7 @@ class MediationRoleAssignment extends AbstractResource
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->getProperty(self::TYPE);
     }
@@ -49,7 +49,7 @@ class MediationRoleAssignment extends AbstractResource
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->getProperty(self::LABEL);
     }
@@ -57,7 +57,7 @@ class MediationRoleAssignment extends AbstractResource
     /**
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->getProperty(self::STATUS);
     }
@@ -71,9 +71,9 @@ class MediationRoleAssignment extends AbstractResource
     }
     
     /**
-     * @return hash
+     * @return array
      */
-    public function getEmbedded()
+    public function getEmbedded(): array
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -81,7 +81,7 @@ class MediationRoleAssignment extends AbstractResource
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->getProperty(self::DESCRIPTION);
     }

@@ -15,19 +15,28 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
-class EmbeddedObject extends AbstractResource
+class GroupMembershipMediationUserCondition extends AbstractResource
 {
-    const KEY = 'key';
+    const EXCLUDE = 'exclude';
+    const INCLUDE = 'include';
 
     /**
-     * @return string
+     * @return array
      */
-    public function getKey()
+    public function getExclude(): array
     {
-        return $this->getProperty(self::KEY);
+        return $this->getProperty(self::EXCLUDE);
+    }
+    
+    /**
+     * @return array
+     */
+    public function getInclude(): array
+    {
+        return $this->getProperty(self::INCLUDE);
     }
 }

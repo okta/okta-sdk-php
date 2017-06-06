@@ -26,7 +26,7 @@ class RecoveryQuestionCredential extends AbstractResource
     /**
      * @return string
      */
-    public function getQuestion()
+    public function getQuestion(): string
     {
         return $this->getProperty(self::QUESTION);
     }

@@ -15,19 +15,28 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
 use Okta\Resource\AbstractResource;
 
-class AssignUserToGroupsMediationAction extends AbstractResource
+class GroupMembershipMediationGroupCondition extends AbstractResource
 {
-    const GROUP_IDS = 'groupIds';
+    const EXCLUDE = 'exclude';
+    const INCLUDE = 'include';
 
     /**
      * @return array
      */
-    public function getGroupIds()
+    public function getExclude(): array
     {
-        return $this->getProperty(self::GROUP_IDS);
+        return $this->getProperty(self::EXCLUDE);
+    }
+    
+    /**
+     * @return array
+     */
+    public function getInclude(): array
+    {
+        return $this->getProperty(self::INCLUDE);
     }
 }

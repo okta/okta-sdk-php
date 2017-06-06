@@ -28,7 +28,7 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     /**
      * @return array
      */
-    public function getExclude()
+    public function getExclude(): array
     {
         return $this->getProperty(self::EXCLUDE);
     }
@@ -36,7 +36,7 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     /**
      * @return array
      */
-    public function getInclude()
+    public function getInclude(): array
     {
         return $this->getProperty(self::INCLUDE);
     }
@@ -44,7 +44,7 @@ class PublicAppInstanceSettingsNotificationsVpnNetwork extends AbstractResource
     /**
      * @return string
      */
-    public function getConnection()
+    public function getConnection(): string
     {
         return $this->getProperty(self::CONNECTION);
     }

@@ -26,6 +26,7 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\MessageFactory;
 use Http\Message\UriFactory;
 use Okta\Utilities\SswsAuth;
+use Psr\Http\Message\UriInterface;
 
 class DefaultDataStore
 {
@@ -276,28 +277,23 @@ class DefaultDataStore
     }
 
     /**
-     * Determine if the URL needs to be fully qualified.
+     * Get the organization url.
      *
-     * @param string $href The href to check.
-     * @return bool
+     * @return string
      */
-    private function needsToBeFullyQualified(string $href): bool
+    public function getOrganizationurl(): string
     {
-        return stripos($href, $this->organizationUrl) === false;
+        return $this->organizationUrl;
     }
 
     /**
-     * Qualify a href.
+     * Create an instance of Uri that can be used in the request.
      *
-     * @param string $href The full href to fully qualify.
-     * @return string
+     * @param string $uri The URI to convert into a usable uri object.
+     * @return UriInterface
      */
-    private function qualify(string $href)
+    public function buildUri(string $uri): UriInterface
     {
-        $slashAdded = '';
-        if (!(stripos($href, '/') == 0)) {
-            $slashAdded = '/';
-        }
-        return $this->baseUrl .$slashAdded .$href;
+        return $this->uriFactory->createUri($uri);
     }
 }

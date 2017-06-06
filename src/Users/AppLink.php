@@ -35,7 +35,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->getProperty(self::ID);
     }
@@ -43,7 +43,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->getProperty(self::LABEL);
     }
@@ -51,7 +51,7 @@ class AppLink extends AbstractResource
     /**
      * @return boolean
      */
-    public function getHidden()
+    public function getHidden(): boolean
     {
         return $this->getProperty(self::HIDDEN);
     }
@@ -59,7 +59,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getAppName()
+    public function getAppName(): string
     {
         return $this->getProperty(self::APP_NAME);
     }
@@ -67,7 +67,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getLinkUrl()
+    public function getLinkUrl(): string
     {
         return $this->getProperty(self::LINK_URL);
     }
@@ -75,7 +75,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getLogoUrl()
+    public function getLogoUrl(): string
     {
         return $this->getProperty(self::LOGO_URL);
     }
@@ -83,7 +83,7 @@ class AppLink extends AbstractResource
     /**
      * @return
      */
-    public function getSortOrder()
+    public function getSortOrder(): undefined
     {
         return $this->getProperty(self::SORT_ORDER);
     }
@@ -91,7 +91,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getAppInstanceId()
+    public function getAppInstanceId(): string
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
@@ -99,7 +99,7 @@ class AppLink extends AbstractResource
     /**
      * @return string
      */
-    public function getAppAssignmentId()
+    public function getAppAssignmentId(): string
     {
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
@@ -107,7 +107,7 @@ class AppLink extends AbstractResource
     /**
      * @return boolean
      */
-    public function getCredentialsSetup()
+    public function getCredentialsSetup(): boolean
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
     }
