@@ -29,7 +29,7 @@ class {{modelName}} extends AbstractResource
     {{/each}}
 
     {{#each crudOperations}}
-    {{#if (hasCrudOperation this "read")}}
+    {{#if (eq alias "read")}}
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -42,7 +42,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/if}}
 
-    {{#if (hasCrudOperation this "create")}}
+    {{#if (eq alias "create")}}
     public function create()
     {
         return \Okta\Client::getInstance()
@@ -55,7 +55,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/if}}
 
-    {{#if (hasCrudOperation this "update")}}
+    {{#if (eq alias "update")}}
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -68,7 +68,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/if}}
 
-    {{#if (hasCrudOperation this "delete")}}
+    {{#if (eq alias "delete")}}
     public function delete()
     {
         return \Okta\Client::getInstance()

@@ -51,7 +51,7 @@ class DefaultDataStore
     private $token;
 
     /**
-     * @var string $$this->organizationUrl The organization Url.
+     * @var string $organizationUrl The organization Url.
      */
     private $organizationUrl;
 

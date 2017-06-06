@@ -133,12 +133,6 @@ function getCrudMethodName(alias) {
     }
 }
 
-function hasCrudOperation(operations, op, block) {
-    if(operations.alias === op) {
-        return true;
-    }
-}
-
 function getCrudOperationPath(method) {
     let parts = _.split(method.operation.path, '/');
     return '/'+parts[3];
@@ -177,12 +171,12 @@ php.process = ({spec, operations, models, handlebars}) => {
           }
       }
 
-      if(model.modelName === 'User' ) {
-          for (let crud of model.crud) {
-              model.crudOperations.push(crud);
 
-          }
+      for (let crud of model.crud) {
+          model.crudOperations.push(crud);
+
       }
+
 
 
 
@@ -212,7 +206,6 @@ php.process = ({spec, operations, models, handlebars}) => {
     getOperationReturnType,
     getMethodParamsComment,
     getCrudMethodName,
-    hasCrudOperation,
     getCrudOperationPath
   });
 
