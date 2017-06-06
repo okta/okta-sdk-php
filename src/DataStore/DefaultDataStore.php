@@ -121,10 +121,12 @@ class DefaultDataStore
     public function getCollection($href, $className, $collection, array $options = [])
     {
 
-        $queryString = $this->getQueryString($options['query']);
-
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
-        $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
+
+        if(key_exists('query', $options)) {
+            $queryString = $this->getQueryString($options['query']);
+            $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
+        }
 
 
         $toCollect = [];

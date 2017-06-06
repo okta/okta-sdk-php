@@ -44,3 +44,94 @@ $client = (new \Okta\ClientBuilder())
             ->build();
 ```
 
+## Users
+### Finding a user by id
+```php
+$user = new \Okta\Users\User();
+$foundUser = $user->get('00uak5dkxjhg4AQ230h7');
+dump($foundUser);
+```
+
+### Finding a user by email
+```php
+$user = new \Okta\Users\User();
+$foundUser = $user->get('email@example.com');
+dump($foundUser);
+```
+
+### Craeating a User
+```php
+$user = new \Okta\Users\User();
+$profile = new \Okta\Users\Profile();
+
+$profile->setFirstName('John')
+    ->setLastName('User')
+    ->setLogin('auser@example.com')
+    ->setEmail('auser@example.com');
+$user->setProfile($profile);
+
+$credentials = new \Okta\Users\Credentials();
+
+$password = new \Okta\Users\Password();
+$password->setPassword('Abcd1234!');
+
+$recoveryQuestion = new \Okta\Users\RecoveryQuestion();
+$recoveryQuestion->setQuestion('What Language do I write in?')
+    ->setAnswer('PHP!');
+
+
+$provider = new \Okta\Users\Provider();
+$provider->setName('OKTA')
+    ->setType('OKTA');
+
+
+$credentials->setPassword($password);
+$credentials->setRecoveryQuestion($recoveryQuestion);
+$credentials->setProvider($provider);
+
+
+$user->setCredentials($credentials);
+
+$user->setGroupIds([
+    '00gajavp1anBX8svy0h7',
+    '00gajb08d19WCvbsC0h7'
+]);
+
+$user->create();
+```
+
+### Update user profile
+Our SDK allows you to fill in the default profile fields, as well as other dynamic fields that you create in your 
+profile.
+
+```php
+$user = new \Okta\Users\User();
+    $foundUser = $user->get('00uak5dkxjhg4AQ230h7');
+    $profile = $foundUser->getProfile();
+    $profile->middleName = 'Middle Name';
+    $profile->someField = 'Just Testing Field';
+    $foundUser->setProfile($profile);
+    $foundUser->save();
+```
+
+## Pagination and Collections
+All of our calls that return a set of items will return a Collection object. The collection object we built on top of
+ is the tightenco/collect object.
+ 
+### Getting all users
+```php
+$users = (new \Okta\Okta)->getUsers();
+
+// get the first user in the collection
+$firstUser = $users->first();
+```
+
+### Narrowing Responses
+To start at the second entry and get the next two items:
+```php
+$users = (new \Okta\Okta)->getUsers(['query' => ['limit' = 2, 'after' = 2]]);
+```
+
+For information on what can go into the query property, visit 
+[our documentation](https://developer.okta.com/docs/api/resources/users.html#list-users)
+
