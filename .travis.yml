@@ -16,4 +16,3 @@ script:
 - travis_retry vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
 - bash <(curl -s https://codecov.io/bash)
-- "./.travis.autoDocs.sh"
