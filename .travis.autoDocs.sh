@@ -25,4 +25,6 @@ composer install
 
 ./vendor/bin/sami.php update sami.php
 
+git add --all
+git comit -am "AutoDeploy of Documentation $RELEASE_VERSION"
 git push origin gh-pages
