@@ -19,21 +19,25 @@ namespace Okta\Utilities;
 
 use Okta\Okta;
 
+/**
+ * Class UserAgentBuilder
+ * @package Okta\Utilities
+ */
 class UserAgentBuilder
 {
 
     /**
-     * @var
+     * @var string $phpVersion The PHP Version.
      */
     protected $phpVersion;
 
     /**
-     * @var
+     * @var string $osVersion The OS Version.
      */
     protected $osVersion;
 
     /**
-     * @var
+     * @var string $osName The OS Name.
      */
     protected $osName;
 
@@ -89,6 +93,12 @@ class UserAgentBuilder
         return implode(' ', $userAgent);
     }
 
+    /**
+     * Checks to make sure all required properties are set.
+     *
+     * @throws \InvalidArgumentException
+     * @return void
+     */
     private function validateUserAgentProperties()
     {
         if (!$this->phpVersion) {

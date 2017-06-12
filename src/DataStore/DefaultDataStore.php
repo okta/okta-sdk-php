@@ -28,6 +28,7 @@ use Http\Message\UriFactory;
 use Okta\Client;
 use Okta\Exceptions\Error;
 use Okta\Exceptions\ResourceException;
+use Okta\Resource\AbstractCollection;
 use Okta\Resource\AbstractResource;
 use Okta\Utilities\SswsAuth;
 use Okta\Utilities\UserAgentBuilder;
@@ -93,6 +94,14 @@ class DefaultDataStore
         $this->baseUrl = $this->organizationUrl . '/api/v1';
     }
 
+    /**
+     * Create a new instance of a class with the provided properties.
+     *
+     * @param string         $class Class to instantiate.
+     * @param \stdClass|NULL $properties The properties you want to use to instantiate.
+     * @param array          $options Any options you want to set.
+     * @return object
+     */
     public function instantiate(string $class, \stdClass $properties = null, array $options = [])
     {
         $propertiesArr = array($properties, $options);
@@ -106,19 +115,39 @@ class DefaultDataStore
     }
 
 
-    public function getResource($href, $className, $path, array $options = [])
+    /**
+     * Get a resource from the API.
+     *
+     * @param string $href The unique identifier for the href.
+     * @param string $className The class name to return as.
+     * @param string $path The path to the resource.
+     * @param array $options The options to use when making the request.
+     * @return AbstractResource
+     */
+    public function getResource($href, $className, $path, array $options = []): AbstractResource
     {
-        $queryString = $this->getQueryString($options);
-
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $path . '/' . $href);
-        $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
+
+        if (key_exists('query', $options)) {
+            $queryString = $this->getQueryString($options['query']);
+            $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
+        }
 
         $result = $this->executeRequest('GET', $uri);
 
         return new $className(null, $result);
     }
 
-    public function getCollection($href, $className, $collection, array $options = [])
+    /**
+     * Get a collection of items.
+     *
+     * @param string $href The unique identifier for the href.
+     * @param string $className The class name for each item in the collection.
+     * @param string $collection the collection type to return as.
+     * @param array $options Options to add to the request.
+     * @return AbstractCollection
+     */
+    public function getCollection($href, $className, $collection, array $options = []): AbstractCollection
     {
 
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
@@ -140,6 +169,15 @@ class DefaultDataStore
         return new $collection($toCollect);
     }
 
+    /**
+     * Issues a save request to the API.
+     *
+     * @param string $href The path to the resource
+     * @param AbstractResource $resource The resource to save.
+     * @param string $returnType The Resource class you want to return.
+     *
+     * @return mixed
+     */
     public function saveResource($href, $resource, $returnType)
     {
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
@@ -149,6 +187,14 @@ class DefaultDataStore
         return new $returnType(null, $result);
     }
 
+    /**
+     * Issues a delete request to the API.
+     *
+     * @param string $href The path to the resource
+     * @param AbstractResource $resource The resource to save.
+     *
+     * @return mixed
+     */
     public function deleteResource($href, $resource)
     {
 
@@ -159,6 +205,17 @@ class DefaultDataStore
         return $result;
     }
 
+    /**
+     * Make the request.
+     *
+     * @param string $method The type of request.
+     * @param UriInterface $uri The URI object of the request.
+     * @param string       $body The body of the request.
+     * @param array        $options The options for the request.
+     *
+     * @return mixed|null
+     * @throws ResourceException
+     */
     public function executeRequest($method, UriInterface $uri, $body = '', array $options = [])
     {
         $headers = [];
@@ -196,7 +253,12 @@ class DefaultDataStore
         return $result;
     }
 
-
+    /**
+     * Convert an AbstractResource object to a stdClass object.
+     *
+     * @param AbstractResource $resource The resource to convert.
+     * @return \stdClass
+     */
     private function toStdClass(AbstractResource $resource)
     {
 
@@ -213,6 +275,12 @@ class DefaultDataStore
         return $properties;
     }
 
+    /**
+     * Get the query string from the options.
+     *
+     * @param array $options The options to get the query string from.
+     * @return array
+     */
     private function getQueryString(array $options)
     {
         $query = array();
@@ -251,9 +319,6 @@ class DefaultDataStore
             });
         }
         foreach ($queryDictionary as $key => $value) {
-            // Query string separators ("=", "&") within the key or value need to be encoded
-            // (while preventing double-encoding) before setting the query string. All other
-            // chars that need percent-encoding will be encoded by withQuery().
             $key = strtr($key, ['=' => '%3D', '&' => '%26']);
             if ($value !== null) {
                 $result[] = $key . '=' . strtr($value, ['=' => '%3D', '&' => '%26']);

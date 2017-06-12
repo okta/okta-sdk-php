@@ -21,18 +21,50 @@ use Carbon\Carbon;
 use Okta\Client;
 use Okta\DataStore\DefaultDataStore;
 
+/**
+ * Class AbstractResource
+ * @package Okta\Resource
+ */
 abstract class AbstractResource
 {
+    /**
+     * @var DefaultDataStore $dataStore The DataStore that will be used for requests.
+     */
     private $dataStore;
+    /**
+     * @var \StdClass $properties List of properties on the resource.
+     */
     private $properties;
+    /**
+     * @var \StdClass $dirtyProperties List of any properties that have been updated since get/save.
+     */
     private $dirtyProperties;
+    /**
+     * @var bool $materialized Has the resource been full retrieved from the API.
+     */
     private $materialized;
+    /**
+     * @var bool $dirty Are there dirty properties on the resource.
+     */
     private $dirty;
+    /**
+     * @var array $options Current options used on the resource
+     */
     private $options;
+    /**
+     * @var array|bool $methods List of methods on the resource.
+     */
     private $methods;
 
     const ID = "id";
 
+    /**
+     * AbstractResource constructor.
+     *
+     * @param DefaultDataStore|NULL $dataStore DataStore to use for requests.
+     * @param \stdClass|NULL        $properties Properties for the resource.
+     * @param array                 $options Options to use on the resource.
+     */
     public function __construct(DefaultDataStore $dataStore = null, \stdClass $properties = null, array $options = [])
     {
         $this->dataStore = $dataStore ?: Client::getInstance()->getDataStore();
@@ -52,7 +84,13 @@ abstract class AbstractResource
         return $this->getLinkProperty('self.href');
     }
 
-    public function setProperties(\stdClass $properties = null)
+    /**
+     * Set properties on the resource.
+     *
+     * @param \stdClass|NULL $properties the properties to set.
+     * @return self
+     */
+    public function setProperties(\stdClass $properties = null): self
     {
         $this->dirty = false;
         $this->materialized = false;
@@ -69,18 +107,23 @@ abstract class AbstractResource
             $hrefOnly = count($propertiesArr) == 1 && array_key_exists(self::ID, $propertiesArr);
             $this->materialized = !$hrefOnly;
         }
+
+        return $this;
     }
 
+    /**
+     * Gets a property off the resource and allow you to cast it to a type.
+     *
+     * @param string      $name Property to get off the resource.
+     * @param string|null $castTo Cast your item to this type.
+     * @return mixed|null
+     */
     public function getProperty($name, $castTo = null)
     {
         if (self::ID != $name) {
-            //not the href/id, must be a property that requires materialization:
             if (!$this->isNew() and !$this->isMaterialized()) {
-                // only materialize if the property hasn't been set previously (no need to execute a server
-                // request since we have the most recent value already):
                 $present = isset($this->dirtyProperties->$name);
                 if (!$present) {
-                    // exhausted present properties - we require a server call:
                     $this->materialize();
                 }
             }
@@ -94,6 +137,12 @@ abstract class AbstractResource
         return $property;
     }
 
+    /**
+     * Get a HAL Linked property.
+     *
+     * @param string $key The property you want to get from the _links section.
+     * @return mixed|null
+     */
     public function getLinkProperty($key)
     {
         $target = $this->getProperty('_links');
@@ -110,6 +159,12 @@ abstract class AbstractResource
         return $target;
     }
 
+    /**
+     * Returns an instance of Carbon for the date property.
+     *
+     * @param string $name Get this date property of the resource.
+     * @return Carbon|null
+     */
     public function getDateProperty($name)
     {
         $value = $this->readProperty($name);
@@ -121,6 +176,12 @@ abstract class AbstractResource
         return new Carbon($value);
     }
 
+    /**
+     * Gets the current property names for the resource.
+     *
+     * @param bool $retrieveDirtyProperties determines if you want to get all dirty properties as well.
+     * @return array
+     */
     public function getPropertyNames($retrieveDirtyProperties = false)
     {
         if ($retrieveDirtyProperties and $this->isDirty() and !$this->isNew()) {
@@ -129,6 +190,12 @@ abstract class AbstractResource
             return array_keys((array) $this->properties);
         }
     }
+
+    /**
+     * Gets the property names that have been updated.
+     *
+     * @return array
+     */
     protected function getDirtyPropertyNames()
     {
         $names = array_keys((array) $this->dirtyProperties);
@@ -141,14 +208,21 @@ abstract class AbstractResource
     }
 
     /**
-     * @param array $options
+     * Set the current options to use for the resource.
+     *
+     * @param array $options The options to set on the resource, typically query params.
+     *
+     * @return self
      */
-    public function setOptions($options)
+    public function setOptions($options): self
     {
         $this->options = $options;
+        return $this;
     }
 
     /**
+     * Get the options currently set on the resource.
+     *
      * @return array
      */
     public function getOptions()
@@ -156,6 +230,15 @@ abstract class AbstractResource
         return $this->options;
     }
 
+    /**
+     * Get a resource property from the resource.
+     *
+     * @param string $key The name of the resource property you want to get.
+     * @param string $className The class name you want to return as.
+     * @param array  $options Additional options to pass, Typically query params.
+     *
+     * @return AbstractResource
+     */
     protected function getResourceProperty($key, $className, array $options = array()): AbstractResource
     {
         $this->options = array_replace($this->options, $options);
@@ -163,11 +246,28 @@ abstract class AbstractResource
 
         return $this->getDataStore()->instantiate($className, $value, $this->options);
     }
+
+    /**
+     * Set a resource property  on a resource.
+     *
+     * @param string $name Which property do you want to set.
+     * @param AbstractResource $resource What you want to set the property as.
+     *
+     * @return void
+     */
     protected function setResourceProperty($name, AbstractResource $resource)
     {
         $this->setProperty($name, $resource->properties);
     }
 
+    /**
+     * Set a property on a resource.
+     *
+     * @param string $name Which property do you want to set.
+     * @param mixed $value What you want to set the property as.
+     *
+     * @return void
+     */
     protected function setProperty($name, $value)
     {
         $this->properties->$name = $value;
@@ -175,44 +275,71 @@ abstract class AbstractResource
         $this->dirty = true;
     }
 
+    /**
+     * Get the current DataStore instance.
+     *
+     * @return DefaultDataStore
+     */
     protected function getDataStore()
     {
         return $this->dataStore;
     }
 
+    /**
+     * Has the resource been materialized or is it just the ID reference to the resource.
+     *
+     * @return mixed
+     */
     protected function isMaterialized()
     {
         return $this->materialized;
     }
 
+    /**
+     * Is the resource dirty.
+     *
+     * Has the resource been updated since you retrieved it from the API.
+     *
+     * @return bool
+     */
     protected function isDirty()
     {
         return $this->dirty;
     }
 
+    /**
+     * Gets the ID property off the resource.
+     *
+     * @return string|null
+     */
     public function getId()
     {
         return $this->getProperty(self::ID);
     }
 
+    /**
+     * Calls getResource for the resource using the id to create a new instance.
+     *
+     * @return void
+     */
     protected function materialize()
     {
         $className = get_class($this);
         $resource = $this->dataStore->getResource($this->getId(), $className, $this->options);
         $this->properties = $resource->properties;
+
         //retain dirty properties:
         $this->properties = (object) array_merge((array)$this->properties, (array)$this->dirtyProperties);
         $this->materialized = true;
     }
 
     /**
-     * Returns {@code true} if the resource does not yet have an assigned 'id' property, {@code false} otherwise.
+     * Determines if the resource is new or not based on assigned id property.
      *
      * @return bool
      */
     protected function isNew()
     {
-        //we can't call getHref() in here, otherwise we'll have an infinite loop:
         $prop = $this->readProperty(self::ID);
         if ($prop) {
             return false;
@@ -220,6 +347,12 @@ abstract class AbstractResource
         return true;
     }
 
+    /**
+     * Will read the property from the resource if it exists or return null if it does not.
+     *
+     * @param string $name The property you want to read.
+     * @return mixed|null
+     */
     private function readProperty($name)
     {
         return property_exists($this->properties, $name) ? $this->properties->$name : null;
@@ -264,6 +397,11 @@ abstract class AbstractResource
         return $this;
     }
 
+    /**
+     * Returns a json string representation of the resource.
+     *
+     * @return string
+     */
     public function __toString()
     {
         $propertyNames = $this->getPropertyNames(true);

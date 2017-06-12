@@ -20,6 +20,10 @@ namespace Okta\Utilities;
 use Http\Message\Authentication;
 use Psr\Http\Message\RequestInterface;
 
+/**
+ * Class SswsAuth
+ * @package Okta\Utilities
+ */
 class SswsAuth implements Authentication
 {
     /**
@@ -27,6 +31,11 @@ class SswsAuth implements Authentication
      */
     private $token;
 
+    /**
+     * SswsAuth constructor.
+     *
+     * @param string $token
+     */
     public function __construct(string $token)
     {
         $this->token = $token;
