@@ -123,7 +123,7 @@ class DefaultDataStore
 
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
 
-        if(key_exists('query', $options)) {
+        if (key_exists('query', $options)) {
             $queryString = $this->getQueryString($options['query']);
             $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
         }
