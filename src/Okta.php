@@ -38,16 +38,16 @@ class Okta
 
     public function getUsers(array $options = [])
     {
-        return $this->dataStore->getCollection('/users', User::class, UserCollection::class, $options);
+        return $this->dataStore->getCollection('/api/v1/users', User::class, UserCollection::class, $options);
     }
 
     public function getGroups(array $options = [])
     {
-        return $this->dataStore->getCollection('/groups', UserGroup::class, GroupCollection::class, $options);
+        return $this->dataStore->getCollection('/api/v1/groups', UserGroup::class, GroupCollection::class, $options);
     }
 
     public function getApps(array $options = [])
     {
-        return $this->dataStore->getCollection('/apps', PublicAppInstance::class, AppCollection::class, $options);
+        return $this->dataStore->getCollection('/api/v1/apps', PublicAppInstance::class, AppCollection::class, $options);
     }
 }

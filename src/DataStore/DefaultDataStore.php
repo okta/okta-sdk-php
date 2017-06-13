@@ -150,7 +150,7 @@ class DefaultDataStore
     public function getCollection($href, $className, $collection, array $options = []): AbstractCollection
     {
 
-        $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
+        $uri = $this->uriFactory->createUri($this->organizationUrl . $href);
 
         if (key_exists('query', $options)) {
             $queryString = $this->getQueryString($options['query']);
@@ -233,6 +233,7 @@ class DefaultDataStore
 
         if (key_exists('query', $options)) {
             $queryString = $this->getQueryString($options['query']);
+            $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
         }
 
         $request = $this->messageFactory->createRequest($method, $uri, $headers, $body);

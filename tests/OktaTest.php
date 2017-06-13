@@ -25,7 +25,6 @@ class OktaTest extends TestCase
     /** @test */
     public function getting_all_users_returns_a_collection_of_users()
     {
-        $this->markTestSkipped();
         $response = $this->createMock('Psr\Http\Message\ResponseInterface');
         $response->method('getStatusCode')->willReturn(200);
         $response->method('getBody')->willReturn(
