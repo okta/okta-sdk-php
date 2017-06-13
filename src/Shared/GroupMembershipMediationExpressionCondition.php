@@ -25,6 +25,7 @@ class GroupMembershipMediationExpressionCondition extends AbstractResource
     const VALUE = 'value';
 
 
+
     /**
      * Get the type.
      *

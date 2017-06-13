@@ -25,6 +25,7 @@ class ActivationToken extends AbstractResource
     const ACTIVATION_TOKEN = 'activationToken';
 
 
+
     /**
      * Get the activationUrl.
      *

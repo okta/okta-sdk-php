@@ -25,6 +25,7 @@ class GroupMembershipMediationGroupCondition extends AbstractResource
     const INCLUDE = 'include';
 
 
+
     /**
      * Get the exclude.
      *

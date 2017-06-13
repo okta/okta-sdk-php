@@ -15,34 +15,11 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\Shared;
 
-use Okta\Resource\AbstractResource;
+use Okta\Resource\AbstractCollection;
 
-class AuthProvider extends AbstractResource
+class Collection extends AbstractCollection
 {
-    const NAME = 'name';
-    const TYPE = 'type';
 
-
-
-    /**
-     * Get the name.
-     *
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->getProperty(self::NAME);
-    }
-    
-    /**
-     * Get the type.
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->getProperty(self::TYPE);
-    }
 }

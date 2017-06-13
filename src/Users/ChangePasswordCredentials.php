@@ -25,6 +25,7 @@ class ChangePasswordCredentials extends AbstractResource
     const OLD_PASSWORD = 'oldPassword';
 
 
+
     /**
      * Get the newPassword.
      *

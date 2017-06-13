@@ -26,6 +26,7 @@ class FactorDevice extends AbstractResource
     const STATUS = 'status';
 
 
+
     /**
      * Get the id.
      *

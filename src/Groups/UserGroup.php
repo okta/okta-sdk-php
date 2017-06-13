@@ -33,6 +33,7 @@ class UserGroup extends AbstractResource
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
 
+
     /**
      * Get the id.
      *
@@ -53,16 +54,19 @@ class UserGroup extends AbstractResource
         return $this->getProperty(self::TYPE);
     }
     
-    /**
-     * Get the _links.
-     *
-     * @return array
-     */
-    public function getLinks(): array
+    public function getLinks()
     {
-        return $this->getProperty(self::LINKS);
+        $collect = [];
+
+        $links = $this->getProperty('_links');
+
+        foreach ($links as $link) {
+            $collect[] = new \Okta\Shared\Link(null, $link);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the created.
      *
@@ -103,16 +107,19 @@ class UserGroup extends AbstractResource
         return $this;
     }
     
-    /**
-     * Get the _embedded.
-     *
-     * @return array
-     */
-    public function getEmbedded(): array
+    public function getEmbedded()
     {
-        return $this->getProperty(self::EMBEDDED);
+        $collect = [];
+
+        $embedded = $this->getProperty('_embedded');
+
+        foreach ($embedded as $object) {
+            $collect[] = new \Okta\Shared\EmbeddedObject(null, $object);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the lastUpdated.
      *
@@ -142,8 +149,7 @@ class UserGroup extends AbstractResource
     {
         return $this->getDateProperty(self::LAST_MEMBERSHIP_UPDATED);
     }
-    
-    /**
+        /**
     * Get the User object.
     *
     * @param array $options The options for the request.

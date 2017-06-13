@@ -24,6 +24,7 @@ class GroupMembershipMediationActions extends AbstractResource
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';
 
 
+
     /**
      * Get the assignUserToGroups.
      *

@@ -24,6 +24,7 @@ class ResetPasswordToken extends AbstractResource
     const RESET_PASSWORD_URL = 'resetPasswordUrl';
 
 
+
     /**
      * Get the resetPasswordUrl.
      *

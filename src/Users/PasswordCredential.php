@@ -24,6 +24,7 @@ class PasswordCredential extends AbstractResource
     const HASH = 'hash';
 
 
+
     /**
      * Get the hash.
      *

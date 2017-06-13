@@ -29,6 +29,7 @@ class UserProfile extends AbstractResource
     const SECOND_EMAIL = 'secondEmail';
 
 
+
     /**
      * Get the email.
      *

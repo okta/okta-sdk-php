@@ -98,7 +98,12 @@ class UserTest extends TestCase
     "changePassword": {
       "href": "https://your-domain.okta.com/api/v1/users/00ub0oNGTSWTBKOLGLNR/credentials/change_password"
     }
-  }
+  },
+  "_embedded": {
+      "someProperty": {
+        "withValue": 30
+      }
+    }
 }'
         );
 
@@ -201,9 +206,59 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function links_is_accessible()
+    {
+        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getLinks());
+        $this->assertInstanceOf(Okta\Shared\Link::class, static::$testable->getLinks()->first());
+    }
+
+    /** @test */
+    public function embedded_is_accessible()
+    {
+        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getEmbedded());
+        $this->assertInstanceOf(Okta\Shared\EmbeddedObject::class, static::$testable->getEmbedded()->first());
+    }
+    /** @test */
+    public function credentials_is_settable()
+    {
+        $credentials = static::$testable->getCredentials();
+        $credentials->testProp = 'Hello';
+
+        static::$testable->setCredentials($credentials);
+        static::assertEquals($credentials, static::$testable->getCredentials());
+        static::assertEquals('Hello', static::$testable->getCredentials()->testProp);
+
+        static::$testable->credentials = $credentials;
+        static::assertEquals($credentials, static::$testable->getCredentials());
+    }
+
+
+
+    
+    /** @test */
+    public function profile_is_settable()
+    {
+        $profile = static::$testable->getProfile();
+        $profile->firstName = 'Test';
+
+        static::$testable->setProfile($profile);
+        static::assertEquals($profile, static::$testable->getProfile());
+        static::assertEquals('Test', static::$testable->getProfile()->getFirstName());
+
+        static::$testable->profile = $profile;
+        static::assertEquals($profile, static::$testable->getProfile());
+    }
+    
+
+
+
+    /** @test */
     public function get_groups_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{"id":"0gabcd1234","profile":{"name":"Cloud App Users","description":"Users can access cloud apps"}},{"id":"0gefgh5678","profile":{"name":"Internal App Users","description":"Users can access internal apps"}}]'
+        ]);
+        $user = $this->createNewUser();
 
         $user->getGroups();
 
@@ -220,7 +275,8 @@ class UserTest extends TestCase
     /** @test */
     public function activate_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->activate();
         $user->activate(false);
@@ -251,7 +307,8 @@ class UserTest extends TestCase
     /** @test */
     public function deactivate_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->deactivate();
 
@@ -273,7 +330,8 @@ class UserTest extends TestCase
     /** @test */
     public function suspend_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->suspend();
 
@@ -294,7 +352,8 @@ class UserTest extends TestCase
     /** @test */
     public function unsuspend_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->unsuspend();
 
@@ -315,7 +374,8 @@ class UserTest extends TestCase
     /** @test */
     public function unlock_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->unlock();
 
@@ -336,7 +396,8 @@ class UserTest extends TestCase
     /** @test */
     public function forgot_password_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->forgotPassword();
         $user->forgotPassword(false);
@@ -367,7 +428,8 @@ class UserTest extends TestCase
     /** @test */
     public function reset_factors_makes_request_to_correct_location()
     {
-        list($httpClient, $user) = $this->createNewUser();
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
         $user->resetFactors();
 
@@ -385,14 +447,133 @@ class UserTest extends TestCase
 
     }
 
-    /**
-     * @return array
-     */
-    private function createNewUser(): array
+    /** @test */
+    public function deleteing_makes_a_request_to_delete_endpoint()
     {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->delete();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+        $this->assertEquals(
+            $request[0]->getUri()->getPath(),
+            "/api/v1/users/{$user->getId()}"
+        );
+    }
+
+    /** @test */
+    public function save_makes_a_request_to_save_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->save();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            $request[0]->getUri()->getPath(),
+            "/api/v1/users/{$user->getId()}"
+        );
+    }
+    
+    /** @test */
+    public function getting_a_user_makes_request_correctly()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        (new User())->get('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            $request[0]->getUri()->getPath(),
+            "/api/v1/users/abc123"
+        ); 
+    }
+
+    /** @test */
+    public function create_a_user_makes_the_correct_request()
+    {
+        $httpClient = $this->createNewHttpClient();
+
+        $user = new User();
+        $profile = $user->getProfile();
+        $profile->firstName = 'Okta';
+        $user->setProfile($profile);
+        $user->create();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            $request[0]->getUri()->getPath(),
+            "/api/v1/users"
+        );
+
+        $this->assertContains('application/json', $request[0]->getHeader('accept'));
+        $this->assertEquals(
+            '{"profile":{"firstName":"Okta"}}',
+                $request[0]->getBody()->getContents()
+        );
+    }
+
+    /** @test */
+    public function a_user_can_be_added_to_a_group()
+    {
+        $this->markTestIncomplete('addToGroup function does not generate correctly');
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->addToGroup('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('PUT', $request[0]->getMethod());
+        $this->assertEquals(
+            $request[0]->getUri()->getPath(),
+            "/api/v1/groups/abc123/users/{$user->getId()}"
+        );
+    }
+
+
+    /**
+     * @return User
+     */
+    private function createNewUser(): User
+    {
+        $class = new \stdClass();
+        foreach (static::$properties as $prop => $value) {
+            $class->{$prop} = $value;
+        }
+        return new User(NULL, $class);
+
+    }
+
+    /**
+     * @param array $returns
+     *
+     * @return \Http\Mock\Client
+     */
+    private function createNewHttpClient($returns = []): \Http\Mock\Client
+    {
+        $defaults = [
+            'getStatusCode' => 200,
+            'getBody' => '{}'
+        ];
+
+        $mockReturns = array_replace_recursive($defaults, $returns);
+
         $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-        $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn('[]');
+        foreach($mockReturns as $method=>$return) {
+            $response->method($method)->willReturn($return);
+        }
         $httpClient = new \Http\Mock\Client;
         $httpClient->addResponse($response);
 
@@ -401,14 +582,7 @@ class UserTest extends TestCase
             ->setToken('abc123')
             ->setHttpClient($httpClient)
             ->build();
-
-
-        $class = new \stdClass();
-        foreach (static::$properties as $prop => $value) {
-            $class->{$prop} = $value;
-        }
-        $user = new User(NULL, $class);
-        return array($httpClient, $user);
+        return $httpClient;
     }
 
 

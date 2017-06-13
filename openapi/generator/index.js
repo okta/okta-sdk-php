@@ -40,6 +40,7 @@ function getAccessMethodType(obj) {
 
 function getMethodPath(method) {
   let path = method.operation.path;
+
   for (let argPair of method.arguments) {
     const ref = '$this->get' + _.upperFirst(_.camelCase(argPair.src)) + '()';
     path = path.replace(`{${argPair.dest}}`, `{${ref}}`);
@@ -194,6 +195,12 @@ php.process = ({spec, operations, models, handlebars}) => {
           context: {namespace: `${namespace}`}
       });
   }
+
+    templates.push({
+        src: 'templates/collection.php.hbs',
+        dest: `Shared/Collection.php`,
+        context: {namespace: `Shared`}
+    });
 
   handlebars.registerHelper({
     getType,

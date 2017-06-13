@@ -31,6 +31,7 @@ class GroupMembershipMediationRule extends AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     /**
      * Get the id.
      *

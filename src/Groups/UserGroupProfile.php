@@ -25,6 +25,7 @@ class UserGroupProfile extends AbstractResource
     const DESCRIPTION = 'description';
 
 
+
     /**
      * Get the name.
      *

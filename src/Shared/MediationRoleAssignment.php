@@ -31,6 +31,7 @@ class MediationRoleAssignment extends AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     /**
      * Get the id.
      *
@@ -81,16 +82,19 @@ class MediationRoleAssignment extends AbstractResource
         return $this->getDateProperty(self::CREATED);
     }
     
-    /**
-     * Get the _embedded.
-     *
-     * @return array
-     */
-    public function getEmbedded(): array
+    public function getEmbedded()
     {
-        return $this->getProperty(self::EMBEDDED);
+        $collect = [];
+
+        $embedded = $this->getProperty('_embedded');
+
+        foreach ($embedded as $object) {
+            $collect[] = new \Okta\Shared\EmbeddedObject(null, $object);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the description.
      *

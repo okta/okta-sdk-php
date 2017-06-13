@@ -26,6 +26,7 @@ class UserCredentials extends AbstractResource
     const RECOVERY_QUESTION = 'recovery_question';
 
 
+
     /**
      * Get the password.
      *
