@@ -27,16 +27,20 @@ class UserGroupStats extends AbstractResource
     const GROUP_PUSH_MAPPINGS_COUNT = 'groupPushMappingsCount';
 
 
-    /**
-     * Get the _links.
-     *
-     * @return array
-     */
-    public function getLinks(): array
+
+    public function getLinks()
     {
-        return $this->getProperty(self::LINKS);
+        $collect = [];
+
+        $links = $this->getProperty('_links');
+
+        foreach ($links as $link) {
+            $collect[] = new \Okta\Shared\Link(null, $link);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the appsCount.
      *

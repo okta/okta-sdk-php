@@ -25,6 +25,7 @@ class GroupMembershipMediationPeopleCondition extends AbstractResource
     const GROUPS = 'groups';
 
 
+
     /**
      * Get the users.
      *

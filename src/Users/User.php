@@ -41,7 +41,7 @@ class User extends AbstractResource
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
-                ->saveResource(
+                ->createResource(
                     '/users',
                     $this,
                     self::class
@@ -88,6 +88,7 @@ class User extends AbstractResource
                 );
     }
 
+
     /**
      * Get the id.
      *
@@ -98,16 +99,19 @@ class User extends AbstractResource
         return $this->getProperty(self::ID);
     }
     
-    /**
-     * Get the _links.
-     *
-     * @return array
-     */
-    public function getLinks(): array
+    public function getLinks()
     {
-        return $this->getProperty(self::LINKS);
+        $collect = [];
+
+        $links = $this->getProperty('_links');
+
+        foreach ($links as $link) {
+            $collect[] = new \Okta\Shared\Link(null, $link);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the status.
      *
@@ -158,16 +162,19 @@ class User extends AbstractResource
         return $this;
     }
     
-    /**
-     * Get the _embedded.
-     *
-     * @return array
-     */
-    public function getEmbedded(): array
+    public function getEmbedded()
     {
-        return $this->getProperty(self::EMBEDDED);
+        $collect = [];
+
+        $embedded = $this->getProperty('_embedded');
+
+        foreach ($embedded as $object) {
+            $collect[] = new \Okta\Shared\EmbeddedObject(null, $object);
+        }
+
+        return new \Okta\Shared\Collection($collect);
     }
-    
+
     /**
      * Get the activated.
      *
@@ -257,8 +264,7 @@ class User extends AbstractResource
     {
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
-    
-    /**
+        /**
     * Get the UserGroup object.
     *
     * @param array $options The options for the request.

@@ -37,6 +37,7 @@
         "rebuild-resources": [
             "rm -rf ./src/Apps",
             "rm -rf ./src/Groups",
+            "rm -rf ./src/Shared",
             "rm -rf ./src/Users",
             "cd ./openapi && npm install && npm run generator",
             "@fix-code"

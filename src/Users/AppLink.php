@@ -33,6 +33,7 @@ class AppLink extends AbstractResource
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
 
+
     /**
      * Get the id.
      *

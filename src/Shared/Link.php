@@ -31,6 +31,7 @@ class Link extends AbstractResource
     const TEMPLATED = 'templated';
 
 
+
     /**
      * Get the rel.
      *
