@@ -1,32 +1,32 @@
 const _ = require('lodash');
-_.mixin(require("lodash-inflection"));
+_.mixin(require('lodash-inflection'));
 
 const php = module.exports;
 
 function getType(obj) {
-    switch (obj.commonType) {
-        case 'dateTime':
-            return String.raw`\Carbon\Carbon|null`;
-        case 'object':
-            return obj.model;
-        case 'hash':
-            return String.raw`array`;
-        default:
-            return obj.commonType;
-    }
+  switch (obj.commonType) {
+    case 'dateTime':
+      return String.raw`\Carbon\Carbon|null`;
+    case 'object':
+      return obj.model;
+    case 'hash':
+      return 'array';
+    default:
+      return obj.commonType;
+  }
 }
 
 function getSafeType(obj) {
-    switch (obj.commonType) {
-        case 'dateTime':
-            return ``;
-        case 'object':
-            return `: ${obj.model}`;
-        case 'hash':
-            return String.raw`: array`;
-        default:
-            return `: ${obj. commonType}`;
-    }
+  switch (obj.commonType) {
+    case 'dateTime':
+      return '';
+    case 'object':
+      return `: ${obj.model}`;
+    case 'hash':
+      return ': array';
+    default:
+      return `: ${obj.commonType}`;
+  }
 }
 
 function getAccessMethodType(obj) {
@@ -41,10 +41,10 @@ function getAccessMethodType(obj) {
 function getMethodPath(method) {
   let path = method.operation.path;
   for (let argPair of method.arguments) {
-    const ref = '$this->get' + _.upperFirst(_.camelCase(argPair.src)) + '()';
+    const ref = `$this->get${_.upperFirst(_.camelCase(argPair.src))}()`;
     path = path.replace(`{${argPair.dest}}`, `{${ref}}`);
   }
-  return `${path}`;
+  return path;
 }
 
 function getMethodParams(method) {
@@ -63,29 +63,28 @@ function getMethodParams(method) {
   return queryParamsStr;
 }
 
-
 function getMethodParamsComment(method) {
-    // Get all query params with defaults
-    let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
-    defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
+  // Get all query params with defaults
+  let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
+  defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
 
-    if (_.size(defaultQueryParams) > 0) {
-        const queryParamsCommentStr = defaultQueryParams.reduce((acc, curr) => {
-            let comment = ``;
+  if (_.size(defaultQueryParams) > 0) {
+    const queryParamsCommentStr = defaultQueryParams.reduce((acc, curr) => {
+      let comment = '';
 
-            switch (curr.default) {
-                case true:
-                case false:
-                    comment = `* @param bool $` + curr.name + ` Sets the ` + curr.name + ` flag.`;
-            }
+      switch (curr.default) {
+        case true:
+        case false:
+          comment = `* @param bool $${curr.name} Sets the ${curr.name} flag.`;
+      }
 
-            return comment;
-        }, '');
+      return comment;
+    }, '');
 
-        return queryParamsCommentStr;
-    }
+    return queryParamsCommentStr;
+  }
 
-    return `*`;
+  return '*';
 }
 
 function getMethodRequestParams(method) {
@@ -113,32 +112,32 @@ function getMethodArrayName(str) {
 }
 
 function getOperationReturnType(model) {
-    if(model.operation.responseModel) {
-        return model.operation.responseModel;
-    }
+  if (model.operation.responseModel) {
+    return model.operation.responseModel;
+  }
 
-    return `void`;
+  return 'void';
 }
 
 function getCrudMethodName(alias) {
-    switch (alias) {
-        case 'create':
-            return 'create';
-        case 'read':
-            return 'find';
-        case 'update':
-            return 'save';
-        case 'delete':
-            return 'delete';
-    }
+  switch (alias) {
+    case 'create':
+      return 'create';
+    case 'read':
+      return 'find';
+    case 'update':
+      return 'save';
+    case 'delete':
+      return 'delete';
+  }
 }
 
 function getCrudOperationPath(method) {
-    let parts = _.split(method.operation.path, '/');
-    return '/'+parts[3];
+  let parts = _.split(method.operation.path, '/');
+  return '/' + parts[3];
 }
 
-php.process = ({spec, operations, models, handlebars}) => {
+php.process = ({ spec, operations, models, handlebars }) => {
   const templates = [];
 
   const modelMap = {};
@@ -146,53 +145,52 @@ php.process = ({spec, operations, models, handlebars}) => {
 
   for (let model of models) {
     // Order the properties by length
-    model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
+    model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
 
     model.namespace = 'Shared';
 
-    if(model.tags[0]) {
-        model.namespace = _.pluralize(model.tags[0]);
-        namespaces.push(model.namespace);
+    if (model.tags[0]) {
+      model.namespace = _.pluralize(model.tags[0]);
+      namespaces.push(model.namespace);
     }
 
     modelMap[model.modelName] = model;
-
   }
 
   for (let model of models) {
 
-      model.namespacedModels = [];
-      model.crudOperations = [];
+    model.namespacedModels = [];
+    model.crudOperations = [];
+
+    if (model.methods) {
       for (let method of model.methods) {
-          const responseModel = method.operation.responseModel;
+        const responseModel = method.operation.responseModel;
 
-          if (modelMap[responseModel] && model.namespace !== modelMap[responseModel].namespace) {
-            model.namespacedModels.push(modelMap[responseModel]);
-          }
+        if (modelMap[responseModel] && model.namespace !== modelMap[responseModel].namespace) {
+          model.namespacedModels.push(modelMap[responseModel]);
+        }
       }
+    }
 
-
+    if (model.crud) {
       for (let crud of model.crud) {
-          model.crudOperations.push(crud);
-
+        model.crudOperations.push(crud);
       }
+    }
 
-
-
-
-      templates.push({
-          src: 'templates/model.php.hbs',
-          dest: `${model.namespace}/${model.modelName}.php`,
-          context: model
-      });
+    templates.push({
+      src: 'templates/model.php.hbs',
+      dest: `${model.namespace}/${model.modelName}.php`,
+      context: model
+    });
   }
 
   for (let namespace of _.uniqBy(namespaces)) {
-      templates.push({
-          src: 'templates/collection.php.hbs',
-          dest: `${namespace}/Collection.php`,
-          context: {namespace: `${namespace}`}
-      });
+    templates.push({
+      src: 'templates/collection.php.hbs',
+      dest: `${namespace}/Collection.php`,
+      context: { namespace: `${namespace}` }
+    });
   }
 
   handlebars.registerHelper({
