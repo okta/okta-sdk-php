@@ -4,29 +4,40 @@ _.mixin(require('lodash-inflection'));
 const php = module.exports;
 
 function getType(obj) {
-  switch (obj.commonType) {
-    case 'dateTime':
-      return String.raw`\Carbon\Carbon|null`;
-    case 'object':
-      return obj.model;
-    case 'hash':
-      return 'array';
-    default:
-      return obj.commonType;
-  }
+    switch (obj.commonType) {
+        case 'dateTime':
+            return String.raw`\Carbon\Carbon|null`;
+        case 'object':
+            return obj.model;
+        case 'hash':
+            return String.raw`array`;
+        case 'boolean':
+            return String.raw`bool`;
+        case 'integer':
+            return String.raw`int`;
+        default:
+            return obj.commonType;
+    }
 }
 
 function getSafeType(obj) {
-  switch (obj.commonType) {
-    case 'dateTime':
-      return '';
-    case 'object':
-      return `: ${obj.model}`;
-    case 'hash':
-      return ': array';
-    default:
-      return `: ${obj.commonType}`;
-  }
+    switch (obj.commonType) {
+        case 'dateTime':
+            return ``;
+        case 'object':
+            return `: ${obj.model}`;
+        case 'hash':
+            return String.raw`: array`;
+        case 'boolean':
+            return String.raw`: bool`;
+        case 'integer':
+            return String.raw`: int`;
+        default:
+            if(obj.commonType) {
+                return `: ${obj.commonType}`;
+            }
+            return;
+    }
 }
 
 function getAccessMethodType(obj) {
