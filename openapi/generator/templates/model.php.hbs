@@ -40,8 +40,8 @@ class {{modelName}} extends AbstractResource
                         '{{getCrudOperationPath this}}'
                     );
     }
-    {{/if}}
 
+    {{/if}}
     {{#if (eq alias "create")}}
     public function create()
     {
@@ -53,8 +53,8 @@ class {{modelName}} extends AbstractResource
                     self::class
                 );
     }
-    {{/if}}
 
+    {{/if}}
     {{#if (eq alias "update")}}
     public function save()
     {
@@ -66,8 +66,8 @@ class {{modelName}} extends AbstractResource
                     self::class
                 );
     }
-    {{/if}}
 
+    {{/if}}
     {{#if (eq alias "delete")}}
     public function delete()
     {
@@ -78,9 +78,9 @@ class {{modelName}} extends AbstractResource
                     $this
                 );
     }
+
     {{/if}}
     {{/each}}
-
     {{#each properties}}
     /**
      * Get the {{propertyName}}.

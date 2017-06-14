@@ -48,19 +48,19 @@ function getMethodPath(method) {
 }
 
 function getMethodParams(method) {
+  // Get path params that aren't specified
+  const definedPathParams = _.map(method.arguments, arg => arg.dest);
+  const requiredPathParams = _.filter(method.operation.pathParams, param => !definedPathParams.includes(param.name));
+
+  const pathParams = requiredPathParams.map(param => `$${param.name}`);
+
   // Get all query params with defaults
   let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
   defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
 
-  const queryParamsStr = defaultQueryParams.reduce((acc, curr) => {
-    let param = `$${curr.name} = ${curr.default}`;
-    if (acc) {
-      return `${acc} ${param}`;
-    }
-    return param;
-  }, '');
+  const queryParams = defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
 
-  return queryParamsStr;
+  return pathParams.concat(queryParams).join(', ');
 }
 
 function getMethodParamsComment(method) {
@@ -171,6 +171,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
         }
       }
     }
+
+    model.namespacedModels = _.uniq(model.namespacedModels);
 
     if (model.crud) {
       for (let crud of model.crud) {
