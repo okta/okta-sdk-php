@@ -208,16 +208,18 @@ class UserTest extends TestCase
     /** @test */
     public function links_is_accessible()
     {
-        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getLinks());
-        $this->assertInstanceOf(Okta\Shared\Link::class, static::$testable->getLinks()->first());
+        $this->assertEquals(static::$properties->_links, static::$testable->getLinks());
+        $this->assertEquals(static::$properties->_links, static::$testable->links);
     }
-
+    
     /** @test */
     public function embedded_is_accessible()
     {
-        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getEmbedded());
-        $this->assertInstanceOf(Okta\Shared\EmbeddedObject::class, static::$testable->getEmbedded()->first());
+        $this->assertEquals(static::$properties->_embedded, static::$testable->getEmbedded());
+        $this->assertEquals(static::$properties->_embedded, static::$testable->embedded);
     }
+
+
     /** @test */
     public function credentials_is_settable()
     {
@@ -266,8 +268,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/groups"
+            "/api/v1/users/{$user->getId()}/groups",
+            $request[0]->getUri()->getPath()
         );
 
     }
@@ -285,21 +287,21 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/activate"
+            "/api/v1/users/{$user->getId()}/lifecycle/activate",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            'sendEmail=true'
+            'sendEmail=true',
+            $request[0]->getUri()->getQuery()
         );
 
         $this->assertEquals(
-            $request[1]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/activate"
+            "/api/v1/users/{$user->getId()}/lifecycle/activate",
+            $request[1]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[1]->getUri()->getQuery(),
-            'sendEmail=false'
+            'sendEmail=false',
+            $request[1]->getUri()->getQuery()
         );
 
     }
@@ -316,12 +318,12 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/deactivate"
+            "/api/v1/users/{$user->getId()}/lifecycle/deactivate",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            ''
+            '',
+            $request[0]->getUri()->getQuery()
         );
 
 
@@ -339,12 +341,12 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/suspend"
+            "/api/v1/users/{$user->getId()}/lifecycle/suspend",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            ''
+            '',
+            $request[0]->getUri()->getQuery()
         );
 
     }
@@ -361,12 +363,12 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/unsuspend"
+            "/api/v1/users/{$user->getId()}/lifecycle/unsuspend",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            ''
+            '',
+            $request[0]->getUri()->getQuery()
         );
 
     }
@@ -383,12 +385,12 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/unlock"
+            "/api/v1/users/{$user->getId()}/lifecycle/unlock",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            ''
+            '',
+            $request[0]->getUri()->getQuery()
         );
 
     }
@@ -406,8 +408,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/forgot_password"
+            "/api/v1/users/{$user->getId()}/credentials/forgot_password",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
             $request[0]->getUri()->getQuery(),
@@ -415,12 +417,12 @@ class UserTest extends TestCase
         );
 
         $this->assertEquals(
-            $request[1]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/forgot_password"
+            "/api/v1/users/{$user->getId()}/credentials/forgot_password",
+            $request[1]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[1]->getUri()->getQuery(),
-            'sendEmail=false'
+            'sendEmail=false',
+            $request[1]->getUri()->getQuery()
         );
 
     }
@@ -437,12 +439,12 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}/lifecycle/reset_factors"
+            "/api/v1/users/{$user->getId()}/lifecycle/reset_factors",
+            $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            $request[0]->getUri()->getQuery(),
-            ''
+            '',
+            $request[0]->getUri()->getQuery()
         );
 
     }
@@ -459,8 +461,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('DELETE', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}"
+            "/api/v1/users/{$user->getId()}",
+            $request[0]->getUri()->getPath()
         );
     }
 
@@ -476,8 +478,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}"
+            "/api/v1/users/{$user->getId()}",
+            $request[0]->getUri()->getPath()
         );
     }
     
@@ -493,8 +495,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/abc123"
+            "/api/v1/users/abc123",
+            $request[0]->getUri()->getPath()
         ); 
     }
 
@@ -513,8 +515,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users"
+            "/api/v1/users",
+            $request[0]->getUri()->getPath()
         );
 
         $this->assertContains('application/json', $request[0]->getHeader('accept'));
@@ -537,8 +539,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('PUT', $request[0]->getMethod());
         $this->assertEquals(
-            $request[0]->getUri()->getPath(),
-            "/api/v1/groups/abc123/users/{$user->getId()}"
+            "/api/v1/groups/abc123/users/{$user->getId()}",
+            $request[0]->getUri()->getPath()
         );
     }
 

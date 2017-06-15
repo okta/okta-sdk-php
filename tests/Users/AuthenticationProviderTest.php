@@ -16,14 +16,14 @@
  ******************************************************************************/
 
 use Okta\ClientBuilder;
-use Okta\Users\ActivationToken;
+use Okta\Users\AuthenticationProvider;
 use PHPUnit\Framework\TestCase;
 
-class AtivationTokenTest extends TestCase
+class AuthenticationProviderTest extends TestCase
 {
     protected static $properties;
 
-    /** @var ActivationToken */
+    /** @var \Okta\Users\AuthenticationProvider */
     protected static $testable;
 
     public static function setUpBeforeClass()
@@ -32,8 +32,8 @@ class AtivationTokenTest extends TestCase
 
         static::$properties = json_decode(
             '{
-  "activationToken": "abc123",
-  "activationUrl": "http://example.com"
+  "type": "Okta",
+  "name": "Okta"
 }'
         );
 
@@ -42,23 +42,25 @@ class AtivationTokenTest extends TestCase
         {
             $class->{$prop} = $value;
         }
-        self::$testable = new ActivationToken(null, $class);
+        self::$testable = new AuthenticationProvider(null, $class);
 
     }
 
     /** @test */
-    public function activation_url_is_accessible()
+    public function type_is_accessible()
     {
-        $this->assertEquals(static::$properties->activationUrl, static::$testable->getActivationUrl());
-        $this->assertEquals(static::$properties->activationUrl, static::$testable->activationUrl);
+        $this->assertEquals(static::$properties->type, static::$testable->getType());
+        $this->assertEquals(static::$properties->type, static::$testable->type);
+    }
+
+    /** @test */
+    public function name_is_accessible()
+    {
+        $this->assertEquals(static::$properties->name, static::$testable->getName());
+        $this->assertEquals(static::$properties->name, static::$testable->name);
     }
     
-    /** @test */
-    public function activation_token_is_accessible()
-    {
-        $this->assertEquals(static::$properties->activationToken, static::$testable->getActivationToken());
-        $this->assertEquals(static::$properties->activationToken, static::$testable->activationToken);
-    }
+    
     
     
 }

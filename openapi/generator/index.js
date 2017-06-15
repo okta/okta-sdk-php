@@ -10,11 +10,13 @@ function getType(obj) {
         case 'object':
             return obj.model;
         case 'hash':
-            return String.raw`array`;
+            return String.raw`\stdClass`;
         case 'boolean':
             return String.raw`bool`;
         case 'integer':
             return String.raw`int`;
+        case 'enum':
+            return String.raw`string`;
         default:
             return obj.commonType;
     }
@@ -27,11 +29,13 @@ function getSafeType(obj) {
         case 'object':
             return `: ${obj.model}`;
         case 'hash':
-            return String.raw`: array`;
+            return String.raw`: \stdClass`;
         case 'boolean':
             return String.raw`: bool`;
         case 'integer':
             return String.raw`: int`;
+        case 'enum':
+            return String.raw`: string`;
         default:
             if(obj.commonType) {
                 return `: ${obj.commonType}`;

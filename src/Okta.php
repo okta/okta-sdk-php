@@ -17,11 +17,9 @@
 
 namespace Okta;
 
-use Okta\Apps\Collection as AppCollection;
-use Okta\Apps\PublicAppInstance;
 use Okta\DataStore\DefaultDataStore;
 use Okta\Groups\Collection as GroupCollection;
-use Okta\Groups\UserGroup;
+use Okta\Groups\Group;
 use Okta\Users\Collection as UserCollection;
 use Okta\Users\User;
 
@@ -38,16 +36,21 @@ class Okta
 
     public function getUsers(array $options = [])
     {
-        return $this->dataStore->getCollection('/api/v1/users', User::class, UserCollection::class, $options);
+        return $this->dataStore->getCollection(
+            '/api/v1/users',
+            User::class,
+            UserCollection::class,
+            $options
+        );
     }
 
     public function getGroups(array $options = [])
     {
-        return $this->dataStore->getCollection('/api/v1/groups', UserGroup::class, GroupCollection::class, $options);
-    }
-
-    public function getApps(array $options = [])
-    {
-        return $this->dataStore->getCollection('/api/v1/apps', PublicAppInstance::class, AppCollection::class, $options);
+        return $this->dataStore->getCollection(
+            '/api/v1/groups',
+            Group::class,
+            GroupCollection::class,
+            $options
+        );
     }
 }

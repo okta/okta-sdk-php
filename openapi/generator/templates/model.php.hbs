@@ -82,34 +82,6 @@ class {{modelName}} extends AbstractResource
     {{/if}}
     {{/each}}
     {{#each properties}}
-
-    {{#if (eq propertyName "_links")}}
-    public function getLinks()
-    {
-        $collect = [];
-
-        $links = $this->getProperty('_links');
-
-        foreach($links as $link) {
-        $collect[] = new \Okta\Shared\Link(null, $link);
-        }
-
-        return new \Okta\Shared\Collection($collect);
-    }
-    {{else if (eq propertyName "_embedded")}}
-    public function getEmbedded()
-    {
-        $collect = [];
-
-        $embedded = $this->getProperty('_embedded');
-
-        foreach($embedded as $object) {
-        $collect[] = new \Okta\Shared\EmbeddedObject(null, $object);
-        }
-
-        return new \Okta\Shared\Collection($collect);
-    }
-    {{else}}
     /**
      * Get the {{propertyName}}.
      *
@@ -148,7 +120,6 @@ class {{modelName}} extends AbstractResource
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
     {{/if}}
-    {{/if}}
     {{/each}}
     {{#each methods}}
     {{#if operation.isArray}}
@@ -178,8 +149,10 @@ class {{modelName}} extends AbstractResource
     */
     public function {{camelCase alias}}({{{getMethodParams this}}})
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}{{{getMethodPath this}}}";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
