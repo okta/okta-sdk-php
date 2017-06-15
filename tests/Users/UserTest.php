@@ -208,11 +208,10 @@ class UserTest extends TestCase
     /** @test */
     public function links_is_accessible()
     {
-<<<<<<< HEAD
         $this->assertEquals(static::$properties->_links, static::$testable->getLinks());
         $this->assertEquals(static::$properties->_links, static::$testable->links);
     }
-    
+
     /** @test */
     public function embedded_is_accessible()
     {
@@ -220,19 +219,6 @@ class UserTest extends TestCase
         $this->assertEquals(static::$properties->_embedded, static::$testable->embedded);
     }
 
-
-=======
-        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getLinks());
-        $this->assertInstanceOf(Okta\Shared\Link::class, static::$testable->getLinks()->first());
-    }
-
-    /** @test */
-    public function embedded_is_accessible()
-    {
-        $this->assertInstanceOf(Okta\Shared\Collection::class, static::$testable->getEmbedded());
-        $this->assertInstanceOf(Okta\Shared\EmbeddedObject::class, static::$testable->getEmbedded()->first());
-    }
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
     /** @test */
     public function credentials_is_settable()
     {
@@ -249,7 +235,7 @@ class UserTest extends TestCase
 
 
 
-    
+
     /** @test */
     public function profile_is_settable()
     {
@@ -263,7 +249,7 @@ class UserTest extends TestCase
         static::$testable->profile = $profile;
         static::assertEquals($profile, static::$testable->getProfile());
     }
-    
+
 
 
 
@@ -474,13 +460,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('DELETE', $request[0]->getMethod());
         $this->assertEquals(
-<<<<<<< HEAD
             "/api/v1/users/{$user->getId()}",
             $request[0]->getUri()->getPath()
-=======
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}"
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
         );
     }
 
@@ -496,16 +477,11 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-<<<<<<< HEAD
             "/api/v1/users/{$user->getId()}",
             $request[0]->getUri()->getPath()
-=======
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/{$user->getId()}"
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
         );
     }
-    
+
     /** @test */
     public function getting_a_user_makes_request_correctly()
     {
@@ -518,14 +494,9 @@ class UserTest extends TestCase
 
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
-<<<<<<< HEAD
             "/api/v1/users/abc123",
             $request[0]->getUri()->getPath()
-=======
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users/abc123"
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
-        ); 
+        );
     }
 
     /** @test */
@@ -543,13 +514,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
-<<<<<<< HEAD
             "/api/v1/users",
             $request[0]->getUri()->getPath()
-=======
-            $request[0]->getUri()->getPath(),
-            "/api/v1/users"
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
         );
 
         $this->assertContains('application/json', $request[0]->getHeader('accept'));
@@ -572,13 +538,8 @@ class UserTest extends TestCase
 
         $this->assertEquals('PUT', $request[0]->getMethod());
         $this->assertEquals(
-<<<<<<< HEAD
             "/api/v1/groups/abc123/users/{$user->getId()}",
             $request[0]->getUri()->getPath()
-=======
-            $request[0]->getUri()->getPath(),
-            "/api/v1/groups/abc123/users/{$user->getId()}"
->>>>>>> 81c53d3f2717f3e4fa49583643e59a5a76826162
         );
     }
 
