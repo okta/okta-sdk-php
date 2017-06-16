@@ -129,7 +129,7 @@ class {{modelName}} extends AbstractResource
     * @param array $options The options for the request.
     * @return Collection
     */
-    public function {{getMethodArrayName alias}}(array $options = []): Collection
+    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): Collection
     {
         return $this
                 ->getDataStore()

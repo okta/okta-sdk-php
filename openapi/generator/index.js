@@ -56,27 +56,57 @@ function getAccessMethodType(obj) {
 function getMethodPath(method) {
   let path = method.operation.path;
 
+  const requiredArgs = [];
+  const suppliedArgs = new Set();
   for (let argPair of method.arguments) {
     const ref = `$this->get${_.upperFirst(_.camelCase(argPair.src))}()`;
     path = path.replace(`{${argPair.dest}}`, `{${ref}}`);
+    suppliedArgs.add(argPair.dest);
   }
+
+  for (let param of method.operation.pathParams) {
+    if (!suppliedArgs.has(param.name)) {
+      path = path.replace(`{${param.name}}`, `{$${param.name}}`);
+    }
+  }
+
   return path;
 }
 
-function getMethodParams(method) {
+function getParams(method) {
+  const params = [];
+
   // Get path params that aren't specified
   const definedPathParams = _.map(method.arguments, arg => arg.dest);
   const requiredPathParams = _.filter(method.operation.pathParams, param => !definedPathParams.includes(param.name));
-
   const pathParams = requiredPathParams.map(param => `$${param.name}`);
+  params.concat(pathParams);
 
   // Get all query params with defaults
   let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
   defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
-
   const queryParams = defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
+  params.concat(queryParams);
 
-  return pathParams.concat(queryParams).join(', ');
+  // Get the body param with type
+  const isSelfBody = !!_.find(method.arguments, arg => arg.dest == 'body' && arg.src !== 'self');
+  if (!isSelfBody && method.operation.bodyModel) {
+    const modelName = method.operation.bodyModel;
+    const varName = _.camelCase(modelName);
+    params.push(`${modelName} $${varName}`);
+  }
+
+  return params;
+}
+
+function getMethodParams(method) {
+  return getParams(method).join(', ');
+}
+
+function getCollectionMethodParams(method) {
+  const methodParams = getParams(method).filter(param => !param.includes('='));
+  methodParams.push('array $options = []');
+  return methodParams.join(', ');
 }
 
 function getMethodParamsComment(method) {
@@ -163,6 +193,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
     // Order the properties by length
     model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
 
+    // Add a default namespace
     model.namespace = 'Shared';
 
     if (model.tags[0]) {
@@ -170,8 +201,14 @@ php.process = ({ spec, operations, models, handlebars }) => {
       namespaces.push(model.namespace);
     }
 
+    // Build modelMap
     modelMap[model.modelName] = model;
   }
+
+  // Find all AbstractResourceModels
+  const abstractResourceModels = new Set(operations
+    .filter(operation => operation.path.slice(-1) === '}' && operation.method === 'get')
+    .map(operation => operation.responseModel));
 
   for (let model of models) {
 
@@ -181,9 +218,13 @@ php.process = ({ spec, operations, models, handlebars }) => {
     if (model.methods) {
       for (let method of model.methods) {
         const responseModel = method.operation.responseModel;
-
         if (modelMap[responseModel] && model.namespace !== modelMap[responseModel].namespace) {
           model.namespacedModels.push(modelMap[responseModel]);
+        }
+
+        const bodyModel = method.operation.bodyModel;
+        if (modelMap[bodyModel] && model.namespace !== modelMap[bodyModel].namespace) {
+          model.namespacedModels.push(modelMap[bodyModel]);
         }
       }
     }
@@ -196,11 +237,19 @@ php.process = ({ spec, operations, models, handlebars }) => {
       }
     }
 
-    templates.push({
-      src: 'templates/model.php.hbs',
-      dest: `${model.namespace}/${model.modelName}.php`,
-      context: model
-    });
+    if (abstractResourceModels.has(model.modelName)) {
+      templates.push({
+        src: 'templates/model.php.hbs',
+        dest: `${model.namespace}/${model.modelName}.php`,
+        context: model
+      });
+    } else {
+      templates.push({
+        src: 'templates/nonstandard.model.php.hbs',
+        dest: `${model.namespace}/${model.modelName}.php`,
+        context: model
+      });
+    }
   }
 
   for (let namespace of _.uniqBy(namespaces)) {
@@ -211,11 +260,11 @@ php.process = ({ spec, operations, models, handlebars }) => {
     });
   }
 
-    templates.push({
-        src: 'templates/collection.php.hbs',
-        dest: `Shared/Collection.php`,
-        context: {namespace: `Shared`}
-    });
+  templates.push({
+      src: 'templates/collection.php.hbs',
+      dest: `Shared/Collection.php`,
+      context: {namespace: `Shared`}
+  });
 
   handlebars.registerHelper({
     getType,
@@ -223,6 +272,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
     getAccessMethodType,
     getMethodPath,
     getMethodParams,
+    getCollectionMethodParams,
     getMethodRequestParams,
     getMethodArrayName,
     getOperationReturnType,
