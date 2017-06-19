@@ -253,13 +253,16 @@ class User extends AbstractResource
                     $options
                 );
     }
+
     /**
-    * Sends a request to the changePassword endpoint.
-    *
-    *
-    * @return mixed|null
-    */
-    public function changePassword()
+     * Sends a request to the changePassword endpoint.
+     *
+     *
+     * @param ChangePasswordRequest $changePasswordRequest
+     *
+     * @return mixed|null
+     */
+    public function changePassword(ChangePasswordRequest $changePasswordRequest)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/change_password";
         $uri = $this->getDataStore()->buildUri(
@@ -269,7 +272,8 @@ class User extends AbstractResource
                 ->getDataStore()
                 ->executeRequest(
                     'POST',
-                    $uri
+                    $uri,
+                    $changePasswordRequest
                 );
     }
     /**
@@ -278,7 +282,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function changeRecoveryQuestion()
+    public function changeRecoveryQuestion(UserCredentials $userCredentials)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/change_recovery_question";
         $uri = $this->getDataStore()->buildUri(
@@ -297,7 +301,7 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function forgotPassword($sendEmail = true)
+    public function forgotPassword(UserCredentials $userCredentials)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/forgot_password";
         $uri = $this->getDataStore()->buildUri(
@@ -335,7 +339,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addRole()
+    public function addRole(Role $role)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles";
         $uri = $this->getDataStore()->buildUri(
@@ -354,9 +358,9 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeRole($roleId)
+    public function removeRole()
     {
-        $uri = "/api/v1/users/{$this->getId()}/roles/{roleId}";
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
@@ -378,7 +382,7 @@ class User extends AbstractResource
         return $this
                 ->getDataStore()
                 ->getCollection(
-                    "/api/v1/users/{$this->getId()}/roles/{roleId}/targets/groups",
+                    "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups",
                     Group::class,
                     Collection::class,
                     $options
@@ -390,9 +394,9 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeGroupTargetFromRole($roleId, $groupId)
+    public function removeGroupTargetFromRole()
     {
-        $uri = "/api/v1/users/{$this->getId()}/roles/{roleId}/targets/groups/{groupId}";
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
@@ -409,9 +413,9 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addGroupTargetToRole($roleId, $groupId)
+    public function addGroupTargetToRole()
     {
-        $uri = "/api/v1/users/{$this->getId()}/roles/{roleId}/targets/groups/{groupId}";
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
@@ -445,7 +449,7 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function activate($sendEmail = true)
+    public function activate()
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/activate";
         $uri = $this->getDataStore()->buildUri(
@@ -599,9 +603,9 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addToGroup($groupId)
+    public function addToGroup()
     {
-        $uri = "/api/v1/groups/{groupId}/users/{$this->getId()}";
+        $uri = "/api/v1/groups/{$groupId}/users/{$this->getId()}";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );

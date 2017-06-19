@@ -449,7 +449,7 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function deleteing_makes_a_request_to_delete_endpoint()
+    public function deleting_makes_a_request_to_delete_endpoint()
     {
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
@@ -542,6 +542,36 @@ class UserTest extends TestCase
             $request[0]->getUri()->getPath()
         );
     }
+    
+    /** @test */
+    public function a_user_can_request_a_password_change()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $oldPassword = (new \Okta\Users\PasswordCredential())->setValue('oldPassword');
+        $newPassword = (new \Okta\Users\PasswordCredential())->setValue('newPassword');
+
+        $changePasswordRequest = (new \Okta\Users\ChangePasswordRequest())
+            ->setOldPassword($oldPassword)
+            ->setNewPassword($newPassword);
+
+        $user->changePassword($changePasswordRequest);
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/credentials/change_password",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertEquals(
+            '{"oldPassword":{"value":"oldPassword"},"newPassword":{"value":"newPassword"}}',
+                $request[0]->getBody()->getContents()
+        );
+    }
+    
 
 
     /**

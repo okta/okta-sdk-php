@@ -24,12 +24,27 @@ class PasswordCredential extends AbstractResource
     const VALUE = 'value';
 
     /**
-     * Get the value.
+     * Sets the value property.
+     *
+     * @param string $value The value of the object.
+     * @return self
+     */
+    public function setValue($value)
+    {
+        $this->setProperty(self::VALUE, $value);
+        
+        return $this; 
+    } 
+    
+    /**
+     * Gets the value property.
      *
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->getProperty(self::VALUE);
-    }
+    } 
+    
+        
 }
