@@ -73,39 +73,47 @@ function getMethodPath(method) {
   return path;
 }
 
+// Generic helper to retrieve method parameters as a hash
 function getParams(method) {
-  const params = [];
+  const params = {};
 
   // Get path params that aren't specified
-  const definedPathParams = _.map(method.arguments, arg => arg.dest);
-  const requiredPathParams = _.filter(method.operation.pathParams, param => !definedPathParams.includes(param.name));
-  const pathParams = requiredPathParams.map(param => `$${param.name}`);
-  params.concat(pathParams);
+  const definedParams = _.map(method.arguments, arg => arg.dest);
+  params.requiredPathParams = _.filter(method.operation.pathParams, param => !definedParams.includes(param.name));
 
   // Get all query params with defaults
-  let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
-  defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
-  const queryParams = defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
-  params.concat(queryParams);
+  const defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
+  params.defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
 
   // Get the body param with type
   const isSelfBody = !!_.find(method.arguments, arg => arg.dest == 'body' && arg.src !== 'self');
   if (!isSelfBody && method.operation.bodyModel) {
-    const modelName = method.operation.bodyModel;
-    const varName = _.camelCase(modelName);
-    params.push(`${modelName} $${varName}`);
+    params.bodyModel = method.operation.bodyModel;
   }
 
   return params;
 }
 
 function getMethodParams(method) {
-  return getParams(method).join(', ');
+  const params = getParams(method);
+  const pathParams = params.requiredPathParams.map(param => `$${param.name}`);
+  const queryParams = params.defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
+
+  let methodParams = [].concat(pathParams);
+  if (params.bodyModel) {
+    const modelName = params.bodyModel;
+    const varName = _.camelCase(modelName);
+    methodParams.push(`${modelName} $${varName}`);
+  }
+  methodParams = methodParams.concat(queryParams);
+
+  return methodParams.join(', ');
 }
 
 function getCollectionMethodParams(method) {
-  const methodParams = getParams(method).filter(param => !param.includes('='));
-  methodParams.push('array $options = []');
+  const params = getParams(method);
+  const methodParams = [].concat(params.requiredPathParams);
+  methodParams.push('array $options = []')
   return methodParams.join(', ');
 }
 
@@ -134,23 +142,32 @@ function getMethodParamsComment(method) {
 }
 
 function getMethodRequestParams(method) {
-  let defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
+  const params = getParams(method);
 
-  const path = method.operation.method.toUpperCase();
+  const httpMethod = method.operation.method.toUpperCase();
+  const methodParams = [httpMethod, '$uri'];
 
-  if (!defaultQueryParams.length) {
-    return `'${path}', $uri`;
+  // Add a body argument if we have a body
+  if (params.bodyModel) {
+    const modelName = params.bodyModel;
+    const varName = _.camelCase(modelName);
+    methodParams.push(`$${varName}`);
   }
 
-  const queryParamsStr = defaultQueryParams.reduce((acc, curr) => {
-    let param = `'${curr.name}' => $${curr.name}`;
-    if (acc) {
-      return `${acc} ${param}`;
-    }
-    return param;
-  }, '');
+  const queryParams = params.defaultQueryParams.map(param => `$${param.name} => ${param.default}`);
 
-  return `'${path}', $uri, '', ['query' => [${queryParamsStr}]]`;
+  // Add a query params argument if we have query params
+  if (queryParams.length) {
+    // If we have queryParams and no body, we should put something in it's place
+    if (!params.bodyModel) {
+      methodParams.push('');
+    }
+
+    const queryParamsStr = queryParams.join(', ');
+    methodParams.push(`['query' => [${queryParamsStr}]]`);
+  }
+
+  return methodParams.join(', ');
 }
 
 function getMethodArrayName(str) {
