@@ -109,6 +109,20 @@ class GroupRuleTest extends TestCase
     }
 
     /** @test */
+    public function actions_is_settable()
+    {
+        $stub = new \stdClass();
+        $stub->groupIds = '{"assignUserToGroups": {},}';
+        $groupRuleAction = new \Okta\GroupRules\GroupRuleAction(null, $stub);
+
+        static::$testable->setActions($groupRuleAction);
+
+        $localTestable = static::$testable->getActions();
+        $this->assertEquals($groupRuleAction, $localTestable);
+    }
+
+
+    /** @test */
     public function created_is_accessible()
     {
         $this->markTestIncomplete('getCreated is not treated as a date');
@@ -126,13 +140,142 @@ class GroupRuleTest extends TestCase
     }
 
     /** @test */
+    public function conditions_is_settable()
+    {
+        $stub = new \stdClass();
+        $stub->groupIds = '{"people": {}, "expression": {}}';
+        $groupRuleConditions = new \Okta\GroupRules\GroupRuleConditions(null, $stub);
+
+        static::$testable->setConditions($groupRuleConditions);
+
+        $localTestable = static::$testable->getConditions();
+        $this->assertEquals($groupRuleConditions, $localTestable);
+
+    }
+
+    /** @test */
     public function last_updated_is_accessible()
     {
-        $this->markTestIncomplete('getCreated is not treated as a date');
+        $this->markTestIncomplete('getLastupdated is not treated as a date');
         $ts = Carbon::parse(static::$properties->lastUpdated)->timestamp;
         $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->lastUpdated);
         $this->assertEquals($ts, static::$testable->getLastUpdated()->timestamp);
         $this->assertEquals($ts, static::$testable->lastUpdated->timestamp);
     }
+
+    /** @test */
+    public function save_makes_a_request_to_save_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $groupRule = $this->createNewGroupRule();
+
+        $groupRule->save();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/groups/{$groupRule->getId()}",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function delete_makes_a_request_to_delete_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $groupRule = $this->createNewGroupRule();
+
+        $groupRule->delete();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/groups/{$groupRule->getId()}",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function activate_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $groupRule = $this->createNewGroupRule();
+
+        $groupRule->activate();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/groups/rules/{$groupRule->getId()}/lifecycle/activate",
+            $request[0]->getUri()->getPath()
+        );
+
+    }
+
+    /** @test */
+    public function deactivate_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $groupRule = $this->createNewGroupRule();
+
+        $groupRule->deactivate();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/groups/rules/{$groupRule->getId()}/lifecycle/deactivate",
+            $request[0]->getUri()->getPath()
+        );
+
+    }
+
+
+    /**
+     * @return GroupRule
+     */
+    private function createNewGroupRule(): GroupRule
+    {
+        $class = new \stdClass();
+        foreach (static::$properties as $prop => $value) {
+            $class->{$prop} = $value;
+        }
+        return new GroupRule(NULL, $class);
+
+    }
+
+    /**
+     * @param array $returns
+     *
+     * @return \Http\Mock\Client
+     */
+    private function createNewHttpClient($returns = []): \Http\Mock\Client
+    {
+        $defaults = [
+            'getStatusCode' => 200,
+            'getBody' => '{}'
+        ];
+
+        $mockReturns = array_replace_recursive($defaults, $returns);
+
+        $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+        foreach($mockReturns as $method=>$return) {
+            $response->method($method)->willReturn($return);
+        }
+        $httpClient = new \Http\Mock\Client;
+        $httpClient->addResponse($response);
+
+        (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+        return $httpClient;
+    }
+
+
 
 }
