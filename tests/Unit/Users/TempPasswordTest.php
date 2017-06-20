@@ -15,35 +15,38 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Okta;
+use Okta\ClientBuilder;
+use Okta\Users\TempPassword;
 use PHPUnit\Framework\TestCase;
 
-class OktaTest extends TestCase
+class TempPasswordTest extends TestCase
 {
-    protected static $client;
+    protected static $properties;
 
-    /** @test */
-    public function getting_all_users_returns_a_collection_of_users()
+    protected static $testable;
+
+    public static function setUpBeforeClass()
     {
-        $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-        $response->method('getStatusCode')->willReturn(200);
-        $response->method('getBody')->willReturn(
-          '[{"id":"00ua3b3i403WRYTGm0h7","status":"ACTIVE","created":"2017-04-06T21:27:55.000Z"},{"id":"00uak5c3ugOFniX670h7","status":"ACTIVE","created":"2017-05-22T16:06:48.000Z"},{"id":"00uak5dkxjhg4AQ230h7","status":"ACTIVE","created":"2017-05-22T16:05:42.000Z"},{"id":"00uajcy1o6MMTJVFb0h7","status":"SUSPENDED","created":"2017-05-19T20:04:54.000Z"}]'
-        );
+        parent::setUpBeforeClass();
 
-        $httpClient = new \Http\Mock\Client;
-        $httpClient->addResponse($response);
+        $clientBuilder = (new ClientBuilder())->build();
 
-        (new \Okta\ClientBuilder())
-            ->setOrganizationUrl('https://dev.okta.com')
-            ->setToken('abc123')
-            ->setHttpClient($httpClient)
-            ->build();
+        static::$properties = json_decode('
+        {
+        "tempPassword": "HR076gb6"
+        }
+        ');
 
-
-        $users = (new Okta())->getUsers();
-
-        $this->assertInstanceOf(\Okta\Resource\AbstractCollection::class, $users);
-        $this->assertCount(4, $users);
+        
+        self::$testable = new TempPassword(null, static::$properties);
     }
+    
+    /** @test */
+    public function temp_password_is_accessible()
+    {
+        $this->assertEquals(static::$properties->tempPassword, static::$testable->getTempPassword());
+        $this->assertEquals(static::$properties->tempPassword, static::$testable->tempPassword);
+    }
+    
+    
 }
