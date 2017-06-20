@@ -253,15 +253,12 @@ class User extends AbstractResource
                     $options
                 );
     }
-
     /**
-     * Sends a request to the changePassword endpoint.
-     *
-     *
-     * @param ChangePasswordRequest $changePasswordRequest
-     *
-     * @return mixed|null
-     */
+    * Sends a request to the changePassword endpoint.
+    *
+    *
+    * @return mixed|null
+    */
     public function changePassword(ChangePasswordRequest $changePasswordRequest)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/change_password";

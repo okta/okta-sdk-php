@@ -162,6 +162,7 @@ class DefaultDataStore
 
         $result = $this->executeRequest('GET', $uri);
 
+
         foreach ($result as $item) {
             $toCollect[] = new $className(null, $item);
         }

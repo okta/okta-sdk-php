@@ -25,39 +25,11 @@ class ChangePasswordRequest extends AbstractResource
     const OLD_PASSWORD = 'oldPassword';
 
     /**
-     * Gets the oldPassword resource property.
+     * Get the newPassword.
      *
-     * @param array $options array of options.
      * @return PasswordCredential
      */
-    public function getOldPassword(array $options = [])
-    {
-        return $this->getResourceProperty(
-            self::OLD_PASSWORD,
-            PasswordCredential::class,
-            $options);
-    }
-
-    /**
-     * Sets the oldPassword resource property.
-     *
-     * @param PasswordCredential $oldPassword The oldPassword of the object.
-     * @return self
-     */
-    public function setOldPassword(PasswordCredential $oldPassword)
-    {
-        $this->setResourceProperty(self::OLD_PASSWORD, $oldPassword);
-
-        return $this;
-    }
-
-    /**
-     * Gets the newPassword resource property.
-     *
-     * @param array $options array of options.
-     * @return PasswordCredential
-     */
-    public function getNewPassword(array $options = [])
+    public function getNewPassword(array $options = []): PasswordCredential
     {
         return $this->getResourceProperty(
             self::NEW_PASSWORD,
@@ -67,16 +39,47 @@ class ChangePasswordRequest extends AbstractResource
     }
 
     /**
-     * Sets the newPassword resource property.
+     * Set the newPassword.
      *
-     * @param PasswordCredential $newPassword The newPassword of the object.
+     * @param PasswordCredential $newPassword The PasswordCredential instance.
      * @return self
      */
     public function setNewPassword(PasswordCredential $newPassword)
     {
-        $this->setResourceProperty(self::NEW_PASSWORD, $newPassword);
-
+        $this->setResourceProperty(
+            self::NEW_PASSWORD,
+            $newPassword
+        );
+        
         return $this;
     }
+    /**
+     * Get the oldPassword.
+     *
+     * @return PasswordCredential
+     */
+    public function getOldPassword(array $options = []): PasswordCredential
+    {
+        return $this->getResourceProperty(
+            self::OLD_PASSWORD,
+            PasswordCredential::class,
+            $options
+        );
+    }
 
+    /**
+     * Set the oldPassword.
+     *
+     * @param PasswordCredential $oldPassword The PasswordCredential instance.
+     * @return self
+     */
+    public function setOldPassword(PasswordCredential $oldPassword)
+    {
+        $this->setResourceProperty(
+            self::OLD_PASSWORD,
+            $oldPassword
+        );
+        
+        return $this;
+    }
 }

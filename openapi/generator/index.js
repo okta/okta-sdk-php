@@ -205,11 +205,6 @@ php.process = ({ spec, operations, models, handlebars }) => {
     modelMap[model.modelName] = model;
   }
 
-  // Find all AbstractResourceModels
-  const abstractResourceModels = new Set(operations
-    .filter(operation => operation.path.slice(-1) === '}' && operation.method === 'get')
-    .map(operation => operation.responseModel));
-
   for (let model of models) {
 
     model.namespacedModels = [];
@@ -237,19 +232,11 @@ php.process = ({ spec, operations, models, handlebars }) => {
       }
     }
 
-    if (abstractResourceModels.has(model.modelName)) {
       templates.push({
         src: 'templates/model.php.hbs',
         dest: `${model.namespace}/${model.modelName}.php`,
         context: model
       });
-    } else {
-      templates.push({
-        src: 'templates/nonstandard.model.php.hbs',
-        dest: `${model.namespace}/${model.modelName}.php`,
-        context: model
-      });
-    }
   }
 
   for (let namespace of _.uniqBy(namespaces)) {

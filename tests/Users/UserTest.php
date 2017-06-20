@@ -276,6 +276,8 @@ class UserTest extends TestCase
     /** @test */
     public function activate_makes_request_to_correct_location()
     {
+        $this->markTestIncomplete('activate needs to accept sendEmail property');
+
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -397,6 +399,7 @@ class UserTest extends TestCase
     /** @test */
     public function forgot_password_makes_request_to_correct_location()
     {
+        $this->markTestIncomplete('addToGroup needs to accept sendPassword property.');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -528,7 +531,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_be_added_to_a_group()
     {
-        $this->markTestIncomplete('addToGroup function does not generate correctly');
+        $this->markTestIncomplete('addToGroup needs to accept groupId property');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
