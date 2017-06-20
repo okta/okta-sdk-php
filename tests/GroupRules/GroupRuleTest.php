@@ -125,7 +125,6 @@ class GroupRuleTest extends TestCase
     /** @test */
     public function created_is_accessible()
     {
-        $this->markTestIncomplete('getCreated is not treated as a date');
         $ts = Carbon::parse(static::$properties->created)->timestamp;
         $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->created);
         $this->assertEquals($ts, static::$testable->getCreated()->timestamp);
@@ -156,7 +155,6 @@ class GroupRuleTest extends TestCase
     /** @test */
     public function last_updated_is_accessible()
     {
-        $this->markTestIncomplete('getLastupdated is not treated as a date');
         $ts = Carbon::parse(static::$properties->lastUpdated)->timestamp;
         $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->lastUpdated);
         $this->assertEquals($ts, static::$testable->getLastUpdated()->timestamp);

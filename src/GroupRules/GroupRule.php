@@ -119,11 +119,11 @@ class GroupRule extends AbstractResource
     /**
      * Get the created.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getCreated(): string
+    public function getCreated()
     {
-        return $this->getProperty(self::CREATED);
+        return $this->getDateProperty(self::CREATED);
     }
     /**
      * Get the conditions.
@@ -157,11 +157,11 @@ class GroupRule extends AbstractResource
     /**
      * Get the lastUpdated.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastUpdated(): string
+    public function getLastUpdated()
     {
-        return $this->getProperty(self::LAST_UPDATED);
+        return $this->getDateProperty(self::LAST_UPDATED);
     }
     /**
     * Sends a request to the activate endpoint.
