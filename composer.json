@@ -33,16 +33,22 @@
         }
     },
     "scripts": {
-        "test": "phpunit",
+        "test": "phpunit --colors=always",
+        "test:unit": "phpunit --testsuite=Unit --colors=always",
+        "test:integration": "phpunit --testsuite=Integration --colors=always",
         "rebuild-resources": [
+            "@delete-resources",
+            "@generate-resources",
+            "@fix-code"
+        ],
+        "delete-resources": [
             "rm -rf ./src/Apps",
             "rm -rf ./src/Groups",
             "rm -rf ./src/GroupRules",
             "rm -rf ./src/Shared",
-            "rm -rf ./src/Users",
-            "cd ./openapi && npm run generator",
-            "@fix-code"
+            "rm -rf ./src/Users"
         ],
+        "generate-resources": "cd ./openapi && npm run generator",
         "fix-code": "phpcbf ."
     }
 }
