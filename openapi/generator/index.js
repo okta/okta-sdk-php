@@ -193,9 +193,6 @@ php.process = ({ spec, operations, models, handlebars }) => {
     // Order the properties by length
     model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
 
-    // Add a default namespace
-    model.namespace = 'Shared';
-
     if (model.tags[0]) {
       model.namespace = _.pluralize(model.tags[0]);
       namespaces.push(model.namespace);

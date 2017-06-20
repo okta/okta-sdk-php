@@ -39,6 +39,7 @@
         "rebuild-resources": [
             "@delete-resources",
             "@generate-resources",
+            "@test",
             "@fix-code"
         ],
         "delete-resources": [
