@@ -244,12 +244,6 @@ php.process = ({ spec, operations, models, handlebars }) => {
     });
   }
 
-  templates.push({
-      src: 'templates/collection.php.hbs',
-      dest: `Shared/Collection.php`,
-      context: {namespace: `Shared`}
-  });
-
   handlebars.registerHelper({
     getType,
     getSafeType,
