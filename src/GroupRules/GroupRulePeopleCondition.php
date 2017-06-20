@@ -32,10 +32,10 @@ class GroupRulePeopleCondition extends AbstractResource
     public function getUsers(array $options = []): GroupRuleUserCondition
     {
         return $this->getResourceProperty(
-            self::USERS,
-            GroupRuleUserCondition::class,
-            $options
-        );
+                        self::USERS,
+                        GroupRuleUserCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -47,9 +47,9 @@ class GroupRulePeopleCondition extends AbstractResource
     public function setUsers(GroupRuleUserCondition $users)
     {
         $this->setResourceProperty(
-            self::USERS,
-            $users
-        );
+                        self::USERS,
+                        $users
+                    );
         
         return $this;
     }
@@ -61,10 +61,10 @@ class GroupRulePeopleCondition extends AbstractResource
     public function getGroups(array $options = []): GroupRuleGroupCondition
     {
         return $this->getResourceProperty(
-            self::GROUPS,
-            GroupRuleGroupCondition::class,
-            $options
-        );
+                        self::GROUPS,
+                        GroupRuleGroupCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -76,9 +76,9 @@ class GroupRulePeopleCondition extends AbstractResource
     public function setGroups(GroupRuleGroupCondition $groups)
     {
         $this->setResourceProperty(
-            self::GROUPS,
-            $groups
-        );
+                        self::GROUPS,
+                        $groups
+                    );
         
         return $this;
     }

@@ -21,9 +21,69 @@ use Okta\Resource\AbstractResource;
 
 class GroupRuleConditions extends AbstractResource
 {
+    const USERS = 'users';
+    const GROUPS = 'groups';
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
 
+    /**
+     * Get the users.
+     *
+     * @return GroupRuleUserCondition
+     */
+    public function getUsers(array $options = []): GroupRuleUserCondition
+    {
+        return $this->getResourceProperty(
+                        self::USERS,
+                        GroupRuleUserCondition::class,
+                        $options
+                    );
+    }
+
+    /**
+     * Set the users.
+     *
+     * @param GroupRuleUserCondition $users The GroupRuleUserCondition instance.
+     * @return self
+     */
+    public function setUsers(GroupRuleUserCondition $users)
+    {
+        $this->setResourceProperty(
+                        self::USERS,
+                        $users
+                    );
+        
+        return $this;
+    }
+    /**
+     * Get the groups.
+     *
+     * @return GroupRuleGroupCondition
+     */
+    public function getGroups(array $options = []): GroupRuleGroupCondition
+    {
+        return $this->getResourceProperty(
+                        self::GROUPS,
+                        GroupRuleGroupCondition::class,
+                        $options
+                    );
+    }
+
+    /**
+     * Set the groups.
+     *
+     * @param GroupRuleGroupCondition $groups The GroupRuleGroupCondition instance.
+     * @return self
+     */
+    public function setGroups(GroupRuleGroupCondition $groups)
+    {
+        $this->setResourceProperty(
+                        self::GROUPS,
+                        $groups
+                    );
+        
+        return $this;
+    }
     /**
      * Get the people.
      *
@@ -32,10 +92,10 @@ class GroupRuleConditions extends AbstractResource
     public function getPeople(array $options = []): GroupRulePeopleCondition
     {
         return $this->getResourceProperty(
-            self::PEOPLE,
-            GroupRulePeopleCondition::class,
-            $options
-        );
+                        self::PEOPLE,
+                        GroupRulePeopleCondition::class,
+                        $options
+                    );
     }
 
     /**
@@ -47,9 +107,9 @@ class GroupRuleConditions extends AbstractResource
     public function setPeople(GroupRulePeopleCondition $people)
     {
         $this->setResourceProperty(
-            self::PEOPLE,
-            $people
-        );
+                        self::PEOPLE,
+                        $people
+                    );
         
         return $this;
     }
@@ -61,10 +121,10 @@ class GroupRuleConditions extends AbstractResource
     public function getExpression(array $options = []): GroupRuleExpression
     {
         return $this->getResourceProperty(
-            self::EXPRESSION,
-            GroupRuleExpression::class,
-            $options
-        );
+                        self::EXPRESSION,
+                        GroupRuleExpression::class,
+                        $options
+                    );
     }
 
     /**
@@ -76,9 +136,9 @@ class GroupRuleConditions extends AbstractResource
     public function setExpression(GroupRuleExpression $expression)
     {
         $this->setResourceProperty(
-            self::EXPRESSION,
-            $expression
-        );
+                        self::EXPRESSION,
+                        $expression
+                    );
         
         return $this;
     }

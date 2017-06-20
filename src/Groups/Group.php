@@ -97,10 +97,10 @@ class Group extends AbstractResource
     public function getProfile(array $options = []): GroupProfile
     {
         return $this->getResourceProperty(
-            self::PROFILE,
-            GroupProfile::class,
-            $options
-        );
+                        self::PROFILE,
+                        GroupProfile::class,
+                        $options
+                    );
     }
 
     /**
@@ -112,9 +112,9 @@ class Group extends AbstractResource
     public function setProfile(GroupProfile $profile)
     {
         $this->setResourceProperty(
-            self::PROFILE,
-            $profile
-        );
+                        self::PROFILE,
+                        $profile
+                    );
         
         return $this;
     }
@@ -164,13 +164,12 @@ class Group extends AbstractResource
     {
         $uri = "/api/v1/groups/{$this->getId()}/stats";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'GET',
-                    $uri
+                    GET, $uri
                 );
     }
     /**
@@ -179,17 +178,16 @@ class Group extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeUser()
+    public function removeUser($userId)
     {
         $uri = "/api/v1/groups/{$this->getId()}/users/{$userId}";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'DELETE',
-                    $uri
+                    DELETE, $uri
                 );
     }
     /**

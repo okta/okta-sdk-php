@@ -95,10 +95,10 @@ class GroupRule extends AbstractResource
     public function getActions(array $options = []): GroupRuleAction
     {
         return $this->getResourceProperty(
-            self::ACTIONS,
-            GroupRuleAction::class,
-            $options
-        );
+                        self::ACTIONS,
+                        GroupRuleAction::class,
+                        $options
+                    );
     }
 
     /**
@@ -110,20 +110,20 @@ class GroupRule extends AbstractResource
     public function setActions(GroupRuleAction $actions)
     {
         $this->setResourceProperty(
-            self::ACTIONS,
-            $actions
-        );
+                        self::ACTIONS,
+                        $actions
+                    );
         
         return $this;
     }
     /**
      * Get the created.
      *
-     * @return \Carbon\Carbon|null
+     * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
-        return $this->getDateProperty(self::CREATED);
+        return $this->getProperty(self::CREATED);
     }
     /**
      * Get the conditions.
@@ -133,10 +133,10 @@ class GroupRule extends AbstractResource
     public function getConditions(array $options = []): GroupRuleConditions
     {
         return $this->getResourceProperty(
-            self::CONDITIONS,
-            GroupRuleConditions::class,
-            $options
-        );
+                        self::CONDITIONS,
+                        GroupRuleConditions::class,
+                        $options
+                    );
     }
 
     /**
@@ -148,20 +148,20 @@ class GroupRule extends AbstractResource
     public function setConditions(GroupRuleConditions $conditions)
     {
         $this->setResourceProperty(
-            self::CONDITIONS,
-            $conditions
-        );
+                        self::CONDITIONS,
+                        $conditions
+                    );
         
         return $this;
     }
     /**
      * Get the lastUpdated.
      *
-     * @return \Carbon\Carbon|null
+     * @return string
      */
-    public function getLastUpdated()
+    public function getLastUpdated(): string
     {
-        return $this->getDateProperty(self::LAST_UPDATED);
+        return $this->getProperty(self::LAST_UPDATED);
     }
     /**
     * Sends a request to the activate endpoint.
@@ -173,13 +173,12 @@ class GroupRule extends AbstractResource
     {
         $uri = "/api/v1/groups/rules/{$this->getId()}/lifecycle/activate";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -192,13 +191,12 @@ class GroupRule extends AbstractResource
     {
         $uri = "/api/v1/groups/rules/{$this->getId()}/lifecycle/deactivate";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
 }

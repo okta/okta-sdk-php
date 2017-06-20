@@ -112,7 +112,8 @@ function getMethodParams(method) {
 
 function getCollectionMethodParams(method) {
   const params = getParams(method);
-  const methodParams = [].concat(params.requiredPathParams);
+  const pathParams = params.requiredPathParams.map(param => `$${param.name}`);
+  const methodParams = [].concat(pathParams);
   methodParams.push('array $options = []')
   return methodParams.join(', ');
 }

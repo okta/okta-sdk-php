@@ -31,10 +31,10 @@ class GroupRuleAction extends AbstractResource
     public function getAssignUserToGroups(array $options = []): GroupRuleGroupAssignment
     {
         return $this->getResourceProperty(
-            self::ASSIGN_USER_TO_GROUPS,
-            GroupRuleGroupAssignment::class,
-            $options
-        );
+                        self::ASSIGN_USER_TO_GROUPS,
+                        GroupRuleGroupAssignment::class,
+                        $options
+                    );
     }
 
     /**
@@ -46,9 +46,9 @@ class GroupRuleAction extends AbstractResource
     public function setAssignUserToGroups(GroupRuleGroupAssignment $assignUserToGroups)
     {
         $this->setResourceProperty(
-            self::ASSIGN_USER_TO_GROUPS,
-            $assignUserToGroups
-        );
+                        self::ASSIGN_USER_TO_GROUPS,
+                        $assignUserToGroups
+                    );
         
         return $this;
     }

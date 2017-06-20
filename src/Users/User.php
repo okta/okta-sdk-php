@@ -123,10 +123,10 @@ class User extends AbstractResource
     public function getProfile(array $options = []): UserProfile
     {
         return $this->getResourceProperty(
-            self::PROFILE,
-            UserProfile::class,
-            $options
-        );
+                        self::PROFILE,
+                        UserProfile::class,
+                        $options
+                    );
     }
 
     /**
@@ -138,9 +138,9 @@ class User extends AbstractResource
     public function setProfile(UserProfile $profile)
     {
         $this->setResourceProperty(
-            self::PROFILE,
-            $profile
-        );
+                        self::PROFILE,
+                        $profile
+                    );
         
         return $this;
     }
@@ -179,10 +179,10 @@ class User extends AbstractResource
     public function getCredentials(array $options = []): UserCredentials
     {
         return $this->getResourceProperty(
-            self::CREDENTIALS,
-            UserCredentials::class,
-            $options
-        );
+                        self::CREDENTIALS,
+                        UserCredentials::class,
+                        $options
+                    );
     }
 
     /**
@@ -194,9 +194,9 @@ class User extends AbstractResource
     public function setCredentials(UserCredentials $credentials)
     {
         $this->setResourceProperty(
-            self::CREDENTIALS,
-            $credentials
-        );
+                        self::CREDENTIALS,
+                        $credentials
+                    );
         
         return $this;
     }
@@ -263,13 +263,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/change_password";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri, $changePasswordRequest
                 );
     }
     /**
@@ -282,13 +281,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/change_recovery_question";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri, $userCredentials
                 );
     }
     /**
@@ -297,19 +295,16 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function forgotPassword(UserCredentials $userCredentials)
+    public function forgotPassword(UserCredentials $userCredentials, $sendEmail = true)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/forgot_password";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
+                    POST, $uri, $userCredentials, ['query' => [$sendEmail => true]]
                 );
     }
     /**
@@ -339,13 +334,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/roles";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri, $role
                 );
     }
     /**
@@ -354,17 +348,16 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeRole()
+    public function removeRole($roleId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'DELETE',
-                    $uri
+                    DELETE, $uri
                 );
     }
     /**
@@ -373,7 +366,7 @@ class User extends AbstractResource
     * @param array $options The options for the request.
     * @return Collection
     */
-    public function getGroupTargetsForRole(array $options = []): Collection
+    public function getGroupTargetsForRole($roleId, array $options = []): Collection
     {
         return $this
                 ->getDataStore()
@@ -390,17 +383,16 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeGroupTargetFromRole()
+    public function removeGroupTargetFromRole($roleId, $groupId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'DELETE',
-                    $uri
+                    DELETE, $uri
                 );
     }
     /**
@@ -409,17 +401,16 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addGroupTargetToRole()
+    public function addGroupTargetToRole($roleId, $groupId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'PUT',
-                    $uri
+                    PUT, $uri
                 );
     }
     /**
@@ -445,19 +436,16 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function activate()
+    public function activate($sendEmail = true)
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/activate";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
+                    POST, $uri, , ['query' => [$sendEmail => true]]
                 );
     }
     /**
@@ -470,13 +458,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/deactivate";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -489,13 +476,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/suspend";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -508,13 +494,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/unsuspend";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -527,13 +512,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/reset_password";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -546,13 +530,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/expire_password";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -565,13 +548,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/unlock";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -584,13 +566,12 @@ class User extends AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/reset_factors";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'POST',
-                    $uri
+                    POST, $uri
                 );
     }
     /**
@@ -599,17 +580,16 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addToGroup()
+    public function addToGroup($groupId)
     {
         $uri = "/api/v1/groups/{$groupId}/users/{$this->getId()}";
         $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
+                    $this->getDataStore()->getOrganizationUrl() . $uri
+                );
         return $this
                 ->getDataStore()
                 ->executeRequest(
-                    'PUT',
-                    $uri
+                    PUT, $uri
                 );
     }
 }
