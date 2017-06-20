@@ -21,69 +21,9 @@ use Okta\Resource\AbstractResource;
 
 class GroupRuleConditions extends AbstractResource
 {
-    const USERS = 'users';
-    const GROUPS = 'groups';
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
 
-    /**
-     * Get the users.
-     *
-     * @return GroupRuleUserCondition
-     */
-    public function getUsers(array $options = []): GroupRuleUserCondition
-    {
-        return $this->getResourceProperty(
-            self::USERS,
-            GroupRuleUserCondition::class,
-            $options
-        );
-    }
-
-    /**
-     * Set the users.
-     *
-     * @param GroupRuleUserCondition $users The GroupRuleUserCondition instance.
-     * @return self
-     */
-    public function setUsers(GroupRuleUserCondition $users)
-    {
-        $this->setResourceProperty(
-            self::USERS,
-            $users
-        );
-        
-        return $this;
-    }
-    /**
-     * Get the groups.
-     *
-     * @return GroupRuleGroupCondition
-     */
-    public function getGroups(array $options = []): GroupRuleGroupCondition
-    {
-        return $this->getResourceProperty(
-            self::GROUPS,
-            GroupRuleGroupCondition::class,
-            $options
-        );
-    }
-
-    /**
-     * Set the groups.
-     *
-     * @param GroupRuleGroupCondition $groups The GroupRuleGroupCondition instance.
-     * @return self
-     */
-    public function setGroups(GroupRuleGroupCondition $groups)
-    {
-        $this->setResourceProperty(
-            self::GROUPS,
-            $groups
-        );
-        
-        return $this;
-    }
     /**
      * Get the people.
      *

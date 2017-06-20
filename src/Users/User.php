@@ -269,8 +269,7 @@ class User extends AbstractResource
                 ->getDataStore()
                 ->executeRequest(
                     'POST',
-                    $uri,
-                    $changePasswordRequest
+                    $uri
                 );
     }
     /**

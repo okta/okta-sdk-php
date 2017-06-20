@@ -66,10 +66,42 @@ class GroupRuleConditionsTest extends TestCase
     }
 
     /** @test */
+    public function people_is_settable()
+    {
+        $stub = new \stdClass();
+        $stub->people = '{
+            "users": {},
+            "groups": {}
+        }';
+        $groupRulePeopleCondition = new \Okta\GroupRules\GroupRulePeopleCondition(null, $stub);
+
+        static::$testable->setPeople($groupRulePeopleCondition);
+
+        $localTestable = static::$testable->getPeople();
+        $this->assertEquals($groupRulePeopleCondition, $localTestable);
+    }
+
+    /** @test */
     public function expression_is_accessible()
     {
         $this->assertInstanceOf(\Okta\GroupRules\GroupRuleExpression::class, static::$testable->getExpression());
         $this->assertInstanceOf(\Okta\GroupRules\GroupRuleExpression::class, static::$testable->expression);
+    }
+
+    /** @test */
+    public function expression_is_settable()
+    {
+        $stub = new \stdClass();
+        $stub->expression = '{
+            "value": "",
+            "type": ""
+        }';
+        $groupRuleExpression = new \Okta\GroupRules\GroupRuleExpression(null, $stub);
+
+        static::$testable->setExpression($groupRuleExpression);
+
+        $localTestable = static::$testable->getExpression();
+        $this->assertEquals($groupRuleExpression, $localTestable);
     }
     
         
