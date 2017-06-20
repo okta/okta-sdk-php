@@ -17,6 +17,8 @@
 
 namespace Okta\DataStore;
 
+use function GuzzleHttp\Psr7\build_query;
+use function GuzzleHttp\Psr7\parse_query;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Client\HttpClient;
@@ -287,9 +289,7 @@ class DefaultDataStore
         $properties = new \stdClass();
         foreach ($propertyNames as $name) {
             $property = $resource->getProperty($name);
-            if ($property instanceof AbstractResource) {
-                $property = $this->toStdClass($property);
-            }
+
             $properties->$name = $property;
         }
         return $properties;
@@ -330,23 +330,23 @@ class DefaultDataStore
      */
     private function appendQueryValues($currentQuery, $queryDictionary)
     {
+        $currentQueryParts = parse_query($currentQuery);
+
         if ($currentQuery == '') {
             $result = [];
-        } else {
-            $decodedKeys = array_map('rawurldecode', array_keys($queryDictionary));
-            $result = array_filter(explode('&', $currentQuery), function ($part) use ($decodedKeys) {
-                return in_array(rawurldecode(explode('=', $part)[0]), $decodedKeys);
-            });
         }
+
         foreach ($queryDictionary as $key => $value) {
             $key = strtr($key, ['=' => '%3D', '&' => '%26']);
             if ($value !== null) {
-                $result[] = $key . '=' . strtr($value, ['=' => '%3D', '&' => '%26']);
+                $result[$key] = strtr($value, ['=' => '%3D', '&' => '%26']);
             } else {
-                $result[] = $key;
+                $result[$key] = $key;
             }
         }
-        return implode('&', $result);
+
+        $result = array_replace_recursive($currentQueryParts, $result);
+        return build_query($result);
     }
 
 
@@ -385,7 +385,7 @@ class DefaultDataStore
      *
      * @return string
      */
-    public function getOrganizationurl(): string
+    public function getOrganizationUrl(): string
     {
         return $this->organizationUrl;
     }

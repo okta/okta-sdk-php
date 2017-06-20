@@ -127,12 +127,12 @@ class GroupTest extends TestCase
         $profile->description = 'Test Description';
 
         static::$testable->setProfile($profile);
-        static::assertEquals($profile, static::$testable->getProfile());
+        static::assertInstanceOf(\Okta\Groups\GroupProfile::class, static::$testable->getProfile());
         static::assertEquals('Test', static::$testable->getProfile()->getName());
         static::assertEquals('Test Description', static::$testable->getProfile()->getDescription());
 
         static::$testable->profile = $profile;
-        static::assertEquals($profile, static::$testable->profile);
+        static::assertInstanceOf(\Okta\Groups\GroupProfile::class, static::$testable->profile);
         static::assertEquals('Test', static::$testable->profile->name);
         static::assertEquals('Test Description', static::$testable->profile->description);
 

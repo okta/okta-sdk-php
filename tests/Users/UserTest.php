@@ -226,11 +226,13 @@ class UserTest extends TestCase
         $credentials->testProp = 'Hello';
 
         static::$testable->setCredentials($credentials);
-        static::assertEquals($credentials, static::$testable->getCredentials());
+        static::assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->getCredentials());
         static::assertEquals('Hello', static::$testable->getCredentials()->testProp);
 
         static::$testable->credentials = $credentials;
-        static::assertEquals($credentials, static::$testable->getCredentials());
+        static::assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->credentials);
+        static::assertEquals('Hello', static::$testable->credentials->testProp);
+
     }
 
 
@@ -243,11 +245,12 @@ class UserTest extends TestCase
         $profile->firstName = 'Test';
 
         static::$testable->setProfile($profile);
-        static::assertEquals($profile, static::$testable->getProfile());
+        static::assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->getProfile());
         static::assertEquals('Test', static::$testable->getProfile()->getFirstName());
 
         static::$testable->profile = $profile;
-        static::assertEquals($profile, static::$testable->getProfile());
+        static::assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->profile);
+        static::assertEquals('Test', static::$testable->profile->firstName);
     }
 
 

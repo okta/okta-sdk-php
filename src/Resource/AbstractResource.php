@@ -93,7 +93,6 @@ abstract class AbstractResource
     public function setProperties(\stdClass $properties = null): self
     {
         $this->dirty = false;
-        $this->materialized = false;
 
         $this->properties = new \stdClass;
         $this->dirtyProperties = new \stdClass;
@@ -102,10 +101,6 @@ abstract class AbstractResource
             foreach ($properties as $key => $value) {
                 $this->properties->{$key} = $value;
             }
-
-            $propertiesArr = (array)$properties;
-            $hrefOnly = count($propertiesArr) == 1 && array_key_exists(self::ID, $propertiesArr);
-            $this->materialized = !$hrefOnly;
         }
 
         return $this;
@@ -120,14 +115,6 @@ abstract class AbstractResource
      */
     public function getProperty($name, $castTo = null)
     {
-        if (self::ID != $name) {
-            if (!$this->isNew() and !$this->isMaterialized()) {
-                $present = isset($this->dirtyProperties->$name);
-                if (!$present) {
-                    $this->materialize();
-                }
-            }
-        }
         $property = $this->readProperty($name);
 
         if (null !== $castTo) {
@@ -179,7 +166,7 @@ abstract class AbstractResource
     /**
      * Gets the current property names for the resource.
      *
-     * @param bool $retrieveDirtyProperties determines if you want to get all dirty properties as well.
+     * @param bool $retrieveDirtyProperties determines if you want to get only dirty properties with id.
      * @return array
      */
     public function getPropertyNames($retrieveDirtyProperties = false)
@@ -217,6 +204,17 @@ abstract class AbstractResource
     public function setOptions($options): self
     {
         $this->options = $options;
+        return $this;
+    }
+
+    /**
+     * Clears all options on the resource.
+     *
+     * @return self
+     */
+    public function clearOptions(): self
+    {
+        $this->options = null;
         return $this;
     }
 
@@ -286,16 +284,6 @@ abstract class AbstractResource
     }
 
     /**
-     * Has the resource been materialized or is it just the ID reference to the resource.
-     *
-     * @return mixed
-     */
-    protected function isMaterialized()
-    {
-        return $this->materialized;
-    }
-
-    /**
      * Is the resource dirty.
      *
      * Has the resource been updated since you retrieved it from the API.
@@ -315,22 +303,6 @@ abstract class AbstractResource
     public function getId()
     {
         return $this->getProperty(self::ID);
-    }
-
-    /**
-     * Calls getResource for the resource using the id to create a new instance.
-     *
-     * @return void
-     */
-    protected function materialize()
-    {
-        $className = get_class($this);
-        $resource = $this->dataStore->getResource($this->getId(), $className, $this->options);
-        $this->properties = $resource->properties;
-
-        //retain dirty properties:
-        $this->properties = (object) array_merge((array)$this->properties, (array)$this->dirtyProperties);
-        $this->materialized = true;
     }
 
     /**
@@ -392,8 +364,8 @@ abstract class AbstractResource
             return $this->{$method}($value);
         }
 
-
-        $this->properties->{$property} = $value;
+        $this->setProperty($property, $value);
+//        $this->properties->{$property} = $value;
         return $this;
     }
 
@@ -404,7 +376,7 @@ abstract class AbstractResource
      */
     public function __toString()
     {
-        $propertyNames = $this->getPropertyNames(true);
+        $propertyNames = $this->getPropertyNames();
 
         $properties = new \stdClass();
         foreach ($propertyNames as $name) {
