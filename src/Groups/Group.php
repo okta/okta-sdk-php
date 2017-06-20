@@ -155,25 +155,6 @@ class Group extends AbstractResource
         return $this->getDateProperty(self::LAST_MEMBERSHIP_UPDATED);
     }
     /**
-    * Sends a request to the getStats endpoint.
-    *
-    *
-    * @return mixed|null
-    */
-    public function getStats()
-    {
-        $uri = "/api/v1/groups/{$this->getId()}/stats";
-        $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        return $this
-                ->getDataStore()
-                ->executeRequest(
-                    'GET',
-                    $uri
-                );
-    }
-    /**
     * Sends a request to the removeUser endpoint.
     *
     *
@@ -187,10 +168,7 @@ class Group extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'DELETE',
-                    $uri
-                );
+                ->executeRequest('DELETE', $uri);
     }
     /**
     * Get the User object.

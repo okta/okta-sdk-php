@@ -267,10 +267,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the changeRecoveryQuestion endpoint.
@@ -286,10 +283,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the forgotPassword endpoint.
@@ -305,12 +299,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
-                );
+                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
     }
     /**
     * Get the Role object.
@@ -343,10 +332,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the removeRole endpoint.
@@ -362,10 +348,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'DELETE',
-                    $uri
-                );
+                ->executeRequest('DELETE', $uri);
     }
     /**
     * Get the Group object.
@@ -398,10 +381,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'DELETE',
-                    $uri
-                );
+                ->executeRequest('DELETE', $uri);
     }
     /**
     * Sends a request to the addGroupTargetToRole endpoint.
@@ -417,10 +397,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'PUT',
-                    $uri
-                );
+                ->executeRequest('PUT', $uri);
     }
     /**
     * Get the Group object.
@@ -453,12 +430,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri,
-                    '',
-                    ['query' => ['sendEmail' => $sendEmail]]
-                );
+                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
     }
     /**
     * Sends a request to the deactivate endpoint.
@@ -474,10 +446,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the suspend endpoint.
@@ -493,10 +462,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the unsuspend endpoint.
@@ -512,10 +478,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the resetPassword endpoint.
@@ -531,10 +494,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the expirePassword endpoint.
@@ -550,10 +510,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the unlock endpoint.
@@ -569,10 +526,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the resetFactors endpoint.
@@ -588,10 +542,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the addToGroup endpoint.
@@ -607,9 +558,6 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'PUT',
-                    $uri
-                );
+                ->executeRequest('PUT', $uri);
     }
 }

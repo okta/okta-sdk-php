@@ -91,10 +91,10 @@ class {{modelName}} extends AbstractResource
     public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
     {
         return $this->getResourceProperty(
-                        self::{{upperSnakeCase propertyName}},
-                        {{model}}::class,
-                        $options
-                    );
+            self::{{upperSnakeCase propertyName}},
+            {{model}}::class,
+            $options
+        );
     }
 
     {{#unless readOnly}}
@@ -107,9 +107,9 @@ class {{modelName}} extends AbstractResource
     public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
     {
         $this->setResourceProperty(
-                        self::{{upperSnakeCase propertyName}},
-                        ${{propertyName}}
-                    );
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
         
         return $this;
     }
@@ -151,13 +151,11 @@ class {{modelName}} extends AbstractResource
     {
         $uri = "{{{getMethodPath this}}}";
         $uri = $this->getDataStore()->buildUri(
-                    $this->getDataStore()->getOrganizationUrl() . $uri
-                );
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    {{{getMethodRequestParams this}}}{{path}}
-                );
+                ->executeRequest({{{getMethodRequestParams this}}}{{path}});
     }
     {{/if}}
     {{/each}}

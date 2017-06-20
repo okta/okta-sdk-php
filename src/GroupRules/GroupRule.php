@@ -177,10 +177,7 @@ class GroupRule extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the deactivate endpoint.
@@ -196,9 +193,6 @@ class GroupRule extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST',
-                    $uri
-                );
+                ->executeRequest('POST', $uri);
     }
 }

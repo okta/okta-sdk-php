@@ -169,23 +169,6 @@ class GroupTest extends TestCase
         $this->assertEquals($ts, static::$testable->getLastMembershipUpdated()->timestamp);
         $this->assertEquals($ts, static::$testable->lastMembershipUpdated->timestamp);
     }
-    
-    /** @test */
-    public function get_stats_makes_correct_request()
-    {
-        $httpClient = $this->createNewHttpClient();
-        $group = $this->createNewGroup();
-
-        $group->getStats();
-
-        $request = $httpClient->getRequests();
-
-        $this->assertEquals('GET', $request[0]->getMethod());
-        $this->assertEquals(
-            "/api/v1/groups/{$group->getId()}/stats",
-            $request[0]->getUri()->getPath()
-        );
-    }
 
     /** @test */
     public function remove_user_makes_correct_request()
