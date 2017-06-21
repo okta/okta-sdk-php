@@ -161,7 +161,7 @@ function getMethodRequestParams(method) {
   if (queryParams.length) {
     // If we have queryParams and no body, we should put something in it's place
     if (!params.bodyModel) {
-      methodParams.push('null');
+      methodParams.push(`''`);
     }
 
     const queryParamsStr = queryParams.join(', ');
