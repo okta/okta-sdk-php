@@ -34,6 +34,21 @@ class GroupRuleUserCondition extends AbstractResource
         return $this->getProperty(self::EXCLUDE);
     }
     /**
+    * Set the exclude.
+    *
+    * @param mixed $exclude The value to set.
+    * @return self
+    */
+    public function setExclude($exclude)
+    {
+        $this->setProperty(
+            self::EXCLUDE,
+            $exclude
+        );
+
+        return $this;
+    }
+    /**
      * Get the include.
      *
      * @return array
@@ -41,5 +56,20 @@ class GroupRuleUserCondition extends AbstractResource
     public function getInclude(): array
     {
         return $this->getProperty(self::INCLUDE);
+    }
+    /**
+    * Set the include.
+    *
+    * @param mixed $include The value to set.
+    * @return self
+    */
+    public function setInclude($include)
+    {
+        $this->setProperty(
+            self::INCLUDE,
+            $include
+        );
+
+        return $this;
     }
 }

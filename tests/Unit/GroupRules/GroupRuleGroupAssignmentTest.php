@@ -53,6 +53,17 @@ class GroupRuleGroupAssignmentTest extends TestCase
         $this->assertEquals(static::$properties->groupIds, static::$testable->groupIds);
         $this->assertTrue(is_array(static::$testable->groupIds));
     }
+
+    /** @test */
+    public function group_ids_is_settable()
+    {
+        static::$testable->setGroupIds(['123','456']);
+        static::assertEquals(['123','456'], static::$testable->getGroupIds());
+
+        static::$testable->groupIds = ['789'];
+        static::assertEquals(['789'], static::$testable->getGroupIds());
+    }
+
     
     
 }

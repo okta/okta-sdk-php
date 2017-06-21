@@ -32,4 +32,19 @@ class GroupRuleGroupAssignment extends AbstractResource
     {
         return $this->getProperty(self::GROUP_IDS);
     }
+    /**
+    * Set the groupIds.
+    *
+    * @param mixed $groupIds The value to set.
+    * @return self
+    */
+    public function setGroupIds($groupIds)
+    {
+        $this->setProperty(
+            self::GROUP_IDS,
+            $groupIds
+        );
+
+        return $this;
+    }
 }

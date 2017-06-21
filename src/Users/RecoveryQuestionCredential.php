@@ -34,6 +34,21 @@ class RecoveryQuestionCredential extends AbstractResource
         return $this->getProperty(self::ANSWER);
     }
     /**
+    * Set the answer.
+    *
+    * @param mixed $answer The value to set.
+    * @return self
+    */
+    public function setAnswer($answer)
+    {
+        $this->setProperty(
+            self::ANSWER,
+            $answer
+        );
+
+        return $this;
+    }
+    /**
      * Get the question.
      *
      * @return string
@@ -41,5 +56,20 @@ class RecoveryQuestionCredential extends AbstractResource
     public function getQuestion(): string
     {
         return $this->getProperty(self::QUESTION);
+    }
+    /**
+    * Set the question.
+    *
+    * @param mixed $question The value to set.
+    * @return self
+    */
+    public function setQuestion($question)
+    {
+        $this->setProperty(
+            self::QUESTION,
+            $question
+        );
+
+        return $this;
     }
 }

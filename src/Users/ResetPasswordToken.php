@@ -32,4 +32,19 @@ class ResetPasswordToken extends AbstractResource
     {
         return $this->getProperty(self::RESET_PASSWORD_URL);
     }
+    /**
+    * Set the resetPasswordUrl.
+    *
+    * @param mixed $resetPasswordUrl The value to set.
+    * @return self
+    */
+    public function setResetPasswordUrl($resetPasswordUrl)
+    {
+        $this->setProperty(
+            self::RESET_PASSWORD_URL,
+            $resetPasswordUrl
+        );
+
+        return $this;
+    }
 }

@@ -254,6 +254,154 @@ class UserTest extends TestCase
     }
 
 
+    /** @test */
+    public function get_app_links_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{"id":"0gabcd1234"}]'
+        ]);
+        $user = $this->createNewUser();
+        $user->getAppLinks();
+        $request = $httpClient->getRequests();
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/appLinks",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function get_roles_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{"id":"0gabcd1234"}]'
+        ]);
+        $user = $this->createNewUser();
+        $user->getRoles();
+        $request = $httpClient->getRequests();
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function add_role_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $role = new \Okta\Users\Role();
+        $role->setDescription('description');
+
+        $user->addRole($role);
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals(
+            '{"description":"description"}',
+            $request[0]->getBody()->getContents()
+        );
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function remove_role_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->removeRole('123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles/123",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function get_group_targets_for_role_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{
+    "id": "00g1emaKYZTWRYYRRTSK"}]'
+        ]);
+        $user = $this->createNewUser();
+
+        $user->getGroupTargetsForRole('123');
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles/123/targets/groups",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function remove_group_targets_from_role_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->removeGroupTargetFromRole('123', 'abc');
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles/123/targets/groups/abc",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function add_group_target_role_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->addGroupTargetToRole('123', 'abc');
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('PUT', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/roles/123/targets/groups/abc",
+            $request[0]->getUri()->getPath()
+        );
+    }
+
+    /** @test */
+    public function change_recovery_question_requests_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $recoveryQuestion = new \Okta\Users\RecoveryQuestionCredential();
+        $recoveryQuestion->setQuestion('Question');
+        $recoveryQuestion->setAnswer('Answer');
+
+        $userCredentials = new \Okta\Users\UserCredentials();
+        $userCredentials->setRecoveryQuestion($recoveryQuestion);
+        $user->changeRecoveryQuestion($userCredentials);
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/credentials/change_recovery_question",
+            $request[0]->getUri()->getPath()
+        );
+        $this->assertEquals(
+            '{"recovery_question":{"question":"Question","answer":"Answer"}}',
+            $request[0]->getBody()->getContents()
+        );
+    }
 
 
     /** @test */
@@ -279,7 +427,6 @@ class UserTest extends TestCase
     /** @test */
     public function activate_makes_request_to_correct_location()
     {
-        $this->markTestIncomplete('Issue with query');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -401,15 +548,24 @@ class UserTest extends TestCase
     /** @test */
     public function forgot_password_makes_request_to_correct_location()
     {
-        $this->markTestIncomplete('forgotPassword needs to accept sendPassword property.');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
+        $password = new \Okta\Users\PasswordCredential(
+            null,
+            json_decode('{"value": "TestPassword"}')
+        );
+        $userCredentialsProperties = json_decode('{"password": {}}');
+        $userCredentials = new \Okta\Users\UserCredentials(null, $userCredentialsProperties);
+        $userCredentials->setPassword($password);
 
-        $user->forgotPassword();
-        $user->forgotPassword(false);
+        $user->forgotPassword($userCredentials);
+        $user->forgotPassword($userCredentials,false);
 
         $request = $httpClient->getRequests();
-
+        $this->assertEquals(
+            '{"password":{"value":"TestPassword"}}',
+            $request[0]->getBody()->getContents()
+        );
         $this->assertEquals('POST', $request[0]->getMethod());
         $this->assertEquals(
             "/api/v1/users/{$user->getId()}/credentials/forgot_password",
@@ -575,7 +731,50 @@ class UserTest extends TestCase
                 $request[0]->getBody()->getContents()
         );
     }
-    
+
+    /** @test */
+    public function reset_password_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->resetPassword();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/lifecycle/reset_password",
+            $request[0]->getUri()->getPath()
+        );
+        $this->assertEquals(
+            '',
+            $request[0]->getUri()->getQuery()
+        );
+
+    }
+
+    /** @test */
+    public function expire_password_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->expirePassword();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/lifecycle/expire_password",
+            $request[0]->getUri()->getPath()
+        );
+        $this->assertEquals(
+            '',
+            $request[0]->getUri()->getQuery()
+        );
+
+    }
 
 
     /**

@@ -119,6 +119,23 @@ class {{modelName}} extends AbstractResource
     {
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
+    {{#unless readOnly}}
+    /**
+    * Set the {{propertyName}}.
+    *
+    * @param mixed ${{propertyName}} The value to set.
+    * @return self
+    */
+    public function set{{pascalCase propertyName}}(${{propertyName}})
+    {
+        $this->setProperty(
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
+
+        return $this;
+    }
+    {{/unless}}
     {{/if}}
     {{/each}}
     {{#each methods}}

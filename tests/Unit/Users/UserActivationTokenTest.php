@@ -54,10 +54,30 @@ class UserActivationTokenTest extends TestCase
     }
     
     /** @test */
+    public function activation_url_is_settable()
+    {
+        static::$testable->setActivationUrl('https://example.com');
+        static::assertEquals('https://example.com', static::$testable->getActivationUrl());
+    
+        static::$testable->activationUrl = 'https://okta.com';
+        static::assertEquals('https://okta.com', static::$testable->getActivationUrl());
+    }
+    
+    /** @test */
     public function activation_token_is_accessible()
     {
         $this->assertEquals(static::$properties->activationToken, static::$testable->getActivationToken());
         $this->assertEquals(static::$properties->activationToken, static::$testable->activationToken);
+    }
+    
+    /** @test */
+    public function activation_token_is_settable()
+    {
+        static::$testable->setActivationToken('abcd');
+        static::assertEquals('abcd', static::$testable->getActivationToken());
+    
+        static::$testable->activationToken = 'efgh';
+        static::assertEquals('efgh', static::$testable->getActivationToken());
     }
     
     

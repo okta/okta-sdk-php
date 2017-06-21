@@ -93,6 +93,17 @@ class RoleTest extends TestCase
     }
 
     /** @test */
+    public function description_is_settable()
+    {
+        static::$testable->setDescription('Description 1');
+        static::assertEquals('Description 1', static::$testable->getDescription());
+
+        static::$testable->description = 'Description 2';
+        static::assertEquals('Description 2', static::$testable->getDescription());
+    }
+
+
+    /** @test */
     public function last_updated_is_accessible()
     {
         $ts = Carbon::parse(static::$properties->lastUpdated)->timestamp;

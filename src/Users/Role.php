@@ -94,6 +94,21 @@ class Role extends AbstractResource
         return $this->getProperty(self::DESCRIPTION);
     }
     /**
+    * Set the description.
+    *
+    * @param mixed $description The value to set.
+    * @return self
+    */
+    public function setDescription($description)
+    {
+        $this->setProperty(
+            self::DESCRIPTION,
+            $description
+        );
+
+        return $this;
+    }
+    /**
      * Get the lastUpdated.
      *
      * @return \Carbon\Carbon|null

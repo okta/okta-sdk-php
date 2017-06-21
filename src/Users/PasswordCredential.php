@@ -32,4 +32,19 @@ class PasswordCredential extends AbstractResource
     {
         return $this->getProperty(self::VALUE);
     }
+    /**
+    * Set the value.
+    *
+    * @param mixed $value The value to set.
+    * @return self
+    */
+    public function setValue($value)
+    {
+        $this->setProperty(
+            self::VALUE,
+            $value
+        );
+
+        return $this;
+    }
 }

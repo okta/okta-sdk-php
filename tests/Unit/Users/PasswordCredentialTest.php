@@ -50,7 +50,6 @@ class PasswordCredentialTest extends TestCase
     /** @test */
     public function value_is_settable()
     {
-        $this->markTestIncomplete('setValue method does not get generated');
         static::$testable->setValue('789dev');
         static::assertEquals('789dev', static::$testable->getValue());
     

@@ -34,6 +34,21 @@ class UserActivationToken extends AbstractResource
         return $this->getProperty(self::ACTIVATION_URL);
     }
     /**
+    * Set the activationUrl.
+    *
+    * @param mixed $activationUrl The value to set.
+    * @return self
+    */
+    public function setActivationUrl($activationUrl)
+    {
+        $this->setProperty(
+            self::ACTIVATION_URL,
+            $activationUrl
+        );
+
+        return $this;
+    }
+    /**
      * Get the activationToken.
      *
      * @return string
@@ -41,5 +56,20 @@ class UserActivationToken extends AbstractResource
     public function getActivationToken(): string
     {
         return $this->getProperty(self::ACTIVATION_TOKEN);
+    }
+    /**
+    * Set the activationToken.
+    *
+    * @param mixed $activationToken The value to set.
+    * @return self
+    */
+    public function setActivationToken($activationToken)
+    {
+        $this->setProperty(
+            self::ACTIVATION_TOKEN,
+            $activationToken
+        );
+
+        return $this;
     }
 }

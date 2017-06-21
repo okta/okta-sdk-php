@@ -38,6 +38,21 @@ class UserProfile extends AbstractResource
         return $this->getProperty(self::EMAIL);
     }
     /**
+    * Set the email.
+    *
+    * @param mixed $email The value to set.
+    * @return self
+    */
+    public function setEmail($email)
+    {
+        $this->setProperty(
+            self::EMAIL,
+            $email
+        );
+
+        return $this;
+    }
+    /**
      * Get the login.
      *
      * @return string
@@ -45,6 +60,21 @@ class UserProfile extends AbstractResource
     public function getLogin(): string
     {
         return $this->getProperty(self::LOGIN);
+    }
+    /**
+    * Set the login.
+    *
+    * @param mixed $login The value to set.
+    * @return self
+    */
+    public function setLogin($login)
+    {
+        $this->setProperty(
+            self::LOGIN,
+            $login
+        );
+
+        return $this;
     }
     /**
      * Get the lastName.
@@ -56,6 +86,21 @@ class UserProfile extends AbstractResource
         return $this->getProperty(self::LAST_NAME);
     }
     /**
+    * Set the lastName.
+    *
+    * @param mixed $lastName The value to set.
+    * @return self
+    */
+    public function setLastName($lastName)
+    {
+        $this->setProperty(
+            self::LAST_NAME,
+            $lastName
+        );
+
+        return $this;
+    }
+    /**
      * Get the firstName.
      *
      * @return string
@@ -63,6 +108,21 @@ class UserProfile extends AbstractResource
     public function getFirstName(): string
     {
         return $this->getProperty(self::FIRST_NAME);
+    }
+    /**
+    * Set the firstName.
+    *
+    * @param mixed $firstName The value to set.
+    * @return self
+    */
+    public function setFirstName($firstName)
+    {
+        $this->setProperty(
+            self::FIRST_NAME,
+            $firstName
+        );
+
+        return $this;
     }
     /**
      * Get the mobilePhone.
@@ -74,6 +134,21 @@ class UserProfile extends AbstractResource
         return $this->getProperty(self::MOBILE_PHONE);
     }
     /**
+    * Set the mobilePhone.
+    *
+    * @param mixed $mobilePhone The value to set.
+    * @return self
+    */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->setProperty(
+            self::MOBILE_PHONE,
+            $mobilePhone
+        );
+
+        return $this;
+    }
+    /**
      * Get the secondEmail.
      *
      * @return string
@@ -81,5 +156,20 @@ class UserProfile extends AbstractResource
     public function getSecondEmail(): string
     {
         return $this->getProperty(self::SECOND_EMAIL);
+    }
+    /**
+    * Set the secondEmail.
+    *
+    * @param mixed $secondEmail The value to set.
+    * @return self
+    */
+    public function setSecondEmail($secondEmail)
+    {
+        $this->setProperty(
+            self::SECOND_EMAIL,
+            $secondEmail
+        );
+
+        return $this;
     }
 }

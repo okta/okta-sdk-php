@@ -34,6 +34,21 @@ class GroupRuleExpression extends AbstractResource
         return $this->getProperty(self::TYPE);
     }
     /**
+    * Set the type.
+    *
+    * @param mixed $type The value to set.
+    * @return self
+    */
+    public function setType($type)
+    {
+        $this->setProperty(
+            self::TYPE,
+            $type
+        );
+
+        return $this;
+    }
+    /**
      * Get the value.
      *
      * @return string
@@ -41,5 +56,20 @@ class GroupRuleExpression extends AbstractResource
     public function getValue(): string
     {
         return $this->getProperty(self::VALUE);
+    }
+    /**
+    * Set the value.
+    *
+    * @param mixed $value The value to set.
+    * @return self
+    */
+    public function setValue($value)
+    {
+        $this->setProperty(
+            self::VALUE,
+            $value
+        );
+
+        return $this;
     }
 }

@@ -34,6 +34,21 @@ class GroupProfile extends AbstractResource
         return $this->getProperty(self::NAME);
     }
     /**
+    * Set the name.
+    *
+    * @param mixed $name The value to set.
+    * @return self
+    */
+    public function setName($name)
+    {
+        $this->setProperty(
+            self::NAME,
+            $name
+        );
+
+        return $this;
+    }
+    /**
      * Get the description.
      *
      * @return string
@@ -41,5 +56,20 @@ class GroupProfile extends AbstractResource
     public function getDescription(): string
     {
         return $this->getProperty(self::DESCRIPTION);
+    }
+    /**
+    * Set the description.
+    *
+    * @param mixed $description The value to set.
+    * @return self
+    */
+    public function setDescription($description)
+    {
+        $this->setProperty(
+            self::DESCRIPTION,
+            $description
+        );
+
+        return $this;
     }
 }

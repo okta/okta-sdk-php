@@ -42,6 +42,21 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::ID);
     }
     /**
+    * Set the id.
+    *
+    * @param mixed $id The value to set.
+    * @return self
+    */
+    public function setId($id)
+    {
+        $this->setProperty(
+            self::ID,
+            $id
+        );
+
+        return $this;
+    }
+    /**
      * Get the label.
      *
      * @return string
@@ -49,6 +64,21 @@ class AppLink extends AbstractResource
     public function getLabel(): string
     {
         return $this->getProperty(self::LABEL);
+    }
+    /**
+    * Set the label.
+    *
+    * @param mixed $label The value to set.
+    * @return self
+    */
+    public function setLabel($label)
+    {
+        $this->setProperty(
+            self::LABEL,
+            $label
+        );
+
+        return $this;
     }
     /**
      * Get the hidden.
@@ -60,6 +90,21 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::HIDDEN);
     }
     /**
+    * Set the hidden.
+    *
+    * @param mixed $hidden The value to set.
+    * @return self
+    */
+    public function setHidden($hidden)
+    {
+        $this->setProperty(
+            self::HIDDEN,
+            $hidden
+        );
+
+        return $this;
+    }
+    /**
      * Get the appName.
      *
      * @return string
@@ -67,6 +112,21 @@ class AppLink extends AbstractResource
     public function getAppName(): string
     {
         return $this->getProperty(self::APP_NAME);
+    }
+    /**
+    * Set the appName.
+    *
+    * @param mixed $appName The value to set.
+    * @return self
+    */
+    public function setAppName($appName)
+    {
+        $this->setProperty(
+            self::APP_NAME,
+            $appName
+        );
+
+        return $this;
     }
     /**
      * Get the linkUrl.
@@ -78,6 +138,21 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::LINK_URL);
     }
     /**
+    * Set the linkUrl.
+    *
+    * @param mixed $linkUrl The value to set.
+    * @return self
+    */
+    public function setLinkUrl($linkUrl)
+    {
+        $this->setProperty(
+            self::LINK_URL,
+            $linkUrl
+        );
+
+        return $this;
+    }
+    /**
      * Get the logoUrl.
      *
      * @return string
@@ -85,6 +160,21 @@ class AppLink extends AbstractResource
     public function getLogoUrl(): string
     {
         return $this->getProperty(self::LOGO_URL);
+    }
+    /**
+    * Set the logoUrl.
+    *
+    * @param mixed $logoUrl The value to set.
+    * @return self
+    */
+    public function setLogoUrl($logoUrl)
+    {
+        $this->setProperty(
+            self::LOGO_URL,
+            $logoUrl
+        );
+
+        return $this;
     }
     /**
      * Get the sortOrder.
@@ -96,6 +186,21 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::SORT_ORDER);
     }
     /**
+    * Set the sortOrder.
+    *
+    * @param mixed $sortOrder The value to set.
+    * @return self
+    */
+    public function setSortOrder($sortOrder)
+    {
+        $this->setProperty(
+            self::SORT_ORDER,
+            $sortOrder
+        );
+
+        return $this;
+    }
+    /**
      * Get the appInstanceId.
      *
      * @return string
@@ -103,6 +208,21 @@ class AppLink extends AbstractResource
     public function getAppInstanceId(): string
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
+    }
+    /**
+    * Set the appInstanceId.
+    *
+    * @param mixed $appInstanceId The value to set.
+    * @return self
+    */
+    public function setAppInstanceId($appInstanceId)
+    {
+        $this->setProperty(
+            self::APP_INSTANCE_ID,
+            $appInstanceId
+        );
+
+        return $this;
     }
     /**
      * Get the appAssignmentId.
@@ -114,6 +234,21 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
     /**
+    * Set the appAssignmentId.
+    *
+    * @param mixed $appAssignmentId The value to set.
+    * @return self
+    */
+    public function setAppAssignmentId($appAssignmentId)
+    {
+        $this->setProperty(
+            self::APP_ASSIGNMENT_ID,
+            $appAssignmentId
+        );
+
+        return $this;
+    }
+    /**
      * Get the credentialsSetup.
      *
      * @return bool
@@ -121,5 +256,20 @@ class AppLink extends AbstractResource
     public function getCredentialsSetup(): bool
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
+    }
+    /**
+    * Set the credentialsSetup.
+    *
+    * @param mixed $credentialsSetup The value to set.
+    * @return self
+    */
+    public function setCredentialsSetup($credentialsSetup)
+    {
+        $this->setProperty(
+            self::CREDENTIALS_SETUP,
+            $credentialsSetup
+        );
+
+        return $this;
     }
 }

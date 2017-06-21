@@ -53,11 +53,33 @@ class GroupRuleExpressionTest extends TestCase
     }
 
     /** @test */
+    public function value_is_settable()
+    {
+        static::$testable->setValue('value1');
+        static::assertEquals('value1', static::$testable->getValue());
+
+        static::$testable->value = 'value2';
+        static::assertEquals('value2', static::$testable->getValue());
+    }
+
+
+    /** @test */
     public function type_is_accessible()
     {
         $this->assertEquals(static::$properties->type, static::$testable->getType());
         $this->assertEquals(static::$properties->type, static::$testable->type);
     }
+
+    /** @test */
+    public function type_is_settable()
+    {
+        static::$testable->setType('type1');
+        static::assertEquals('type1', static::$testable->getType());
+
+        static::$testable->type = 'type2';
+        static::assertEquals('type2', static::$testable->getType());
+    }
+
 
 
 }

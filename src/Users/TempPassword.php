@@ -32,4 +32,19 @@ class TempPassword extends AbstractResource
     {
         return $this->getProperty(self::TEMP_PASSWORD);
     }
+    /**
+    * Set the tempPassword.
+    *
+    * @param mixed $tempPassword The value to set.
+    * @return self
+    */
+    public function setTempPassword($tempPassword)
+    {
+        $this->setProperty(
+            self::TEMP_PASSWORD,
+            $tempPassword
+        );
+
+        return $this;
+    }
 }

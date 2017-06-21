@@ -51,7 +51,6 @@ class RecoveryQuestionCredentialTest extends TestCase
     /** @test */
     public function question_is_settable()
     {
-        $this->markTestIncomplete('setQuestion method does not generate');
         static::$testable->setQuestion('Some Question');
         static::assertEquals('Some Question', static::$testable->getQuestion());
 
@@ -69,7 +68,6 @@ class RecoveryQuestionCredentialTest extends TestCase
     /** @test */
     public function answer_is_settable()
     {
-        $this->markTestIncomplete('setAnswer method does not generate');
         static::$testable->setAnswer('Some Answer');
         static::assertEquals('Some Answer', static::$testable->getAnswer());
 

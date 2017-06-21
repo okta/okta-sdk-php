@@ -61,6 +61,21 @@ class GroupRule extends AbstractResource
         return $this->getProperty(self::ID);
     }
     /**
+    * Set the id.
+    *
+    * @param mixed $id The value to set.
+    * @return self
+    */
+    public function setId($id)
+    {
+        $this->setProperty(
+            self::ID,
+            $id
+        );
+
+        return $this;
+    }
+    /**
      * Get the name.
      *
      * @return string
@@ -70,6 +85,21 @@ class GroupRule extends AbstractResource
         return $this->getProperty(self::NAME);
     }
     /**
+    * Set the name.
+    *
+    * @param mixed $name The value to set.
+    * @return self
+    */
+    public function setName($name)
+    {
+        $this->setProperty(
+            self::NAME,
+            $name
+        );
+
+        return $this;
+    }
+    /**
      * Get the type.
      *
      * @return string
@@ -77,6 +107,21 @@ class GroupRule extends AbstractResource
     public function getType(): string
     {
         return $this->getProperty(self::TYPE);
+    }
+    /**
+    * Set the type.
+    *
+    * @param mixed $type The value to set.
+    * @return self
+    */
+    public function setType($type)
+    {
+        $this->setProperty(
+            self::TYPE,
+            $type
+        );
+
+        return $this;
     }
     /**
      * Get the status.
