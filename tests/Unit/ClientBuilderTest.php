@@ -144,7 +144,7 @@ class ClientBuilderTest extends TestCase
             ]
         ]);
 
-        $clientBuilder = new ClientBuilder($parser);
+        $clientBuilder = new ClientBuilder($parser, 'okta.yaml');
 
         $this->assertContains('Token: abc123', (string)$clientBuilder);
         $this->assertContains('OrgUrl: https://example.com', (string)$clientBuilder);
@@ -159,18 +159,8 @@ class ClientBuilderTest extends TestCase
     {
 
         $parser = $this->createMock(Parser::class);
-        $parser->expects($this->at(0))
-            ->method('parse')
-            ->will($this->returnValue([
-                'okta' => [
-                    'client' => [
-                        'token' => 'abc123',
-                        'orgUrl' => 'https://example.com'
-                    ]
-                ]
-            ]));
 
-        $parser->expects($this->at(1))
+        $parser->expects($this->at(0))
             ->method('parse')
             ->will($this->returnValue([
                 'okta' => [
