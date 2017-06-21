@@ -1,7 +1,7 @@
 {
-  "name": "okta-sdk-php",
+  "name": "okta-sdk-php-openapi",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.2.0",
   "scripts": {
     "generator": "okta-sdk-generator -t generator -o ../src"
   },
