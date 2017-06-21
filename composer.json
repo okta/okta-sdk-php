@@ -33,6 +33,14 @@
         }
     },
     "scripts": {
+        "post-install-cmd": [
+            "@generate-resources",
+            "@test",
+            "@fix-code"
+        ],
+        "post-update-cmd": [
+            "@rebuild-resources"
+        ],
         "test": "phpunit --colors=always",
         "test:unit": "phpunit --testsuite=Unit --colors=always",
         "test:integration": "phpunit --testsuite=Integration --colors=always",
