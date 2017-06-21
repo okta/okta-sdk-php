@@ -173,7 +173,6 @@ class GroupTest extends TestCase
     /** @test */
     public function remove_user_makes_correct_request()
     {
-        $this->markTestIncomplete('removeUser needs to accept userId in properties');
         $httpClient = $this->createNewHttpClient();
         $group = $this->createNewGroup();
 

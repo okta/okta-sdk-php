@@ -267,7 +267,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri);
+                ->executeRequest('POST', $uri, $changePasswordRequest);
     }
     /**
     * Sends a request to the changeRecoveryQuestion endpoint.
@@ -283,7 +283,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri);
+                ->executeRequest('POST', $uri, $userCredentials);
     }
     /**
     * Sends a request to the forgotPassword endpoint.
@@ -291,7 +291,7 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function forgotPassword(UserCredentials $userCredentials)
+    public function forgotPassword(UserCredentials $userCredentials, $sendEmail = true)
     {
         $uri = "/api/v1/users/{$this->getId()}/credentials/forgot_password";
         $uri = $this->getDataStore()->buildUri(
@@ -299,7 +299,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
+                ->executeRequest('POST', $uri, $userCredentials, ['query' => [$sendEmail => true]]);
     }
     /**
     * Get the Role object.
@@ -332,7 +332,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri);
+                ->executeRequest('POST', $uri, $role);
     }
     /**
     * Sends a request to the removeRole endpoint.
@@ -340,7 +340,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeRole()
+    public function removeRole($roleId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}";
         $uri = $this->getDataStore()->buildUri(
@@ -356,7 +356,7 @@ class User extends AbstractResource
     * @param array $options The options for the request.
     * @return Collection
     */
-    public function getGroupTargetsForRole(array $options = []): Collection
+    public function getGroupTargetsForRole($roleId, array $options = []): Collection
     {
         return $this
                 ->getDataStore()
@@ -373,7 +373,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeGroupTargetFromRole()
+    public function removeGroupTargetFromRole($roleId, $groupId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
@@ -389,7 +389,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addGroupTargetToRole()
+    public function addGroupTargetToRole($roleId, $groupId)
     {
         $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
@@ -422,7 +422,7 @@ class User extends AbstractResource
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
-    public function activate()
+    public function activate($sendEmail = true)
     {
         $uri = "/api/v1/users/{$this->getId()}/lifecycle/activate";
         $uri = $this->getDataStore()->buildUri(
@@ -430,7 +430,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
+                ->executeRequest('POST', $uri, '', ['query' => [$sendEmail => true]]);
     }
     /**
     * Sends a request to the deactivate endpoint.
@@ -550,7 +550,7 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addToGroup()
+    public function addToGroup($groupId)
     {
         $uri = "/api/v1/groups/{$groupId}/users/{$this->getId()}";
         $uri = $this->getDataStore()->buildUri(

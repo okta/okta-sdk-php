@@ -160,7 +160,7 @@ class Group extends AbstractResource
     *
     * @return mixed|null
     */
-    public function removeUser()
+    public function removeUser($userId)
     {
         $uri = "/api/v1/groups/{$this->getId()}/users/{$userId}";
         $uri = $this->getDataStore()->buildUri(

@@ -112,7 +112,8 @@ function getMethodParams(method) {
 
 function getCollectionMethodParams(method) {
   const params = getParams(method);
-  const methodParams = [].concat(params.requiredPathParams);
+  const pathParams = params.requiredPathParams.map(param => `$${param.name}`);
+  const methodParams = [].concat(pathParams);
   methodParams.push('array $options = []')
   return methodParams.join(', ');
 }
@@ -144,7 +145,8 @@ function getMethodParamsComment(method) {
 function getMethodRequestParams(method) {
   const params = getParams(method);
 
-  const httpMethod = method.operation.method.toUpperCase();
+  const path = method.operation.method.toUpperCase();
+  const httpMethod = `'${path}'`;
   const methodParams = [httpMethod, '$uri'];
 
   // Add a body argument if we have a body
@@ -160,7 +162,7 @@ function getMethodRequestParams(method) {
   if (queryParams.length) {
     // If we have queryParams and no body, we should put something in it's place
     if (!params.bodyModel) {
-      methodParams.push('');
+      methodParams.push(`''`);
     }
 
     const queryParamsStr = queryParams.join(', ');

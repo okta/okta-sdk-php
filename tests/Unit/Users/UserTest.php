@@ -279,8 +279,7 @@ class UserTest extends TestCase
     /** @test */
     public function activate_makes_request_to_correct_location()
     {
-        $this->markTestIncomplete('activate needs to accept sendEmail property');
-
+        $this->markTestIncomplete('Issue with query');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -402,7 +401,7 @@ class UserTest extends TestCase
     /** @test */
     public function forgot_password_makes_request_to_correct_location()
     {
-        $this->markTestIncomplete('addToGroup needs to accept sendPassword property.');
+        $this->markTestIncomplete('forgotPassword needs to accept sendPassword property.');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -534,7 +533,6 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_be_added_to_a_group()
     {
-        $this->markTestIncomplete('addToGroup needs to accept groupId property');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
@@ -552,7 +550,6 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_request_a_password_change()
     {
-        $this->markTestIncomplete('setValue does not exist on PasswordCredential');
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
