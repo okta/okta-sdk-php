@@ -299,7 +299,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, $userCredentials, ['query' => [$sendEmail => true]]);
+                ->executeRequest('POST', $uri, $userCredentials, ['query' => ['sendEmail' => $sendEmail]]);
     }
     /**
     * Get the Role object.
@@ -430,7 +430,7 @@ class User extends AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, '', ['query' => [$sendEmail => true]]);
+                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
     }
     /**
     * Sends a request to the deactivate endpoint.

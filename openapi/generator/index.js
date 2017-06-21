@@ -158,6 +158,7 @@ function getMethodRequestParams(method) {
 
   const queryParams = params.defaultQueryParams.map(param => `$${param.name} => ${param.default}`);
 
+
   // Add a query params argument if we have query params
   if (queryParams.length) {
     // If we have queryParams and no body, we should put something in it's place
@@ -165,8 +166,9 @@ function getMethodRequestParams(method) {
       methodParams.push(`''`);
     }
 
-    const queryParamsStr = queryParams.join(', ');
-    methodParams.push(`['query' => [${queryParamsStr}]]`);
+    const queryOptions = params.defaultQueryParams.map(param => `'${param.name}' => $${param.name}`);
+
+    methodParams.push(`['query' => [${queryOptions}]]`);
   }
 
   return methodParams.join(', ');
