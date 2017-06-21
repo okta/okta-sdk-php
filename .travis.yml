@@ -16,3 +16,10 @@ script:
 - travis_retry vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+env:
+  - TRAVIS_NODE_VERSION="8"
+
+before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
