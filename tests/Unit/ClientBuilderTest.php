@@ -26,20 +26,20 @@ class ClientBuilderTest extends TestCase
     {
         parent::setUpBeforeClass();
         file_put_contents(
-            posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml',
+            'okta.yaml',
             '{okta: { client: { token:"defaultToken", orgUrl:"https://default-org.okta.com"}}}');
     }
 
     public static function tearDownAfterClass()
     {
-        unlink(posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml');
+        unlink('okta.yaml');
         parent::tearDownAfterClass();
     }
 
     /** @test */
     public function it_returns_self_when_setting_the_token()
     {
-         $clientBuilder = new ClientBuilder();
+         $clientBuilder = new ClientBuilder(null, 'okta.yaml');
          $response = $clientBuilder->setToken('someToken');
 
          $this->assertInstanceOf(
@@ -52,7 +52,7 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_returns_self_when_setting_the_org_url()
     {
-        $clientBuilder = new ClientBuilder();
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $response = $clientBuilder->setOrganizationUrl('http://example.com');
 
         $this->assertInstanceOf(
@@ -65,7 +65,7 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_returns_self_when_setting_the_config_file_location()
     {
-        $clientBuilder = new ClientBuilder();
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $response = $clientBuilder->setConfigFileLocation(__FILE__);
 
         $this->assertInstanceOf(
@@ -80,14 +80,14 @@ class ClientBuilderTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        $clientBuilder = new ClientBuilder();
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $clientBuilder->setConfigFileLocation('/some/file/that/does/not/exist.yaml');
     }
 
     /** @test */
     public function it_returns_self_when_setting_the_http_client()
     {
-        $clientBuilder = new ClientBuilder();
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $response = $clientBuilder->setHttpClient(new \Http\Mock\Client());
 
         $this->assertInstanceOf(
@@ -100,7 +100,7 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_returns_self_when_setting_the_integration_user_agent()
     {
-        $clientBuilder = new ClientBuilder();
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $response = $clientBuilder->setIntegrationUserAgent('integration/1.0.0');
 
         $this->assertInstanceOf(
@@ -113,7 +113,7 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function a_client_instance_is_returned_when_building()
     {
-        $clientBuilder = (new ClientBuilder())
+        $clientBuilder = (new ClientBuilder(null, 'okta.yaml'))
             ->setToken('someTome')
             ->setOrganizationUrl('http://example.com')
             ->build();
