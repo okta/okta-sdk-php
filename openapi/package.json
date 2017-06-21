@@ -6,7 +6,7 @@
     "generator": "okta-sdk-generator -t generator -o ../src"
   },
   "devDependencies": {
-    "@okta/openapi": "0.2.0",
+    "@okta/openapi": "^0.2.0",
     "lodash": "^4.17.4",
     "lodash-inflection": "^1.5.0"
   },
