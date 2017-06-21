@@ -34,11 +34,13 @@
     },
     "scripts": {
         "post-install-cmd": [
+            "cd ./openapi && npm install",
             "@generate-resources",
             "@test",
             "@fix-code"
         ],
         "post-update-cmd": [
+            "cd ./openapi && npm install",
             "@rebuild-resources"
         ],
         "test": "phpunit --colors=always",
