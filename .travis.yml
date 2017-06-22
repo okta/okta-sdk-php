@@ -1,25 +1,34 @@
 language: php
-php:
-- 7.1
-- 7.0
-services:
-- redis-server
-- memcached
-before_script:
-- composer self-update
-- travis_retry composer install --prefer-dist --no-interaction
-- mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
-- mkdir -p ~/.okta
-- echo "extension = memcached.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-- echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-script:
-- travis_retry vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-after_success:
-- bash <(curl -s https://codecov.io/bash)
-env:
-  - TRAVIS_NODE_VERSION="8"
 
-before_install: if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
+env:
+  global:
+    - coverage=false
+    - setup=basic
 
 install:
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable --prefer-lowest; fi
+
+before_script:
+- mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
+- mkdir -p ~/.okta
+
+script:
+- vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
+
+after_success:
+  - if [[ $coverage = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+
+matrix:
+  include:
+    - php: 7.0
+      env: setup=lowest
+    - php: 7.0
+      env: setup=stable
+    - php: 7.1
+      env: setup=lowest
+    - php: 7.1
+      env:
+        - coverage=true
+        - setup=stable
