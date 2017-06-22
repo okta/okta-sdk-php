@@ -67,88 +67,35 @@ class AppLinkTest extends TestCase
         $this->assertEquals(static::$properties->label, static::$testable->getLabel());
         $this->assertEquals(static::$properties->label, static::$testable->label);
     }
-    
-    /** @test */
-    public function label_is_settable()
-    {
-        static::$testable->setLabel('label1');
-        static::assertEquals('label1', static::$testable->getLabel());
-    
-        static::$testable->label = 'label2';
-        static::assertEquals('label2', static::$testable->getLabel());
-    }
-    
+
     /** @test */
     public function hidden_is_accessible()
     {
         $this->assertEquals(static::$properties->hidden, static::$testable->getHidden());
         $this->assertEquals(static::$properties->hidden, static::$testable->hidden);
     }
-    
-    /** @test */
-    public function hidden_is_settable()
-    {
-        static::$testable->setHidden(true);
-        static::assertTrue(static::$testable->getHidden());
-    
-        static::$testable->hidden = false;
-        static::assertFalse(static::$testable->getHidden());
-    }
-    
-    
+
     /** @test */
     public function app_name_is_accessible()
     {
         $this->assertEquals(static::$properties->appName, static::$testable->getAppName());
         $this->assertEquals(static::$properties->appName, static::$testable->appName);
     }
-    
-    /** @test */
-    public function app_name_is_settable()
-    {
-        static::$testable->setAppName('appName1');
-        static::assertEquals('appName1', static::$testable->getAppName());
-    
-        static::$testable->appName = 'appName2';
-        static::assertEquals('appName2', static::$testable->getAppName());
-    }
-    
-    
+
     /** @test */
     public function link_url_is_accessible()
     {
         $this->assertEquals(static::$properties->linkUrl, static::$testable->getLinkUrl());
         $this->assertEquals(static::$properties->linkUrl, static::$testable->linkUrl);
     }
-    
-    /** @test */
-    public function link_url_is_settable()
-    {
-        static::$testable->setLinkUrl('https://example.com');
-        static::assertEquals('https://example.com', static::$testable->getLinkUrl());
-    
-        static::$testable->linkUrl = 'https://okta.com';
-        static::assertEquals('https://okta.com', static::$testable->getLinkUrl());
-    }
-    
-    
+
     /** @test */
     public function logo_url_is_accessible()
     {
         $this->assertEquals(static::$properties->logoUrl, static::$testable->getLogoUrl());
         $this->assertEquals(static::$properties->logoUrl, static::$testable->logoUrl);
     }
-    
-    /** @test */
-    public function logo_url_is_settable()
-    {
-        static::$testable->setLogoUrl('https://example.com');
-        static::assertEquals('https://example.com', static::$testable->getLogoUrl());
-    
-        static::$testable->logoUrl = 'https://okta.com';
-        static::assertEquals('https://okta.com', static::$testable->getLogoUrl());
-    }
-    
+
     /** @test */
     public function sort_order_is_accessible()
     {
@@ -157,51 +104,18 @@ class AppLinkTest extends TestCase
     }
 
     /** @test */
-    public function sort_order_is_settable()
-    {
-        static::$testable->setSortOrder(1);
-        static::assertEquals(1, static::$testable->getSortOrder());
-
-        static::$testable->sortOrder = 2;
-        static::assertEquals(2, static::$testable->getSortOrder());
-    }
-
-    
-    /** @test */
     public function app_instance_id_is_accessible()
     {
         $this->assertEquals(static::$properties->appInstanceId, static::$testable->getAppInstanceId());
         $this->assertEquals(static::$properties->appInstanceId, static::$testable->appInstanceId);
     }
-    
-    /** @test */
-    public function app_instance_id_is_settable()
-    {
-        static::$testable->setAppInstanceId('123');
-        static::assertEquals('123', static::$testable->getAppInstanceId());
-    
-        static::$testable->appInstanceId = 'abc';
-        static::assertEquals('abc', static::$testable->getAppInstanceId());
-    }
-    
-    
+
     /** @test */
     public function app_assignment_id_is_accessible()
     {
         $this->assertEquals(static::$properties->appAssignmentId, static::$testable->getAppAssignmentId());
         $this->assertEquals(static::$properties->appAssignmentId, static::$testable->appAssignmentId);
     }
-    
-    /** @test */
-    public function app_assignment_id_is_settable()
-    {
-        static::$testable->setAppAssignmentId('123');
-        static::assertEquals('123', static::$testable->getAppAssignmentId());
-    
-        static::$testable->appAssignmentId = 'abc';
-        static::assertEquals('abc', static::$testable->getAppAssignmentId());
-    }
-    
 
     /** @test */
     public function credentials_setup_is_accessible()
@@ -210,16 +124,4 @@ class AppLinkTest extends TestCase
         $this->assertEquals(static::$properties->credentialsSetup, static::$testable->credentialsSetup);
     }
 
-    /** @test */
-    public function credentials_setup_is_settable()
-    {
-        static::$testable->setCredentialsSetup(true);
-        static::assertTrue(static::$testable->getCredentialsSetup());
-
-        static::$testable->credentialsSetup = false;
-        static::assertFalse(static::$testable->getCredentialsSetup());
-    }
-
-    
-    
 }

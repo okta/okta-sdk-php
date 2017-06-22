@@ -51,21 +51,6 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::LABEL);
     }
     /**
-    * Set the label.
-    *
-    * @param mixed $label The value to set.
-    * @return self
-    */
-    public function setLabel($label)
-    {
-        $this->setProperty(
-            self::LABEL,
-            $label
-        );
-
-        return $this;
-    }
-    /**
      * Get the hidden.
      *
      * @return bool
@@ -73,21 +58,6 @@ class AppLink extends AbstractResource
     public function getHidden(): bool
     {
         return $this->getProperty(self::HIDDEN);
-    }
-    /**
-    * Set the hidden.
-    *
-    * @param mixed $hidden The value to set.
-    * @return self
-    */
-    public function setHidden($hidden)
-    {
-        $this->setProperty(
-            self::HIDDEN,
-            $hidden
-        );
-
-        return $this;
     }
     /**
      * Get the appName.
@@ -99,21 +69,6 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::APP_NAME);
     }
     /**
-    * Set the appName.
-    *
-    * @param mixed $appName The value to set.
-    * @return self
-    */
-    public function setAppName($appName)
-    {
-        $this->setProperty(
-            self::APP_NAME,
-            $appName
-        );
-
-        return $this;
-    }
-    /**
      * Get the linkUrl.
      *
      * @return string
@@ -121,21 +76,6 @@ class AppLink extends AbstractResource
     public function getLinkUrl(): string
     {
         return $this->getProperty(self::LINK_URL);
-    }
-    /**
-    * Set the linkUrl.
-    *
-    * @param mixed $linkUrl The value to set.
-    * @return self
-    */
-    public function setLinkUrl($linkUrl)
-    {
-        $this->setProperty(
-            self::LINK_URL,
-            $linkUrl
-        );
-
-        return $this;
     }
     /**
      * Get the logoUrl.
@@ -147,21 +87,6 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::LOGO_URL);
     }
     /**
-    * Set the logoUrl.
-    *
-    * @param mixed $logoUrl The value to set.
-    * @return self
-    */
-    public function setLogoUrl($logoUrl)
-    {
-        $this->setProperty(
-            self::LOGO_URL,
-            $logoUrl
-        );
-
-        return $this;
-    }
-    /**
      * Get the sortOrder.
      *
      * @return int
@@ -169,21 +94,6 @@ class AppLink extends AbstractResource
     public function getSortOrder(): int
     {
         return $this->getProperty(self::SORT_ORDER);
-    }
-    /**
-    * Set the sortOrder.
-    *
-    * @param mixed $sortOrder The value to set.
-    * @return self
-    */
-    public function setSortOrder($sortOrder)
-    {
-        $this->setProperty(
-            self::SORT_ORDER,
-            $sortOrder
-        );
-
-        return $this;
     }
     /**
      * Get the appInstanceId.
@@ -195,21 +105,6 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
     /**
-    * Set the appInstanceId.
-    *
-    * @param mixed $appInstanceId The value to set.
-    * @return self
-    */
-    public function setAppInstanceId($appInstanceId)
-    {
-        $this->setProperty(
-            self::APP_INSTANCE_ID,
-            $appInstanceId
-        );
-
-        return $this;
-    }
-    /**
      * Get the appAssignmentId.
      *
      * @return string
@@ -219,21 +114,6 @@ class AppLink extends AbstractResource
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
     /**
-    * Set the appAssignmentId.
-    *
-    * @param mixed $appAssignmentId The value to set.
-    * @return self
-    */
-    public function setAppAssignmentId($appAssignmentId)
-    {
-        $this->setProperty(
-            self::APP_ASSIGNMENT_ID,
-            $appAssignmentId
-        );
-
-        return $this;
-    }
-    /**
      * Get the credentialsSetup.
      *
      * @return bool
@@ -241,20 +121,5 @@ class AppLink extends AbstractResource
     public function getCredentialsSetup(): bool
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
-    }
-    /**
-    * Set the credentialsSetup.
-    *
-    * @param mixed $credentialsSetup The value to set.
-    * @return self
-    */
-    public function setCredentialsSetup($credentialsSetup)
-    {
-        $this->setProperty(
-            self::CREDENTIALS_SETUP,
-            $credentialsSetup
-        );
-
-        return $this;
     }
 }
