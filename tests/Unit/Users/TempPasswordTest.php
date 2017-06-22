@@ -47,17 +47,4 @@ class TempPasswordTest extends TestCase
         $this->assertEquals(static::$properties->tempPassword, static::$testable->getTempPassword());
         $this->assertEquals(static::$properties->tempPassword, static::$testable->tempPassword);
     }
-    
-    /** @test */
-    public function temp_password_is_settable()
-    {
-        static::$testable->setTempPassword('123');
-        static::assertEquals('123', static::$testable->getTempPassword());
-    
-        static::$testable->tempPassword = 'abc';
-        static::assertEquals('abc', static::$testable->getTempPassword());
-    }
-    
-    
-    
 }

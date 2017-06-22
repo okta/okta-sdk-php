@@ -47,16 +47,4 @@ class ForgotPasswordResponseTest extends TestCase
         $this->assertEquals(static::$properties->resetPasswordUrl, static::$testable->resetPasswordUrl);
     }
     
-    /** @test */
-    public function reset_password_url_is_settable()
-    {
-        static::$testable->setResetPasswordUrl('https://example.com');
-        static::assertEquals('https://example.com', static::$testable->getResetPasswordUrl());
-    
-        static::$testable->resetPasswordUrl = 'https://okta.com';
-        static::assertEquals('https://okta.com', static::$testable->getResetPasswordUrl());
-    }
-    
-    
-    
 }

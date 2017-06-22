@@ -62,16 +62,6 @@ class AppLinkTest extends TestCase
     }
     
     /** @test */
-    public function id_is_settable()
-    {
-        static::$testable->setId('123');
-        static::assertEquals('123', static::$testable->getId());
-    
-        static::$testable->id = '456';
-        static::assertEquals('456', static::$testable->getId());
-    }
-    
-    /** @test */
     public function label_is_accessible()
     {
         $this->assertEquals(static::$properties->label, static::$testable->getLabel());

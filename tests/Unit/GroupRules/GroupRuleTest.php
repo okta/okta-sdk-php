@@ -81,16 +81,6 @@ class GroupRuleTest extends TestCase
     }
 
     /** @test */
-    public function id_is_settable()
-    {
-        static::$testable->setId('123');
-        static::assertEquals('123', static::$testable->getId());
-
-        static::$testable->id = 'abc';
-        static::assertEquals('abc', static::$testable->getId());
-    }
-
-    /** @test */
     public function name_is_accessible()
     {
         $this->assertEquals(static::$properties->name, static::$testable->getName());

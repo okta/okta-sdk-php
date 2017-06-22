@@ -82,7 +82,7 @@ function getParams(method) {
   params.requiredPathParams = _.filter(method.operation.pathParams, param => !definedParams.includes(param.name));
 
   // Get all query params with defaults
-  const defaultQueryParams = method.operation.queryParams.filter(param => !!param.default);
+  const defaultQueryParams = method.operation.queryParams.filter(param => !!param.default || param.default == false);
   params.defaultQueryParams = _.sortBy(defaultQueryParams, 'name');
 
   // Get the body param with type

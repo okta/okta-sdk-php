@@ -761,6 +761,7 @@ class UserTest extends TestCase
         $user = $this->createNewUser();
 
         $user->expirePassword();
+        $user->expirePassword(true);
 
         $request = $httpClient->getRequests();
 
@@ -770,8 +771,13 @@ class UserTest extends TestCase
             $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            '',
+            'tempPassword=false',
             $request[0]->getUri()->getQuery()
+        );
+
+        $this->assertEquals(
+            'tempPassword=true',
+            $request[1]->getUri()->getQuery()
         );
 
     }
