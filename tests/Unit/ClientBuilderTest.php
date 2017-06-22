@@ -157,10 +157,26 @@ class ClientBuilderTest extends TestCase
     /** @test */
     public function it_lets_you_override_defaults_by_setting_config_file_location()
     {
+        $oldToken = getenv('OKTA_CLIENT_TOKEN');
+        $oldOrgUrl = getenv('OKTA_CLIENT_ORGURL');
+
+        putenv('OKTA_CLIENT_TOKEN');
+        putenv('OKTA_CLIENT_ORGURL');
 
         $parser = $this->createMock(Parser::class);
 
         $parser->expects($this->at(0))
+            ->method('parse')
+            ->will($this->returnValue([
+                'okta' => [
+                    'client' => [
+                        'token' => 'abc123',
+                        'orgUrl' => 'https://okta.com'
+                    ]
+                ]
+            ]));
+
+        $parser->expects($this->at(1))
             ->method('parse')
             ->will($this->returnValue([
                 'okta' => [
@@ -171,26 +187,30 @@ class ClientBuilderTest extends TestCase
                 ]
             ]));
 
+        $clientBuilderDefault = new ClientBuilder($parser, 'okta.yaml');
         $clientBuilder = new ClientBuilder($parser);
         $clientBuilder->setConfigFileLocation(__FILE__);
         $clientBuilder->build();
 
+        $this->assertContains('Token: abc123', (string)$clientBuilderDefault);
         $this->assertContains('Token: xyz789', (string)$clientBuilder);
         $this->assertContains('OrgUrl: https://okta.com', (string)$clientBuilder);
 
+        putenv("OKTA_CLIENT_TOKEN={$oldToken}");
+        putenv("OKTA_CLIENT_ORGURL={$oldOrgUrl}");
     }
 
     /** @test */
     public function it_builds_and_overrides_default_settings_with_items_from_setter()
     {
         $parser = $this->createMock(Parser::class);
-        $parser->expects($this->at(0))
-            ->method('parse')
+
+        $parser->method('parse')
             ->will($this->returnValue([
                 'okta' => [
                     'client' => [
                         'token' => 'abc123',
-                        'orgUrl' => 'https://example.com'
+                        'orgUrl' => 'https://okta.com'
                     ]
                 ]
             ]));
@@ -209,8 +229,7 @@ class ClientBuilderTest extends TestCase
     {
         $this->expectException(UnexpectedValueException::class);
         $parser = $this->createMock(Parser::class);
-        $parser->expects($this->at(0))
-            ->method('parse')
+        $parser->method('parse')
             ->will($this->returnValue([
                 'invalid' => [
                     'file' => [
@@ -219,7 +238,7 @@ class ClientBuilderTest extends TestCase
                 ]
             ]));
 
-        $clientBuilder = new ClientBuilder($parser);
+        $clientBuilder = new ClientBuilder($parser, __FILE__);
     }
 
 }
