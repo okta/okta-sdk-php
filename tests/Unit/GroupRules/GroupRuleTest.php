@@ -152,7 +152,6 @@ class GroupRuleTest extends TestCase
         $this->assertEquals($groupRuleAction, $localTestable);
     }
 
-
     /** @test */
     public function created_is_accessible()
     {
