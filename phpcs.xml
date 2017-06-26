@@ -9,11 +9,18 @@
     <exclude-pattern>*/docs/*</exclude-pattern>
     <exclude-pattern>*/openapi/*</exclude-pattern>
 
-    <rule ref="PSR2"/>
+    <rule ref="PSR2">
+        <rule ref="Generic.Files.LineLength">
+            <properties>
+                <property name="lineLimit" value="0"/>
+            </properties>
+        </rule>
+    </rule>
     <rule ref="Generic.Commenting.Fixme"/>
     <rule ref="Generic.Commenting.Todo"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
     <rule ref="Generic.PHP.ForbiddenFunctions"/>
+
 
 
 </ruleset>

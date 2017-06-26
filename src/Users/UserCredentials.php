@@ -25,7 +25,6 @@ class UserCredentials extends AbstractResource
     const PROVIDER = 'provider';
     const RECOVERY_QUESTION = 'recovery_question';
 
-
     /**
      * Get the password.
      *
@@ -34,10 +33,10 @@ class UserCredentials extends AbstractResource
     public function getPassword(array $options = []): PasswordCredential
     {
         return $this->getResourceProperty(
-                        self::PASSWORD,
-                        PasswordCredential::class,
-                        $options
-                    );
+            self::PASSWORD,
+            PasswordCredential::class,
+            $options
+        );
     }
 
     /**
@@ -49,28 +48,41 @@ class UserCredentials extends AbstractResource
     public function setPassword(PasswordCredential $password)
     {
         $this->setResourceProperty(
-                        self::PASSWORD,
-                        $password
-                    );
+            self::PASSWORD,
+            $password
+        );
         
         return $this;
     }
-    
     /**
      * Get the provider.
      *
-     * @return AuthProvider
+     * @return AuthenticationProvider
      */
-    public function getProvider(array $options = []): AuthProvider
+    public function getProvider(array $options = []): AuthenticationProvider
     {
         return $this->getResourceProperty(
-                        self::PROVIDER,
-                        AuthProvider::class,
-                        $options
-                    );
+            self::PROVIDER,
+            AuthenticationProvider::class,
+            $options
+        );
     }
 
-    
+    /**
+     * Set the provider.
+     *
+     * @param AuthenticationProvider $provider The AuthenticationProvider instance.
+     * @return self
+     */
+    public function setProvider(AuthenticationProvider $provider)
+    {
+        $this->setResourceProperty(
+            self::PROVIDER,
+            $provider
+        );
+        
+        return $this;
+    }
     /**
      * Get the recovery_question.
      *
@@ -79,10 +91,10 @@ class UserCredentials extends AbstractResource
     public function getRecoveryQuestion(array $options = []): RecoveryQuestionCredential
     {
         return $this->getResourceProperty(
-                        self::RECOVERY_QUESTION,
-                        RecoveryQuestionCredential::class,
-                        $options
-                    );
+            self::RECOVERY_QUESTION,
+            RecoveryQuestionCredential::class,
+            $options
+        );
     }
 
     /**
@@ -94,9 +106,9 @@ class UserCredentials extends AbstractResource
     public function setRecoveryQuestion(RecoveryQuestionCredential $recovery_question)
     {
         $this->setResourceProperty(
-                        self::RECOVERY_QUESTION,
-                        $recovery_question
-                    );
+            self::RECOVERY_QUESTION,
+            $recovery_question
+        );
         
         return $this;
     }

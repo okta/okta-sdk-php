@@ -47,7 +47,7 @@ class {{modelName}} extends AbstractResource
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
-                ->saveResource(
+                ->createResource(
                     '{{getCrudOperationPath this}}',
                     $this,
                     self::class
@@ -91,10 +91,10 @@ class {{modelName}} extends AbstractResource
     public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
     {
         return $this->getResourceProperty(
-                        self::{{upperSnakeCase propertyName}},
-                        {{model}}::class,
-                        $options
-                    );
+            self::{{upperSnakeCase propertyName}},
+            {{model}}::class,
+            $options
+        );
     }
 
     {{#unless readOnly}}
@@ -107,9 +107,9 @@ class {{modelName}} extends AbstractResource
     public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
     {
         $this->setResourceProperty(
-                        self::{{upperSnakeCase propertyName}},
-                        ${{propertyName}}
-                    );
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
         
         return $this;
     }
@@ -119,8 +119,24 @@ class {{modelName}} extends AbstractResource
     {
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
+    {{#unless readOnly}}
+    /**
+    * Set the {{propertyName}}.
+    *
+    * @param mixed ${{propertyName}} The value to set.
+    * @return self
+    */
+    public function set{{pascalCase propertyName}}(${{propertyName}})
+    {
+        $this->setProperty(
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
+
+        return $this;
+    }
+    {{/unless}}
     {{/if}}
-    
     {{/each}}
     {{#each methods}}
     {{#if operation.isArray}}
@@ -130,7 +146,7 @@ class {{modelName}} extends AbstractResource
     * @param array $options The options for the request.
     * @return Collection
     */
-    public function {{getMethodArrayName alias}}(array $options = []): Collection
+    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): Collection
     {
         return $this
                 ->getDataStore()
@@ -150,13 +166,13 @@ class {{modelName}} extends AbstractResource
     */
     public function {{camelCase alias}}({{{getMethodParams this}}})
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}{{{getMethodPath this}}}";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    {{{getMethodRequestParams this}}}{{path}}
-                );
+                ->executeRequest({{{getMethodRequestParams this}}}{{path}});
     }
     {{/if}}
     {{/each}}

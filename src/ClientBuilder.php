@@ -56,9 +56,12 @@ class ClientBuilder
      */
     private $defaultFile = '.okta/okta.yaml';
 
-    public function __construct($yamlParser = null)
+    public function __construct($yamlParser = null, $defaultFilePath = null)
     {
         $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
+        if (null != $defaultFilePath) {
+            $this->defaultFile = $defaultFilePath;
+        }
         $this->yamlParser = (null === $yamlParser) ? new Parser() : $yamlParser;
 
         // Read Base Configuration

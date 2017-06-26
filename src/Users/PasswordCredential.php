@@ -21,36 +21,30 @@ use Okta\Resource\AbstractResource;
 
 class PasswordCredential extends AbstractResource
 {
-    const HASH = 'hash';
-
+    const VALUE = 'value';
 
     /**
-     * Get the hash.
+     * Get the value.
      *
-     * @return HashedPassword
+     * @return string
      */
-    public function getHash(array $options = []): HashedPassword
+    public function getValue(): string
     {
-        return $this->getResourceProperty(
-                        self::HASH,
-                        HashedPassword::class,
-                        $options
-                    );
+        return $this->getProperty(self::VALUE);
     }
-
     /**
-     * Set the hash.
-     *
-     * @param HashedPassword $hash The HashedPassword instance.
-     * @return self
-     */
-    public function setHash(HashedPassword $hash)
+    * Set the value.
+    *
+    * @param mixed $value The value to set.
+    * @return self
+    */
+    public function setValue($value)
     {
-        $this->setResourceProperty(
-                        self::HASH,
-                        $hash
-                    );
-        
+        $this->setProperty(
+            self::VALUE,
+            $value
+        );
+
         return $this;
     }
 }

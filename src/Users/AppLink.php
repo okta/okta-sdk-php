@@ -32,7 +32,6 @@ class AppLink extends AbstractResource
     const APP_ASSIGNMENT_ID = 'appAssignmentId';
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
-
     /**
      * Get the id.
      *
@@ -42,7 +41,6 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::ID);
     }
-    
     /**
      * Get the label.
      *
@@ -52,17 +50,15 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::LABEL);
     }
-    
     /**
      * Get the hidden.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getHidden(): boolean
+    public function getHidden(): bool
     {
         return $this->getProperty(self::HIDDEN);
     }
-    
     /**
      * Get the appName.
      *
@@ -72,7 +68,6 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::APP_NAME);
     }
-    
     /**
      * Get the linkUrl.
      *
@@ -82,7 +77,6 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::LINK_URL);
     }
-    
     /**
      * Get the logoUrl.
      *
@@ -92,17 +86,15 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::LOGO_URL);
     }
-    
     /**
      * Get the sortOrder.
      *
-     * @return
+     * @return int
      */
-    public function getSortOrder(): undefined
+    public function getSortOrder(): int
     {
         return $this->getProperty(self::SORT_ORDER);
     }
-    
     /**
      * Get the appInstanceId.
      *
@@ -112,7 +104,6 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
-    
     /**
      * Get the appAssignmentId.
      *
@@ -122,13 +113,12 @@ class AppLink extends AbstractResource
     {
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
-    
     /**
      * Get the credentialsSetup.
      *
-     * @return boolean
+     * @return bool
      */
-    public function getCredentialsSetup(): boolean
+    public function getCredentialsSetup(): bool
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
     }

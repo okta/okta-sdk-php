@@ -17,7 +17,7 @@
 
 namespace Okta\Users;
 
-use Okta\Groups\UserGroup;
+use Okta\Groups\Group;
 use Okta\Resource\AbstractResource;
 
 class User extends AbstractResource
@@ -36,18 +36,16 @@ class User extends AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
-
     public function create()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
-                ->saveResource(
+                ->createResource(
                     '/users',
                     $this,
                     self::class
                 );
     }
-
 
     public function get($query)
     {
@@ -60,10 +58,6 @@ class User extends AbstractResource
                     );
     }
 
-
-
-
-
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -74,9 +68,6 @@ class User extends AbstractResource
                     self::class
                 );
     }
-
-
-
 
     public function delete()
     {
@@ -97,17 +88,15 @@ class User extends AbstractResource
     {
         return $this->getProperty(self::ID);
     }
-    
     /**
      * Get the _links.
      *
-     * @return array
+     * @return \stdClass
      */
-    public function getLinks(): array
+    public function getLinks(): \stdClass
     {
         return $this->getProperty(self::LINKS);
     }
-    
     /**
      * Get the status.
      *
@@ -117,7 +106,6 @@ class User extends AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
-    
     /**
      * Get the created.
      *
@@ -127,7 +115,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
-    
     /**
      * Get the profile.
      *
@@ -136,10 +123,10 @@ class User extends AbstractResource
     public function getProfile(array $options = []): UserProfile
     {
         return $this->getResourceProperty(
-                        self::PROFILE,
-                        UserProfile::class,
-                        $options
-                    );
+            self::PROFILE,
+            UserProfile::class,
+            $options
+        );
     }
 
     /**
@@ -151,23 +138,21 @@ class User extends AbstractResource
     public function setProfile(UserProfile $profile)
     {
         $this->setResourceProperty(
-                        self::PROFILE,
-                        $profile
-                    );
+            self::PROFILE,
+            $profile
+        );
         
         return $this;
     }
-    
     /**
      * Get the _embedded.
      *
-     * @return array
+     * @return \stdClass
      */
-    public function getEmbedded(): array
+    public function getEmbedded(): \stdClass
     {
         return $this->getProperty(self::EMBEDDED);
     }
-    
     /**
      * Get the activated.
      *
@@ -177,7 +162,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::ACTIVATED);
     }
-    
     /**
      * Get the lastLogin.
      *
@@ -187,7 +171,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::LAST_LOGIN);
     }
-    
     /**
      * Get the credentials.
      *
@@ -196,10 +179,10 @@ class User extends AbstractResource
     public function getCredentials(array $options = []): UserCredentials
     {
         return $this->getResourceProperty(
-                        self::CREDENTIALS,
-                        UserCredentials::class,
-                        $options
-                    );
+            self::CREDENTIALS,
+            UserCredentials::class,
+            $options
+        );
     }
 
     /**
@@ -211,13 +194,12 @@ class User extends AbstractResource
     public function setCredentials(UserCredentials $credentials)
     {
         $this->setResourceProperty(
-                        self::CREDENTIALS,
-                        $credentials
-                    );
+            self::CREDENTIALS,
+            $credentials
+        );
         
         return $this;
     }
-    
     /**
      * Get the lastUpdated.
      *
@@ -227,7 +209,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
-    
     /**
      * Get the statusChanged.
      *
@@ -237,7 +218,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::STATUS_CHANGED);
     }
-    
     /**
      * Get the passwordChanged.
      *
@@ -247,7 +227,6 @@ class User extends AbstractResource
     {
         return $this->getDateProperty(self::PASSWORD_CHANGED);
     }
-    
     /**
      * Get the transitioningToStatus.
      *
@@ -257,9 +236,171 @@ class User extends AbstractResource
     {
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
-    
     /**
-    * Get the UserGroup object.
+    * Get the AppLink object.
+    *
+    * @param array $options The options for the request.
+    * @return Collection
+    */
+    public function getAppLinks(array $options = []): Collection
+    {
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/appLinks",
+                    AppLink::class,
+                    Collection::class,
+                    $options
+                );
+    }
+    /**
+    * Sends a request to the changePassword endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function changePassword(ChangePasswordRequest $changePasswordRequest)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/credentials/change_password";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, $changePasswordRequest);
+    }
+    /**
+    * Sends a request to the changeRecoveryQuestion endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function changeRecoveryQuestion(UserCredentials $userCredentials)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/credentials/change_recovery_question";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, $userCredentials);
+    }
+    /**
+    * Sends a request to the forgotPassword endpoint.
+    *
+    * @param bool $sendEmail Sets the sendEmail flag.
+    * @return mixed|null
+    */
+    public function forgotPassword(UserCredentials $userCredentials, $sendEmail = true)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/credentials/forgot_password";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, $userCredentials, ['query' => ['sendEmail' => $sendEmail]]);
+    }
+    /**
+    * Get the Role object.
+    *
+    * @param array $options The options for the request.
+    * @return Collection
+    */
+    public function getRoles(array $options = []): Collection
+    {
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/roles",
+                    Role::class,
+                    Collection::class,
+                    $options
+                );
+    }
+    /**
+    * Sends a request to the addRole endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function addRole(Role $role)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/roles";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, $role);
+    }
+    /**
+    * Sends a request to the removeRole endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function removeRole($roleId)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('DELETE', $uri);
+    }
+    /**
+    * Get the Group object.
+    *
+    * @param array $options The options for the request.
+    * @return Collection
+    */
+    public function getGroupTargetsForRole($roleId, array $options = []): Collection
+    {
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups",
+                    Group::class,
+                    Collection::class,
+                    $options
+                );
+    }
+    /**
+    * Sends a request to the removeGroupTargetFromRole endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function removeGroupTargetFromRole($roleId, $groupId)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('DELETE', $uri);
+    }
+    /**
+    * Sends a request to the addGroupTargetToRole endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function addGroupTargetToRole($roleId, $groupId)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/roles/{$roleId}/targets/groups/{$groupId}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('PUT', $uri);
+    }
+    /**
+    * Get the Group object.
     *
     * @param array $options The options for the request.
     * @return Collection
@@ -270,7 +411,7 @@ class User extends AbstractResource
                 ->getDataStore()
                 ->getCollection(
                     "/api/v1/users/{$this->getId()}/groups",
-                    UserGroup::class,
+                    Group::class,
                     Collection::class,
                     $options
                 );
@@ -283,13 +424,13 @@ class User extends AbstractResource
     */
     public function activate($sendEmail = true)
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/activate";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/activate";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]
-                );
+                ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
     }
     /**
     * Sends a request to the deactivate endpoint.
@@ -299,13 +440,13 @@ class User extends AbstractResource
     */
     public function deactivate()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/deactivate";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/deactivate";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the suspend endpoint.
@@ -315,13 +456,13 @@ class User extends AbstractResource
     */
     public function suspend()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/suspend";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/suspend";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the unsuspend endpoint.
@@ -331,13 +472,45 @@ class User extends AbstractResource
     */
     public function unsuspend()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/unsuspend";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/unsuspend";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri
-                );
+                ->executeRequest('POST', $uri);
+    }
+    /**
+    * Sends a request to the resetPassword endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function resetPassword()
+    {
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/reset_password";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri);
+    }
+    /**
+    * Sends a request to the expirePassword endpoint.
+    *
+    *
+    * @return mixed|null
+    */
+    public function expirePassword($tempPassword = false)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/expire_password";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, '', ['query' => ['tempPassword' => $tempPassword]]);
     }
     /**
     * Sends a request to the unlock endpoint.
@@ -347,29 +520,13 @@ class User extends AbstractResource
     */
     public function unlock()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/unlock";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/unlock";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri
-                );
-    }
-    /**
-    * Sends a request to the forgotPassword endpoint.
-    *
-    * @param bool $sendEmail Sets the sendEmail flag.
-    * @return mixed|null
-    */
-    public function forgotPassword($sendEmail = true)
-    {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/forgot_password";
-        $uri = $this->getDataStore()->buildUri($uri);
-        return $this
-                ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the resetFactors endpoint.
@@ -379,13 +536,13 @@ class User extends AbstractResource
     */
     public function resetFactors()
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/users/{$this->getId()}/lifecycle/reset_factors";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/users/{$this->getId()}/lifecycle/reset_factors";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'POST', $uri
-                );
+                ->executeRequest('POST', $uri);
     }
     /**
     * Sends a request to the addToGroup endpoint.
@@ -393,14 +550,14 @@ class User extends AbstractResource
     *
     * @return mixed|null
     */
-    public function addToGroup()
+    public function addToGroup($groupId)
     {
-        $uri = "{$this->getDataStore()->getOrganizationUrl()}/api/v1/groups/{groupId}/users/{$this->getId()}";
-        $uri = $this->getDataStore()->buildUri($uri);
+        $uri = "/api/v1/groups/{$groupId}/users/{$this->getId()}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
         return $this
                 ->getDataStore()
-                ->executeRequest(
-                    'PUT', $uri
-                );
+                ->executeRequest('PUT', $uri);
     }
 }
