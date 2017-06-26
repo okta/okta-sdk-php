@@ -33,6 +33,9 @@ deploy:
   on:
     php: 7.1
     tags: true
+    branch:
+      - develop
+      - master
 
 matrix:
   include:
