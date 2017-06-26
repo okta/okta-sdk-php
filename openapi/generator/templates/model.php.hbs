@@ -1,0 +1,179 @@
+<?php
+/*******************************************************************************
+ * Copyright 2017 Okta, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ******************************************************************************/
+
+namespace Okta\\{{namespace}};
+
+{{#each namespacedModels as |namespacedModel|}}
+use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
+{{/each}}
+use Okta\Resource\AbstractResource;
+
+class {{modelName}} extends AbstractResource
+{
+    {{#each properties}}
+    const {{upperSnakeCase propertyName}} = '{{propertyName}}';
+    {{/each}}
+
+    {{#each crudOperations}}
+    {{#if (eq alias "read")}}
+    public function get($query)
+    {
+        return \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        self::class,
+                        '{{getCrudOperationPath this}}'
+                    );
+    }
+
+    {{/if}}
+    {{#if (eq alias "create")}}
+    public function create()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->createResource(
+                    '{{getCrudOperationPath this}}',
+                    $this,
+                    self::class
+                );
+    }
+
+    {{/if}}
+    {{#if (eq alias "update")}}
+    public function save()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    '{{getCrudOperationPath this}}',
+                    $this,
+                    self::class
+                );
+    }
+
+    {{/if}}
+    {{#if (eq alias "delete")}}
+    public function delete()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->deleteResource(
+                    '{{getCrudOperationPath this}}',
+                    $this
+                );
+    }
+
+    {{/if}}
+    {{/each}}
+    {{#each properties}}
+    /**
+     * Get the {{propertyName}}.
+     *
+     * @return {{getType this}}
+     */
+    {{#if isObject}}
+    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
+    {
+        return $this->getResourceProperty(
+            self::{{upperSnakeCase propertyName}},
+            {{model}}::class,
+            $options
+        );
+    }
+
+    {{#unless readOnly}}
+    /**
+     * Set the {{propertyName}}.
+     *
+     * @param {{model}} ${{propertyName}} The {{model}} instance.
+     * @return self
+     */
+    public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
+    {
+        $this->setResourceProperty(
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
+        
+        return $this;
+    }
+    {{/unless}}
+    {{else}}
+    public function get{{pascalCase propertyName}}(){{getSafeType this}}
+    {
+        return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
+    }
+    {{#unless readOnly}}
+    /**
+    * Set the {{propertyName}}.
+    *
+    * @param mixed ${{propertyName}} The value to set.
+    * @return self
+    */
+    public function set{{pascalCase propertyName}}(${{propertyName}})
+    {
+        $this->setProperty(
+            self::{{upperSnakeCase propertyName}},
+            ${{propertyName}}
+        );
+
+        return $this;
+    }
+    {{/unless}}
+    {{/if}}
+    {{/each}}
+    {{#each methods}}
+    {{#if operation.isArray}}
+    /**
+    * Get the {{operation.responseModel}} object.
+    *
+    * @param array $options The options for the request.
+    * @return Collection
+    */
+    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): Collection
+    {
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "{{{getMethodPath this}}}",
+                    {{operation.responseModel}}::class,
+                    Collection::class,
+                    $options
+                );
+    }
+    {{else}}
+    /**
+    * Sends a request to the {{camelCase alias}} endpoint.
+    *
+    {{getMethodParamsComment this}}
+    * @return mixed|null
+    */
+    public function {{camelCase alias}}({{{getMethodParams this}}})
+    {
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest({{{getMethodRequestParams this}}}{{path}});
+    }
+    {{/if}}
+    {{/each}}
+}
