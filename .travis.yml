@@ -20,9 +20,9 @@ script:
 
 after_success:
   - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
-  - if [[ $DEPLOY_DOCS ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
-  - if [[ $DEPLOY_DOCS ]]; then chmod +x ./scripts/prepare-docs.sh; fi
-  - if [[ $DEPLOY_DOCS ]]; then ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then chmod +x ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then ./scripts/prepare-docs.sh; fi
 
 deploy:
   - provider: pages
