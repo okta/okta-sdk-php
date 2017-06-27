@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 curl -I http://get.sensiolabs.org/sami.phar
-git clone https://${{GH_REPO}} full
+git clone https://github.com/${{TRAVIS_REPO_SLUG}}.git full
 cd full
 git checkout ${TRAVIS_TAG}
 php ../sami.phar update sami.php
