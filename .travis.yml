@@ -25,18 +25,24 @@ after_success:
   - if [[ $DEPLOY_DOCS ]]; then ./scripts/prepare-docs.sh; fi
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: full/build/gh-pages
-  email: deploy-php@okta.com
-  name: PHP Deployment Bot
-  on:
-    php: 7.1
-    tags: true
-    branch:
-      - develop
-      - master
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: full/build/gh-pages
+    email: deploy-php@okta.com
+    name: PHP Deployment Bot
+    on:
+      php: 7.1
+      tags: true
+  - provider: pages
+      skip_cleanup: true
+      github_token: $GITHUB_TOKEN
+      local_dir: full/build/gh-pages
+      email: deploy-php@okta.com
+      name: PHP Deployment Bot
+      on:
+        php: 7.1
+        branch: develop
 
 matrix:
   include:
