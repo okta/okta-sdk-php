@@ -33,6 +33,7 @@ deploy:
     name: PHP Deployment Bot
     on:
       php: 7.1
+      condition: $DEPLOY_DOCS = true
       tags: true
   - provider: pages
     skip_cleanup: true
@@ -42,6 +43,7 @@ deploy:
     name: PHP Deployment Bot
     on:
       php: 7.1
+      condition: $DEPLOY_DOCS = true
       branch: develop
 
 matrix:
