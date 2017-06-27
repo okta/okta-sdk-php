@@ -20,23 +20,31 @@ script:
 
 after_success:
   - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
-  - if [[ $DEPLOY_DOCS ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
-  - if [[ $DEPLOY_DOCS ]]; then chmod +x ./scripts/prepare-docs.sh; fi
-  - if [[ $DEPLOY_DOCS ]]; then ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then chmod +x ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS = 'true' ]]; then ./scripts/prepare-docs.sh; fi
 
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN
-  local_dir: full/build/gh-pages
-  email: deploy-php@okta.com
-  name: PHP Deployment Bot
-  on:
-    php: 7.1
-    tags: true
-    branch:
-      - develop
-      - master
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: full/build/gh-pages
+    email: deploy-php@okta.com
+    name: PHP Deployment Bot
+    on:
+      php: 7.1
+      condition: $DEPLOY_DOCS = true
+      tags: true
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: full/build/gh-pages
+    email: deploy-php@okta.com
+    name: PHP Deployment Bot
+    on:
+      php: 7.1
+      condition: $DEPLOY_DOCS = true
+      branch: develop
 
 matrix:
   include:
