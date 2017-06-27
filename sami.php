@@ -21,7 +21,7 @@ $versions = GitVersionCollection::create($dir)
 return new Sami($iterator, [
     'title'             => 'Okta PHP SDK',
     'versions'          => $versions,
-    'build_dir'         => __DIR__ . '/%version%',
-    'cache_dir'         => __DIR__ . '/doc_cache/%version%',
+    'build_dir'         => __DIR__ . '/build/docs/%version%',
+    'cache_dir'         => __DIR__ . '/build/doc_cache/%version%',
     'remote_repository' => new GitHubRemoteRepository('okta/okta-sdk-php', dirname($dir)),
 ]);
