@@ -2,33 +2,52 @@ language: php
 
 env:
   global:
-    - coverage=false
-    - setup=basic
+    - COVERAGE=false
+    - SETUP=basic
+    - DEPLOY_DOCS=false
 
 install:
-  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
-  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
-  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable --prefer-lowest; fi
+  - if [[ $SETUP = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+  - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
+  - if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable --prefer-lowest; fi
 
 before_script:
-- mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
-- mkdir -p ~/.okta
+  - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
+  - mkdir -p ~/.okta
 
 script:
-- vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
+  - vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
 
 after_success:
-  - if [[ $coverage = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [[ $DEPLOY_DOCS ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
+  - if [[ $DEPLOY_DOCS ]]; then chmod +x ./scripts/prepare-docs.sh; fi
+  - if [[ $DEPLOY_DOCS ]]; then ./scripts/prepare-docs.sh; fi
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: full/build/gh-pages
+  email: deploy-php@okta.com
+  name: PHP Deployment Bot
+  on:
+    php: 7.1
+    tags: true
+    branch:
+      - develop
+      - master
 
 matrix:
   include:
     - php: 7.0
-      env: setup=lowest
+      env: SETUP=lowest
     - php: 7.0
-      env: setup=stable
+      env: SETUP=stable
     - php: 7.1
-      env: setup=lowest
+      env: SETUP=lowest
     - php: 7.1
       env:
-        - coverage=true
-        - setup=stable
+        - COVERAGE=true
+        - SETUP=stable
+        - DEPLOY_DOCS=true
