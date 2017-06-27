@@ -28,7 +28,7 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: build/gh-pages
+  local_dir: full/build/gh-pages
   email: deploy-php@okta.com
   name: PHP Deployment Bot
   on:
