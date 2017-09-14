@@ -19,7 +19,7 @@ namespace Okta\Resource;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use Okta\Users\User;
+use Okta\Generated\Users\User;
 
 class AbstractCollection extends Collection
 {
