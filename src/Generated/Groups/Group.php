@@ -32,6 +32,7 @@ class Group extends AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
+        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -39,10 +40,11 @@ class Group extends AbstractResource
                 ->saveResource(
                     '/groups',
                     $this,
-                    self::class
+                    \Okta\Groups\Group::class
                 );
     }
 
+        
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -180,6 +182,7 @@ class Group extends AbstractResource
     */
     public function getUsers(array $options = []): \Okta\Users\Collection
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(

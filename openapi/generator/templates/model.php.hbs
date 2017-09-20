@@ -29,6 +29,7 @@ class {{modelName}} extends AbstractResource
     {{/each}}
 
     {{#each crudOperations}}
+        {{customLog this}}
     {{#if (eq alias "read")}}
     public function get($query)
     {
@@ -36,7 +37,7 @@ class {{modelName}} extends AbstractResource
                     ->getDataStore()
                     ->getResource(
                         $query,
-                        self::class,
+                        \\{{this.defaultReturnType}}::class,
                         '{{getCrudOperationPath this}}'
                     );
     }
@@ -50,7 +51,7 @@ class {{modelName}} extends AbstractResource
                 ->createResource(
                     '{{getCrudOperationPath this}}',
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
 
@@ -63,7 +64,7 @@ class {{modelName}} extends AbstractResource
                 ->saveResource(
                     '{{getCrudOperationPath this}}',
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
 
@@ -149,6 +150,7 @@ class {{modelName}} extends AbstractResource
     */
     public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): {{getCollectionName this}}
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(

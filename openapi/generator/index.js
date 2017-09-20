@@ -200,7 +200,6 @@ function getCrudMethodName(alias) {
 }
 
 function getClassNameForCollection(obj) {
-    console.log(obj);
   switch(obj.operation.operationId) {
       case 'listUserGroups':
       case 'listGroupTargetsForRole':
@@ -291,6 +290,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
 
     if (model.crud) {
       for (let crud of model.crud) {
+          crud.defaultReturnType = `Okta\\${model.namespace}\\${model.modelName}`
         model.crudOperations.push(crud);
       }
     }

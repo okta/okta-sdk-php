@@ -30,6 +30,7 @@ class GroupRule extends AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
+        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -37,10 +38,11 @@ class GroupRule extends AbstractResource
                 ->saveResource(
                     '/groups',
                     $this,
-                    self::class
+                    \Okta\GroupRules\GroupRule::class
                 );
     }
 
+        
     public function delete()
     {
         return \Okta\Client::getInstance()

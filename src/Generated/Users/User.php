@@ -36,6 +36,7 @@ class User extends AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
+        
     public function create()
     {
         return \Okta\Client::getInstance()
@@ -43,21 +44,23 @@ class User extends AbstractResource
                 ->createResource(
                     '/users',
                     $this,
-                    self::class
+                    \Okta\Users\User::class
                 );
     }
 
+        
     public function get($query)
     {
         return \Okta\Client::getInstance()
                     ->getDataStore()
                     ->getResource(
                         $query,
-                        self::class,
+                        \Okta\Users\User::class,
                         '/users'
                     );
     }
 
+        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -65,10 +68,11 @@ class User extends AbstractResource
                 ->saveResource(
                     '/users',
                     $this,
-                    self::class
+                    \Okta\Users\User::class
                 );
     }
 
+        
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -245,6 +249,7 @@ class User extends AbstractResource
     */
     public function getAppLinks(array $options = []): \Okta\Users\Collection
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
@@ -314,6 +319,7 @@ class User extends AbstractResource
     */
     public function getRoles(array $options = []): \Okta\Users\Collection
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
@@ -366,6 +372,7 @@ class User extends AbstractResource
     */
     public function getGroupTargetsForRole($roleId, array $options = []): \Okta\Groups\Collection
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
@@ -418,6 +425,7 @@ class User extends AbstractResource
     */
     public function getGroups(array $options = []): \Okta\Groups\Collection
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
