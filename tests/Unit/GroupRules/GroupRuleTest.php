@@ -187,15 +187,18 @@ class GroupRuleTest extends TestCase
         $httpClient = $this->createNewHttpClient();
         $groupRule = $this->createNewGroupRule();
 
-        $groupRule->save();
+        $response = $groupRule->save();
 
         $request = $httpClient->getRequests();
 
         $this->assertEquals('POST', $request[0]->getMethod());
+
         $this->assertEquals(
             "/api/v1/groups/{$groupRule->getId()}",
             $request[0]->getUri()->getPath()
         );
+
+        $this->assertInstanceOf(GroupRule::class, $response);
     }
 
     /** @test */

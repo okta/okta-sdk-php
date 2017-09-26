@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\\{{namespace}};
+namespace Okta\Generated\\{{namespace}};
 
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
@@ -29,6 +29,7 @@ class {{modelName}} extends AbstractResource
     {{/each}}
 
     {{#each crudOperations}}
+        {{customLog this}}
     {{#if (eq alias "read")}}
     public function get($query)
     {
@@ -36,7 +37,7 @@ class {{modelName}} extends AbstractResource
                     ->getDataStore()
                     ->getResource(
                         $query,
-                        self::class,
+                        \\{{this.defaultReturnType}}::class,
                         '{{getCrudOperationPath this}}'
                     );
     }
@@ -50,7 +51,7 @@ class {{modelName}} extends AbstractResource
                 ->createResource(
                     '{{getCrudOperationPath this}}',
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
 
@@ -63,7 +64,7 @@ class {{modelName}} extends AbstractResource
                 ->saveResource(
                     '{{getCrudOperationPath this}}',
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
 
@@ -85,14 +86,14 @@ class {{modelName}} extends AbstractResource
     /**
      * Get the {{propertyName}}.
      *
-     * @return {{getType this}}
+     * @return {{getType this baseClass}}
      */
     {{#if isObject}}
-    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
+    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this baseClass}}
     {
         return $this->getResourceProperty(
             self::{{upperSnakeCase propertyName}},
-            {{model}}::class,
+            \\{{baseClass}}\\{{model}}::class,
             $options
         );
     }
@@ -115,7 +116,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/unless}}
     {{else}}
-    public function get{{pascalCase propertyName}}(){{getSafeType this}}
+    public function get{{pascalCase propertyName}}(){{getSafeType this baseClass}}
     {
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
@@ -139,21 +140,23 @@ class {{modelName}} extends AbstractResource
     {{/if}}
     {{/each}}
     {{#each methods}}
+
     {{#if operation.isArray}}
     /**
     * Get the {{operation.responseModel}} object.
     *
     * @param array $options The options for the request.
-    * @return Collection
+    * @return {{getCollectionName this}}
     */
-    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): Collection
+    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): {{getCollectionName this}}
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
                     "{{{getMethodPath this}}}",
-                    {{operation.responseModel}}::class,
-                    Collection::class,
+                    {{getClassNameForCollection this}}::class,
+                    {{getCollectionName this}}::class,
                     $options
                 );
     }

@@ -3,12 +3,12 @@ _.mixin(require('lodash-inflection'));
 
 const php = module.exports;
 
-function getType(obj) {
+function getType(obj, model) {
     switch (obj.commonType) {
         case 'dateTime':
             return String.raw`\Carbon\Carbon|null`;
         case 'object':
-            return obj.model;
+            return `\\${model}\\${obj.model}`;
         case 'hash':
             return String.raw`\stdClass`;
         case 'boolean':
@@ -22,12 +22,12 @@ function getType(obj) {
     }
 }
 
-function getSafeType(obj) {
+function getSafeType(obj, model) {
     switch (obj.commonType) {
         case 'dateTime':
             return ``;
         case 'object':
-            return `: ${obj.model}`;
+            return `: \\${model}\\${obj.model}`;
         case 'hash':
             return String.raw`: \stdClass`;
         case 'boolean':
@@ -199,11 +199,43 @@ function getCrudMethodName(alias) {
   }
 }
 
+function getClassNameForCollection(obj) {
+  switch(obj.operation.operationId) {
+      case 'listUserGroups':
+      case 'listGroupTargetsForRole':
+        return '\\Okta\\Groups\\Group';
+      case 'listGroupUsers':
+          return '\\Okta\\Users\\User';
+      default:
+          return `\\${obj.baseClass}\\${obj.operation.responseModel}`;
+  }
+
+}
+
+function getCollectionName(obj) {
+  switch(obj.operation.operationId) {
+      case 'listUserGroups':
+      case 'listGroupTargetsForRole':
+          return '\\Okta\\Groups\\Collection';
+      case 'listGroupUsers':
+          return '\\Okta\\Users\\Collection';
+      default:
+          return `\\${obj.baseClass}\\Collection`;
+  }
+}
+
 function getCrudOperationPath(method) {
   let parts = _.split(method.operation.path, '/');
   return '/' + parts[3];
 }
 
+function pluralize(string) {
+    return _.pluralize(string);
+}
+
+function customLog(toLog) {
+  console.log(toLog);
+}
 php.process = ({ spec, operations, models, handlebars }) => {
   const templates = [];
 
@@ -219,6 +251,16 @@ php.process = ({ spec, operations, models, handlebars }) => {
       namespaces.push(model.namespace);
     }
 
+    for (let property of model.properties) {
+        property.baseClass = `Okta\\${model.namespace}`;
+    }
+
+    if (model.methods) {
+      for(let method of model.methods) {
+        method.baseClass = `Okta\\${model.namespace}`;
+      }
+    }
+
     // Build modelMap
     modelMap[model.modelName] = model;
   }
@@ -227,6 +269,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
 
     model.namespacedModels = [];
     model.crudOperations = [];
+
+
 
     if (model.methods) {
       for (let method of model.methods) {
@@ -246,9 +290,11 @@ php.process = ({ spec, operations, models, handlebars }) => {
 
     if (model.crud) {
       for (let crud of model.crud) {
+          crud.defaultReturnType = `Okta\\${model.namespace}\\${model.modelName}`
         model.crudOperations.push(crud);
       }
     }
+
 
       templates.push({
         src: 'templates/model.php.hbs',
@@ -277,7 +323,11 @@ php.process = ({ spec, operations, models, handlebars }) => {
     getOperationReturnType,
     getMethodParamsComment,
     getCrudMethodName,
-    getCrudOperationPath
+    getCrudOperationPath,
+    pluralize,
+    customLog,
+    getClassNameForCollection,
+    getCollectionName
   });
 
   return templates;

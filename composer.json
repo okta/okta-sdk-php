@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Okta\\": "src/"
+            "Okta\\": "src"
         }
     },
     "scripts": {
@@ -44,11 +44,7 @@
             "@fix-code"
         ],
         "delete-resources": [
-            "rm -rf ./src/Apps",
-            "rm -rf ./src/Groups",
-            "rm -rf ./src/GroupRules",
-            "rm -rf ./src/Shared",
-            "rm -rf ./src/Users"
+            "rm -rf ./src/Generated"
         ],
         "generate-resources": "cd ./openapi && npm run generator",
         "fix-code": "phpcbf ."
