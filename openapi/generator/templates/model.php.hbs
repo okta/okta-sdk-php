@@ -29,7 +29,6 @@ class {{modelName}} extends AbstractResource
     {{/each}}
 
     {{#each crudOperations}}
-        {{customLog this}}
     {{#if (eq alias "read")}}
     public function get($query)
     {
@@ -162,7 +161,7 @@ class {{modelName}} extends AbstractResource
     }
     {{else}}
     /**
-    * Sends a request to the {{camelCase alias}} endpoint.
+    * {{this.operation.description}}
     *
     {{getMethodParamsComment this}}
     * @return mixed|null

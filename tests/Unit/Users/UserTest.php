@@ -415,7 +415,7 @@ class UserTest extends TestCase
         $user->getGroups();
 
         $request = $httpClient->getRequests();
-
+        dump($request[0]->getBody()->getContents());
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
             "/api/v1/users/{$user->getId()}/groups",
@@ -781,6 +781,95 @@ class UserTest extends TestCase
         );
 
     }
+
+    /** @test */
+    public function adding_factor_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $factor = new\Okta\UserFactors\Factor;
+        $factor->setUserId($user->getId());
+
+        $user->addFactor($factor);
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('POST', $request[0]->getMethod());
+
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/factors",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertEquals(
+            (string)$factor,
+            $request[0]->getBody()->getContents()
+        );
+    }
+
+    /** @test */
+    public function get_supported_factors_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{"factorType":"question"}, {"factorType": "token:software:totp"}]'
+        ]);
+        $user = $this->createNewUser();
+
+        $supportedFactors = $user->getSupportedFactors();
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('GET', $request[0]->getMethod());
+
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/factors/catalog",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertCount(2, $supportedFactors);
+
+        $this->assertInstanceOf(
+            \Okta\UserFactors\Collection::class,
+            $supportedFactors
+        );
+
+        $this->assertInstanceOf(
+            \Okta\UserFactors\SecurityQuestionFactor::class,
+            $supportedFactors->first()
+        );
+
+        $this->assertInstanceOf(
+            \Okta\UserFactors\TotpFactor::class,
+            $supportedFactors[1]
+        );
+
+    }
+
+
+    /** @test */
+    public function getting_factors_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => '[{"id":"ufs2bysphxKODSZKWVCT","factorType":"question"}]'
+        ]);
+        $user = $this->createNewUser();
+
+        $factors = $user->getFactors();
+
+        $request = $httpClient->getRequests();
+        $this->assertEquals('GET', $request[0]->getMethod());
+
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/factors",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(
+            \Okta\UserFactors\Collection::class,
+            $factors
+        );
+    }
+
+
 
 
     /**

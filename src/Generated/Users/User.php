@@ -18,6 +18,7 @@
 namespace Okta\Generated\Users;
 
 use Okta\Groups\Group;
+use Okta\UserFactors\Factor;
 use Okta\Resource\AbstractResource;
 
 class User extends AbstractResource
@@ -36,7 +37,6 @@ class User extends AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
-        
     public function create()
     {
         return \Okta\Client::getInstance()
@@ -48,7 +48,6 @@ class User extends AbstractResource
                 );
     }
 
-        
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -60,7 +59,6 @@ class User extends AbstractResource
                     );
     }
 
-        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -72,7 +70,6 @@ class User extends AbstractResource
                 );
     }
 
-        
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -261,7 +258,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the changePassword endpoint.
+    * Changes a user&#x27;s password by validating the user&#x27;s current password.  This operation can only be performed on users in &#x60;STAGED&#x60;, &#x60;ACTIVE&#x60;, &#x60;PASSWORD_EXPIRED&#x60;, or &#x60;RECOVERY&#x60; status that have a valid [password credential](#password-object)
     *
     *
     * @return mixed|null
@@ -278,7 +275,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the changeRecoveryQuestion endpoint.
+    * Changes a user&#x27;s recovery question &amp; answer credential by validating the user&#x27;s current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** &#x60;status&#x60; that have a valid [password credential](#password-object)
     *
     *
     * @return mixed|null
@@ -295,7 +292,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the forgotPassword endpoint.
+    * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password.  The user will be required to validate their security question&#x27;s answer when visiting the reset link.  This operation can only be performed on users with a valid [recovery question credential](#recovery-question-object) and have an &#x60;ACTIVE&#x60; status.
     *
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
@@ -331,7 +328,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the addRole endpoint.
+    * Assigns a role to a user.
     *
     *
     * @return mixed|null
@@ -348,7 +345,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the removeRole endpoint.
+    * Unassigns a role from a user.
     *
     *
     * @return mixed|null
@@ -384,7 +381,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the removeGroupTargetFromRole endpoint.
+    * 
     *
     *
     * @return mixed|null
@@ -401,7 +398,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the addGroupTargetToRole endpoint.
+    * 
     *
     *
     * @return mixed|null
@@ -437,7 +434,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the activate endpoint.
+    * Activates a user.  This operation can only be performed on users with a &#x60;STAGED&#x60; status.  Activation of a user is an asynchronous operation.  The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;ACTIVE&#x60; during activation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;ACTIVE&#x60; when the activation process is complete.
     *
     * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
@@ -454,7 +451,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the deactivate endpoint.
+    * Deactivates a user.  This operation can only be performed on users that do not have a &#x60;DEPROVISIONED&#x60; status.  Deactivation of a user is an asynchronous operation.  The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;DEPROVISIONED&#x60; during deactivation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;DEPROVISIONED&#x60; when the deactivation process is complete.
     *
     *
     * @return mixed|null
@@ -471,7 +468,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the suspend endpoint.
+    * Suspends a user.  This operation can only be performed on users with an &#x60;ACTIVE&#x60; status.  The user will have a status of &#x60;SUSPENDED&#x60; when the process is complete.
     *
     *
     * @return mixed|null
@@ -488,7 +485,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the unsuspend endpoint.
+    * Unsuspends a user and returns them to the &#x60;ACTIVE&#x60; state.  This operation can only be performed on users that have a &#x60;SUSPENDED&#x60; status.
     *
     *
     * @return mixed|null
@@ -505,7 +502,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the resetPassword endpoint.
+    * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.
     *
     *
     * @return mixed|null
@@ -522,7 +519,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the expirePassword endpoint.
+    * This operation transitions the user to the status of &#x60;PASSWORD_EXPIRED&#x60; so that the user is required to change their password at their next login.
     *
     *
     * @return mixed|null
@@ -539,7 +536,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the unlock endpoint.
+    * Unlocks a user with a &#x60;LOCKED_OUT&#x60; status and returns them to &#x60;ACTIVE&#x60; status.  Users will be able to login with their current password.
     *
     *
     * @return mixed|null
@@ -556,7 +553,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the resetFactors endpoint.
+    * This operation resets all factors for the specified user. All MFA factor enrollments returned to the unenrolled state. The user&#x27;s status remains ACTIVE. This link is present only if the user is currently enrolled in one or more MFA factors.
     *
     *
     * @return mixed|null
@@ -573,7 +570,7 @@ class User extends AbstractResource
     }
 
     /**
-    * Sends a request to the addToGroup endpoint.
+    * Adds a [user](users.html#user-model) to a group with &#x60;OKTA_GROUP&#x60; type.
     *
     *
     * @return mixed|null
@@ -587,5 +584,60 @@ class User extends AbstractResource
         return $this
                 ->getDataStore()
                 ->executeRequest('PUT', $uri);
+    }
+
+    /**
+    * Enrolls a user with a supported [factor](#list-factors-to-enroll)
+    *
+    *
+    * @return mixed|null
+    */
+    public function addFactor(Factor $factor, $templateId = '', $updatePhone = false)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/factors";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('POST', $uri, $factor, ['query' => ['templateId' => $templateId,'updatePhone' => $updatePhone]]);
+    }
+
+    /**
+    * Get the Factor object.
+    *
+    * @param array $options The options for the request.
+    * @return \Okta\UserFactors\Collection
+    */
+    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
+    {
+
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/factors/catalog",
+                    \Okta\UserFactors\Factor::class,
+                    \Okta\UserFactors\Collection::class,
+                    $options
+                );
+    }
+
+    /**
+    * Get the Factor object.
+    *
+    * @param array $options The options for the request.
+    * @return \Okta\UserFactors\Collection
+    */
+    public function getFactors(array $options = []): \Okta\UserFactors\Collection
+    {
+
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/factors",
+                    \Okta\UserFactors\Factor::class,
+                    \Okta\UserFactors\Collection::class,
+                    $options
+                );
     }
 }

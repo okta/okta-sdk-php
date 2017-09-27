@@ -97,7 +97,7 @@ function getParams(method) {
 function getMethodParams(method) {
   const params = getParams(method);
   const pathParams = params.requiredPathParams.map(param => `$${param.name}`);
-  const queryParams = params.defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
+  const queryParams = params.defaultQueryParams.map(param => `$${param.name} = ` + (param.default !== '' ? `${param.default}` : `''`));
 
   let methodParams = [].concat(pathParams);
   if (params.bodyModel) {
@@ -206,6 +206,9 @@ function getClassNameForCollection(obj) {
         return '\\Okta\\Groups\\Group';
       case 'listGroupUsers':
           return '\\Okta\\Users\\User';
+      case 'listFactors':
+      case 'listSupportedFactors':
+          return '\\Okta\\UserFactors\\Factor';
       default:
           return `\\${obj.baseClass}\\${obj.operation.responseModel}`;
   }
@@ -219,6 +222,9 @@ function getCollectionName(obj) {
           return '\\Okta\\Groups\\Collection';
       case 'listGroupUsers':
           return '\\Okta\\Users\\Collection';
+      case 'listFactors':
+      case 'listSupportedFactors':
+          return '\\Okta\\UserFactors\\Collection';
       default:
           return `\\${obj.baseClass}\\Collection`;
   }
@@ -295,12 +301,20 @@ php.process = ({ spec, operations, models, handlebars }) => {
       }
     }
 
-
-      templates.push({
-        src: 'templates/model.php.hbs',
-        dest: `${model.namespace}/${model.modelName}.php`,
-        context: model
-      });
+    if(model.enum) {
+        model.enum = _.sortBy(model.enum);
+        templates.push({
+            src: 'templates/enum.php.hbs',
+            dest: `${model.namespace}/${model.modelName}.php`,
+            context: model
+        });
+    } else {
+        templates.push({
+            src: 'templates/model.php.hbs',
+            dest: `${model.namespace}/${model.modelName}.php`,
+            context: model
+        });
+    }
   }
 
   for (let namespace of _.uniqBy(namespaces)) {

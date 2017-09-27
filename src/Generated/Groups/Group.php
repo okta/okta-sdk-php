@@ -32,7 +32,6 @@ class Group extends AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
-        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -44,7 +43,6 @@ class Group extends AbstractResource
                 );
     }
 
-        
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -158,7 +156,7 @@ class Group extends AbstractResource
     }
 
     /**
-    * Sends a request to the removeUser endpoint.
+    * Removes a [user](users.html#user-model) from a group with &#x60;OKTA_GROUP&#x60; type.
     *
     *
     * @return mixed|null

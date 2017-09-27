@@ -30,7 +30,6 @@ class GroupRule extends AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
-        
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -42,7 +41,6 @@ class GroupRule extends AbstractResource
                 );
     }
 
-        
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -197,7 +195,7 @@ class GroupRule extends AbstractResource
     }
 
     /**
-    * Sends a request to the activate endpoint.
+    * Activates a specific group rule by id from your organization
     *
     *
     * @return mixed|null
@@ -214,7 +212,7 @@ class GroupRule extends AbstractResource
     }
 
     /**
-    * Sends a request to the deactivate endpoint.
+    * Deactivates a specific group rule by id from your organization
     *
     *
     * @return mixed|null

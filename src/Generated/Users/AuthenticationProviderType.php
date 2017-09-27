@@ -17,9 +17,14 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
+use Okta\Utilities\Enum;
 
-class AuthenticationProviderType extends AbstractResource
+class AuthenticationProviderType extends Enum
 {
-
+    const ACTIVE_DIRECTORY = 'ACTIVE_DIRECTORY';
+    const FEDERATION = 'FEDERATION';
+    const IMPORT = 'IMPORT';
+    const LDAP = 'LDAP';
+    const OKTA = 'OKTA';
+    const SOCIAL = 'SOCIAL';
 }

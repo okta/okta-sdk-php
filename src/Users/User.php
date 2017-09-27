@@ -17,7 +17,21 @@
 
 namespace Okta\Users;
 
+use Okta\UserFactors\Factor;
+
 class User extends \Okta\Generated\Users\User
 {
+
+    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
+    {
+        $supportedFactors = parent::getSupportedFactors($options);
+
+        return $supportedFactors->each(function(Factor $factor, $key) use ($supportedFactors) {
+
+            $supportedFactors[$key] = $factor->convertFromGenericFactor();
+
+        });
+
+    }
 
 }

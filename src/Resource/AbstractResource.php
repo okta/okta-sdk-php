@@ -384,4 +384,5 @@ abstract class AbstractResource
         }
         return json_encode($properties, true);
     }
+
 }

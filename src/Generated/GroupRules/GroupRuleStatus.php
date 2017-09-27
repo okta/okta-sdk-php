@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
+use Okta\Utilities\Enum;
 
-class GroupRuleStatus extends AbstractResource
+class GroupRuleStatus extends Enum
 {
-
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
+    const INVALID = 'INVALID';
 }
