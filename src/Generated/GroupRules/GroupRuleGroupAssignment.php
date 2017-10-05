@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRuleGroupAssignment extends AbstractResource
+class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const GROUP_IDS = 'groupIds';
 

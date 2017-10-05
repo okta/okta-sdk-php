@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class ResetPasswordToken extends AbstractResource
+class ResetPasswordToken extends \Okta\Resource\AbstractResource
 {
     const RESET_PASSWORD_URL = 'resetPasswordUrl';
 

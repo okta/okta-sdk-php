@@ -17,18 +17,17 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class WebFactor extends AbstractResource
+class WebFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
 
     /**
      * Get the profile.
      *
-     * @return \Okta\UserFactors\WebFactorProfile
+     * @return \Okta\Contracts\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\UserFactors\WebFactorProfile
+    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -43,7 +42,7 @@ class WebFactor extends AbstractResource
      * @param WebFactorProfile $profile The WebFactorProfile instance.
      * @return self
      */
-    public function setProfile(WebFactorProfile $profile)
+    public function setProfile(\Okta\Contracts\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

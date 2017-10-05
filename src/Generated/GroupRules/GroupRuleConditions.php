@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRuleConditions extends AbstractResource
+class GroupRuleConditions extends \Okta\Resource\AbstractResource
 {
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';

@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRule extends AbstractResource
+class GroupRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const NAME = 'name';
@@ -35,7 +34,7 @@ class GroupRule extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '/groups',
+                    "/groups",
                     $this,
                     \Okta\GroupRules\GroupRule::class
                 );
@@ -46,7 +45,7 @@ class GroupRule extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/groups',
+                    "/groups",
                     $this
                 );
     }

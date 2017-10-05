@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class VerifyFactorRequest extends AbstractResource
+class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 {
     const PASS_CODE = 'passCode';
     const NEXT_PASS_CODE = 'nextPassCode';

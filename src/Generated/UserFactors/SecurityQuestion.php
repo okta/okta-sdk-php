@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class SecurityQuestion extends AbstractResource
+class SecurityQuestion extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';
     const QUESTION = 'question';

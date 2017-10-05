@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class FactorProfile extends AbstractResource
+class FactorProfile extends \Okta\Resource\AbstractResource
 {
 
 }

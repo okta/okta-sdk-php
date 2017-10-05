@@ -18,9 +18,8 @@
 namespace Okta\Generated\Groups;
 
 use Okta\Users\User;
-use Okta\Resource\AbstractResource;
 
-class Group extends AbstractResource
+class Group extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';
@@ -37,7 +36,7 @@ class Group extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '/groups',
+                    "/groups",
                     $this,
                     \Okta\Groups\Group::class
                 );
@@ -48,7 +47,7 @@ class Group extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/groups',
+                    "/groups",
                     $this
                 );
     }

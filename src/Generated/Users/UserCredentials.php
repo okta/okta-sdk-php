@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class UserCredentials extends AbstractResource
+class UserCredentials extends \Okta\Resource\AbstractResource
 {
     const PASSWORD = 'password';
     const PROVIDER = 'provider';

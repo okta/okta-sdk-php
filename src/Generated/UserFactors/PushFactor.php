@@ -17,18 +17,17 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class PushFactor extends AbstractResource
+class PushFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
 
     /**
      * Get the profile.
      *
-     * @return \Okta\UserFactors\PushFactorProfile
+     * @return \Okta\Contracts\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\UserFactors\PushFactorProfile
+    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -43,7 +42,7 @@ class PushFactor extends AbstractResource
      * @param PushFactorProfile $profile The PushFactorProfile instance.
      * @return self
      */
-    public function setProfile(PushFactorProfile $profile)
+    public function setProfile(\Okta\Contracts\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

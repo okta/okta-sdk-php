@@ -17,18 +17,17 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class SecurityQuestionFactor extends AbstractResource
+class SecurityQuestionFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
 
     /**
      * Get the profile.
      *
-     * @return \Okta\UserFactors\SecurityQuestionFactorProfile
+     * @return \Okta\Contracts\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\UserFactors\SecurityQuestionFactorProfile
+    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -43,7 +42,7 @@ class SecurityQuestionFactor extends AbstractResource
      * @param SecurityQuestionFactorProfile $profile The SecurityQuestionFactorProfile instance.
      * @return self
      */
-    public function setProfile(SecurityQuestionFactorProfile $profile)
+    public function setProfile(\Okta\Contracts\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

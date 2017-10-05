@@ -17,18 +17,17 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class TotpFactor extends AbstractResource
+class TotpFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
 
     /**
      * Get the profile.
      *
-     * @return \Okta\UserFactors\TotpFactorProfile
+     * @return \Okta\Contracts\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\UserFactors\TotpFactorProfile
+    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -43,7 +42,7 @@ class TotpFactor extends AbstractResource
      * @param TotpFactorProfile $profile The TotpFactorProfile instance.
      * @return self
      */
-    public function setProfile(TotpFactorProfile $profile)
+    public function setProfile(\Okta\Contracts\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

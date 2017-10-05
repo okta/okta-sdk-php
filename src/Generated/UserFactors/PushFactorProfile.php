@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class PushFactorProfile extends AbstractResource
+class PushFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const NAME = 'name';
     const VERSION = 'version';

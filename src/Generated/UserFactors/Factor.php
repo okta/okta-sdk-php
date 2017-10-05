@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class Factor extends AbstractResource
+class Factor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const DEVICE = 'device';
@@ -33,23 +32,23 @@ class Factor extends AbstractResource
     const MFA_STATE_TOKEN_ID = 'mfaStateTokenId';
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
-    public function get($query)
+    public function get($userId, $factorId, $query)
     {
-        return \Okta\Client::getInstance()
+        $factor = \Okta\Client::getInstance()
                     ->getDataStore()
                     ->getResource(
                         $query,
                         \Okta\UserFactors\Factor::class,
-                        '/users'
+                        "/users/{$userId}/factors/{$factorId}"
                     );
+        return $factor->convertFromGenericFactor();
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/users',
+                    "/users",
                     $this
                 );
     }
@@ -158,9 +157,9 @@ class Factor extends AbstractResource
     /**
      * Get the profile.
      *
-     * @return \Okta\UserFactors\FactorProfile
+     * @return \Okta\Contracts\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\UserFactors\FactorProfile
+    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -175,7 +174,7 @@ class Factor extends AbstractResource
      * @param FactorProfile $profile The FactorProfile instance.
      * @return self
      */
-    public function setProfile(FactorProfile $profile)
+    public function setProfile(\Okta\Contracts\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

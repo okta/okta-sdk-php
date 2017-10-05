@@ -21,7 +21,7 @@ class FactorType extends \Okta\Generated\UserFactors\FactorType
 {
     public function mapToFactorType()
     {
-        switch($this->getValue()) {
+        switch ($this->getValue()) {
             case 'call':
                 return \Okta\UserFactors\CallFactor::class;
             case 'push':

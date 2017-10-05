@@ -19,9 +19,8 @@ namespace Okta\Generated\Users;
 
 use Okta\Groups\Group;
 use Okta\UserFactors\Factor;
-use Okta\Resource\AbstractResource;
 
-class User extends AbstractResource
+class User extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const LINKS = '_links';
@@ -42,7 +41,7 @@ class User extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->createResource(
-                    '/users',
+                    "/users",
                     $this,
                     \Okta\Users\User::class
                 );
@@ -55,16 +54,15 @@ class User extends AbstractResource
                     ->getResource(
                         $query,
                         \Okta\Users\User::class,
-                        '/users'
+                        "/users"
                     );
     }
-
     public function save()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '/users',
+                    "/users",
                     $this,
                     \Okta\Users\User::class
                 );
@@ -75,7 +73,7 @@ class User extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/users',
+                    "/users",
                     $this
                 );
     }

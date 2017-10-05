@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class AuthenticationProvider extends AbstractResource
+class AuthenticationProvider extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';
     const TYPE = 'type';

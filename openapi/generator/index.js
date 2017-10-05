@@ -8,7 +8,21 @@ function getType(obj, model) {
         case 'dateTime':
             return String.raw`\Carbon\Carbon|null`;
         case 'object':
-            return `\\${model}\\${obj.model}`;
+            switch (obj.model) {
+                case 'CallFactorProfile':
+                case 'EmailFactorProfile':
+                case 'HardwareFactorProfile':
+                case 'PushFactorProfile':
+                case 'SecurityQuestionFactorProfile':
+                case 'SmsFactorProfile':
+                case 'TokenFactorProfile':
+                case 'TotpFactorProfile':
+                case 'WebFactorProfile':
+                case 'FactorProfile':
+                    return '\\Okta\\Contracts\\FactorProfile';
+                default:
+                    return `\\${model}\\${obj.model}`;
+            }
         case 'hash':
             return String.raw`\stdClass`;
         case 'boolean':
@@ -27,7 +41,21 @@ function getSafeType(obj, model) {
         case 'dateTime':
             return ``;
         case 'object':
-            return `: \\${model}\\${obj.model}`;
+            switch (obj.model) {
+                case 'CallFactorProfile':
+                case 'EmailFactorProfile':
+                case 'HardwareFactorProfile':
+                case 'PushFactorProfile':
+                case 'SecurityQuestionFactorProfile':
+                case 'SmsFactorProfile':
+                case 'TokenFactorProfile':
+                case 'TotpFactorProfile':
+                case 'WebFactorProfile':
+                case 'FactorProfile':
+                    return ': \\Okta\\Contracts\\FactorProfile';
+                default:
+                    return `: \\${model}\\${obj.model}`;
+            }
         case 'hash':
             return String.raw`: \stdClass`;
         case 'boolean':
@@ -41,6 +69,66 @@ function getSafeType(obj, model) {
                 return `: ${obj.commonType}`;
             }
             return;
+    }
+}
+
+function getTypeHint(model) {
+    switch(model) {
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+        case 'FactorProfile':
+            return '\\Okta\\Contracts\\FactorProfile';
+        default:
+            return model;
+    }
+}
+
+function getExtends(modelName) {
+    switch (modelName) {
+        case 'CallFactor':
+        case 'EmailFactor':
+        case 'HardwareFactor':
+        case 'PushFactor':
+        case 'SecurityQuestionFactor':
+        case 'SmsFactor':
+        case 'TokenFactor':
+        case 'TotpFactor':
+        case 'WebFactor':
+            return '\\Okta\\UserFactors\\Factor';
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+            return '\\Okta\\UserFactors\\FactorProfile';
+        default:
+            return '\\Okta\\Resource\\AbstractResource';
+    }
+}
+
+function getInterfaces(modelName) {
+    switch (modelName) {
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+            return 'implements \\Okta\\Contracts\\FactorProfile';
     }
 }
 
@@ -232,6 +320,9 @@ function getCollectionName(obj) {
 
 function getCrudOperationPath(method) {
   let parts = _.split(method.operation.path, '/');
+  if(method.operation.operationId === 'getFactor') {
+      return '/' + parts[3] + '/{$userId}/' + parts[5] + '/{$factorId}';
+  }
   return '/' + parts[3];
 }
 
@@ -328,9 +419,12 @@ php.process = ({ spec, operations, models, handlebars }) => {
   handlebars.registerHelper({
     getType,
     getSafeType,
+    getTypeHint,
     getAccessMethodType,
     getMethodPath,
     getMethodParams,
+    getExtends,
+    getInterfaces,
     getCollectionMethodParams,
     getMethodRequestParams,
     getMethodArrayName,

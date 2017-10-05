@@ -415,7 +415,7 @@ class UserTest extends TestCase
         $user->getGroups();
 
         $request = $httpClient->getRequests();
-        dump($request[0]->getBody()->getContents());
+
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
             "/api/v1/users/{$user->getId()}/groups",

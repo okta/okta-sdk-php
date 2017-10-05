@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class CallFactorProfile extends AbstractResource
+class CallFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const PHONE_NUMBER = 'phoneNumber';
     const PHONE_EXTENSION = 'phoneExtension';

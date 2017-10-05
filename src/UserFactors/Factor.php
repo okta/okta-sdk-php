@@ -34,6 +34,5 @@ class Factor extends \Okta\Generated\UserFactors\Factor
         }
 
         return new $realFactor(null, $properties);
-
     }
 }

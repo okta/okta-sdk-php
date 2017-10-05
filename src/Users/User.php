@@ -26,12 +26,24 @@ class User extends \Okta\Generated\Users\User
     {
         $supportedFactors = parent::getSupportedFactors($options);
 
-        return $supportedFactors->each(function(Factor $factor, $key) use ($supportedFactors) {
+        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
 
             $supportedFactors[$key] = $factor->convertFromGenericFactor();
-
         });
-
     }
 
+    public function getFactors(array $options = []): \Okta\UserFactors\Collection
+    {
+        $supportedFactors = parent::getFactors($options);
+
+        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
+
+            $supportedFactors[$key] = $factor->convertFromGenericFactor();
+        });
+    }
+
+    public function getFactor($factorId)
+    {
+        return (new Factor())->get($this->getId(), $factorId, "");
+    }
 }

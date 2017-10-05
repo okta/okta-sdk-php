@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\UserFactors;
 
-use Okta\Resource\AbstractResource;
 
-class TokenFactorProfile extends AbstractResource
+class TokenFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const CREDENTIAL_ID = 'credentialId';
 
