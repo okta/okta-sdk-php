@@ -1,0 +1,44 @@
+{
+  "id": "emfnf3gSScB8xXoXK0g3",
+  "factorType": "email",
+  "provider": "OKTA",
+  "vendorName": "OKTA",
+  "status": "PENDING_ACTIVATION",
+  "_links": {
+    "activate": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00umvfJKwXOQ1mEL50g3/factors/emfnf3gSScB8xXoXK0g3/lifecycle/activate",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "resend": [
+      {
+        "name": "email",
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00umvfJKwXOQ1mEL50g3/factors/emfnf3gSScB8xXoXK0g3/resend",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    ],
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00umvfJKwXOQ1mEL50g3/factors/emfnf3gSScB8xXoXK0g3",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00umvfJKwXOQ1mEL50g3",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}

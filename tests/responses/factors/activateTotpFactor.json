@@ -1,0 +1,38 @@
+{
+  "id": "ostf1fmaMGJLMNGNLIVG",
+  "factorType": "token:software:totp",
+  "provider": "OKTA",
+  "status": "ACTIVE",
+  "created": "2014-07-16T16:13:56.000Z",
+  "lastUpdated": "2014-08-06T00:31:07.000Z",
+  "profile": {
+    "credentialId": "dade.murphy@example.com"
+  },
+  "_links": {
+    "verify": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf1fmaMGJLMNGNLIVG/verify",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf1fmaMGJLMNGNLIVG",
+      "hints": {
+        "allow": [
+          "GET",
+          "DELETE"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}

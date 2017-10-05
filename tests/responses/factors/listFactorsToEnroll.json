@@ -1,0 +1,119 @@
+[
+  {
+    "factorType": "question",
+    "provider": "OKTA",
+    "_links": {
+      "questions": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/questions",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      },
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "factorType": "token:software:totp",
+    "provider": "OKTA",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "factorType": "token:software:totp",
+    "provider": "GOOGLE",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "factorType": "sms",
+    "provider": "OKTA",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    },
+    "_embedded": {
+      "phones": [
+        {
+          "id": "mblldntFJevYKbyQQ0g3",
+          "profile": {
+            "phoneNumber": "+14081234567"
+          },
+          "status": "ACTIVE"
+        }
+      ]
+    }
+  },
+  {
+    "factorType": "call",
+    "provider": "OKTA",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "factorType": "token",
+    "provider": "RSA",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "factorType": "token",
+    "provider": "SYMANTEC",
+    "_links": {
+      "enroll": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    }
+  }
+]

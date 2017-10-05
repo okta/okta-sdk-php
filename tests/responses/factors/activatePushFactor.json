@@ -1,0 +1,38 @@
+{
+  "expiresAt": "2015-04-01T15:57:32.000Z",
+  "factorResult": "WAITING",
+  "_links": {
+    "poll": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opf3hkfocI4JTLAju0g4/lifecycle/activate",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "qrcode": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opf3hkfocI4JTLAju0g4/qr/00fukNElRS_Tz6k-CFhg3pH4KO2dj2guhmaapXWbc4",
+      "type": "image/png"
+    },
+    "send": [
+      {
+        "name": "email",
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opf3hkfocI4JTLAju0g4/lifecycle/activate/email",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      },
+      {
+        "name": "sms",
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opf3hkfocI4JTLAju0g4/lifecycle/activate/sms",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      }
+    ]
+  }
+}
