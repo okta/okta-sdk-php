@@ -15,30 +15,36 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Users;
-
-use Okta\UserFactors\Factor;
-
-class User extends \Okta\Generated\Users\User
+class EmailFactorProfileTest extends BaseTestCase
 {
 
-    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
+    protected static $properties;
+    protected static $testable;
+
+    public function setUp()
     {
-        $supportedFactors = parent::getSupportedFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
+        parent::setUp();
+        $this->createNewHttpClient();
+        $model = '/UserFactors/factorProfileEmail.json';
+        static::$properties = json_decode(json_encode($this->getModel($model)));
+        static::$testable = $this->createModel($model, \Okta\UserFactors\EmailFactorProfile::class);
     }
 
-    public function getFactors(array $options = []): \Okta\UserFactors\Collection
+    /** @test */
+    public function email_is_gettable()
     {
-        $supportedFactors = parent::getFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
+        $this->assertEquals(static::$properties->email, static::$testable->getEmail());
+        $this->assertEquals(static::$properties->email, static::$testable->email);
     }
+
+    /** @test */
+    public function email_is_settable()
+    {
+        static::$testable->setEmail('test@mailinator.com');
+        static::assertEquals('test@mailinator.com', static::$testable->getEmail());
+
+        static::$testable->email = 'test2@mailinator.com';
+        static::assertEquals('test2@mailinator.com', static::$testable->getEmail());
+    }
+    
 }

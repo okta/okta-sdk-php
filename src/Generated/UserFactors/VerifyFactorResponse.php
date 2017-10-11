@@ -47,11 +47,11 @@ class VerifyFactorResponse extends \Okta\Resource\AbstractResource
     /**
      * Get the expiresAt.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getExpiresAt(): string
+    public function getExpiresAt()
     {
-        return $this->getProperty(self::EXPIRES_AT);
+        return $this->getDateProperty(self::EXPIRES_AT);
     }
     /**
      * Get the factorResult.

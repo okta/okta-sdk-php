@@ -81,6 +81,7 @@ class {{modelName}} extends {{getExtends modelName}}
 
     {{/if}}
     {{#if (eq alias "delete")}}
+    {{#unless (eq this.operation.operationId "deleteFactor")}}
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -90,7 +91,7 @@ class {{modelName}} extends {{getExtends modelName}}
                     $this
                 );
     }
-
+    {{/unless}}
     {{/if}}
     {{/each}}
     {{#each properties}}
@@ -113,7 +114,7 @@ class {{modelName}} extends {{getExtends modelName}}
     /**
      * Set the {{propertyName}}.
      *
-     * @param {{model}} ${{propertyName}} The {{model}} instance.
+     * @param {{getType this baseClass}} ${{propertyName}} The {{model}} instance.
      * @return self
      */
     public function set{{pascalCase propertyName}}({{getTypeHint model}} ${{propertyName}})
@@ -172,6 +173,30 @@ class {{modelName}} extends {{getExtends modelName}}
                 );
     }
     {{else}}
+    {{#if (eq this.operation.method "get")}}
+    /**
+    * {{this.operation.description}}
+    *
+    {{getMethodParamsComment this}}
+    * @return mixed|null
+    */
+    public function {{camelCase alias}}({{{getMethodParams this}}})
+    {
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+        $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $response = $this
+            ->getDataStore()
+            ->getResource({{{buildGetResourceParams this}}});
+
+        {{#if (eq this.operation.responseModel "Factor")}}
+        return $response->convertFromGenericFactor();
+        {{else}}
+        return $response;
+        {{/if}}
+    }
+    {{else}}
     /**
     * {{this.operation.description}}
     *
@@ -188,6 +213,7 @@ class {{modelName}} extends {{getExtends modelName}}
                 ->getDataStore()
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
     }
+    {{/if}}
     {{/if}}
     {{/each}}
 }

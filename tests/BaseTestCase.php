@@ -65,7 +65,34 @@ class BaseTestCase extends TestCase
         }
         return new \Okta\Users\User(null, $class);
 
+    }
 
+    protected function createModel($model, $returnType, $properties = [])
+    {
+
+        $properties = $this->getModel($model, $properties);
+
+        $class = new \stdClass();
+        foreach($properties as $prop=>$value)
+        {
+            $class->{$prop} = $value;
+        }
+
+        return new $returnType(null, $class);
+    }
+
+    protected function getModel($model, $overrides = [])
+    {
+        $defaults = [];
+
+        if(is_readable($fileName = __DIR__ . "/models/{$model}")) {
+            $defaults = json_decode(
+                file_get_contents($fileName),
+                true
+            );
+        }
+
+        return array_replace_recursive($defaults, $overrides);
 
     }
 }

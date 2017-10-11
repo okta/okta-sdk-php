@@ -40,7 +40,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
     /**
      * Set the newPassword.
      *
-     * @param PasswordCredential $newPassword The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $newPassword The PasswordCredential instance.
      * @return self
      */
     public function setNewPassword(PasswordCredential $newPassword)
@@ -69,7 +69,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
     /**
      * Set the oldPassword.
      *
-     * @param PasswordCredential $oldPassword The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $oldPassword The PasswordCredential instance.
      * @return self
      */
     public function setOldPassword(PasswordCredential $oldPassword)

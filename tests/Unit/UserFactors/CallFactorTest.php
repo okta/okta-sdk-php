@@ -15,30 +15,49 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Users;
+use Okta\ClientBuilder;
 
-use Okta\UserFactors\Factor;
-
-class User extends \Okta\Generated\Users\User
+class CallFactorTest extends BaseTestCase
 {
+    protected static $properties;
+    /** @var User */
+    protected static $testable;
 
-    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
+    public static function setUpBeforeClass()
     {
-        $supportedFactors = parent::getSupportedFactors($options);
+        parent::setUpBeforeClass();
 
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
+        $clientBuilder = (new ClientBuilder())->build();
 
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
+        static::$properties = json_decode(file_get_contents(__DIR__ . '/../../models/UserFactors/callFactor.json'));
+
+        $class = new \stdClass();
+        foreach(static::$properties as $prop=>$value)
+        {
+            $class->{$prop} = $value;
+        }
+        self::$testable = new \Okta\UserFactors\CallFactor(null, $class);
     }
 
-    public function getFactors(array $options = []): \Okta\UserFactors\Collection
+    /** @test */
+    public function can_get_profile_from_factor()
     {
-        $supportedFactors = parent::getFactors($options);
+         $profile = self::$testable->getProfile();
 
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
+         $this->assertInstanceOf(\Okta\UserFactors\CallFactorProfile::class, $profile);
 
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
     }
+
+    /** @test */
+    public function a_profile_can_be_set_on_the_factor()
+    {
+        /** @var \Okta\UserFactors\SecurityQuestionFactorProfile $profile */
+        $profile = static::$testable->getProfile();
+        $profile->setAnswer = 'Test';
+
+        $factor = static::$testable->setProfile($profile);
+        $this->assertInstanceOf(\Okta\UserFactors\CallFactor::class, $factor);
+    }
+
+
 }

@@ -19,7 +19,7 @@ function getType(obj, model) {
                 case 'TotpFactorProfile':
                 case 'WebFactorProfile':
                 case 'FactorProfile':
-                    return '\\Okta\\Contracts\\FactorProfile';
+                    return '\\Okta\\UserFactors\\FactorProfile';
                 default:
                     return `\\${model}\\${obj.model}`;
             }
@@ -52,7 +52,7 @@ function getSafeType(obj, model) {
                 case 'TotpFactorProfile':
                 case 'WebFactorProfile':
                 case 'FactorProfile':
-                    return ': \\Okta\\Contracts\\FactorProfile';
+                    return ': \\Okta\\UserFactors\\FactorProfile';
                 default:
                     return `: \\${model}\\${obj.model}`;
             }
@@ -84,7 +84,7 @@ function getTypeHint(model) {
         case 'TotpFactorProfile':
         case 'WebFactorProfile':
         case 'FactorProfile':
-            return '\\Okta\\Contracts\\FactorProfile';
+            return '\\Okta\\UserFactors\\FactorProfile';
         default:
             return model;
     }
@@ -297,6 +297,8 @@ function getClassNameForCollection(obj) {
       case 'listFactors':
       case 'listSupportedFactors':
           return '\\Okta\\UserFactors\\Factor';
+      case 'listSupportedSecurityQuestions':
+          return `\\Okta\\UserFactors\\SecurityQuestion`;
       default:
           return `\\${obj.baseClass}\\${obj.operation.responseModel}`;
   }
@@ -313,6 +315,8 @@ function getCollectionName(obj) {
       case 'listFactors':
       case 'listSupportedFactors':
           return '\\Okta\\UserFactors\\Collection';
+      case 'listSupportedSecurityQuestions':
+          return `\\Okta\\UserFactors\\SecurityQuestionsCollection`;
       default:
           return `\\${obj.baseClass}\\Collection`;
   }
@@ -333,6 +337,16 @@ function pluralize(string) {
 function customLog(toLog) {
   console.log(toLog);
 }
+
+function buildGetResourceParams(model) {
+
+    switch(model.operation.operationId) {
+        case 'getFactor':
+            return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
+    }
+
+}
+
 php.process = ({ spec, operations, models, handlebars }) => {
   const templates = [];
 
@@ -435,7 +449,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     pluralize,
     customLog,
     getClassNameForCollection,
-    getCollectionName
+    getCollectionName,
+    buildGetResourceParams
   });
 
   return templates;

@@ -15,30 +15,11 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Users;
+namespace Okta\UserFactors;
 
-use Okta\UserFactors\Factor;
+use Okta\Resource\AbstractCollection;
 
-class User extends \Okta\Generated\Users\User
+class SecurityQuestionsCollection extends AbstractCollection
 {
 
-    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
-    {
-        $supportedFactors = parent::getSupportedFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
-    }
-
-    public function getFactors(array $options = []): \Okta\UserFactors\Collection
-    {
-        $supportedFactors = parent::getFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
-    }
 }

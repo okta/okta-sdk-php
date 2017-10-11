@@ -19,6 +19,7 @@ namespace Okta\Generated\Users;
 
 use Okta\Groups\Group;
 use Okta\UserFactors\Factor;
+use Okta\UserFactors\SecurityQuestion;
 
 class User extends \Okta\Resource\AbstractResource
 {
@@ -77,7 +78,6 @@ class User extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-
     /**
      * Get the id.
      *
@@ -131,7 +131,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Set the profile.
      *
-     * @param UserProfile $profile The UserProfile instance.
+     * @param \Okta\Users\UserProfile $profile The UserProfile instance.
      * @return self
      */
     public function setProfile(UserProfile $profile)
@@ -187,7 +187,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Set the credentials.
      *
-     * @param UserCredentials $credentials The UserCredentials instance.
+     * @param \Okta\Users\UserCredentials $credentials The UserCredentials instance.
      * @return self
      */
     public function setCredentials(UserCredentials $credentials)
@@ -590,7 +590,7 @@ class User extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function addFactor(Factor $factor, $templateId = '', $updatePhone = false)
+    public function addFactor(Factor $factor, $updatePhone = false)
     {
         $uri = "/api/v1/users/{$this->getId()}/factors";
         $uri = $this->getDataStore()->buildUri(
@@ -598,7 +598,7 @@ class User extends \Okta\Resource\AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, $factor, ['query' => ['templateId' => $templateId,'updatePhone' => $updatePhone]]);
+                ->executeRequest('POST', $uri, $factor, ['query' => ['updatePhone' => $updatePhone]]);
     }
 
     /**
@@ -637,5 +637,60 @@ class User extends \Okta\Resource\AbstractResource
                     \Okta\UserFactors\Collection::class,
                     $options
                 );
+    }
+
+    /**
+    * Get the SecurityQuestion object.
+    *
+    * @param array $options The options for the request.
+    * @return \Okta\UserFactors\SecurityQuestionsCollection
+    */
+    public function getSupportedSecurityQuestions(array $options = []): \Okta\UserFactors\SecurityQuestionsCollection
+    {
+
+        return $this
+                ->getDataStore()
+                ->getCollection(
+                    "/api/v1/users/{$this->getId()}/factors/questions",
+                    \Okta\UserFactors\SecurityQuestion::class,
+                    \Okta\UserFactors\SecurityQuestionsCollection::class,
+                    $options
+                );
+    }
+
+    /**
+    * Fetches a factor for the specified user
+    *
+    *
+    * @return mixed|null
+    */
+    public function getFactor($factorId)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/factors/{$factorId}";
+        $uri = $this->getDataStore()->buildUri(
+        $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $response = $this
+            ->getDataStore()
+            ->getResource("factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []);
+
+        return $response->convertFromGenericFactor();
+    }
+
+    /**
+    * Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+    *
+    *
+    * @return mixed|null
+    */
+    public function deleteFactor($factorId)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/factors/{$factorId}";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        return $this
+                ->getDataStore()
+                ->executeRequest('DELETE', $uri);
     }
 }

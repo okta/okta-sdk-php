@@ -19,27 +19,6 @@ class FactorsTest extends BaseTestCase
 {
 
     /** @test */
-    public function can_get_a_factor_for_a_user()
-    {
-        $client = $this->createNewHttpClient([
-            'getBody' => file_get_contents(__DIR__ . '/../responses/factors/getFactor.json')
-        ]);
-
-
-        $factor = (new \Okta\UserFactors\Factor())->get('userId123', 'FactorId123', "");
-
-        $requests = $client->getRequests();
-
-        $this->assertEquals("/api/v1/users/userId123/factors/FactorId123/", $requests[0]->getUri()->getPath());
-
-        $this->assertInstanceOf(\Okta\UserFactors\SmsFactor::class, $factor);
-        $this->assertequals('application/json', $requests[0]->getHeaderLine('Accept'));
-        $this->assertEmpty($requests[0]->getHeaderLine('Content-Type'));
-        $this->assertEquals("SSWS {$this->token}", $requests[0]->getHeaderLine('Authorization'));
-
-    }
-
-    /** @test */
     public function a_user_should_be_able_to_get_a_factor_by_factor_id_only()
     {
         $client = $this->createNewHttpClient([
@@ -48,11 +27,10 @@ class FactorsTest extends BaseTestCase
 
         $user = $this->createnewUser();
         $factor = $user->getFactor('FactorId123');
-
         $requests = $client->getRequests();
 
 
-        $this->assertEquals("/api/v1/users/{$user->getId()}/factors/FactorId123/", $requests[0]->getUri()->getPath());
+        $this->assertEquals("/api/v1/users/{$user->getId()}/factors/FactorId123", $requests[0]->getUri()->getPath());
 
         $this->assertInstanceOf(\Okta\UserFactors\SmsFactor::class, $factor);
         $this->assertequals('application/json', $requests[0]->getHeaderLine('Accept'));

@@ -51,7 +51,6 @@ class Group extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-
     /**
      * Get the id.
      *
@@ -105,7 +104,7 @@ class Group extends \Okta\Resource\AbstractResource
     /**
      * Set the profile.
      *
-     * @param GroupProfile $profile The GroupProfile instance.
+     * @param \Okta\Groups\GroupProfile $profile The GroupProfile instance.
      * @return self
      */
     public function setProfile(GroupProfile $profile)

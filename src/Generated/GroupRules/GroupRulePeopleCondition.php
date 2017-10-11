@@ -40,7 +40,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
     /**
      * Set the users.
      *
-     * @param GroupRuleUserCondition $users The GroupRuleUserCondition instance.
+     * @param \Okta\GroupRules\GroupRuleUserCondition $users The GroupRuleUserCondition instance.
      * @return self
      */
     public function setUsers(GroupRuleUserCondition $users)
@@ -69,7 +69,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
     /**
      * Set the groups.
      *
-     * @param GroupRuleGroupCondition $groups The GroupRuleGroupCondition instance.
+     * @param \Okta\GroupRules\GroupRuleGroupCondition $groups The GroupRuleGroupCondition instance.
      * @return self
      */
     public function setGroups(GroupRuleGroupCondition $groups)

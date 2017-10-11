@@ -49,7 +49,6 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-
     /**
      * Get the id.
      *
@@ -133,7 +132,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     /**
      * Set the actions.
      *
-     * @param GroupRuleAction $actions The GroupRuleAction instance.
+     * @param \Okta\GroupRules\GroupRuleAction $actions The GroupRuleAction instance.
      * @return self
      */
     public function setActions(GroupRuleAction $actions)
@@ -171,7 +170,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     /**
      * Set the conditions.
      *
-     * @param GroupRuleConditions $conditions The GroupRuleConditions instance.
+     * @param \Okta\GroupRules\GroupRuleConditions $conditions The GroupRuleConditions instance.
      * @return self
      */
     public function setConditions(GroupRuleConditions $conditions)

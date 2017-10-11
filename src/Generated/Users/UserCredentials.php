@@ -41,7 +41,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     /**
      * Set the password.
      *
-     * @param PasswordCredential $password The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
     public function setPassword(PasswordCredential $password)
@@ -70,7 +70,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     /**
      * Set the provider.
      *
-     * @param AuthenticationProvider $provider The AuthenticationProvider instance.
+     * @param \Okta\Users\AuthenticationProvider $provider The AuthenticationProvider instance.
      * @return self
      */
     public function setProvider(AuthenticationProvider $provider)
@@ -99,7 +99,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     /**
      * Set the recovery_question.
      *
-     * @param RecoveryQuestionCredential $recovery_question The RecoveryQuestionCredential instance.
+     * @param \Okta\Users\RecoveryQuestionCredential $recovery_question The RecoveryQuestionCredential instance.
      * @return self
      */
     public function setRecoveryQuestion(RecoveryQuestionCredential $recovery_question)

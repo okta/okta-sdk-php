@@ -15,30 +15,40 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Users;
-
 use Okta\UserFactors\Factor;
+use PHPUnit\Framework\TestCase;
 
-class User extends \Okta\Generated\Users\User
+class FactorTest extends BaseTestCase
 {
+    protected static $properties;
+    protected static $testable;
 
-    public function getSupportedFactors(array $options = []): \Okta\UserFactors\Collection
+    public function setUp()
     {
-        $supportedFactors = parent::getSupportedFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
+        parent::setUp();
+        $this->createNewHttpClient();
+        $model = '/UserFactors/emailFactor.json';
+        static::$properties = json_decode(json_encode($this->getModel($model)));
+        static::$testable = $this->createModel($model, \Okta\UserFactors\Factor::class);
     }
 
-    public function getFactors(array $options = []): \Okta\UserFactors\Collection
+    /** @test */
+    public function id_is_accessible()
     {
-        $supportedFactors = parent::getFactors($options);
-
-        return $supportedFactors->each(function (Factor $factor, $key) use ($supportedFactors) {
-
-            $supportedFactors[$key] = $factor->convertFromGenericFactor();
-        });
+        $this->assertEquals(static::$properties->id, static::$testable->getId());
+        $this->assertEquals(static::$properties->id, static::$testable->id);
     }
+
+    /** @test */
+    public function device_is_accessible()
+    {
+        $this->assertEquals(static::$properties->device, static::$testable->getDevice());
+        $this->assertEquals(static::$properties->device, static::$testable->device);
+    }
+    
+    
+
+
+
+
 }

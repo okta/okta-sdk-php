@@ -20,7 +20,7 @@ use Okta\ClientBuilder;
 use Okta\Users\User;
 use PHPUnit\Framework\TestCase;
 
-class UserTest extends TestCase
+class UserTest extends BaseTestCase
 {
     protected static $properties;
     /** @var User */
@@ -235,9 +235,6 @@ class UserTest extends TestCase
 
     }
 
-
-
-
     /** @test */
     public function profile_is_settable()
     {
@@ -252,7 +249,6 @@ class UserTest extends TestCase
         static::assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->profile);
         static::assertEquals('Test', static::$testable->profile->firstName);
     }
-
 
     /** @test */
     public function get_app_links_requests_correct_location()
@@ -869,49 +865,36 @@ class UserTest extends TestCase
         );
     }
 
-
-
-
-    /**
-     * @return User
-     */
-    private function createNewUser(): User
+    /** @test */
+    public function can_get_supported_security_questions()
     {
-        $class = new \stdClass();
-        foreach (static::$properties as $prop => $value) {
-            $class->{$prop} = $value;
-        }
-        return new User(NULL, $class);
+        $httpClient = $this->createNewHttpClient([
+            'getBody' => $this->getModel('UserFactors/supportedSecurityQuestions.json')
+        ]);
+        $user = $this->createNewUser();
+
+        $securityQuestions = $user->getSupportedSecurityQuestions();
+
+        $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionsCollection::class, $securityQuestions);
 
     }
 
-    /**
-     * @param array $returns
-     *
-     * @return \Http\Mock\Client
-     */
-    private function createNewHttpClient($returns = []): \Http\Mock\Client
+    /** @test */
+    public function deleting_a_factor_requests_correct_endpoint()
     {
-        $defaults = [
-            'getStatusCode' => 200,
-            'getBody' => '{}'
-        ];
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
 
-        $mockReturns = array_replace_recursive($defaults, $returns);
+        $user->deleteFactor('FactorId');
 
-        $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-        foreach($mockReturns as $method=>$return) {
-            $response->method($method)->willReturn($return);
-        }
-        $httpClient = new \Http\Mock\Client;
-        $httpClient->addResponse($response);
+        $request = $httpClient->getRequests();
 
-        (new \Okta\ClientBuilder())
-            ->setOrganizationUrl('https://dev.okta.com')
-            ->setToken('abc123')
-            ->setHttpClient($httpClient)
-            ->build();
-        return $httpClient;
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/factors/FactorId",
+            $request[0]->getUri()->getPath()
+        );
     }
 
 

@@ -84,21 +84,6 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
         return $this->getProperty(self::PLATFORM);
     }
     /**
-    * Set the platform.
-    *
-    * @param mixed $platform The value to set.
-    * @return self
-    */
-    public function setPlatform($platform)
-    {
-        $this->setProperty(
-            self::PLATFORM,
-            $platform
-        );
-
-        return $this;
-    }
-    /**
      * Get the deviceType.
      *
      * @return string
@@ -106,21 +91,6 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
     public function getDeviceType(): string
     {
         return $this->getProperty(self::DEVICE_TYPE);
-    }
-    /**
-    * Set the deviceType.
-    *
-    * @param mixed $deviceType The value to set.
-    * @return self
-    */
-    public function setDeviceType($deviceType)
-    {
-        $this->setProperty(
-            self::DEVICE_TYPE,
-            $deviceType
-        );
-
-        return $this;
     }
     /**
      * Get the credentialId.

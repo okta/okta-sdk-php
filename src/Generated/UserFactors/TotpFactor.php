@@ -25,9 +25,9 @@ class TotpFactor extends \Okta\UserFactors\Factor
     /**
      * Get the profile.
      *
-     * @return \Okta\Contracts\FactorProfile
+     * @return \Okta\UserFactors\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
+    public function getProfile(array $options = []): \Okta\UserFactors\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -39,10 +39,10 @@ class TotpFactor extends \Okta\UserFactors\Factor
     /**
      * Set the profile.
      *
-     * @param TotpFactorProfile $profile The TotpFactorProfile instance.
+     * @param \Okta\UserFactors\FactorProfile $profile The TotpFactorProfile instance.
      * @return self
      */
-    public function setProfile(\Okta\Contracts\FactorProfile $profile)
+    public function setProfile(\Okta\UserFactors\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

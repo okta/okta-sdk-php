@@ -25,9 +25,9 @@ class EmailFactor extends \Okta\UserFactors\Factor
     /**
      * Get the profile.
      *
-     * @return \Okta\Contracts\FactorProfile
+     * @return \Okta\UserFactors\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
+    public function getProfile(array $options = []): \Okta\UserFactors\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -39,10 +39,10 @@ class EmailFactor extends \Okta\UserFactors\Factor
     /**
      * Set the profile.
      *
-     * @param EmailFactorProfile $profile The EmailFactorProfile instance.
+     * @param \Okta\UserFactors\FactorProfile $profile The EmailFactorProfile instance.
      * @return self
      */
-    public function setProfile(\Okta\Contracts\FactorProfile $profile)
+    public function setProfile(\Okta\UserFactors\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

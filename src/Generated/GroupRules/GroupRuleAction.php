@@ -39,7 +39,7 @@ class GroupRuleAction extends \Okta\Resource\AbstractResource
     /**
      * Set the assignUserToGroups.
      *
-     * @param GroupRuleGroupAssignment $assignUserToGroups The GroupRuleGroupAssignment instance.
+     * @param \Okta\GroupRules\GroupRuleGroupAssignment $assignUserToGroups The GroupRuleGroupAssignment instance.
      * @return self
      */
     public function setAssignUserToGroups(GroupRuleGroupAssignment $assignUserToGroups)

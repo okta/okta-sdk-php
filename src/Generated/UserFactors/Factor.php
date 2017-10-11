@@ -32,27 +32,6 @@ class Factor extends \Okta\Resource\AbstractResource
     const MFA_STATE_TOKEN_ID = 'mfaStateTokenId';
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
-    public function get($userId, $factorId, $query)
-    {
-        $factor = \Okta\Client::getInstance()
-                    ->getDataStore()
-                    ->getResource(
-                        $query,
-                        \Okta\UserFactors\Factor::class,
-                        "/users/{$userId}/factors/{$factorId}"
-                    );
-        return $factor->convertFromGenericFactor();
-    }
-    public function delete()
-    {
-        return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->deleteResource(
-                    "/users",
-                    $this
-                );
-    }
-
     /**
      * Get the id.
      *
@@ -61,21 +40,6 @@ class Factor extends \Okta\Resource\AbstractResource
     public function getId(): string
     {
         return $this->getProperty(self::ID);
-    }
-    /**
-    * Set the id.
-    *
-    * @param mixed $id The value to set.
-    * @return self
-    */
-    public function setId($id)
-    {
-        $this->setProperty(
-            self::ID,
-            $id
-        );
-
-        return $this;
     }
     /**
      * Get the device.
@@ -142,7 +106,7 @@ class Factor extends \Okta\Resource\AbstractResource
     /**
      * Set the verify.
      *
-     * @param VerifyFactorRequest $verify The VerifyFactorRequest instance.
+     * @param \Okta\UserFactors\VerifyFactorRequest $verify The VerifyFactorRequest instance.
      * @return self
      */
     public function setVerify(VerifyFactorRequest $verify)
@@ -157,9 +121,9 @@ class Factor extends \Okta\Resource\AbstractResource
     /**
      * Get the profile.
      *
-     * @return \Okta\Contracts\FactorProfile
+     * @return \Okta\UserFactors\FactorProfile
      */
-    public function getProfile(array $options = []): \Okta\Contracts\FactorProfile
+    public function getProfile(array $options = []): \Okta\UserFactors\FactorProfile
     {
         return $this->getResourceProperty(
             self::PROFILE,
@@ -171,10 +135,10 @@ class Factor extends \Okta\Resource\AbstractResource
     /**
      * Set the profile.
      *
-     * @param FactorProfile $profile The FactorProfile instance.
+     * @param \Okta\UserFactors\FactorProfile $profile The FactorProfile instance.
      * @return self
      */
-    public function setProfile(\Okta\Contracts\FactorProfile $profile)
+    public function setProfile(\Okta\UserFactors\FactorProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,

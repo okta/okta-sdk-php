@@ -15,10 +15,36 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Contracts;
-
-
-interface FactorProfile
+class HardwareFactorProfileTest extends BaseTestCase
 {
 
+    protected static $properties;
+    protected static $testable;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->createNewHttpClient();
+        $model = '/UserFactors/factorProfileHardware.json';
+        static::$properties = json_decode(json_encode($this->getModel($model)));
+        static::$testable = $this->createModel($model, \Okta\UserFactors\HardwareFactorProfile::class);
+    }
+
+    /** @test */
+    public function credential_id_is_gettable()
+    {
+        $this->assertEquals(static::$properties->credentialId, static::$testable->getCredentialId());
+        $this->assertEquals(static::$properties->credentialId, static::$testable->credentialId);
+    }
+
+    /** @test */
+    public function credential_id_is_settable()
+    {
+        static::$testable->setCredentialId('test@mailinator.com');
+        static::assertEquals('test@mailinator.com', static::$testable->getCredentialId());
+
+        static::$testable->credentialId = 'test2@mailinator.com';
+        static::assertEquals('test2@mailinator.com', static::$testable->getCredentialId());
+    }
+    
 }
