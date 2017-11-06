@@ -1,0 +1,11 @@
+{
+  "errorCode": "E0000001",
+  "errorSummary": "Api validation failed: factorEnrollRequest",
+  "errorLink": "E0000001",
+  "errorId": "oaeneEaQF8qQrepOWHSkdoejw",
+  "errorCauses": [
+    {
+      "errorSummary": "There is an existing verified phone number."
+    }
+  ]
+}

@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRuleAction extends AbstractResource
+class GroupRuleAction extends \Okta\Resource\AbstractResource
 {
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';
 
@@ -40,7 +39,7 @@ class GroupRuleAction extends AbstractResource
     /**
      * Set the assignUserToGroups.
      *
-     * @param GroupRuleGroupAssignment $assignUserToGroups The GroupRuleGroupAssignment instance.
+     * @param \Okta\GroupRules\GroupRuleGroupAssignment $assignUserToGroups The GroupRuleGroupAssignment instance.
      * @return self
      */
     public function setAssignUserToGroups(GroupRuleGroupAssignment $assignUserToGroups)

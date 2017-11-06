@@ -8,7 +8,21 @@ function getType(obj, model) {
         case 'dateTime':
             return String.raw`\Carbon\Carbon|null`;
         case 'object':
-            return `\\${model}\\${obj.model}`;
+            switch (obj.model) {
+                case 'CallFactorProfile':
+                case 'EmailFactorProfile':
+                case 'HardwareFactorProfile':
+                case 'PushFactorProfile':
+                case 'SecurityQuestionFactorProfile':
+                case 'SmsFactorProfile':
+                case 'TokenFactorProfile':
+                case 'TotpFactorProfile':
+                case 'WebFactorProfile':
+                case 'FactorProfile':
+                    return '\\Okta\\UserFactors\\FactorProfile';
+                default:
+                    return `\\${model}\\${obj.model}`;
+            }
         case 'hash':
             return String.raw`\stdClass`;
         case 'boolean':
@@ -27,7 +41,21 @@ function getSafeType(obj, model) {
         case 'dateTime':
             return ``;
         case 'object':
-            return `: \\${model}\\${obj.model}`;
+            switch (obj.model) {
+                case 'CallFactorProfile':
+                case 'EmailFactorProfile':
+                case 'HardwareFactorProfile':
+                case 'PushFactorProfile':
+                case 'SecurityQuestionFactorProfile':
+                case 'SmsFactorProfile':
+                case 'TokenFactorProfile':
+                case 'TotpFactorProfile':
+                case 'WebFactorProfile':
+                case 'FactorProfile':
+                    return ': \\Okta\\UserFactors\\FactorProfile';
+                default:
+                    return `: \\${model}\\${obj.model}`;
+            }
         case 'hash':
             return String.raw`: \stdClass`;
         case 'boolean':
@@ -41,6 +69,66 @@ function getSafeType(obj, model) {
                 return `: ${obj.commonType}`;
             }
             return;
+    }
+}
+
+function getTypeHint(model) {
+    switch(model) {
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+        case 'FactorProfile':
+            return '\\Okta\\UserFactors\\FactorProfile';
+        default:
+            return model;
+    }
+}
+
+function getExtends(modelName) {
+    switch (modelName) {
+        case 'CallFactor':
+        case 'EmailFactor':
+        case 'HardwareFactor':
+        case 'PushFactor':
+        case 'SecurityQuestionFactor':
+        case 'SmsFactor':
+        case 'TokenFactor':
+        case 'TotpFactor':
+        case 'WebFactor':
+            return '\\Okta\\UserFactors\\Factor';
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+            return '\\Okta\\UserFactors\\FactorProfile';
+        default:
+            return '\\Okta\\Resource\\AbstractResource';
+    }
+}
+
+function getInterfaces(modelName) {
+    switch (modelName) {
+        case 'CallFactorProfile':
+        case 'EmailFactorProfile':
+        case 'HardwareFactorProfile':
+        case 'PushFactorProfile':
+        case 'SecurityQuestionFactorProfile':
+        case 'SmsFactorProfile':
+        case 'TokenFactorProfile':
+        case 'TotpFactorProfile':
+        case 'WebFactorProfile':
+            return 'implements \\Okta\\Contracts\\FactorProfile';
     }
 }
 
@@ -97,7 +185,7 @@ function getParams(method) {
 function getMethodParams(method) {
   const params = getParams(method);
   const pathParams = params.requiredPathParams.map(param => `$${param.name}`);
-  const queryParams = params.defaultQueryParams.map(param => `$${param.name} = ${param.default}`);
+  const queryParams = params.defaultQueryParams.map(param => `$${param.name} = ` + (param.default !== '' ? `${param.default}` : `''`));
 
   let methodParams = [].concat(pathParams);
   if (params.bodyModel) {
@@ -206,6 +294,11 @@ function getClassNameForCollection(obj) {
         return '\\Okta\\Groups\\Group';
       case 'listGroupUsers':
           return '\\Okta\\Users\\User';
+      case 'listFactors':
+      case 'listSupportedFactors':
+          return '\\Okta\\UserFactors\\Factor';
+      case 'listSupportedSecurityQuestions':
+          return `\\Okta\\UserFactors\\SecurityQuestion`;
       default:
           return `\\${obj.baseClass}\\${obj.operation.responseModel}`;
   }
@@ -219,6 +312,11 @@ function getCollectionName(obj) {
           return '\\Okta\\Groups\\Collection';
       case 'listGroupUsers':
           return '\\Okta\\Users\\Collection';
+      case 'listFactors':
+      case 'listSupportedFactors':
+          return '\\Okta\\UserFactors\\Collection';
+      case 'listSupportedSecurityQuestions':
+          return `\\Okta\\UserFactors\\SecurityQuestionsCollection`;
       default:
           return `\\${obj.baseClass}\\Collection`;
   }
@@ -226,6 +324,9 @@ function getCollectionName(obj) {
 
 function getCrudOperationPath(method) {
   let parts = _.split(method.operation.path, '/');
+  if(method.operation.operationId === 'getFactor') {
+      return '/' + parts[3] + '/{$userId}/' + parts[5] + '/{$factorId}';
+  }
   return '/' + parts[3];
 }
 
@@ -236,6 +337,16 @@ function pluralize(string) {
 function customLog(toLog) {
   console.log(toLog);
 }
+
+function buildGetResourceParams(model) {
+
+    switch(model.operation.operationId) {
+        case 'getFactor':
+            return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
+    }
+
+}
+
 php.process = ({ spec, operations, models, handlebars }) => {
   const templates = [];
 
@@ -295,12 +406,20 @@ php.process = ({ spec, operations, models, handlebars }) => {
       }
     }
 
-
-      templates.push({
-        src: 'templates/model.php.hbs',
-        dest: `${model.namespace}/${model.modelName}.php`,
-        context: model
-      });
+    if(model.enum) {
+        model.enum = _.sortBy(model.enum);
+        templates.push({
+            src: 'templates/enum.php.hbs',
+            dest: `${model.namespace}/${model.modelName}.php`,
+            context: model
+        });
+    } else {
+        templates.push({
+            src: 'templates/model.php.hbs',
+            dest: `${model.namespace}/${model.modelName}.php`,
+            context: model
+        });
+    }
   }
 
   for (let namespace of _.uniqBy(namespaces)) {
@@ -314,9 +433,12 @@ php.process = ({ spec, operations, models, handlebars }) => {
   handlebars.registerHelper({
     getType,
     getSafeType,
+    getTypeHint,
     getAccessMethodType,
     getMethodPath,
     getMethodParams,
+    getExtends,
+    getInterfaces,
     getCollectionMethodParams,
     getMethodRequestParams,
     getMethodArrayName,
@@ -327,7 +449,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     pluralize,
     customLog,
     getClassNameForCollection,
-    getCollectionName
+    getCollectionName,
+    buildGetResourceParams
   });
 
   return templates;

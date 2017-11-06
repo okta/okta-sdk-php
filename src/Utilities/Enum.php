@@ -183,7 +183,7 @@ abstract class Enum
         $methodStart = lcfirst(str_replace('_', '', ucwords(strtolower($this->getKey()), '_')));
 
         $method = ucfirst($method);
-        if(method_exists($this, $methodStart.$method)) {
+        if (method_exists($this, $methodStart.$method)) {
             return call_user_func_array([$this, $methodStart.$method], $args);
         }
         throw new \BadMethodCallException("Method {$methodStart}{$method} does not exist");

@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class TempPassword extends AbstractResource
+class TempPassword extends \Okta\Resource\AbstractResource
 {
     const TEMP_PASSWORD = 'tempPassword';
 

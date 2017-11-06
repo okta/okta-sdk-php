@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRuleConditions extends AbstractResource
+class GroupRuleConditions extends \Okta\Resource\AbstractResource
 {
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
@@ -41,7 +40,7 @@ class GroupRuleConditions extends AbstractResource
     /**
      * Set the people.
      *
-     * @param GroupRulePeopleCondition $people The GroupRulePeopleCondition instance.
+     * @param \Okta\GroupRules\GroupRulePeopleCondition $people The GroupRulePeopleCondition instance.
      * @return self
      */
     public function setPeople(GroupRulePeopleCondition $people)
@@ -70,7 +69,7 @@ class GroupRuleConditions extends AbstractResource
     /**
      * Set the expression.
      *
-     * @param GroupRuleExpression $expression The GroupRuleExpression instance.
+     * @param \Okta\GroupRules\GroupRuleExpression $expression The GroupRuleExpression instance.
      * @return self
      */
     public function setExpression(GroupRuleExpression $expression)

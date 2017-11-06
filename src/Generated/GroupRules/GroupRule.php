@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\GroupRules;
 
-use Okta\Resource\AbstractResource;
 
-class GroupRule extends AbstractResource
+class GroupRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const NAME = 'name';
@@ -30,29 +29,26 @@ class GroupRule extends AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
-        
     public function save()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '/groups',
+                    "/groups",
                     $this,
                     \Okta\GroupRules\GroupRule::class
                 );
     }
 
-        
     public function delete()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/groups',
+                    "/groups",
                     $this
                 );
     }
-
     /**
      * Get the id.
      *
@@ -136,7 +132,7 @@ class GroupRule extends AbstractResource
     /**
      * Set the actions.
      *
-     * @param GroupRuleAction $actions The GroupRuleAction instance.
+     * @param \Okta\GroupRules\GroupRuleAction $actions The GroupRuleAction instance.
      * @return self
      */
     public function setActions(GroupRuleAction $actions)
@@ -174,7 +170,7 @@ class GroupRule extends AbstractResource
     /**
      * Set the conditions.
      *
-     * @param GroupRuleConditions $conditions The GroupRuleConditions instance.
+     * @param \Okta\GroupRules\GroupRuleConditions $conditions The GroupRuleConditions instance.
      * @return self
      */
     public function setConditions(GroupRuleConditions $conditions)
@@ -197,7 +193,7 @@ class GroupRule extends AbstractResource
     }
 
     /**
-    * Sends a request to the activate endpoint.
+    * Activates a specific group rule by id from your organization
     *
     *
     * @return mixed|null
@@ -214,7 +210,7 @@ class GroupRule extends AbstractResource
     }
 
     /**
-    * Sends a request to the deactivate endpoint.
+    * Deactivates a specific group rule by id from your organization
     *
     *
     * @return mixed|null

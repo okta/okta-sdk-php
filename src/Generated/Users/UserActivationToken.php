@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class UserActivationToken extends AbstractResource
+class UserActivationToken extends \Okta\Resource\AbstractResource
 {
     const ACTIVATION_URL = 'activationUrl';
     const ACTIVATION_TOKEN = 'activationToken';

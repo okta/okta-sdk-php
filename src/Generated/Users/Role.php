@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class Role extends AbstractResource
+class Role extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';

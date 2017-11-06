@@ -1,0 +1,38 @@
+{
+  "id": "rsabtznMn6cp94ez20g4",
+  "factorType": "token",
+  "provider": "RSA",
+  "status": "ACTIVE",
+  "created": "2015-11-13T07:05:53.000Z",
+  "lastUpdated": "2015-11-13T07:05:53.000Z",
+  "profile": {
+    "credentialId": "dade.murphy@example.com"
+  },
+  "_links": {
+    "verify": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/rsabtznMn6cp94ez20g4/verify",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/rsabtznMn6cp94ez20g4",
+      "hints": {
+        "allow": [
+          "GET",
+          "DELETE"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}

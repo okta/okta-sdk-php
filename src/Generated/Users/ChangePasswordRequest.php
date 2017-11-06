@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class ChangePasswordRequest extends AbstractResource
+class ChangePasswordRequest extends \Okta\Resource\AbstractResource
 {
     const NEW_PASSWORD = 'newPassword';
     const OLD_PASSWORD = 'oldPassword';
@@ -41,7 +40,7 @@ class ChangePasswordRequest extends AbstractResource
     /**
      * Set the newPassword.
      *
-     * @param PasswordCredential $newPassword The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $newPassword The PasswordCredential instance.
      * @return self
      */
     public function setNewPassword(PasswordCredential $newPassword)
@@ -70,7 +69,7 @@ class ChangePasswordRequest extends AbstractResource
     /**
      * Set the oldPassword.
      *
-     * @param PasswordCredential $oldPassword The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $oldPassword The PasswordCredential instance.
      * @return self
      */
     public function setOldPassword(PasswordCredential $oldPassword)

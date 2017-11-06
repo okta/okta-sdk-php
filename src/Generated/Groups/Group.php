@@ -18,9 +18,8 @@
 namespace Okta\Generated\Groups;
 
 use Okta\Users\User;
-use Okta\Resource\AbstractResource;
 
-class Group extends AbstractResource
+class Group extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';
@@ -32,29 +31,26 @@ class Group extends AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
-        
     public function save()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '/groups',
+                    "/groups",
                     $this,
                     \Okta\Groups\Group::class
                 );
     }
 
-        
     public function delete()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '/groups',
+                    "/groups",
                     $this
                 );
     }
-
     /**
      * Get the id.
      *
@@ -108,7 +104,7 @@ class Group extends AbstractResource
     /**
      * Set the profile.
      *
-     * @param GroupProfile $profile The GroupProfile instance.
+     * @param \Okta\Groups\GroupProfile $profile The GroupProfile instance.
      * @return self
      */
     public function setProfile(GroupProfile $profile)
@@ -158,7 +154,7 @@ class Group extends AbstractResource
     }
 
     /**
-    * Sends a request to the removeUser endpoint.
+    * Removes a [user](users.html#user-model) from a group with &#x60;OKTA_GROUP&#x60; type.
     *
     *
     * @return mixed|null

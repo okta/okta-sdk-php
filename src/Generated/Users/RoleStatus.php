@@ -17,9 +17,10 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
+use Okta\Utilities\Enum;
 
-class RoleStatus extends AbstractResource
+class RoleStatus extends Enum
 {
-
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
 }

@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class UserProfile extends AbstractResource
+class UserProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';
     const LOGIN = 'login';

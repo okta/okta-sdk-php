@@ -17,9 +17,16 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
+use Okta\Utilities\Enum;
 
-class UserStatus extends AbstractResource
+class UserStatus extends Enum
 {
-
+    const ACTIVE = 'ACTIVE';
+    const DEPROVISIONED = 'DEPROVISIONED';
+    const LOCKED_OUT = 'LOCKED_OUT';
+    const PASSWORD_EXPIRED = 'PASSWORD_EXPIRED';
+    const PROVISIONED = 'PROVISIONED';
+    const RECOVERY = 'RECOVERY';
+    const STAGED = 'STAGED';
+    const SUSPENDED = 'SUSPENDED';
 }

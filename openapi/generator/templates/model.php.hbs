@@ -20,17 +20,28 @@ namespace Okta\Generated\\{{namespace}};
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
 {{/each}}
-use Okta\Resource\AbstractResource;
 
-class {{modelName}} extends AbstractResource
+class {{modelName}} extends {{getExtends modelName}}
 {
     {{#each properties}}
     const {{upperSnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
     {{#each crudOperations}}
-        {{customLog this}}
     {{#if (eq alias "read")}}
+        {{#if (eq this.operation.operationId "getFactor")}}
+    public function get($userId, $factorId, $query)
+    {
+        $factor = \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        \\{{this.defaultReturnType}}::class,
+                        "{{getCrudOperationPath this}}"
+                    );
+        return $factor->convertFromGenericFactor();
+    }
+        {{else}}
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -38,10 +49,10 @@ class {{modelName}} extends AbstractResource
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
-                        '{{getCrudOperationPath this}}'
+                        "{{getCrudOperationPath this}}"
                     );
     }
-
+        {{/if}}
     {{/if}}
     {{#if (eq alias "create")}}
     public function create()
@@ -49,7 +60,7 @@ class {{modelName}} extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->createResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this,
                     \\{{this.defaultReturnType}}::class
                 );
@@ -62,7 +73,7 @@ class {{modelName}} extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this,
                     \\{{this.defaultReturnType}}::class
                 );
@@ -70,16 +81,17 @@ class {{modelName}} extends AbstractResource
 
     {{/if}}
     {{#if (eq alias "delete")}}
+    {{#unless (eq this.operation.operationId "deleteFactor")}}
     public function delete()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this
                 );
     }
-
+    {{/unless}}
     {{/if}}
     {{/each}}
     {{#each properties}}
@@ -102,10 +114,10 @@ class {{modelName}} extends AbstractResource
     /**
      * Set the {{propertyName}}.
      *
-     * @param {{model}} ${{propertyName}} The {{model}} instance.
+     * @param {{getType this baseClass}} ${{propertyName}} The {{model}} instance.
      * @return self
      */
-    public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
+    public function set{{pascalCase propertyName}}({{getTypeHint model}} ${{propertyName}})
     {
         $this->setResourceProperty(
             self::{{upperSnakeCase propertyName}},
@@ -161,8 +173,32 @@ class {{modelName}} extends AbstractResource
                 );
     }
     {{else}}
+    {{#if (eq this.operation.method "get")}}
     /**
-    * Sends a request to the {{camelCase alias}} endpoint.
+    * {{this.operation.description}}
+    *
+    {{getMethodParamsComment this}}
+    * @return mixed|null
+    */
+    public function {{camelCase alias}}({{{getMethodParams this}}})
+    {
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+        $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $response = $this
+            ->getDataStore()
+            ->getResource({{{buildGetResourceParams this}}});
+
+        {{#if (eq this.operation.responseModel "Factor")}}
+        return $response->convertFromGenericFactor();
+        {{else}}
+        return $response;
+        {{/if}}
+    }
+    {{else}}
+    /**
+    * {{this.operation.description}}
     *
     {{getMethodParamsComment this}}
     * @return mixed|null
@@ -177,6 +213,7 @@ class {{modelName}} extends AbstractResource
                 ->getDataStore()
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
     }
+    {{/if}}
     {{/if}}
     {{/each}}
 }

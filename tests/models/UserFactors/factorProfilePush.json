@@ -1,0 +1,7 @@
+{
+    "name": "name",
+    "version": "0.1.0",
+    "platform": "android",
+    "deviceType": "mobile",
+    "credentialId": "test@mailinator.com"
+}

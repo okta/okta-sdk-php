@@ -17,9 +17,8 @@
 
 namespace Okta\Generated\Users;
 
-use Okta\Resource\AbstractResource;
 
-class AppLink extends AbstractResource
+class AppLink extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const LABEL = 'label';

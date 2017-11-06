@@ -1,0 +1,40 @@
+{
+  "id": "ufsccnueckzN5iZnB0h7",
+  "factorType": "question",
+  "provider": "OKTA",
+  "vendorName": "OKTA",
+  "status": "ACTIVE",
+  "created": "2017-10-09T19:05:49.000Z",
+  "lastUpdated": "2017-10-09T19:05:49.000Z",
+  "profile": {
+    "question": "disliked_food",
+    "questionText": "What is the food you least liked as a child?"
+  },
+  "_links": {
+    "questions": {
+      "href": "https://php.oktapreview.com/api/v1/users/00uccnufyyMLjWO7V0h7/factors/questions",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://php.oktapreview.com/api/v1/users/00uccnufyyMLjWO7V0h7/factors/ufsccnueckzN5iZnB0h7",
+      "hints": {
+        "allow": [
+          "GET",
+          "DELETE"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://php.oktapreview.com/api/v1/users/00uccnufyyMLjWO7V0h7",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}
