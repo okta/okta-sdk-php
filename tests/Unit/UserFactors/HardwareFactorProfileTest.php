@@ -26,7 +26,7 @@ class HardwareFactorProfileTest extends BaseTestCase
         parent::setUp();
         $this->createNewHttpClient();
         $model = '/UserFactors/factorProfileHardware.json';
-        static::$properties = json_decode(json_encode($this->getModel($model)));
+        static::$properties = json_decode($this->getModel($model));
         static::$testable = $this->createModel($model, \Okta\UserFactors\HardwareFactorProfile::class);
     }
 

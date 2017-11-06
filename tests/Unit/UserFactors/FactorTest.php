@@ -27,8 +27,8 @@ class FactorTest extends BaseTestCase
     {
         parent::setUp();
         $this->createNewHttpClient();
-        $model = '/UserFactors/emailFactor.json';
-        static::$properties = json_decode(json_encode($this->getModel($model)));
+        $model = '/UserFactors/generalFactor.json';
+        static::$properties = json_decode($this->getModelJson($model));
         static::$testable = $this->createModel($model, \Okta\UserFactors\Factor::class);
     }
 
@@ -40,15 +40,51 @@ class FactorTest extends BaseTestCase
     }
 
     /** @test */
+    public function links_is_accessible()
+    {
+        $this->assertEquals(static::$properties->_links, static::$testable->getLinks());
+        $this->assertEquals(static::$properties->_links, static::$testable->links);
+    }
+
+    /** @test */
     public function device_is_accessible()
     {
         $this->assertEquals(static::$properties->device, static::$testable->getDevice());
         $this->assertEquals(static::$properties->device, static::$testable->device);
     }
-    
-    
 
+    /** @test */
+    public function device_is_settable()
+    {
+        static::$testable->setDevice('test1');
+        static::assertEquals('test1', static::$testable->getDevice());
 
+        static::$testable->device = 'test2';
+        static::assertEquals('test2', static::$testable->getDevice());
+    }
 
+    /** @test */
+    public function status_is_accessible()
+    {
+        $this->assertEquals(static::$properties->status, static::$testable->getStatus());
+        $this->assertEquals(static::$properties->status, static::$testable->status);
+    }
+
+    /** @test */
+    public function user_id_is_accessible()
+    {
+        $this->assertEquals(static::$properties->userId, static::$testable->getUserId());
+        $this->assertEquals(static::$properties->userId, static::$testable->userId);
+    }
+
+    /** @test */
+    public function user_id_is_settable()
+    {
+        static::$testable->setUserId('123');
+        static::assertEquals('123', static::$testable->getUserId());
+
+        static::$testable->userId = '456';
+        static::assertEquals('456', static::$testable->getUserId());
+    }
 
 }

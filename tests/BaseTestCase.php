@@ -70,7 +70,7 @@ class BaseTestCase extends TestCase
     protected function createModel($model, $returnType, $properties = [])
     {
 
-        $properties = $this->getModel($model, $properties);
+        $properties = json_decode($this->getModel($model, $properties));
 
         $class = new \stdClass();
         foreach($properties as $prop=>$value)
@@ -83,16 +83,16 @@ class BaseTestCase extends TestCase
 
     protected function getModel($model, $overrides = [])
     {
-        $defaults = [];
+        $model = json_decode($this->getModelJson($model), true);
 
+        return json_encode(array_replace_recursive($model, $overrides));
+
+    }
+
+    protected function getModelJson($model)
+    {
         if(is_readable($fileName = __DIR__ . "/models/{$model}")) {
-            $defaults = json_decode(
-                file_get_contents($fileName),
-                true
-            );
+            return (string) file_get_contents($fileName);
         }
-
-        return array_replace_recursive($defaults, $overrides);
-
     }
 }

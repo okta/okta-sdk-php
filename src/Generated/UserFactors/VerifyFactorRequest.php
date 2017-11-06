@@ -20,10 +20,35 @@ namespace Okta\Generated\UserFactors;
 
 class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 {
+    const ANSWER = 'answer';
     const PASS_CODE = 'passCode';
     const NEXT_PASS_CODE = 'nextPassCode';
     const ACTIVATION_TOKEN = 'activationToken';
 
+    /**
+     * Get the answer.
+     *
+     * @return string
+     */
+    public function getAnswer(): string
+    {
+        return $this->getProperty(self::ANSWER);
+    }
+    /**
+    * Set the answer.
+    *
+    * @param mixed $answer The value to set.
+    * @return self
+    */
+    public function setAnswer($answer)
+    {
+        $this->setProperty(
+            self::ANSWER,
+            $answer
+        );
+
+        return $this;
+    }
     /**
      * Get the passCode.
      *

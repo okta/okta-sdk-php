@@ -23,20 +23,13 @@ class CallFactorTest extends BaseTestCase
     /** @var User */
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public function setUp()
     {
-        parent::setUpBeforeClass();
-
-        $clientBuilder = (new ClientBuilder())->build();
-
-        static::$properties = json_decode(file_get_contents(__DIR__ . '/../../models/UserFactors/callFactor.json'));
-
-        $class = new \stdClass();
-        foreach(static::$properties as $prop=>$value)
-        {
-            $class->{$prop} = $value;
-        }
-        self::$testable = new \Okta\UserFactors\CallFactor(null, $class);
+        parent::setUp();
+        $this->createNewHttpClient();
+        $model = '/UserFactors/callFactor.json';
+        static::$properties = json_decode($this->getModelJson($model));
+        static::$testable = $this->createModel($model, \Okta\UserFactors\CallFactor::class);
     }
 
     /** @test */

@@ -676,21 +676,4 @@ class User extends \Okta\Resource\AbstractResource
 
         return $response->convertFromGenericFactor();
     }
-
-    /**
-    * Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
-    *
-    *
-    * @return mixed|null
-    */
-    public function deleteFactor($factorId)
-    {
-        $uri = "/api/v1/users/{$this->getId()}/factors/{$factorId}";
-        $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        return $this
-                ->getDataStore()
-                ->executeRequest('DELETE', $uri);
-    }
 }

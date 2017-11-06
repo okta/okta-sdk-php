@@ -21,11 +21,14 @@ namespace Okta\Generated\UserFactors;
 class Factor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
+    const LINKS = '_links';
     const DEVICE = 'device';
+    const STATUS = 'status';
     const USER_ID = 'userId';
     const VERIFY = 'verify';
     const PROFILE = 'profile';
     const PROVIDER = 'provider';
+    const EMBEDDED = '_embedded';
     const SESSION_ID = 'sessionId';
     const DEVICE_TYPE = 'deviceType';
     const FACTOR_TYPE = 'factorType';
@@ -40,6 +43,15 @@ class Factor extends \Okta\Resource\AbstractResource
     public function getId(): string
     {
         return $this->getProperty(self::ID);
+    }
+    /**
+     * Get the _links.
+     *
+     * @return \stdClass
+     */
+    public function getLinks(): \stdClass
+    {
+        return $this->getProperty(self::LINKS);
     }
     /**
      * Get the device.
@@ -64,6 +76,15 @@ class Factor extends \Okta\Resource\AbstractResource
         );
 
         return $this;
+    }
+    /**
+     * Get the status.
+     *
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->getProperty(self::STATUS);
     }
     /**
      * Get the userId.
@@ -170,6 +191,15 @@ class Factor extends \Okta\Resource\AbstractResource
         );
 
         return $this;
+    }
+    /**
+     * Get the _embedded.
+     *
+     * @return \stdClass
+     */
+    public function getEmbedded(): \stdClass
+    {
+        return $this->getProperty(self::EMBEDDED);
     }
     /**
      * Get the sessionId.
@@ -283,9 +313,9 @@ class Factor extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function activate($userId, VerifyFactorRequest $verifyFactorRequest)
+    public function activate(VerifyFactorRequest $verifyFactorRequest)
     {
-        $uri = "/api/v1/users/{$userId}/factors/{$this->getId()}/lifecycle/activate";
+        $uri = "/api/v1/users/{$this->get()}/factors/{$this->getId()}/lifecycle/activate";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
@@ -300,9 +330,9 @@ class Factor extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function verify($userId, VerifyFactorRequest $verifyFactorRequest)
+    public function verify(VerifyFactorRequest $verifyFactorRequest)
     {
-        $uri = "/api/v1/users/{$userId}/factors/{$this->getId()}/verify";
+        $uri = "/api/v1/users/{$this->get()}/factors/{$this->getId()}/verify";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );

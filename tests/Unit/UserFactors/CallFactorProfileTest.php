@@ -26,7 +26,7 @@ class CallFactorProfileTest extends BaseTestCase
         parent::setUp();
         $this->createNewHttpClient();
         $model = '/UserFactors/factorProfileCall.json';
-        static::$properties = json_decode(json_encode($this->getModel($model)));
+        static::$properties = json_decode($this->getModelJson($model));
         static::$testable = $this->createModel($model, \Okta\UserFactors\CallFactorProfile::class);
     }
 

@@ -879,23 +879,5 @@ class UserTest extends BaseTestCase
 
     }
 
-    /** @test */
-    public function deleting_a_factor_requests_correct_endpoint()
-    {
-        $httpClient = $this->createNewHttpClient();
-        $user = $this->createNewUser();
-
-        $user->deleteFactor('FactorId');
-
-        $request = $httpClient->getRequests();
-
-        $this->assertEquals('DELETE', $request[0]->getMethod());
-
-        $this->assertEquals(
-            "/api/v1/users/{$user->getId()}/factors/FactorId",
-            $request[0]->getUri()->getPath()
-        );
-    }
-
 
 }
