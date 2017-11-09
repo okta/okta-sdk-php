@@ -102,6 +102,18 @@ function getExtends(modelName) {
         case 'TotpFactor':
         case 'WebFactor':
             return '\\Okta\\UserFactors\\Factor';
+        case 'AutoLoginApplication':
+        case 'BasicAuthApplication':
+        case 'BookmarApplication':
+        case 'BrowserPluginApplication':
+        case 'OpenIdConnectApplication':
+        case 'SamlApplication':
+        case 'SecurePasswordStoreApplication':
+        case 'WsFederationApplication':
+            return '\\Okta\\Applications\\Application';
+        case 'SwaApplication':
+        case 'SwaThreeFieldApplication':
+            return '\\Okta\\Application\\BrowserPluginApplication';
         case 'CallFactorProfile':
         case 'EmailFactorProfile':
         case 'HardwareFactorProfile':
