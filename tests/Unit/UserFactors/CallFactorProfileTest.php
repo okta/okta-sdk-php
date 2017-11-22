@@ -1,4 +1,7 @@
 <?php
+
+use Okta\UserFactors\CallFactorProfile;
+
 /******************************************************************************
  * Copyright 2017 Okta, Inc.                                                  *
  *                                                                            *
@@ -15,53 +18,44 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class CallFactorProfileTest extends BaseTestCase
+class CallFactorProfileTest extends BaseUnitTestCase
 {
 
-    protected static $properties;
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/factorProfileCall.json';
-        static::$properties = json_decode($this->getModelJson($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\CallFactorProfile::class);
-    }
+    protected $model = '/UserFactors/factorProfileCall.json';
+    protected $modelType = CallFactorProfile::class;
 
     /** @test */
     public function phone_number_is_gettable()
     {
-        $this->assertEquals(static::$properties->phoneNumber, static::$testable->getPhoneNumber());
-        $this->assertEquals(static::$properties->phoneNumber, static::$testable->phoneNumber);
+        $this->assertEquals($this->properties->phoneNumber, $this->testable->getPhoneNumber());
+        $this->assertEquals($this->properties->phoneNumber, $this->testable->phoneNumber);
     }
 
     /** @test */
     public function phone_number_is_settable()
     {
-        static::$testable->setPhoneNumber('5555551212');
-        static::assertEquals('5555551212', static::$testable->getPhoneNumber());
+        $this->testable->setPhoneNumber('5555551212');
+        static::assertEquals('5555551212', $this->testable->getPhoneNumber());
 
-        static::$testable->phoneNumber = '5551112222';
-        static::assertEquals('5551112222', static::$testable->getPhoneNumber());
+        $this->testable->phoneNumber = '5551112222';
+        static::assertEquals('5551112222', $this->testable->getPhoneNumber());
     }
 
     /** @test */
     public function extension_is_gettable()
     {
-        $this->assertEquals(static::$properties->phoneExtension, static::$testable->getPhoneExtension());
-        $this->assertEquals(static::$properties->phoneExtension, static::$testable->phoneExtension);
+        $this->assertEquals($this->properties->phoneExtension, $this->testable->getPhoneExtension());
+        $this->assertEquals($this->properties->phoneExtension, $this->testable->phoneExtension);
     }
 
     /** @test */
     public function extension_is_settable()
     {
-        static::$testable->setPhoneExtension('123');
-        static::assertEquals('123', static::$testable->getPhoneExtension());
+        $this->testable->setPhoneExtension('123');
+        static::assertEquals('123', $this->testable->getPhoneExtension());
 
-        static::$testable->phoneExtension = '789';
-        static::assertEquals('789', static::$testable->getPhoneExtension());
+        $this->testable->phoneExtension = '789';
+        static::assertEquals('789', $this->testable->getPhoneExtension());
     }
 
     

@@ -17,25 +17,15 @@
 
 use Okta\ClientBuilder;
 
-class EmailFactorTest extends BaseTestCase
+class EmailFactorTest extends BaseUnitTestCase
 {
-    protected static $properties;
-    /** @var User */
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/emailFactor.json';
-        static::$properties = json_decode($this->getModelJson($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\EmailFactor::class);
-    }
+    protected $model = '/UserFactors/emailFactor.json';
+    protected $modelType = \Okta\UserFactors\EmailFactor::class;
 
     /** @test */
     public function can_get_profile_from_factor()
     {
-         $profile = self::$testable->getProfile();
+         $profile = $this->testable->getProfile();
 
          $this->assertInstanceOf(\Okta\UserFactors\EmailFactorProfile::class, $profile);
 
@@ -45,10 +35,10 @@ class EmailFactorTest extends BaseTestCase
     public function a_profile_can_be_set_on_the_factor()
     {
         /** @var \Okta\UserFactors\SecurityQuestionFactorProfile $profile */
-        $profile = static::$testable->getProfile();
+        $profile = $this->testable->getProfile();
         $profile->setAnswer = 'Test';
 
-        $factor = static::$testable->setProfile($profile);
+        $factor = $this->testable->setProfile($profile);
         $this->assertInstanceOf(\Okta\UserFactors\EmailFactor::class, $factor);
     }
 

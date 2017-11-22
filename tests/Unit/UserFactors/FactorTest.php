@@ -18,73 +18,64 @@
 use Okta\UserFactors\Factor;
 use PHPUnit\Framework\TestCase;
 
-class FactorTest extends BaseTestCase
+class FactorTest extends BaseUnitTestCase
 {
-    protected static $properties;
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/generalFactor.json';
-        static::$properties = json_decode($this->getModelJson($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\Factor::class);
-    }
+    protected $model = '/UserFactors/generalFactor.json';
+    protected $modelType = \Okta\UserFactors\Factor::class;
 
     /** @test */
     public function id_is_accessible()
     {
-        $this->assertEquals(static::$properties->id, static::$testable->getId());
-        $this->assertEquals(static::$properties->id, static::$testable->id);
+        $this->assertEquals($this->properties->id, $this->testable->getId());
+        $this->assertEquals($this->properties->id, $this->testable->id);
     }
 
     /** @test */
     public function links_is_accessible()
     {
-        $this->assertEquals(static::$properties->_links, static::$testable->getLinks());
-        $this->assertEquals(static::$properties->_links, static::$testable->links);
+        $this->assertEquals($this->properties->_links, $this->testable->getLinks());
+        $this->assertEquals($this->properties->_links, $this->testable->links);
     }
 
     /** @test */
     public function device_is_accessible()
     {
-        $this->assertEquals(static::$properties->device, static::$testable->getDevice());
-        $this->assertEquals(static::$properties->device, static::$testable->device);
+        $this->assertEquals($this->properties->device, $this->testable->getDevice());
+        $this->assertEquals($this->properties->device, $this->testable->device);
     }
 
     /** @test */
     public function device_is_settable()
     {
-        static::$testable->setDevice('test1');
-        static::assertEquals('test1', static::$testable->getDevice());
+        $this->testable->setDevice('test1');
+        static::assertEquals('test1', $this->testable->getDevice());
 
-        static::$testable->device = 'test2';
-        static::assertEquals('test2', static::$testable->getDevice());
+        $this->testable->device = 'test2';
+        static::assertEquals('test2', $this->testable->getDevice());
     }
 
     /** @test */
     public function status_is_accessible()
     {
-        $this->assertEquals(static::$properties->status, static::$testable->getStatus());
-        $this->assertEquals(static::$properties->status, static::$testable->status);
+        $this->assertEquals($this->properties->status, $this->testable->getStatus());
+        $this->assertEquals($this->properties->status, $this->testable->status);
     }
 
     /** @test */
     public function user_id_is_accessible()
     {
-        $this->assertEquals(static::$properties->userId, static::$testable->getUserId());
-        $this->assertEquals(static::$properties->userId, static::$testable->userId);
+        $this->assertEquals($this->properties->userId, $this->testable->getUserId());
+        $this->assertEquals($this->properties->userId, $this->testable->userId);
     }
 
     /** @test */
     public function user_id_is_settable()
     {
-        static::$testable->setUserId('123');
-        static::assertEquals('123', static::$testable->getUserId());
+        $this->testable->setUserId('123');
+        static::assertEquals('123', $this->testable->getUserId());
 
-        static::$testable->userId = '456';
-        static::assertEquals('456', static::$testable->getUserId());
+        $this->testable->userId = '456';
+        static::assertEquals('456', $this->testable->getUserId());
     }
 
 }

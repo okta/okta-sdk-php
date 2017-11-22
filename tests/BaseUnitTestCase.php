@@ -15,26 +15,51 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class WebFactorProfileTest extends BaseUnitTestCase
+use Okta\ClientBuilder;
+use PHPUnit\Framework\TestCase;
+
+class BaseUnitTestCase extends BaseTestCase
 {
-    protected $model = '/UserFactors/factorProfileWeb.json';
-    protected $modelType = \Okta\UserFactors\WebFactorProfile::class;
+    protected $properties;
+    protected $testable;
+    protected $model;
+    protected $modelType;
 
-    /** @test */
-    public function credential_id_is_gettable()
+
+    public function setUp()
     {
-        $this->assertEquals($this->properties->credentialId, $this->testable->getCredentialId());
-        $this->assertEquals($this->properties->credentialId, $this->testable->credentialId);
+        parent::setUp();
+        $this->properties = json_decode($this->getModelJson($this->model));
+        $this->testable = $this->createModel($this->model, $this->modelType);
     }
 
-    /** @test */
-    public function credential_id_is_settable()
+    protected function createModel($model, $returnType, $properties = [])
     {
-        $this->testable->setCredentialId('test@mailinator.com');
-        static::assertEquals('test@mailinator.com', $this->testable->getCredentialId());
+        $properties = json_decode($this->getModel($model, $properties));
 
-        $this->testable->credentialId = 'test2@mailinator.com';
-        static::assertEquals('test2@mailinator.com', $this->testable->getCredentialId());
+        $class = new \stdClass();
+        foreach($properties as $prop=>$value)
+        {
+            $class->{$prop} = $value;
+        }
+
+        return new $returnType(null, $class);
     }
-    
+
+    protected function getModel($model, $overrides = [])
+    {
+        $model = json_decode($this->getModelJson($model), true);
+
+        return json_encode(array_replace_recursive($model, $overrides));
+
+    }
+
+    protected function getModelJson($model)
+    {
+        if(is_readable($fileName = __DIR__ . "/models/{$model}")) {
+            return (string) file_get_contents($fileName);
+        }
+
+        return (string)$model;
+    }
 }

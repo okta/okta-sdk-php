@@ -15,84 +15,75 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class PushFactorProfileTest extends BaseTestCase
+class PushFactorProfileTest extends BaseUnitTestCase
 {
 
-    protected static $properties;
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/factorProfilePush.json';
-        static::$properties = json_decode($this->getModel($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\PushFactorProfile::class);
-    }
+    protected $model = '/UserFactors/factorProfilePush.json';
+    protected $modelType = \Okta\UserFactors\PushFactorProfile::class;
 
     /** @test */
     public function name_is_gettable()
     {
-        $this->assertEquals(static::$properties->name, static::$testable->getName());
-        $this->assertEquals(static::$properties->name, static::$testable->name);
+        $this->assertEquals($this->properties->name, $this->testable->getName());
+        $this->assertEquals($this->properties->name, $this->testable->name);
     }
 
     /** @test */
     public function name_is_settable()
     {
-        static::$testable->setName('some name');
-        static::assertEquals('some name', static::$testable->getName());
+        $this->testable->setName('some name');
+        static::assertEquals('some name', $this->testable->getName());
 
-        static::$testable->name = 'some name 2';
-        static::assertEquals('some name 2', static::$testable->getName());
+        $this->testable->name = 'some name 2';
+        static::assertEquals('some name 2', $this->testable->getName());
     }
 
     /** @test */
     public function version_is_gettable()
     {
-        $this->assertEquals(static::$properties->version, static::$testable->getVersion());
-        $this->assertEquals(static::$properties->version, static::$testable->version);
+        $this->assertEquals($this->properties->version, $this->testable->getVersion());
+        $this->assertEquals($this->properties->version, $this->testable->version);
     }
 
     /** @test */
     public function version_is_settable()
     {
-        static::$testable->setVersion('some version');
-        static::assertEquals('some version', static::$testable->getVersion());
+        $this->testable->setVersion('some version');
+        static::assertEquals('some version', $this->testable->getVersion());
 
-        static::$testable->version = 'some version 2';
-        static::assertEquals('some version 2', static::$testable->getVersion());
+        $this->testable->version = 'some version 2';
+        static::assertEquals('some version 2', $this->testable->getVersion());
     }
 
     /** @test */
     public function platform_is_gettable()
     {
-        $this->assertEquals(static::$properties->platform, static::$testable->getPlatform());
-        $this->assertEquals(static::$properties->platform, static::$testable->platform);
+        $this->assertEquals($this->properties->platform, $this->testable->getPlatform());
+        $this->assertEquals($this->properties->platform, $this->testable->platform);
     }
 
     /** @test */
     public function device_type_is_accessible()
     {
-        $this->assertEquals(static::$properties->deviceType, static::$testable->getDeviceType());
-        $this->assertEquals(static::$properties->deviceType, static::$testable->deviceType);
+        $this->assertEquals($this->properties->deviceType, $this->testable->getDeviceType());
+        $this->assertEquals($this->properties->deviceType, $this->testable->deviceType);
     }
 
     /** @test */
     public function credential_id_is_accessible()
     {
-        $this->assertEquals(static::$properties->credentialId, static::$testable->getCredentialId());
-        $this->assertEquals(static::$properties->credentialId, static::$testable->credentialId);
+        $this->assertEquals($this->properties->credentialId, $this->testable->getCredentialId());
+        $this->assertEquals($this->properties->credentialId, $this->testable->credentialId);
     }
 
     /** @test */
     public function credential_id_is_settable()
     {
-        static::$testable->setCredentialId('test@mailinator.com');
-        static::assertEquals('test@mailinator.com', static::$testable->getCredentialId());
+        $this->testable->setCredentialId('test@mailinator.com');
+        static::assertEquals('test@mailinator.com', $this->testable->getCredentialId());
 
-        static::$testable->credentialId = 'test2@mailinator.com';
-        static::assertEquals('test2@mailinator.com', static::$testable->getCredentialId());
+        $this->testable->credentialId = 'test2@mailinator.com';
+        static::assertEquals('test2@mailinator.com', $this->testable->getCredentialId());
     }
 
 

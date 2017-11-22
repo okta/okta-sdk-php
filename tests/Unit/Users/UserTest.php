@@ -20,18 +20,9 @@ use Okta\ClientBuilder;
 use Okta\Users\User;
 use PHPUnit\Framework\TestCase;
 
-class UserTest extends BaseTestCase
+class UserTest extends BaseUnitTestCase
 {
-    protected static $properties;
-    /** @var User */
-    protected static $testable;
-
-    public static function setUpBeforeClass()
-    {
-        $clientBuilder = (new ClientBuilder())->build();
-
-        static::$properties = json_decode(
-            '{
+    protected $model = '{
   "id": "00ub0oNGTSWTBKOLGLNR",
   "status": "ACTIVE",
   "transitioningToStatus": "ACTIVE",
@@ -104,150 +95,141 @@ class UserTest extends BaseTestCase
         "withValue": 30
       }
     }
-}'
-        );
-
-        $class = new \stdClass();
-        foreach(static::$properties as $prop=>$value)
-        {
-            $class->{$prop} = $value;
-        }
-        self::$testable = new User(null, $class);
-
-    }
+}';
+    protected $modelType = \Okta\Users\User::class;
 
     /** @test */
     public function can_get_id_property()
     {
-        $this->assertEquals(static::$properties->id, static::$testable->getId());
-        $this->assertEquals(static::$properties->id, static::$testable->id);
+        $this->assertEquals($this->properties->id, $this->testable->getId());
+        $this->assertEquals($this->properties->id, $this->testable->id);
     }
 
     /** @test */
     public function status_is_accessible()
     {
-        $this->assertEquals(static::$properties->status, static::$testable->getStatus());
-        $this->assertEquals(static::$properties->status, static::$testable->status);
+        $this->assertEquals($this->properties->status, $this->testable->getStatus());
+        $this->assertEquals($this->properties->status, $this->testable->status);
     }
 
     /** @test */
     public function created_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->created)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->created);
-        $this->assertEquals($ts, static::$testable->getCreated()->timestamp);
-        $this->assertEquals($ts, static::$testable->created->timestamp);
+        $ts = Carbon::parse($this->properties->created)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->created);
+        $this->assertEquals($ts, $this->testable->getCreated()->timestamp);
+        $this->assertEquals($ts, $this->testable->created->timestamp);
     }
 
     /** @test */
     public function activated_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->activated)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->activated);
-        $this->assertEquals($ts, static::$testable->getActivated()->timestamp);
-        $this->assertEquals($ts, static::$testable->activated->timestamp);
+        $ts = Carbon::parse($this->properties->activated)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->activated);
+        $this->assertEquals($ts, $this->testable->getActivated()->timestamp);
+        $this->assertEquals($ts, $this->testable->activated->timestamp);
     }
 
     /** @test */
     public function status_changed_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->statusChanged)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->statusChanged);
-        $this->assertEquals($ts, static::$testable->getStatusChanged()->timestamp);
-        $this->assertEquals($ts, static::$testable->statusChanged->timestamp);
+        $ts = Carbon::parse($this->properties->statusChanged)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->statusChanged);
+        $this->assertEquals($ts, $this->testable->getStatusChanged()->timestamp);
+        $this->assertEquals($ts, $this->testable->statusChanged->timestamp);
     }
 
     /** @test */
     public function last_login_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->lastLogin)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->lastLogin);
-        $this->assertEquals($ts, static::$testable->getLastLogin()->timestamp);
-        $this->assertEquals($ts, static::$testable->lastLogin->timestamp);
+        $ts = Carbon::parse($this->properties->lastLogin)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->lastLogin);
+        $this->assertEquals($ts, $this->testable->getLastLogin()->timestamp);
+        $this->assertEquals($ts, $this->testable->lastLogin->timestamp);
     }
 
     /** @test */
     public function last_updated_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->lastUpdated)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->lastUpdated);
-        $this->assertEquals($ts, static::$testable->getLastUpdated()->timestamp);
-        $this->assertEquals($ts, static::$testable->lastUpdated->timestamp);
+        $ts = Carbon::parse($this->properties->lastUpdated)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->lastUpdated);
+        $this->assertEquals($ts, $this->testable->getLastUpdated()->timestamp);
+        $this->assertEquals($ts, $this->testable->lastUpdated->timestamp);
     }
 
     /** @test */
     public function password_changed_is_accessible()
     {
-        $ts = Carbon::parse(static::$properties->passwordChanged)->timestamp;
-        $this->assertInstanceOf(\Carbon\Carbon::class, static::$testable->passwordChanged);
-        $this->assertEquals($ts, static::$testable->getPasswordChanged()->timestamp);
-        $this->assertEquals($ts, static::$testable->passwordChanged->timestamp);
+        $ts = Carbon::parse($this->properties->passwordChanged)->timestamp;
+        $this->assertInstanceOf(\Carbon\Carbon::class, $this->testable->passwordChanged);
+        $this->assertEquals($ts, $this->testable->getPasswordChanged()->timestamp);
+        $this->assertEquals($ts, $this->testable->passwordChanged->timestamp);
     }
 
     /** @test */
     public function profile_is_accessible()
     {
-        $this->assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->getProfile());
-        $this->assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->profile);
+        $this->assertInstanceOf(\Okta\Users\UserProfile::class, $this->testable->getProfile());
+        $this->assertInstanceOf(\Okta\Users\UserProfile::class, $this->testable->profile);
     }
 
     /** @test */
     public function credentials_is_accessible()
     {
-        $this->assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->getCredentials());
-        $this->assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->credentials);
+        $this->assertInstanceOf(\Okta\Users\UserCredentials::class, $this->testable->getCredentials());
+        $this->assertInstanceOf(\Okta\Users\UserCredentials::class, $this->testable->credentials);
     }
 
     /** @test */
     public function transitioning_to_status_is_accessible()
     {
-        $this->assertEquals(static::$properties->transitioningToStatus, static::$testable->getTransitioningToStatus());
-        $this->assertEquals(static::$properties->transitioningToStatus, static::$testable->transitioningToStatus);
+        $this->assertEquals($this->properties->transitioningToStatus, $this->testable->getTransitioningToStatus());
+        $this->assertEquals($this->properties->transitioningToStatus, $this->testable->transitioningToStatus);
     }
 
     /** @test */
     public function links_is_accessible()
     {
-        $this->assertEquals(static::$properties->_links, static::$testable->getLinks());
-        $this->assertEquals(static::$properties->_links, static::$testable->links);
+        $this->assertEquals($this->properties->_links, $this->testable->getLinks());
+        $this->assertEquals($this->properties->_links, $this->testable->links);
     }
 
     /** @test */
     public function embedded_is_accessible()
     {
-        $this->assertEquals(static::$properties->_embedded, static::$testable->getEmbedded());
-        $this->assertEquals(static::$properties->_embedded, static::$testable->embedded);
+        $this->assertEquals($this->properties->_embedded, $this->testable->getEmbedded());
+        $this->assertEquals($this->properties->_embedded, $this->testable->embedded);
     }
 
     /** @test */
     public function credentials_is_settable()
     {
-        $credentials = static::$testable->getCredentials();
+        $credentials = $this->testable->getCredentials();
         $credentials->testProp = 'Hello';
 
-        static::$testable->setCredentials($credentials);
-        static::assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->getCredentials());
-        static::assertEquals('Hello', static::$testable->getCredentials()->testProp);
+        $this->testable->setCredentials($credentials);
+        static::assertInstanceOf(\Okta\Users\UserCredentials::class, $this->testable->getCredentials());
+        static::assertEquals('Hello', $this->testable->getCredentials()->testProp);
 
-        static::$testable->credentials = $credentials;
-        static::assertInstanceOf(\Okta\Users\UserCredentials::class, static::$testable->credentials);
-        static::assertEquals('Hello', static::$testable->credentials->testProp);
+        $this->testable->credentials = $credentials;
+        static::assertInstanceOf(\Okta\Users\UserCredentials::class, $this->testable->credentials);
+        static::assertEquals('Hello', $this->testable->credentials->testProp);
 
     }
 
     /** @test */
     public function profile_is_settable()
     {
-        $profile = static::$testable->getProfile();
+        $profile = $this->testable->getProfile();
         $profile->firstName = 'Test';
 
-        static::$testable->setProfile($profile);
-        static::assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->getProfile());
-        static::assertEquals('Test', static::$testable->getProfile()->getFirstName());
+        $this->testable->setProfile($profile);
+        static::assertInstanceOf(\Okta\Users\UserProfile::class, $this->testable->getProfile());
+        static::assertEquals('Test', $this->testable->getProfile()->getFirstName());
 
-        static::$testable->profile = $profile;
-        static::assertInstanceOf(\Okta\Users\UserProfile::class, static::$testable->profile);
-        static::assertEquals('Test', static::$testable->profile->firstName);
+        $this->testable->profile = $profile;
+        static::assertInstanceOf(\Okta\Users\UserProfile::class, $this->testable->profile);
+        static::assertEquals('Test', $this->testable->profile->firstName);
     }
 
     /** @test */
@@ -398,7 +380,6 @@ class UserTest extends BaseTestCase
             $request[0]->getBody()->getContents()
         );
     }
-
 
     /** @test */
     public function get_groups_makes_request_to_correct_location()
