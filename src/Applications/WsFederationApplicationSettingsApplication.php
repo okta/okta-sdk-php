@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class WsFederationApplicationSettingsApplication extends \Okta\Generated\Applications\WsFederationApplicationSettingsApplication
 {
 

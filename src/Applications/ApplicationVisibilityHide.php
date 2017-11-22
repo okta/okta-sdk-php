@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationVisibilityHide extends \Okta\Generated\Applications\ApplicationVisibilityHide
 {
 

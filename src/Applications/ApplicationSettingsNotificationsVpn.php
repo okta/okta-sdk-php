@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationSettingsNotificationsVpn extends \Okta\Generated\Applications\ApplicationSettingsNotificationsVpn
 {
 

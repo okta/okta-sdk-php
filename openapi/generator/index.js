@@ -111,6 +111,15 @@ function getExtends(modelName) {
         case 'SecurePasswordStoreApplication':
         case 'WsFederationApplication':
             return '\\Okta\\Applications\\Application';
+        case 'AutoLoginApplicationSettings':
+        case 'BasicAuthApplicationSettings':
+        case 'BookmarApplicationSettings':
+        case 'BrowserPluginApplicationSettings':
+        case 'OpenIdConnectApplicationSettings':
+        case 'SamlApplicationSettings':
+        case 'SecurePasswordStoreApplicationSettings':
+        case 'WsFederationApplicationSettings':
+            return '\\Okta\\Applications\\ApplicationSettings';
         case 'SwaApplication':
         case 'SwaThreeFieldApplication':
             return '\\Okta\\Application\\BrowserPluginApplication';
@@ -355,6 +364,16 @@ function buildGetResourceParams(model) {
     switch(model.operation.operationId) {
         case 'getFactor':
             return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
+    }
+
+}
+
+function buildPostParams(model) {
+
+    switch(model.operation.operationId) {
+        case 'getFactor':
+            return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
+
     }
 
 }

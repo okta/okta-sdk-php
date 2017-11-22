@@ -85,21 +85,6 @@ class Application extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::NAME);
     }
     /**
-    * Set the name.
-    *
-    * @param mixed $name The value to set.
-    * @return self
-    */
-    public function setName($name)
-    {
-        $this->setProperty(
-            self::NAME,
-            $name
-        );
-
-        return $this;
-    }
-    /**
      * Get the label.
      *
      * @return string
@@ -142,43 +127,13 @@ class Application extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::STATUS);
     }
     /**
-    * Set the status.
-    *
-    * @param mixed $status The value to set.
-    * @return self
-    */
-    public function setStatus($status)
-    {
-        $this->setProperty(
-            self::STATUS,
-            $status
-        );
-
-        return $this;
-    }
-    /**
      * Get the created.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getCreated(): string
+    public function getCreated()
     {
-        return $this->getProperty(self::CREATED);
-    }
-    /**
-    * Set the created.
-    *
-    * @param mixed $created The value to set.
-    * @return self
-    */
-    public function setCreated($created)
-    {
-        $this->setProperty(
-            self::CREATED,
-            $created
-        );
-
-        return $this;
+        return $this->getDateProperty(self::CREATED);
     }
     /**
      * Get the features.
@@ -459,7 +414,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         return $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, $appUser);
+                ->post($uri, $appUser, \Okta\Applications\AppUser::class);
     }
 
     /**
@@ -521,7 +476,7 @@ class Application extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function updateGroupApplicationAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
+    public function updateApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
@@ -538,7 +493,7 @@ class Application extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function getGroupApplicationAssignment($groupId)
+    public function getApplicationGroupAssignment($groupId)
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
@@ -557,7 +512,7 @@ class Application extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function deleteGroupApplicationAssignment($groupId)
+    public function deleteApplicationGroupAssignment($groupId)
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
@@ -627,7 +582,7 @@ class Application extends \Okta\Resource\AbstractResource
     * @param array $options The options for the request.
     * @return \Okta\Applications\Collection
     */
-    public function getGroupAssignments(array $options = []): \Okta\Applications\Collection
+    public function getApplicationGroupAssignments(array $options = []): \Okta\Applications\Collection
     {
 
         return $this
@@ -641,19 +596,19 @@ class Application extends \Okta\Resource\AbstractResource
     }
 
     /**
-    * Get the JsonWebKeyRSAMediated object.
+    * Get the JsonWebKey object.
     *
     * @param array $options The options for the request.
     * @return \Okta\Applications\Collection
     */
-    public function getKeys(array $options = []): \Okta\Applications\Collection
+    public function getApplicationKeys(array $options = []): \Okta\Applications\Collection
     {
 
         return $this
                 ->getDataStore()
                 ->getCollection(
                     "/api/v1/apps/{$this->getId()}/credentials/keys",
-                    \Okta\Applications\JsonWebKeyRSAMediated::class,
+                    \Okta\Applications\JsonWebKey::class,
                     \Okta\Applications\Collection::class,
                     $options
                 );

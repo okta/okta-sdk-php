@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SamlApplicationSettingsSignOn extends \Okta\Generated\Applications\SamlApplicationSettingsSignOn
 {
 

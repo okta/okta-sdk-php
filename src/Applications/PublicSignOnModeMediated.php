@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class PublicSignOnModeMediated extends \Okta\Generated\Applications\PublicSignOnModeMediated
 {
 

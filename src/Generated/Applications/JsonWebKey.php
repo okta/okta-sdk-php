@@ -18,7 +18,7 @@
 namespace Okta\Generated\Applications;
 
 
-class JsonWebKeyRSAMediated extends \Okta\Resource\AbstractResource
+class JsonWebKey extends \Okta\Resource\AbstractResource
 {
     const E = 'e';
     const N = 'n';

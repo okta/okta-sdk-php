@@ -408,7 +408,7 @@ class UserTest extends BaseUnitTestCase
         $user = $this->createNewUser();
 
         $user->activate();
-        $user->activate(false);
+        $userResponse = $user->activate(false);
 
         $request = $httpClient->getRequests();
 

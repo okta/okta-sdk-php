@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BasicApplicationSettingsApplication extends \Okta\Generated\Applications\BasicApplicationSettingsApplication
 {
 

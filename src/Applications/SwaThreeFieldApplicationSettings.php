@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SwaThreeFieldApplicationSettings extends \Okta\Generated\Applications\SwaThreeFieldApplicationSettings
 {
 

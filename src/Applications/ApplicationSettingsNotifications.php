@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationSettingsNotifications extends \Okta\Generated\Applications\ApplicationSettingsNotifications
 {
 

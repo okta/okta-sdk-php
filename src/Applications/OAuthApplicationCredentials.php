@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuthApplicationCredentials extends \Okta\Generated\Applications\OAuthApplicationCredentials
 {
 

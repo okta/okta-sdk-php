@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class AutoLoginApplication extends \Okta\Generated\Applications\AutoLoginApplication
 {
 

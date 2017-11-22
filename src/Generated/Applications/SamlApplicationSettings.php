@@ -18,7 +18,7 @@
 namespace Okta\Generated\Applications;
 
 
-class SamlApplicationSettings extends \Okta\Resource\AbstractResource
+class SamlApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const SIGN_ON = 'signOn';
 

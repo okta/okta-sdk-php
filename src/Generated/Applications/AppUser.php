@@ -45,6 +45,21 @@ class AppUser extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::ID);
     }
     /**
+    * Set the id.
+    *
+    * @param mixed $id The value to set.
+    * @return self
+    */
+    public function setId($id)
+    {
+        $this->setProperty(
+            self::ID,
+            $id
+        );
+
+        return $this;
+    }
+    /**
      * Get the scope.
      *
      * @return string

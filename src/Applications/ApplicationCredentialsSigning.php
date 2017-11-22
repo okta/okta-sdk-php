@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationCredentialsSigning extends \Okta\Generated\Applications\ApplicationCredentialsSigning
 {
 

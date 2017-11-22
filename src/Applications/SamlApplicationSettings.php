@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SamlApplicationSettings extends \Okta\Generated\Applications\SamlApplicationSettings
 {
 

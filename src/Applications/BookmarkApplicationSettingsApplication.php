@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BookmarkApplicationSettingsApplication extends \Okta\Generated\Applications\BookmarkApplicationSettingsApplication
 {
 

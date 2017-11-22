@@ -196,6 +196,29 @@ class {{modelName}} extends {{getExtends modelName}}
         return $response;
         {{/if}}
     }
+    {{elseif (eq this.operation.method "post")}}
+        /**
+        * {{this.operation.description}}
+        *
+        {{getMethodParamsComment this}}
+        * @return mixed|null
+        */
+        public function {{camelCase alias}}({{{getMethodParams this}}})
+        {
+        $uri = "{{{getMethodPath this}}}";
+        $uri = $this->getDataStore()->buildUri(
+        $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $response = $this
+            ->getDataStore()
+            ->post({{{buildPostParams this}}});
+
+        {{#if (eq this.operation.responseModel "Factor")}}
+            return $response->convertFromGenericFactor();
+        {{else}}
+            return $response;
+        {{/if}}
+        }
     {{else}}
     /**
     * {{this.operation.description}}

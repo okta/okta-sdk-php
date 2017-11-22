@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BasicAuthApplication extends \Okta\Generated\Applications\BasicAuthApplication
 {
 

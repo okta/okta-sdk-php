@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class JsonWebKeyRSAMediated extends \Okta\Generated\Applications\JsonWebKeyRSAMediated
 {
 

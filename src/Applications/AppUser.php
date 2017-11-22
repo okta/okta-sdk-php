@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class AppUser extends \Okta\Generated\Applications\AppUser
 {
 

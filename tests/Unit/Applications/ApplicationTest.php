@@ -28,10 +28,7 @@ class ApplicationTest extends BaseUnitTestCase
     protected $model = '/Applications/customSwa.json';
     protected $modelType = Application::class;
 
-    /**
-     * @test
-     * @covers Application::get()
-     */
+    /** @test */
     public function getting_an_application_will_make_request_to_correct_endpoint()
     {
         $client = $this->createNewHttpClient();
@@ -44,10 +41,7 @@ class ApplicationTest extends BaseUnitTestCase
         $this->assertEquals('GET', $requests[0]->getMethod());
     }
 
-    /**
-     * @test
-     * @covers Application::get()
-     */
+    /** @test */
     public function getting_an_application_will_return_application_object()
     {
         $client = $this->createNewHttpClient();
@@ -57,10 +51,7 @@ class ApplicationTest extends BaseUnitTestCase
         $this->assertInstanceOf(Application::class, $app);
     }
 
-    /**
-     * @test
-     * @covers Application::save()
-     */
+    /** @test */
     public function saving_an_application_makes_requests_to_correct_endpoint()
     {
         $client = $this->createNewHttpClient();
@@ -72,10 +63,7 @@ class ApplicationTest extends BaseUnitTestCase
         $this->assertEquals('POST', $requests[0]->getMethod());
     }
 
-    /**
-     * @test
-     * @covers Application::save()
-     */
+    /** @test */
     public function saving_an_application_will_return_correct_type()
     {
         $client = $this->createNewHttpClient();
@@ -85,10 +73,7 @@ class ApplicationTest extends BaseUnitTestCase
         $this->assertInstanceOf(Application::class, $app);
     }
 
-    /**
-     * @test
-     * @covers Application::delete()
-     */
+    /** @test */
     public function deleting_an_application_makes_requests_to_correct_endpoint()
     {
         $client = $this->createNewHttpClient();
@@ -143,16 +128,6 @@ class ApplicationTest extends BaseUnitTestCase
     {
         $this->assertEquals($this->properties->status, $this->testable->getStatus());
         $this->assertEquals($this->properties->status, $this->testable->status);
-    }
-    
-    /** @test */
-    public function status_is_settable()
-    {
-        $this->testable->setStatus('ACTIVE');
-        $this->assertEquals('ACTIVE', $this->testable->getStatus());
-    
-        $this->testable->status = 'INACTIVE';
-        $this->assertEquals('INACTIVE', $this->testable->getStatus());
     }
 
     /** @test */
@@ -385,8 +360,8 @@ class ApplicationTest extends BaseUnitTestCase
             'getBody' => '[{"id": "00uaz81i7cHX3cSsg0h7"}]'
         ]);
 
-        $app = $this->createModel($this->model, Application::class);
-        $app->getApplicationUsers();
+        $app = $this->createModel($this->model, $this->modelType);
+        $appUsers = $app->getApplicationUsers();
 
         $request = $httpClient->getRequests();
 
@@ -395,6 +370,40 @@ class ApplicationTest extends BaseUnitTestCase
             "/api/v1/apps/{$this->testable->getId()}/users",
             $request[0]->getUri()->getPath()
         );
+
+        $this->assertInstanceOf(\Okta\Applications\Collection::class, $appUsers);
+        $this->assertInstanceOf(\Okta\Applications\AppUser::class, $appUsers->first());
+    }
+
+    /** @test */
+    public function assign_user_to_application_makes_request_to_correct_endpoint()
+    {
+
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id":"abc123"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $appUser = json_decode('{
+              "id": "abc123",
+              "scope": "USER",
+              "credentials": {
+                "userName": "user@example.com"
+              }
+            }  ');
+
+        $appUser = $app->assignUserToApplication(new \Okta\Applications\AppUser(null, $appUser));
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/users",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\AppUser::class, $appUser);
     }
 
 

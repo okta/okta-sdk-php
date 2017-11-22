@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BookmarkApplication extends \Okta\Generated\Applications\BookmarkApplication
 {
     private $name = "bookmark";

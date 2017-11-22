@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SecurePasswordStoreApplication extends \Okta\Generated\Applications\SecurePasswordStoreApplication
 {
 

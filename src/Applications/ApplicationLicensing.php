@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationLicensing extends \Okta\Generated\Applications\ApplicationLicensing
 {
 

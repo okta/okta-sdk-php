@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SwaApplicationSettingsApplication extends \Okta\Generated\Applications\SwaApplicationSettingsApplication
 {
 
