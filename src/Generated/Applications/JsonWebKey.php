@@ -36,6 +36,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     const EXPIRES_AT = 'expiresAt';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Get the e.
      *
@@ -129,11 +130,11 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     /**
      * Get the created.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getCreated(): string
+    public function getCreated()
     {
-        return $this->getProperty(self::CREATED);
+        return $this->getDateProperty(self::CREATED);
     }
     /**
      * Get the key_ops.
@@ -156,19 +157,19 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     /**
      * Get the expiresAt.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getExpiresAt(): string
+    public function getExpiresAt()
     {
-        return $this->getProperty(self::EXPIRES_AT);
+        return $this->getDateProperty(self::EXPIRES_AT);
     }
     /**
      * Get the lastUpdated.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastUpdated(): string
+    public function getLastUpdated()
     {
-        return $this->getProperty(self::LAST_UPDATED);
+        return $this->getDateProperty(self::LAST_UPDATED);
     }
 }

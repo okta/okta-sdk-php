@@ -23,16 +23,17 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     const APP = 'app';
     const NOTIFICATIONS = 'notifications';
 
+
     /**
      * Get the app.
      *
-     * @return \Okta\Applications\object
+     * @return \Okta\Applications\ApplicationSettingsApplication
      */
-    public function getApp(array $options = []): \Okta\Applications\object
+    public function getApp(array $options = []): \Okta\Applications\ApplicationSettingsApplication
     {
         return $this->getResourceProperty(
             self::APP,
-            \Okta\Applications\object::class,
+            \Okta\Applications\ApplicationSettingsApplication::class,
             $options
         );
     }
@@ -40,10 +41,10 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     /**
      * Set the app.
      *
-     * @param \Okta\Applications\object $app The object instance.
+     * @param \Okta\Applications\ApplicationSettingsApplication $app The ApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(object $app)
+    public function setApp(\Okta\Applications\ApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,
@@ -72,7 +73,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationSettingsNotifications $notifications The ApplicationSettingsNotifications instance.
      * @return self
      */
-    public function setNotifications(ApplicationSettingsNotifications $notifications)
+    public function setNotifications(\Okta\Applications\ApplicationSettingsNotifications $notifications)
     {
         $this->setResourceProperty(
             self::NOTIFICATIONS,

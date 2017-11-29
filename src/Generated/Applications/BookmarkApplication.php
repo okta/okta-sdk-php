@@ -20,7 +20,10 @@ namespace Okta\Generated\Applications;
 
 class BookmarkApplication extends \Okta\Resource\AbstractResource
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
+
+    private $name = 'bookmark';
 
     /**
      * Get the settings.
@@ -42,7 +45,7 @@ class BookmarkApplication extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\BookmarkApplicationSettings $settings The BookmarkApplicationSettings instance.
      * @return self
      */
-    public function setSettings(BookmarkApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\BookmarkApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,

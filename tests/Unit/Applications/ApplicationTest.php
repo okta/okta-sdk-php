@@ -406,6 +406,189 @@ class ApplicationTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Applications\AppUser::class, $appUser);
     }
 
+    /** @test */
+    public function get_application_user_makes_request_to_correct_endpoint()
+    {
+
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id":"abc123"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $appUser = $app->getApplicationUser('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/users/abc123",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\AppUser::class, $appUser);
+    }
+
+    /** @test */
+    public function get_application_group_assignment_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id":"abc123"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $groupAssignment = $app->getApplicationGroupAssignment('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/groups/abc123",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\ApplicationGroupAssignment::class, $groupAssignment);
+    }
+
+    /** @test */
+    public function generate_application_key_makes_request_to_correct_endpoint()
+    {
+
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"created":"2015-12-10T18:56:23.000Z","expiresAt":"2017-12-10T18:56:22.000Z","x5c":["MIIDqDCCApCg"],"e":"AQAB","n":"mkC6yAJVvFwUlm","kid":"SIMcCQNY3uw","kty":"RSA","use":"sig","x5t#S256":"5GOpy9CQVt"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $key = $app->generateApplicationKey();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/credentials/keys/generate",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\JsonWebKey::class, $key);
+
+    }
+
+    /** @test */
+    public function clone_application_key_makes_request_to_correct_endpoint()
+    {
+
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"created":"2015-12-10T18:56:23.000Z","expiresAt":"2017-12-10T18:56:22.000Z","x5c":["MIIDqDCCApCg"],"e":"AQAB","n":"mkC6yAJVvFwUlm","kid":"SIMcCQNY3uw","kty":"RSA","use":"sig","x5t#S256":"5GOpy9CQVt"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $key = $app->cloneApplicationKey('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('POST', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/credentials/keys/abc123/clone",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\JsonWebKey::class, $key);
+    }
+
+    /** @test */
+    public function get_application_key_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"created":"2015-12-10T18:56:23.000Z","expiresAt":"2017-12-10T18:56:22.000Z","x5c":["MIIDqDCCApCg"],"e":"AQAB","n":"mkC6yAJVvFwUlm","kid":"SIMcCQNY3uw","kty":"RSA","use":"sig","x5t#S256":"5GOpy9CQVt"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $key = $app->getApplicationKey('abc123');
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/credentials/keys/abc123",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\JsonWebKey::class, $key);
+    }
+
+    /** @test */
+    public function create_application_group_assignment_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id": "abc123"}'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+        $appGroupAssignment = new \Okta\Applications\ApplicationGroupAssignment();
+
+        $applicationGroupAssignment = $app->createApplicationGroupAssignment('xyz789', $appGroupAssignment);
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('PUT', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/groups/xyz789",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\ApplicationGroupAssignment::class, $applicationGroupAssignment);
+
+    }
+
+    /** @test */
+    public function get_group_assignments_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '[{"id": "abc123"}]'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $groupAssignments = $app->getGroupAssignments();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/groups",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\Collection::class, $groupAssignments);
+        $this->assertInstanceOf(\Okta\Applications\ApplicationGroupAssignment::class, $groupAssignments->first());
+    }
+
+    /** @test */
+    public function get_keys_makes_request_to_correct_endpoint()
+    {
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '[{"id": "abc123"}]'
+        ]);
+
+        $app = $this->createModel($this->model, $this->modelType);
+
+        $keys = $app->getKeys();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('GET', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/apps/{$this->testable->getId()}/credentials/keys",
+            $request[0]->getUri()->getPath()
+        );
+
+        $this->assertInstanceOf(\Okta\Applications\Collection::class, $keys);
+        $this->assertInstanceOf(\Okta\Applications\JsonWebKey::class, $keys->first());
+    }
 
         
 }

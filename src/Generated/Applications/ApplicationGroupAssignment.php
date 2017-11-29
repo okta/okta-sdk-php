@@ -27,6 +27,16 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     const EMBEDDED = '_embedded';
     const LAST_UPDATED = 'lastUpdated';
 
+
+    public function delete()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->deleteResource(
+                    "/apps",
+                    $this
+                );
+    }
     /**
      * Get the id.
      *
@@ -105,25 +115,10 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     /**
      * Get the lastUpdated.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastUpdated(): string
+    public function getLastUpdated()
     {
-        return $this->getProperty(self::LAST_UPDATED);
-    }
-    /**
-    * Set the lastUpdated.
-    *
-    * @param mixed $lastUpdated The value to set.
-    * @return self
-    */
-    public function setLastUpdated($lastUpdated)
-    {
-        $this->setProperty(
-            self::LAST_UPDATED,
-            $lastUpdated
-        );
-
-        return $this;
+        return $this->getDateProperty(self::LAST_UPDATED);
     }
 }

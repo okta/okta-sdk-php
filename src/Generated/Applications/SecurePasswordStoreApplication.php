@@ -20,15 +20,18 @@ namespace Okta\Generated\Applications;
 
 class SecurePasswordStoreApplication extends \Okta\Applications\Application
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
     const CREDENTIALS = 'credentials';
+
+    private $name = 'template_sps';
 
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\SecurePasswordStoreApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\SecurePasswordStoreApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -40,10 +43,10 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\SecurePasswordStoreApplicationSettings $settings The SecurePasswordStoreApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The SecurePasswordStoreApplicationSettings instance.
      * @return self
      */
-    public function setSettings(SecurePasswordStoreApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,
@@ -55,9 +58,9 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
     /**
      * Get the credentials.
      *
-     * @return \Okta\Applications\SchemeApplicationCredentials
+     * @return \Okta\Applications\ApplicationCredentials
      */
-    public function getCredentials(array $options = []): \Okta\Applications\SchemeApplicationCredentials
+    public function getCredentials(array $options = []): \Okta\Applications\ApplicationCredentials
     {
         return $this->getResourceProperty(
             self::CREDENTIALS,
@@ -69,10 +72,10 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
     /**
      * Set the credentials.
      *
-     * @param \Okta\Applications\SchemeApplicationCredentials $credentials The SchemeApplicationCredentials instance.
+     * @param \Okta\Applications\ApplicationCredentials $credentials The SchemeApplicationCredentials instance.
      * @return self
      */
-    public function setCredentials(SchemeApplicationCredentials $credentials)
+    public function setCredentials(\Okta\Applications\ApplicationCredentials $credentials)
     {
         $this->setResourceProperty(
             self::CREDENTIALS,

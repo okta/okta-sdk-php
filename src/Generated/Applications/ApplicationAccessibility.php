@@ -24,6 +24,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
     const ERROR_REDIRECT_URL = 'errorRedirectUrl';
     const LOGIN_REDIRECT_URL = 'loginRedirectUrl';
 
+
     /**
      * Get the selfService.
      *

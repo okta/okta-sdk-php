@@ -23,6 +23,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Resource\AbstractReso
     const URL = 'url';
     const REQUEST_INTEGRATION = 'requestIntegration';
 
+
     /**
      * Get the url.
      *

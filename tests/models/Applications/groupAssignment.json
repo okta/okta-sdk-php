@@ -1,0 +1,19 @@
+{
+  "id": "00gbkkGFFWZDLCNTAGQR",
+  "lastUpdated": "2013-10-02T07:38:20.000Z",
+  "priority": 0,
+  "profile": {
+    "email": "demo@mailinator.com"
+  },
+  "_links": {
+    "app": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabhnUQFYHMBNVSVXMV"
+    },
+    "user": {
+      "href": "https://php.oktapreview.com/api/v1/users/00u11z6WHMYCGPCHCRFK"
+    }
+  },
+  "_embedded": {
+    "test": "test"
+  }
+}

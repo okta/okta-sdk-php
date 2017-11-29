@@ -18,13 +18,14 @@
 namespace Okta\Generated\Applications;
 
 
-class SchemeApplicationCredentials extends \Okta\Resource\AbstractResource
+class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const SCHEME = 'scheme';
     const SIGNING = 'signing';
     const PASSWORD = 'password';
     const USER_NAME = 'userName';
     const REVEAL_PASSWORD = 'revealPassword';
+
 
     /**
      * Get the scheme.
@@ -70,7 +71,7 @@ class SchemeApplicationCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationCredentialsSigning $signing The ApplicationCredentialsSigning instance.
      * @return self
      */
-    public function setSigning(ApplicationCredentialsSigning $signing)
+    public function setSigning(\Okta\Applications\ApplicationCredentialsSigning $signing)
     {
         $this->setResourceProperty(
             self::SIGNING,
@@ -99,7 +100,7 @@ class SchemeApplicationCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
-    public function setPassword(PasswordCredential $password)
+    public function setPassword(\Okta\Applications\PasswordCredential $password)
     {
         $this->setResourceProperty(
             self::PASSWORD,

@@ -23,16 +23,17 @@ class AppUserCredentials extends \Okta\Resource\AbstractResource
     const PASSWORD = 'password';
     const USER_NAME = 'userName';
 
+
     /**
      * Get the password.
      *
-     * @return \Okta\Applications\PasswordCredential
+     * @return \Okta\Applications\AppUserPasswordCredential
      */
-    public function getPassword(array $options = []): \Okta\Applications\PasswordCredential
+    public function getPassword(array $options = []): \Okta\Applications\AppUserPasswordCredential
     {
         return $this->getResourceProperty(
             self::PASSWORD,
-            \Okta\Applications\PasswordCredential::class,
+            \Okta\Applications\AppUserPasswordCredential::class,
             $options
         );
     }
@@ -40,10 +41,10 @@ class AppUserCredentials extends \Okta\Resource\AbstractResource
     /**
      * Set the password.
      *
-     * @param \Okta\Applications\PasswordCredential $password The PasswordCredential instance.
+     * @param \Okta\Applications\AppUserPasswordCredential $password The AppUserPasswordCredential instance.
      * @return self
      */
-    public function setPassword(PasswordCredential $password)
+    public function setPassword(\Okta\Applications\AppUserPasswordCredential $password)
     {
         $this->setResourceProperty(
             self::PASSWORD,

@@ -22,6 +22,7 @@ class PasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';
 
+
     /**
      * Get the value.
      *

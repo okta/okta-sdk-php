@@ -23,6 +23,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     const I_OS = 'iOS';
     const WEB = 'web';
 
+
     /**
      * Get the iOS.
      *

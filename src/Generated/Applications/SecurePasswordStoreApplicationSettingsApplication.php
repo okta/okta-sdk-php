@@ -18,7 +18,7 @@
 namespace Okta\Generated\Applications;
 
 
-class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const PASSWORD_FIELD = 'passwordField';
@@ -29,6 +29,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Resource\A
     const OPTIONAL_FIELD_1_VALUE = 'optionalField1Value';
     const OPTIONAL_FIELD_2_VALUE = 'optionalField2Value';
     const OPTIONAL_FIELD_3_VALUE = 'optionalField3Value';
+
 
     /**
      * Get the url.

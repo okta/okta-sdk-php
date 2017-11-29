@@ -18,7 +18,7 @@
 namespace Okta\Generated\Applications;
 
 
-class WsFederationApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+class WsFederationApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const REALM = 'realm';
     const SITE_URL = 'siteURL';
@@ -32,6 +32,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Resource\Abstract
     const ATTRIBUTE_STATEMENTS = 'attributeStatements';
     const AUDIENCE_RESTRICTION = 'audienceRestriction';
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
+
 
     /**
      * Get the realm.
@@ -180,9 +181,9 @@ class WsFederationApplicationSettingsApplication extends \Okta\Resource\Abstract
     /**
      * Get the wReplyOverride.
      *
-     * @return string
+     * @return bool
      */
-    public function getWReplyOverride(): string
+    public function getWReplyOverride(): bool
     {
         return $this->getProperty(self::W_REPLY_OVERRIDE);
     }

@@ -25,6 +25,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     const AUTO_KEY_ROTATION = 'autoKeyRotation';
     const TOKEN_ENDPOINT_AUTH_METHOD = 'token_endpoint_auth_method';
 
+
     /**
      * Get the client_id.
      *

@@ -36,6 +36,7 @@ class Application extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const ACCESSIBILITY = 'accessibility';
 
+
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -179,7 +180,7 @@ class Application extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationSettings $settings The ApplicationSettings instance.
      * @return self
      */
-    public function setSettings(ApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,
@@ -217,7 +218,7 @@ class Application extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationLicensing $licensing The ApplicationLicensing instance.
      * @return self
      */
-    public function setLicensing(ApplicationLicensing $licensing)
+    public function setLicensing(\Okta\Applications\ApplicationLicensing $licensing)
     {
         $this->setResourceProperty(
             self::LICENSING,
@@ -270,7 +271,7 @@ class Application extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationVisibility $visibility The ApplicationVisibility instance.
      * @return self
      */
-    public function setVisibility(ApplicationVisibility $visibility)
+    public function setVisibility(\Okta\Applications\ApplicationVisibility $visibility)
     {
         $this->setResourceProperty(
             self::VISIBILITY,
@@ -299,7 +300,7 @@ class Application extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationCredentials $credentials The ApplicationCredentials instance.
      * @return self
      */
-    public function setCredentials(ApplicationCredentials $credentials)
+    public function setCredentials(\Okta\Applications\ApplicationCredentials $credentials)
     {
         $this->setResourceProperty(
             self::CREDENTIALS,
@@ -337,7 +338,7 @@ class Application extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationAccessibility $accessibility The ApplicationAccessibility instance.
      * @return self
      */
-    public function setAccessibility(ApplicationAccessibility $accessibility)
+    public function setAccessibility(\Okta\Applications\ApplicationAccessibility $accessibility)
     {
         $this->setResourceProperty(
             self::ACCESSIBILITY,
@@ -346,6 +347,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
 
     /**
     * Activates an inactive application.
@@ -359,10 +361,13 @@ class Application extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Deactivates an active application.
@@ -376,9 +381,11 @@ class Application extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
 
     /**
@@ -400,6 +407,7 @@ class Application extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
     *
@@ -412,10 +420,13 @@ class Application extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
-                ->post($uri, $appUser, \Okta\Applications\AppUser::class);
+                ->executeRequest('POST', $uri, $appUser);
+
+        return new \Okta\Applications\AppUser(null, $body);
     }
+
 
     /**
     * Fetches a specific user assignment for application by &#x60;id&#x60;.
@@ -427,48 +438,15 @@ class Application extends \Okta\Resource\AbstractResource
     {
         $uri = "/api/v1/apps/{$this->getId()}/users/{$userId}";
         $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $response = $this
-            ->getDataStore()
-            ->getResource();
-
-        return $response;
-    }
-
-    /**
-    * Updates a user&#x27;s profile for an application
-    *
-    *
-    * @return mixed|null
-    */
-    public function updateApplicationUser($userId, AppUser $appUser)
-    {
-        $uri = "/api/v1/apps/{$this->getId()}/users/{$userId}";
-        $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
-                ->executeRequest('POST', $uri, $appUser);
+                ->executeRequest('GET', $uri);
+
+        return new \Okta\Applications\AppUser(null, $body);
     }
 
-    /**
-    * Removes an assignment for a user from an application.
-    *
-    *
-    * @return mixed|null
-    */
-    public function deleteApplicationUser($userId)
-    {
-        $uri = "/api/v1/apps/{$this->getId()}/users/{$userId}";
-        $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        return $this
-                ->getDataStore()
-                ->executeRequest('DELETE', $uri);
-    }
 
     /**
     * Assigns a group to an application
@@ -476,16 +454,19 @@ class Application extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function updateApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
+    public function createApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('PUT', $uri, $applicationGroupAssignment);
+
+        return new \Okta\Applications\ApplicationGroupAssignment(null, $body);
     }
+
 
     /**
     * Fetches an application group assignment
@@ -497,31 +478,15 @@ class Application extends \Okta\Resource\AbstractResource
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $response = $this
-            ->getDataStore()
-            ->getResource();
-
-        return $response;
-    }
-
-    /**
-    * Removes a group assignment from an application.
-    *
-    *
-    * @return mixed|null
-    */
-    public function deleteApplicationGroupAssignment($groupId)
-    {
-        $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
-        $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
-                ->executeRequest('DELETE', $uri);
+                ->executeRequest('GET', $uri);
+
+        return new \Okta\Applications\ApplicationGroupAssignment(null, $body);
     }
+
 
     /**
     * Generates a new X.509 certificate for an application key credential
@@ -535,10 +500,13 @@ class Application extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return new \Okta\Applications\JsonWebKey(null, $body);
     }
+
 
     /**
     * Clones a X.509 certificate for an application key credential from a source application to target application.
@@ -552,10 +520,13 @@ class Application extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return new \Okta\Applications\JsonWebKey(null, $body);
     }
+
 
     /**
     * Gets a specific [application key credential](#application-key-credential-model) by &#x60;kid&#x60;
@@ -567,13 +538,13 @@ class Application extends \Okta\Resource\AbstractResource
     {
         $uri = "/api/v1/apps/{$this->getId()}/credentials/keys/{$keyId}";
         $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
+            $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        $response = $this
-            ->getDataStore()
-            ->getResource();
+        $body = $this
+                ->getDataStore()
+                ->executeRequest('GET', $uri);
 
-        return $response;
+        return new \Okta\Applications\JsonWebKey(null, $body);
     }
 
     /**
@@ -582,7 +553,7 @@ class Application extends \Okta\Resource\AbstractResource
     * @param array $options The options for the request.
     * @return \Okta\Applications\Collection
     */
-    public function getApplicationGroupAssignments(array $options = []): \Okta\Applications\Collection
+    public function getGroupAssignments(array $options = []): \Okta\Applications\Collection
     {
 
         return $this
@@ -601,7 +572,7 @@ class Application extends \Okta\Resource\AbstractResource
     * @param array $options The options for the request.
     * @return \Okta\Applications\Collection
     */
-    public function getApplicationKeys(array $options = []): \Okta\Applications\Collection
+    public function getKeys(array $options = []): \Okta\Applications\Collection
     {
 
         return $this

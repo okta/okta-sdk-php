@@ -22,6 +22,7 @@ class ApplicationLicensing extends \Okta\Resource\AbstractResource
 {
     const SEAT_COUNT = 'seatCount';
 
+
     /**
      * Get the seatCount.
      *

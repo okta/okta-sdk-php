@@ -18,12 +18,14 @@
 namespace Okta\Generated\Applications;
 
 
-class SwaApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const BUTTON_FIELD = 'buttonField';
+    const LOGIN_URL_REGEX = 'loginUrlRegex';
     const PASSWORD_FIELD = 'passwordField';
     const USERNAME_FIELD = 'usernameField';
+
 
     /**
      * Get the url.
@@ -69,6 +71,30 @@ class SwaApplicationSettingsApplication extends \Okta\Resource\AbstractResource
         $this->setProperty(
             self::BUTTON_FIELD,
             $buttonField
+        );
+
+        return $this;
+    }
+    /**
+     * Get the loginUrlRegex.
+     *
+     * @return string
+     */
+    public function getLoginUrlRegex(): string
+    {
+        return $this->getProperty(self::LOGIN_URL_REGEX);
+    }
+    /**
+    * Set the loginUrlRegex.
+    *
+    * @param mixed $loginUrlRegex The value to set.
+    * @return self
+    */
+    public function setLoginUrlRegex($loginUrlRegex)
+    {
+        $this->setProperty(
+            self::LOGIN_URL_REGEX,
+            $loginUrlRegex
         );
 
         return $this;

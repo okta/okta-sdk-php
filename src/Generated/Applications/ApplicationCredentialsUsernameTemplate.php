@@ -24,6 +24,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     const SUFFIX = 'suffix';
     const TEMPLATE = 'template';
 
+
     /**
      * Get the type.
      *

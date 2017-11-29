@@ -24,6 +24,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
     const APP_LINKS = 'appLinks';
     const AUTO_SUBMIT_TOOLBAR = 'autoSubmitToolbar';
 
+
     /**
      * Get the hide.
      *
@@ -44,7 +45,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationVisibilityHide $hide The ApplicationVisibilityHide instance.
      * @return self
      */
-    public function setHide(ApplicationVisibilityHide $hide)
+    public function setHide(\Okta\Applications\ApplicationVisibilityHide $hide)
     {
         $this->setResourceProperty(
             self::HIDE,

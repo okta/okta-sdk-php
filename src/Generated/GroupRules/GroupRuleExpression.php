@@ -23,6 +23,7 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const VALUE = 'value';
 
+
     /**
      * Get the type.
      *

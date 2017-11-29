@@ -22,6 +22,7 @@ class TokenFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const CREDENTIAL_ID = 'credentialId';
 
+
     /**
      * Get the credentialId.
      *

@@ -18,16 +18,19 @@
 namespace Okta\Generated\Applications;
 
 
-class SwaThreeFieldApplication extends \Okta\Application\BrowserPluginApplication
+class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplication
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
+
+    private $name = 'template_swa3field';
 
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\SwaThreeFieldApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\SwaThreeFieldApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -39,10 +42,10 @@ class SwaThreeFieldApplication extends \Okta\Application\BrowserPluginApplicatio
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\SwaThreeFieldApplicationSettings $settings The SwaThreeFieldApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The SwaThreeFieldApplicationSettings instance.
      * @return self
      */
-    public function setSettings(SwaThreeFieldApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,

@@ -23,6 +23,7 @@ class CallFactorProfile extends \Okta\UserFactors\FactorProfile
     const PHONE_NUMBER = 'phoneNumber';
     const PHONE_EXTENSION = 'phoneExtension';
 
+
     /**
      * Get the phoneNumber.
      *

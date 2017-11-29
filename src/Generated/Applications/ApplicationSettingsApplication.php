@@ -21,4 +21,5 @@ namespace Okta\Generated\Applications;
 class ApplicationSettingsApplication extends \Okta\Resource\AbstractResource
 {
 
+
 }

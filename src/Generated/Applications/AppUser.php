@@ -35,6 +35,27 @@ class AppUser extends \Okta\Resource\AbstractResource
     const STATUS_CHANGED = 'statusChanged';
     const PASSWORD_CHANGED = 'passwordChanged';
 
+
+    public function save()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->saveResource(
+                    "/apps",
+                    $this,
+                    \Okta\Applications\AppUser::class
+                );
+    }
+
+    public function delete()
+    {
+        return \Okta\Client::getInstance()
+                ->getDataStore()
+                ->deleteResource(
+                    "/apps",
+                    $this
+                );
+    }
     /**
      * Get the id.
      *
@@ -102,43 +123,13 @@ class AppUser extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::STATUS);
     }
     /**
-    * Set the status.
-    *
-    * @param mixed $status The value to set.
-    * @return self
-    */
-    public function setStatus($status)
-    {
-        $this->setProperty(
-            self::STATUS,
-            $status
-        );
-
-        return $this;
-    }
-    /**
      * Get the created.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getCreated(): string
+    public function getCreated()
     {
-        return $this->getProperty(self::CREATED);
-    }
-    /**
-    * Set the created.
-    *
-    * @param mixed $created The value to set.
-    * @return self
-    */
-    public function setCreated($created)
-    {
-        $this->setProperty(
-            self::CREATED,
-            $created
-        );
-
-        return $this;
+        return $this->getDateProperty(self::CREATED);
     }
     /**
      * Get the profile.
@@ -150,43 +141,13 @@ class AppUser extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::PROFILE);
     }
     /**
-    * Set the profile.
-    *
-    * @param mixed $profile The value to set.
-    * @return self
-    */
-    public function setProfile($profile)
-    {
-        $this->setProperty(
-            self::PROFILE,
-            $profile
-        );
-
-        return $this;
-    }
-    /**
      * Get the lastSync.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastSync(): string
+    public function getLastSync()
     {
-        return $this->getProperty(self::LAST_SYNC);
-    }
-    /**
-    * Set the lastSync.
-    *
-    * @param mixed $lastSync The value to set.
-    * @return self
-    */
-    public function setLastSync($lastSync)
-    {
-        $this->setProperty(
-            self::LAST_SYNC,
-            $lastSync
-        );
-
-        return $this;
+        return $this->getDateProperty(self::LAST_SYNC);
     }
     /**
      * Get the _embedded.
@@ -207,21 +168,6 @@ class AppUser extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::SYNC_STATE);
     }
     /**
-    * Set the syncState.
-    *
-    * @param mixed $syncState The value to set.
-    * @return self
-    */
-    public function setSyncState($syncState)
-    {
-        $this->setProperty(
-            self::SYNC_STATE,
-            $syncState
-        );
-
-        return $this;
-    }
-    /**
      * Get the externalId.
      *
      * @return string
@@ -229,21 +175,6 @@ class AppUser extends \Okta\Resource\AbstractResource
     public function getExternalId(): string
     {
         return $this->getProperty(self::EXTERNAL_ID);
-    }
-    /**
-    * Set the externalId.
-    *
-    * @param mixed $externalId The value to set.
-    * @return self
-    */
-    public function setExternalId($externalId)
-    {
-        $this->setProperty(
-            self::EXTERNAL_ID,
-            $externalId
-        );
-
-        return $this;
     }
     /**
      * Get the credentials.
@@ -265,7 +196,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\AppUserCredentials $credentials The AppUserCredentials instance.
      * @return self
      */
-    public function setCredentials(AppUserCredentials $credentials)
+    public function setCredentials(\Okta\Applications\AppUserCredentials $credentials)
     {
         $this->setResourceProperty(
             self::CREDENTIALS,
@@ -277,73 +208,28 @@ class AppUser extends \Okta\Resource\AbstractResource
     /**
      * Get the lastUpdated.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastUpdated(): string
+    public function getLastUpdated()
     {
-        return $this->getProperty(self::LAST_UPDATED);
-    }
-    /**
-    * Set the lastUpdated.
-    *
-    * @param mixed $lastUpdated The value to set.
-    * @return self
-    */
-    public function setLastUpdated($lastUpdated)
-    {
-        $this->setProperty(
-            self::LAST_UPDATED,
-            $lastUpdated
-        );
-
-        return $this;
+        return $this->getDateProperty(self::LAST_UPDATED);
     }
     /**
      * Get the statusChanged.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getStatusChanged(): string
+    public function getStatusChanged()
     {
-        return $this->getProperty(self::STATUS_CHANGED);
-    }
-    /**
-    * Set the statusChanged.
-    *
-    * @param mixed $statusChanged The value to set.
-    * @return self
-    */
-    public function setStatusChanged($statusChanged)
-    {
-        $this->setProperty(
-            self::STATUS_CHANGED,
-            $statusChanged
-        );
-
-        return $this;
+        return $this->getDateProperty(self::STATUS_CHANGED);
     }
     /**
      * Get the passwordChanged.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getPasswordChanged(): string
+    public function getPasswordChanged()
     {
-        return $this->getProperty(self::PASSWORD_CHANGED);
-    }
-    /**
-    * Set the passwordChanged.
-    *
-    * @param mixed $passwordChanged The value to set.
-    * @return self
-    */
-    public function setPasswordChanged($passwordChanged)
-    {
-        $this->setProperty(
-            self::PASSWORD_CHANGED,
-            $passwordChanged
-        );
-
-        return $this;
+        return $this->getDateProperty(self::PASSWORD_CHANGED);
     }
 }

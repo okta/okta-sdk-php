@@ -23,6 +23,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     const NAME = 'name';
     const DESCRIPTION = 'description';
 
+
     /**
      * Get the name.
      *

@@ -18,9 +18,10 @@
 namespace Okta\Generated\Applications;
 
 
-class OAuthApplicationCredentials extends \Okta\Resource\AbstractResource
+class OAuthApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const OAUTH_CLIENT = 'oauthClient';
+
 
     /**
      * Get the oauthClient.
@@ -42,7 +43,7 @@ class OAuthApplicationCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationCredentialsOAuthClient $oauthClient The ApplicationCredentialsOAuthClient instance.
      * @return self
      */
-    public function setOauthClient(ApplicationCredentialsOAuthClient $oauthClient)
+    public function setOauthClient(\Okta\Applications\ApplicationCredentialsOAuthClient $oauthClient)
     {
         $this->setResourceProperty(
             self::OAUTH_CLIENT,

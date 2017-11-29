@@ -18,16 +18,17 @@
 namespace Okta\Generated\Applications;
 
 
-class SwaApplicationSettings extends \Okta\Resource\AbstractResource
+class SwaApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';
+
 
     /**
      * Get the app.
      *
-     * @return \Okta\Applications\SwaApplicationSettingsApplication
+     * @return \Okta\Applications\ApplicationSettingsApplication
      */
-    public function getApp(array $options = []): \Okta\Applications\SwaApplicationSettingsApplication
+    public function getApp(array $options = []): \Okta\Applications\ApplicationSettingsApplication
     {
         return $this->getResourceProperty(
             self::APP,
@@ -39,10 +40,10 @@ class SwaApplicationSettings extends \Okta\Resource\AbstractResource
     /**
      * Set the app.
      *
-     * @param \Okta\Applications\SwaApplicationSettingsApplication $app The SwaApplicationSettingsApplication instance.
+     * @param \Okta\Applications\ApplicationSettingsApplication $app The SwaApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(SwaApplicationSettingsApplication $app)
+    public function setApp(\Okta\Applications\ApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,

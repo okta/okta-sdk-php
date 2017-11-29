@@ -37,6 +37,7 @@ class User extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
+
     public function create()
     {
         return \Okta\Client::getInstance()
@@ -134,7 +135,7 @@ class User extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\UserProfile $profile The UserProfile instance.
      * @return self
      */
-    public function setProfile(UserProfile $profile)
+    public function setProfile(\Okta\Users\UserProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,
@@ -190,7 +191,7 @@ class User extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\UserCredentials $credentials The UserCredentials instance.
      * @return self
      */
-    public function setCredentials(UserCredentials $credentials)
+    public function setCredentials(\Okta\Users\UserCredentials $credentials)
     {
         $this->setResourceProperty(
             self::CREDENTIALS,
@@ -255,6 +256,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Changes a user&#x27;s password by validating the user&#x27;s current password.  This operation can only be performed on users in &#x60;STAGED&#x60;, &#x60;ACTIVE&#x60;, &#x60;PASSWORD_EXPIRED&#x60;, or &#x60;RECOVERY&#x60; status that have a valid [password credential](#password-object)
     *
@@ -267,10 +269,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $changePasswordRequest);
+
+        return new \Okta\Users\UserCredentials(null, $body);
     }
+
 
     /**
     * Changes a user&#x27;s recovery question &amp; answer credential by validating the user&#x27;s current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** &#x60;status&#x60; that have a valid [password credential](#password-object)
@@ -284,10 +289,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $userCredentials);
+
+        return new \Okta\Users\UserCredentials(null, $body);
     }
+
 
     /**
     * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password.  The user will be required to validate their security question&#x27;s answer when visiting the reset link.  This operation can only be performed on users with a valid [recovery question credential](#recovery-question-object) and have an &#x60;ACTIVE&#x60; status.
@@ -301,9 +309,11 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $userCredentials, ['query' => ['sendEmail' => $sendEmail]]);
+
+        return new \Okta\Users\ForgotPasswordResponse(null, $body);
     }
 
     /**
@@ -325,6 +335,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Assigns a role to a user.
     *
@@ -337,10 +348,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $role);
+
+        return new \Okta\Users\Role(null, $body);
     }
+
 
     /**
     * Unassigns a role from a user.
@@ -354,9 +368,11 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('DELETE', $uri);
+
+        return $body;
     }
 
     /**
@@ -378,6 +394,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * 
     *
@@ -390,10 +407,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('DELETE', $uri);
+
+        return $body;
     }
+
 
     /**
     * 
@@ -407,9 +427,11 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('PUT', $uri);
+
+        return $body;
     }
 
     /**
@@ -431,6 +453,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Activates a user.  This operation can only be performed on users with a &#x60;STAGED&#x60; status.  Activation of a user is an asynchronous operation.  The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;ACTIVE&#x60; during activation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;ACTIVE&#x60; when the activation process is complete.
     *
@@ -443,10 +466,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, '', ['query' => ['sendEmail' => $sendEmail]]);
+
+        return new \Okta\Users\UserActivationToken(null, $body);
     }
+
 
     /**
     * Deactivates a user.  This operation can only be performed on users that do not have a &#x60;DEPROVISIONED&#x60; status.  Deactivation of a user is an asynchronous operation.  The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;DEPROVISIONED&#x60; during deactivation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;DEPROVISIONED&#x60; when the deactivation process is complete.
@@ -460,10 +486,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Suspends a user.  This operation can only be performed on users with an &#x60;ACTIVE&#x60; status.  The user will have a status of &#x60;SUSPENDED&#x60; when the process is complete.
@@ -477,10 +506,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Unsuspends a user and returns them to the &#x60;ACTIVE&#x60; state.  This operation can only be performed on users that have a &#x60;SUSPENDED&#x60; status.
@@ -494,10 +526,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.
@@ -511,10 +546,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return new \Okta\Users\ResetPasswordToken(null, $body);
     }
+
 
     /**
     * This operation transitions the user to the status of &#x60;PASSWORD_EXPIRED&#x60; so that the user is required to change their password at their next login.
@@ -528,10 +566,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, '', ['query' => ['tempPassword' => $tempPassword]]);
+
+        return new \Okta\Users\TempPassword(null, $body);
     }
+
 
     /**
     * Unlocks a user with a &#x60;LOCKED_OUT&#x60; status and returns them to &#x60;ACTIVE&#x60; status.  Users will be able to login with their current password.
@@ -545,10 +586,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * This operation resets all factors for the specified user. All MFA factor enrollments returned to the unenrolled state. The user&#x27;s status remains ACTIVE. This link is present only if the user is currently enrolled in one or more MFA factors.
@@ -562,10 +606,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Adds a [user](users.html#user-model) to a group with &#x60;OKTA_GROUP&#x60; type.
@@ -579,10 +626,13 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('PUT', $uri);
+
+        return $body;
     }
+
 
     /**
     * Enrolls a user with a supported [factor](#list-factors-to-enroll)
@@ -596,9 +646,12 @@ class User extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $factor, ['query' => ['updatePhone' => $updatePhone]]);
+
+        $response =  new \Okta\UserFactors\Factor(null, $body);
+        return $response->convertFromGenericFactor();
     }
 
     /**
@@ -658,6 +711,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Fetches a factor for the specified user
     *
@@ -668,12 +722,13 @@ class User extends \Okta\Resource\AbstractResource
     {
         $uri = "/api/v1/users/{$this->getId()}/factors/{$factorId}";
         $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
+            $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        $response = $this
-            ->getDataStore()
-            ->getResource("factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []);
+        $body = $this
+                ->getDataStore()
+                ->executeRequest('GET', $uri);
 
+        $response =  new \Okta\UserFactors\Factor(null, $body);
         return $response->convertFromGenericFactor();
     }
 }

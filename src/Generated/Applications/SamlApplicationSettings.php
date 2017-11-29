@@ -22,6 +22,7 @@ class SamlApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const SIGN_ON = 'signOn';
 
+
     /**
      * Get the signOn.
      *
@@ -42,7 +43,7 @@ class SamlApplicationSettings extends \Okta\Applications\ApplicationSettings
      * @param \Okta\Applications\SamlApplicationSettingsSignOn $signOn The SamlApplicationSettingsSignOn instance.
      * @return self
      */
-    public function setSignOn(SamlApplicationSettingsSignOn $signOn)
+    public function setSignOn(\Okta\Applications\SamlApplicationSettingsSignOn $signOn)
     {
         $this->setResourceProperty(
             self::SIGN_ON,

@@ -18,16 +18,19 @@
 namespace Okta\Generated\Applications;
 
 
-class SwaApplication extends \Okta\Application\BrowserPluginApplication
+class SwaApplication extends \Okta\Applications\BrowserPluginApplication
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
+
+    private $name = 'template_swa';
 
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\SwaApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\SwaApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -39,10 +42,10 @@ class SwaApplication extends \Okta\Application\BrowserPluginApplication
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\SwaApplicationSettings $settings The SwaApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The SwaApplicationSettings instance.
      * @return self
      */
-    public function setSettings(SwaApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,

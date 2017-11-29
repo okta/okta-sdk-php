@@ -22,12 +22,13 @@ class SamlApplication extends \Okta\Applications\Application
 {
     const SETTINGS = 'settings';
 
+
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\SamlApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\SamlApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -39,10 +40,10 @@ class SamlApplication extends \Okta\Applications\Application
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\SamlApplicationSettings $settings The SamlApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The SamlApplicationSettings instance.
      * @return self
      */
-    public function setSettings(SamlApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,

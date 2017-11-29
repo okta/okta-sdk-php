@@ -24,6 +24,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     const MESSAGE = 'message';
     const NETWORK = 'network';
 
+
     /**
      * Get the helpUrl.
      *
@@ -92,7 +93,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
      * @param \Okta\Applications\ApplicationSettingsNotificationsVpnNetwork $network The ApplicationSettingsNotificationsVpnNetwork instance.
      * @return self
      */
-    public function setNetwork(ApplicationSettingsNotificationsVpnNetwork $network)
+    public function setNetwork(\Okta\Applications\ApplicationSettingsNotificationsVpnNetwork $network)
     {
         $this->setResourceProperty(
             self::NETWORK,

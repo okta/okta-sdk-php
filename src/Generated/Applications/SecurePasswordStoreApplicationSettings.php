@@ -22,12 +22,13 @@ class SecurePasswordStoreApplicationSettings extends \Okta\Applications\Applicat
 {
     const APP = 'app';
 
+
     /**
      * Get the app.
      *
-     * @return \Okta\Applications\SecurePasswordStoreApplicationSettingsApplication
+     * @return \Okta\Applications\ApplicationSettingsApplication
      */
-    public function getApp(array $options = []): \Okta\Applications\SecurePasswordStoreApplicationSettingsApplication
+    public function getApp(array $options = []): \Okta\Applications\ApplicationSettingsApplication
     {
         return $this->getResourceProperty(
             self::APP,
@@ -39,10 +40,10 @@ class SecurePasswordStoreApplicationSettings extends \Okta\Applications\Applicat
     /**
      * Set the app.
      *
-     * @param \Okta\Applications\SecurePasswordStoreApplicationSettingsApplication $app The SecurePasswordStoreApplicationSettingsApplication instance.
+     * @param \Okta\Applications\ApplicationSettingsApplication $app The SecurePasswordStoreApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(SecurePasswordStoreApplicationSettingsApplication $app)
+    public function setApp(\Okta\Applications\ApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,

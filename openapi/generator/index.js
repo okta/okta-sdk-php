@@ -20,6 +20,41 @@ function getType(obj, model) {
                 case 'WebFactorProfile':
                 case 'FactorProfile':
                     return '\\Okta\\UserFactors\\FactorProfile';
+                case 'AutoLoginApplicationSettings':
+                case 'BasicAuthApplicationSettings':
+                case 'BasicApplicationSettings':
+                case 'BookmarApplicationSettings':
+                case 'BrowserPluginApplicationSettings':
+                case 'OpenIdConnectApplicationSettings':
+                case 'SamlApplicationSettings':
+                case 'SecurePasswordStoreApplicationSettings':
+                case 'SwaApplicationSettings':
+                case 'SwaThreeFieldApplicationSettings':
+                case 'WsFederationApplicationSettings':
+                    return '\\Okta\\Applications\\ApplicationSettings';
+                case 'AutoLoginApplicationSettingsApplication':
+                case 'BasicAuthApplicationSettingsApplication':
+                case 'BasicApplicationSettingsApplication':
+                case 'BookmarApplicationSettingsApplication':
+                case 'BrowserPluginApplicationSettingsApplication':
+                case 'OpenIdConnectApplicationSettingsApplication':
+                case 'SamlApplicationSettingsApplication':
+                case 'SecurePasswordStoreApplicationSettingsApplication':
+                case 'SwaApplicationSettingsApplication':
+                case 'SwaThreeFieldApplicationSettingsApplication':
+                case 'WsFederationApplicationSettingsApplication':
+                    return '\\Okta\\Applications\\ApplicationSettingsApplication';
+                case 'AutoLoginApplicationCredentials':
+                case 'BasicAuthApplicationCredentials':
+                case 'BookmarApplicationCredentials':
+                case 'BrowserPluginApplicationCredentials':
+                case 'OAuthApplicationCredentials':
+                case 'OpenIdConnectApplicationCredentials':
+                case 'SamlApplicationCredentials':
+                case 'SchemeApplicationCredentials':
+                case 'SecurePasswordStoreApplicationCredentials':
+                case 'WsFederationApplicationCredentials':
+                    return '\\Okta\\Applications\\ApplicationCredentials';
                 default:
                     return `\\${model}\\${obj.model}`;
             }
@@ -53,6 +88,41 @@ function getSafeType(obj, model) {
                 case 'WebFactorProfile':
                 case 'FactorProfile':
                     return ': \\Okta\\UserFactors\\FactorProfile';
+                case 'AutoLoginApplicationSettings':
+                case 'BasicAuthApplicationSettings':
+                case 'BasicApplicationSettings':
+                case 'BookmarApplicationSettings':
+                case 'BrowserPluginApplicationSettings':
+                case 'OpenIdConnectApplicationSettings':
+                case 'SamlApplicationSettings':
+                case 'SecurePasswordStoreApplicationSettings':
+                case 'SwaApplicationSettings':
+                case 'SwaThreeFieldApplicationSettings':
+                case 'WsFederationApplicationSettings':
+                    return ': \\Okta\\Applications\\ApplicationSettings';
+                case 'AutoLoginApplicationCredentials':
+                case 'BasicAuthApplicationCredentials':
+                case 'BookmarApplicationCredentials':
+                case 'BrowserPluginApplicationCredentials':
+                case 'OAuthApplicationCredentials':
+                case 'OpenIdConnectApplicationCredentials':
+                case 'SamlApplicationCredentials':
+                case 'SchemeApplicationCredentials':
+                case 'SecurePasswordStoreApplicationCredentials':
+                case 'WsFederationApplicationCredentials':
+                    return ': \\Okta\\Applications\\ApplicationCredentials';
+                case 'AutoLoginApplicationSettingsApplication':
+                case 'BasicAuthApplicationSettingsApplication':
+                case 'BasicApplicationSettingsApplication':
+                case 'BookmarApplicationSettingsApplication':
+                case 'BrowserPluginApplicationSettingsApplication':
+                case 'OpenIdConnectApplicationSettingsApplication':
+                case 'SamlApplicationSettingsApplication':
+                case 'SecurePasswordStoreApplicationSettingsApplication':
+                case 'SwaApplicationSettingsApplication':
+                case 'SwaThreeFieldApplicationSettingsApplication':
+                case 'WsFederationApplicationSettingsApplication':
+                    return ': \\Okta\\Applications\\ApplicationSettingsApplication';
                 default:
                     return `: \\${model}\\${obj.model}`;
             }
@@ -72,8 +142,8 @@ function getSafeType(obj, model) {
     }
 }
 
-function getTypeHint(model) {
-    switch(model) {
+function getTypeHint(obj) {
+    switch(obj.model) {
         case 'CallFactorProfile':
         case 'EmailFactorProfile':
         case 'HardwareFactorProfile':
@@ -85,8 +155,43 @@ function getTypeHint(model) {
         case 'WebFactorProfile':
         case 'FactorProfile':
             return '\\Okta\\UserFactors\\FactorProfile';
+        case 'AutoLoginApplicationSettings':
+        case 'BasicAuthApplicationSettings':
+        case 'BasicApplicationSettings':
+        case 'BookmarApplicationSettings':
+        case 'BrowserPluginApplicationSettings':
+        case 'OpenIdConnectApplicationSettings':
+        case 'SamlApplicationSettings':
+        case 'SecurePasswordStoreApplicationSettings':
+        case 'SwaApplicationSettings':
+        case 'SwaThreeFieldApplicationSettings':
+        case 'WsFederationApplicationSettings':
+            return '\\Okta\\Applications\\ApplicationSettings';
+        case 'AutoLoginApplicationCredentials':
+        case 'BasicAuthApplicationCredentials':
+        case 'BookmarApplicationCredentials':
+        case 'BrowserPluginApplicationCredentials':
+        case 'OAuthApplicationCredentials':
+        case 'OpenIdConnectApplicationCredentials':
+        case 'SamlApplicationCredentials':
+        case 'SchemeApplicationCredentials':
+        case 'SecurePasswordStoreApplicationCredentials':
+        case 'WsFederationApplicationCredentials':
+            return '\\Okta\\Applications\\ApplicationCredentials';
+        case 'AutoLoginApplicationSettingsApplication':
+        case 'BasicAuthApplicationSettingsApplication':
+        case 'BasicApplicationSettingsApplication':
+        case 'BookmarApplicationSettingsApplication':
+        case 'BrowserPluginApplicationSettingsApplication':
+        case 'OpenIdConnectApplicationSettingsApplication':
+        case 'SamlApplicationSettingsApplication':
+        case 'SecurePasswordStoreApplicationSettingsApplication':
+        case 'SwaApplicationSettingsApplication':
+        case 'SwaThreeFieldApplicationSettingsApplication':
+        case 'WsFederationApplicationSettingsApplication':
+            return '\\Okta\\Applications\\ApplicationSettingsApplication';
         default:
-            return model;
+            return `\\${obj.baseClass}\\${obj.model}`;
     }
 }
 
@@ -113,16 +218,42 @@ function getExtends(modelName) {
             return '\\Okta\\Applications\\Application';
         case 'AutoLoginApplicationSettings':
         case 'BasicAuthApplicationSettings':
+        case 'BasicApplicationSettings':
         case 'BookmarApplicationSettings':
         case 'BrowserPluginApplicationSettings':
         case 'OpenIdConnectApplicationSettings':
         case 'SamlApplicationSettings':
         case 'SecurePasswordStoreApplicationSettings':
+        case 'SwaApplicationSettings':
+        case 'SwaThreeFieldApplicationSettings':
         case 'WsFederationApplicationSettings':
             return '\\Okta\\Applications\\ApplicationSettings';
+        case 'AutoLoginApplicationCredentials':
+        case 'BasicAuthApplicationCredentials':
+        case 'BookmarApplicationCredentials':
+        case 'BrowserPluginApplicationCredentials':
+        case 'OAuthApplicationCredentials':
+        case 'OpenIdConnectApplicationCredentials':
+        case 'SamlApplicationCredentials':
+        case 'SchemeApplicationCredentials':
+        case 'SecurePasswordStoreApplicationCredentials':
+        case 'WsFederationApplicationCredentials':
+            return '\\Okta\\Applications\\ApplicationCredentials';
+        case 'AutoLoginApplicationSettingsApplication':
+        case 'BasicAuthApplicationSettingsApplication':
+        case 'BasicApplicationSettingsApplication':
+        case 'BookmarApplicationSettingsApplication':
+        case 'BrowserPluginApplicationSettingsApplication':
+        case 'OpenIdConnectApplicationSettingsApplication':
+        case 'SamlApplicationSettingsApplication':
+        case 'SecurePasswordStoreApplicationSettingsApplication':
+        case 'SwaApplicationSettingsApplication':
+        case 'SwaThreeFieldApplicationSettingsApplication':
+        case 'WsFederationApplicationSettingsApplication':
+            return '\\Okta\\Applications\\ApplicationSettingsApplication';
         case 'SwaApplication':
         case 'SwaThreeFieldApplication':
-            return '\\Okta\\Application\\BrowserPluginApplication';
+            return '\\Okta\\Applications\\BrowserPluginApplication';
         case 'CallFactorProfile':
         case 'EmailFactorProfile':
         case 'HardwareFactorProfile':
@@ -135,21 +266,6 @@ function getExtends(modelName) {
             return '\\Okta\\UserFactors\\FactorProfile';
         default:
             return '\\Okta\\Resource\\AbstractResource';
-    }
-}
-
-function getInterfaces(modelName) {
-    switch (modelName) {
-        case 'CallFactorProfile':
-        case 'EmailFactorProfile':
-        case 'HardwareFactorProfile':
-        case 'PushFactorProfile':
-        case 'SecurityQuestionFactorProfile':
-        case 'SmsFactorProfile':
-        case 'TokenFactorProfile':
-        case 'TotpFactorProfile':
-        case 'WebFactorProfile':
-            return 'implements \\Okta\\Contracts\\FactorProfile';
     }
 }
 
@@ -368,16 +484,6 @@ function buildGetResourceParams(model) {
 
 }
 
-function buildPostParams(model) {
-
-    switch(model.operation.operationId) {
-        case 'getFactor':
-            return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
-
-    }
-
-}
-
 php.process = ({ spec, operations, models, handlebars }) => {
   const templates = [];
 
@@ -469,7 +575,6 @@ php.process = ({ spec, operations, models, handlebars }) => {
     getMethodPath,
     getMethodParams,
     getExtends,
-    getInterfaces,
     getCollectionMethodParams,
     getMethodRequestParams,
     getMethodArrayName,

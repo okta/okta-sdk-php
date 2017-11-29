@@ -42,6 +42,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
     const SUBJECT_NAME_ID_TEMPLATE = 'subjectNameIdTemplate';
 
+
     /**
      * Get the audience.
      *

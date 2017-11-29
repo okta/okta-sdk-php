@@ -18,35 +18,61 @@
 namespace Okta\Generated\Applications;
 
 
-class SwaThreeFieldApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
-    const URL = 'url';
+    const TARGET_URL = 'targetUrl';
+    const LOGIN_URL_REGEX = 'loginUrlRegex';
     const BUTTON_SELECTOR = 'buttonSelector';
     const EXTRA_FIELD_VALUE = 'extraFieldValue';
     const PASSWORD_SELECTOR = 'passwordSelector';
     const USER_NAME_SELECTOR = 'userNameSelector';
     const EXTRA_FIELD_SELECTOR = 'extraFieldSelector';
 
+
     /**
-     * Get the url.
+     * Get the targetUrl.
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getTargetUrl(): string
     {
-        return $this->getProperty(self::URL);
+        return $this->getProperty(self::TARGET_URL);
     }
     /**
-    * Set the url.
+    * Set the targetUrl.
     *
-    * @param mixed $url The value to set.
+    * @param mixed $targetUrl The value to set.
     * @return self
     */
-    public function setUrl($url)
+    public function setTargetUrl($targetUrl)
     {
         $this->setProperty(
-            self::URL,
-            $url
+            self::TARGET_URL,
+            $targetUrl
+        );
+
+        return $this;
+    }
+    /**
+     * Get the loginUrlRegex.
+     *
+     * @return string
+     */
+    public function getLoginUrlRegex(): string
+    {
+        return $this->getProperty(self::LOGIN_URL_REGEX);
+    }
+    /**
+    * Set the loginUrlRegex.
+    *
+    * @param mixed $loginUrlRegex The value to set.
+    * @return self
+    */
+    public function setLoginUrlRegex($loginUrlRegex)
+    {
+        $this->setProperty(
+            self::LOGIN_URL_REGEX,
+            $loginUrlRegex
         );
 
         return $this;

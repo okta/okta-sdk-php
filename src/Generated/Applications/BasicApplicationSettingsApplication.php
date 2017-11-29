@@ -18,10 +18,11 @@
 namespace Okta\Generated\Applications;
 
 
-class BasicApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+class BasicApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const AUTH_URL = 'authURL';
+
 
     /**
      * Get the url.

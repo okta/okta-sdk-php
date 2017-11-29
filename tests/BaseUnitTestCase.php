@@ -59,7 +59,6 @@ class BaseUnitTestCase extends BaseTestCase
         if(is_readable($fileName = __DIR__ . "/models/{$model}")) {
             return (string) file_get_contents($fileName);
         }
-
         return (string)$model;
     }
 }

@@ -23,6 +23,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
     const SIGNING = 'signing';
     const USER_NAME_TEMPLATE = 'userNameTemplate';
 
+
     /**
      * Get the signing.
      *
@@ -43,7 +44,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationCredentialsSigning $signing The ApplicationCredentialsSigning instance.
      * @return self
      */
-    public function setSigning(ApplicationCredentialsSigning $signing)
+    public function setSigning(\Okta\Applications\ApplicationCredentialsSigning $signing)
     {
         $this->setResourceProperty(
             self::SIGNING,
@@ -72,7 +73,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationCredentialsUsernameTemplate $userNameTemplate The ApplicationCredentialsUsernameTemplate instance.
      * @return self
      */
-    public function setUserNameTemplate(ApplicationCredentialsUsernameTemplate $userNameTemplate)
+    public function setUserNameTemplate(\Okta\Applications\ApplicationCredentialsUsernameTemplate $userNameTemplate)
     {
         $this->setResourceProperty(
             self::USER_NAME_TEMPLATE,

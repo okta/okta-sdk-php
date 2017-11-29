@@ -19,5 +19,5 @@ namespace Okta\Applications;
 
 class Application extends \Okta\Generated\Applications\Application
 {
-
+    
 }

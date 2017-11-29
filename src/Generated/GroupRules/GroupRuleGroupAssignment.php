@@ -22,6 +22,7 @@ class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const GROUP_IDS = 'groupIds';
 
+
     /**
      * Get the groupIds.
      *

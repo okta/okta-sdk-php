@@ -23,6 +23,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const LOGIN_URL = 'loginUrl';
     const REDIRECT_URL = 'redirectUrl';
 
+
     /**
      * Get the loginUrl.
      *

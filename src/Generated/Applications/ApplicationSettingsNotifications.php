@@ -22,6 +22,7 @@ class ApplicationSettingsNotifications extends \Okta\Resource\AbstractResource
 {
     const VPN = 'vpn';
 
+
     /**
      * Get the vpn.
      *
@@ -42,7 +43,7 @@ class ApplicationSettingsNotifications extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\ApplicationSettingsNotificationsVpn $vpn The ApplicationSettingsNotificationsVpn instance.
      * @return self
      */
-    public function setVpn(ApplicationSettingsNotificationsVpn $vpn)
+    public function setVpn(\Okta\Applications\ApplicationSettingsNotificationsVpn $vpn)
     {
         $this->setResourceProperty(
             self::VPN,

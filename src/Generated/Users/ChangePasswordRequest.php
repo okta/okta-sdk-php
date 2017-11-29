@@ -23,6 +23,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
     const NEW_PASSWORD = 'newPassword';
     const OLD_PASSWORD = 'oldPassword';
 
+
     /**
      * Get the newPassword.
      *
@@ -43,7 +44,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\PasswordCredential $newPassword The PasswordCredential instance.
      * @return self
      */
-    public function setNewPassword(PasswordCredential $newPassword)
+    public function setNewPassword(\Okta\Users\PasswordCredential $newPassword)
     {
         $this->setResourceProperty(
             self::NEW_PASSWORD,
@@ -72,7 +73,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\PasswordCredential $oldPassword The PasswordCredential instance.
      * @return self
      */
-    public function setOldPassword(PasswordCredential $oldPassword)
+    public function setOldPassword(\Okta\Users\PasswordCredential $oldPassword)
     {
         $this->setResourceProperty(
             self::OLD_PASSWORD,

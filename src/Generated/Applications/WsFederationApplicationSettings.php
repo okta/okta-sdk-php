@@ -22,12 +22,13 @@ class WsFederationApplicationSettings extends \Okta\Applications\ApplicationSett
 {
     const APP = 'app';
 
+
     /**
      * Get the app.
      *
-     * @return \Okta\Applications\WsFederationApplicationSettingsApplication
+     * @return \Okta\Applications\ApplicationSettingsApplication
      */
-    public function getApp(array $options = []): \Okta\Applications\WsFederationApplicationSettingsApplication
+    public function getApp(array $options = []): \Okta\Applications\ApplicationSettingsApplication
     {
         return $this->getResourceProperty(
             self::APP,
@@ -39,10 +40,10 @@ class WsFederationApplicationSettings extends \Okta\Applications\ApplicationSett
     /**
      * Set the app.
      *
-     * @param \Okta\Applications\WsFederationApplicationSettingsApplication $app The WsFederationApplicationSettingsApplication instance.
+     * @param \Okta\Applications\ApplicationSettingsApplication $app The WsFederationApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(WsFederationApplicationSettingsApplication $app)
+    public function setApp(\Okta\Applications\ApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,

@@ -24,6 +24,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
     const INCLUDE = 'include';
     const CONNECTION = 'connection';
 
+
     /**
      * Get the exclude.
      *

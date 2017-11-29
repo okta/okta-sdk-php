@@ -22,6 +22,7 @@ class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSetting
 {
     const SIGN_ON = 'signOn';
 
+
     /**
      * Get the signOn.
      *
@@ -42,7 +43,7 @@ class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSetting
      * @param \Okta\Applications\AutoLoginApplicationSettingsSignOn $signOn The AutoLoginApplicationSettingsSignOn instance.
      * @return self
      */
-    public function setSignOn(AutoLoginApplicationSettingsSignOn $signOn)
+    public function setSignOn(\Okta\Applications\AutoLoginApplicationSettingsSignOn $signOn)
     {
         $this->setResourceProperty(
             self::SIGN_ON,

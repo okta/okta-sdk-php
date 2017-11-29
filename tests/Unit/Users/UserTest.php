@@ -762,7 +762,9 @@ class UserTest extends BaseUnitTestCase
     /** @test */
     public function adding_factor_makes_request_to_correct_location()
     {
-        $httpClient = $this->createNewHttpClient();
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id": "abc123", "factorType": "sms"}'
+        ]);
         $user = $this->createNewUser();
 
         $factor = new\Okta\UserFactors\Factor;

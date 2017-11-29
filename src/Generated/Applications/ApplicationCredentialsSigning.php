@@ -25,6 +25,7 @@ class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
     const NEXT_ROTATION = 'nextRotation';
     const ROTATION_MODE = 'rotationMode';
 
+
     /**
      * Get the kid.
      *
@@ -52,50 +53,20 @@ class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
     /**
      * Get the lastRotated.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getLastRotated(): string
+    public function getLastRotated()
     {
-        return $this->getProperty(self::LAST_ROTATED);
-    }
-    /**
-    * Set the lastRotated.
-    *
-    * @param mixed $lastRotated The value to set.
-    * @return self
-    */
-    public function setLastRotated($lastRotated)
-    {
-        $this->setProperty(
-            self::LAST_ROTATED,
-            $lastRotated
-        );
-
-        return $this;
+        return $this->getDateProperty(self::LAST_ROTATED);
     }
     /**
      * Get the nextRotation.
      *
-     * @return string
+     * @return \Carbon\Carbon|null
      */
-    public function getNextRotation(): string
+    public function getNextRotation()
     {
-        return $this->getProperty(self::NEXT_ROTATION);
-    }
-    /**
-    * Set the nextRotation.
-    *
-    * @param mixed $nextRotation The value to set.
-    * @return self
-    */
-    public function setNextRotation($nextRotation)
-    {
-        $this->setProperty(
-            self::NEXT_ROTATION,
-            $nextRotation
-        );
-
-        return $this;
+        return $this->getDateProperty(self::NEXT_ROTATION);
     }
     /**
      * Get the rotationMode.

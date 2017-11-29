@@ -27,6 +27,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     const MOBILE_PHONE = 'mobilePhone';
     const SECOND_EMAIL = 'secondEmail';
 
+
     /**
      * Get the email.
      *

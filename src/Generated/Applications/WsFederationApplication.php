@@ -20,14 +20,17 @@ namespace Okta\Generated\Applications;
 
 class WsFederationApplication extends \Okta\Applications\Application
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
+
+    private $name = 'template_wsfed';
 
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\WsFederationApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\WsFederationApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -39,10 +42,10 @@ class WsFederationApplication extends \Okta\Applications\Application
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\WsFederationApplicationSettings $settings The WsFederationApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The WsFederationApplicationSettings instance.
      * @return self
      */
-    public function setSettings(WsFederationApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,

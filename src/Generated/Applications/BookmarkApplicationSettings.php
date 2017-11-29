@@ -22,6 +22,7 @@ class BookmarkApplicationSettings extends \Okta\Resource\AbstractResource
 {
     const APP = 'app';
 
+
     /**
      * Get the app.
      *
@@ -42,7 +43,7 @@ class BookmarkApplicationSettings extends \Okta\Resource\AbstractResource
      * @param \Okta\Applications\BookmarkApplicationSettingsApplication $app The BookmarkApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(BookmarkApplicationSettingsApplication $app)
+    public function setApp(\Okta\Applications\BookmarkApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,

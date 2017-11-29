@@ -20,15 +20,18 @@ namespace Okta\Generated\Applications;
 
 class OpenIdConnectApplication extends \Okta\Applications\Application
 {
+    const NAME = 'name';
     const SETTINGS = 'settings';
     const CREDENTIALS = 'credentials';
+
+    private $name = 'oidc_client';
 
     /**
      * Get the settings.
      *
-     * @return \Okta\Applications\OpenIdConnectApplicationSettings
+     * @return \Okta\Applications\ApplicationSettings
      */
-    public function getSettings(array $options = []): \Okta\Applications\OpenIdConnectApplicationSettings
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
     {
         return $this->getResourceProperty(
             self::SETTINGS,
@@ -40,10 +43,10 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
     /**
      * Set the settings.
      *
-     * @param \Okta\Applications\OpenIdConnectApplicationSettings $settings The OpenIdConnectApplicationSettings instance.
+     * @param \Okta\Applications\ApplicationSettings $settings The OpenIdConnectApplicationSettings instance.
      * @return self
      */
-    public function setSettings(OpenIdConnectApplicationSettings $settings)
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
     {
         $this->setResourceProperty(
             self::SETTINGS,
@@ -55,9 +58,9 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
     /**
      * Get the credentials.
      *
-     * @return \Okta\Applications\OAuthApplicationCredentials
+     * @return \Okta\Applications\ApplicationCredentials
      */
-    public function getCredentials(array $options = []): \Okta\Applications\OAuthApplicationCredentials
+    public function getCredentials(array $options = []): \Okta\Applications\ApplicationCredentials
     {
         return $this->getResourceProperty(
             self::CREDENTIALS,
@@ -69,10 +72,10 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
     /**
      * Set the credentials.
      *
-     * @param \Okta\Applications\OAuthApplicationCredentials $credentials The OAuthApplicationCredentials instance.
+     * @param \Okta\Applications\ApplicationCredentials $credentials The OAuthApplicationCredentials instance.
      * @return self
      */
-    public function setCredentials(OAuthApplicationCredentials $credentials)
+    public function setCredentials(\Okta\Applications\ApplicationCredentials $credentials)
     {
         $this->setResourceProperty(
             self::CREDENTIALS,

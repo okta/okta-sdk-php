@@ -26,6 +26,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
     const DEVICE_TYPE = 'deviceType';
     const CREDENTIAL_ID = 'credentialId';
 
+
     /**
      * Get the name.
      *

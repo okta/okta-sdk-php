@@ -23,6 +23,7 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
     const NAME = 'name';
     const TYPE = 'type';
 
+
     /**
      * Get the name.
      *

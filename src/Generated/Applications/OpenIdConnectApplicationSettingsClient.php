@@ -30,6 +30,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     const RESPONSE_TYPES = 'response_types';
     const APPLICATION_TYPE = 'application_type';
 
+
     /**
      * Get the tos_uri.
      *

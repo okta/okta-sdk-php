@@ -22,6 +22,7 @@ class OpenIdConnectApplicationSettings extends \Okta\Applications\ApplicationSet
 {
     const OAUTH_CLIENT = 'oauthClient';
 
+
     /**
      * Get the oauthClient.
      *
@@ -42,7 +43,7 @@ class OpenIdConnectApplicationSettings extends \Okta\Applications\ApplicationSet
      * @param \Okta\Applications\OpenIdConnectApplicationSettingsClient $oauthClient The OpenIdConnectApplicationSettingsClient instance.
      * @return self
      */
-    public function setOauthClient(OpenIdConnectApplicationSettingsClient $oauthClient)
+    public function setOauthClient(\Okta\Applications\OpenIdConnectApplicationSettingsClient $oauthClient)
     {
         $this->setResourceProperty(
             self::OAUTH_CLIENT,

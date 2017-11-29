@@ -27,6 +27,12 @@ class {{modelName}} extends {{getExtends modelName}}
     const {{upperSnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
+    {{#each properties}}
+    {{#if this.default}}
+    private ${{propertyName}} = '{{this.default}}';
+    {{/if}}
+    {{/each}}
+
     {{#each crudOperations}}
     {{#if (eq alias "read")}}
         {{#if (eq this.operation.operationId "getFactor")}}
@@ -95,6 +101,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {{/if}}
     {{/each}}
     {{#each properties}}
+    {{#unless this.default}}
     /**
      * Get the {{propertyName}}.
      *
@@ -114,10 +121,10 @@ class {{modelName}} extends {{getExtends modelName}}
     /**
      * Set the {{propertyName}}.
      *
-     * @param {{getType this baseClass}} ${{propertyName}} The {{model}} instance.
+     * @param {{getTypeHint this}} ${{propertyName}} The {{model}} instance.
      * @return self
      */
-    public function set{{pascalCase propertyName}}({{getTypeHint model}} ${{propertyName}})
+    public function set{{pascalCase propertyName}}({{getTypeHint this}} ${{propertyName}})
     {
         $this->setResourceProperty(
             self::{{upperSnakeCase propertyName}},
@@ -150,6 +157,7 @@ class {{modelName}} extends {{getExtends modelName}}
     }
     {{/unless}}
     {{/if}}
+    {{/unless}}
     {{/each}}
     {{#each methods}}
 
@@ -173,53 +181,7 @@ class {{modelName}} extends {{getExtends modelName}}
                 );
     }
     {{else}}
-    {{#if (eq this.operation.method "get")}}
-    /**
-    * {{this.operation.description}}
-    *
-    {{getMethodParamsComment this}}
-    * @return mixed|null
-    */
-    public function {{camelCase alias}}({{{getMethodParams this}}})
-    {
-        $uri = "{{{getMethodPath this}}}";
-        $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $response = $this
-            ->getDataStore()
-            ->getResource({{{buildGetResourceParams this}}});
 
-        {{#if (eq this.operation.responseModel "Factor")}}
-        return $response->convertFromGenericFactor();
-        {{else}}
-        return $response;
-        {{/if}}
-    }
-    {{elseif (eq this.operation.method "post")}}
-        /**
-        * {{this.operation.description}}
-        *
-        {{getMethodParamsComment this}}
-        * @return mixed|null
-        */
-        public function {{camelCase alias}}({{{getMethodParams this}}})
-        {
-        $uri = "{{{getMethodPath this}}}";
-        $uri = $this->getDataStore()->buildUri(
-        $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $response = $this
-            ->getDataStore()
-            ->post({{{buildPostParams this}}});
-
-        {{#if (eq this.operation.responseModel "Factor")}}
-            return $response->convertFromGenericFactor();
-        {{else}}
-            return $response;
-        {{/if}}
-        }
-    {{else}}
     /**
     * {{this.operation.description}}
     *
@@ -232,11 +194,21 @@ class {{modelName}} extends {{getExtends modelName}}
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
+
+        {{#if this.operation.responseModel}}
+            {{#if (eq this.operation.responseModel "Factor")}}
+        $response =  new \Okta\\{{{pluralize this.operation.tags.[0] }}}\\{{this.operation.responseModel}}(null, $body);
+        return $response->convertFromGenericFactor();
+            {{else}}
+        return new \Okta\\{{{pluralize this.operation.tags.[0] }}}\\{{this.operation.responseModel}}(null, $body);
+            {{/if}}
+        {{else}}
+        return $body;
+        {{/if}}
     }
-    {{/if}}
     {{/if}}
     {{/each}}
 }
