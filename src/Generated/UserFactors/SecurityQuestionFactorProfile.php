@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const ANSWER = 'answer';

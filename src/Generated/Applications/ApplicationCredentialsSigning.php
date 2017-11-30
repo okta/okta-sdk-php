@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
 {
     const KID = 'kid';

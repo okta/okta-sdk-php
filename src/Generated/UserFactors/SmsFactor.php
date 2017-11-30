@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class SmsFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';

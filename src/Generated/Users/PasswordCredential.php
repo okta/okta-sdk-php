@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Users;
 
-
 class PasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';

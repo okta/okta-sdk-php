@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class AppUserPasswordCredential extends \Okta\Generated\Applications\AppUserPasswordCredential
 {
 

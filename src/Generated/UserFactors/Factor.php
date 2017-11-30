@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class Factor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

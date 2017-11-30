@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SamlApplication extends \Okta\Applications\Application
 {
     const SETTINGS = 'settings';

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class WsFederationApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';

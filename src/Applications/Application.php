@@ -21,7 +21,7 @@ class Application extends \Okta\Generated\Applications\Application
 {
     public function convertFromGenericApplication()
     {
-        switch($this->getSignOnMode()) {
+        switch ($this->getSignOnMode()) {
             case "BOOKMARK":
                 $appClass = \Okta\Applications\BookmarkApplication::class;
                 break;
@@ -29,7 +29,7 @@ class Application extends \Okta\Generated\Applications\Application
                 $appClass = \Okta\Applications\BasicAuthApplication::class;
                 break;
             case "BROWSER_PLUGIN":
-                switch($this->getName()) {
+                switch ($this->getName()) {
                     case "template_swa":
                         $appClass = \Okta\Applications\SwaApplication::class;
                         break;

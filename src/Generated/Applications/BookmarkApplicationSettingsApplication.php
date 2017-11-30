@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class BookmarkApplicationSettingsApplication extends \Okta\Resource\AbstractResource
 {
     const URL = 'url';

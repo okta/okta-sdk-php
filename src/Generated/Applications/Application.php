@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -46,7 +45,6 @@ class Application extends \Okta\Resource\AbstractResource
                         \Okta\Applications\Application::class,
                         "/apps"
                     );
-
         return $application->convertFromGenericApplication();
     }
     public function save()
