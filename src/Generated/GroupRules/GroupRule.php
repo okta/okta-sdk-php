@@ -40,7 +40,6 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     \Okta\GroupRules\GroupRule::class
                 );
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -50,7 +49,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-    /**
+            /**
      * Get the id.
      *
      * @return string

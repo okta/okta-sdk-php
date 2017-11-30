@@ -30,6 +30,43 @@ class AppUserTest extends BaseUnitTestCase
     protected $modelType = \Okta\Applications\AppUser::class;
 
     /** @test */
+    public function saving_an_application_user_makes_requests_to_correct_endpoint()
+    {
+        $client = $this->createNewHttpClient();
+        $this->testable->save('application1123');
+
+        $requests = $client->getRequests();
+
+        $this->assertEquals(
+            "/api/v1/apps/application1123/users/{$this->testable->getId()}",
+            $requests[0]->getUri()->getPath()
+        );
+        $this->assertEquals('POST', $requests[0]->getMethod());
+    }
+
+    /** @test */
+    public function saving_an_application_user_will_return_correct_type()
+    {
+        $client = $this->createNewHttpClient();
+
+        $app = $this->testable->save('application1123');
+
+        $this->assertInstanceOf(AppUser::class, $app);
+    }
+
+    /** @test */
+    public function deleting_an_application_makes_requests_to_correct_endpoint()
+    {
+        $client = $this->createNewHttpClient();
+        $this->testable->delete('application123');
+
+        $requests = $client->getRequests();
+
+        $this->assertEquals("/api/v1/apps/application123/users/{$this->testable->getId()}", $requests[0]->getUri()->getPath());
+        $this->assertEquals('DELETE', $requests[0]->getMethod());
+    }
+
+    /** @test */
     public function id_is_accessible()
     {
         $this->assertEquals($this->properties->id, $this->testable->getId());

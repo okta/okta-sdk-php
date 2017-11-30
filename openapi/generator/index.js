@@ -1,5 +1,6 @@
 const _ = require('lodash');
 _.mixin(require('lodash-inflection'));
+const fs = require('fs');
 
 const php = module.exports;
 
@@ -56,7 +57,7 @@ function getType(obj, model) {
                 case 'WsFederationApplicationCredentials':
                     return '\\Okta\\Applications\\ApplicationCredentials';
                 default:
-                    return `\\${model}\\${obj.model}`;
+                    return `\\Okta\\` + getFirstTagFromReference(obj.reference) + `\\${obj.model}`;
             }
         case 'hash':
             return String.raw`\stdClass`;
@@ -124,7 +125,7 @@ function getSafeType(obj, model) {
                 case 'WsFederationApplicationSettingsApplication':
                     return ': \\Okta\\Applications\\ApplicationSettingsApplication';
                 default:
-                    return `: \\${model}\\${obj.model}`;
+                    return `: \\Okta\\` + getFirstTagFromReference(obj.reference) + `\\${obj.model}`;
             }
         case 'hash':
             return String.raw`: \stdClass`;
@@ -191,7 +192,7 @@ function getTypeHint(obj) {
         case 'WsFederationApplicationSettingsApplication':
             return '\\Okta\\Applications\\ApplicationSettingsApplication';
         default:
-            return `\\${obj.baseClass}\\${obj.model}`;
+            return `\\Okta\\` + getFirstTagFromReference(obj.reference) + `\\${obj.model}`;
     }
 }
 
@@ -484,7 +485,22 @@ function buildGetResourceParams(model) {
 
 }
 
+function lookUpRef(model) {
+    const ref = model['$ref'].split("/").pop();
+    return php.spec.definitions[ref];
+}
+
+function getRefTag(ref) {
+    return ref['x-okta-tags'][0]
+}
+
+function getFirstTagFromReference(reference) {
+    return pluralize(reference['x-okta-tags'][0]);
+}
+
+
 php.process = ({ spec, operations, models, handlebars }) => {
+  php.spec = spec;
   const templates = [];
 
   const modelMap = {};
@@ -501,10 +517,12 @@ php.process = ({ spec, operations, models, handlebars }) => {
 
     for (let property of model.properties) {
         property.baseClass = `Okta\\${model.namespace}`;
+        property.reference = php.spec.definitions[property.model];
     }
 
     if (model.methods) {
       for(let method of model.methods) {
+        method.reference = php.spec.definitions[method.operation.responseModel];
         method.baseClass = `Okta\\${model.namespace}`;
       }
     }
@@ -522,6 +540,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
 
     if (model.methods) {
       for (let method of model.methods) {
+
         const responseModel = method.operation.responseModel;
         if (modelMap[responseModel] && model.namespace !== modelMap[responseModel].namespace) {
           model.namespacedModels.push(modelMap[responseModel]);
@@ -586,8 +605,16 @@ php.process = ({ spec, operations, models, handlebars }) => {
     customLog,
     getClassNameForCollection,
     getCollectionName,
-    buildGetResourceParams
+    buildGetResourceParams,
+    lookUpRef,
+    getRefTag,
+    getFirstTagFromReference
+
   });
+
+  handlebars.registerPartial('updateApplicationUser', fs.readFileSync('generator/templates/updateApplicationUser.php.hbs', 'utf8'))
+  handlebars.registerPartial('deleteApplicationUser', fs.readFileSync('generator/templates/deleteApplicationUser.php.hbs', 'utf8'))
+  handlebars.registerPartial('deleteApplicationGroupAssignment', fs.readFileSync('generator/templates/deleteApplicationGroupAssignment.php.hbs', 'utf8'))
 
   return templates;
 };

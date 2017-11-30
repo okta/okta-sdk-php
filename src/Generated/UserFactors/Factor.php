@@ -36,7 +36,7 @@ class Factor extends \Okta\Resource\AbstractResource
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
 
-    /**
+            /**
      * Get the id.
      *
      * @return string

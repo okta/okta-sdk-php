@@ -74,6 +74,9 @@ class {{modelName}} extends {{getExtends modelName}}
 
     {{/if}}
     {{#if (eq alias "update")}}
+        {{#if (eq this.operation.operationId "updateApplicationUser")}}
+    {{> updateApplicationUser }}
+        {{else}}
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -84,9 +87,14 @@ class {{modelName}} extends {{getExtends modelName}}
                     \\{{this.defaultReturnType}}::class
                 );
     }
-
+        {{/if}}
     {{/if}}
     {{#if (eq alias "delete")}}
+        {{#if (eq this.operation.operationId "deleteApplicationUser")}}
+    {{> deleteApplicationUser }}
+        {{else if (eq this.operation.operationId "deleteApplicationGroupAssignment")}}
+    {{> deleteApplicationGroupAssignment }}
+        {{else}}
     {{#unless (eq this.operation.operationId "deleteFactor")}}
     public function delete()
     {
@@ -98,6 +106,7 @@ class {{modelName}} extends {{getExtends modelName}}
                 );
     }
     {{/unless}}
+        {{/if}}
     {{/if}}
     {{/each}}
     {{#each properties}}
@@ -112,7 +121,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return $this->getResourceProperty(
             self::{{upperSnakeCase propertyName}},
-            \\{{baseClass}}\\{{model}}::class,
+            \Okta\\{{getFirstTagFromReference this.reference}}\\{{model}}::class,
             $options
         );
     }

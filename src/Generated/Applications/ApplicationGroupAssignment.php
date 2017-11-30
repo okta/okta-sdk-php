@@ -28,15 +28,16 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
-    public function delete()
+    public function delete( $appId )
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->deleteResource(
-                    "/apps",
-                    $this
-                );
+            ->getDataStore()
+            ->deleteResource(
+                "/apps/{$appId}/group",
+                $this
+            );
     }
+    
     /**
      * Get the id.
      *

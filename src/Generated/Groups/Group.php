@@ -42,7 +42,6 @@ class Group extends \Okta\Resource\AbstractResource
                     \Okta\Groups\Group::class
                 );
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -52,7 +51,7 @@ class Group extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-    /**
+            /**
      * Get the id.
      *
      * @return string

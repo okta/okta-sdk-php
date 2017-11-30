@@ -69,7 +69,6 @@ class User extends \Okta\Resource\AbstractResource
                     \Okta\Users\User::class
                 );
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -79,7 +78,7 @@ class User extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-    /**
+            /**
      * Get the id.
      *
      * @return string

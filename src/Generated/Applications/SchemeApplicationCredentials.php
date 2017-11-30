@@ -83,13 +83,13 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     /**
      * Get the password.
      *
-     * @return \Okta\Applications\PasswordCredential
+     * @return \Okta\Users\PasswordCredential
      */
-    public function getPassword(array $options = []): \Okta\Applications\PasswordCredential
+    public function getPassword(array $options = []): \Okta\Users\PasswordCredential
     {
         return $this->getResourceProperty(
             self::PASSWORD,
-            \Okta\Applications\PasswordCredential::class,
+            \Okta\Users\PasswordCredential::class,
             $options
         );
     }
@@ -97,10 +97,10 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     /**
      * Set the password.
      *
-     * @param \Okta\Applications\PasswordCredential $password The PasswordCredential instance.
+     * @param \Okta\Users\PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
-    public function setPassword(\Okta\Applications\PasswordCredential $password)
+    public function setPassword(\Okta\Users\PasswordCredential $password)
     {
         $this->setResourceProperty(
             self::PASSWORD,

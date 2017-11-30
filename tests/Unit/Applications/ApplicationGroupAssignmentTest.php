@@ -30,6 +30,21 @@ class ApplicationGroupAssignmentTest extends BaseUnitTestCase
     protected $modelType = \Okta\Applications\ApplicationGroupAssignment::class;
 
     /** @test */
+    public function deleting_an_application_group_assignment_makes_requests_to_correct_endpoint()
+    {
+        $client = $this->createNewHttpClient();
+        $this->testable->delete('application123');
+
+        $requests = $client->getRequests();
+
+        $this->assertEquals(
+            "/api/v1/apps/application123/group/{$this->testable->getId()}",
+            $requests[0]->getUri()->getPath()
+        );
+        $this->assertEquals('DELETE', $requests[0]->getMethod());
+    }
+
+    /** @test */
     public function id_is_accessible()
     {
         $this->assertEquals($this->properties->id, $this->testable->getId());

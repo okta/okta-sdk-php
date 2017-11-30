@@ -34,7 +34,7 @@ class SchemeApplicationCredentialsTest extends BaseUnitTestCase
     "revealPassword": false,
     "signing": {"test": "this"},
     "userName": "email@example.com",
-    "password": {}
+    "password": {"value": "password"}
   }';
     protected $modelType = \Okta\Applications\SchemeApplicationCredentials::class;
 
@@ -75,6 +75,28 @@ class SchemeApplicationCredentialsTest extends BaseUnitTestCase
         $this->testable->signing = $signing;
         $this->assertEquals('sign2', $this->testable->getSigning()->signature);
     }
+    
+    /** @test */
+    public function password_is_accessible()
+    {
+        $this->assertInstanceOf(\Okta\Users\PasswordCredential::class, $this->testable->getPassword());
+        $this->assertInstanceOf(\Okta\Users\PasswordCredential::class, $this->testable->password);
+    }
+    
+    /** @test */
+    public function password_is_settable()
+    {
+        $password = $this->testable->getPassword();
+        
+        $password->value = 'pass1';
+        $this->testable->setPassword($password);
+        $this->assertEquals('pass1', $this->testable->getPassword()->value);
+    
+        $password->value = 'pass2';
+        $this->testable->password = $password;
+        $this->assertEquals('pass2', $this->testable->getPassword()->value);
+    }
+    
 
     /** @test */
     public function user_name_is_accessible()

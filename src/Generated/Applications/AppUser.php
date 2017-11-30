@@ -36,26 +36,27 @@ class AppUser extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
 
 
-    public function save()
+    public function save( $appId )
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->saveResource(
-                    "/apps",
-                    $this,
-                    \Okta\Applications\AppUser::class
-                );
+            ->getDataStore()
+            ->saveResource(
+                "/apps/{$appId}/users",
+                $this,
+                \Okta\Applications\AppUser::class
+            );
     }
-
-    public function delete()
+    
+    public function delete( $appId )
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->deleteResource(
-                    "/apps",
-                    $this
-                );
+            ->getDataStore()
+            ->deleteResource(
+                "/apps/{$appId}/users",
+                $this
+            );
     }
+    
     /**
      * Get the id.
      *

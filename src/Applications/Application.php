@@ -19,5 +19,53 @@ namespace Okta\Applications;
 
 class Application extends \Okta\Generated\Applications\Application
 {
-    
+    public function get($query)
+    {
+        $application = parent::get($query);
+        return $this->convertFromGenericApplication($application);
+    }
+
+    public function convertFromGenericApplication($application)
+    {
+        switch($application->getSignOnMode()) {
+            case "BOOKMARK":
+                $appClass = \Okta\Applications\BookmarkApplication::class;
+                break;
+            case "BASIC_AUTH":
+                $appClass = \Okta\Applications\BasicAuthApplication::class;
+                break;
+            case "BROWSER_PLUGIN":
+                switch($application->getName()) {
+                    case "template_swa":
+                        $appClass = \Okta\Applications\SwaApplication::class;
+                        break;
+                    case "template_swa3field":
+                        $appClass = \Okta\Applications\SwaThreeFieldApplication::class;
+                        break;
+                }
+                break;
+            case "SECURE_PASSWORD_STORE":
+                $appClass = \Okta\Applications\SecurePasswordStoreApplication::class;
+                break;
+            case "AUTO_LOGIN":
+                $appClass = \Okta\Applications\AutoLoginApplication::class;
+                break;
+            case "WS_FEDERATION":
+                $appClass = \Okta\Applications\WsFederationApplication::class;
+                break;
+            case "SAML_2_0":
+                $appClass = \Okta\Applications\SamlApplication::class;
+                break;
+            case "OPENID_CONNECT":
+                $appClass = \Okta\Applications\OpenIdConnectApplication::class;
+                break;
+        }
+
+        $properties = new \stdClass();
+        foreach ($application->getPropertyNames() as $name) {
+            $properties->$name = $application->getProperty($name);
+        }
+
+        return new $appClass(null, $properties);
+    }
 }
