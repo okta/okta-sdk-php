@@ -39,13 +39,15 @@ class Application extends \Okta\Resource\AbstractResource
 
     public function get($query)
     {
-        return \Okta\Client::getInstance()
+        $application = \Okta\Client::getInstance()
                     ->getDataStore()
                     ->getResource(
                         $query,
                         \Okta\Applications\Application::class,
                         "/apps"
                     );
+
+        return $application->convertFromGenericApplication();
     }
     public function save()
     {

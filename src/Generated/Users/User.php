@@ -59,7 +59,7 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
-    public function save()
+            public function save()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

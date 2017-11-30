@@ -47,6 +47,18 @@ class {{modelName}} extends {{getExtends modelName}}
                     );
         return $factor->convertFromGenericFactor();
     }
+        {{else if (eq this.operation.operationId "getApplication")}}
+    public function get($query)
+    {
+        $application = \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        \\{{this.defaultReturnType}}::class,
+                        "{{getCrudOperationPath this}}"
+                    );
+        return $application->convertFromGenericApplication();
+    }
         {{else}}
     public function get($query)
     {

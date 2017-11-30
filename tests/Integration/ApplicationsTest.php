@@ -15,7 +15,7 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class FactorsTest extends BaseTestCase
+class ApplicationsTest extends BaseTestCase
 {
 
     /** @test */

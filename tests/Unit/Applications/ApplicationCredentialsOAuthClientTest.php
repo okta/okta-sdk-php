@@ -41,30 +41,10 @@ class ApplicationCredentialsOAuthClientTest extends BaseUnitTestCase
     }
 
     /** @test */
-    public function client_id_is_settable()
-    {
-        $this->testable->setClientId('abc');
-        $this->assertEquals('abc', $this->testable->getClientId());
-
-        $this->testable->clientId = '123';
-        $this->assertEquals('123', $this->testable->getClientId());
-    }
-
-    /** @test */
     public function client_secret_is_accessible()
     {
         $this->assertEquals($this->properties->client_secret, $this->testable->getClientSecret());
         $this->assertEquals($this->properties->client_secret, $this->testable->clientSecret);
-    }
-
-    /** @test */
-    public function client_secret_is_settable()
-    {
-        $this->testable->setClientSecret('abc');
-        $this->assertEquals('abc', $this->testable->getClientSecret());
-
-        $this->testable->clientSecret = '123';
-        $this->assertEquals('123', $this->testable->getClientSecret());
     }
 
     /** @test */

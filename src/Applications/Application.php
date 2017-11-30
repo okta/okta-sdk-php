@@ -19,15 +19,9 @@ namespace Okta\Applications;
 
 class Application extends \Okta\Generated\Applications\Application
 {
-    public function get($query)
+    public function convertFromGenericApplication()
     {
-        $application = parent::get($query);
-        return $this->convertFromGenericApplication($application);
-    }
-
-    public function convertFromGenericApplication($application)
-    {
-        switch($application->getSignOnMode()) {
+        switch($this->getSignOnMode()) {
             case "BOOKMARK":
                 $appClass = \Okta\Applications\BookmarkApplication::class;
                 break;
@@ -35,7 +29,7 @@ class Application extends \Okta\Generated\Applications\Application
                 $appClass = \Okta\Applications\BasicAuthApplication::class;
                 break;
             case "BROWSER_PLUGIN":
-                switch($application->getName()) {
+                switch($this->getName()) {
                     case "template_swa":
                         $appClass = \Okta\Applications\SwaApplication::class;
                         break;
@@ -62,8 +56,8 @@ class Application extends \Okta\Generated\Applications\Application
         }
 
         $properties = new \stdClass();
-        foreach ($application->getPropertyNames() as $name) {
-            $properties->$name = $application->getProperty($name);
+        foreach ($this->getPropertyNames() as $name) {
+            $properties->$name = $this->getProperty($name);
         }
 
         return new $appClass(null, $properties);

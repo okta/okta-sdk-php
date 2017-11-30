@@ -31,11 +31,13 @@ class ApplicationTest extends BaseUnitTestCase
     /** @test */
     public function getting_an_application_will_make_request_to_correct_endpoint()
     {
-        $client = $this->createNewHttpClient();
+        $httpClient = $this->createNewHttpClient([
+            "getBody" => '{"id":"abc123", "signOnMode": "BOOKMARK"}'
+        ]);
 
         $this->testable->get('abc123');
 
-        $requests = $client->getRequests();
+        $requests = $httpClient->getRequests();
 
         $this->assertEquals('/api/v1/apps/abc123', $requests[0]->getUri()->getPath());
         $this->assertEquals('GET', $requests[0]->getMethod());
@@ -44,11 +46,13 @@ class ApplicationTest extends BaseUnitTestCase
     /** @test */
     public function getting_an_application_will_return_application_object()
     {
-        $client = $this->createNewHttpClient();
+        $client = $this->createNewHttpClient([
+            "getBody" => '{"id":"abc123", "signOnMode": "BOOKMARK"}'
+        ]);
 
         $app = $this->testable->get('abc123');
 
-        $this->assertInstanceOf(Application::class, $app);
+        $this->assertInstanceOf(\Okta\Applications\BookmarkApplication::class, $app);
     }
 
     /** @test */

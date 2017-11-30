@@ -48,13 +48,13 @@ class OAuthApplicationCredentialsTest extends BaseUnitTestCase
     {
         $client = $this->testable->getOauthClient();
 
-        $client->clientId = 'abc';
+        $client->autoKeyRotation = true;
         $this->testable->setOauthClient($client);
-        $this->assertEquals('abc', $this->testable->getOauthClient()->clientId);
+        $this->assertEquals(true, $this->testable->getOauthClient()->autoKeyRotation);
 
-        $client->clientId = '123';
+        $client->autoKeyRotation = false;
         $this->testable->oauthClient = $client;
-        $this->assertEquals('123', $this->testable->getOauthClient()->clientId);
+        $this->assertEquals(false, $this->testable->getOauthClient()->autoKeyRotation);
     }
 
 
