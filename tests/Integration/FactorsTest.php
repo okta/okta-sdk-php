@@ -25,7 +25,7 @@ class FactorsTest extends BaseTestCase
             'getBody' => file_get_contents(__DIR__ . '/../responses/factors/getFactor.json')
         ]);
 
-        $user = $this->createnewUser();
+        $user = $this->createNewUser();
         $factor = $user->getFactor('FactorId123');
         $requests = $client->getRequests();
 

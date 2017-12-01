@@ -24,6 +24,7 @@ class SecurityQuestion extends \Okta\Resource\AbstractResource
     const QUESTION = 'question';
     const QUESTION_TEXT = 'questionText';
 
+
     /**
      * Get the answer.
      *

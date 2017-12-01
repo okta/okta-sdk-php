@@ -35,7 +35,8 @@ class Factor extends \Okta\Resource\AbstractResource
     const MFA_STATE_TOKEN_ID = 'mfaStateTokenId';
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
-    /**
+
+            /**
      * Get the id.
      *
      * @return string
@@ -130,7 +131,7 @@ class Factor extends \Okta\Resource\AbstractResource
      * @param \Okta\UserFactors\VerifyFactorRequest $verify The VerifyFactorRequest instance.
      * @return self
      */
-    public function setVerify(VerifyFactorRequest $verify)
+    public function setVerify(\Okta\UserFactors\VerifyFactorRequest $verify)
     {
         $this->setResourceProperty(
             self::VERIFY,
@@ -307,6 +308,7 @@ class Factor extends \Okta\Resource\AbstractResource
         return $this;
     }
 
+
     /**
     * The &#x60;sms&#x60; and &#x60;token:software:totp&#x60; [factor types](#factor-type) require activation to complete the enrollment process.
     *
@@ -319,10 +321,14 @@ class Factor extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $verifyFactorRequest);
+
+        $response =  new \Okta\UserFactors\Factor(null, $body);
+        return $response->convertFromGenericFactor();
     }
+
 
     /**
     * Verifies an OTP for a &#x60;token&#x60; or &#x60;token:hardware&#x60; factor
@@ -336,8 +342,10 @@ class Factor extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri, $verifyFactorRequest);
+
+        return new \Okta\UserFactors\VerifyFactorResponse(null, $body);
     }
 }

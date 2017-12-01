@@ -22,6 +22,7 @@ class CallFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
 
+
     /**
      * Get the profile.
      *

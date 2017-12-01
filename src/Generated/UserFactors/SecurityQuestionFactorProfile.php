@@ -24,6 +24,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
     const QUESTION = 'question';
     const QUESTION_TEXT = 'questionText';
 
+
     /**
      * Get the answer.
      *

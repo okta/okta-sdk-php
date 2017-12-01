@@ -26,6 +26,7 @@ class VerifyFactorResponse extends \Okta\Resource\AbstractResource
     const FACTOR_RESULT = 'factorResult';
     const FACTOR_RESULT_MESSAGE = 'factorResultMessage';
 
+
     /**
      * Get the _links.
      *

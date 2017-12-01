@@ -31,6 +31,7 @@ class Group extends \Okta\Resource\AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -41,7 +42,6 @@ class Group extends \Okta\Resource\AbstractResource
                     \Okta\Groups\Group::class
                 );
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -51,7 +51,7 @@ class Group extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-    /**
+            /**
      * Get the id.
      *
      * @return string
@@ -107,7 +107,7 @@ class Group extends \Okta\Resource\AbstractResource
      * @param \Okta\Groups\GroupProfile $profile The GroupProfile instance.
      * @return self
      */
-    public function setProfile(GroupProfile $profile)
+    public function setProfile(\Okta\Groups\GroupProfile $profile)
     {
         $this->setResourceProperty(
             self::PROFILE,
@@ -153,6 +153,7 @@ class Group extends \Okta\Resource\AbstractResource
         return $this->getDateProperty(self::LAST_MEMBERSHIP_UPDATED);
     }
 
+
     /**
     * Removes a [user](users.html#user-model) from a group with &#x60;OKTA_GROUP&#x60; type.
     *
@@ -165,9 +166,11 @@ class Group extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('DELETE', $uri);
+
+        return $body;
     }
 
     /**

@@ -1,0 +1,11 @@
+public function save( $appId )
+{
+    return \Okta\Client::getInstance()
+        ->getDataStore()
+        ->saveResource(
+            "/apps/{$appId}/users",
+            $this,
+            \\{{this.defaultReturnType}}::class
+        );
+}
+

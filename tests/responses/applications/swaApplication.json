@@ -1,0 +1,61 @@
+{
+  "id": "0oabkvBLDEKCNXBGYUAS",
+  "name": "template_swa",
+  "label": "Sample Plugin App",
+  "status": "ACTIVE",
+  "lastUpdated": "2013-09-11T17:58:54.000Z",
+  "created": "2013-09-11T17:46:08.000Z",
+  "accessibility": {
+    "selfService": false,
+    "errorRedirectUrl": null
+  },
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": {
+      "iOS": false,
+      "web": false
+    },
+    "appLinks": {
+      "login": true
+    }
+  },
+  "features": [],
+  "signOnMode": "BROWSER_PLUGIN",
+  "credentials": {
+    "scheme": "EDIT_USERNAME_AND_PASSWORD",
+    "userNameTemplate": {
+      "template": "${source.login}",
+      "type": "BUILT_IN"
+    }
+  },
+  "settings": {
+    "app": {
+      "buttonField": "btn-login",
+      "passwordField": "txtbox-password",
+      "usernameField": "txtbox-username",
+      "url": "https://example.com/login.html",
+      "loginUrlRegex": "REGEX_EXPRESSION"
+    }
+  },
+  "_links": {
+    "logo": [
+      {
+        "href": "https:/example.okta.com/img/logos/logo_1.png",
+        "name": "medium",
+        "type": "image/png"
+      }
+    ],
+    "users": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabkvBLDEKCNXBGYUAS/users"
+    },
+    "groups": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabkvBLDEKCNXBGYUAS/groups"
+    },
+    "self": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabkvBLDEKCNXBGYUAS"
+    },
+    "deactivate": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabkvBLDEKCNXBGYUAS/lifecycle/deactivate"
+    }
+  }
+}

@@ -22,6 +22,7 @@ class GroupRuleAction extends \Okta\Resource\AbstractResource
 {
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';
 
+
     /**
      * Get the assignUserToGroups.
      *
@@ -42,7 +43,7 @@ class GroupRuleAction extends \Okta\Resource\AbstractResource
      * @param \Okta\GroupRules\GroupRuleGroupAssignment $assignUserToGroups The GroupRuleGroupAssignment instance.
      * @return self
      */
-    public function setAssignUserToGroups(GroupRuleGroupAssignment $assignUserToGroups)
+    public function setAssignUserToGroups(\Okta\GroupRules\GroupRuleGroupAssignment $assignUserToGroups)
     {
         $this->setResourceProperty(
             self::ASSIGN_USER_TO_GROUPS,

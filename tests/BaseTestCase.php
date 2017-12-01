@@ -15,11 +15,19 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
+use Okta\ClientBuilder;
 use PHPUnit\Framework\TestCase;
 
 class BaseTestCase extends TestCase
 {
     protected $token = 'abc123';
+
+    public static function setUpBeforeClass()
+    {
+        parent::setUpBeforeClass();
+        (new ClientBuilder())->build();
+    }
+
     /**
      * @param array $returns
      *
@@ -34,11 +42,14 @@ class BaseTestCase extends TestCase
 
         $mockReturns = array_replace_recursive($defaults, $returns);
 
+        $httpClient = new \Http\Mock\Client;
+
         $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+
         foreach($mockReturns as $method=>$return) {
             $response->method($method)->willReturn($return);
+
         }
-        $httpClient = new \Http\Mock\Client;
         $httpClient->addResponse($response);
 
         (new \Okta\ClientBuilder())
@@ -67,32 +78,4 @@ class BaseTestCase extends TestCase
 
     }
 
-    protected function createModel($model, $returnType, $properties = [])
-    {
-
-        $properties = json_decode($this->getModel($model, $properties));
-
-        $class = new \stdClass();
-        foreach($properties as $prop=>$value)
-        {
-            $class->{$prop} = $value;
-        }
-
-        return new $returnType(null, $class);
-    }
-
-    protected function getModel($model, $overrides = [])
-    {
-        $model = json_decode($this->getModelJson($model), true);
-
-        return json_encode(array_replace_recursive($model, $overrides));
-
-    }
-
-    protected function getModelJson($model)
-    {
-        if(is_readable($fileName = __DIR__ . "/models/{$model}")) {
-            return (string) file_get_contents($fileName);
-        }
-    }
 }

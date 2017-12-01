@@ -24,6 +24,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     const PROVIDER = 'provider';
     const RECOVERY_QUESTION = 'recovery_question';
 
+
     /**
      * Get the password.
      *
@@ -44,7 +45,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\PasswordCredential $password The PasswordCredential instance.
      * @return self
      */
-    public function setPassword(PasswordCredential $password)
+    public function setPassword(\Okta\Users\PasswordCredential $password)
     {
         $this->setResourceProperty(
             self::PASSWORD,
@@ -73,7 +74,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\AuthenticationProvider $provider The AuthenticationProvider instance.
      * @return self
      */
-    public function setProvider(AuthenticationProvider $provider)
+    public function setProvider(\Okta\Users\AuthenticationProvider $provider)
     {
         $this->setResourceProperty(
             self::PROVIDER,
@@ -102,7 +103,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
      * @param \Okta\Users\RecoveryQuestionCredential $recovery_question The RecoveryQuestionCredential instance.
      * @return self
      */
-    public function setRecoveryQuestion(RecoveryQuestionCredential $recovery_question)
+    public function setRecoveryQuestion(\Okta\Users\RecoveryQuestionCredential $recovery_question)
     {
         $this->setResourceProperty(
             self::RECOVERY_QUESTION,

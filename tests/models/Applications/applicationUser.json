@@ -1,0 +1,39 @@
+{
+  "id": "00u11z6WHMYCGPCHCRFK",
+  "externalId": "70c14cc17d3745e8a9f98d599a68329c",
+  "created": "2014-06-24T15:27:59.000Z",
+  "lastUpdated": "2014-06-24T15:28:14.000Z",
+  "scope": "USER",
+  "status": "ACTIVE",
+  "statusChanged": "2014-06-24T15:28:14.000Z",
+  "passwordChanged": "2014-06-24T15:27:59.000Z",
+  "syncState": "SYNCHRONIZED",
+  "lastSync": "2014-06-24T15:27:59.000Z",
+  "credentials": {
+    "userName": "saml.jackson@example.com",
+    "password": {}
+  },
+  "profile": {
+    "secondEmail": null,
+    "lastName": "Jackson",
+    "mobilePhone": null,
+    "email": "saml.jackson@example.com",
+    "salesforceGroups": [
+      "Employee"
+    ],
+    "role": "CEO",
+    "firstName": "Saml",
+    "profile": "Standard User"
+  },
+  "_links": {
+    "app": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oabhnUQFYHMBNVSVXMV"
+    },
+    "user": {
+      "href": "https://php.oktapreview.com/api/v1/users/00u11z6WHMYCGPCHCRFK"
+    }
+  },
+  "_embedded": {
+    "test": "test"
+  }
+}

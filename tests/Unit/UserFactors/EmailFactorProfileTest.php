@@ -15,36 +15,27 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class EmailFactorProfileTest extends BaseTestCase
+class EmailFactorProfileTest extends BaseUnitTestCase
 {
 
-    protected static $properties;
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/factorProfileEmail.json';
-        static::$properties = json_decode($this->getModel($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\EmailFactorProfile::class);
-    }
+    protected $model = '/UserFactors/factorProfileEmail.json';
+    protected $modelType = \Okta\UserFactors\EmailFactorProfile::class;
 
     /** @test */
     public function email_is_gettable()
     {
-        $this->assertEquals(static::$properties->email, static::$testable->getEmail());
-        $this->assertEquals(static::$properties->email, static::$testable->email);
+        $this->assertEquals($this->properties->email, $this->testable->getEmail());
+        $this->assertEquals($this->properties->email, $this->testable->email);
     }
 
     /** @test */
     public function email_is_settable()
     {
-        static::$testable->setEmail('test@mailinator.com');
-        static::assertEquals('test@mailinator.com', static::$testable->getEmail());
+        $this->testable->setEmail('test@mailinator.com');
+        static::assertEquals('test@mailinator.com', $this->testable->getEmail());
 
-        static::$testable->email = 'test2@mailinator.com';
-        static::assertEquals('test2@mailinator.com', static::$testable->getEmail());
+        $this->testable->email = 'test2@mailinator.com';
+        static::assertEquals('test2@mailinator.com', $this->testable->getEmail());
     }
     
 }

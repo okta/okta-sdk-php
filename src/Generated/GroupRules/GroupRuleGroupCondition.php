@@ -23,6 +23,7 @@ class GroupRuleGroupCondition extends \Okta\Resource\AbstractResource
     const EXCLUDE = 'exclude';
     const INCLUDE = 'include';
 
+
     /**
      * Get the exclude.
      *

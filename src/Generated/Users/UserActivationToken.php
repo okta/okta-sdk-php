@@ -23,6 +23,7 @@ class UserActivationToken extends \Okta\Resource\AbstractResource
     const ACTIVATION_URL = 'activationUrl';
     const ACTIVATION_TOKEN = 'activationToken';
 
+
     /**
      * Get the activationUrl.
      *

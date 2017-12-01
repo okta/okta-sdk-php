@@ -15,70 +15,60 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-class SecurityQuestionFactorProfileTest extends BaseTestCase
+class SecurityQuestionFactorProfileTest extends BaseUnitTestCase
 {
-
-    protected static $properties;
-    protected static $testable;
-
-    public function setUp()
-    {
-        parent::setUp();
-        $this->createNewHttpClient();
-        $model = '/UserFactors/factorProfileQuestion.json';
-        static::$properties = json_decode($this->getModel($model));
-        static::$testable = $this->createModel($model, \Okta\UserFactors\SecurityQuestionFactorProfile::class);
-    }
+    protected $model = '/UserFactors/factorProfileQuestion.json';
+    protected $modelType = \Okta\UserFactors\SecurityQuestionFactorProfile::class;
 
     /** @test */
     public function answer_is_accessible()
     {
-        $this->assertEquals(static::$properties->answer, static::$testable->getAnswer());
-        $this->assertEquals(static::$properties->answer, static::$testable->answer);
+        $this->assertEquals($this->properties->answer, $this->testable->getAnswer());
+        $this->assertEquals($this->properties->answer, $this->testable->answer);
     }
 
     /** @test */
     public function answer_is_settable()
     {
-        static::$testable->setAnswer('My Answer');
-        static::assertEquals('My Answer', static::$testable->getAnswer());
+        $this->testable->setAnswer('My Answer');
+        static::assertEquals('My Answer', $this->testable->getAnswer());
 
-        static::$testable->answer = 'Custom Answer';
-        static::assertEquals('Custom Answer', static::$testable->getAnswer());
+        $this->testable->answer = 'Custom Answer';
+        static::assertEquals('Custom Answer', $this->testable->getAnswer());
     }
 
     /** @test */
     public function question_is_accessible()
     {
-        $this->assertEquals(static::$properties->question, static::$testable->getQuestion());
-        $this->assertEquals(static::$properties->question, static::$testable->question);
+        $this->assertEquals($this->properties->question, $this->testable->getQuestion());
+        $this->assertEquals($this->properties->question, $this->testable->question);
     }
 
     /** @test */
     public function question_is_settable()
     {
-        static::$testable->setQuestion('my_question');
-        static::assertEquals('my_question', static::$testable->getQuestion());
+        $this->testable->setQuestion('my_question');
+        static::assertEquals('my_question', $this->testable->getQuestion());
 
-        static::$testable->question = 'custom_question';
-        static::assertEquals('custom_question', static::$testable->getQuestion());
+        $this->testable->question = 'custom_question';
+        static::assertEquals('custom_question', $this->testable->getQuestion());
     }
 
     /** @test */
     public function question_text_is_accessible()
     {
-        $this->assertEquals(static::$properties->questionText, static::$testable->getQuestionText());
-        $this->assertEquals(static::$properties->questionText, static::$testable->questionText);
+        $this->assertEquals($this->properties->questionText, $this->testable->getQuestionText());
+        $this->assertEquals($this->properties->questionText, $this->testable->questionText);
     }
 
     /** @test */
     public function question_text_is_settable()
     {
-        static::$testable->setQuestionText('My Answer');
-        static::assertEquals('My Answer', static::$testable->getQuestionText());
+        $this->testable->setQuestionText('My Answer');
+        static::assertEquals('My Answer', $this->testable->getQuestionText());
 
-        static::$testable->questionText = "Custom Answer";
-        static::assertEquals("Custom Answer", static::$testable->getQuestionText());
+        $this->testable->questionText = "Custom Answer";
+        static::assertEquals("Custom Answer", $this->testable->getQuestionText());
     }
 
 }

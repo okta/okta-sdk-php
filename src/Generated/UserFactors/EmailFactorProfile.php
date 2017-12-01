@@ -22,6 +22,7 @@ class EmailFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const EMAIL = 'email';
 
+
     /**
      * Get the email.
      *

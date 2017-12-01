@@ -31,6 +31,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     const APP_ASSIGNMENT_ID = 'appAssignmentId';
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
+
     /**
      * Get the id.
      *

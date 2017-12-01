@@ -29,6 +29,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -39,7 +40,6 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     \Okta\GroupRules\GroupRule::class
                 );
     }
-
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -49,7 +49,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-    /**
+            /**
      * Get the id.
      *
      * @return string
@@ -135,7 +135,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      * @param \Okta\GroupRules\GroupRuleAction $actions The GroupRuleAction instance.
      * @return self
      */
-    public function setActions(GroupRuleAction $actions)
+    public function setActions(\Okta\GroupRules\GroupRuleAction $actions)
     {
         $this->setResourceProperty(
             self::ACTIONS,
@@ -173,7 +173,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      * @param \Okta\GroupRules\GroupRuleConditions $conditions The GroupRuleConditions instance.
      * @return self
      */
-    public function setConditions(GroupRuleConditions $conditions)
+    public function setConditions(\Okta\GroupRules\GroupRuleConditions $conditions)
     {
         $this->setResourceProperty(
             self::CONDITIONS,
@@ -192,6 +192,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
         return $this->getDateProperty(self::LAST_UPDATED);
     }
 
+
     /**
     * Activates a specific group rule by id from your organization
     *
@@ -204,10 +205,13 @@ class GroupRule extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
+
 
     /**
     * Deactivates a specific group rule by id from your organization
@@ -221,8 +225,10 @@ class GroupRule extends \Okta\Resource\AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest('POST', $uri);
+
+        return $body;
     }
 }

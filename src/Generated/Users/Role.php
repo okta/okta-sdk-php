@@ -29,6 +29,7 @@ class Role extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Get the id.
      *

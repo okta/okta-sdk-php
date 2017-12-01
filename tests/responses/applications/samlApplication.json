@@ -1,0 +1,105 @@
+{
+  "id": "0oav8uiWzPDrDMYxU0g3",
+  "name": "testorgone_examplecustomsaml20app_1",
+  "label": "Example Custom SAML 2.0 App",
+  "status": "ACTIVE",
+  "lastUpdated": "2016-06-29T19:57:33.000Z",
+  "created": "2016-06-29T19:57:33.000Z",
+  "accessibility": {
+    "selfService": false,
+    "errorRedirectUrl": null,
+    "loginRedirectUrl": null
+  },
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": {
+      "iOS": false,
+      "web": false
+    },
+    "appLinks": {
+      "testorgone_examplecustomsaml20app_6_link": true
+    }
+  },
+  "features": [],
+  "signOnMode": "SAML_2_0",
+  "credentials": {
+    "userNameTemplate": {
+      "template": "${source.login}",
+      "type": "BUILT_IN"
+    },
+    "signing": {}
+  },
+  "settings": {
+    "app": {},
+    "notifications": {
+      "vpn": {
+        "network": {
+          "connection": "DISABLED"
+        },
+        "message": null,
+        "helpUrl": null
+      }
+    },
+    "signOn": {
+      "defaultRelayState": null,
+      "ssoAcsUrl": "http://testorgone.okta",
+      "idpIssuer": "http://www.okta.com/${org.externalKey}",
+      "audience": "asdqwe123",
+      "recipient": "http://testorgone.okta",
+      "destination": "http://testorgone.okta",
+      "subjectNameIdTemplate": "${user.userName}",
+      "subjectNameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+      "responseSigned": true,
+      "assertionSigned": true,
+      "signatureAlgorithm": "RSA_SHA256",
+      "digestAlgorithm": "SHA256",
+      "honorForceAuthn": true,
+      "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+      "spIssuer": null,
+      "requestCompressed": false,
+      "attributeStatements": [
+        {
+          "type": "EXPRESSION",
+          "name": "Attribute",
+          "namespace": "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+          "values": [
+            "Value"
+          ]
+        }
+      ]
+    }
+  },
+  "_links": {
+    "logo": [
+      {
+        "name": "medium",
+        "href": "http://testorgone.okta.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png",
+        "type": "image/png"
+      }
+    ],
+    "appLinks": [
+      {
+        "name": "testorgone_examplecustomsaml20app_6_link",
+        "href": "http://testorgone.okta.com/home/testorgone_examplecustomsaml20app_6/0oav8uiWzPDrDMYxU0g3/alnvjz6hLyuTZadi80g3",
+        "type": "text/html"
+      }
+    ],
+    "help": {
+      "href": "http://testorgone-admin.okta.com/app/testorgone_examplecustomsaml20app_6/0oav8uiWzPDrDMYxU0g3/setup/help/SAML_2_0/instructions",
+      "type": "text/html"
+    },
+    "users": {
+      "href": "http://testorgone.okta.com/api/v1/apps/0oav8uiWzPDrDMYxU0g3/users"
+    },
+    "deactivate": {
+      "href": "http://testorgone.okta.com/api/v1/apps/0oav8uiWzPDrDMYxU0g3/lifecycle/deactivate"
+    },
+    "groups": {
+      "href": "http://testorgone.okta.com/api/v1/apps/0oav8uiWzPDrDMYxU0g3/groups"
+    },
+    "metadata": {
+      "href": "http://testorgone.okta.com:/api/v1/apps/0oav8uiWzPDrDMYxU0g3/sso/saml/metadata",
+      "type": "application/xml"
+    }
+  }
+}

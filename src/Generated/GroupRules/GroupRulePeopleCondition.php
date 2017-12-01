@@ -23,6 +23,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
     const USERS = 'users';
     const GROUPS = 'groups';
 
+
     /**
      * Get the users.
      *
@@ -43,7 +44,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
      * @param \Okta\GroupRules\GroupRuleUserCondition $users The GroupRuleUserCondition instance.
      * @return self
      */
-    public function setUsers(GroupRuleUserCondition $users)
+    public function setUsers(\Okta\GroupRules\GroupRuleUserCondition $users)
     {
         $this->setResourceProperty(
             self::USERS,
@@ -72,7 +73,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
      * @param \Okta\GroupRules\GroupRuleGroupCondition $groups The GroupRuleGroupCondition instance.
      * @return self
      */
-    public function setGroups(GroupRuleGroupCondition $groups)
+    public function setGroups(\Okta\GroupRules\GroupRuleGroupCondition $groups)
     {
         $this->setResourceProperty(
             self::GROUPS,

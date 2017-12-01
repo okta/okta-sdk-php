@@ -57,7 +57,7 @@ class GroupRuleConditionsTest extends TestCase
         }
         self::$testable = new GroupRuleConditions(NULL, $class);
     }
-    
+
     /** @test */
     public function people_is_accessible()
     {

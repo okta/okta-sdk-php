@@ -22,6 +22,7 @@ class ResetPasswordToken extends \Okta\Resource\AbstractResource
 {
     const RESET_PASSWORD_URL = 'resetPasswordUrl';
 
+
     /**
      * Get the resetPasswordUrl.
      *

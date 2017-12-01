@@ -25,6 +25,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     const NEXT_PASS_CODE = 'nextPassCode';
     const ACTIVATION_TOKEN = 'activationToken';
 
+
     /**
      * Get the answer.
      *

@@ -22,6 +22,7 @@ class SmsFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const PHONE_NUMBER = 'phoneNumber';
 
+
     /**
      * Get the phoneNumber.
      *

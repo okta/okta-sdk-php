@@ -21,4 +21,5 @@ namespace Okta\Generated\UserFactors;
 class FactorProfile extends \Okta\Resource\AbstractResource
 {
 
+
 }
