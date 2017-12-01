@@ -236,6 +236,26 @@ class User extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
 
+
+    /**
+    * Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+    *
+    *
+    * @return mixed|null
+    */
+    public function endSessions()
+    {
+        $uri = "/api/v1/users/{$this->getId()}/sessions";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $body = $this
+                ->getDataStore()
+                ->executeRequest('DELETE', $uri);
+
+        return $body;
+    }
+
     /**
     * Get the AppLink object.
     *

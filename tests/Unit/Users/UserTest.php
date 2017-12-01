@@ -457,6 +457,25 @@ class UserTest extends BaseUnitTestCase
     }
 
     /** @test */
+    public function end_session_makes_request_to_correct_location()
+    {
+        $httpClient = $this->createNewHttpClient();
+        $user = $this->createNewUser();
+
+        $user->endSessions();
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals('DELETE', $request[0]->getMethod());
+        $this->assertEquals(
+            "/api/v1/users/{$user->getId()}/sessions",
+            $request[0]->getUri()->getPath()
+        );
+
+
+    }
+
+    /** @test */
     public function suspend_makes_request_to_correct_location()
     {
         $httpClient = $this->createNewHttpClient();
