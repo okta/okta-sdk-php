@@ -15,31 +15,17 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Generated\Users;
+namespace Okta\Generated\UserFactors;
 
+use Okta\Utilities\Enum;
 
-class UserActivationToken extends \Okta\Resource\AbstractResource
+class FactorProvider extends Enum
 {
-    const ACTIVATION_URL = 'activationUrl';
-    const ACTIVATION_TOKEN = 'activationToken';
-
-
-    /**
-     * Get the activationUrl.
-     *
-     * @return string
-     */
-    public function getActivationUrl(): string
-    {
-        return $this->getProperty(self::ACTIVATION_URL);
-    }
-    /**
-     * Get the activationToken.
-     *
-     * @return string
-     */
-    public function getActivationToken(): string
-    {
-        return $this->getProperty(self::ACTIVATION_TOKEN);
-    }
+    const DUO = 'DUO';
+    const FIDO = 'FIDO';
+    const GOOGLE = 'GOOGLE';
+    const OKTA = 'OKTA';
+    const RSA = 'RSA';
+    const SYMANTEC = 'SYMANTEC';
+    const YUBICO = 'YUBICO';
 }

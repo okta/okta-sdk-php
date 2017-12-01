@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResource
 {
     const HELP_URL = 'helpUrl';

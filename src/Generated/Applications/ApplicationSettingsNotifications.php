@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationSettingsNotifications extends \Okta\Resource\AbstractResource
 {
     const VPN = 'vpn';

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class BasicApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';

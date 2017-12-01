@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationSettings extends \Okta\Resource\AbstractResource
 {
     const APP = 'app';

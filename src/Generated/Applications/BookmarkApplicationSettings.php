@@ -17,7 +17,8 @@
 
 namespace Okta\Generated\Applications;
 
-class BookmarkApplicationSettings extends \Okta\Resource\AbstractResource
+
+class BookmarkApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';
 
@@ -25,9 +26,9 @@ class BookmarkApplicationSettings extends \Okta\Resource\AbstractResource
     /**
      * Get the app.
      *
-     * @return \Okta\Applications\BookmarkApplicationSettingsApplication
+     * @return \Okta\Applications\ApplicationSettingsApplication
      */
-    public function getApp(array $options = []): \Okta\Applications\BookmarkApplicationSettingsApplication
+    public function getApp(array $options = []): \Okta\Applications\ApplicationSettingsApplication
     {
         return $this->getResourceProperty(
             self::APP,
@@ -39,10 +40,10 @@ class BookmarkApplicationSettings extends \Okta\Resource\AbstractResource
     /**
      * Set the app.
      *
-     * @param \Okta\Applications\BookmarkApplicationSettingsApplication $app The BookmarkApplicationSettingsApplication instance.
+     * @param \Okta\Applications\ApplicationSettingsApplication $app The BookmarkApplicationSettingsApplication instance.
      * @return self
      */
-    public function setApp(\Okta\Applications\BookmarkApplicationSettingsApplication $app)
+    public function setApp(\Okta\Applications\ApplicationSettingsApplication $app)
     {
         $this->setResourceProperty(
             self::APP,

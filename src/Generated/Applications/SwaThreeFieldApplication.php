@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplication
 {
     const NAME = 'name';

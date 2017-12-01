@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentials extends \Okta\Resource\AbstractResource
 {
     const SIGNING = 'signing';

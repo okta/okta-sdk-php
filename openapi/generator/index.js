@@ -24,7 +24,7 @@ function getType(obj, model) {
                 case 'AutoLoginApplicationSettings':
                 case 'BasicAuthApplicationSettings':
                 case 'BasicApplicationSettings':
-                case 'BookmarApplicationSettings':
+                case 'BookmarkApplicationSettings':
                 case 'BrowserPluginApplicationSettings':
                 case 'OpenIdConnectApplicationSettings':
                 case 'SamlApplicationSettings':
@@ -36,7 +36,7 @@ function getType(obj, model) {
                 case 'AutoLoginApplicationSettingsApplication':
                 case 'BasicAuthApplicationSettingsApplication':
                 case 'BasicApplicationSettingsApplication':
-                case 'BookmarApplicationSettingsApplication':
+                case 'BookmarkApplicationSettingsApplication':
                 case 'BrowserPluginApplicationSettingsApplication':
                 case 'OpenIdConnectApplicationSettingsApplication':
                 case 'SamlApplicationSettingsApplication':
@@ -47,7 +47,7 @@ function getType(obj, model) {
                     return '\\Okta\\Applications\\ApplicationSettingsApplication';
                 case 'AutoLoginApplicationCredentials':
                 case 'BasicAuthApplicationCredentials':
-                case 'BookmarApplicationCredentials':
+                case 'BookmarkApplicationCredentials':
                 case 'BrowserPluginApplicationCredentials':
                 case 'OAuthApplicationCredentials':
                 case 'OpenIdConnectApplicationCredentials':
@@ -92,7 +92,7 @@ function getSafeType(obj, model) {
                 case 'AutoLoginApplicationSettings':
                 case 'BasicAuthApplicationSettings':
                 case 'BasicApplicationSettings':
-                case 'BookmarApplicationSettings':
+                case 'BookmarkApplicationSettings':
                 case 'BrowserPluginApplicationSettings':
                 case 'OpenIdConnectApplicationSettings':
                 case 'SamlApplicationSettings':
@@ -103,7 +103,7 @@ function getSafeType(obj, model) {
                     return ': \\Okta\\Applications\\ApplicationSettings';
                 case 'AutoLoginApplicationCredentials':
                 case 'BasicAuthApplicationCredentials':
-                case 'BookmarApplicationCredentials':
+                case 'BookmarkApplicationCredentials':
                 case 'BrowserPluginApplicationCredentials':
                 case 'OAuthApplicationCredentials':
                 case 'OpenIdConnectApplicationCredentials':
@@ -115,7 +115,7 @@ function getSafeType(obj, model) {
                 case 'AutoLoginApplicationSettingsApplication':
                 case 'BasicAuthApplicationSettingsApplication':
                 case 'BasicApplicationSettingsApplication':
-                case 'BookmarApplicationSettingsApplication':
+                case 'BookmarkApplicationSettingsApplication':
                 case 'BrowserPluginApplicationSettingsApplication':
                 case 'OpenIdConnectApplicationSettingsApplication':
                 case 'SamlApplicationSettingsApplication':
@@ -159,7 +159,7 @@ function getTypeHint(obj) {
         case 'AutoLoginApplicationSettings':
         case 'BasicAuthApplicationSettings':
         case 'BasicApplicationSettings':
-        case 'BookmarApplicationSettings':
+        case 'BookmarkApplicationSettings':
         case 'BrowserPluginApplicationSettings':
         case 'OpenIdConnectApplicationSettings':
         case 'SamlApplicationSettings':
@@ -170,7 +170,7 @@ function getTypeHint(obj) {
             return '\\Okta\\Applications\\ApplicationSettings';
         case 'AutoLoginApplicationCredentials':
         case 'BasicAuthApplicationCredentials':
-        case 'BookmarApplicationCredentials':
+        case 'BookmarkApplicationCredentials':
         case 'BrowserPluginApplicationCredentials':
         case 'OAuthApplicationCredentials':
         case 'OpenIdConnectApplicationCredentials':
@@ -182,7 +182,7 @@ function getTypeHint(obj) {
         case 'AutoLoginApplicationSettingsApplication':
         case 'BasicAuthApplicationSettingsApplication':
         case 'BasicApplicationSettingsApplication':
-        case 'BookmarApplicationSettingsApplication':
+        case 'BookmarkApplicationSettingsApplication':
         case 'BrowserPluginApplicationSettingsApplication':
         case 'OpenIdConnectApplicationSettingsApplication':
         case 'SamlApplicationSettingsApplication':
@@ -210,7 +210,7 @@ function getExtends(modelName) {
             return '\\Okta\\UserFactors\\Factor';
         case 'AutoLoginApplication':
         case 'BasicAuthApplication':
-        case 'BookmarApplication':
+        case 'BookmarkApplication':
         case 'BrowserPluginApplication':
         case 'OpenIdConnectApplication':
         case 'SamlApplication':
@@ -220,7 +220,7 @@ function getExtends(modelName) {
         case 'AutoLoginApplicationSettings':
         case 'BasicAuthApplicationSettings':
         case 'BasicApplicationSettings':
-        case 'BookmarApplicationSettings':
+        case 'BookmarkApplicationSettings':
         case 'BrowserPluginApplicationSettings':
         case 'OpenIdConnectApplicationSettings':
         case 'SamlApplicationSettings':
@@ -231,7 +231,7 @@ function getExtends(modelName) {
             return '\\Okta\\Applications\\ApplicationSettings';
         case 'AutoLoginApplicationCredentials':
         case 'BasicAuthApplicationCredentials':
-        case 'BookmarApplicationCredentials':
+        case 'BookmarkApplicationCredentials':
         case 'BrowserPluginApplicationCredentials':
         case 'OAuthApplicationCredentials':
         case 'OpenIdConnectApplicationCredentials':
@@ -243,7 +243,7 @@ function getExtends(modelName) {
         case 'AutoLoginApplicationSettingsApplication':
         case 'BasicAuthApplicationSettingsApplication':
         case 'BasicApplicationSettingsApplication':
-        case 'BookmarApplicationSettingsApplication':
+        case 'BookmarkApplicationSettingsApplication':
         case 'BrowserPluginApplicationSettingsApplication':
         case 'OpenIdConnectApplicationSettingsApplication':
         case 'SamlApplicationSettingsApplication':

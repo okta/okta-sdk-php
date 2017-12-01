@@ -22,6 +22,7 @@ use Okta\Utilities\Enum;
 class FactorType extends Enum
 {
     const CALL = 'call';
+    const EMAIL = 'email';
     const PUSH = 'push';
     const QUESTION = 'question';
     const SMS = 'sms';

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class SmsFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const PHONE_NUMBER = 'phoneNumber';

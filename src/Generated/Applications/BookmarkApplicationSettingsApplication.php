@@ -17,7 +17,8 @@
 
 namespace Okta\Generated\Applications;
 
-class BookmarkApplicationSettingsApplication extends \Okta\Resource\AbstractResource
+
+class BookmarkApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const REQUEST_INTEGRATION = 'requestIntegration';

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 {
     const CLIENT_ID = 'client_id';
@@ -35,6 +36,21 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::CLIENT_ID);
     }
     /**
+    * Set the client_id.
+    *
+    * @param mixed $client_id The value to set.
+    * @return self
+    */
+    public function setClientId($client_id)
+    {
+        $this->setProperty(
+            self::CLIENT_ID,
+            $client_id
+        );
+
+        return $this;
+    }
+    /**
      * Get the client_secret.
      *
      * @return string
@@ -42,6 +58,21 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     public function getClientSecret(): string
     {
         return $this->getProperty(self::CLIENT_SECRET);
+    }
+    /**
+    * Set the client_secret.
+    *
+    * @param mixed $client_secret The value to set.
+    * @return self
+    */
+    public function setClientSecret($client_secret)
+    {
+        $this->setProperty(
+            self::CLIENT_SECRET,
+            $client_secret
+        );
+
+        return $this;
     }
     /**
      * Get the autoKeyRotation.
