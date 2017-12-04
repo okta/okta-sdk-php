@@ -243,7 +243,7 @@ class User extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function endSessions()
+    public function endAllSessions($oauthTokens = false)
     {
         $uri = "/api/v1/users/{$this->getId()}/sessions";
         $uri = $this->getDataStore()->buildUri(
@@ -251,7 +251,7 @@ class User extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
-                ->executeRequest('DELETE', $uri);
+                ->executeRequest('DELETE', $uri, '', ['query' => ['oauthTokens' => $oauthTokens]]);
 
         return $body;
     }

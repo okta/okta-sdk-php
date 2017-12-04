@@ -19,7 +19,7 @@ namespace Okta\Generated\Sessions;
 
 use Okta\Utilities\Enum;
 
-class AuthenticationMethod extends Enum
+class SessionAuthenticationMethod extends Enum
 {
     const FPT = 'fpt';
     const GEO = 'geo';

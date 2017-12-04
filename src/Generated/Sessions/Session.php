@@ -73,13 +73,13 @@ class Session extends \Okta\Resource\AbstractResource
     /**
      * Get the idp.
      *
-     * @return \Okta\Sessions\SessionAuthority
+     * @return \Okta\Sessions\SessionIdentityProvider
      */
-    public function getIdp(array $options = []): \Okta\Sessions\SessionAuthority
+    public function getIdp(array $options = []): \Okta\Sessions\SessionIdentityProvider
     {
         return $this->getResourceProperty(
             self::IDP,
-            \Okta\Sessions\SessionAuthority::class,
+            \Okta\Sessions\SessionIdentityProvider::class,
             $options
         );
     }

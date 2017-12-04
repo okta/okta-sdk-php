@@ -19,7 +19,7 @@ namespace Okta\Generated\Sessions;
 
 use Okta\Utilities\Enum;
 
-class SessionAuthorityType extends Enum
+class SessionIdentityProviderType extends Enum
 {
     const ACTIVE_DIRECTORY = 'ACTIVE_DIRECTORY';
     const FEDERATION = 'FEDERATION';

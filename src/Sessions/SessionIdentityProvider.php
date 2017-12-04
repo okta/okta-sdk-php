@@ -17,7 +17,7 @@
 
 namespace Okta\Sessions;
 
-class SessionAuthorityType extends \Okta\Generated\Sessions\SessionAuthorityType
+class SessionIdentityProvider extends \Okta\Generated\Sessions\SessionIdentityProvider
 {
 
 }

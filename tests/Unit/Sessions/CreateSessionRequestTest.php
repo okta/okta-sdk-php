@@ -15,9 +15,36 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-namespace Okta\Sessions;
+use Okta\Sessions\CreateSessionRequest;
+use PHPUnit\Framework\TestCase;
 
-class SessionAuthority extends \Okta\Generated\Sessions\SessionAuthority
+class CreateSessionRequestTest extends BaseUnitTestCase
 {
+    protected $properties;
+
+    /** @var  \Okta\Sessions\CreateSessionRequest */
+    protected $testable;
+
+    protected $model = '{"sessionToken": "abc123"}';
+    protected $modelType = \Okta\Sessions\CreateSessionRequest::class;
+
+    /** @test */
+    public function session_token_is_accessible()
+    {
+        $this->assertEquals($this->properties->sessionToken, $this->testable->getSessionToken());
+        $this->assertEquals($this->properties->sessionToken, $this->testable->sessionToken);
+    }
+    
+    /** @test */
+    public function session_token_is_settable()
+    {
+        $this->testable->setSessionToken('token1');
+        $this->assertEquals('token1', $this->testable->getSessionToken());
+    
+        $this->testable->sessionToken = 'token2';
+        $this->assertEquals('token2', $this->testable->getSessionToken());
+    }
+    
+
 
 }

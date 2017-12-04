@@ -18,28 +18,33 @@
 namespace Okta\Generated\Sessions;
 
 
-class SessionAuthority extends \Okta\Resource\AbstractResource
+class CreateSessionRequest extends \Okta\Resource\AbstractResource
 {
-    const ID = 'id';
-    const TYPE = 'type';
+    const SESSION_TOKEN = 'sessionToken';
 
 
     /**
-     * Get the id.
+     * Get the sessionToken.
      *
      * @return string
      */
-    public function getId(): string
+    public function getSessionToken(): string
     {
-        return $this->getProperty(self::ID);
+        return $this->getProperty(self::SESSION_TOKEN);
     }
     /**
-     * Get the type.
-     *
-     * @return string
-     */
-    public function getType(): string
+    * Set the sessionToken.
+    *
+    * @param mixed $sessionToken The value to set.
+    * @return self
+    */
+    public function setSessionToken($sessionToken)
     {
-        return $this->getProperty(self::TYPE);
+        $this->setProperty(
+            self::SESSION_TOKEN,
+            $sessionToken
+        );
+
+        return $this;
     }
 }

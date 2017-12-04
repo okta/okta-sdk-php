@@ -15,32 +15,9 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Sessions\SessionIdentityProvider;
-use PHPUnit\Framework\TestCase;
+namespace Okta\Sessions;
 
-class SessionIdentityProviderTest extends BaseUnitTestCase
+class CreateSessionRequest extends \Okta\Generated\Sessions\CreateSessionRequest
 {
-    protected $properties;
-
-    /** @var  \Okta\Sessions\SessionIdentityProvider */
-    protected $testable;
-
-    protected $model = '{"id": "abc123", "type": "ACTIVE"}';
-    protected $modelType = \Okta\Sessions\SessionIdentityProvider::class;
-
-    /** @test */
-    public function id_is_accessible()
-    {
-        $this->assertEquals($this->properties->id, $this->testable->getId());
-        $this->assertEquals($this->properties->id, $this->testable->id);
-    }
-
-    /** @test */
-    public function type_is_accessible()
-    {
-        $this->assertEquals($this->properties->type, $this->testable->getType());
-        $this->assertEquals($this->properties->type, $this->testable->type);
-    }
-
 
 }

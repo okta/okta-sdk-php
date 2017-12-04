@@ -113,8 +113,8 @@ class SessionTest extends BaseUnitTestCase
     /** @test */
     public function idp_is_accessible()
     {
-        $this->assertInstanceOf(\Okta\Sessions\SessionAuthority::class, $this->testable->getIdp());
-        $this->assertInstanceOf(\Okta\Sessions\SessionAuthority::class, $this->testable->idp);
+        $this->assertInstanceOf(\Okta\Sessions\SessionIdentityProvider::class, $this->testable->getIdp());
+        $this->assertInstanceOf(\Okta\Sessions\SessionIdentityProvider::class, $this->testable->idp);
     }
 
     /** @test */

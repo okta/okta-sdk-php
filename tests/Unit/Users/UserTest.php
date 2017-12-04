@@ -457,12 +457,12 @@ class UserTest extends BaseUnitTestCase
     }
 
     /** @test */
-    public function end_session_makes_request_to_correct_location()
+    public function end_user_session_makes_request_to_correct_location()
     {
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
-        $user->endSessions();
+        $user->endAllSessions();
 
         $request = $httpClient->getRequests();
 
