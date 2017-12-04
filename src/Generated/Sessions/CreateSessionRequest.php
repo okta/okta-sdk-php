@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Sessions;
 
-
 class CreateSessionRequest extends \Okta\Resource\AbstractResource
 {
     const SESSION_TOKEN = 'sessionToken';

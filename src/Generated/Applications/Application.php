@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';

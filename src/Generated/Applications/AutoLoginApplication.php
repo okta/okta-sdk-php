@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class AutoLoginApplication extends \Okta\Applications\Application
 {
     const SETTINGS = 'settings';

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRuleGroupCondition extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';

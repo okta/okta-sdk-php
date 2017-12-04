@@ -59,15 +59,15 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
-            public function save()
+    public function save()
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->saveResource(
-                    "/users",
-                    $this,
-                    \Okta\Users\User::class
-                );
+        ->getDataStore()
+        ->saveResource(
+            "/users",
+            $this,
+            \Okta\Users\User::class
+        );
     }
     public function delete()
     {
@@ -415,7 +415,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -435,7 +435,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
