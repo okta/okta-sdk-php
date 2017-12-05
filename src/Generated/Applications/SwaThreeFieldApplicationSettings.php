@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaThreeFieldApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';

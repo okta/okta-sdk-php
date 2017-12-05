@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaApplication extends \Okta\Applications\BrowserPluginApplication
 {
     const NAME = 'name';

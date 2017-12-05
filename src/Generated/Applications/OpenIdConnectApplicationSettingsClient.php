@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractResource
 {
     const TOS_URI = 'tos_uri';

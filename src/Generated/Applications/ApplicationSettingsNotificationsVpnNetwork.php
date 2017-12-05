@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';

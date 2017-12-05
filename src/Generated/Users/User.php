@@ -59,15 +59,15 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
-            public function save()
+    public function save()
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->saveResource(
-                    "/users",
-                    $this,
-                    \Okta\Users\User::class
-                );
+        ->getDataStore()
+        ->saveResource(
+            "/users",
+            $this,
+            \Okta\Users\User::class
+        );
     }
     public function delete()
     {
@@ -236,6 +236,26 @@ class User extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
 
+
+    /**
+    * Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+    *
+    *
+    * @return mixed|null
+    */
+    public function endAllSessions($oauthTokens = false)
+    {
+        $uri = "/api/v1/users/{$this->getId()}/sessions";
+        $uri = $this->getDataStore()->buildUri(
+            $this->getDataStore()->getOrganizationUrl() . $uri
+        );
+        $body = $this
+                ->getDataStore()
+                ->executeRequest('DELETE', $uri, '', ['query' => ['oauthTokens' => $oauthTokens]]);
+
+        return $body;
+    }
+
     /**
     * Get the AppLink object.
     *
@@ -395,7 +415,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -415,7 +435,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null

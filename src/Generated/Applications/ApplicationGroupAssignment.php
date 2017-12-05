@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -28,7 +27,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
-    public function delete( $appId )
+    public function delete($appId)
     {
         return \Okta\Client::getInstance()
             ->getDataStore()

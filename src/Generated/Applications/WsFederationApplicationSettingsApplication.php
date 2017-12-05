@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class WsFederationApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const REALM = 'realm';

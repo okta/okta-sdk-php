@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRuleExpression extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

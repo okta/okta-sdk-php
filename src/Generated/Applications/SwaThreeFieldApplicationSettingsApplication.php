@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const TARGET_URL = 'targetUrl';

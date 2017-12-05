@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class JsonWebKey extends \Okta\Resource\AbstractResource
 {
     const E = 'e';

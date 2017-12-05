@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class OpenIdConnectApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const OAUTH_CLIENT = 'oauthClient';
