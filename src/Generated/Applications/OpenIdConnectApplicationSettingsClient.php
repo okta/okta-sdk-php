@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractResource
 {
     const TOS_URI = 'tos_uri';
@@ -35,7 +36,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getTosUri(): string
+    public function getTosUri()
     {
         return $this->getProperty(self::TOS_URI);
     }
@@ -59,7 +60,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getLogoUri(): string
+    public function getLogoUri()
     {
         return $this->getProperty(self::LOGO_URI);
     }
@@ -83,7 +84,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getClientUri(): string
+    public function getClientUri()
     {
         return $this->getProperty(self::CLIENT_URI);
     }
@@ -107,7 +108,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getPolicyUri(): string
+    public function getPolicyUri()
     {
         return $this->getProperty(self::POLICY_URI);
     }
@@ -131,7 +132,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return array
      */
-    public function getGrantTypes(): array
+    public function getGrantTypes()
     {
         return $this->getProperty(self::GRANT_TYPES);
     }
@@ -155,7 +156,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return array
      */
-    public function getRedirectUris(): array
+    public function getRedirectUris()
     {
         return $this->getProperty(self::REDIRECT_URIS);
     }
@@ -179,7 +180,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getConsentMethod(): string
+    public function getConsentMethod()
     {
         return $this->getProperty(self::CONSENT_METHOD);
     }
@@ -203,7 +204,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return array
      */
-    public function getResponseTypes(): array
+    public function getResponseTypes()
     {
         return $this->getProperty(self::RESPONSE_TYPES);
     }
@@ -227,7 +228,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getApplicationType(): string
+    public function getApplicationType()
     {
         return $this->getProperty(self::APPLICATION_TYPE);
     }

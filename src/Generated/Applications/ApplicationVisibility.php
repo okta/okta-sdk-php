@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationVisibility extends \Okta\Resource\AbstractResource
 {
     const HIDE = 'hide';
@@ -58,7 +59,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getAppLinks(): \stdClass
+    public function getAppLinks()
     {
         return $this->getProperty(self::APP_LINKS);
     }
@@ -82,7 +83,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getAutoSubmitToolbar(): bool
+    public function getAutoSubmitToolbar()
     {
         return $this->getProperty(self::AUTO_SUBMIT_TOOLBAR);
     }

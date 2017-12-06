@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 {
     const CLIENT_ID = 'client_id';
@@ -30,7 +31,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getClientId(): string
+    public function getClientId()
     {
         return $this->getProperty(self::CLIENT_ID);
     }
@@ -54,7 +55,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getClientSecret(): string
+    public function getClientSecret()
     {
         return $this->getProperty(self::CLIENT_SECRET);
     }
@@ -78,7 +79,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getAutoKeyRotation(): bool
+    public function getAutoKeyRotation()
     {
         return $this->getProperty(self::AUTO_KEY_ROTATION);
     }
@@ -102,7 +103,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getTokenEndpointAuthMethod(): string
+    public function getTokenEndpointAuthMethod()
     {
         return $this->getProperty(self::TOKEN_ENDPOINT_AUTH_METHOD);
     }

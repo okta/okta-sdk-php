@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -27,7 +28,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
-    public function delete($appId)
+    public function delete( $appId )
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -42,7 +43,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -51,7 +52,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -60,7 +61,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getProfile(): \stdClass
+    public function getProfile()
     {
         return $this->getProperty(self::PROFILE);
     }
@@ -84,7 +85,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
      *
      * @return int
      */
-    public function getPriority(): int
+    public function getPriority()
     {
         return $this->getProperty(self::PRIORITY);
     }
@@ -108,7 +109,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }

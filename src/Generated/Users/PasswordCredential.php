@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class PasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';
@@ -27,7 +28,7 @@ class PasswordCredential extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->getProperty(self::VALUE);
     }

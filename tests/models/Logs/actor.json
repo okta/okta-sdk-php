@@ -1,0 +1,9 @@
+{
+  "id": "00u1qw1mqitPHM8AJ0g7",
+  "type": "User",
+  "alternateId": "admin@tc1-trexcloud.com",
+  "displayName": "John Fung",
+  "detail": {
+    "prop1": "property"
+  }
+}

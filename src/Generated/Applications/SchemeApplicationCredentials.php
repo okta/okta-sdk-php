@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const SCHEME = 'scheme';
@@ -31,7 +32,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
      *
      * @return string
      */
-    public function getScheme(): string
+    public function getScheme()
     {
         return $this->getProperty(self::SCHEME);
     }
@@ -113,7 +114,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
      *
      * @return string
      */
-    public function getUserName(): string
+    public function getUserName()
     {
         return $this->getProperty(self::USER_NAME);
     }
@@ -137,7 +138,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
      *
      * @return bool
      */
-    public function getRevealPassword(): bool
+    public function getRevealPassword()
     {
         return $this->getProperty(self::REVEAL_PASSWORD);
     }

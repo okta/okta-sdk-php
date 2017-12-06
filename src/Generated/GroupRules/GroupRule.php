@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\GroupRules;
 
+
 class GroupRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -53,7 +54,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -62,7 +63,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
@@ -86,7 +87,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
@@ -110,7 +111,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }

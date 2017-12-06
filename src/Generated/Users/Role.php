@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class Role extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -34,7 +35,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -43,7 +44,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
@@ -52,7 +53,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
@@ -61,7 +62,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -79,7 +80,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -88,7 +89,7 @@ class Role extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->getProperty(self::DESCRIPTION);
     }

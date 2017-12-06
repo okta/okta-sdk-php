@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResource
 {
     const HELP_URL = 'helpUrl';
@@ -29,7 +30,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
      *
      * @return string
      */
-    public function getHelpUrl(): string
+    public function getHelpUrl()
     {
         return $this->getProperty(self::HELP_URL);
     }
@@ -53,7 +54,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
      *
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage()
     {
         return $this->getProperty(self::MESSAGE);
     }

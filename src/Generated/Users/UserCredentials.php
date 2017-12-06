@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class UserCredentials extends \Okta\Resource\AbstractResource
 {
     const PASSWORD = 'password';

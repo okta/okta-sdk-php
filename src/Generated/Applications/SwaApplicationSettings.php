@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SwaApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';

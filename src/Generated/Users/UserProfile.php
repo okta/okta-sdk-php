@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class UserProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';
@@ -32,7 +33,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->getProperty(self::EMAIL);
     }
@@ -56,7 +57,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->getProperty(self::LOGIN);
     }
@@ -80,7 +81,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->getProperty(self::LAST_NAME);
     }
@@ -104,7 +105,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->getProperty(self::FIRST_NAME);
     }
@@ -128,7 +129,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getMobilePhone(): string
+    public function getMobilePhone()
     {
         return $this->getProperty(self::MOBILE_PHONE);
     }
@@ -152,7 +153,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getSecondEmail(): string
+    public function getSecondEmail()
     {
         return $this->getProperty(self::SECOND_EMAIL);
     }

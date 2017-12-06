@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
@@ -31,7 +32,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->getProperty(self::URL);
     }
@@ -55,7 +56,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
      *
      * @return string
      */
-    public function getButtonField(): string
+    public function getButtonField()
     {
         return $this->getProperty(self::BUTTON_FIELD);
     }
@@ -79,7 +80,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
      *
      * @return string
      */
-    public function getLoginUrlRegex(): string
+    public function getLoginUrlRegex()
     {
         return $this->getProperty(self::LOGIN_URL_REGEX);
     }
@@ -103,7 +104,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
      *
      * @return string
      */
-    public function getPasswordField(): string
+    public function getPasswordField()
     {
         return $this->getProperty(self::PASSWORD_FIELD);
     }
@@ -127,7 +128,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
      *
      * @return string
      */
-    public function getUsernameField(): string
+    public function getUsernameField()
     {
         return $this->getProperty(self::USERNAME_FIELD);
     }

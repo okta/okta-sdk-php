@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class ResetPasswordToken extends \Okta\Resource\AbstractResource
 {
     const RESET_PASSWORD_URL = 'resetPasswordUrl';
@@ -27,7 +28,7 @@ class ResetPasswordToken extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getResetPasswordUrl(): string
+    public function getResetPasswordUrl()
     {
         return $this->getProperty(self::RESET_PASSWORD_URL);
     }

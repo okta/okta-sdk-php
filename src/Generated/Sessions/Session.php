@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Sessions;
 
+
 class Session extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -42,21 +43,21 @@ class Session extends \Okta\Resource\AbstractResource
                         "/sessions"
                     );
     }
-    public function delete()
+            public function delete()
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/sessions",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/sessions",
+                    $this
+                );
     }
             /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -65,7 +66,7 @@ class Session extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getAmr(): array
+    public function getAmr()
     {
         return $this->getProperty(self::AMR);
     }
@@ -88,7 +89,7 @@ class Session extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->getProperty(self::LOGIN);
     }
@@ -97,7 +98,7 @@ class Session extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -106,7 +107,7 @@ class Session extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -115,7 +116,7 @@ class Session extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getUserId(): string
+    public function getUserId()
     {
         return $this->getProperty(self::USER_ID);
     }
@@ -158,7 +159,7 @@ class Session extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null

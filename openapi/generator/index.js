@@ -127,19 +127,19 @@ function getSafeType(obj, model) {
                 default:
                     return `: \\Okta\\` + getFirstTagFromReference(obj.reference) + `\\${obj.model}`;
             }
-        case 'hash':
-            return String.raw`: \stdClass`;
-        case 'boolean':
-            return String.raw`: bool`;
-        case 'integer':
-            return String.raw`: int`;
-        case 'enum':
-            return String.raw`: string`;
-        default:
-            if(obj.commonType) {
-                return `: ${obj.commonType}`;
-            }
-            return;
+        // case 'hash':
+        //     return String.raw`: \stdClass`;
+        // case 'boolean':
+        //     return String.raw`: bool`;
+        // case 'integer':
+        //     return String.raw`: int`;
+        // case 'enum':
+        //     return String.raw`: string`;
+        // default:
+        //     if(obj.commonType) {
+        //         return `: ${obj.commonType}`;
+        //     }
+        //     return;
     }
 }
 

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -71,7 +72,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -80,7 +81,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
@@ -89,7 +90,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
@@ -113,7 +114,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -122,7 +123,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -140,7 +141,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getFeatures(): array
+    public function getFeatures()
     {
         return $this->getProperty(self::FEATURES);
     }
@@ -193,7 +194,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -231,7 +232,7 @@ class Application extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getSignOnMode(): string
+    public function getSignOnMode()
     {
         return $this->getProperty(self::SIGN_ON_MODE);
     }

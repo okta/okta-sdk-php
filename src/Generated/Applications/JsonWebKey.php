@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class JsonWebKey extends \Okta\Resource\AbstractResource
 {
     const E = 'e';
@@ -41,7 +42,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getE(): string
+    public function getE()
     {
         return $this->getProperty(self::E);
     }
@@ -50,7 +51,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getN(): string
+    public function getN()
     {
         return $this->getProperty(self::N);
     }
@@ -59,7 +60,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getAlg(): string
+    public function getAlg()
     {
         return $this->getProperty(self::ALG);
     }
@@ -68,7 +69,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getKid(): string
+    public function getKid()
     {
         return $this->getProperty(self::KID);
     }
@@ -77,7 +78,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getKty(): string
+    public function getKty()
     {
         return $this->getProperty(self::KTY);
     }
@@ -86,7 +87,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getUse(): string
+    public function getUse()
     {
         return $this->getProperty(self::USE);
     }
@@ -95,7 +96,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getX5C(): array
+    public function getX5C()
     {
         return $this->getProperty(self::X_5_C);
     }
@@ -104,7 +105,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getX5T(): string
+    public function getX5T()
     {
         return $this->getProperty(self::X_5_T);
     }
@@ -113,7 +114,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getX5U(): string
+    public function getX5U()
     {
         return $this->getProperty(self::X_5_U);
     }
@@ -122,7 +123,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -140,7 +141,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getKeyOps(): array
+    public function getKeyOps()
     {
         return $this->getProperty(self::KEY_OPS);
     }
@@ -149,7 +150,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getX5TS256(): string
+    public function getX5TS256()
     {
         return $this->getProperty(self::X_5_T_S_256);
     }

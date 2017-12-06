@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class PushFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const NAME = 'name';
@@ -31,7 +32,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
@@ -55,7 +56,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getVersion(): string
+    public function getVersion()
     {
         return $this->getProperty(self::VERSION);
     }
@@ -79,7 +80,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getPlatform(): string
+    public function getPlatform()
     {
         return $this->getProperty(self::PLATFORM);
     }
@@ -88,7 +89,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getDeviceType(): string
+    public function getDeviceType()
     {
         return $this->getProperty(self::DEVICE_TYPE);
     }
@@ -97,7 +98,7 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getCredentialId(): string
+    public function getCredentialId()
     {
         return $this->getProperty(self::CREDENTIAL_ID);
     }

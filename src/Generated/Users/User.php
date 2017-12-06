@@ -59,15 +59,15 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
-    public function save()
+            public function save()
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->saveResource(
-            "/users",
-            $this,
-            \Okta\Users\User::class
-        );
+                ->getDataStore()
+                ->saveResource(
+                    "/users",
+                    $this,
+                    \Okta\Users\User::class
+                );
     }
     public function delete()
     {
@@ -83,7 +83,7 @@ class User extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -92,7 +92,7 @@ class User extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -101,7 +101,7 @@ class User extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -148,7 +148,7 @@ class User extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -231,7 +231,7 @@ class User extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getTransitioningToStatus(): string
+    public function getTransitioningToStatus()
     {
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
@@ -415,7 +415,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null
@@ -435,7 +435,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null

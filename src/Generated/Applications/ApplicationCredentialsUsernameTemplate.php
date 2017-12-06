@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';
@@ -29,7 +30,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
@@ -53,7 +54,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getSuffix(): string
+    public function getSuffix()
     {
         return $this->getProperty(self::SUFFIX);
     }
@@ -77,7 +78,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
      *
      * @return string
      */
-    public function getTemplate(): string
+    public function getTemplate()
     {
         return $this->getProperty(self::TEMPLATE);
     }

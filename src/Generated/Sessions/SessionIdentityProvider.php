@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Sessions;
 
+
 class SessionIdentityProvider extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -28,7 +29,7 @@ class SessionIdentityProvider extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -37,7 +38,7 @@ class SessionIdentityProvider extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class AppUser extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -35,7 +36,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
 
 
-    public function save($appId)
+    public function save( $appId )
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -46,7 +47,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
-    public function delete($appId)
+    public function delete( $appId )
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -61,7 +62,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -85,7 +86,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getScope(): string
+    public function getScope()
     {
         return $this->getProperty(self::SCOPE);
     }
@@ -109,7 +110,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -118,7 +119,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -136,7 +137,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getProfile(): \stdClass
+    public function getProfile()
     {
         return $this->getProperty(self::PROFILE);
     }
@@ -154,7 +155,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -163,7 +164,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getSyncState(): string
+    public function getSyncState()
     {
         return $this->getProperty(self::SYNC_STATE);
     }
@@ -172,7 +173,7 @@ class AppUser extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getExternalId(): string
+    public function getExternalId()
     {
         return $this->getProperty(self::EXTERNAL_ID);
     }

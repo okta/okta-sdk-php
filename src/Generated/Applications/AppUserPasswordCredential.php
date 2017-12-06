@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';
@@ -27,7 +28,7 @@ class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->getProperty(self::VALUE);
     }

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class AppLink extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -36,7 +37,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -45,7 +46,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
@@ -54,7 +55,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getHidden(): bool
+    public function getHidden()
     {
         return $this->getProperty(self::HIDDEN);
     }
@@ -63,7 +64,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getAppName(): string
+    public function getAppName()
     {
         return $this->getProperty(self::APP_NAME);
     }
@@ -72,7 +73,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLinkUrl(): string
+    public function getLinkUrl()
     {
         return $this->getProperty(self::LINK_URL);
     }
@@ -81,7 +82,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLogoUrl(): string
+    public function getLogoUrl()
     {
         return $this->getProperty(self::LOGO_URL);
     }
@@ -90,7 +91,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return int
      */
-    public function getSortOrder(): int
+    public function getSortOrder()
     {
         return $this->getProperty(self::SORT_ORDER);
     }
@@ -99,7 +100,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getAppInstanceId(): string
+    public function getAppInstanceId()
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
@@ -108,7 +109,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getAppAssignmentId(): string
+    public function getAppAssignmentId()
     {
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
@@ -117,7 +118,7 @@ class AppLink extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getCredentialsSetup(): bool
+    public function getCredentialsSetup()
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
     }

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
 {
     const KID = 'kid';
@@ -30,7 +31,7 @@ class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getKid(): string
+    public function getKid()
     {
         return $this->getProperty(self::KID);
     }
@@ -72,7 +73,7 @@ class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getRotationMode(): string
+    public function getRotationMode()
     {
         return $this->getProperty(self::ROTATION_MODE);
     }

@@ -56,7 +56,7 @@ class Group extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -65,7 +65,7 @@ class Group extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
@@ -74,7 +74,7 @@ class Group extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -121,7 +121,7 @@ class Group extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -139,7 +139,7 @@ class Group extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getObjectClass(): array
+    public function getObjectClass()
     {
         return $this->getProperty(self::OBJECT_CLASS);
     }

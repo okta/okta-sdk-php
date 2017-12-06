@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationAccessibility extends \Okta\Resource\AbstractResource
 {
     const SELF_SERVICE = 'selfService';
@@ -29,7 +30,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getSelfService(): bool
+    public function getSelfService()
     {
         return $this->getProperty(self::SELF_SERVICE);
     }
@@ -53,7 +54,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getErrorRedirectUrl(): string
+    public function getErrorRedirectUrl()
     {
         return $this->getProperty(self::ERROR_REDIRECT_URL);
     }
@@ -77,7 +78,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLoginRedirectUrl(): string
+    public function getLoginRedirectUrl()
     {
         return $this->getProperty(self::LOGIN_REDIRECT_URL);
     }

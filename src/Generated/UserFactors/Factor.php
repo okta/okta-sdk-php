@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class Factor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -40,7 +41,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
@@ -49,7 +50,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
@@ -58,7 +59,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getDevice(): string
+    public function getDevice()
     {
         return $this->getProperty(self::DEVICE);
     }
@@ -82,7 +83,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
@@ -91,7 +92,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getUserId(): string
+    public function getUserId()
     {
         return $this->getProperty(self::USER_ID);
     }
@@ -173,7 +174,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getProvider(): string
+    public function getProvider()
     {
         return $this->getProperty(self::PROVIDER);
     }
@@ -197,7 +198,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
@@ -206,7 +207,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getSessionId(): string
+    public function getSessionId()
     {
         return $this->getProperty(self::SESSION_ID);
     }
@@ -230,7 +231,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getDeviceType(): string
+    public function getDeviceType()
     {
         return $this->getProperty(self::DEVICE_TYPE);
     }
@@ -239,7 +240,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getFactorType(): string
+    public function getFactorType()
     {
         return $this->getProperty(self::FACTOR_TYPE);
     }
@@ -263,7 +264,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getMfaStateTokenId(): string
+    public function getMfaStateTokenId()
     {
         return $this->getProperty(self::MFA_STATE_TOKEN_ID);
     }
@@ -287,7 +288,7 @@ class Factor extends \Okta\Resource\AbstractResource
      *
      * @return bool
      */
-    public function getRechallengeExistingFactor(): bool
+    public function getRechallengeExistingFactor()
     {
         return $this->getProperty(self::RECHALLENGE_EXISTING_FACTOR);
     }

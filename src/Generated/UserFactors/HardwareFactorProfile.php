@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class HardwareFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const CREDENTIAL_ID = 'credentialId';
@@ -27,7 +28,7 @@ class HardwareFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getCredentialId(): string
+    public function getCredentialId()
     {
         return $this->getProperty(self::CREDENTIAL_ID);
     }

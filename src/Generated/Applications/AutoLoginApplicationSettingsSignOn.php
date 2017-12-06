@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 {
     const LOGIN_URL = 'loginUrl';
@@ -28,7 +29,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getLoginUrl(): string
+    public function getLoginUrl()
     {
         return $this->getProperty(self::LOGIN_URL);
     }
@@ -52,7 +53,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getRedirectUrl(): string
+    public function getRedirectUrl()
     {
         return $this->getProperty(self::REDIRECT_URL);
     }
