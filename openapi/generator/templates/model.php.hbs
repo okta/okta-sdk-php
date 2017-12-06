@@ -15,32 +15,62 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\\{{namespace}};
+namespace Okta\Generated\\{{namespace}};
 
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
 {{/each}}
-use Okta\Resource\AbstractResource;
 
-class {{modelName}} extends AbstractResource
+class {{modelName}} extends {{getExtends modelName}}
 {
     {{#each properties}}
     const {{upperSnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
+    {{#each properties}}
+    {{#if this.default}}
+    private ${{propertyName}} = '{{this.default}}';
+    {{/if}}
+    {{/each}}
+
     {{#each crudOperations}}
     {{#if (eq alias "read")}}
+        {{#if (eq this.operation.operationId "getFactor")}}
+    public function get($userId, $factorId, $query)
+    {
+        $factor = \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        \\{{this.defaultReturnType}}::class,
+                        "{{getCrudOperationPath this}}"
+                    );
+        return $factor->convertFromGenericFactor();
+    }
+        {{else if (eq this.operation.operationId "getApplication")}}
+    public function get($query)
+    {
+        $application = \Okta\Client::getInstance()
+                    ->getDataStore()
+                    ->getResource(
+                        $query,
+                        \\{{this.defaultReturnType}}::class,
+                        "{{getCrudOperationPath this}}"
+                    );
+        return $application->convertFromGenericApplication();
+    }
+        {{else}}
     public function get($query)
     {
         return \Okta\Client::getInstance()
                     ->getDataStore()
                     ->getResource(
                         $query,
-                        self::class,
-                        '{{getCrudOperationPath this}}'
+                        \\{{this.defaultReturnType}}::class,
+                        "{{getCrudOperationPath this}}"
                     );
     }
-
+        {{/if}}
     {{/if}}
     {{#if (eq alias "create")}}
     public function create()
@@ -48,51 +78,62 @@ class {{modelName}} extends AbstractResource
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->createResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
 
     {{/if}}
     {{#if (eq alias "update")}}
+        {{#if (eq this.operation.operationId "updateApplicationUser")}}
+    {{> updateApplicationUser }}
+        {{else}}
     public function save()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this,
-                    self::class
+                    \\{{this.defaultReturnType}}::class
                 );
     }
-
+        {{/if}}
     {{/if}}
     {{#if (eq alias "delete")}}
+        {{#if (eq this.operation.operationId "deleteApplicationUser")}}
+    {{> deleteApplicationUser }}
+        {{else if (eq this.operation.operationId "deleteApplicationGroupAssignment")}}
+    {{> deleteApplicationGroupAssignment }}
+        {{else}}
+    {{#unless (eq this.operation.operationId "deleteFactor")}}
     public function delete()
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->deleteResource(
-                    '{{getCrudOperationPath this}}',
+                    "{{getCrudOperationPath this}}",
                     $this
                 );
     }
-
+    {{/unless}}
+        {{/if}}
     {{/if}}
     {{/each}}
     {{#each properties}}
+    {{#unless this.default}}
     /**
      * Get the {{propertyName}}.
      *
-     * @return {{getType this}}
+     * @return {{getType this baseClass}}
      */
     {{#if isObject}}
-    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this}}
+    public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this baseClass}}
     {
         return $this->getResourceProperty(
             self::{{upperSnakeCase propertyName}},
-            {{model}}::class,
+            \Okta\\{{getFirstTagFromReference this.reference}}\\{{model}}::class,
             $options
         );
     }
@@ -101,10 +142,10 @@ class {{modelName}} extends AbstractResource
     /**
      * Set the {{propertyName}}.
      *
-     * @param {{model}} ${{propertyName}} The {{model}} instance.
+     * @param {{getTypeHint this}} ${{propertyName}} The {{model}} instance.
      * @return self
      */
-    public function set{{pascalCase propertyName}}({{model}} ${{propertyName}})
+    public function set{{pascalCase propertyName}}({{getTypeHint this}} ${{propertyName}})
     {
         $this->setResourceProperty(
             self::{{upperSnakeCase propertyName}},
@@ -115,7 +156,7 @@ class {{modelName}} extends AbstractResource
     }
     {{/unless}}
     {{else}}
-    public function get{{pascalCase propertyName}}(){{getSafeType this}}
+    public function get{{pascalCase propertyName}}(){{getSafeType this baseClass}}
     {
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
@@ -137,29 +178,33 @@ class {{modelName}} extends AbstractResource
     }
     {{/unless}}
     {{/if}}
+    {{/unless}}
     {{/each}}
     {{#each methods}}
+
     {{#if operation.isArray}}
     /**
     * Get the {{operation.responseModel}} object.
     *
     * @param array $options The options for the request.
-    * @return Collection
+    * @return {{getCollectionName this}}
     */
-    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): Collection
+    public function {{getMethodArrayName alias}}({{{getCollectionMethodParams this}}}): {{getCollectionName this}}
     {
+
         return $this
                 ->getDataStore()
                 ->getCollection(
                     "{{{getMethodPath this}}}",
-                    {{operation.responseModel}}::class,
-                    Collection::class,
+                    {{getClassNameForCollection this}}::class,
+                    {{getCollectionName this}}::class,
                     $options
                 );
     }
     {{else}}
+
     /**
-    * Sends a request to the {{camelCase alias}} endpoint.
+    * {{this.operation.description}}
     *
     {{getMethodParamsComment this}}
     * @return mixed|null
@@ -170,9 +215,20 @@ class {{modelName}} extends AbstractResource
         $uri = $this->getDataStore()->buildUri(
             $this->getDataStore()->getOrganizationUrl() . $uri
         );
-        return $this
+        $body = $this
                 ->getDataStore()
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
+
+        {{#if this.operation.responseModel}}
+            {{#if (eq this.operation.responseModel "Factor")}}
+        $response =  new \Okta\\{{{pluralize this.operation.tags.[0] }}}\\{{this.operation.responseModel}}(null, $body);
+        return $response->convertFromGenericFactor();
+            {{else}}
+        return new \Okta\\{{{pluralize this.operation.tags.[0] }}}\\{{this.operation.responseModel}}(null, $body);
+            {{/if}}
+        {{else}}
+        return $body;
+        {{/if}}
     }
     {{/if}}
     {{/each}}

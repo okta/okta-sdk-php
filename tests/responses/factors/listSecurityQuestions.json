@@ -1,0 +1,14 @@
+[
+  {
+    "question": "disliked_food",
+    "questionText": "What is the food you least liked as a child?"
+  },
+  {
+    "question": "name_of_first_plush_toy",
+    "questionText": "What is the name of your first stuffed animal?"
+  },
+  {
+    "question": "first_award",
+    "questionText": "What did you earn your first medal or award for?"
+  }
+]

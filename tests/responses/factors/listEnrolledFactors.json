@@ -1,0 +1,125 @@
+[
+  {
+    "id": "ufs2bysphxKODSZKWVCT",
+    "factorType": "question",
+    "provider": "OKTA",
+    "status": "ACTIVE",
+    "created": "2014-04-15T18:10:06.000Z",
+    "lastUpdated": "2014-04-15T18:10:06.000Z",
+    "profile": {
+      "question": "favorite_art_piece",
+      "questionText": "What is your favorite piece of art?"
+    },
+    "_links": {
+      "questions": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/questions",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      },
+      "self": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ufs2bysphxKODSZKWVCT",
+        "hints": {
+          "allow": [
+            "GET",
+            "DELETE"
+          ]
+        }
+      },
+      "user": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    }
+  },
+  {
+    "id": "ostf2gsyictRQDSGTDZE",
+    "factorType": "token:software:totp",
+    "provider": "OKTA",
+    "status": "PENDING_ACTIVATION",
+    "created": "2014-06-27T20:27:33.000Z",
+    "lastUpdated": "2014-06-27T20:27:33.000Z",
+    "profile": {
+      "credentialId": "dade.murphy@example.com"
+    },
+    "_links": {
+      "next": {
+        "name": "activate",
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf2gsyictRQDSGTDZE/lifecycle/activate",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      },
+      "self": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf2gsyictRQDSGTDZE",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      },
+      "user": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    },
+    "_embedded": {
+      "activation": {
+        "timeStep": 30,
+        "sharedSecret": "HE64TMLL2IUZW2ZLB",
+        "encoding": "base32",
+        "keyLength": 16
+      }
+    }
+  },
+  {
+    "id": "sms2gt8gzgEBPUWBIFHN",
+    "factorType": "sms",
+    "provider": "OKTA",
+    "status": "ACTIVE",
+    "created": "2014-06-27T20:27:26.000Z",
+    "lastUpdated": "2014-06-27T20:27:26.000Z",
+    "profile": {
+      "phoneNumber": "+1-555-415-1337"
+    },
+    "_links": {
+      "verify": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/sms2gt8gzgEBPUWBIFHN/verify",
+        "hints": {
+          "allow": [
+            "POST"
+          ]
+        }
+      },
+      "self": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/sms2gt8gzgEBPUWBIFHN",
+        "hints": {
+          "allow": [
+            "GET",
+            "DELETE"
+          ]
+        }
+      },
+      "user": {
+        "href": "https://php.okta.com/api/v1/users/00u15s1KDETTQMQYABRL",
+        "hints": {
+          "allow": [
+            "GET"
+          ]
+        }
+      }
+    }
+  }
+]

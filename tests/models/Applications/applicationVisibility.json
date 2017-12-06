@@ -1,0 +1,10 @@
+{
+  "autoSubmitToolbar": false,
+  "hide": {
+    "iOS": false,
+    "web": false
+  },
+  "appLinks": {
+    "login": true
+  }
+}

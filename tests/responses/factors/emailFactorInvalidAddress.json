@@ -1,0 +1,7 @@
+{
+  "errorCode": "E0000001",
+  "errorSummary": "Api validation failed: Only verified primary or secondary email can be enrolled.",
+  "errorLink": "E0000001",
+  "errorId": "oaeeJunJcxXQlCsrYEwGzN2LQ",
+  "errorCauses": []
+}

@@ -1,0 +1,32 @@
+{
+  "audience": "asdqwe123",
+  "spIssuer": "123",
+  "idpIssuer": "http://www.okta.com/${org.externalKey}",
+  "recipient": "http://testorgone.okta",
+  "ssoAcsUrl": "http://testorgone.okta",
+  "destination": "http://testorgone.okta",
+  "responseSigned": true,
+  "assertionSigned": true,
+  "digestAlgorithm": "SHA256",
+  "honorForceAuthn": true,
+  "audienceOverride": "string",
+  "defaultRelayState": "abc",
+  "recipientOverride": "string",
+  "requestCompressed": false,
+  "ssoAcsUrlOverride": "string",
+  "signatureAlgorithm": "RSA_SHA256",
+  "attributeStatements": [
+    {
+      "type": "EXPRESSION",
+      "name": "Attribute",
+      "namespace": "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+      "values": [
+        "Value"
+      ]
+    }
+  ],
+  "destinationOverride": "string",
+  "subjectNameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+  "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+  "subjectNameIdTemplate": "${user.userName}"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "sms1o51EADOTFXHHBXBP",
+  "factorType": "sms",
+  "provider": "OKTA",
+  "status": "ACTIVE",
+  "created": "2014-08-06T16:56:31.000Z",
+  "lastUpdated": "2014-08-06T16:56:31.000Z",
+  "profile": {
+    "phoneNumber": "+1-555-415-1337"
+  },
+  "_links": {
+    "verify": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/sms1o51EADOTFXHHBXBP/verify",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/sms1o51EADOTFXHHBXBP",
+      "hints": {
+        "allow": [
+          "GET",
+          "DELETE"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}

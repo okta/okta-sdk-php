@@ -205,7 +205,7 @@ class GroupTest extends TestCase
             $request[0]->getUri()->getPath()
         );
         $this->assertInstanceOf(
-            \Okta\Groups\Collection::class,
+            \Okta\Users\Collection::class,
             $groupUsers
         );
 

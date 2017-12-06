@@ -1,0 +1,83 @@
+{
+  "id": "0oacoiblk57KmlMhk0h7",
+  "name": "php_customswaapp_1",
+  "label": "Custom SWA App",
+  "status": "ACTIVE",
+  "lastUpdated": "2017-11-02T18:40:40.000Z",
+  "created": "2017-11-02T18:40:40.000Z",
+  "accessibility": {
+    "selfService": false,
+    "errorRedirectUrl": null,
+    "loginRedirectUrl": null
+  },
+  "licensing": {
+    "seatCount": 0
+  },
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": {
+      "iOS": false,
+      "web": false
+    },
+    "appLinks": {
+      "php_customswaapp_1_link": true
+    }
+  },
+  "features": [],
+  "signOnMode": "AUTO_LOGIN",
+  "credentials": {
+    "scheme": "EXTERNAL_PASSWORD_SYNC",
+    "userNameTemplate": {
+      "template": "${source.email}",
+      "type": "BUILT_IN"
+    },
+    "revealPassword": false,
+    "signing": {}
+  },
+  "settings": {
+    "app": {},
+    "notifications": {
+      "vpn": {
+        "network": {
+          "connection": "DISABLED"
+        },
+        "message": null,
+        "helpUrl": null
+      }
+    },
+    "signOn": {
+      "redirectUrl": "http://secondary.com",
+      "loginUrl": "http://primary.com"
+    }
+  },
+  "_links": {
+    "logo": [
+      {
+        "name": "medium",
+        "href": "https://op1static.oktacdn.com/assets/img/logos/default.6770228fb0dab49a1695ef440a5279bb.png",
+        "type": "image/png"
+      }
+    ],
+    "appLinks": [
+      {
+        "name": "php_customswaapp_1_link",
+        "href": "https://php.oktapreview.com/home/php_customswaapp_1/0oacoiblk57KmlMhk0h7/alncoirezvTr2uGUp0h7",
+        "type": "text/html"
+      }
+    ],
+    "users": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oacoiblk57KmlMhk0h7/users"
+    },
+    "deactivate": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oacoiblk57KmlMhk0h7/lifecycle/deactivate"
+    },
+    "groups": {
+      "href": "https://php.oktapreview.com/api/v1/apps/0oacoiblk57KmlMhk0h7/groups"
+    }
+  },
+  "_embedded": {
+    "someProperty": {
+      "withValue": 30
+    }
+  }
+}

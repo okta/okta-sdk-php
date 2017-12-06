@@ -1,0 +1,66 @@
+{
+  "id": "opfbtzzrjgwauUsxO0g4",
+  "factorType": "push",
+  "provider": "OKTA",
+  "status": "PENDING_ACTIVATION",
+  "created": "2015-11-13T07:34:22.000Z",
+  "lastUpdated": "2015-11-13T07:34:22.000Z",
+  "_links": {
+    "poll": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opfbtzzrjgwauUsxO0g4/lifecycle/activate/poll",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opfbtzzrjgwauUsxO0g4",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  },
+  "_embedded": {
+    "activation": {
+      "expiresAt": "2015-11-13T07:44:22.000Z",
+      "factorResult": "WAITING",
+      "_links": {
+        "send": [
+          {
+            "name": "email",
+            "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opfbtzzrjgwauUsxO0g4/lifecycle/activate/email",
+            "hints": {
+              "allow": [
+                "POST"
+              ]
+            }
+          },
+          {
+            "name": "sms",
+            "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opfbtzzrjgwauUsxO0g4/lifecycle/activate/sms",
+            "hints": {
+              "allow": [
+                "POST"
+              ]
+            }
+          }
+        ],
+        "qrcode": {
+          "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/opfbtzzrjgwauUsxO0g4/qr/00Ji8qVBNJD4LmjYy1WZO2VbNqvvPdaCVua-1qjypa",
+          "type": "image/png"
+        }
+      }
+    }
+  }
+}

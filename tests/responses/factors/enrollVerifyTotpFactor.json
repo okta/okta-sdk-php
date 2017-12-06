@@ -1,0 +1,51 @@
+{
+  "id": "ostf1fmaMGJLMNGNLIVG",
+  "factorType": "token:software:totp",
+  "provider": "OKTA",
+  "status": "PENDING_ACTIVATION",
+  "created": "2014-07-16T16:13:56.000Z",
+  "lastUpdated": "2014-07-16T16:13:56.000Z",
+  "profile": {
+    "credentialId": "dade.murphy@example.com"
+  },
+  "_links": {
+    "activate": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf1fmaMGJLMNGNLIVG/lifecycle/activate",
+      "hints": {
+        "allow": [
+          "POST"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf1fmaMGJLMNGNLIVG",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  },
+  "_embedded": {
+    "activation": {
+      "timeStep": 30,
+      "sharedSecret": "JBTWGV22G4ZGKV3N",
+      "encoding": "base32",
+      "keyLength": 6
+    },
+    "_links": {
+      "qrcode": {
+        "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ostf1fmaMGJLMNGNLIVG/qr/00fukNElRS_Tz6k-CFhg3pH4KO2dj2guhmaapXWbc4",
+        "type": "image/png"
+      }
+    }
+  }
+}

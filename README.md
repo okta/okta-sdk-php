@@ -59,7 +59,7 @@ $foundUser = $user->get('email@example.com');
 dump($foundUser);
 ```
 
-### Craeating a User
+### Creating a User
 ```php
 $user = new \Okta\Users\User();
 $profile = new \Okta\Users\Profile();

@@ -3,10 +3,10 @@
   "private": true,
   "version": "0.2.0",
   "scripts": {
-    "generator": "okta-sdk-generator -t generator -o ../src"
+    "generator": "okta-sdk-generator -t generator -o ../src/Generated"
   },
   "devDependencies": {
-    "@okta/openapi": "^0.2.0",
+    "@okta/openapi": "^0.10.0",
     "lodash": "^4.17.4",
     "lodash-inflection": "^1.5.0"
   },

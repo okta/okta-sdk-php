@@ -1,0 +1,19 @@
+{
+  "created": "2017-11-29T15:51:16.000Z",
+  "lastUpdated": "2017-11-29T15:51:16.000Z",
+  "expiresAt": "2019-11-29T15:51:15.000Z",
+  "x5c": [
+    "MIIDljCFgJhn19z0tt6PoVxaTJ+UI5rb0KQ=="
+  ],
+  "e": "AQAB",
+  "n": "5CouWC8W0zl8MigCnnndUi42XOQawhc2oWQ",
+  "kid": "HPgXeMtIzC-uAlEh5sZ-1LYwNrQmZhEPbJtNIyBaOzs",
+  "kty": "RSA",
+  "use": "sig",
+  "x5t#S256": "umP4NH5NnHHUDE-LdXVeHfyxgFQVDdeOuUKzUKsBm_A",
+  "alg": "hs256",
+  "x5t": "H5NnHHUDE-LdXVeHfy",
+  "x5u": "eHfyxgFQVDdeOuU",
+  "status": "ENABLED",
+  "key_ops": ["eMtIzC-uAlEh5"]
+}

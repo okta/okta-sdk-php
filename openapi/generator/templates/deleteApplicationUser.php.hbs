@@ -1,0 +1,10 @@
+public function delete( $appId )
+{
+    return \Okta\Client::getInstance()
+        ->getDataStore()
+        ->deleteResource(
+            "/apps/{$appId}/users",
+            $this
+        );
+}
+

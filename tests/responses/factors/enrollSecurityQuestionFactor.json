@@ -1,0 +1,39 @@
+{
+  "id": "ufs1o01OTMGHLAJPVHDZ",
+  "factorType": "question",
+  "provider": "OKTA",
+  "status": "ACTIVE",
+  "created": "2014-08-05T22:58:49.000Z",
+  "lastUpdated": "2014-08-05T22:58:49.000Z",
+  "profile": {
+    "question": "disliked_food",
+    "questionText": "What is the food you least liked as a child?"
+  },
+  "_links": {
+    "questions": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/questions",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    },
+    "self": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/ufs1o01OTMGHLAJPVHDZ",
+      "hints": {
+        "allow": [
+          "GET",
+          "DELETE"
+        ]
+      }
+    },
+    "user": {
+      "href": "https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL",
+      "hints": {
+        "allow": [
+          "GET"
+        ]
+      }
+    }
+  }
+}
