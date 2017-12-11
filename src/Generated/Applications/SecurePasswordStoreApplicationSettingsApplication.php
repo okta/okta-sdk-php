@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
@@ -31,6 +30,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     const OPTIONAL_FIELD_3_VALUE = 'optionalField3Value';
 
 
+
     /**
      * Get the url.
      *
@@ -40,6 +40,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -55,6 +56,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the passwordField.
      *
@@ -64,6 +66,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::PASSWORD_FIELD);
     }
+
     /**
     * Set the passwordField.
     *
@@ -79,6 +82,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the usernameField.
      *
@@ -88,6 +92,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::USERNAME_FIELD);
     }
+
     /**
     * Set the usernameField.
     *
@@ -103,6 +108,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField1.
      *
@@ -112,6 +118,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_1);
     }
+
     /**
     * Set the optionalField1.
     *
@@ -127,6 +134,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField2.
      *
@@ -136,6 +144,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_2);
     }
+
     /**
     * Set the optionalField2.
     *
@@ -151,6 +160,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField3.
      *
@@ -160,6 +170,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_3);
     }
+
     /**
     * Set the optionalField3.
     *
@@ -175,6 +186,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField1Value.
      *
@@ -184,6 +196,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_1_VALUE);
     }
+
     /**
     * Set the optionalField1Value.
     *
@@ -199,6 +212,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField2Value.
      *
@@ -208,6 +222,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_2_VALUE);
     }
+
     /**
     * Set the optionalField2Value.
     *
@@ -223,6 +238,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
 
         return $this;
     }
+
     /**
      * Get the optionalField3Value.
      *
@@ -232,6 +248,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     {
         return $this->getProperty(self::OPTIONAL_FIELD_3_VALUE);
     }
+
     /**
     * Set the optionalField3Value.
     *

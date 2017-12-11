@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';
     const INCLUDE = 'include';
     const CONNECTION = 'connection';
+
 
 
     /**
@@ -34,6 +34,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
     {
         return $this->getProperty(self::EXCLUDE);
     }
+
     /**
     * Set the exclude.
     *
@@ -49,6 +50,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
 
         return $this;
     }
+
     /**
      * Get the include.
      *
@@ -58,6 +60,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
     {
         return $this->getProperty(self::INCLUDE);
     }
+
     /**
     * Set the include.
     *
@@ -73,6 +76,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
 
         return $this;
     }
+
     /**
      * Get the connection.
      *
@@ -82,6 +86,7 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
     {
         return $this->getProperty(self::CONNECTION);
     }
+
     /**
     * Set the connection.
     *

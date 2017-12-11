@@ -42,7 +42,4 @@ class LogGeolocationTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->lon, $this->testable->lon);
     }
 
-
-
-
 }

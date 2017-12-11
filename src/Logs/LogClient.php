@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogClient extends \Okta\Generated\Logs\LogClient
 {
 

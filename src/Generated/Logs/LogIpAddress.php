@@ -17,13 +17,13 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogIpAddress extends \Okta\Resource\AbstractResource
 {
     const IP = 'ip';
     const SOURCE = 'source';
     const VERSION = 'version';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
+
 
 
     /**
@@ -35,6 +35,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::IP);
     }
+
     /**
      * Get the source.
      *
@@ -44,6 +45,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SOURCE);
     }
+
     /**
      * Get the version.
      *
@@ -53,6 +55,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::VERSION);
     }
+
     /**
      * Get the geographicalContext.
      *
@@ -66,5 +69,4 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

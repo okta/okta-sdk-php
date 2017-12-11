@@ -49,5 +49,4 @@ class LogTransactionTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->detail, $this->testable->detail);
     }
 
-
 }

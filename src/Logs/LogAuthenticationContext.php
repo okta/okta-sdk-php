@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogAuthenticationContext extends \Okta\Generated\Logs\LogAuthenticationContext
 {
 

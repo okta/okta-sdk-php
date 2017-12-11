@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const GROUP_IDS = 'groupIds';
+
 
 
     /**
@@ -32,6 +32,7 @@ class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::GROUP_IDS);
     }
+
     /**
     * Set the groupIds.
     *

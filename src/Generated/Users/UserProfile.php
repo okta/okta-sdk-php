@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Users;
 
-
 class UserProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';
@@ -26,6 +25,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     const FIRST_NAME = 'firstName';
     const MOBILE_PHONE = 'mobilePhone';
     const SECOND_EMAIL = 'secondEmail';
+
 
 
     /**
@@ -37,6 +37,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EMAIL);
     }
+
     /**
     * Set the email.
     *
@@ -52,6 +53,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the login.
      *
@@ -61,6 +63,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LOGIN);
     }
+
     /**
     * Set the login.
     *
@@ -76,6 +79,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the lastName.
      *
@@ -85,6 +89,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LAST_NAME);
     }
+
     /**
     * Set the lastName.
     *
@@ -100,6 +105,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the firstName.
      *
@@ -109,6 +115,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::FIRST_NAME);
     }
+
     /**
     * Set the firstName.
     *
@@ -124,6 +131,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the mobilePhone.
      *
@@ -133,6 +141,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::MOBILE_PHONE);
     }
+
     /**
     * Set the mobilePhone.
     *
@@ -148,6 +157,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the secondEmail.
      *
@@ -157,6 +167,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SECOND_EMAIL);
     }
+
     /**
     * Set the secondEmail.
     *

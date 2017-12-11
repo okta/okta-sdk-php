@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationLicensing extends \Okta\Resource\AbstractResource
 {
     const SEAT_COUNT = 'seatCount';
+
 
 
     /**
@@ -32,6 +32,7 @@ class ApplicationLicensing extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SEAT_COUNT);
     }
+
     /**
     * Set the seatCount.
     *

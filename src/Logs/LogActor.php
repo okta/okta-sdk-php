@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogActor extends \Okta\Generated\Logs\LogActor
 {
 

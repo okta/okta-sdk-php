@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogIssuer extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';
+
 
 
     /**
@@ -33,6 +33,7 @@ class LogIssuer extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *

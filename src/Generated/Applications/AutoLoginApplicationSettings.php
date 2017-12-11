@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Applications;
 
-
 class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const SIGN_ON = 'signOn';
+
 
 
     /**
@@ -36,6 +36,7 @@ class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSetting
             $options
         );
     }
+
 
     /**
      * Set the signOn.

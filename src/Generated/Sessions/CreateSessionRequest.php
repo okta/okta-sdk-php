@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Sessions;
 
-
 class CreateSessionRequest extends \Okta\Resource\AbstractResource
 {
     const SESSION_TOKEN = 'sessionToken';
+
 
 
     /**
@@ -32,6 +32,7 @@ class CreateSessionRequest extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SESSION_TOKEN);
     }
+
     /**
     * Set the sessionToken.
     *

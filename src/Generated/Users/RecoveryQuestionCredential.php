@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Users;
 
-
 class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';
     const QUESTION = 'question';
+
 
 
     /**
@@ -33,6 +33,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ANSWER);
     }
+
     /**
     * Set the answer.
     *
@@ -48,6 +49,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the question.
      *
@@ -57,6 +59,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::QUESTION);
     }
+
     /**
     * Set the question.
     *

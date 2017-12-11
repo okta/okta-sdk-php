@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class WsFederationApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const REALM = 'realm';
@@ -34,6 +33,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
 
 
+
     /**
      * Get the realm.
      *
@@ -43,6 +43,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::REALM);
     }
+
     /**
     * Set the realm.
     *
@@ -58,6 +59,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the siteURL.
      *
@@ -67,6 +69,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::SITE_URL);
     }
+
     /**
     * Set the siteURL.
     *
@@ -82,6 +85,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the groupName.
      *
@@ -91,6 +95,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::GROUP_NAME);
     }
+
     /**
     * Set the groupName.
     *
@@ -106,6 +111,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the wReplyURL.
      *
@@ -115,6 +121,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::W_REPLY_URL);
     }
+
     /**
     * Set the wReplyURL.
     *
@@ -130,6 +137,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the groupFilter.
      *
@@ -139,6 +147,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::GROUP_FILTER);
     }
+
     /**
     * Set the groupFilter.
     *
@@ -154,6 +163,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the nameIDFormat.
      *
@@ -163,6 +173,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::NAME_ID_FORMAT);
     }
+
     /**
     * Set the nameIDFormat.
     *
@@ -178,6 +189,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the wReplyOverride.
      *
@@ -187,6 +199,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::W_REPLY_OVERRIDE);
     }
+
     /**
     * Set the wReplyOverride.
     *
@@ -202,6 +215,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the groupValueFormat.
      *
@@ -211,6 +225,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::GROUP_VALUE_FORMAT);
     }
+
     /**
     * Set the groupValueFormat.
     *
@@ -226,6 +241,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the usernameAttribute.
      *
@@ -235,6 +251,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::USERNAME_ATTRIBUTE);
     }
+
     /**
     * Set the usernameAttribute.
     *
@@ -250,6 +267,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the attributeStatements.
      *
@@ -259,6 +277,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::ATTRIBUTE_STATEMENTS);
     }
+
     /**
     * Set the attributeStatements.
     *
@@ -274,6 +293,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the audienceRestriction.
      *
@@ -283,6 +303,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::AUDIENCE_RESTRICTION);
     }
+
     /**
     * Set the audienceRestriction.
     *
@@ -298,6 +319,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
 
         return $this;
     }
+
     /**
      * Get the authnContextClassRef.
      *
@@ -307,6 +329,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Applications\Appl
     {
         return $this->getProperty(self::AUTHN_CONTEXT_CLASS_REF);
     }
+
     /**
     * Set the authnContextClassRef.
     *

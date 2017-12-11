@@ -17,13 +17,13 @@
 
 namespace Okta\Generated\Applications;
 
-
 class BookmarkApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';
     const SETTINGS = 'settings';
 
     private $name = 'bookmark';
+
 
     /**
      * Get the settings.
@@ -38,6 +38,7 @@ class BookmarkApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.

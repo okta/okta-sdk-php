@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogTarget extends \Okta\Generated\Logs\LogTarget
 {
 

@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogOutcome extends \Okta\Generated\Logs\LogOutcome
 {
 

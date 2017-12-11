@@ -63,5 +63,4 @@ class LogGeographicalContextTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Logs\LogGeolocation::class, $this->testable->geolocation);
     }
 
-
 }

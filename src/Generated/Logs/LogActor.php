@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogActor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -25,6 +24,7 @@ class LogActor extends \Okta\Resource\AbstractResource
     const DETAIL = 'detail';
     const ALTERNATE_ID = 'alternateId';
     const DISPLAY_NAME = 'displayName';
+
 
 
     /**
@@ -36,6 +36,7 @@ class LogActor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
@@ -45,6 +46,7 @@ class LogActor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the detail.
      *
@@ -54,6 +56,7 @@ class LogActor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DETAIL);
     }
+
     /**
      * Get the alternateId.
      *
@@ -63,6 +66,7 @@ class LogActor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ALTERNATE_ID);
     }
+
     /**
      * Get the displayName.
      *

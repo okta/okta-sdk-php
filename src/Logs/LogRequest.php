@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogRequest extends \Okta\Generated\Logs\LogRequest
 {
 

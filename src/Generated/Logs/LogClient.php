@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogClient extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -26,6 +25,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     const IP_ADDRESS = 'ipAddress';
     const USER_AGENT = 'userAgent';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
+
 
 
     /**
@@ -37,6 +37,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the zone.
      *
@@ -46,6 +47,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ZONE);
     }
+
     /**
      * Get the device.
      *
@@ -55,6 +57,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DEVICE);
     }
+
     /**
      * Get the ipAddress.
      *
@@ -64,6 +67,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::IP_ADDRESS);
     }
+
     /**
      * Get the userAgent.
      *
@@ -78,6 +82,7 @@ class LogClient extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the geographicalContext.
      *
@@ -91,5 +96,4 @@ class LogClient extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

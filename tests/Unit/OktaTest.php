@@ -120,4 +120,5 @@ class OktaTest extends TestCase
             $requests[0]->getUri()->getPath()
         );
     }
+
 }

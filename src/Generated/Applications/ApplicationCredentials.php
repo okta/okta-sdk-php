@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationCredentials extends \Okta\Resource\AbstractResource
 {
     const SIGNING = 'signing';
     const USER_NAME_TEMPLATE = 'userNameTemplate';
+
 
 
     /**
@@ -38,6 +38,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the signing.
      *
@@ -53,6 +54,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the userNameTemplate.
      *
@@ -66,6 +68,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the userNameTemplate.

@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogIpAddress extends \Okta\Generated\Logs\LogIpAddress
 {
 

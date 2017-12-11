@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogOutcome extends \Okta\Resource\AbstractResource
 {
     const REASON = 'reason';
     const RESULT = 'result';
+
 
 
     /**
@@ -33,6 +33,7 @@ class LogOutcome extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::REASON);
     }
+
     /**
      * Get the result.
      *

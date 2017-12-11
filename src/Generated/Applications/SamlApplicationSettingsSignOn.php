@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 {
     const AUDIENCE = 'audience';
@@ -43,6 +42,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const SUBJECT_NAME_ID_TEMPLATE = 'subjectNameIdTemplate';
 
 
+
     /**
      * Get the audience.
      *
@@ -52,6 +52,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::AUDIENCE);
     }
+
     /**
     * Set the audience.
     *
@@ -67,6 +68,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the spIssuer.
      *
@@ -76,6 +78,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SP_ISSUER);
     }
+
     /**
     * Set the spIssuer.
     *
@@ -91,6 +94,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the idpIssuer.
      *
@@ -100,6 +104,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::IDP_ISSUER);
     }
+
     /**
     * Set the idpIssuer.
     *
@@ -115,6 +120,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the recipient.
      *
@@ -124,6 +130,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::RECIPIENT);
     }
+
     /**
     * Set the recipient.
     *
@@ -139,6 +146,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the ssoAcsUrl.
      *
@@ -148,6 +156,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SSO_ACS_URL);
     }
+
     /**
     * Set the ssoAcsUrl.
     *
@@ -163,6 +172,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the destination.
      *
@@ -172,6 +182,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DESTINATION);
     }
+
     /**
     * Set the destination.
     *
@@ -187,6 +198,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the responseSigned.
      *
@@ -196,6 +208,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::RESPONSE_SIGNED);
     }
+
     /**
     * Set the responseSigned.
     *
@@ -211,6 +224,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the assertionSigned.
      *
@@ -220,6 +234,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ASSERTION_SIGNED);
     }
+
     /**
     * Set the assertionSigned.
     *
@@ -235,6 +250,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the digestAlgorithm.
      *
@@ -244,6 +260,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DIGEST_ALGORITHM);
     }
+
     /**
     * Set the digestAlgorithm.
     *
@@ -259,6 +276,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the honorForceAuthn.
      *
@@ -268,6 +286,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::HONOR_FORCE_AUTHN);
     }
+
     /**
     * Set the honorForceAuthn.
     *
@@ -283,6 +302,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the audienceOverride.
      *
@@ -292,6 +312,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::AUDIENCE_OVERRIDE);
     }
+
     /**
     * Set the audienceOverride.
     *
@@ -307,6 +328,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the defaultRelayState.
      *
@@ -316,6 +338,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DEFAULT_RELAY_STATE);
     }
+
     /**
     * Set the defaultRelayState.
     *
@@ -331,6 +354,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the recipientOverride.
      *
@@ -340,6 +364,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::RECIPIENT_OVERRIDE);
     }
+
     /**
     * Set the recipientOverride.
     *
@@ -355,6 +380,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the requestCompressed.
      *
@@ -364,6 +390,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::REQUEST_COMPRESSED);
     }
+
     /**
     * Set the requestCompressed.
     *
@@ -379,6 +406,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the ssoAcsUrlOverride.
      *
@@ -388,6 +416,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SSO_ACS_URL_OVERRIDE);
     }
+
     /**
     * Set the ssoAcsUrlOverride.
     *
@@ -403,6 +432,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the signatureAlgorithm.
      *
@@ -412,6 +442,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SIGNATURE_ALGORITHM);
     }
+
     /**
     * Set the signatureAlgorithm.
     *
@@ -427,6 +458,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the attributeStatements.
      *
@@ -436,6 +468,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ATTRIBUTE_STATEMENTS);
     }
+
     /**
     * Set the attributeStatements.
     *
@@ -451,6 +484,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the destinationOverride.
      *
@@ -460,6 +494,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DESTINATION_OVERRIDE);
     }
+
     /**
     * Set the destinationOverride.
     *
@@ -475,6 +510,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the subjectNameIdFormat.
      *
@@ -484,6 +520,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SUBJECT_NAME_ID_FORMAT);
     }
+
     /**
     * Set the subjectNameIdFormat.
     *
@@ -499,6 +536,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the authnContextClassRef.
      *
@@ -508,6 +546,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::AUTHN_CONTEXT_CLASS_REF);
     }
+
     /**
     * Set the authnContextClassRef.
     *
@@ -523,6 +562,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the subjectNameIdTemplate.
      *
@@ -532,6 +572,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SUBJECT_NAME_ID_TEMPLATE);
     }
+
     /**
     * Set the subjectNameIdTemplate.
     *

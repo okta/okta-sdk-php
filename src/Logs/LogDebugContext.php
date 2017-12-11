@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogDebugContext extends \Okta\Generated\Logs\LogDebugContext
 {
 

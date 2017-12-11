@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Applications;
 
-
 class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';
+
 
 
     /**
@@ -32,6 +32,7 @@ class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::VALUE);
     }
+
     /**
     * Set the value.
     *

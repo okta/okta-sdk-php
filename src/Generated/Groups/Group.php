@@ -32,6 +32,7 @@ class Group extends \Okta\Resource\AbstractResource
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
 
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -42,6 +43,7 @@ class Group extends \Okta\Resource\AbstractResource
                     \Okta\Groups\Group::class
                 );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -51,7 +53,8 @@ class Group extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
@@ -60,6 +63,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
@@ -69,6 +73,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the _links.
      *
@@ -78,6 +83,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the created.
      *
@@ -87,6 +93,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the profile.
      *
@@ -100,6 +107,7 @@ class Group extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the profile.
@@ -116,6 +124,7 @@ class Group extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
@@ -125,6 +134,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -134,6 +144,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the objectClass.
      *
@@ -143,6 +154,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::OBJECT_CLASS);
     }
+
     /**
      * Get the lastMembershipUpdated.
      *
@@ -172,6 +184,7 @@ class Group extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the User object.

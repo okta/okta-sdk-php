@@ -89,6 +89,7 @@ class {{modelName}} extends {{getExtends modelName}}
         {{#if (eq this.operation.operationId "updateApplicationUser")}}
     {{> updateApplicationUser }}
         {{else}}
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -99,6 +100,7 @@ class {{modelName}} extends {{getExtends modelName}}
                     \\{{this.defaultReturnType}}::class
                 );
     }
+
         {{/if}}
     {{/if}}
     {{#if (eq alias "delete")}}
@@ -123,6 +125,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {{/each}}
     {{#each properties}}
     {{#unless this.default}}
+
     /**
      * Get the {{propertyName}}.
      *
@@ -139,6 +142,7 @@ class {{modelName}} extends {{getExtends modelName}}
     }
 
     {{#unless readOnly}}
+
     /**
      * Set the {{propertyName}}.
      *
@@ -161,6 +165,7 @@ class {{modelName}} extends {{getExtends modelName}}
         return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
     }
     {{#unless readOnly}}
+
     /**
     * Set the {{propertyName}}.
     *
@@ -183,6 +188,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {{#each methods}}
 
     {{#if operation.isArray}}
+
     /**
     * Get the {{operation.responseModel}} object.
     *

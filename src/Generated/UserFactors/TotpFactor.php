@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class TotpFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
+
 
 
     /**
@@ -36,6 +36,7 @@ class TotpFactor extends \Okta\UserFactors\Factor
             $options
         );
     }
+
 
     /**
      * Set the profile.

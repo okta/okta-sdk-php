@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogSecurityContext extends \Okta\Resource\AbstractResource
 {
     const ISP = 'isp';
@@ -25,6 +24,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     const DOMAIN = 'domain';
     const IS_PROXY = 'isProxy';
     const AS_NUMBER = 'asNumber';
+
 
 
     /**
@@ -36,6 +36,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ISP);
     }
+
     /**
      * Get the asOrg.
      *
@@ -45,6 +46,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::AS_ORG);
     }
+
     /**
      * Get the domain.
      *
@@ -54,6 +56,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DOMAIN);
     }
+
     /**
      * Get the isProxy.
      *
@@ -63,6 +66,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::IS_PROXY);
     }
+
     /**
      * Get the asNumber.
      *

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogEvent extends \Okta\Resource\AbstractResource
 {
     const UUID = 'uuid';
@@ -38,6 +37,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     const AUTHENTICATION_CONTEXT = 'authenticationContext';
 
 
+
     /**
      * Get the uuid.
      *
@@ -47,6 +47,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::UUID);
     }
+
     /**
      * Get the actor.
      *
@@ -60,6 +61,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Get the client.
@@ -75,6 +77,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the target.
      *
@@ -84,6 +87,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TARGET);
     }
+
     /**
      * Get the outcome.
      *
@@ -97,6 +101,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Get the request.
@@ -112,6 +117,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the version.
      *
@@ -121,6 +127,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::VERSION);
     }
+
     /**
      * Get the severity.
      *
@@ -130,6 +137,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SEVERITY);
     }
+
     /**
      * Get the eventType.
      *
@@ -139,6 +147,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EVENT_TYPE);
     }
+
     /**
      * Get the published.
      *
@@ -148,6 +157,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::PUBLISHED);
     }
+
     /**
      * Get the transaction.
      *
@@ -161,6 +171,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Get the debugContext.
@@ -176,6 +187,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the displayMessage.
      *
@@ -185,6 +197,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DISPLAY_MESSAGE);
     }
+
     /**
      * Get the legacyEventType.
      *
@@ -194,6 +207,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LEGACY_EVENT_TYPE);
     }
+
     /**
      * Get the securityContext.
      *
@@ -208,6 +222,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the authenticationContext.
      *
@@ -221,5 +236,4 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

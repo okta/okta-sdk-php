@@ -34,6 +34,5 @@ class LogDebugContextTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->debugData, $this->testable->getDebugData());
         $this->assertEquals($this->properties->debugData, $this->testable->debugData);
     }
-    
-    
+
 }

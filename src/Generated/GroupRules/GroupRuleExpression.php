@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRuleExpression extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';
     const VALUE = 'value';
+
 
 
     /**
@@ -33,6 +33,7 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -48,6 +49,7 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the value.
      *
@@ -57,6 +59,7 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::VALUE);
     }
+
     /**
     * Set the value.
     *

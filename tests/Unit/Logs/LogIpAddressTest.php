@@ -56,5 +56,4 @@ class LogIpAddressTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Logs\LogGeographicalContext::class, $this->testable->geographicalContext);
     }
 
-
 }

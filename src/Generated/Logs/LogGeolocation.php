@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogGeolocation extends \Okta\Resource\AbstractResource
 {
     const LAT = 'lat';
     const LON = 'lon';
+
 
 
     /**
@@ -33,6 +33,7 @@ class LogGeolocation extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LAT);
     }
+
     /**
      * Get the lon.
      *

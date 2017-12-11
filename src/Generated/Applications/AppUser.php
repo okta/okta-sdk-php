@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class AppUser extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -36,7 +35,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
 
 
-    public function save( $appId )
+    public function save($appId)
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -47,7 +46,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
-    public function delete( $appId )
+    public function delete($appId)
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -57,6 +56,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
+
     /**
      * Get the id.
      *
@@ -66,6 +66,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
     * Set the id.
     *
@@ -81,6 +82,7 @@ class AppUser extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the scope.
      *
@@ -90,6 +92,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SCOPE);
     }
+
     /**
     * Set the scope.
     *
@@ -105,6 +108,7 @@ class AppUser extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _links.
      *
@@ -114,6 +118,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
@@ -123,6 +128,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -132,6 +138,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the profile.
      *
@@ -141,6 +148,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::PROFILE);
     }
+
     /**
      * Get the lastSync.
      *
@@ -150,6 +158,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_SYNC);
     }
+
     /**
      * Get the _embedded.
      *
@@ -159,6 +168,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the syncState.
      *
@@ -168,6 +178,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SYNC_STATE);
     }
+
     /**
      * Get the externalId.
      *
@@ -177,6 +188,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EXTERNAL_ID);
     }
+
     /**
      * Get the credentials.
      *
@@ -190,6 +202,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the credentials.
@@ -206,6 +219,7 @@ class AppUser extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -215,6 +229,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the statusChanged.
      *
@@ -224,6 +239,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::STATUS_CHANGED);
     }
+
     /**
      * Get the passwordChanged.
      *

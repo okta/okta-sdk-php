@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogEvent extends \Okta\Generated\Logs\LogEvent
 {
 

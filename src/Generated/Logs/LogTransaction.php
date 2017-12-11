@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogTransaction extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';
     const DETAIL = 'detail';
+
 
 
     /**
@@ -34,6 +34,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
@@ -43,6 +44,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the detail.
      *

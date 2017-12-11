@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogGeographicalContext extends \Okta\Resource\AbstractResource
 {
     const CITY = 'city';
@@ -25,6 +24,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     const COUNTRY = 'country';
     const POSTAL_CODE = 'postalCode';
     const GEOLOCATION = 'geolocation';
+
 
 
     /**
@@ -36,6 +36,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::CITY);
     }
+
     /**
      * Get the state.
      *
@@ -45,6 +46,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::STATE);
     }
+
     /**
      * Get the country.
      *
@@ -54,6 +56,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::COUNTRY);
     }
+
     /**
      * Get the postalCode.
      *
@@ -63,6 +66,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::POSTAL_CODE);
     }
+
     /**
      * Get the geolocation.
      *
@@ -76,5 +80,4 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

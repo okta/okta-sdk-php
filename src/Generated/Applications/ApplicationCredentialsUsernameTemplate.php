@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';
     const SUFFIX = 'suffix';
     const TEMPLATE = 'template';
+
 
 
     /**
@@ -34,6 +34,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -49,6 +50,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the suffix.
      *
@@ -58,6 +60,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::SUFFIX);
     }
+
     /**
     * Set the suffix.
     *
@@ -73,6 +76,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the template.
      *
@@ -82,6 +86,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::TEMPLATE);
     }
+
     /**
     * Set the template.
     *

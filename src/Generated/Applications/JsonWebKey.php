@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class JsonWebKey extends \Okta\Resource\AbstractResource
 {
     const E = 'e';
@@ -37,6 +36,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     /**
      * Get the e.
      *
@@ -46,6 +46,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::E);
     }
+
     /**
      * Get the n.
      *
@@ -55,6 +56,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::N);
     }
+
     /**
      * Get the alg.
      *
@@ -64,6 +66,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ALG);
     }
+
     /**
      * Get the kid.
      *
@@ -73,6 +76,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::KID);
     }
+
     /**
      * Get the kty.
      *
@@ -82,6 +86,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::KTY);
     }
+
     /**
      * Get the use.
      *
@@ -91,6 +96,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::USE);
     }
+
     /**
      * Get the x5c.
      *
@@ -100,6 +106,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::X_5_C);
     }
+
     /**
      * Get the x5t.
      *
@@ -109,6 +116,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::X_5_T);
     }
+
     /**
      * Get the x5u.
      *
@@ -118,6 +126,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::X_5_U);
     }
+
     /**
      * Get the status.
      *
@@ -127,6 +136,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -136,6 +146,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the key_ops.
      *
@@ -145,6 +156,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::KEY_OPS);
     }
+
     /**
      * Get the x5t#S256.
      *
@@ -154,6 +166,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::X_5_T_S_256);
     }
+
     /**
      * Get the expiresAt.
      *
@@ -163,6 +176,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::EXPIRES_AT);
     }
+
     /**
      * Get the lastUpdated.
      *

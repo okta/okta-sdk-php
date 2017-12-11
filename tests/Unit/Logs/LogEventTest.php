@@ -143,8 +143,4 @@ class LogEventTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Logs\LogRequest::class, $this->testable->request);
     }
 
-
-
-
-
 }

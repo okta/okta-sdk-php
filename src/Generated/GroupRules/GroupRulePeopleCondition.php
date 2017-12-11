@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
 {
     const USERS = 'users';
     const GROUPS = 'groups';
+
 
 
     /**
@@ -38,6 +38,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the users.
      *
@@ -53,6 +54,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the groups.
      *
@@ -66,6 +68,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the groups.

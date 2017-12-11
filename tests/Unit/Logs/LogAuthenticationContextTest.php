@@ -78,6 +78,5 @@ class LogAuthenticationContextTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->authenticationProvider, $this->testable->getAuthenticationProvider());
         $this->assertEquals($this->properties->authenticationProvider, $this->testable->authenticationProvider);
     }
-    
-                        
+
 }

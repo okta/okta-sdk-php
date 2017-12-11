@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractResource
 {
     const TOS_URI = 'tos_uri';
@@ -31,6 +30,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     const APPLICATION_TYPE = 'application_type';
 
 
+
     /**
      * Get the tos_uri.
      *
@@ -40,6 +40,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::TOS_URI);
     }
+
     /**
     * Set the tos_uri.
     *
@@ -55,6 +56,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the logo_uri.
      *
@@ -64,6 +66,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::LOGO_URI);
     }
+
     /**
     * Set the logo_uri.
     *
@@ -79,6 +82,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the client_uri.
      *
@@ -88,6 +92,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::CLIENT_URI);
     }
+
     /**
     * Set the client_uri.
     *
@@ -103,6 +108,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the policy_uri.
      *
@@ -112,6 +118,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::POLICY_URI);
     }
+
     /**
     * Set the policy_uri.
     *
@@ -127,6 +134,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the grant_types.
      *
@@ -136,6 +144,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::GRANT_TYPES);
     }
+
     /**
     * Set the grant_types.
     *
@@ -151,6 +160,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the redirect_uris.
      *
@@ -160,6 +170,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::REDIRECT_URIS);
     }
+
     /**
     * Set the redirect_uris.
     *
@@ -175,6 +186,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the consent_method.
      *
@@ -184,6 +196,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::CONSENT_METHOD);
     }
+
     /**
     * Set the consent_method.
     *
@@ -199,6 +212,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the response_types.
      *
@@ -208,6 +222,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::RESPONSE_TYPES);
     }
+
     /**
     * Set the response_types.
     *
@@ -223,6 +238,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the application_type.
      *
@@ -232,6 +248,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     {
         return $this->getProperty(self::APPLICATION_TYPE);
     }
+
     /**
     * Set the application_type.
     *

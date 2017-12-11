@@ -42,6 +42,4 @@ class LogIssuerTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->type, $this->testable->type);
     }
 
-
-
 }

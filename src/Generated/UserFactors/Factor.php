@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class Factor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -36,7 +35,8 @@ class Factor extends \Okta\Resource\AbstractResource
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
 
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
@@ -45,6 +45,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the _links.
      *
@@ -54,6 +55,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the device.
      *
@@ -63,6 +65,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DEVICE);
     }
+
     /**
     * Set the device.
     *
@@ -78,6 +81,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the status.
      *
@@ -87,6 +91,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the userId.
      *
@@ -96,6 +101,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::USER_ID);
     }
+
     /**
     * Set the userId.
     *
@@ -111,6 +117,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the verify.
      *
@@ -124,6 +131,7 @@ class Factor extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the verify.
@@ -140,6 +148,7 @@ class Factor extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the profile.
      *
@@ -153,6 +162,7 @@ class Factor extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the profile.
@@ -169,6 +179,7 @@ class Factor extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the provider.
      *
@@ -178,6 +189,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::PROVIDER);
     }
+
     /**
     * Set the provider.
     *
@@ -193,6 +205,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
@@ -202,6 +215,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the sessionId.
      *
@@ -211,6 +225,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SESSION_ID);
     }
+
     /**
     * Set the sessionId.
     *
@@ -226,6 +241,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the deviceType.
      *
@@ -235,6 +251,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DEVICE_TYPE);
     }
+
     /**
      * Get the factorType.
      *
@@ -244,6 +261,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::FACTOR_TYPE);
     }
+
     /**
     * Set the factorType.
     *
@@ -259,6 +277,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the mfaStateTokenId.
      *
@@ -268,6 +287,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::MFA_STATE_TOKEN_ID);
     }
+
     /**
     * Set the mfaStateTokenId.
     *
@@ -283,6 +303,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the rechallengeExistingFactor.
      *
@@ -292,6 +313,7 @@ class Factor extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::RECHALLENGE_EXISTING_FACTOR);
     }
+
     /**
     * Set the rechallengeExistingFactor.
     *

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogAuthenticationContext extends \Okta\Resource\AbstractResource
 {
     const ISSUER = 'issuer';
@@ -27,6 +26,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     const AUTHENTICATION_STEP = 'authenticationStep';
     const CREDENTIAL_PROVIDER = 'credentialProvider';
     const AUTHENTICATION_PROVIDER = 'authenticationProvider';
+
 
 
     /**
@@ -43,6 +43,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the interface.
      *
@@ -52,6 +53,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::INTERFACE);
     }
+
     /**
      * Get the credentialType.
      *
@@ -61,6 +63,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::CREDENTIAL_TYPE);
     }
+
     /**
      * Get the externalSessionId.
      *
@@ -70,6 +73,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EXTERNAL_SESSION_ID);
     }
+
     /**
      * Get the authenticationStep.
      *
@@ -79,6 +83,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::AUTHENTICATION_STEP);
     }
+
     /**
      * Get the credentialProvider.
      *
@@ -88,6 +93,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::CREDENTIAL_PROVIDER);
     }
+
     /**
      * Get the authenticationProvider.
      *

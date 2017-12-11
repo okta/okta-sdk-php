@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const SCHEME = 'scheme';
@@ -25,6 +24,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     const PASSWORD = 'password';
     const USER_NAME = 'userName';
     const REVEAL_PASSWORD = 'revealPassword';
+
 
 
     /**
@@ -36,6 +36,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     {
         return $this->getProperty(self::SCHEME);
     }
+
     /**
     * Set the scheme.
     *
@@ -51,6 +52,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
 
         return $this;
     }
+
     /**
      * Get the signing.
      *
@@ -64,6 +66,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
             $options
         );
     }
+
 
     /**
      * Set the signing.
@@ -80,6 +83,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
         
         return $this;
     }
+
     /**
      * Get the password.
      *
@@ -93,6 +97,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
             $options
         );
     }
+
 
     /**
      * Set the password.
@@ -109,6 +114,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
         
         return $this;
     }
+
     /**
      * Get the userName.
      *
@@ -118,6 +124,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     {
         return $this->getProperty(self::USER_NAME);
     }
+
     /**
     * Set the userName.
     *
@@ -133,6 +140,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
 
         return $this;
     }
+
     /**
      * Get the revealPassword.
      *
@@ -142,6 +150,7 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     {
         return $this->getProperty(self::REVEAL_PASSWORD);
     }
+
     /**
     * Set the revealPassword.
     *

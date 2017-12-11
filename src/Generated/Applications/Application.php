@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -48,6 +47,7 @@ class Application extends \Okta\Resource\AbstractResource
                     );
         return $application->convertFromGenericApplication();
     }
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -58,6 +58,7 @@ class Application extends \Okta\Resource\AbstractResource
                     \Okta\Applications\Application::class
                 );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -67,7 +68,8 @@ class Application extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
@@ -76,6 +78,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the name.
      *
@@ -85,6 +88,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
      * Get the label.
      *
@@ -94,6 +98,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LABEL);
     }
+
     /**
     * Set the label.
     *
@@ -109,6 +114,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _links.
      *
@@ -118,6 +124,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
@@ -127,6 +134,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -136,6 +144,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the features.
      *
@@ -145,6 +154,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::FEATURES);
     }
+
     /**
     * Set the features.
     *
@@ -160,6 +170,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the settings.
      *
@@ -173,6 +184,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -189,6 +201,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
@@ -198,6 +211,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the licensing.
      *
@@ -211,6 +225,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the licensing.
@@ -227,6 +242,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the signOnMode.
      *
@@ -236,6 +252,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SIGN_ON_MODE);
     }
+
     /**
     * Set the signOnMode.
     *
@@ -251,6 +268,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the visibility.
      *
@@ -264,6 +282,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the visibility.
@@ -280,6 +299,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -293,6 +313,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the credentials.
@@ -309,6 +330,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -318,6 +340,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the accessibility.
      *
@@ -331,6 +354,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the accessibility.
@@ -387,6 +411,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the AppUser object.
@@ -547,6 +572,7 @@ class Application extends \Okta\Resource\AbstractResource
         return new \Okta\Applications\JsonWebKey(null, $body);
     }
 
+
     /**
     * Get the ApplicationGroupAssignment object.
     *
@@ -565,6 +591,7 @@ class Application extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
+
 
     /**
     * Get the JsonWebKey object.

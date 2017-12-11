@@ -34,7 +34,5 @@ class LogRequestTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->ipChain, $this->testable->getIpChain());
         $this->assertEquals($this->properties->ipChain, $this->testable->ipChain);
     }
-    
-    
 
 }

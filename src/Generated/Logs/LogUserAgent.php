@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogUserAgent extends \Okta\Resource\AbstractResource
 {
     const OS = 'os';
     const BROWSER = 'browser';
     const RAW_USER_AGENT = 'rawUserAgent';
+
 
 
     /**
@@ -34,6 +34,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::OS);
     }
+
     /**
      * Get the browser.
      *
@@ -43,6 +44,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::BROWSER);
     }
+
     /**
      * Get the rawUserAgent.
      *

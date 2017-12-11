@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
 {
     const I_OS = 'iOS';
     const WEB = 'web';
+
 
 
     /**
@@ -33,6 +33,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::I_OS);
     }
+
     /**
     * Set the iOS.
     *
@@ -48,6 +49,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the web.
      *
@@ -57,6 +59,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::WEB);
     }
+
     /**
     * Set the web.
     *

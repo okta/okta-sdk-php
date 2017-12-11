@@ -63,7 +63,4 @@ class LogActorTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->displayName, $this->testable->displayName);
     }
 
-
-
-
 }

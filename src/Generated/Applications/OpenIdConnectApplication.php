@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class OpenIdConnectApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';
@@ -25,6 +24,7 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
     const CREDENTIALS = 'credentials';
 
     private $name = 'oidc_client';
+
 
     /**
      * Get the settings.
@@ -39,6 +39,7 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -55,6 +56,7 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -68,6 +70,7 @@ class OpenIdConnectApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

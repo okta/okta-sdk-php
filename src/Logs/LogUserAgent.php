@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogUserAgent extends \Okta\Generated\Logs\LogUserAgent
 {
 

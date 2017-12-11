@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
-
 class BookmarkApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const REQUEST_INTEGRATION = 'requestIntegration';
+
 
 
     /**
@@ -33,6 +33,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Applications\Applicat
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -48,6 +49,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Applications\Applicat
 
         return $this;
     }
+
     /**
      * Get the requestIntegration.
      *
@@ -57,6 +59,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Applications\Applicat
     {
         return $this->getProperty(self::REQUEST_INTEGRATION);
     }
+
     /**
     * Set the requestIntegration.
     *

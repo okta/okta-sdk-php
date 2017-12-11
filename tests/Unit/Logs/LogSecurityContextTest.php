@@ -63,5 +63,4 @@ class LogSecurityContextTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->asNumber, $this->testable->asNumber);
     }
 
-
 }

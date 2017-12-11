@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Applications;
 
-
 class BrowserPluginApplication extends \Okta\Applications\Application
 {
     const CREDENTIALS = 'credentials';
+
 
 
     /**
@@ -36,6 +36,7 @@ class BrowserPluginApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

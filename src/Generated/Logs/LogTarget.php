@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Logs;
 
-
 class LogTarget extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -25,6 +24,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     const ALTERNATE_ID = 'alternateId';
     const DETAIL_ENTRY = 'detailEntry';
     const DISPLAY_NAME = 'displayName';
+
 
 
     /**
@@ -36,6 +36,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
@@ -45,6 +46,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the alternateId.
      *
@@ -54,6 +56,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ALTERNATE_ID);
     }
+
     /**
      * Get the detailEntry.
      *
@@ -63,6 +66,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DETAIL_ENTRY);
     }
+
     /**
      * Get the displayName.
      *

@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SecurePasswordStoreApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';
+
 
 
     /**
@@ -36,6 +36,7 @@ class SecurePasswordStoreApplicationSettings extends \Okta\Applications\Applicat
             $options
         );
     }
+
 
     /**
      * Set the app.

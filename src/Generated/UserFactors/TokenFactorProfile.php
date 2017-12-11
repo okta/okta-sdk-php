@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class TokenFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const CREDENTIAL_ID = 'credentialId';
+
 
 
     /**
@@ -32,6 +32,7 @@ class TokenFactorProfile extends \Okta\UserFactors\FactorProfile
     {
         return $this->getProperty(self::CREDENTIAL_ID);
     }
+
     /**
     * Set the credentialId.
     *

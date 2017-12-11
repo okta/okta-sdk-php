@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const TARGET_URL = 'targetUrl';
@@ -29,6 +28,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     const EXTRA_FIELD_SELECTOR = 'extraFieldSelector';
 
 
+
     /**
      * Get the targetUrl.
      *
@@ -38,6 +38,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::TARGET_URL);
     }
+
     /**
     * Set the targetUrl.
     *
@@ -53,6 +54,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the loginUrlRegex.
      *
@@ -62,6 +64,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::LOGIN_URL_REGEX);
     }
+
     /**
     * Set the loginUrlRegex.
     *
@@ -77,6 +80,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the buttonSelector.
      *
@@ -86,6 +90,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::BUTTON_SELECTOR);
     }
+
     /**
     * Set the buttonSelector.
     *
@@ -101,6 +106,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the extraFieldValue.
      *
@@ -110,6 +116,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::EXTRA_FIELD_VALUE);
     }
+
     /**
     * Set the extraFieldValue.
     *
@@ -125,6 +132,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the passwordSelector.
      *
@@ -134,6 +142,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::PASSWORD_SELECTOR);
     }
+
     /**
     * Set the passwordSelector.
     *
@@ -149,6 +158,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the userNameSelector.
      *
@@ -158,6 +168,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::USER_NAME_SELECTOR);
     }
+
     /**
     * Set the userNameSelector.
     *
@@ -173,6 +184,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
 
         return $this;
     }
+
     /**
      * Get the extraFieldSelector.
      *
@@ -182,6 +194,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
     {
         return $this->getProperty(self::EXTRA_FIELD_SELECTOR);
     }
+
     /**
     * Set the extraFieldSelector.
     *

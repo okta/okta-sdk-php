@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogIssuer extends \Okta\Generated\Logs\LogIssuer
 {
 

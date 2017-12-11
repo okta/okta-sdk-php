@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const ANSWER = 'answer';
     const QUESTION = 'question';
     const QUESTION_TEXT = 'questionText';
+
 
 
     /**
@@ -34,6 +34,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
     {
         return $this->getProperty(self::ANSWER);
     }
+
     /**
     * Set the answer.
     *
@@ -49,6 +50,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
 
         return $this;
     }
+
     /**
      * Get the question.
      *
@@ -58,6 +60,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
     {
         return $this->getProperty(self::QUESTION);
     }
+
     /**
     * Set the question.
     *
@@ -73,6 +76,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
 
         return $this;
     }
+
     /**
      * Get the questionText.
      *
@@ -82,6 +86,7 @@ class SecurityQuestionFactorProfile extends \Okta\UserFactors\FactorProfile
     {
         return $this->getProperty(self::QUESTION_TEXT);
     }
+
     /**
     * Set the questionText.
     *

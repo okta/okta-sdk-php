@@ -17,10 +17,10 @@
 
 namespace Okta\Generated\UserFactors;
 
-
 class SmsFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const PHONE_NUMBER = 'phoneNumber';
+
 
 
     /**
@@ -32,6 +32,7 @@ class SmsFactorProfile extends \Okta\UserFactors\FactorProfile
     {
         return $this->getProperty(self::PHONE_NUMBER);
     }
+
     /**
     * Set the phoneNumber.
     *

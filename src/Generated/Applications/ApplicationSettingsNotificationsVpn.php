@@ -17,12 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
-
 class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResource
 {
     const HELP_URL = 'helpUrl';
     const MESSAGE = 'message';
     const NETWORK = 'network';
+
 
 
     /**
@@ -34,6 +34,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     {
         return $this->getProperty(self::HELP_URL);
     }
+
     /**
     * Set the helpUrl.
     *
@@ -49,6 +50,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
 
         return $this;
     }
+
     /**
      * Get the message.
      *
@@ -58,6 +60,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     {
         return $this->getProperty(self::MESSAGE);
     }
+
     /**
     * Set the message.
     *
@@ -73,6 +76,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
 
         return $this;
     }
+
     /**
      * Get the network.
      *
@@ -86,6 +90,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
             $options
         );
     }
+
 
     /**
      * Set the network.

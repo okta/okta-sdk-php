@@ -17,13 +17,13 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplication
 {
     const NAME = 'name';
     const SETTINGS = 'settings';
 
     private $name = 'template_swa3field';
+
 
     /**
      * Get the settings.
@@ -38,6 +38,7 @@ class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplicati
             $options
         );
     }
+
 
     /**
      * Set the settings.

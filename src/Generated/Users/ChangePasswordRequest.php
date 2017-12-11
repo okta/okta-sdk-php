@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Users;
 
-
 class ChangePasswordRequest extends \Okta\Resource\AbstractResource
 {
     const NEW_PASSWORD = 'newPassword';
     const OLD_PASSWORD = 'oldPassword';
+
 
 
     /**
@@ -38,6 +38,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the newPassword.
      *
@@ -53,6 +54,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the oldPassword.
      *
@@ -66,6 +68,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the oldPassword.

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Users;
 
-
 class AppLink extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -32,6 +31,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
 
+
     /**
      * Get the id.
      *
@@ -41,6 +41,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the label.
      *
@@ -50,6 +51,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LABEL);
     }
+
     /**
      * Get the hidden.
      *
@@ -59,6 +61,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::HIDDEN);
     }
+
     /**
      * Get the appName.
      *
@@ -68,6 +71,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::APP_NAME);
     }
+
     /**
      * Get the linkUrl.
      *
@@ -77,6 +81,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LINK_URL);
     }
+
     /**
      * Get the logoUrl.
      *
@@ -86,6 +91,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::LOGO_URL);
     }
+
     /**
      * Get the sortOrder.
      *
@@ -95,6 +101,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::SORT_ORDER);
     }
+
     /**
      * Get the appInstanceId.
      *
@@ -104,6 +111,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
+
     /**
      * Get the appAssignmentId.
      *
@@ -113,6 +121,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
+
     /**
      * Get the credentialsSetup.
      *

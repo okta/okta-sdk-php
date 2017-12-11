@@ -42,7 +42,4 @@ class LogOutcomeTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->result, $this->testable->result);
     }
 
-
-
-
 }

@@ -17,7 +17,6 @@
 
 namespace Okta\Generated\Applications;
 
-
 class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
@@ -25,6 +24,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     const LOGIN_URL_REGEX = 'loginUrlRegex';
     const PASSWORD_FIELD = 'passwordField';
     const USERNAME_FIELD = 'usernameField';
+
 
 
     /**
@@ -36,6 +36,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -51,6 +52,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the buttonField.
      *
@@ -60,6 +62,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     {
         return $this->getProperty(self::BUTTON_FIELD);
     }
+
     /**
     * Set the buttonField.
     *
@@ -75,6 +78,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the loginUrlRegex.
      *
@@ -84,6 +88,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     {
         return $this->getProperty(self::LOGIN_URL_REGEX);
     }
+
     /**
     * Set the loginUrlRegex.
     *
@@ -99,6 +104,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the passwordField.
      *
@@ -108,6 +114,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     {
         return $this->getProperty(self::PASSWORD_FIELD);
     }
+
     /**
     * Set the passwordField.
     *
@@ -123,6 +130,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the usernameField.
      *
@@ -132,6 +140,7 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     {
         return $this->getProperty(self::USERNAME_FIELD);
     }
+
     /**
     * Set the usernameField.
     *

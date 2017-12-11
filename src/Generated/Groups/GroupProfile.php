@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\Groups;
 
-
 class GroupProfile extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';
     const DESCRIPTION = 'description';
+
 
 
     /**
@@ -33,6 +33,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -48,6 +49,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the description.
      *
@@ -57,6 +59,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DESCRIPTION);
     }
+
     /**
     * Set the description.
     *

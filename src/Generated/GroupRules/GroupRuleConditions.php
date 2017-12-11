@@ -17,11 +17,11 @@
 
 namespace Okta\Generated\GroupRules;
 
-
 class GroupRuleConditions extends \Okta\Resource\AbstractResource
 {
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
+
 
 
     /**
@@ -38,6 +38,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the people.
      *
@@ -53,6 +54,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the expression.
      *
@@ -66,6 +68,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the expression.
