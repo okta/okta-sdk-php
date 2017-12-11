@@ -18,7 +18,7 @@
 namespace Okta\Generated\Logs;
 
 
-class LogClientRequest extends \Okta\Resource\AbstractResource
+class LogRequest extends \Okta\Resource\AbstractResource
 {
     const IP_CHAIN = 'ipChain';
 

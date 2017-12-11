@@ -49,14 +49,7 @@ class LogClientTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->device, $this->testable->device);
     }
 
-    /** @test */
-    public function request_is_accessible()
-    {
-        $this->assertInstanceOf(\Okta\Logs\LogClientRequest::class, $this->testable->getRequest());
-        $this->assertInstanceOf(\Okta\Logs\LogClientRequest::class, $this->testable->request);
-    }
-    
-    /** @test */
+     /** @test */
     public function ip_address_is_accessible()
     {
         $this->assertEquals($this->properties->ipAddress, $this->testable->getIpAddress());

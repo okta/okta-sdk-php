@@ -136,6 +136,15 @@ class LogEventTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Logs\LogAuthenticationContext::class, $this->testable->authenticationContext);
     }
 
+    /** @test */
+    public function request_is_accessible()
+    {
+        $this->assertInstanceOf(\Okta\Logs\LogRequest::class, $this->testable->getRequest());
+        $this->assertInstanceOf(\Okta\Logs\LogRequest::class, $this->testable->request);
+    }
+
+
+
 
 
 }

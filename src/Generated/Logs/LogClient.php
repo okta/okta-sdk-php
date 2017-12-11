@@ -23,7 +23,6 @@ class LogClient extends \Okta\Resource\AbstractResource
     const ID = 'id';
     const ZONE = 'zone';
     const DEVICE = 'device';
-    const REQUEST = 'request';
     const IP_ADDRESS = 'ipAddress';
     const USER_AGENT = 'userAgent';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
@@ -56,20 +55,6 @@ class LogClient extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(self::DEVICE);
     }
-    /**
-     * Get the request.
-     *
-     * @return \Okta\Logs\LogClientRequest
-     */
-    public function getRequest(array $options = []): \Okta\Logs\LogClientRequest
-    {
-        return $this->getResourceProperty(
-            self::REQUEST,
-            \Okta\Logs\LogClientRequest::class,
-            $options
-        );
-    }
-
     /**
      * Get the ipAddress.
      *

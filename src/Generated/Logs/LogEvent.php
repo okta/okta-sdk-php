@@ -25,6 +25,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     const CLIENT = 'client';
     const TARGET = 'target';
     const OUTCOME = 'outcome';
+    const REQUEST = 'request';
     const VERSION = 'version';
     const SEVERITY = 'severity';
     const EVENT_TYPE = 'eventType';
@@ -93,6 +94,20 @@ class LogEvent extends \Okta\Resource\AbstractResource
         return $this->getResourceProperty(
             self::OUTCOME,
             \Okta\Logs\LogOutcome::class,
+            $options
+        );
+    }
+
+    /**
+     * Get the request.
+     *
+     * @return \Okta\Logs\LogRequest
+     */
+    public function getRequest(array $options = []): \Okta\Logs\LogRequest
+    {
+        return $this->getResourceProperty(
+            self::REQUEST,
+            \Okta\Logs\LogRequest::class,
             $options
         );
     }

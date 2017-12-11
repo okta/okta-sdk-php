@@ -15,18 +15,18 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Logs\LogClientRequest;
+use Okta\Logs\LogRequest;
 use PHPUnit\Framework\TestCase;
 
-class LogClientRequestTest extends BaseUnitTestCase
+class LogRequestTest extends BaseUnitTestCase
 {
     protected $properties;
 
-    /** @var  \Okta\Logs\LogClientRequest */
+    /** @var  \Okta\Logs\LogRequest */
     protected $testable;
 
     protected $model = '/Logs/clientRequest.json';
-    protected $modelType = \Okta\Logs\LogClientRequest::class;
+    protected $modelType = \Okta\Logs\LogRequest::class;
 
     /** @test */
     public function ip_chain_is_accessible()
