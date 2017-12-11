@@ -87,4 +87,37 @@ class OktaTest extends TestCase
             $requests[0]->getUri()->getPath()
         );
     }
+
+    /** @test */
+    public function getting_logs_returns_a_collection_of_logs()
+    {
+        $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+        $response->method('getStatusCode')->willReturn(200);
+        $response->method('getBody')->willReturn(
+            '[{"id":"00ua3b3i403WRYTGm0h7"},{"id":"00uak5c3ugOFniX670h7"},{"id":"00uak5dkxjhg4AQ230h7"},{"id":"00uajcy1o6MMTJVFb0h7"}]'
+        );
+
+        $httpClient = new \Http\Mock\Client;
+        $httpClient->addResponse($response);
+
+        (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+
+
+        $users = (new Okta())->getLogs();
+        $requests = $httpClient->getRequests();
+
+        $this->assertInstanceOf(
+            \Okta\Logs\Collection::class,
+            $users
+        );
+        $this->assertCount(4, $users);
+        $this->assertEquals(
+            '/api/v1/logs',
+            $requests[0]->getUri()->getPath()
+        );
+    }
 }

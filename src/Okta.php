@@ -19,7 +19,9 @@ namespace Okta;
 
 use Okta\DataStore\DefaultDataStore;
 use Okta\Groups\Collection as GroupCollection;
+use Okta\Logs\Collection as LogCollection;
 use Okta\Groups\Group;
+use Okta\Logs\LogEvent;
 use Okta\Users\Collection as UserCollection;
 use Okta\Users\User;
 
@@ -50,6 +52,16 @@ class Okta
             '/api/v1/groups',
             Group::class,
             GroupCollection::class,
+            $options
+        );
+    }
+
+    public function getLogs(array $options = [])
+    {
+        return $this->dataStore->getCollection(
+            '/api/v1/logs',
+            LogEvent::class,
+            LogCollection::class,
             $options
         );
     }
