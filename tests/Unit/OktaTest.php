@@ -107,14 +107,14 @@ class OktaTest extends TestCase
             ->build();
 
 
-        $users = (new Okta())->getLogs();
+        $logs = (new Okta())->getLogs();
         $requests = $httpClient->getRequests();
 
         $this->assertInstanceOf(
             \Okta\Logs\Collection::class,
-            $users
+            $logs
         );
-        $this->assertCount(4, $users);
+        $this->assertCount(4, $logs);
         $this->assertEquals(
             '/api/v1/logs',
             $requests[0]->getUri()->getPath()
