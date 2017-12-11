@@ -23,15 +23,17 @@ class BookmarkApplicationSettingsApplication extends \Okta\Applications\Applicat
     const REQUEST_INTEGRATION = 'requestIntegration';
 
 
+
     /**
      * Get the url.
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -47,15 +49,17 @@ class BookmarkApplicationSettingsApplication extends \Okta\Applications\Applicat
 
         return $this;
     }
+
     /**
      * Get the requestIntegration.
      *
      * @return bool
      */
-    public function getRequestIntegration(): bool
+    public function getRequestIntegration()
     {
         return $this->getProperty(self::REQUEST_INTEGRATION);
     }
+
     /**
     * Set the requestIntegration.
     *

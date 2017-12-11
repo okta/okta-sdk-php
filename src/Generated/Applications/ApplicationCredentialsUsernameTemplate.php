@@ -24,15 +24,17 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     const TEMPLATE = 'template';
 
 
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -48,15 +50,17 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the suffix.
      *
      * @return string
      */
-    public function getSuffix(): string
+    public function getSuffix()
     {
         return $this->getProperty(self::SUFFIX);
     }
+
     /**
     * Set the suffix.
     *
@@ -72,15 +76,17 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
 
         return $this;
     }
+
     /**
      * Get the template.
      *
      * @return string
      */
-    public function getTemplate(): string
+    public function getTemplate()
     {
         return $this->getProperty(self::TEMPLATE);
     }
+
     /**
     * Set the template.
     *

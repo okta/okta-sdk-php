@@ -1,0 +1,12 @@
+{
+  "authenticationProvider": "SOCIAL",
+  "authenticationStep": 0,
+  "externalSessionId": "1013FfF-DKQSvCI4RVXChzX-w",
+  "issuer": {
+    "id": "abc123",
+    "type": "issuerType"
+  },
+  "interface": "auth interface",
+  "credentialType": "OTP",
+  "credentialProvider": "GOOGLE"
+}

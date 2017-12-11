@@ -22,6 +22,7 @@ class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSetting
     const SIGN_ON = 'signOn';
 
 
+
     /**
      * Get the signOn.
      *
@@ -35,6 +36,7 @@ class AutoLoginApplicationSettings extends \Okta\Applications\ApplicationSetting
             $options
         );
     }
+
 
     /**
      * Set the signOn.

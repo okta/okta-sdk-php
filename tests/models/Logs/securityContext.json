@@ -1,0 +1,7 @@
+{
+  "asNumber": 123456,
+  "asOrg": "Organization",
+  "isp": "myISP",
+  "domain": "example.org",
+  "isProxy": true
+}

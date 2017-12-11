@@ -22,15 +22,17 @@ class TotpFactorProfile extends \Okta\UserFactors\FactorProfile
     const CREDENTIAL_ID = 'credentialId';
 
 
+
     /**
      * Get the credentialId.
      *
      * @return string
      */
-    public function getCredentialId(): string
+    public function getCredentialId()
     {
         return $this->getProperty(self::CREDENTIAL_ID);
     }
+
     /**
     * Set the credentialId.
     *

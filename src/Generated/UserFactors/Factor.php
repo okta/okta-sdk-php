@@ -35,33 +35,37 @@ class Factor extends \Okta\Resource\AbstractResource
     const RECHALLENGE_EXISTING_FACTOR = 'rechallengeExistingFactor';
 
 
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the device.
      *
      * @return string
      */
-    public function getDevice(): string
+    public function getDevice()
     {
         return $this->getProperty(self::DEVICE);
     }
+
     /**
     * Set the device.
     *
@@ -77,24 +81,27 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the userId.
      *
      * @return string
      */
-    public function getUserId(): string
+    public function getUserId()
     {
         return $this->getProperty(self::USER_ID);
     }
+
     /**
     * Set the userId.
     *
@@ -110,6 +117,7 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the verify.
      *
@@ -123,6 +131,7 @@ class Factor extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the verify.
@@ -139,6 +148,7 @@ class Factor extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the profile.
      *
@@ -152,6 +162,7 @@ class Factor extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the profile.
@@ -168,15 +179,17 @@ class Factor extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the provider.
      *
      * @return string
      */
-    public function getProvider(): string
+    public function getProvider()
     {
         return $this->getProperty(self::PROVIDER);
     }
+
     /**
     * Set the provider.
     *
@@ -192,24 +205,27 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the sessionId.
      *
      * @return string
      */
-    public function getSessionId(): string
+    public function getSessionId()
     {
         return $this->getProperty(self::SESSION_ID);
     }
+
     /**
     * Set the sessionId.
     *
@@ -225,24 +241,27 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the deviceType.
      *
      * @return string
      */
-    public function getDeviceType(): string
+    public function getDeviceType()
     {
         return $this->getProperty(self::DEVICE_TYPE);
     }
+
     /**
      * Get the factorType.
      *
      * @return string
      */
-    public function getFactorType(): string
+    public function getFactorType()
     {
         return $this->getProperty(self::FACTOR_TYPE);
     }
+
     /**
     * Set the factorType.
     *
@@ -258,15 +277,17 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the mfaStateTokenId.
      *
      * @return string
      */
-    public function getMfaStateTokenId(): string
+    public function getMfaStateTokenId()
     {
         return $this->getProperty(self::MFA_STATE_TOKEN_ID);
     }
+
     /**
     * Set the mfaStateTokenId.
     *
@@ -282,15 +303,17 @@ class Factor extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the rechallengeExistingFactor.
      *
      * @return bool
      */
-    public function getRechallengeExistingFactor(): bool
+    public function getRechallengeExistingFactor()
     {
         return $this->getProperty(self::RECHALLENGE_EXISTING_FACTOR);
     }
+
     /**
     * Set the rechallengeExistingFactor.
     *

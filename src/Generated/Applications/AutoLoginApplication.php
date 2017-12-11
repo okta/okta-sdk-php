@@ -23,6 +23,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
     const CREDENTIALS = 'credentials';
 
 
+
     /**
      * Get the settings.
      *
@@ -36,6 +37,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -52,6 +54,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -65,6 +68,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

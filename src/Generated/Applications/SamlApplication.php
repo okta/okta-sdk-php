@@ -22,6 +22,7 @@ class SamlApplication extends \Okta\Applications\Application
     const SETTINGS = 'settings';
 
 
+
     /**
      * Get the settings.
      *
@@ -35,6 +36,7 @@ class SamlApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.

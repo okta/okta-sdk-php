@@ -22,15 +22,17 @@ class CreateSessionRequest extends \Okta\Resource\AbstractResource
     const SESSION_TOKEN = 'sessionToken';
 
 
+
     /**
      * Get the sessionToken.
      *
      * @return string
      */
-    public function getSessionToken(): string
+    public function getSessionToken()
     {
         return $this->getProperty(self::SESSION_TOKEN);
     }
+
     /**
     * Set the sessionToken.
     *

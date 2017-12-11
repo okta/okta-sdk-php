@@ -24,15 +24,17 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
     const CONNECTION = 'connection';
 
 
+
     /**
      * Get the exclude.
      *
      * @return array
      */
-    public function getExclude(): array
+    public function getExclude()
     {
         return $this->getProperty(self::EXCLUDE);
     }
+
     /**
     * Set the exclude.
     *
@@ -48,15 +50,17 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
 
         return $this;
     }
+
     /**
      * Get the include.
      *
      * @return array
      */
-    public function getInclude(): array
+    public function getInclude()
     {
         return $this->getProperty(self::INCLUDE);
     }
+
     /**
     * Set the include.
     *
@@ -72,15 +76,17 @@ class ApplicationSettingsNotificationsVpnNetwork extends \Okta\Resource\Abstract
 
         return $this;
     }
+
     /**
      * Get the connection.
      *
      * @return string
      */
-    public function getConnection(): string
+    public function getConnection()
     {
         return $this->getProperty(self::CONNECTION);
     }
+
     /**
     * Set the connection.
     *

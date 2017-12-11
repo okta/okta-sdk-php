@@ -1,0 +1,57 @@
+{
+  "version": "0",
+  "severity": "INFO",
+  "client": {
+    "zone": "OFF_NETWORK",
+    "device": "Unknown",
+    "userAgent": {
+      "os": "Unknown",
+      "browser": "UNKNOWN",
+      "rawUserAgent": "UNKNOWN-DOWNLOAD"
+    },
+    "ipAddress": "12.97.85.90"
+  },
+  "actor": {
+    "id": "00u1qw1mqitPHM8AJ0g7",
+    "type": "User",
+    "alternateId": "admin@tc1-trexcloud.com",
+    "displayName": "John Fung"
+  },
+  "outcome": {
+    "result": "SUCCESS"
+  },
+  "uuid": "f790999f-fe87-467a-9880-6982a583986c",
+  "published": "2017-09-31T22:23:07.777Z",
+  "eventType": "user.session.start",
+  "displayMessage": "User login to Okta",
+  "transaction": {
+    "type": "WEB",
+    "id": "V04Oy4ubUOc5UuG6s9DyNQAABtc"
+  },
+  "debugContext": {
+    "debugData": {
+      "requestUri": "/login/do-login"
+    }
+  },
+  "legacyEventType": "core.user_auth.login_success",
+  "authenticationContext": {
+    "authenticationStep": 0,
+    "externalSessionId": "1013FfF-DKQSvCI4RVXChzX-w"
+  },
+  "target": [
+    {
+      "id": "0oacoibw4fEIeChRy0h7",
+      "type": "AppInstance",
+      "alternateId": "Okta",
+      "displayName": "Template Plugin App",
+      "detailEntry": null
+    },
+    {
+      "id": "sbXtPaEVnDHSNWCLy3oVQDCD87Okr2xm9vw13CfQbbQ",
+      "type": "CertificateSigningRequest",
+      "alternateId": "unknown",
+      "displayName": "CSR(C=US,ST=California,L=San Francisco,O=Okta\\, Inc.,OU=Dev,CN=IdP Issuer)",
+      "detailEntry": null
+    }
+  ]
+}

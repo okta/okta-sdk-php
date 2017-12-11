@@ -23,6 +23,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     const NOTIFICATIONS = 'notifications';
 
 
+
     /**
      * Get the app.
      *
@@ -36,6 +37,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the app.
@@ -52,6 +54,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the notifications.
      *
@@ -65,6 +68,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the notifications.

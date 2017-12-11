@@ -26,15 +26,17 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     const USERNAME_FIELD = 'usernameField';
 
 
+
     /**
      * Get the url.
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -50,15 +52,17 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the buttonField.
      *
      * @return string
      */
-    public function getButtonField(): string
+    public function getButtonField()
     {
         return $this->getProperty(self::BUTTON_FIELD);
     }
+
     /**
     * Set the buttonField.
     *
@@ -74,15 +78,17 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the loginUrlRegex.
      *
      * @return string
      */
-    public function getLoginUrlRegex(): string
+    public function getLoginUrlRegex()
     {
         return $this->getProperty(self::LOGIN_URL_REGEX);
     }
+
     /**
     * Set the loginUrlRegex.
     *
@@ -98,15 +104,17 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the passwordField.
      *
      * @return string
      */
-    public function getPasswordField(): string
+    public function getPasswordField()
     {
         return $this->getProperty(self::PASSWORD_FIELD);
     }
+
     /**
     * Set the passwordField.
     *
@@ -122,15 +130,17 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
 
         return $this;
     }
+
     /**
      * Get the usernameField.
      *
      * @return string
      */
-    public function getUsernameField(): string
+    public function getUsernameField()
     {
         return $this->getProperty(self::USERNAME_FIELD);
     }
+
     /**
     * Set the usernameField.
     *

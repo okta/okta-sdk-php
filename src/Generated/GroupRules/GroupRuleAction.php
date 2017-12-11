@@ -22,6 +22,7 @@ class GroupRuleAction extends \Okta\Resource\AbstractResource
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';
 
 
+
     /**
      * Get the assignUserToGroups.
      *
@@ -35,6 +36,7 @@ class GroupRuleAction extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the assignUserToGroups.

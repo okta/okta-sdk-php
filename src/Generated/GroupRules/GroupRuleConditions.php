@@ -23,6 +23,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
     const EXPRESSION = 'expression';
 
 
+
     /**
      * Get the people.
      *
@@ -36,6 +37,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the people.
@@ -52,6 +54,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the expression.
      *
@@ -65,6 +68,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the expression.

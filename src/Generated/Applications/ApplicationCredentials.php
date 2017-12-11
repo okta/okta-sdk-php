@@ -23,6 +23,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
     const USER_NAME_TEMPLATE = 'userNameTemplate';
 
 
+
     /**
      * Get the signing.
      *
@@ -36,6 +37,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the signing.
@@ -52,6 +54,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the userNameTemplate.
      *
@@ -65,6 +68,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the userNameTemplate.

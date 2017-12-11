@@ -23,15 +23,17 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
 
 
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -47,15 +49,17 @@ class GroupProfile extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the description.
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->getProperty(self::DESCRIPTION);
     }
+
     /**
     * Set the description.
     *

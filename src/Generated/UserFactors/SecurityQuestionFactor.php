@@ -22,6 +22,7 @@ class SecurityQuestionFactor extends \Okta\UserFactors\Factor
     const PROFILE = 'profile';
 
 
+
     /**
      * Get the profile.
      *
@@ -35,6 +36,7 @@ class SecurityQuestionFactor extends \Okta\UserFactors\Factor
             $options
         );
     }
+
 
     /**
      * Set the profile.

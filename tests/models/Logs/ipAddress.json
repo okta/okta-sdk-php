@@ -1,0 +1,15 @@
+{
+  "ip": "10.12.13.123",
+  "geographicalContext": {
+    "geolocation": {
+      "lat": "39.8114392",
+      "lon": "-84.2721966"
+    },
+    "city": "Dayton",
+    "state": "Ohio",
+    "country": "USA",
+    "postalCode": "45439"
+  },
+  "version": "v4",
+  "source": "Some details go here"
+}

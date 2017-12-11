@@ -24,6 +24,7 @@ class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplicati
 
     private $name = 'template_swa3field';
 
+
     /**
      * Get the settings.
      *
@@ -37,6 +38,7 @@ class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplicati
             $options
         );
     }
+
 
     /**
      * Set the settings.

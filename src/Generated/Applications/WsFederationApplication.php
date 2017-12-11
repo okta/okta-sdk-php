@@ -24,6 +24,7 @@ class WsFederationApplication extends \Okta\Applications\Application
 
     private $name = 'template_wsfed';
 
+
     /**
      * Get the settings.
      *
@@ -37,6 +38,7 @@ class WsFederationApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.

@@ -22,12 +22,13 @@ class TempPassword extends \Okta\Resource\AbstractResource
     const TEMP_PASSWORD = 'tempPassword';
 
 
+
     /**
      * Get the tempPassword.
      *
      * @return string
      */
-    public function getTempPassword(): string
+    public function getTempPassword()
     {
         return $this->getProperty(self::TEMP_PASSWORD);
     }

@@ -22,15 +22,17 @@ class EmailFactorProfile extends \Okta\UserFactors\FactorProfile
     const EMAIL = 'email';
 
 
+
     /**
      * Get the email.
      *
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->getProperty(self::EMAIL);
     }
+
     /**
     * Set the email.
     *

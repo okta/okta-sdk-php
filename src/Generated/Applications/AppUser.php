@@ -56,15 +56,17 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
+
     /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
     * Set the id.
     *
@@ -80,15 +82,17 @@ class AppUser extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the scope.
      *
      * @return string
      */
-    public function getScope(): string
+    public function getScope()
     {
         return $this->getProperty(self::SCOPE);
     }
+
     /**
     * Set the scope.
     *
@@ -104,24 +108,27 @@ class AppUser extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -131,15 +138,17 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the profile.
      *
      * @return \stdClass
      */
-    public function getProfile(): \stdClass
+    public function getProfile()
     {
         return $this->getProperty(self::PROFILE);
     }
+
     /**
      * Get the lastSync.
      *
@@ -149,33 +158,37 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_SYNC);
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the syncState.
      *
      * @return string
      */
-    public function getSyncState(): string
+    public function getSyncState()
     {
         return $this->getProperty(self::SYNC_STATE);
     }
+
     /**
      * Get the externalId.
      *
      * @return string
      */
-    public function getExternalId(): string
+    public function getExternalId()
     {
         return $this->getProperty(self::EXTERNAL_ID);
     }
+
     /**
      * Get the credentials.
      *
@@ -189,6 +202,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the credentials.
@@ -205,6 +219,7 @@ class AppUser extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -214,6 +229,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the statusChanged.
      *
@@ -223,6 +239,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::STATUS_CHANGED);
     }
+
     /**
      * Get the passwordChanged.
      *

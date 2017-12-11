@@ -25,6 +25,7 @@ class BasicAuthApplication extends \Okta\Applications\Application
 
     private $name = 'template_basic_auth';
 
+
     /**
      * Get the settings.
      *
@@ -38,6 +39,7 @@ class BasicAuthApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -54,6 +56,7 @@ class BasicAuthApplication extends \Okta\Applications\Application
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -67,6 +70,7 @@ class BasicAuthApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

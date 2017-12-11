@@ -22,6 +22,7 @@ class BasicApplicationSettings extends \Okta\Applications\ApplicationSettings
     const APP = 'app';
 
 
+
     /**
      * Get the app.
      *
@@ -35,6 +36,7 @@ class BasicApplicationSettings extends \Okta\Applications\ApplicationSettings
             $options
         );
     }
+
 
     /**
      * Set the app.

@@ -24,6 +24,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     const RECOVERY_QUESTION = 'recovery_question';
 
 
+
     /**
      * Get the password.
      *
@@ -37,6 +38,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the password.
@@ -53,6 +55,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the provider.
      *
@@ -66,6 +69,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the provider.
@@ -82,6 +86,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the recovery_question.
      *
@@ -95,6 +100,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the recovery_question.

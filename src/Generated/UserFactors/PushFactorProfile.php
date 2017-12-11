@@ -26,15 +26,17 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
     const CREDENTIAL_ID = 'credentialId';
 
 
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -50,15 +52,17 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
 
         return $this;
     }
+
     /**
      * Get the version.
      *
      * @return string
      */
-    public function getVersion(): string
+    public function getVersion()
     {
         return $this->getProperty(self::VERSION);
     }
+
     /**
     * Set the version.
     *
@@ -74,33 +78,37 @@ class PushFactorProfile extends \Okta\UserFactors\FactorProfile
 
         return $this;
     }
+
     /**
      * Get the platform.
      *
      * @return string
      */
-    public function getPlatform(): string
+    public function getPlatform()
     {
         return $this->getProperty(self::PLATFORM);
     }
+
     /**
      * Get the deviceType.
      *
      * @return string
      */
-    public function getDeviceType(): string
+    public function getDeviceType()
     {
         return $this->getProperty(self::DEVICE_TYPE);
     }
+
     /**
      * Get the credentialId.
      *
      * @return string
      */
-    public function getCredentialId(): string
+    public function getCredentialId()
     {
         return $this->getProperty(self::CREDENTIAL_ID);
     }
+
     /**
     * Set the credentialId.
     *

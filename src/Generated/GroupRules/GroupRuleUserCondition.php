@@ -23,15 +23,17 @@ class GroupRuleUserCondition extends \Okta\Resource\AbstractResource
     const INCLUDE = 'include';
 
 
+
     /**
      * Get the exclude.
      *
      * @return array
      */
-    public function getExclude(): array
+    public function getExclude()
     {
         return $this->getProperty(self::EXCLUDE);
     }
+
     /**
     * Set the exclude.
     *
@@ -47,15 +49,17 @@ class GroupRuleUserCondition extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the include.
      *
      * @return array
      */
-    public function getInclude(): array
+    public function getInclude()
     {
         return $this->getProperty(self::INCLUDE);
     }
+
     /**
     * Set the include.
     *

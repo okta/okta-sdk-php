@@ -22,12 +22,13 @@ class ForgotPasswordResponse extends \Okta\Resource\AbstractResource
     const RESET_PASSWORD_URL = 'resetPasswordUrl';
 
 
+
     /**
      * Get the resetPasswordUrl.
      *
      * @return string
      */
-    public function getResetPasswordUrl(): string
+    public function getResetPasswordUrl()
     {
         return $this->getProperty(self::RESET_PASSWORD_URL);
     }

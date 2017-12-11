@@ -23,6 +23,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
     const OLD_PASSWORD = 'oldPassword';
 
 
+
     /**
      * Get the newPassword.
      *
@@ -36,6 +37,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the newPassword.
@@ -52,6 +54,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the oldPassword.
      *
@@ -65,6 +68,7 @@ class ChangePasswordRequest extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the oldPassword.

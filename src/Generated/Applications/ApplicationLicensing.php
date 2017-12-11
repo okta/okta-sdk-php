@@ -22,15 +22,17 @@ class ApplicationLicensing extends \Okta\Resource\AbstractResource
     const SEAT_COUNT = 'seatCount';
 
 
+
     /**
      * Get the seatCount.
      *
      * @return int
      */
-    public function getSeatCount(): int
+    public function getSeatCount()
     {
         return $this->getProperty(self::SEAT_COUNT);
     }
+
     /**
     * Set the seatCount.
     *

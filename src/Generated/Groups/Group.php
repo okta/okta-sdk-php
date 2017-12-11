@@ -32,6 +32,7 @@ class Group extends \Okta\Resource\AbstractResource
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
 
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -42,6 +43,7 @@ class Group extends \Okta\Resource\AbstractResource
                     \Okta\Groups\Group::class
                 );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -51,33 +53,37 @@ class Group extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the created.
      *
@@ -87,6 +93,7 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the profile.
      *
@@ -100,6 +107,7 @@ class Group extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the profile.
@@ -116,15 +124,17 @@ class Group extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -134,15 +144,17 @@ class Group extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the objectClass.
      *
      * @return array
      */
-    public function getObjectClass(): array
+    public function getObjectClass()
     {
         return $this->getProperty(self::OBJECT_CLASS);
     }
+
     /**
      * Get the lastMembershipUpdated.
      *
@@ -172,6 +184,7 @@ class Group extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the User object.

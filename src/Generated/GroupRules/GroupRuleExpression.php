@@ -23,15 +23,17 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
     const VALUE = 'value';
 
 
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -47,15 +49,17 @@ class GroupRuleExpression extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the value.
      *
      * @return string
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->getProperty(self::VALUE);
     }
+
     /**
     * Set the value.
     *

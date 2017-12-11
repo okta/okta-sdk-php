@@ -24,6 +24,7 @@ class SwaApplication extends \Okta\Applications\BrowserPluginApplication
 
     private $name = 'template_swa';
 
+
     /**
      * Get the settings.
      *
@@ -37,6 +38,7 @@ class SwaApplication extends \Okta\Applications\BrowserPluginApplication
             $options
         );
     }
+
 
     /**
      * Set the settings.

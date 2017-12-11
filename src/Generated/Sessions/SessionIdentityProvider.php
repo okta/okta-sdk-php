@@ -23,21 +23,23 @@ class SessionIdentityProvider extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
 
 
+
     /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }

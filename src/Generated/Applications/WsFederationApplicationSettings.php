@@ -22,6 +22,7 @@ class WsFederationApplicationSettings extends \Okta\Applications\ApplicationSett
     const APP = 'app';
 
 
+
     /**
      * Get the app.
      *
@@ -35,6 +36,7 @@ class WsFederationApplicationSettings extends \Okta\Applications\ApplicationSett
             $options
         );
     }
+
 
     /**
      * Set the app.

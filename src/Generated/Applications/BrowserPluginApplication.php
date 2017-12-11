@@ -22,6 +22,7 @@ class BrowserPluginApplication extends \Okta\Applications\Application
     const CREDENTIALS = 'credentials';
 
 
+
     /**
      * Get the credentials.
      *
@@ -35,6 +36,7 @@ class BrowserPluginApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

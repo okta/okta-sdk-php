@@ -23,15 +23,17 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
 
 
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -47,15 +49,17 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *

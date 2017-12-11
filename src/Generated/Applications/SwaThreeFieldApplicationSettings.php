@@ -22,6 +22,7 @@ class SwaThreeFieldApplicationSettings extends \Okta\Applications\ApplicationSet
     const APP = 'app';
 
 
+
     /**
      * Get the app.
      *
@@ -35,6 +36,7 @@ class SwaThreeFieldApplicationSettings extends \Okta\Applications\ApplicationSet
             $options
         );
     }
+
 
     /**
      * Set the app.

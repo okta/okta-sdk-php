@@ -22,6 +22,7 @@ class SecurePasswordStoreApplicationSettings extends \Okta\Applications\Applicat
     const APP = 'app';
 
 
+
     /**
      * Get the app.
      *
@@ -35,6 +36,7 @@ class SecurePasswordStoreApplicationSettings extends \Okta\Applications\Applicat
             $options
         );
     }
+
 
     /**
      * Set the app.

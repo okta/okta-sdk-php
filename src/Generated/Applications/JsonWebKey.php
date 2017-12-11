@@ -36,96 +36,107 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     /**
      * Get the e.
      *
      * @return string
      */
-    public function getE(): string
+    public function getE()
     {
         return $this->getProperty(self::E);
     }
+
     /**
      * Get the n.
      *
      * @return string
      */
-    public function getN(): string
+    public function getN()
     {
         return $this->getProperty(self::N);
     }
+
     /**
      * Get the alg.
      *
      * @return string
      */
-    public function getAlg(): string
+    public function getAlg()
     {
         return $this->getProperty(self::ALG);
     }
+
     /**
      * Get the kid.
      *
      * @return string
      */
-    public function getKid(): string
+    public function getKid()
     {
         return $this->getProperty(self::KID);
     }
+
     /**
      * Get the kty.
      *
      * @return string
      */
-    public function getKty(): string
+    public function getKty()
     {
         return $this->getProperty(self::KTY);
     }
+
     /**
      * Get the use.
      *
      * @return string
      */
-    public function getUse(): string
+    public function getUse()
     {
         return $this->getProperty(self::USE);
     }
+
     /**
      * Get the x5c.
      *
      * @return array
      */
-    public function getX5C(): array
+    public function getX5C()
     {
         return $this->getProperty(self::X_5_C);
     }
+
     /**
      * Get the x5t.
      *
      * @return string
      */
-    public function getX5T(): string
+    public function getX5T()
     {
         return $this->getProperty(self::X_5_T);
     }
+
     /**
      * Get the x5u.
      *
      * @return string
      */
-    public function getX5U(): string
+    public function getX5U()
     {
         return $this->getProperty(self::X_5_U);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -135,24 +146,27 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the key_ops.
      *
      * @return array
      */
-    public function getKeyOps(): array
+    public function getKeyOps()
     {
         return $this->getProperty(self::KEY_OPS);
     }
+
     /**
      * Get the x5t#S256.
      *
      * @return string
      */
-    public function getX5TS256(): string
+    public function getX5TS256()
     {
         return $this->getProperty(self::X_5_T_S_256);
     }
+
     /**
      * Get the expiresAt.
      *
@@ -162,6 +176,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::EXPIRES_AT);
     }
+
     /**
      * Get the lastUpdated.
      *
