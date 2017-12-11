@@ -62,9 +62,7 @@ class LogAuthenticationContextTest extends BaseUnitTestCase
         $this->assertEquals($this->properties->authenticationStep, $this->testable->getAuthenticationStep());
         $this->assertEquals($this->properties->authenticationStep, $this->testable->authenticationStep);
     }
-    
-    
-    
+
     /** @test */
     public function credential_provider_is_accessible()
     {
