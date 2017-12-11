@@ -127,6 +127,7 @@ function getSafeType(obj, model) {
                 default:
                     return `: \\Okta\\` + getFirstTagFromReference(obj.reference) + `\\${obj.model}`;
             }
+            //SHOULD REENABLE WHEN MIN PHP VERSION IS 7.2
         // case 'hash':
         //     return String.raw`: \stdClass`;
         // case 'boolean':
