@@ -15,59 +15,38 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Logs\LogClient;
+use Okta\Logs\LogIpAddress;
 use PHPUnit\Framework\TestCase;
 
-class LogClientTest extends BaseUnitTestCase
+class LogIpAddressTest extends BaseUnitTestCase
 {
     protected $properties;
 
-    /** @var  \Okta\Logs\LogClient */
+    /** @var  \Okta\Logs\LogIpAddress */
     protected $testable;
 
-    protected $model = '/Logs/client.json';
-    protected $modelType = \Okta\Logs\LogClient::class;
-
+    protected $model = '/Logs/ipAddress.json';
+    protected $modelType = \Okta\Logs\LogIpAddress::class;
+    
     /** @test */
-    public function id_is_accessible()
+    public function ip_is_accessible()
     {
-        $this->assertEquals($this->properties->id, $this->testable->getId());
-        $this->assertEquals($this->properties->id, $this->testable->id);
-    }
-
-    /** @test */
-    public function zone_is_accessible()
-    {
-        $this->assertEquals($this->properties->zone, $this->testable->getZone());
-        $this->assertEquals($this->properties->zone, $this->testable->zone);
-    }
-
-    /** @test */
-    public function device_is_accessible()
-    {
-        $this->assertEquals($this->properties->device, $this->testable->getDevice());
-        $this->assertEquals($this->properties->device, $this->testable->device);
-    }
-
-    /** @test */
-    public function request_is_accessible()
-    {
-        $this->assertInstanceOf(\Okta\Logs\LogClientRequest::class, $this->testable->getRequest());
-        $this->assertInstanceOf(\Okta\Logs\LogClientRequest::class, $this->testable->request);
+        $this->assertEquals($this->properties->ip, $this->testable->getIp());
+        $this->assertEquals($this->properties->ip, $this->testable->ip);
     }
     
     /** @test */
-    public function ip_address_is_accessible()
+    public function source_is_accessible()
     {
-        $this->assertEquals($this->properties->ipAddress, $this->testable->getIpAddress());
-        $this->assertEquals($this->properties->ipAddress, $this->testable->ipAddress);
+        $this->assertEquals($this->properties->source, $this->testable->getSource());
+        $this->assertEquals($this->properties->source, $this->testable->source);
     }
-    
+
     /** @test */
-    public function user_agent_is_accessible()
+    public function version_is_accessible()
     {
-        $this->assertInstanceOf(\Okta\Logs\LogUserAgent::class, $this->testable->getUserAgent());
-        $this->assertInstanceOf(\Okta\Logs\LogUserAgent::class, $this->testable->userAgent);
+        $this->assertEquals($this->properties->version, $this->testable->getVersion());
+        $this->assertEquals($this->properties->version, $this->testable->version);
     }
 
     /** @test */
@@ -76,5 +55,6 @@ class LogClientTest extends BaseUnitTestCase
         $this->assertInstanceOf(\Okta\Logs\LogGeographicalContext::class, $this->testable->getGeographicalContext());
         $this->assertInstanceOf(\Okta\Logs\LogGeographicalContext::class, $this->testable->geographicalContext);
     }
+
 
 }
