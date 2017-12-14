@@ -73,14 +73,15 @@ class {{modelName}} extends {{getExtends modelName}}
         {{/if}}
     {{/if}}
     {{#if (eq alias "create")}}
-    public function create()
+    public function create($query=[])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->createResource(
                     "{{getCrudOperationPath this}}",
                     $this,
-                    \\{{this.defaultReturnType}}::class
+                    \\{{this.defaultReturnType}}::class,
+                    $query
                 );
     }
 

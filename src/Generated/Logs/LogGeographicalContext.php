@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Logs;
 
+
 class LogGeographicalContext extends \Okta\Resource\AbstractResource
 {
     const CITY = 'city';
@@ -80,4 +81,5 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 }

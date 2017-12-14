@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class UserProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';

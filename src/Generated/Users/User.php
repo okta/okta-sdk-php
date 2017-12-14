@@ -38,14 +38,15 @@ class User extends \Okta\Resource\AbstractResource
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
 
-    public function create()
+    public function create($query=[])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->createResource(
                     "/users",
                     $this,
-                    \Okta\Users\User::class
+                    \Okta\Users\User::class,
+                    $query
                 );
     }
 
@@ -435,7 +436,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null
@@ -455,7 +456,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null

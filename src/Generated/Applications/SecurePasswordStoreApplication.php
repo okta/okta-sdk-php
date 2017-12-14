@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SecurePasswordStoreApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';
