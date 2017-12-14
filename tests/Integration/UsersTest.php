@@ -69,7 +69,7 @@ class UsersTest extends BaseIntegrationTestCase
         }
 
         // If we are mocking responses, lets make sure all requests were made correctly.
-        if( getenv('OKTA_MOCK_TESTS') == 'true' ) {
+        if( $this->isMockingResponses() ) {
             $requests = $client->getRequests();
 
             //1: Validate the create request
