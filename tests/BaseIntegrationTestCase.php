@@ -34,7 +34,7 @@ class BaseIntegrationTestCase extends BaseTestCase
      */
     protected function createNewHttpClient($returns = []): \Http\Client\HttpClient
     {
-        if( getenv('OKTA_MOCK_TESTS') != 'true' ) {
+        if( ! $this->isMockingResponses() ) {
             return \Okta\Client::getInstance()->getDataStore()->getHttpClient();
         }
         
@@ -70,5 +70,11 @@ class BaseIntegrationTestCase extends BaseTestCase
             ->setHttpClient($httpClient)
             ->build();
         return $httpClient;
+    }
+
+    protected function isMockingResponses()
+    {
+        // need to use multiple cases due to the way phpunit handles `true` vs phpStorm
+        return getenv('OKTA_MOCK_TESTS') == 'true' || getenv('OKTA_MOCK_TESTS') === true || getenv('OKTA_MOCK_TESTS') == "1";
     }
 }
