@@ -250,6 +250,7 @@ class DefaultDataStore
 
         if ($body) {
             $headers['Content-Type'] = 'application/json';
+            $headers['Content-Length'] = strlen($body);
         }
 
         if (key_exists('query', $options)) {
