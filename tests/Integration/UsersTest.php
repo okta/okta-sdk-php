@@ -49,7 +49,7 @@ class UsersTest extends BaseIntegrationTestCase
         $user->setProfile($userProfile)
             ->setCredentials($userCredentials);
 
-        $createdUser = $user->create();
+        $createdUser = $user->create(['activate'=>'false']);
         $this->assertInstanceOf(\Okta\Users\User::class, $createdUser, "Creating a user does not provide you with a `User` object");
 
         $getUserById = (new \Okta\Users\User())->get($createdUser->getId());
@@ -86,6 +86,7 @@ class UsersTest extends BaseIntegrationTestCase
             $this->assertContains('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals(174, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
             $this->assertEquals('/api/v1/users', $requests[0]->getUri()->getPath(), 'Creating a user does not submit to correct path.');
+            $this->assertEquals('activate=false', $requests[0]->getUri()->getQuery(), 'The query param `activate` was not set to `false`.');
 
             //2: Validate the get by id request
             $this->assertEquals('GET', $requests[1]->getMethod(), 'Did not submit a `GET` request for getting a user by id.');

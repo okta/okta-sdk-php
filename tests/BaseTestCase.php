@@ -78,4 +78,10 @@ class BaseTestCase extends TestCase
 
     }
 
+    public static function tearDownAfterClass()
+    {
+        parent::tearDownAfterClass();
+        \Okta\Client::destroy();
+    }
+
 }
