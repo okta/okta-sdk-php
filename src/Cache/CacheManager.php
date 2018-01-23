@@ -100,8 +100,9 @@ abstract class CacheManager
      *
      * @param UriInterface     $uri
      * @param AbstractResource $resource
+     * @return void
      */
-    public function delete(UriInterface $uri, AbstractResource $resource): void
+    public function delete(UriInterface $uri, AbstractResource $resource)
     {
         $this->cachePool->deleteItem($this->createCacheKey($uri));
 
@@ -119,6 +120,7 @@ abstract class CacheManager
                 $this->cachePool->deleteItem($this->createCacheKey($uri));
             }
         }
+
     }
 
 }
