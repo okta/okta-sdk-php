@@ -95,6 +95,12 @@ abstract class CacheManager
         return $cacheItem;
     }
 
+    /**
+     * Delete item from cache. This will also delete all linked items from cache as well.
+     *
+     * @param UriInterface     $uri
+     * @param AbstractResource $resource
+     */
     public function delete(UriInterface $uri, AbstractResource $resource): void
     {
         $this->cachePool->deleteItem($this->createCacheKey($uri));
