@@ -201,11 +201,13 @@ class DefaultDataStore
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
+        $resource = new $returnType(null, $result);
 
         $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheManager->delete($uri, $resource);
         $cacheManager->save($uri, $result);
 
-        return new $returnType(null, $result);
+        return $resource;
     }
 
     /**

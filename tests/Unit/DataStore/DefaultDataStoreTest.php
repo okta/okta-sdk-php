@@ -344,6 +344,78 @@ class DefaultDataStoreTest extends TestCase
         );
     }
 
+    /** @test */
+    public function saving_a_resource_will_clear_all_linked_resources()
+    {
+        $mockReturns = [
+            [
+                'getStatusCode' => 201,
+                'getBody' => '{"id": "abc123", "profile": {"firstName": "Okta"}, "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+            ],
+            [
+                'getStatusCode' => 200,
+                'getBody' => '{"id": "abc123", "profile": {"firstName": "OktaDev"}, "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}, "anotherLink": {"href": "http://example.com/abc123"}}}'
+            ]
+        ];
+
+        $httpClient = new \Http\Mock\Client;
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+            }
+            $httpClient->addResponse($response);
+        }
+
+
+        $client = (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+
+        $user = new \Okta\Users\User();
+        $profile = $user->getProfile();
+        $profile->setFirstName('Okta');
+        $user->setProfile($profile);
+        /** @var \Okta\Users\User $user */
+        $user = $user->create();
+
+        $cacheManager = $client->getCacheManager();
+        $cacheManager->save($dataStore->getUriFactory()->createUri('http://example.com/abc123'), new \stdClass());
+
+        $this->assertTrue(
+            $cacheManager->pool()->hasItem(
+                $cacheManager->createCacheKey(
+                    $dataStore->getUriFactory()->createUri('http://example.com/abc123')
+                )
+            )
+        );
+
+        $profile = $user->getProfile();
+        $profile->setFirstName('OktaDev');
+        $user->setProfile($profile);
+        $user->save();
+
+
+        $this->assertFalse(
+            $cacheManager->pool()->hasItem(
+                $cacheManager->createCacheKey(
+                    $dataStore->getUriFactory()->createUri('http://example.com/abc123')
+                )
+            )
+        );
+
+        $this->assertEquals(
+            'OktaDev',
+            $user->getProfile()->getFirstName(),
+            'The cache was not updated'
+        );
+    }
+
 
 
 
