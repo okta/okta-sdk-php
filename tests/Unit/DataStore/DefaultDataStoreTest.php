@@ -180,6 +180,173 @@ class DefaultDataStoreTest extends TestCase
 
     }
 
+
+    /** @test */
+    public function getting_a_resource_will_pull_from_cache_the_second_time_its_requested()
+    {
+        $mockReturns = [
+            [
+                'getStatusCode' => 200,
+                'getBody' => '{"id": "abc123"}'
+            ],
+            [
+                'getStatusCode' => 200,
+                'getBody' => '{"id": "xyz789"}'
+            ]
+        ];
+
+        $httpClient = new \Http\Mock\Client;
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+            }
+            $httpClient->addResponse($response);
+        }
+
+
+        $client = (new \Okta\ClientBuilder())
+            ->setHttpClient($httpClient)
+            ->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+
+        $response = $dataStore->getResource(
+            '123',
+            \Okta\Users\User::class,
+            'users',
+            ['query'=>['limit'=>1]]
+
+        );
+
+        $this->assertEquals('abc123', $response->getId(), 'The ID did not return what was expected');
+
+        $response = $dataStore->getResource(
+            '123',
+            \Okta\Users\User::class,
+            'users',
+            ['query'=>['limit'=>1]]
+
+        );
+        $this->assertEquals('abc123', $response->getId(), 'It appears the cache was not hit.');
+
+    }
+
+    /** @test */
+    public function create_resource_will_store_item_in_cache()
+    {
+        $mockReturns = [
+            [
+                'getStatusCode' => 201,
+                'getBody' => '{"id": "abc123", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+            ],
+            [
+                'getStatusCode' => 200,
+                'getBody' => '{"id": "xyz789", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/xyz789"}}}'
+            ]
+        ];
+
+        $httpClient = new \Http\Mock\Client;
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+            }
+            $httpClient->addResponse($response);
+        }
+
+
+        $client = (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+
+        $user = new \Okta\Users\User();
+        $profile = $user->getProfile();
+        $profile->setFirstName('Okta');
+        $user->setProfile($profile);
+        $user = $user->create();
+
+        $response = $dataStore->getResource(
+            $user->getId(),
+            \Okta\Users\User::class,
+            '/users'
+
+        );
+        $this->assertEquals('abc123', $response->getId(), 'It appears the cache was not hit.');
+
+
+    }
+
+
+    /** @test */
+    public function will_delete_item_from_cache_when_deleting_resource()
+    {
+        $mockReturns = [
+            [
+                'getStatusCode' => 201,
+                'getBody' => '{"id": "abc123", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+            ],
+            [
+                'getStatusCode' => 204,
+                'getBody' => ''
+            ]
+        ];
+
+        $httpClient = new \Http\Mock\Client;
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+            }
+            $httpClient->addResponse($response);
+        }
+
+
+        $client = (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+
+        $user = new \Okta\Users\User();
+        $profile = $user->getProfile();
+        $profile->setFirstName('Okta');
+        $user->setProfile($profile);
+        /** @var \Okta\Users\User $user */
+        $user = $user->create();
+
+        $cacheManager = $client->getCacheManager();
+        $this->assertTrue(
+            $cacheManager->pool()->hasItem(
+                $cacheManager->createCacheKey(
+                    $dataStore->getUriFactory()->createUri("https://dev.okta.com/api/v1/users/abc123")
+                )
+            )
+        );
+
+        $user->delete();
+
+        $this->assertFalse(
+            $cacheManager->pool()->hasItem(
+                $cacheManager->createCacheKey(
+                    $dataStore->getUriFactory()->createUri("https://dev.okta.com/api/v1/users/abc123")
+                )
+            )
+        );
+    }
+
+
+
+
     /**
      * @param array $returns
      *

@@ -17,6 +17,7 @@
 
 namespace Okta\DataStore;
 
+use Cache\Adapter\Common\CacheItem;
 use function GuzzleHttp\Psr7\build_query;
 use function GuzzleHttp\Psr7\parse_query;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
@@ -70,6 +71,11 @@ class DefaultDataStore
     private $baseUrl;
 
     /**
+     * @var \Okta\Cache\CacheManager The CacheManager Instance from the Client.
+     */
+    private $cacheManager;
+
+    /**
      * DefaultDataStore constructor.
      *
      * @param string          $token
@@ -94,6 +100,7 @@ class DefaultDataStore
         $this->messageFactory = MessageFactoryDiscovery::find();
 
         $this->baseUrl = $this->organizationUrl . '/api/v1';
+
     }
 
     /**
@@ -135,7 +142,15 @@ class DefaultDataStore
             $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
         }
 
-        $result = $this->executeRequest('GET', $uri);
+        $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheKey = $cacheManager->createCacheKey($uri);
+
+        if(! $cacheManager->pool()->hasItem($cacheKey)) {
+            $result = $this->executeRequest('GET', $uri);
+            $cacheManager->save($uri, $result);
+        } else {
+            $result = $cacheManager->pool()->getItem($cacheKey)->get();
+        }
 
         return new $className(null, $result);
     }
@@ -187,6 +202,9 @@ class DefaultDataStore
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
 
+        $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheManager->save($uri, $result);
+
         return new $returnType(null, $result);
     }
 
@@ -205,6 +223,9 @@ class DefaultDataStore
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
 
+        $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheManager->save($uri, $result);
+
         return new $returnType(null, $result);
     }
 
@@ -222,6 +243,9 @@ class DefaultDataStore
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('DELETE', $uri);
+
+        $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheManager->delete($uri, $resource);
 
         return $result;
     }
@@ -348,7 +372,6 @@ class DefaultDataStore
         $result = array_replace_recursive($currentQueryParts, $result);
         return build_query($result);
     }
-
 
     /**
      * Get the current PluginClient instance.

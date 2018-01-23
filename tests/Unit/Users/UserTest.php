@@ -88,6 +88,9 @@ class UserTest extends BaseUnitTestCase
     },
     "changePassword": {
       "href": "https://your-domain.okta.com/api/v1/users/00ub0oNGTSWTBKOLGLNR/credentials/change_password"
+    },
+    "self": {
+      "href": "https://your-domain.okta.com/api/v1/users/00ub0oNGTSWTBKOLGLNR"
     }
   },
   "_embedded": {
