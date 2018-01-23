@@ -103,10 +103,12 @@ abstract class CacheManager
 
         if($links) {
             foreach ($links as $link) {
-                $uri = Client::getInstance()
-                    ->getDataStore()
-                    ->getUriFactory()
-                    ->createUri($link->href);
+                if(is_object($link) && property_exists($link, 'href')) {
+                    $uri = Client::getInstance()
+                        ->getDataStore()
+                        ->getUriFactory()
+                        ->createUri($link->href);
+                }
 
                 $this->cachePool->deleteItem($this->createCacheKey($uri));
             }
