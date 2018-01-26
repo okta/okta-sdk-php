@@ -297,14 +297,21 @@ class DefaultDataStore
         if (!is_array($result)) {
             switch($method) {
                 case 'GET':
-                    $cacheManager->save($uri, $result);
+                    if(null !== $result) {
+                        $cacheManager->save($uri, $result);
+                    }
                     break;
                 case 'POST':
-                    $cacheManager->delete($uri, $result);
-                    $cacheManager->save($uri, $result);
+                    if(null !== $result) {
+                        $cacheManager->delete($uri, $result);
+                        $cacheManager->save($uri, $result);
+                    }
                     break;
                 case 'DELETE':
-                    $cacheManager->delete($uri, $this->toStdClass($this->resource));
+                    if(null !== $this->resource) {
+                        $cacheManager->delete($uri, $this->toStdClass($this->resource));
+                    }
+                    break;
             }
         }
         return $result;
