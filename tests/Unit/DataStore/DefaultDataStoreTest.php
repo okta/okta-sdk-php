@@ -416,7 +416,75 @@ class DefaultDataStoreTest extends TestCase
         );
     }
 
+    /** @test */
+    public function calling_execute_request_through_resource_method_will_update_cache()
+    {
+        $mockReturns = [
+            [
+                'getStatusCode' => 201,
+                'getBody' => '{"id": "abc123", "status": "PENDING", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+            ],
+            [
+                'getStatusCode' => 200,
+                'getBody' => '{"id": "abc123", "status": "ACTIVE", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+            ]
+        ];
 
+        $httpClient = new \Http\Mock\Client;
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+            }
+            $httpClient->addResponse($response);
+        }
+
+
+        $client = (new \Okta\ClientBuilder())
+            ->setOrganizationUrl('https://dev.okta.com')
+            ->setToken('abc123')
+            ->setHttpClient($httpClient)
+            ->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+
+        $cacheManager = $client->getCacheManager();
+
+        $this->assertFalse(
+            $cacheManager->pool()->hasItem(
+                $cacheManager->createCacheKey(
+                    $dataStore->getUriFactory()->createUri("https://dev.okta.com/api/v1/users/abc123")
+                )
+            )
+        );
+
+        $user = new \Okta\Users\User();
+        $profile = $user->getProfile();
+        $profile->setFirstName('Okta');
+        $user->setProfile($profile);
+        /** @var \Okta\Users\User $user */
+        $user = $user->create();
+
+
+
+        $this->assertEquals(
+            'PENDING',
+            $user->getStatus(),
+            'The cache was not setup correctly for test.'
+        );
+
+        $user->activate(false);
+
+        $user = (new \Okta\Users\User())->get('abc123');
+
+        $this->assertEquals(
+            'ACTIVE',
+            $user->getStatus(),
+            'The cache was not updated during a user activate method.'
+        );
+    }
+    
 
 
     /**

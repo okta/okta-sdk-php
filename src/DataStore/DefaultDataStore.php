@@ -76,6 +76,11 @@ class DefaultDataStore
     private $cacheManager;
 
     /**
+     * @var AbstractResource A place to temporally store the resource we are working with.
+     */
+    private $resource;
+
+    /**
      * DefaultDataStore constructor.
      *
      * @param string          $token
@@ -142,15 +147,7 @@ class DefaultDataStore
             $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
         }
 
-        $cacheManager = Client::getInstance()->getCacheManager();
-        $cacheKey = $cacheManager->createCacheKey($uri);
-
-        if(! $cacheManager->pool()->hasItem($cacheKey)) {
-            $result = $this->executeRequest('GET', $uri);
-            $cacheManager->save($uri, $result);
-        } else {
-            $result = $cacheManager->pool()->getItem($cacheKey)->get();
-        }
+        $result = $this->executeRequest('GET', $uri);
 
         return new $className(null, $result);
     }
@@ -198,14 +195,11 @@ class DefaultDataStore
      */
     public function saveResource($href, $resource, $returnType)
     {
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
         $resource = new $returnType(null, $result);
-
-        $cacheManager = Client::getInstance()->getCacheManager();
-        $cacheManager->delete($uri, $resource);
-        $cacheManager->save($uri, $result);
 
         return $resource;
     }
@@ -221,12 +215,10 @@ class DefaultDataStore
      */
     public function createResource($href, $resource, $returnType)
     {
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
-
-        $cacheManager = Client::getInstance()->getCacheManager();
-        $cacheManager->save($uri, $result);
 
         return new $returnType(null, $result);
     }
@@ -241,13 +233,10 @@ class DefaultDataStore
      */
     public function deleteResource($href, $resource)
     {
-
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('DELETE', $uri);
-
-        $cacheManager = Client::getInstance()->getCacheManager();
-        $cacheManager->delete($uri, $resource);
 
         return $result;
     }
@@ -265,6 +254,13 @@ class DefaultDataStore
      */
     public function executeRequest($method, UriInterface $uri, $body = '', array $options = [])
     {
+        $cacheManager = $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheKey = $cacheManager->createCacheKey($uri);
+
+        if('GET' == $method && $cacheManager->pool()->hasItem($cacheKey)) {
+            return $cacheManager->pool()->getItem($cacheKey)->get();
+        }
+
         $headers = [];
         $headers['Accept'] = 'application/json';
 
@@ -298,6 +294,19 @@ class DefaultDataStore
             throw new ResourceException($error);
         }
 
+        if (!is_array($result)) {
+            switch($method) {
+                case 'GET':
+                    $cacheManager->save($uri, $result);
+                    break;
+                case 'POST':
+                    $cacheManager->delete($uri, $result);
+                    $cacheManager->save($uri, $result);
+                    break;
+                case 'DELETE':
+                    $cacheManager->delete($uri, $this->toStdClass($this->resource));
+            }
+        }
         return $result;
     }
 
