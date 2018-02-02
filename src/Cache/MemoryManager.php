@@ -22,7 +22,7 @@ use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Memory\MemoryAdapter;
 
-class FilesystemManager extends CacheManager
+class MemoryManager extends CacheManager
 {
 
     public function __construct(AbstractAdapter $adapter = null)

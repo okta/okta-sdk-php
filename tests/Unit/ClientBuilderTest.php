@@ -15,7 +15,7 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Cache\FilesystemManager;
+use Okta\Cache\MemoryManager;
 use Okta\Client;
 use Okta\ClientBuilder;
 use PHPUnit\Framework\TestCase;
@@ -243,12 +243,12 @@ class ClientBuilderTest extends TestCase
     }
 
     /** @test */
-    public function cache_manager_is_defaulted_to_filesystem_manager()
+    public function cache_manager_is_defaulted_to_memory_manager()
     {
         $clientBuilder = new ClientBuilder();
         $client = $clientBuilder->build();
 
-        $this->assertInstanceOf(FilesystemManager::class, $client->getCacheManager(), 'The client did not default to the Filesystem Cache Manager.');
+        $this->assertInstanceOf(MemoryManager::class, $client->getCacheManager(), 'The client did not default to the Memory Cache Manager.');
     }
 
     /** @test */

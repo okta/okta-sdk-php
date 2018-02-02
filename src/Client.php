@@ -19,7 +19,7 @@ namespace Okta;
 
 use Http\Client\HttpClient;
 use Okta\Cache\CacheManager;
-use Okta\Cache\FilesystemManager;
+use Okta\Cache\MemoryManager;
 use Okta\DataStore\DefaultDataStore;
 
 /**
@@ -87,7 +87,7 @@ class Client
         );
 
         if(null === $this->cacheManager) {
-            $this->cacheManager = new FilesystemManager();
+            $this->cacheManager = new MemoryManager();
         }
 
         self::$instance = $this;
