@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class HardwareFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const CREDENTIAL_ID = 'credentialId';

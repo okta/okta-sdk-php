@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Logs;
 
+
 class LogOutcome extends \Okta\Resource\AbstractResource
 {
     const REASON = 'reason';

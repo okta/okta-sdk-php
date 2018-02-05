@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 {
     const LOGIN_URL = 'loginUrl';

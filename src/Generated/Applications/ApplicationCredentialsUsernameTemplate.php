@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

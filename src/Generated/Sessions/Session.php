@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Sessions;
 
+
 class Session extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -42,14 +43,14 @@ class Session extends \Okta\Resource\AbstractResource
                         "/sessions"
                     );
     }
-    public function delete()
+            public function delete()
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/sessions",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/sessions",
+                    $this
+                );
     }
         
     /**
@@ -169,7 +170,7 @@ class Session extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null

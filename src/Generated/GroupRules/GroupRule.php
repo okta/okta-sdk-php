@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\GroupRules;
 
+
 class GroupRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

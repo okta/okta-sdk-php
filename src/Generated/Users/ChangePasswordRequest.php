@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class ChangePasswordRequest extends \Okta\Resource\AbstractResource
 {
     const NEW_PASSWORD = 'newPassword';

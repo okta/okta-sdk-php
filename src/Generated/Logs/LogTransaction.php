@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Logs;
 
+
 class LogTransaction extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
