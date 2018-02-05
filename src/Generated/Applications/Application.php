@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -510,26 +511,6 @@ class Application extends \Okta\Resource\AbstractResource
                 ->executeRequest('GET', $uri);
 
         return new \Okta\Applications\ApplicationGroupAssignment(null, $body);
-    }
-
-
-    /**
-    * Generates a new X.509 certificate for an application key credential
-    *
-    *
-    * @return mixed|null
-    */
-    public function generateApplicationKey()
-    {
-        $uri = "/api/v1/apps/{$this->getId()}/credentials/keys/generate";
-        $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $body = $this
-                ->getDataStore()
-                ->executeRequest('POST', $uri);
-
-        return new \Okta\Applications\JsonWebKey(null, $body);
     }
 
 

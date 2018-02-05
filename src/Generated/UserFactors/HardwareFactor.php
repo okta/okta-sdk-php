@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class HardwareFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';

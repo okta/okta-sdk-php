@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationLicensing extends \Okta\Resource\AbstractResource
 {
     const SEAT_COUNT = 'seatCount';

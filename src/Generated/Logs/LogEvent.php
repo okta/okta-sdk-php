@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Logs;
 
+
 class LogEvent extends \Okta\Resource\AbstractResource
 {
     const UUID = 'uuid';
@@ -236,4 +237,5 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 }

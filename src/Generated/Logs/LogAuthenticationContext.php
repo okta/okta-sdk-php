@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Logs;
 
+
 class LogAuthenticationContext extends \Okta\Resource\AbstractResource
 {
     const ISSUER = 'issuer';

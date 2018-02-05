@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Groups;
 
+
 class GroupProfile extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';
