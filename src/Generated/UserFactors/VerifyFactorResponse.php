@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class VerifyFactorResponse extends \Okta\Resource\AbstractResource
 {
     const LINKS = '_links';
@@ -26,24 +27,27 @@ class VerifyFactorResponse extends \Okta\Resource\AbstractResource
     const FACTOR_RESULT_MESSAGE = 'factorResultMessage';
 
 
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the expiresAt.
      *
@@ -53,21 +57,23 @@ class VerifyFactorResponse extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::EXPIRES_AT);
     }
+
     /**
      * Get the factorResult.
      *
      * @return string
      */
-    public function getFactorResult(): string
+    public function getFactorResult()
     {
         return $this->getProperty(self::FACTOR_RESULT);
     }
+
     /**
      * Get the factorResultMessage.
      *
      * @return string
      */
-    public function getFactorResultMessage(): string
+    public function getFactorResultMessage()
     {
         return $this->getProperty(self::FACTOR_RESULT_MESSAGE);
     }

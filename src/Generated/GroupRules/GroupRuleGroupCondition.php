@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\GroupRules;
 
+
 class GroupRuleGroupCondition extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';
     const INCLUDE = 'include';
+
 
 
     /**
@@ -28,10 +30,11 @@ class GroupRuleGroupCondition extends \Okta\Resource\AbstractResource
      *
      * @return array
      */
-    public function getExclude(): array
+    public function getExclude()
     {
         return $this->getProperty(self::EXCLUDE);
     }
+
     /**
     * Set the exclude.
     *
@@ -47,15 +50,17 @@ class GroupRuleGroupCondition extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the include.
      *
      * @return array
      */
-    public function getInclude(): array
+    public function getInclude()
     {
         return $this->getProperty(self::INCLUDE);
     }
+
     /**
     * Set the include.
     *

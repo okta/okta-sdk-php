@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class Role extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -29,42 +30,47 @@ class Role extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
      * Get the label.
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -74,24 +80,27 @@ class Role extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the description.
      *
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->getProperty(self::DESCRIPTION);
     }
+
     /**
     * Set the description.
     *
@@ -107,6 +116,7 @@ class Role extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *

@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
+
 class AutoLoginApplication extends \Okta\Applications\Application
 {
     const SETTINGS = 'settings';
     const CREDENTIALS = 'credentials';
+
 
 
     /**
@@ -37,6 +39,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
         );
     }
 
+
     /**
      * Set the settings.
      *
@@ -52,6 +55,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -65,6 +69,7 @@ class AutoLoginApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

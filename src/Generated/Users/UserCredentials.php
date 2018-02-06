@@ -17,11 +17,13 @@
 
 namespace Okta\Generated\Users;
 
+
 class UserCredentials extends \Okta\Resource\AbstractResource
 {
     const PASSWORD = 'password';
     const PROVIDER = 'provider';
     const RECOVERY_QUESTION = 'recovery_question';
+
 
 
     /**
@@ -38,6 +40,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the password.
      *
@@ -53,6 +56,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the provider.
      *
@@ -66,6 +70,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the provider.
@@ -82,6 +87,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the recovery_question.
      *
@@ -95,6 +101,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the recovery_question.

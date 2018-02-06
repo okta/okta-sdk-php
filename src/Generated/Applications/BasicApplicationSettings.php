@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
+
 class BasicApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';
+
 
 
     /**
@@ -35,6 +37,7 @@ class BasicApplicationSettings extends \Okta\Applications\ApplicationSettings
             $options
         );
     }
+
 
     /**
      * Set the app.

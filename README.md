@@ -23,6 +23,17 @@ $client = (new \Okta\ClientBuilder())
             ->build();
 ```
 
+By default, The client builder will look for a file in your home directory with the Okta properties you want to use.
+This file should be placed at  `~/.okta/okta.yaml`. If at this location, you do not need to define the location 
+during initialization. If you are unable to place the file there, or you are on a Windows based machine, you will 
+have to define the location of this file manually if you want to use the file.
+
+```php
+$client = (new \Okta\ClientBuilder())
+            ->setConfigFileLocation('path/to/okta.yaml')
+            ->build();
+```
+
 If you need to override any of the defaults from your `~/.okta/okta.yaml` file, or you do not have one, you can set 
 the properties on the client builder directly. The minimum required properties are your token and organization url.
 
@@ -130,6 +141,31 @@ $firstUser = $users->first();
 To start at the second entry and get the next two items:
 ```php
 $users = (new \Okta\Okta)->getUsers(['query' => ['limit' = 2, 'after' = 2]]);
+```
+
+## Caching
+The Okta PHP SDK allows any resource with a self link to be cached by default. The SDK uses any PSR-6 
+caching adaptor that you would like to use. By default, we ship with the 
+[filesystem cache pool](https://github.com/php-cache/filesystem-adapter) with the 
+[flysystem memory adaptor](https://github.com/thephpleague/flysystem-memory).  By doing this, there is no 
+need to configure anything, however, if you would like to run with your own Cache strategy, or change how 
+the default works, you are able to swap out the Cache Manager. Create a new Cache Manager that extends the 
+base `\Okta\Cache\CacheManager` class, and call the parent `setCachePool()` method. This should be called
+with an instance of a PSR-6 compliant cache pool implementation.  Once created, you can swap out the manager
+using the `ClientBuilder` class
+
+```php
+$clientBuilder = new ClientBuilder();
+        $clientBuilder->setCacheManager(new MyCacheManager());
+        $client = $clientBuilder->build();
+```
+
+### Contents of the okta.yaml File
+```php
+okta:
+  client:
+    orgUrl: null
+    token: null
 ```
 
 For information on what can go into the query property, visit 

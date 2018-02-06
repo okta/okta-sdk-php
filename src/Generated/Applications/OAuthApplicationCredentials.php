@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
+
 class OAuthApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const OAUTH_CLIENT = 'oauthClient';
+
 
 
     /**
@@ -35,6 +37,7 @@ class OAuthApplicationCredentials extends \Okta\Applications\ApplicationCredenti
             $options
         );
     }
+
 
     /**
      * Set the oauthClient.

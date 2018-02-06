@@ -1,0 +1,34 @@
+{
+  "ipChain": [
+    {
+      "ip": "10.12.13.123",
+      "geographicalContext": {
+        "city": "Dayton",
+        "state": "Ohio",
+        "country": "United States",
+        "postalCode": "45439",
+        "geolocation": {
+          "lat": 39.8114392,
+          "lon": -84.2721966
+        }
+      },
+      "version": "V4",
+      "source": null
+    },
+    {
+      "ip": "10.12.13.3",
+      "geographicalContext": {
+        "city": "Ashburn",
+        "state": "Virginia",
+        "country": "United States",
+        "postalCode": "20149",
+        "geolocation": {
+          "lat": 39.0481,
+          "lon": -77.4728
+        }
+      },
+      "version": "V4",
+      "source": null
+    }
+  ]
+}

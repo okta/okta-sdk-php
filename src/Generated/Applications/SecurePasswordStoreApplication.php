@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SecurePasswordStoreApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';
@@ -24,6 +25,7 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
     const CREDENTIALS = 'credentials';
 
     private $name = 'template_sps';
+
 
     /**
      * Get the settings.
@@ -38,6 +40,7 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -54,6 +57,7 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -67,6 +71,7 @@ class SecurePasswordStoreApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the credentials.

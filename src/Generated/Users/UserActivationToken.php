@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\Users;
 
+
 class UserActivationToken extends \Okta\Resource\AbstractResource
 {
     const ACTIVATION_URL = 'activationUrl';
     const ACTIVATION_TOKEN = 'activationToken';
+
 
 
     /**
@@ -28,16 +30,17 @@ class UserActivationToken extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getActivationUrl(): string
+    public function getActivationUrl()
     {
         return $this->getProperty(self::ACTIVATION_URL);
     }
+
     /**
      * Get the activationToken.
      *
      * @return string
      */
-    public function getActivationToken(): string
+    public function getActivationToken()
     {
         return $this->getProperty(self::ACTIVATION_TOKEN);
     }

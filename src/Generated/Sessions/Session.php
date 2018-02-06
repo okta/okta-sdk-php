@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Sessions;
 
+
 class Session extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -42,33 +43,36 @@ class Session extends \Okta\Resource\AbstractResource
                         "/sessions"
                     );
     }
-    public function delete()
+            public function delete()
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/sessions",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/sessions",
+                    $this
+                );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the amr.
      *
      * @return array
      */
-    public function getAmr(): array
+    public function getAmr()
     {
         return $this->getProperty(self::AMR);
     }
+
     /**
      * Get the idp.
      *
@@ -83,42 +87,47 @@ class Session extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Get the login.
      *
      * @return string
      */
-    public function getLogin(): string
+    public function getLogin()
     {
         return $this->getProperty(self::LOGIN);
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the userId.
      *
      * @return string
      */
-    public function getUserId(): string
+    public function getUserId()
     {
         return $this->getProperty(self::USER_ID);
     }
+
     /**
      * Get the createdAt.
      *
@@ -128,6 +137,7 @@ class Session extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED_AT);
     }
+
     /**
      * Get the expiresAt.
      *
@@ -137,6 +147,7 @@ class Session extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::EXPIRES_AT);
     }
+
     /**
      * Get the lastFactorVerification.
      *
@@ -146,6 +157,7 @@ class Session extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_FACTOR_VERIFICATION);
     }
+
     /**
      * Get the lastPasswordVerification.
      *
@@ -158,7 +170,7 @@ class Session extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';
@@ -25,15 +26,17 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     const ACTIVATION_TOKEN = 'activationToken';
 
 
+
     /**
      * Get the answer.
      *
      * @return string
      */
-    public function getAnswer(): string
+    public function getAnswer()
     {
         return $this->getProperty(self::ANSWER);
     }
+
     /**
     * Set the answer.
     *
@@ -49,15 +52,17 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the passCode.
      *
      * @return string
      */
-    public function getPassCode(): string
+    public function getPassCode()
     {
         return $this->getProperty(self::PASS_CODE);
     }
+
     /**
     * Set the passCode.
     *
@@ -73,15 +78,17 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the nextPassCode.
      *
      * @return string
      */
-    public function getNextPassCode(): string
+    public function getNextPassCode()
     {
         return $this->getProperty(self::NEXT_PASS_CODE);
     }
+
     /**
     * Set the nextPassCode.
     *
@@ -97,15 +104,17 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the activationToken.
      *
      * @return string
      */
-    public function getActivationToken(): string
+    public function getActivationToken()
     {
         return $this->getProperty(self::ACTIVATION_TOKEN);
     }
+
     /**
     * Set the activationToken.
     *

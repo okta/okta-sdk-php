@@ -1,61 +1,62 @@
 language: php
-
 env:
   global:
-    - COVERAGE=false
-    - SETUP=basic
-    - DEPLOY_DOCS=false
-
+  - COVERAGE=false
+  - SETUP=basic
+  - DEPLOY_DOCS=false
 install:
-  - if [[ $SETUP = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
-  - if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
-  - if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable --prefer-lowest; fi
-
+- if [[ $SETUP = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction
+  --no-suggest; fi
+- if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction
+  --no-suggest --prefer-stable; fi
+- if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction
+  --no-suggest --prefer-stable --prefer-lowest; fi
 before_script:
-  - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
-  - mkdir -p ~/.okta
-
+- mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
+- mkdir -p ~/.okta
 script:
-  - vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
-
+- vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
 after_success:
-  - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
-  - if [[ $DEPLOY_DOCS = 'true' ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar; fi;
-  - if [[ $DEPLOY_DOCS = 'true' ]]; then chmod +x ./scripts/prepare-docs.sh; fi
-  - if [[ $DEPLOY_DOCS = 'true' ]]; then ./scripts/prepare-docs.sh; fi
-
+- if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
+- if [[ $DEPLOY_DOCS = 'true' ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar;
+  fi;
+- if [[ $DEPLOY_DOCS = 'true' ]]; then chmod +x ./scripts/prepare-docs.sh; fi
+- if [[ $DEPLOY_DOCS = 'true' ]]; then ./scripts/prepare-docs.sh; fi
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: full/build/gh-pages
-    email: deploy-php@okta.com
-    name: PHP Deployment Bot
-    on:
-      php: 7.1
-      condition: $DEPLOY_DOCS = true
-      tags: true
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    local_dir: full/build/gh-pages
-    email: deploy-php@okta.com
-    name: PHP Deployment Bot
-    on:
-      php: 7.1
-      condition: $DEPLOY_DOCS = true
-      branch: develop
-
+- provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: full/build/gh-pages
+  email: deploy-php@okta.com
+  name: PHP Deployment Bot
+  on:
+    php: 7.1
+    condition: "$DEPLOY_DOCS = true"
+    tags: true
+- provider: pages
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  local_dir: full/build/gh-pages
+  email: deploy-php@okta.com
+  name: PHP Deployment Bot
+  on:
+    php: 7.1
+    condition: "$DEPLOY_DOCS = true"
+    branch: develop
 matrix:
   include:
-    - php: 7.0
-      env: SETUP=lowest
-    - php: 7.0
-      env: SETUP=stable
-    - php: 7.1
-      env: SETUP=lowest
-    - php: 7.1
-      env:
-        - COVERAGE=true
-        - SETUP=stable
-        - DEPLOY_DOCS=true
+  - php: 7.0
+    env: SETUP=lowest
+  - php: 7.0
+    env: SETUP=stable
+  - php: 7.1
+    env: SETUP=lowest
+  - php: 7.1
+    env:
+    - COVERAGE=true
+    - SETUP=stable
+    - DEPLOY_DOCS=true
+notifications:
+  slack:
+    rooms:
+      secure: pPjnzjBbTuUFSMOKdJQfzQWk8XeCxCg7Y0cRds/DP0YRIDIPOOGzUTWdzJG4oKGmwVFmnlmqGBnC3JaufXmIj0wSw9p/YmAOV9cdaZ6ZaqpqghL6EnN2y3M5jMkmTq7A1vAAvPC8g/NLORiR4fOcgGLzNRgHVVRYIMPE840mWxpEnohfHB/8PquL2/wjlzBuPOJBieq9SAGxb25SPAwMTaP1vewX3CP/zT5IDqqeuULZzR94xNiVIkeYzniDjjmBMh1FYUXbUBhR08jUVLCuvUgk959fpowbWf4UcqwRmcnDGeGYTatvX36MbmLHRhOU1zRvMuMG+uOQwr7kWOqJya3mxcPf6IW0gwXs6TVvruInKjkhsZHyc5oVC4WKgWZ41cd+RRlLbRcLHIvALN1jhLFda/KLpfGUVGFwrVv61kPLGvExMIZMQCxNj7PIr5RZB8faYBfrT3hf2SvG4bDwhdzjc07lqzhGQWvCi12Rc0Yzmo+PuAA4crPCG2OfjAj1U4IyOznvuhXGMfHtQMy5ow6bW9w/q1HTMwNBtswY78hyTetf7FHYmEe29IUnL44Ecv/34FWuY+Hszb1KwPKVdx0g7D9gdWU6sZZSipNrhG84rYIIRTi0zSDlZBS0+0P7WQQsXRJCplQtxHOTgImWDzIXVzqX9kep/AvT0IiO4CY=

@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationSettings extends \Okta\Resource\AbstractResource
 {
     const APP = 'app';
     const NOTIFICATIONS = 'notifications';
+
 
 
     /**
@@ -37,6 +39,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the app.
      *
@@ -52,6 +55,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the notifications.
      *
@@ -65,6 +69,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the notifications.

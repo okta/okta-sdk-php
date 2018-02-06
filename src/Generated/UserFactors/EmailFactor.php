@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class EmailFactor extends \Okta\UserFactors\Factor
 {
     const PROFILE = 'profile';
+
 
 
     /**
@@ -35,6 +37,7 @@ class EmailFactor extends \Okta\UserFactors\Factor
             $options
         );
     }
+
 
     /**
      * Set the profile.

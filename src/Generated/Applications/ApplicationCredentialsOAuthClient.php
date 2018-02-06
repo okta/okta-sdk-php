@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 {
     const CLIENT_ID = 'client_id';
@@ -25,15 +26,17 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     const TOKEN_ENDPOINT_AUTH_METHOD = 'token_endpoint_auth_method';
 
 
+
     /**
      * Get the client_id.
      *
      * @return string
      */
-    public function getClientId(): string
+    public function getClientId()
     {
         return $this->getProperty(self::CLIENT_ID);
     }
+
     /**
     * Set the client_id.
     *
@@ -49,15 +52,17 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the client_secret.
      *
      * @return string
      */
-    public function getClientSecret(): string
+    public function getClientSecret()
     {
         return $this->getProperty(self::CLIENT_SECRET);
     }
+
     /**
     * Set the client_secret.
     *
@@ -73,15 +78,17 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the autoKeyRotation.
      *
      * @return bool
      */
-    public function getAutoKeyRotation(): bool
+    public function getAutoKeyRotation()
     {
         return $this->getProperty(self::AUTO_KEY_ROTATION);
     }
+
     /**
     * Set the autoKeyRotation.
     *
@@ -97,15 +104,17 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the token_endpoint_auth_method.
      *
      * @return string
      */
-    public function getTokenEndpointAuthMethod(): string
+    public function getTokenEndpointAuthMethod()
     {
         return $this->getProperty(self::TOKEN_ENDPOINT_AUTH_METHOD);
     }
+
     /**
     * Set the token_endpoint_auth_method.
     *

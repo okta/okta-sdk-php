@@ -17,12 +17,14 @@
 
 namespace Okta\Generated\Applications;
 
+
 class WsFederationApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';
     const SETTINGS = 'settings';
 
     private $name = 'template_wsfed';
+
 
     /**
      * Get the settings.
@@ -37,6 +39,7 @@ class WsFederationApplication extends \Okta\Applications\Application
             $options
         );
     }
+
 
     /**
      * Set the settings.

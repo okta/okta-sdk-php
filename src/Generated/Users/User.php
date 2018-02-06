@@ -59,16 +59,18 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
+        
     public function save()
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->saveResource(
-            "/users",
-            $this,
-            \Okta\Users\User::class
-        );
+                ->getDataStore()
+                ->saveResource(
+                    "/users",
+                    $this,
+                    \Okta\Users\User::class
+                );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -78,33 +80,37 @@ class User extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -114,6 +120,7 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the profile.
      *
@@ -127,6 +134,7 @@ class User extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the profile.
@@ -143,15 +151,17 @@ class User extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the activated.
      *
@@ -161,6 +171,7 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::ACTIVATED);
     }
+
     /**
      * Get the lastLogin.
      *
@@ -170,6 +181,7 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_LOGIN);
     }
+
     /**
      * Get the credentials.
      *
@@ -183,6 +195,7 @@ class User extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the credentials.
@@ -199,6 +212,7 @@ class User extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -208,6 +222,7 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the statusChanged.
      *
@@ -217,6 +232,7 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::STATUS_CHANGED);
     }
+
     /**
      * Get the passwordChanged.
      *
@@ -226,12 +242,13 @@ class User extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::PASSWORD_CHANGED);
     }
+
     /**
      * Get the transitioningToStatus.
      *
      * @return string
      */
-    public function getTransitioningToStatus(): string
+    public function getTransitioningToStatus()
     {
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
@@ -255,6 +272,7 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the AppLink object.
@@ -335,6 +353,7 @@ class User extends \Okta\Resource\AbstractResource
         return new \Okta\Users\ForgotPasswordResponse(null, $body);
     }
 
+
     /**
     * Get the Role object.
     *
@@ -394,6 +413,7 @@ class User extends \Okta\Resource\AbstractResource
         return $body;
     }
 
+
     /**
     * Get the Group object.
     *
@@ -415,7 +435,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null
@@ -435,7 +455,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
+    * 
     *
     *
     * @return mixed|null
@@ -452,6 +472,7 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the Group object.
@@ -673,6 +694,7 @@ class User extends \Okta\Resource\AbstractResource
         return $response->convertFromGenericFactor();
     }
 
+
     /**
     * Get the Factor object.
     *
@@ -692,6 +714,7 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
+
     /**
     * Get the Factor object.
     *
@@ -710,6 +733,7 @@ class User extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
+
 
     /**
     * Get the SecurityQuestion object.

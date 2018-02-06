@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\Users;
 
+
 class TempPassword extends \Okta\Resource\AbstractResource
 {
     const TEMP_PASSWORD = 'tempPassword';
+
 
 
     /**
@@ -27,7 +29,7 @@ class TempPassword extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getTempPassword(): string
+    public function getTempPassword()
     {
         return $this->getProperty(self::TEMP_PASSWORD);
     }

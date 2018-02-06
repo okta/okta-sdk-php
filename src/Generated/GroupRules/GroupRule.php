@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\GroupRules;
 
+
 class GroupRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -29,6 +30,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -39,6 +41,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     \Okta\GroupRules\GroupRule::class
                 );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -48,24 +51,27 @@ class GroupRule extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -81,15 +87,17 @@ class GroupRule extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -105,15 +113,17 @@ class GroupRule extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the actions.
      *
@@ -127,6 +137,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the actions.
@@ -143,6 +154,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the created.
      *
@@ -152,6 +164,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the conditions.
      *
@@ -165,6 +178,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the conditions.
@@ -181,6 +195,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *

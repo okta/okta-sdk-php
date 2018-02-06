@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class SecurityQuestion extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';
@@ -24,15 +25,17 @@ class SecurityQuestion extends \Okta\Resource\AbstractResource
     const QUESTION_TEXT = 'questionText';
 
 
+
     /**
      * Get the answer.
      *
      * @return string
      */
-    public function getAnswer(): string
+    public function getAnswer()
     {
         return $this->getProperty(self::ANSWER);
     }
+
     /**
     * Set the answer.
     *
@@ -48,15 +51,17 @@ class SecurityQuestion extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the question.
      *
      * @return string
      */
-    public function getQuestion(): string
+    public function getQuestion()
     {
         return $this->getProperty(self::QUESTION);
     }
+
     /**
     * Set the question.
     *
@@ -72,15 +77,17 @@ class SecurityQuestion extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the questionText.
      *
      * @return string
      */
-    public function getQuestionText(): string
+    public function getQuestionText()
     {
         return $this->getProperty(self::QUESTION_TEXT);
     }
+
     /**
     * Set the questionText.
     *

@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\Applications;
 
+
 class BasicApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';
     const AUTH_URL = 'authURL';
+
 
 
     /**
@@ -28,10 +30,11 @@ class BasicApplicationSettingsApplication extends \Okta\Applications\Application
      *
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->getProperty(self::URL);
     }
+
     /**
     * Set the url.
     *
@@ -47,15 +50,17 @@ class BasicApplicationSettingsApplication extends \Okta\Applications\Application
 
         return $this;
     }
+
     /**
      * Get the authURL.
      *
      * @return string
      */
-    public function getAuthUrl(): string
+    public function getAuthUrl()
     {
         return $this->getProperty(self::AUTH_URL);
     }
+
     /**
     * Set the authURL.
     *

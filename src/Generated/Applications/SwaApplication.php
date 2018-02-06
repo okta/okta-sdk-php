@@ -17,12 +17,14 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SwaApplication extends \Okta\Applications\BrowserPluginApplication
 {
     const NAME = 'name';
     const SETTINGS = 'settings';
 
     private $name = 'template_swa';
+
 
     /**
      * Get the settings.
@@ -37,6 +39,7 @@ class SwaApplication extends \Okta\Applications\BrowserPluginApplication
             $options
         );
     }
+
 
     /**
      * Set the settings.

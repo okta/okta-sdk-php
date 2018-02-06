@@ -17,11 +17,13 @@
 
 namespace Okta\Generated\Applications;
 
+
 class ApplicationVisibility extends \Okta\Resource\AbstractResource
 {
     const HIDE = 'hide';
     const APP_LINKS = 'appLinks';
     const AUTO_SUBMIT_TOOLBAR = 'autoSubmitToolbar';
+
 
 
     /**
@@ -38,6 +40,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
         );
     }
 
+
     /**
      * Set the hide.
      *
@@ -53,15 +56,17 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the appLinks.
      *
      * @return \stdClass
      */
-    public function getAppLinks(): \stdClass
+    public function getAppLinks()
     {
         return $this->getProperty(self::APP_LINKS);
     }
+
     /**
     * Set the appLinks.
     *
@@ -77,15 +82,17 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the autoSubmitToolbar.
      *
      * @return bool
      */
-    public function getAutoSubmitToolbar(): bool
+    public function getAutoSubmitToolbar()
     {
         return $this->getProperty(self::AUTO_SUBMIT_TOOLBAR);
     }
+
     /**
     * Set the autoSubmitToolbar.
     *

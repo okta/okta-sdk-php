@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SamlAttributeStatement extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';
@@ -25,15 +26,17 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
     const NAMESPACE = 'namespace';
 
 
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -49,15 +52,17 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *
@@ -73,15 +78,17 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the values.
      *
      * @return array
      */
-    public function getValues(): array
+    public function getValues()
     {
         return $this->getProperty(self::VALUES);
     }
+
     /**
     * Set the values.
     *
@@ -97,15 +104,17 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the namespace.
      *
      * @return string
      */
-    public function getNamespace(): string
+    public function getNamespace()
     {
         return $this->getProperty(self::NAMESPACE);
     }
+
     /**
     * Set the namespace.
     *

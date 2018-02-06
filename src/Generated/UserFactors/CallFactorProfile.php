@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class CallFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const PHONE_NUMBER = 'phoneNumber';
     const PHONE_EXTENSION = 'phoneExtension';
+
 
 
     /**
@@ -28,10 +30,11 @@ class CallFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getPhoneNumber(): string
+    public function getPhoneNumber()
     {
         return $this->getProperty(self::PHONE_NUMBER);
     }
+
     /**
     * Set the phoneNumber.
     *
@@ -47,15 +50,17 @@ class CallFactorProfile extends \Okta\UserFactors\FactorProfile
 
         return $this;
     }
+
     /**
      * Get the phoneExtension.
      *
      * @return string
      */
-    public function getPhoneExtension(): string
+    public function getPhoneExtension()
     {
         return $this->getProperty(self::PHONE_EXTENSION);
     }
+
     /**
     * Set the phoneExtension.
     *

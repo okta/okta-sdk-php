@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\Applications;
 
+
 class SamlApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const SIGN_ON = 'signOn';
+
 
 
     /**
@@ -35,6 +37,7 @@ class SamlApplicationSettings extends \Okta\Applications\ApplicationSettings
             $options
         );
     }
+
 
     /**
      * Set the signOn.

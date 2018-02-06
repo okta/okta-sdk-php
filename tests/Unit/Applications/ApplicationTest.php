@@ -456,30 +456,6 @@ class ApplicationTest extends BaseUnitTestCase
     }
 
     /** @test */
-    public function generate_application_key_makes_request_to_correct_endpoint()
-    {
-
-        $httpClient = $this->createNewHttpClient([
-            "getBody" => '{"created":"2015-12-10T18:56:23.000Z","expiresAt":"2017-12-10T18:56:22.000Z","x5c":["MIIDqDCCApCg"],"e":"AQAB","n":"mkC6yAJVvFwUlm","kid":"SIMcCQNY3uw","kty":"RSA","use":"sig","x5t#S256":"5GOpy9CQVt"}'
-        ]);
-
-        $app = $this->createModel($this->model, $this->modelType);
-
-        $key = $app->generateApplicationKey();
-
-        $request = $httpClient->getRequests();
-
-        $this->assertEquals('POST', $request[0]->getMethod());
-        $this->assertEquals(
-            "/api/v1/apps/{$this->testable->getId()}/credentials/keys/generate",
-            $request[0]->getUri()->getPath()
-        );
-
-        $this->assertInstanceOf(\Okta\Applications\JsonWebKey::class, $key);
-
-    }
-
-    /** @test */
     public function clone_application_key_makes_request_to_correct_endpoint()
     {
 

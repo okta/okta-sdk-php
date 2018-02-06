@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Applications;
 
+
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -47,6 +48,7 @@ class Application extends \Okta\Resource\AbstractResource
                     );
         return $application->convertFromGenericApplication();
     }
+
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -57,6 +59,7 @@ class Application extends \Okta\Resource\AbstractResource
                     \Okta\Applications\Application::class
                 );
     }
+
     public function delete()
     {
         return \Okta\Client::getInstance()
@@ -66,33 +69,37 @@ class Application extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-            /**
+        
+    /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the name.
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
      * Get the label.
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
+
     /**
     * Set the label.
     *
@@ -108,24 +115,27 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the _links.
      *
      * @return \stdClass
      */
-    public function getLinks(): \stdClass
+    public function getLinks()
     {
         return $this->getProperty(self::LINKS);
     }
+
     /**
      * Get the status.
      *
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->getProperty(self::STATUS);
     }
+
     /**
      * Get the created.
      *
@@ -135,15 +145,17 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::CREATED);
     }
+
     /**
      * Get the features.
      *
      * @return array
      */
-    public function getFeatures(): array
+    public function getFeatures()
     {
         return $this->getProperty(self::FEATURES);
     }
+
     /**
     * Set the features.
     *
@@ -159,6 +171,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the settings.
      *
@@ -172,6 +185,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the settings.
@@ -188,15 +202,17 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the _embedded.
      *
      * @return \stdClass
      */
-    public function getEmbedded(): \stdClass
+    public function getEmbedded()
     {
         return $this->getProperty(self::EMBEDDED);
     }
+
     /**
      * Get the licensing.
      *
@@ -210,6 +226,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the licensing.
@@ -226,15 +243,17 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the signOnMode.
      *
      * @return string
      */
-    public function getSignOnMode(): string
+    public function getSignOnMode()
     {
         return $this->getProperty(self::SIGN_ON_MODE);
     }
+
     /**
     * Set the signOnMode.
     *
@@ -250,6 +269,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the visibility.
      *
@@ -263,6 +283,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the visibility.
@@ -279,6 +300,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the credentials.
      *
@@ -292,6 +314,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the credentials.
@@ -308,6 +331,7 @@ class Application extends \Okta\Resource\AbstractResource
         
         return $this;
     }
+
     /**
      * Get the lastUpdated.
      *
@@ -317,6 +341,7 @@ class Application extends \Okta\Resource\AbstractResource
     {
         return $this->getDateProperty(self::LAST_UPDATED);
     }
+
     /**
      * Get the accessibility.
      *
@@ -330,6 +355,7 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
+
 
     /**
      * Set the accessibility.
@@ -386,6 +412,7 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $body;
     }
+
 
     /**
     * Get the AppUser object.
@@ -488,26 +515,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * Generates a new X.509 certificate for an application key credential
-    *
-    *
-    * @return mixed|null
-    */
-    public function generateApplicationKey()
-    {
-        $uri = "/api/v1/apps/{$this->getId()}/credentials/keys/generate";
-        $uri = $this->getDataStore()->buildUri(
-            $this->getDataStore()->getOrganizationUrl() . $uri
-        );
-        $body = $this
-                ->getDataStore()
-                ->executeRequest('POST', $uri);
-
-        return new \Okta\Applications\JsonWebKey(null, $body);
-    }
-
-
-    /**
     * Clones a X.509 certificate for an application key credential from a source application to target application.
     *
     *
@@ -546,6 +553,7 @@ class Application extends \Okta\Resource\AbstractResource
         return new \Okta\Applications\JsonWebKey(null, $body);
     }
 
+
     /**
     * Get the ApplicationGroupAssignment object.
     *
@@ -564,6 +572,7 @@ class Application extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
+
 
     /**
     * Get the JsonWebKey object.

@@ -17,6 +17,7 @@
 
 namespace Okta\Generated\Users;
 
+
 class AppLink extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -31,93 +32,103 @@ class AppLink extends \Okta\Resource\AbstractResource
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
 
+
     /**
      * Get the id.
      *
      * @return string
      */
-    public function getId(): string
+    public function getId()
     {
         return $this->getProperty(self::ID);
     }
+
     /**
      * Get the label.
      *
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->getProperty(self::LABEL);
     }
+
     /**
      * Get the hidden.
      *
      * @return bool
      */
-    public function getHidden(): bool
+    public function getHidden()
     {
         return $this->getProperty(self::HIDDEN);
     }
+
     /**
      * Get the appName.
      *
      * @return string
      */
-    public function getAppName(): string
+    public function getAppName()
     {
         return $this->getProperty(self::APP_NAME);
     }
+
     /**
      * Get the linkUrl.
      *
      * @return string
      */
-    public function getLinkUrl(): string
+    public function getLinkUrl()
     {
         return $this->getProperty(self::LINK_URL);
     }
+
     /**
      * Get the logoUrl.
      *
      * @return string
      */
-    public function getLogoUrl(): string
+    public function getLogoUrl()
     {
         return $this->getProperty(self::LOGO_URL);
     }
+
     /**
      * Get the sortOrder.
      *
      * @return int
      */
-    public function getSortOrder(): int
+    public function getSortOrder()
     {
         return $this->getProperty(self::SORT_ORDER);
     }
+
     /**
      * Get the appInstanceId.
      *
      * @return string
      */
-    public function getAppInstanceId(): string
+    public function getAppInstanceId()
     {
         return $this->getProperty(self::APP_INSTANCE_ID);
     }
+
     /**
      * Get the appAssignmentId.
      *
      * @return string
      */
-    public function getAppAssignmentId(): string
+    public function getAppAssignmentId()
     {
         return $this->getProperty(self::APP_ASSIGNMENT_ID);
     }
+
     /**
      * Get the credentialsSetup.
      *
      * @return bool
      */
-    public function getCredentialsSetup(): bool
+    public function getCredentialsSetup()
     {
         return $this->getProperty(self::CREDENTIALS_SETUP);
     }

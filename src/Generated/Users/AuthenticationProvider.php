@@ -17,10 +17,12 @@
 
 namespace Okta\Generated\Users;
 
+
 class AuthenticationProvider extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';
     const TYPE = 'type';
+
 
 
     /**
@@ -28,10 +30,11 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
      *
      * @return string
      */
-    public function getName(): string
+    public function getName()
     {
         return $this->getProperty(self::NAME);
     }
+
     /**
     * Set the name.
     *
@@ -47,15 +50,17 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
 
         return $this;
     }
+
     /**
      * Get the type.
      *
      * @return string
      */
-    public function getType(): string
+    public function getType()
     {
         return $this->getProperty(self::TYPE);
     }
+
     /**
     * Set the type.
     *

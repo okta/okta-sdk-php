@@ -18,6 +18,7 @@
 namespace Okta;
 
 use Http\Client\HttpClient;
+use Okta\Cache\CacheManager;
 use Symfony\Component\Yaml\Parser;
 
 /**
@@ -52,13 +53,20 @@ class ClientBuilder
     private $integrationUserAgent;
 
     /**
+     * @var CacheManager $cacheManager The CacheManager Instance to use for caching.
+     */
+    private $cacheManager;
+
+    /**
      * @var string $defaultFile Path from home directory to default yaml file.
      */
     private $defaultFile = '.okta/okta.yaml';
 
     public function __construct($yamlParser = null, $defaultFilePath = null)
     {
-        $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
+        if(function_exists('posix_getpwuid') && function_exists('posix_getuid')) {
+            $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
+        }
         if (null != $defaultFilePath) {
             $this->defaultFile = $defaultFilePath;
         }
@@ -140,6 +148,18 @@ class ClientBuilder
     }
 
     /**
+     * Set the CacheManager Instance.
+     *
+     * @param CacheManager $cacheManager The CacheManager instance that you want to use.
+     * @return ClientBuilder
+     */
+    public function setCacheManager(CacheManager $cacheManager): ClientBuilder
+    {
+        $this->cacheManager = $cacheManager;
+        return $this;
+    }
+
+    /**
      * Build the Okta client based on ClientBuilder settings.
      *
      * @return Client
@@ -154,7 +174,8 @@ class ClientBuilder
             $this->token,
             $this->organizationUrl,
             $this->httpClient,
-            $this->integrationUserAgent
+            $this->integrationUserAgent,
+            $this->cacheManager
         );
     }
 

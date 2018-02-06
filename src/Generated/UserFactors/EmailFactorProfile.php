@@ -17,9 +17,11 @@
 
 namespace Okta\Generated\UserFactors;
 
+
 class EmailFactorProfile extends \Okta\UserFactors\FactorProfile
 {
     const EMAIL = 'email';
+
 
 
     /**
@@ -27,10 +29,11 @@ class EmailFactorProfile extends \Okta\UserFactors\FactorProfile
      *
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->getProperty(self::EMAIL);
     }
+
     /**
     * Set the email.
     *
