@@ -1,0 +1,41 @@
+{
+  "id": "00ud9x0quh8RqQOKQ0h7",
+  "status": "STAGED",
+  "created": "2017-12-14T21:48:00.000Z",
+  "activated": null,
+  "statusChanged": null,
+  "lastLogin": null,
+  "lastUpdated": "2017-12-14T21:48:00.000Z",
+  "passwordChanged": "2017-12-14T21:48:00.000Z",
+  "profile": {
+    "firstName": "John",
+    "lastName": "Activate",
+    "mobilePhone": null,
+    "secondEmail": null,
+    "login": "john-activate@example.com",
+    "email": "john-activate@example.com"
+  },
+  "credentials": {
+    "password": {},
+    "emails": [
+      {
+        "value": "john-activate@example.com",
+        "status": "VERIFIED",
+        "type": "PRIMARY"
+      }
+    ],
+    "provider": {
+      "type": "OKTA",
+      "name": "OKTA"
+    }
+  },
+  "_links": {
+    "activate": {
+      "href": "https://php.oktapreview.com/api/v1/users/00ud9x0quh8RqQOKQ0h7/lifecycle/activate",
+      "method": "POST"
+    },
+    "self": {
+      "href": "https://php.oktapreview.com/api/v1/users/00ud9x0quh8RqQOKQ0h7"
+    }
+  }
+}

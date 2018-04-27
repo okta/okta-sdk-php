@@ -87,6 +87,8 @@ class AbstractCollection extends Collection
                     null !== $target->{$segment}))
             ) {
                 $target = $target->{$segment};
+            } elseif ($target instanceof AbstractResource) {
+                $target = $target->getProperty($segment);
             } else {
                 $target = value($default);
             }

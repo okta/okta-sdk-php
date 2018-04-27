@@ -16,6 +16,7 @@ before_script:
 - mkdir -p ~/.okta
 script:
 - vendor/bin/phpunit --verbose --coverage-clover build/logs/clover.xml
+- if [[ $TRAVIS_EVENT_TYPE = "cron" ]]; then bash ./scripts/cron-test.sh; fi
 after_success:
 - if [[ $COVERAGE = 'true' ]]; then bash <(curl -s https://codecov.io/bash); fi
 - if [[ $DEPLOY_DOCS = 'true' ]]; then wget -O sami.phar http://get.sensiolabs.org/sami.phar;
