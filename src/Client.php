@@ -18,6 +18,8 @@
 namespace Okta;
 
 use Http\Client\HttpClient;
+use Okta\Cache\CacheManager;
+use Okta\Cache\MemoryManager;
 use Okta\DataStore\DefaultDataStore;
 
 /**
@@ -52,29 +54,41 @@ class Client
     private $integrationUserAgent;
 
     /**
+     * @var CacheManager $cacheManager The CacheManager Instance to use for caching.
+     */
+    private $cacheManager;
+
+    /**
      * Create a new instance of Client.
      *
-     * @param string          $token
-     * @param string          $organizationUrl
-     * @param HttpClient|NULL $httpClient
-     * @param string|NULL     $integrationUserAgent
+     * @param string                    $token
+     * @param string                    $organizationUrl
+     * @param HttpClient|NULL           $httpClient
+     * @param string|NULL               $integrationUserAgent
+     * @param CacheManager|NULL         $cacheManager
      */
     public function __construct(
         string $token,
         string $organizationUrl,
         HttpClient $httpClient = null,
-        string $integrationUserAgent = null
+        string $integrationUserAgent = null,
+        CacheManager $cacheManager = null
     ) {
         $this->token = $token;
         $this->organizationUrl = $organizationUrl;
         $this->httpClient = $httpClient;
         $this->integrationUserAgent = $integrationUserAgent;
+        $this->cacheManager = $cacheManager;
 
         $this->dataStore = new DefaultDataStore(
             $this->token,
             $this->organizationUrl,
             $this->httpClient
         );
+
+        if(null === $this->cacheManager) {
+            $this->cacheManager = new MemoryManager();
+        }
 
         self::$instance = $this;
     }
@@ -107,6 +121,16 @@ class Client
     public function getDataStore(): DefaultDataStore
     {
         return $this->dataStore;
+    }
+
+    /**
+     * Get the Cache Manager from the Client.
+     *
+     * @return CacheManager
+     */
+    public function getCacheManager(): CacheManager
+    {
+        return $this->cacheManager;
     }
 
     /**

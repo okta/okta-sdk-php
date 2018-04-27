@@ -17,6 +17,7 @@
 
 namespace Okta\DataStore;
 
+use Cache\Adapter\Common\CacheItem;
 use function GuzzleHttp\Psr7\build_query;
 use function GuzzleHttp\Psr7\parse_query;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
@@ -70,6 +71,16 @@ class DefaultDataStore
     private $baseUrl;
 
     /**
+     * @var \Okta\Cache\CacheManager The CacheManager Instance from the Client.
+     */
+    private $cacheManager;
+
+    /**
+     * @var AbstractResource A place to temporally store the resource we are working with.
+     */
+    private $resource;
+
+    /**
      * DefaultDataStore constructor.
      *
      * @param string          $token
@@ -94,6 +105,7 @@ class DefaultDataStore
         $this->messageFactory = MessageFactoryDiscovery::find();
 
         $this->baseUrl = $this->organizationUrl . '/api/v1';
+
     }
 
     /**
@@ -183,11 +195,13 @@ class DefaultDataStore
      */
     public function saveResource($href, $resource, $returnType)
     {
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
+        $resource = new $returnType(null, $result);
 
-        return new $returnType(null, $result);
+        return $resource;
     }
 
     /**
@@ -202,6 +216,7 @@ class DefaultDataStore
      */
     public function createResource($href, $resource, $returnType, $query=[])
     {
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
         if(!empty($query)) {
             $uri = $uri->withQuery(http_build_query($query));
@@ -222,7 +237,7 @@ class DefaultDataStore
      */
     public function deleteResource($href, $resource)
     {
-
+        $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
         $result = $this->executeRequest('DELETE', $uri);
@@ -243,6 +258,13 @@ class DefaultDataStore
      */
     public function executeRequest($method, UriInterface $uri, $body = '', array $options = [])
     {
+        $cacheManager = $cacheManager = Client::getInstance()->getCacheManager();
+        $cacheKey = $cacheManager->createCacheKey($uri);
+
+        if('GET' == $method && $cacheManager->pool()->hasItem($cacheKey)) {
+            return $cacheManager->pool()->getItem($cacheKey)->get();
+        }
+
         $headers = [];
         $headers['Accept'] = 'application/json';
 
@@ -277,6 +299,26 @@ class DefaultDataStore
             throw new ResourceException($error);
         }
 
+        if (!is_array($result)) {
+            switch($method) {
+                case 'GET':
+                    if(null !== $result) {
+                        $cacheManager->save($uri, $result);
+                    }
+                    break;
+                case 'POST':
+                    if(null !== $result) {
+                        $cacheManager->delete($uri, $result);
+                        $cacheManager->save($uri, $result);
+                    }
+                    break;
+                case 'DELETE':
+                    if(null !== $this->resource) {
+                        $cacheManager->delete($uri, $this->toStdClass($this->resource));
+                    }
+                    break;
+            }
+        }
         return $result;
     }
 
@@ -353,7 +395,6 @@ class DefaultDataStore
         $result = array_replace_recursive($currentQueryParts, $result);
         return build_query($result);
     }
-
 
     /**
      * Get the current PluginClient instance.

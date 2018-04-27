@@ -151,6 +151,22 @@ class AppUser extends \Okta\Resource\AbstractResource
     }
 
     /**
+    * Set the profile.
+    *
+    * @param mixed $profile The value to set.
+    * @return self
+    */
+    public function setProfile($profile)
+    {
+        $this->setProperty(
+            self::PROFILE,
+            $profile
+        );
+
+        return $this;
+    }
+
+    /**
      * Get the lastSync.
      *
      * @return \Carbon\Carbon|null

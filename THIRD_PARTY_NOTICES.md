@@ -62,3 +62,7 @@ Dependencies:
 | theseer/tokenizer                   | 1.1.0    | BSD-3-Clause
 | tightenco/collect                   | v5.4.20  | MIT
 | webmozart/assert                    | 1.2.0    | MIT
+
+
+This project also includes modified code based on the following copyrights:
+- Code from https://github.com/stormpath/stormpath-sdk-php, Copyright 2017 Stormpath. Apache 2.0 licensed.

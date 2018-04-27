@@ -27,7 +27,7 @@ class PasswordCredential extends \Okta\Resource\AbstractResource
     /**
      * Get the value.
      *
-     * @return string
+     * @return password
      */
     public function getValue()
     {
