@@ -31,7 +31,7 @@ class AbstractCollection extends Collection
      * @param  mixed  $value
      * @return \Closure
      */
-    protected function operatorForWhere($key, $operator, $value)
+    protected function operatorForWhere($key, $operator, $value = null)
     {
 
         return function ($item) use ($key, $operator, $value) {
