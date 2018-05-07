@@ -17,9 +17,8 @@
 
 namespace Okta\Resource;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
-use Okta\Generated\Users\User;
+use Tightenco\Collect\Support\Collection;
+use Tightenco\Collect\Support\Arr;
 
 class AbstractCollection extends Collection
 {
@@ -33,6 +32,11 @@ class AbstractCollection extends Collection
      */
     protected function operatorForWhere($key, $operator, $value = null)
     {
+        if (func_num_args() == 2) {
+            $value = $operator;
+
+            $operator = '=';
+        }
 
         return function ($item) use ($key, $operator, $value) {
 

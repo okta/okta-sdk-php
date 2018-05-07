@@ -19,7 +19,7 @@
         "php-http/curl-client": "^1.7",
         "symfony/yaml": "^3.2",
         "nesbot/carbon": "^1.22",
-        "tightenco/collect": "^5.4",
+        "tightenco/collect": "5.5.33",
         "guzzlehttp/psr7": "^1.4"
     },
     "require-dev": {
