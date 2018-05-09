@@ -37,11 +37,11 @@ class UsersTest extends BaseIntegrationTestCase
         $userProfile = $user->getProfile();
         $userCredentials = $user->getCredentials();
         $userPasswordCredential = $userCredentials->getPassword();
-
+        $time = time();
         $userProfile->setFirstName('John')
             ->setLastName('Get-User')
-            ->setEmail('john-get-user@example.com')
-            ->setLogin('john-get-user@example.com');
+            ->setEmail('john-get-user'.$time.'@example.com')
+            ->setLogin('john-get-user'.$time.'@example.com');
 
         $userPasswordCredential->setValue('Abcd1234');
         $userCredentials->setPassword($userPasswordCredential);
@@ -49,7 +49,7 @@ class UsersTest extends BaseIntegrationTestCase
         $user->setProfile($userProfile)
             ->setCredentials($userCredentials);
 
-        $createdUser = $user->create(['activate'=>'false']);
+        $createdUser = $user->create(['activate' => 'false']);
         $this->assertInstanceOf(\Okta\Users\User::class, $createdUser, "Creating a user does not provide you with a `User` object");
 
         $getUserById = (new \Okta\Users\User())->get($createdUser->getId());
@@ -76,15 +76,15 @@ class UsersTest extends BaseIntegrationTestCase
             $requestBody = json_decode($requests[0]->getBody()->getContents());
             $this->assertEquals('John', $requestBody->profile->firstName, 'The `profile.firstName` property was not set correctly.');
             $this->assertEquals('Get-User', $requestBody->profile->lastName, 'The `profile.lastName` property was not set correctly.');
-            $this->assertEquals('john-get-user@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
-            $this->assertEquals('john-get-user@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
+            $this->assertEquals('john-get-user'.$time.'@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
+            $this->assertEquals('john-get-user'.$time.'@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
             $this->assertEquals('Abcd1234', $requestBody->credentials->password->value, 'The `credentials.password.value` property was not set correctly.');
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');
             $this->assertEquals('application/json', $requests[0]->getHeader('Content-Type')[0], 'Content-Type was not set to `application/json`.');
             $this->assertContains('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
             $this->assertContains('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
-            $this->assertEquals(174, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
+            $this->assertEquals(194, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
             $this->assertEquals('/api/v1/users', $requests[0]->getUri()->getPath(), 'Creating a user does not submit to correct path.');
             $this->assertEquals('activate=false', $requests[0]->getUri()->getQuery(), 'The query param `activate` was not set to `false`.');
 
@@ -138,11 +138,11 @@ class UsersTest extends BaseIntegrationTestCase
         $userProfile = $user->getProfile();
         $userCredentials = $user->getCredentials();
         $userPasswordCredential = $userCredentials->getPassword();
-
+        $time = time();
         $userProfile->setFirstName('John')
             ->setLastName('Get-User')
-            ->setEmail('john-get-user@example.com')
-            ->setLogin('john-get-user@example.com');
+            ->setEmail('john-activate-user'.$time.'@example.com')
+            ->setLogin('john-activate-user'.$time.'@example.com');
 
         $userPasswordCredential->setValue('Abcd1234');
         $userCredentials->setPassword($userPasswordCredential);
@@ -175,15 +175,15 @@ class UsersTest extends BaseIntegrationTestCase
             $requestBody = json_decode($requests[0]->getBody()->getContents());
             $this->assertEquals('John', $requestBody->profile->firstName, 'The `profile.firstName` property was not set correctly.');
             $this->assertEquals('Get-User', $requestBody->profile->lastName, 'The `profile.lastName` property was not set correctly.');
-            $this->assertEquals('john-get-user@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
-            $this->assertEquals('john-get-user@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
+            $this->assertEquals('john-activate-user'.$time.'@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
+            $this->assertEquals('john-activate-user'.$time.'@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
             $this->assertEquals('Abcd1234', $requestBody->credentials->password->value, 'The `credentials.password.value` property was not set correctly.');
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');
             $this->assertEquals('application/json', $requests[0]->getHeader('Content-Type')[0], 'Content-Type was not set to `application/json`.');
             $this->assertContains('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
             $this->assertContains('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
-            $this->assertEquals(174, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
+            $this->assertEquals(204, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
             $this->assertEquals('/api/v1/users', $requests[0]->getUri()->getPath(), 'Creating a user does not submit to correct path.');
             $this->assertEquals('activate=false', $requests[0]->getUri()->getQuery(), 'The query param `activate` was not set to `false`.');
 

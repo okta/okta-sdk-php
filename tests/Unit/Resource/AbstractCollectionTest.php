@@ -104,4 +104,23 @@ class AbstractCollectionTest extends TestCase
         );
     }
 
+    /** @test */
+    public function a_resource_is_searchable()
+    {
+        $object1 = new \StdClass;
+        $object2 = new \StdClass;
+        $object2->id = '123abc';
+        $object2->test = new \StdClass;
+        $object2->test->hello = 'world';
+
+        $collection = new AbstractCollection([
+            $object1, $object2
+        ]);
+
+        $this->assertCount(
+            1,
+            $collection->where('id', '=', '123abc')->all()
+        );
+    }
+
 }
