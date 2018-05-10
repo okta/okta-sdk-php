@@ -124,4 +124,3 @@ class AbstractCollectionTest extends TestCase
     }
 
 }
-
