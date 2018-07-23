@@ -53,10 +53,10 @@ class UsersTest extends BaseIntegrationTestCase
         $this->assertInstanceOf(\Okta\Users\User::class, $createdUser, "Creating a user does not provide you with a `User` object");
 
         $getUserById = (new \Okta\Users\User())->get($createdUser->getId());
-        $this->assertEquals($createdUser, $getUserById, 'Getting user by `ID` does not provide the same object');
+        $this->assertEquals($createdUser->getId(), $getUserById->getId(), 'Getting user by `ID` does not provide the same object');
 
         $getUserByName = (new \Okta\Users\User())->get($createdUser->getProfile()->getLogin());
-        $this->assertEquals($createdUser, $getUserByName, 'Getting user by `login` does not provide the same object');
+        $this->assertEquals($createdUser->getId(), $getUserByName->getId(), 'Getting user by `login` does not provide the same object');
 
         $createdUser->deactivate();
         $createdUser->delete();
