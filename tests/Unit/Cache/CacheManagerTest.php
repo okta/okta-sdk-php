@@ -9,7 +9,7 @@ class CacheManagerTest extends BaseTestCase
     public function can_generate_a_cache_key_string_from_a_uri()
     {
          $uriFactory = UriFactoryDiscovery::find();
-         $uri = $uriFactory->createUri('https://okta.com/sample/cache-key/test@test.com');
+         $uri = $uriFactory->createUri('https://okta.com/sample/cache-key/test+test@test.com');
          $query = http_build_query(['with'=>'a','query'=>'string']);
 
          $uri = $uri->withQuery($query);
@@ -20,7 +20,7 @@ class CacheManagerTest extends BaseTestCase
 
          $cacheKey = $client->getCacheManager()->createCacheKey($uri);
 
-         $this->assertEquals('okta_com_sample_cache_key_test_test_com', $cacheKey, 'The cache key was not created correctly.');
+         $this->assertEquals('okta_com_sample_cache_key_test_test_test_com', $cacheKey, 'The cache key was not created correctly.');
     }
 
     /** @test */

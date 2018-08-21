@@ -31,5 +31,6 @@
         <env name="OKTA_ENV" value="testing"/>
         <env name="OKTA_CLIENT_TOKEN" value="dummyToken"/>
         <env name="OKTA_CLIENT_ORGURL" value="https://dev-dummy.okta.com"/>
+        <env name="OKTA_MOCK_TESTS" value="true"/>
     </php>
 </phpunit>

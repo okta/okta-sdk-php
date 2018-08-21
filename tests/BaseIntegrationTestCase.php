@@ -1,4 +1,7 @@
 <?php
+
+use Okta\ClientBuilder;
+
 /******************************************************************************
  * Copyright 2017 Okta, Inc.                                                  *
  *                                                                            *
@@ -15,12 +18,8 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\ClientBuilder;
-use PHPUnit\Framework\TestCase;
-
-class BaseTestCase extends TestCase
+class BaseIntegrationTestCase extends BaseTestCase
 {
-    protected $token = 'abc123';
 
     public static function setUpBeforeClass()
     {
@@ -35,22 +34,35 @@ class BaseTestCase extends TestCase
      */
     protected function createNewHttpClient($returns = []): \Http\Client\HttpClient
     {
+        if( ! $this->isMockingResponses() ) {
+            return \Okta\Client::getInstance()->getDataStore()->getHttpClient();
+        }
+        
         $defaults = [
             'getStatusCode' => 200,
             'getBody' => '{}'
         ];
 
-        $mockReturns = array_replace_recursive($defaults, $returns);
+        if (!is_array(current($returns)))
+        {
+            $returns = [$returns];
+        }
 
         $httpClient = new \Http\Mock\Client;
+        $mockReturns = [];
 
-        $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-
-        foreach($mockReturns as $method=>$return) {
-            $response->method($method)->willReturn($return);
-
+        foreach($returns as $return) {
+            $mockReturns[] = array_replace_recursive($defaults, $return);
         }
-        $httpClient->addResponse($response);
+
+        foreach($mockReturns as $returnValues) {
+            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
+            foreach($returnValues as $method=>$return) {
+                $response->method($method)->willReturn($return);
+
+            }
+            $httpClient->addResponse($response);
+        }
 
         (new \Okta\ClientBuilder())
             ->setOrganizationUrl('https://dev.okta.com')
@@ -60,28 +72,9 @@ class BaseTestCase extends TestCase
         return $httpClient;
     }
 
-    protected function createNewUser($properties = []): \Okta\Users\User
+    protected function isMockingResponses()
     {
-        $defaults = json_decode(
-            file_get_contents(__DIR__ . '/models/user.json'),
-            true
-        );
-
-        $properties = array_replace_recursive($defaults, $properties);
-
-        $class = new \stdClass();
-        foreach($properties as $prop=>$value)
-        {
-            $class->{$prop} = $value;
-        }
-        return new \Okta\Users\User(null, $class);
-
+        // need to use multiple cases due to the way phpunit handles `true` vs phpStorm
+        return getenv('OKTA_MOCK_TESTS') == 'true' || getenv('OKTA_MOCK_TESTS') === true || getenv('OKTA_MOCK_TESTS') == "1";
     }
-
-    public static function tearDownAfterClass()
-    {
-        parent::tearDownAfterClass();
-        \Okta\Client::destroy();
-    }
-
 }

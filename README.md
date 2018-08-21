@@ -5,9 +5,6 @@
 [![License](https://poser.pugx.org/okta/sdk/license.svg)](https://packagist.org/packages/okta/sdk)
 [![Support](https://img.shields.io/badge/support-Developer%20Forum-blue.svg)](https://devforum.okta.com/)
 
-> Note: The PHP SDK is in a preview release state and may change at any time without notice. You should not use this 
-in a production environment until a stable 1.x release is made.
-
 ## Installation
 **okta-sdk-php** is available on Packagist as the [okta/sdk](http://packagist.org/packages/okta/sdk) package.
 
