@@ -78,6 +78,7 @@ class UsersTest extends BaseIntegrationTestCase
             $this->assertEquals('Get-User', $requestBody->profile->lastName, 'The `profile.lastName` property was not set correctly.');
             $this->assertEquals('john-get-user'.$time.'@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
             $this->assertEquals('john-get-user'.$time.'@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
+
             $this->assertEquals('Abcd1234', $requestBody->credentials->password->value, 'The `credentials.password.value` property was not set correctly.');
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');
@@ -138,6 +139,7 @@ class UsersTest extends BaseIntegrationTestCase
         $userProfile = $user->getProfile();
         $userCredentials = $user->getCredentials();
         $userPasswordCredential = $userCredentials->getPassword();
+
         $time = time();
         $userProfile->setFirstName('John')
             ->setLastName('Get-User')
@@ -177,6 +179,7 @@ class UsersTest extends BaseIntegrationTestCase
             $this->assertEquals('Get-User', $requestBody->profile->lastName, 'The `profile.lastName` property was not set correctly.');
             $this->assertEquals('john-activate-user'.$time.'@example.com', $requestBody->profile->email, 'The `profile.email` property was not set correctly.');
             $this->assertEquals('john-activate-user'.$time.'@example.com', $requestBody->profile->login, 'The `profile.login` property was not set correctly.');
+
             $this->assertEquals('Abcd1234', $requestBody->credentials->password->value, 'The `credentials.password.value` property was not set correctly.');
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');

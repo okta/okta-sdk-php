@@ -188,6 +188,17 @@ class ClientBuilderTest extends TestCase
                 ]
             ]));
 
+        $parser->expects($this->at(2))
+            ->method('parse')
+            ->will($this->returnValue([
+                'okta' => [
+                    'client' => [
+                        'token' => 'xyz789',
+                        'orgUrl' => 'https://okta.com'
+                    ]
+                ]
+            ]));
+
         $clientBuilderDefault = new ClientBuilder($parser, 'okta.yaml');
         $clientBuilder = new ClientBuilder($parser);
         $clientBuilder->setConfigFileLocation(__FILE__);

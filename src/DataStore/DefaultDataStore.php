@@ -210,13 +210,17 @@ class DefaultDataStore
      * @param string $href The path to the resource
      * @param AbstractResource $resource The resource to save.
      * @param string $returnType The Resource class you want to return.
+     * @param array $query The query of the URL
      *
      * @return mixed
      */
-    public function createResource($href, $resource, $returnType)
+    public function createResource($href, $resource, $returnType, $query=[])
     {
         $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
+        if(!empty($query)) {
+            $uri = $uri->withQuery(http_build_query($query));
+        }
 
         $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
 
@@ -272,6 +276,7 @@ class DefaultDataStore
 
         if ($body) {
             $headers['Content-Type'] = 'application/json';
+            $headers['Content-Length'] = strlen($body);
         }
 
         if (key_exists('query', $options)) {
