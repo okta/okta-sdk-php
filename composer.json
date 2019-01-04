@@ -1,5 +1,5 @@
 {
-    "name": "kezek/sdk",
+    "name": "okta/sdk",
     "description": "PHP Wrapper for the Okta API",
     "type": "library",
     "license": "Apache-2.0",
