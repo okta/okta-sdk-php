@@ -193,12 +193,12 @@ class DefaultDataStore
      *
      * @return mixed
      */
-    public function saveResource($href, $resource, $returnType)
+    public function saveResource($href, $resource, $returnType, array $options = [])
     {
         $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href . '/' . $resource->getId());
 
-        $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)));
+        $result = $this->executeRequest('POST', $uri, json_encode($this->toStdClass($resource)), $options);
         $resource = new $returnType(null, $result);
 
         return $resource;

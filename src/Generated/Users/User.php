@@ -60,15 +60,16 @@ class User extends \Okta\Resource\AbstractResource
                         "/users"
                     );
     }
-        
-    public function save()
+
+    public function save($options)
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
                 ->saveResource(
-                    "/users",
+                    "/users?activate=false",
                     $this,
-                    \Okta\Users\User::class
+                    \Okta\Users\User::class,
+                    $options
                 );
     }
 
@@ -81,7 +82,7 @@ class User extends \Okta\Resource\AbstractResource
                     $this
                 );
     }
-        
+
     /**
      * Get the id.
      *
@@ -149,7 +150,7 @@ class User extends \Okta\Resource\AbstractResource
             self::PROFILE,
             $profile
         );
-        
+
         return $this;
     }
 
@@ -210,7 +211,7 @@ class User extends \Okta\Resource\AbstractResource
             self::CREDENTIALS,
             $credentials
         );
-        
+
         return $this;
     }
 
@@ -436,7 +437,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -456,7 +457,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
