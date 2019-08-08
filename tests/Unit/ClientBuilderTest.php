@@ -49,7 +49,7 @@ class ClientBuilderTest extends TestCase
              "Setting the token does not return an instance of " . ClientBuilder::class
          );
     }
-    
+
     /** @test */
     public function it_returns_self_when_setting_the_org_url()
     {
@@ -178,6 +178,17 @@ class ClientBuilderTest extends TestCase
             ]));
 
         $parser->expects($this->at(1))
+            ->method('parse')
+            ->will($this->returnValue([
+                'okta' => [
+                    'client' => [
+                        'token' => 'xyz789',
+                        'orgUrl' => 'https://okta.com'
+                    ]
+                ]
+            ]));
+
+        $parser->expects($this->at(2))
             ->method('parse')
             ->will($this->returnValue([
                 'okta' => [
