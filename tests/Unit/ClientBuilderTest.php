@@ -23,15 +23,15 @@ use Symfony\Component\Yaml\Parser;
 
 class ClientBuilderTest extends TestCase
 {
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         file_put_contents(
             'okta.yaml',
-            '{okta: { client: { token:"defaultToken", orgUrl:"https://default-org.okta.com"}}}');
+            '{okta: { client: { token: "defaultToken", orgUrl: "https://default-org.okta.com"}}}');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         unlink('okta.yaml');
         parent::tearDownAfterClass();
@@ -49,7 +49,7 @@ class ClientBuilderTest extends TestCase
              "Setting the token does not return an instance of " . ClientBuilder::class
          );
     }
-    
+
     /** @test */
     public function it_returns_self_when_setting_the_org_url()
     {
@@ -147,8 +147,8 @@ class ClientBuilderTest extends TestCase
 
         $clientBuilder = new ClientBuilder($parser, 'okta.yaml');
 
-        $this->assertContains('Token: abc123', (string)$clientBuilder);
-        $this->assertContains('OrgUrl: https://example.com', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('Token: abc123', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('OrgUrl: https://example.com', (string)$clientBuilder);
 
         putenv("OKTA_CLIENT_TOKEN={$oldToken}");
         putenv("OKTA_CLIENT_ORGURL={$oldOrgUrl}");
@@ -193,9 +193,9 @@ class ClientBuilderTest extends TestCase
         $clientBuilder->setConfigFileLocation(__FILE__);
         $clientBuilder->build();
 
-        $this->assertContains('Token: abc123', (string)$clientBuilderDefault);
-        $this->assertContains('Token: xyz789', (string)$clientBuilder);
-        $this->assertContains('OrgUrl: https://okta.com', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('Token: abc123', (string)$clientBuilderDefault);
+        $this->assertStringContainsStringIgnoringCase('Token: xyz789', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('OrgUrl: https://okta.com', (string)$clientBuilder);
 
         putenv("OKTA_CLIENT_TOKEN={$oldToken}");
         putenv("OKTA_CLIENT_ORGURL={$oldOrgUrl}");
@@ -221,8 +221,8 @@ class ClientBuilderTest extends TestCase
         $clientBuilder->setOrganizationurl('https://okta.com');
         $clientBuilder->build();
 
-        $this->assertContains('Token: TokenSetByMethod', (string)$clientBuilder);
-        $this->assertContains('OrgUrl: https://okta.com', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('Token: TokenSetByMethod', (string)$clientBuilder);
+        $this->assertStringContainsStringIgnoringCase('OrgUrl: https://okta.com', (string)$clientBuilder);
     }
 
     /** @test */

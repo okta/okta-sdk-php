@@ -25,7 +25,7 @@ class AbstractResourceTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -47,7 +47,7 @@ class AbstractResourceTest extends TestCase
         self::$testable = new StubResource(null, static::$properties);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         self::$testable->clearOptions();
     }
@@ -64,8 +64,7 @@ class AbstractResourceTest extends TestCase
     /** @test */
     public function can_cast_a_property()
     {
-        $this->assertInternalType(
-            "int",
+        $this->assertIsInt(
             self::$testable->getProperty('testCast', 'int')
         );
 
@@ -125,7 +124,7 @@ class AbstractResourceTest extends TestCase
         $this->assertEquals(static::$properties->id, static::$testable->getId());
         $this->assertEquals(static::$properties->id, static::$testable->id);
     }
-    
+
     /** @test */
     public function returns_null_for_property_that_doesnt_exist()
     {

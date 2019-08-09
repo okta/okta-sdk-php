@@ -26,7 +26,7 @@ class BaseUnitTestCase extends BaseTestCase
     protected $modelType;
 
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->properties = json_decode($this->getModelJson($this->model));

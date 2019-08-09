@@ -21,7 +21,7 @@ use Okta\ClientBuilder;
 class BaseIntegrationTestCase extends BaseTestCase
 {
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         (new ClientBuilder())->build();
@@ -37,7 +37,7 @@ class BaseIntegrationTestCase extends BaseTestCase
         if( ! $this->isMockingResponses() ) {
             return \Okta\Client::getInstance()->getDataStore()->getHttpClient();
         }
-        
+
         $defaults = [
             'getStatusCode' => 200,
             'getBody' => '{}'

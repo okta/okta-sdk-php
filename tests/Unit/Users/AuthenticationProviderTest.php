@@ -26,7 +26,7 @@ class AuthenticationProviderTest extends TestCase
     /** @var \Okta\Users\AuthenticationProvider */
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $clientBuilder = (new ClientBuilder())->build();
 
@@ -52,35 +52,35 @@ class AuthenticationProviderTest extends TestCase
         $this->assertEquals(static::$properties->type, static::$testable->getType());
         $this->assertEquals(static::$properties->type, static::$testable->type);
     }
-    
+
     /** @test */
     public function type_is_settable()
     {
         static::$testable->setType('type1');
         static::assertEquals('type1', static::$testable->getType());
-    
+
         static::$testable->type = 'type2';
         static::assertEquals('type2', static::$testable->getType());
     }
-    
+
     /** @test */
     public function name_is_accessible()
     {
         $this->assertEquals(static::$properties->name, static::$testable->getName());
         $this->assertEquals(static::$properties->name, static::$testable->name);
     }
-    
+
     /** @test */
     public function name_is_settable()
     {
         static::$testable->setName('name1');
         static::assertEquals('name1', static::$testable->getName());
-    
+
         static::$testable->name = 'name2';
         static::assertEquals('name2', static::$testable->getName());
     }
-    
-    
-    
-    
+
+
+
+
 }

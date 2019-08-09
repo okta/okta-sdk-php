@@ -22,10 +22,10 @@ class UserAgentBuilderTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function it_throws_exception_if_properties_are_not_set()
     {
+        $this->expectException('InvalidArgumentException');
         $userAgent = new UserAgentBuilder;
 
         $userAgent->build();
@@ -33,10 +33,10 @@ class UserAgentBuilderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function it_throws_exception_if_php_version_is_not_set()
     {
+        $this->expectException('InvalidArgumentException');
         $userAgent = new UserAgentBuilder;
 
         $userAgent->setOsName('testOs')
@@ -46,10 +46,10 @@ class UserAgentBuilderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function it_throws_exception_if_os_version_is_not_set()
     {
+        $this->expectException('InvalidArgumentException');
         $userAgent = new UserAgentBuilder;
 
         $userAgent->setOsName('testOs')
@@ -59,10 +59,10 @@ class UserAgentBuilderTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function it_throws_exception_if_os_name_is_not_set()
     {
+        $this->expectException('InvalidArgumentException');
         $userAgent = new UserAgentBuilder;
 
         $userAgent->setPhpVersion('testOs')
