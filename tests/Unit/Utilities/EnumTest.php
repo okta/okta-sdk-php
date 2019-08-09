@@ -28,10 +28,10 @@ class EnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
      */
     public function invalid_values_will_throw_exception()
     {
+        $this->expectException('BadMethodCallException');
          DaysOfWeek::BAD();
     }
 
@@ -135,10 +135,10 @@ class EnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
      */
     public function will_throw_exception_if_method_does_not_exist_for_enum()
     {
+        $this->expectException('BadMethodCallException');
         $tuesday = DaysOfWeek::TUESDAY();
 
         $this->assertTrue($tuesday->isStartOfWeek());
@@ -171,10 +171,10 @@ class EnumTest extends TestCase
 
     /**
      * @test
-     * @expectedException \UnexpectedValueException
      */
     public function throws_exception_if_created_without_valid_value()
     {
+        $this->expectException('UnexpectedValueException');
         new MultiWordEnum('FOO_BAR');
     }
 
@@ -215,8 +215,6 @@ class MultiWordEnum extends \Okta\Utilities\Enum
  * @method static DaysOfWeek THURSDAY()
  * @method static DaysOfWeek FRIDAY()
  * @method static DaysOfWeek SATURDAY()
- * @method bool isStartOfWeek()
- * @method bool isWorkDay()
  *
  */
 class DaysOfWeek extends \Okta\Utilities\Enum

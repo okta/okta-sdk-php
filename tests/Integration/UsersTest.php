@@ -83,34 +83,34 @@ class UsersTest extends BaseIntegrationTestCase
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');
             $this->assertEquals('application/json', $requests[0]->getHeader('Content-Type')[0], 'Content-Type was not set to `application/json`.');
-            $this->assertContains('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals(194, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
             $this->assertEquals('/api/v1/users', $requests[0]->getUri()->getPath(), 'Creating a user does not submit to correct path.');
             $this->assertEquals('activate=false', $requests[0]->getUri()->getQuery(), 'The query param `activate` was not set to `false`.');
 
             //2: Validate the get by id request
             $this->assertEquals('GET', $requests[1]->getMethod(), 'Did not submit a `GET` request for getting a user by id.');
-            $this->assertContains('SSWS', $requests[1]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[1]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[1]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[1]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId(), $requests[1]->getUri()->getPath(), 'Getting User by ID did not make request to correct path');
 
             //3: Validate the get by login request
             $this->assertEquals('GET', $requests[2]->getMethod(), 'Did not submit a `GET` request for getting a user by login.');
-            $this->assertContains('SSWS', $requests[2]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[2]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[2]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[2]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getProfile()->getLogin(), $requests[2]->getUri()->getPath(), 'Getting User by login did not make request to correct path');
 
             //4: Validate the deactivate request
             $this->assertEquals('POST', $requests[3]->getMethod(), 'Did not submit a `POST` request for deactivating a user.');
-            $this->assertContains('SSWS', $requests[3]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[3]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[3]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[3]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId().'/lifecycle/deactivate', $requests[3]->getUri()->getPath(), 'Deactivating a user did not make request to correct path');
 
             //5: Validate the delete request
             $this->assertEquals('DELETE', $requests[4]->getMethod(), 'Did not submit a `DELETE` request when deleting a user.');
-            $this->assertContains('SSWS', $requests[4]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[4]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[4]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[4]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId(), $requests[4]->getUri()->getPath(), 'Deleting a user did not make request to correct path');
 
             //6: Validate the deleted user request
@@ -184,36 +184,36 @@ class UsersTest extends BaseIntegrationTestCase
 
             $this->assertEquals('POST', $requests[0]->getMethod(), 'Did not submit a `POST` request for creating a user.');
             $this->assertEquals('application/json', $requests[0]->getHeader('Content-Type')[0], 'Content-Type was not set to `application/json`.');
-            $this->assertContains('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[0]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[0]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals(204, $requests[0]->getHeader('Content-Length')[0], '`Content-Length` is not what is expected.');
             $this->assertEquals('/api/v1/users', $requests[0]->getUri()->getPath(), 'Creating a user does not submit to correct path.');
             $this->assertEquals('activate=false', $requests[0]->getUri()->getQuery(), 'The query param `activate` was not set to `false`.');
 
             //2: Activate the User Request
             $this->assertEquals('POST', $requests[1]->getMethod(), 'Did not submit a `POST` request for activating a user.');
-            $this->assertContains('SSWS', $requests[1]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[1]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[1]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[1]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId().'/lifecycle/activate', $requests[1]->getUri()->getPath(), 'Activating a user did not make request to correct path.');
             $this->assertEquals('sendEmail=false', $requests[1]->getUri()->getQuery(), 'Setting sendEmail does not work when activating a user.');
 
             //3: Verify user is activated request
             $this->assertEquals('GET', $requests[2]->getMethod(), 'Did not submit a `GET` request for getting a list of users.');
-            $this->assertContains('SSWS', $requests[2]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[2]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[2]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[2]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users', $requests[2]->getUri()->getPath(), 'Getting users did not make request to correct path.');
             $this->assertEquals('filter=status%20eq%20%22ACTIVE%22', $requests[2]->getUri()->getQuery(), 'Setting filter does not work when getting users.');
 
             //4: Validate the deactivate request
             $this->assertEquals('POST', $requests[3]->getMethod(), 'Did not submit a `POST` request for deactivating a user.');
-            $this->assertContains('SSWS', $requests[3]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[3]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[3]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[3]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId().'/lifecycle/deactivate', $requests[3]->getUri()->getPath(), 'Deactivating a user did not make request to correct path');
 
             //5: Validate the delete request
             $this->assertEquals('DELETE', $requests[4]->getMethod(), 'Did not submit a `DELETE` request when deleting a user.');
-            $this->assertContains('SSWS', $requests[4]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
-            $this->assertContains('okta-sdk-php/', $requests[4]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
+            $this->assertStringContainsStringIgnoringCase('SSWS', $requests[4]->getHeader('Authorization')[0], 'Authorization Header does not contain `SSWS`.');
+            $this->assertStringContainsStringIgnoringCase('okta-sdk-php/', $requests[4]->getHeader('User-Agent')[0], 'User-Agent does not contain `okta-sdk-php`.');
             $this->assertEquals('/api/v1/users/'.$createdUser->getId(), $requests[4]->getUri()->getPath(), 'Deleting a user did not make request to correct path');
 
 

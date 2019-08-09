@@ -26,7 +26,7 @@ class ResourceExceptionTest extends TestCase
     protected static $testable;
     protected static $testableNull;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -66,25 +66,25 @@ class ResourceExceptionTest extends TestCase
     {
         $this->assertEquals(static::$properties->httpStatus, static::$testable->getHttpStatus());
     }
-    
+
     /** @test */
     public function error_code_is_accessible()
     {
         $this->assertEquals(static::$properties->errorCode, static::$testable->getErrorCode());
     }
-    
+
     /** @test */
     public function error_link_is_accessible()
     {
         $this->assertEquals(static::$properties->errorLink, static::$testable->getErrorLink());
     }
-    
+
     /** @test */
     public function error_id_is_accessible()
     {
         $this->assertEquals(static::$properties->errorId, static::$testable->getErrorId());
     }
-    
+
     /** @test */
     public function error_causes_is_accessible()
     {
@@ -96,6 +96,6 @@ class ResourceExceptionTest extends TestCase
     {
         $this->assertEquals(static::$properties->errorSummary, static::$testable->getErrorSummary());
     }
-    
-                    
+
+
 }

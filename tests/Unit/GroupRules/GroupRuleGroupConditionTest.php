@@ -25,7 +25,7 @@ class GroupRuleGroupConditionTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -57,17 +57,17 @@ class GroupRuleGroupConditionTest extends TestCase
         $this->assertTrue(is_array(static::$testable->getExclude()));
         $this->assertCount(1, static::$testable->getExclude());
     }
-    
+
     /** @test */
     public function exclude_is_settable()
     {
         static::$testable->setExclude(['123']);
         static::assertEquals(['123'], static::$testable->getExclude());
-    
+
         static::$testable->exclude = ['456'];
         static::assertEquals(['456'], static::$testable->getExclude());
     }
-    
+
 
     /** @test */
     public function include_is_accessible()
@@ -77,17 +77,17 @@ class GroupRuleGroupConditionTest extends TestCase
         $this->assertTrue(is_array(static::$testable->getInclude()));
         $this->assertCount(1, static::$testable->getInclude());
     }
-    
+
     /** @test */
     public function include_is_settable()
     {
         static::$testable->setInclude(['abc']);
         static::assertEquals(['abc'], static::$testable->getInclude());
-    
+
         static::$testable->include = ['def'];
         static::assertEquals(['def'], static::$testable->getInclude());
     }
-    
+
 
 
 }

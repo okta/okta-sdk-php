@@ -25,7 +25,7 @@ class GroupRuleGroupAssignmentTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -45,7 +45,7 @@ class GroupRuleGroupAssignmentTest extends TestCase
         }
         self::$testable = new GroupRuleGroupAssignment(NULL, $class);
     }
-    
+
     /** @test */
     public function group_ids_is_accessible()
     {
@@ -64,6 +64,6 @@ class GroupRuleGroupAssignmentTest extends TestCase
         static::assertEquals(['789'], static::$testable->getGroupIds());
     }
 
-    
-    
+
+
 }

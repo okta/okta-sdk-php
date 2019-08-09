@@ -30,7 +30,7 @@ class AbstractCollection extends Collection
      * @param  mixed  $value
      * @return \Closure
      */
-    protected function operatorForWhere($key, $operator, $value = null)
+    protected function operatorForWhere($key, $operator = null, $value = null)
     {
         if (func_num_args() == 2) {
             $value = $operator;

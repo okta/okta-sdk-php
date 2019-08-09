@@ -22,7 +22,7 @@ class BaseTestCase extends TestCase
 {
     protected $token = 'abc123';
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         (new ClientBuilder())->build();
@@ -78,7 +78,7 @@ class BaseTestCase extends TestCase
 
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         parent::tearDownAfterClass();
         \Okta\Client::destroy();

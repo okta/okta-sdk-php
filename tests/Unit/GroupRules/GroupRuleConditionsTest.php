@@ -25,7 +25,7 @@ class GroupRuleConditionsTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -103,6 +103,6 @@ class GroupRuleConditionsTest extends TestCase
         $localTestable = static::$testable->getExpression();
         $this->assertEquals($groupRuleExpression, $localTestable);
     }
-    
-        
+
+
 }
