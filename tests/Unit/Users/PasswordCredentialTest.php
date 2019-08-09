@@ -25,7 +25,7 @@ class PasswordCredentialTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -52,10 +52,10 @@ class PasswordCredentialTest extends TestCase
     {
         static::$testable->setValue('789dev');
         static::assertEquals('789dev', static::$testable->getValue());
-    
+
         static::$testable->value = 'developer';
         static::assertEquals('developer', static::$testable->getValue());
     }
-    
+
 
 }

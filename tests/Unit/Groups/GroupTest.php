@@ -26,7 +26,7 @@ class GroupTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -144,7 +144,7 @@ class GroupTest extends TestCase
         $this->assertEquals(static::$properties->_embedded, static::$testable->getEmbedded());
         $this->assertEquals(static::$properties->_embedded, static::$testable->embedded);
     }
-    
+
     /** @test */
     public function last_updated_is_accessible()
     {
@@ -153,14 +153,14 @@ class GroupTest extends TestCase
         $this->assertEquals($ts, static::$testable->getLastUpdated()->timestamp);
         $this->assertEquals($ts, static::$testable->lastUpdated->timestamp);
     }
-    
+
     /** @test */
     public function object_class_is_accessible()
     {
         $this->assertEquals(static::$properties->objectClass, static::$testable->getObjectClass());
         $this->assertEquals(static::$properties->objectClass, static::$testable->objectClass);
     }
-    
+
     /** @test */
     public function last_membership_updated_is_accessible()
     {
