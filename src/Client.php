@@ -21,6 +21,7 @@ use Http\Client\HttpClient;
 use Okta\Cache\CacheManager;
 use Okta\Cache\MemoryManager;
 use Okta\DataStore\DefaultDataStore;
+use Okta\Utilities\AuthorizationMode;
 
 /**
  * Class Client
@@ -59,6 +60,11 @@ class Client
     private $cacheManager;
 
     /**
+     * @var AuthorizationMode $authorizationMode The authorization mode to use for api calls.
+     */
+    private $authorizationMode;
+
+    /**
      * Create a new instance of Client.
      *
      * @param string                    $token
@@ -66,24 +72,28 @@ class Client
      * @param HttpClient|NULL           $httpClient
      * @param string|NULL               $integrationUserAgent
      * @param CacheManager|NULL         $cacheManager
+     * @param AuthorizationMode|NULL    $authorizationMode
      */
     public function __construct(
         string $token,
         string $organizationUrl,
         HttpClient $httpClient = null,
         string $integrationUserAgent = null,
-        CacheManager $cacheManager = null
+        CacheManager $cacheManager = null,
+        AuthorizationMode $authorizationMode = null
     ) {
         $this->token = $token;
         $this->organizationUrl = $organizationUrl;
         $this->httpClient = $httpClient;
         $this->integrationUserAgent = $integrationUserAgent;
         $this->cacheManager = $cacheManager;
+        $this->authorizationMode = $authorizationMode;
 
         $this->dataStore = new DefaultDataStore(
             $this->token,
             $this->organizationUrl,
-            $this->httpClient
+            $this->httpClient,
+            $this->authorizationMode
         );
 
         if(null === $this->cacheManager) {
@@ -131,6 +141,26 @@ class Client
     public function getCacheManager(): CacheManager
     {
         return $this->cacheManager;
+    }
+
+    /**
+     * Get the Token from the Client.
+     *
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * Get the authorization mode for api calls
+     * 
+     * @return AuthorizationMode
+     */
+    public function getAuthorizationMode(): AuthorizationMode
+    {
+        return $this->authorizationMode;
     }
 
     /**

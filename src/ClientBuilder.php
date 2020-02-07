@@ -20,6 +20,7 @@ namespace Okta;
 use Http\Client\HttpClient;
 use Okta\Cache\CacheManager;
 use Symfony\Component\Yaml\Parser;
+use Okta\Utilities\AuthorizationMode;
 
 /**
  * Class ClientBuilder
@@ -56,6 +57,11 @@ class ClientBuilder
      * @var CacheManager $cacheManager The CacheManager Instance to use for caching.
      */
     private $cacheManager;
+
+    /**
+     * @var AuthorizationMode $authorizationMode The Authorization Mode to use for api calls.
+     */
+    private $authorizationMode;
 
     /**
      * @var string $defaultFile Path from home directory to default yaml file.
@@ -160,6 +166,18 @@ class ClientBuilder
     }
 
     /**
+     * Set the Authorizaiton Mode.
+     * 
+     * @param AuthorizationMode $authorizationMode The Authorization mode for api calls.
+     * @return ClientBuilder
+     */
+    public function setAuthorizationMode(AuthorizationMode $authorizationMode): ClientBuilder
+    {
+        $this->authorizationMode = $authorizationMode;
+        return $this;
+    }
+
+    /**
      * Build the Okta client based on ClientBuilder settings.
      *
      * @return Client
@@ -170,12 +188,17 @@ class ClientBuilder
             $this->setOptionsBasedOnFile($this->configFileLocation);
         }
 
+        if ($this->authorizationMode === null) {
+            $this->authorizationMode = new AuthorizationMode(AuthorizationMode::SSWS);
+        }
+
         return new Client(
             $this->token,
             $this->organizationUrl,
             $this->httpClient,
             $this->integrationUserAgent,
-            $this->cacheManager
+            $this->cacheManager,
+            $this->authorizationMode
         );
     }
 

@@ -16,6 +16,7 @@
  ******************************************************************************/
 
 use Okta\Client;
+use Okta\Utilities\AuthorizationMode;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
@@ -97,6 +98,37 @@ class ClientTest extends TestCase
             'integration/1.0.0',
             $client->getIntegrationUserAgent(),
             'Integration User Agent could not be accessed'
+        );
+    }
+
+    /** @test */
+    public function it_allows_access_to_token()
+    {
+        $client = (new \Okta\ClientBuilder())
+            ->setToken('123')
+            ->setOrganizationUrl('http://example.com')
+            ->build();
+
+        $this->assertEquals(
+            '123',
+            $client->getToken(),
+            'token could not be accessed'
+        );
+    }
+
+    /** @test */
+    public function it_allows_access_to_authorization_mode()
+    {
+        $client = (new \Okta\ClientBuilder())
+            ->setToken('123')
+            ->setOrganizationUrl('http://example.com')
+            ->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::SSWS))
+            ->build();
+
+        $this->assertInstanceOf(
+            AuthorizationMode::class,
+            $client->getAuthorizationMode(),
+            'Authorization Mode could not be accessed'
         );
     }
 
