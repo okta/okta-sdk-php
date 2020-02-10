@@ -25,7 +25,7 @@ class ForgotPasswordResponseTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -39,12 +39,12 @@ class ForgotPasswordResponseTest extends TestCase
 
         self::$testable = new ForgotPasswordResponse(null, static::$properties);
     }
-    
+
     /** @test */
     public function reset_password_url_is_accessible()
     {
         $this->assertEquals(static::$properties->resetPasswordUrl, static::$testable->getResetPasswordUrl());
         $this->assertEquals(static::$properties->resetPasswordUrl, static::$testable->resetPasswordUrl);
     }
-    
+
 }

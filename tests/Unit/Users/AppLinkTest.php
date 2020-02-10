@@ -26,7 +26,7 @@ class AppLinkTest extends TestCase
     /** @var ActivationToken */
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $clientBuilder = (new ClientBuilder())->build();
 
@@ -60,7 +60,7 @@ class AppLinkTest extends TestCase
         $this->assertEquals(static::$properties->id, static::$testable->getId());
         $this->assertEquals(static::$properties->id, static::$testable->id);
     }
-    
+
     /** @test */
     public function label_is_accessible()
     {

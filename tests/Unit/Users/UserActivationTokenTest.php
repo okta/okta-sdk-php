@@ -26,7 +26,7 @@ class UserActivationTokenTest extends TestCase
     /** @var ActivationToken */
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         $clientBuilder = (new ClientBuilder())->build();
 
@@ -59,5 +59,5 @@ class UserActivationTokenTest extends TestCase
         $this->assertEquals(static::$properties->activationToken, static::$testable->getActivationToken());
         $this->assertEquals(static::$properties->activationToken, static::$testable->activationToken);
     }
-    
+
 }

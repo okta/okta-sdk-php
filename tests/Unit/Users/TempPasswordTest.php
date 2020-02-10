@@ -25,7 +25,7 @@ class TempPasswordTest extends TestCase
 
     protected static $testable;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
 
@@ -37,10 +37,10 @@ class TempPasswordTest extends TestCase
         }
         ');
 
-        
+
         self::$testable = new TempPassword(null, static::$properties);
     }
-    
+
     /** @test */
     public function temp_password_is_accessible()
     {

@@ -701,7 +701,7 @@ class UserTest extends BaseUnitTestCase
             $request[0]->getUri()->getPath()
         );
     }
-    
+
     /** @test */
     public function a_user_can_request_a_password_change()
     {
