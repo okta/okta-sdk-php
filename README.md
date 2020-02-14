@@ -52,6 +52,28 @@ $client = (new \Okta\ClientBuilder())
             ->build();
 ```
 
+### Oauth for Okta
+The Okta API allows for communication through Oauth. In order for this to work, you need to create a service-to-service
+applicaiton in your organization. See [our guide](https://developer.okta.com/docs/guides/implement-oauth-for-okta/overview/)
+for setting up your new service application with a public and private key pair. 
+
+After your service application is set up, a few new environment variables are required.
+
+```
+OKTA_CLIENT_CLIENTID={Your new service app client id}
+OKTA_CLIENT_SCOPES={space delimited string of scopes }
+OKTA_CLIENT_PRIVATEKEY={Your PEM Private Key}
+```
+
+Once you have set your new environment variables, the client instantiation is a little different. Instead of providing the token, you need to tell 
+the client to use `PRIVATE_KEY` authorization
+
+```php
+$client = (new \Okta\ClientBuilder)
+            ->setAuthorizationMode(new \Okta\Utilities\AuthorizationMode(\Okta\Utilities\AuthorizationMode::PRIVATE_KEY))
+            ->build();
+```
+
 ## Users
 ### Finding a user by id
 ```php
