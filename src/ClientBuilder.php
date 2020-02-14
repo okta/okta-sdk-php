@@ -64,6 +64,21 @@ class ClientBuilder
     private $authorizationMode;
 
     /**
+     * @var string $clientId The client id of the application.
+     */
+    private $clientId;
+
+    /**
+     * @var string $scopes The scopes for the bearer token.
+     */
+    private $scopes;
+
+    /**
+     * @var string $privateKey The private key for the bearer token.
+     */
+    private $privateKey;
+
+    /**
      * @var string $defaultFile Path from home directory to default yaml file.
      */
     private $defaultFile = '.okta/okta.yaml';
@@ -178,6 +193,42 @@ class ClientBuilder
     }
 
     /**
+     * Set the Client Id
+     * 
+     * @param string $clientId The Client id for the application
+     * @return ClientBuilder
+     */
+    public function setClientId(string $clientId): ClientBuilder
+    {
+        $this->clientId = $clientId;
+        return $this;
+    }
+
+    /**
+     * Set the scopes for the token
+     * 
+     * @param string $scopes The scopes for the bearer token
+     * @return ClientBuilder
+     */
+    public function setScopes(string $scopes): ClientBuilder
+    {
+        $this->scopes = $scopes;
+        return $this;
+    }
+
+    /**
+     * Set the private key
+     * 
+     * @param string $privateKey The private key for the bearer token. This accepts PEM string, JWK string, or file location of PEM
+     * @return ClientBuilder
+     */
+    public function setPrivateKey(string $privateKey): ClientBuilder
+    {
+        $this->privateKey = $privateKey;
+        return $this;
+    }
+
+    /**
      * Build the Okta client based on ClientBuilder settings.
      *
      * @return Client
@@ -190,6 +241,18 @@ class ClientBuilder
 
         if ($this->authorizationMode === null) {
             $this->authorizationMode = new AuthorizationMode(AuthorizationMode::SSWS);
+        }
+
+        if ($this->authorizationMode->getValue() == AuthorizationMode::SSWS) {
+            $this->authorizationMode->setToken($this->token);
+        }
+
+        if ($this->authorizationMode->getValue() == AuthorizationMode::PRIVATE_KEY) {
+            $this->authorizationMode
+                ->setClientId($this->clientId)
+                ->setScopes($this->scopes)
+                ->setPrivateKey($this->privateKey)
+                ->setOrgurl($this->organizationUrl);
         }
 
         return new Client(
@@ -238,12 +301,27 @@ class ClientBuilder
         if (key_exists('orgUrl', $parsed['okta']['client'])) {
             $this->setOrganizationUrl($parsed['okta']['client']['orgUrl']);
         }
+
+        if (key_exists('clientId', $parsed['okta']['client'])) {
+            $this->setClientId($parsed['okta']['client']['clientId']);
+        }
+
+        if (key_exists('scopes', $parsed['okta']['client'])) {
+            $this->setScopes($parsed['okta']['client']['scopes']);
+        }
+
+        if (key_exists('privateKey', $parsed['okta']['client'])) {
+            $this->setPrivateKey($parsed['okta']['client']['privateKey']);
+        }
     }
 
     private function overrideOptionsWithEnvironmentVariables()
     {
         $token = getenv('OKTA_CLIENT_TOKEN');
         $orgUrl = getenv('OKTA_CLIENT_ORGURL');
+        $clientId = getenv('OKTA_CLIENT_CLIENTID');
+        $scopes = getenv('OKTA_CLIENT_SCOPES');
+        $privateKey = getenv('OKTA_CLIENT_PRIVATEKEY');
 
         if (false !== $token) {
             $this->setToken($token);
@@ -251,6 +329,18 @@ class ClientBuilder
 
         if (false !== $orgUrl) {
             $this->setOrganizationUrl($orgUrl);
+        }
+
+        if (false !== $clientId) {
+            $this->setClientId($clientId);
+        }
+
+        if (false !== $scopes) {
+            $this->setScopes($scopes);
+        }
+
+        if (false !== $privateKey) {
+            $this->setPrivateKey($privateKey);
         }
     }
 }

@@ -98,7 +98,7 @@ class DefaultDataStore
         }
 
         $authenticationPlugin = new AuthenticationPlugin(
-            $authorizationMode->getDriver($this->token)
+            $authorizationMode->getDriver()
         );
 
         $this->httpClient = new PluginClient(

@@ -113,7 +113,7 @@ class ClientBuilderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_self_when_settings_authorization_mode()
+    public function it_returns_self_when_setting_authorization_mode()
     {
         $clientBuilder = new ClientBuilder(null, 'okta.yaml');
         $response = $clientBuilder->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::SSWS));
@@ -121,6 +121,30 @@ class ClientBuilderTest extends TestCase
             ClientBuilder::class,
             $response,
             "Setting the authorizationMode did not return an instance of " . ClientBuilder::class
+        );
+    }
+
+    /** @test */
+    public function it_returns_self_when_setting_client_id()
+    {
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
+        $response = $clientBuilder->setClientId('clientId123');
+        $this->assertInstanceOf(
+            ClientBuilder::class,
+            $response,
+            "Setting the client id did not return an instance of " . ClientBuilder::class
+        );
+    }
+
+    /** @test */
+    public function it_returns_self_when_setting_scopes()
+    {
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
+        $response = $clientBuilder->setScopes('');
+        $this->assertInstanceOf(
+            ClientBuilder::class,
+            $response,
+            "Setting the scopes did not return an instance of " . ClientBuilder::class
         );
     }
 

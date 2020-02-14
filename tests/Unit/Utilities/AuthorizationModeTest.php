@@ -39,6 +39,33 @@ class AuthorizationModeTest extends TestCase
   public function ssws_type_returns_instance_of_ssws_auth_driver()
   {
     $authorizationType = new AuthorizationMode(AuthorizationMode::SSWS);  
-    $this->assertInstanceOf(SswsAuth::class, $authorizationType->getDriver('123'));
+    $authorizationType->setToken('123');
+    $this->assertInstanceOf(SswsAuth::class, $authorizationType->getDriver());
+  }
+
+  /** @test */
+  public function private_key_type_has_access_to_properties()
+  {
+    $authorizationType = new AuthorizationMode(AuthorizationMode::PRIVATE_KEY);
+    $authorizationType->setClientId('myClientId');
+    $authorizationType->setScopes('scope1');
+    $authorizationType->setPrivateKey('privateKeyString');
+    $authorizationTypeReflection = new ReflectionClass($authorizationType);
+    
+    $reflectClientId = $authorizationTypeReflection->getProperty('clientId');
+    $reflectClientId->setAccessible(true);
+    $clientId = $reflectClientId->getValue($authorizationType);
+
+    $reflectScopes = $authorizationTypeReflection->getProperty('scopes');
+    $reflectScopes->setAccessible(true);
+    $scopes = $reflectScopes->getValue($authorizationType);
+
+    $reflectPrivateKey = $authorizationTypeReflection->getProperty('privateKey');
+    $reflectPrivateKey->setAccessible(true);
+    $privateKey = $reflectPrivateKey->getValue($authorizationType);
+    
+    $this->assertEquals('myClientId', $clientId);
+    $this->assertEquals('scope1', $scopes);
+    $this->assertEquals('privateKeyString', $privateKey);
   }
 }

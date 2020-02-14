@@ -1,6 +1,7 @@
 <?php
 
 use Okta\ClientBuilder;
+use Okta\Utilities\AuthorizationMode;
 
 /******************************************************************************
  * Copyright 2017 Okta, Inc.                                                  *
@@ -29,10 +30,11 @@ class BaseIntegrationTestCase extends BaseTestCase
 
     /**
      * @param array $returns
+     * @param AuthorizationMode $authzMode
      *
      * @return \Http\Client\HttpClient
      */
-    protected function createNewHttpClient($returns = []): \Http\Client\HttpClient
+    protected function createNewHttpClient($returns = [], AuthorizationMode $authzMode = null): \Http\Client\HttpClient
     {
         if( ! $this->isMockingResponses() ) {
             return \Okta\Client::getInstance()->getDataStore()->getHttpClient();
@@ -64,13 +66,24 @@ class BaseIntegrationTestCase extends BaseTestCase
             $httpClient->addResponse($response);
         }
 
-        (new \Okta\ClientBuilder())
-            ->setOrganizationUrl('https://dev.okta.com')
-            ->setToken($this->token)
-            ->setHttpClient($httpClient)
-            ->build();
+        if($authzMode && $authzMode->getValue() == AuthorizationMode::PRIVATE_KEY){
+            (new ClientBuilder)
+                ->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::PRIVATE_KEY))
+                ->setHttpClient($httpClient)
+                ->build();
+        } else {
+
+            (new \Okta\ClientBuilder())
+                ->setOrganizationUrl('https://dev.okta.com')
+                ->setToken($this->token)
+                ->setHttpClient($httpClient)
+                ->build();
+        }
+
         return $httpClient;
     }
+
+
 
     protected function isMockingResponses()
     {

@@ -10,6 +10,7 @@
          stopOnError="false"
          stopOnFailure="false"
          verbose="true"
+         stderr="true"
 >
 
     <testsuites>
