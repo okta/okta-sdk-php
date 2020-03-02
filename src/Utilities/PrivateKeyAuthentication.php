@@ -59,7 +59,7 @@ class PrivateKeyAuthentication {
         $this->orgUrl = $orgUrl;
 
         $this->jwtConfig = Configuration::forAsymmetricSigner(
-            new Signer\RSA\Sha256(),
+            new Signer\Rsa\Sha256(),
             $this->privateKey,
             $this->privateKey
         );
