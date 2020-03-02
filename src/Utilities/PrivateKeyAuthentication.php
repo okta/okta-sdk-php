@@ -31,7 +31,7 @@ class PrivateKeyAuthentication {
      *
      * @var string
      */
-    protected $scopes = [];
+    protected $scopes = '';
 
     /**
      * PrivateKey for authentication driver
@@ -66,15 +66,15 @@ class PrivateKeyAuthentication {
     }
 
     public function getBearerToken() {
-        
-        if(array_key_exists('Okta_Oauth_Token', $_COOKIE)) {
-            $token = $_COOKIE['Okta_Oauth_Token'];
+        if($this->memory->pool()->hasItem('Okta_Oauth_Token')) {
+            
+            $token = $this->memory->pool()->getItem('Okta_Oauth_Token')->get();
             $constraint = new ValidAt($this->clock);
             try {
                 $constraint->assert($token);
                 return $token;
             } catch(\Exception $e) {
-                $_COOKIE['Okta_Oauth_Token'] = null;
+                $this->memory->pool()->delete('Okta_Oauth_Token');
             }
 
         }
@@ -89,9 +89,17 @@ class PrivateKeyAuthentication {
             ->getToken($this->jwtConfig->getSigner(), $this->jwtConfig->getSigningKey());
 
         $token = $this->tokenRequest($clientAssertion);
-       
-        setcookie("Okta_Oauth_Token", $token, time()+3600);
-        return $token;
+        if($token) {
+            $cacheItem = (new CacheItem('Okta_Oauth_Token'))
+                ->set($token)
+                ->expiresAfter(new \DateInterval('PT3600S'));
+
+            $this->memory->pool()->save($cacheItem);
+            return $token;
+        }
+
+        throw new \Exception("Could not get a token");
+        
 
     }
 

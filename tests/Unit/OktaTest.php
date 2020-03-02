@@ -121,4 +121,13 @@ class OktaTest extends TestCase
         );
     }
 
+    /** @test */
+    public function it_allows_getting_headers_from_response()
+    {
+        (new \Okta\ClientBuilder())
+            ->build();
+
+       $users = (new \Okta\Okta)->getUsers();
+    }
+
 }
