@@ -2,3 +2,5 @@
 examples
 phpunit.xml
 .phpunit.result.cache
+.env
+.vscode
