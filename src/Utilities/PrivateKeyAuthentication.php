@@ -124,6 +124,7 @@ class PrivateKeyAuthentication {
         $info = curl_getinfo($curl);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($httpcode < 200 || $httpcode > 299) {
+            
             $error = new Error(json_encode($token));
             throw new ResourceException($error);
         }
