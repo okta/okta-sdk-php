@@ -52,27 +52,23 @@ $client = (new \Okta\ClientBuilder())
             ->build();
 ```
 
-### Oauth for Okta
-The Okta API allows for communication through Oauth. In order for this to work, you need to create a service-to-service
-applicaiton in your organization. See [our guide](https://developer.okta.com/docs/guides/implement-oauth-for-okta/overview/)
-for setting up your new service application with a public and private key pair. 
+### OAuth 2.0
 
-After your service application is set up, a few new environment variables are required.
+Okta allows you to interact with Okta APIs using scoped OAuth 2.0 access tokens. Each access token enables the bearer to perform specific actions on specific Okta endpoints, with that ability controlled by which scopes the access token contains. 
 
-```
-OKTA_CLIENT_CLIENTID={Your new service app client id}
-OKTA_CLIENT_SCOPES={space delimited string of scopes }
-OKTA_CLIENT_PRIVATEKEY={Your PEM Private Key}
-```
+This SDK supports this feature only for service-to-service applications. Check out [our guides](https://developer.okta.com/docs/guides/implement-oauth-for-okta/overview/) to learn more about how to register a new service application using a private and public key pair.
 
-Once you have set your new environment variables, the client instantiation is a little different. Instead of providing the token, you need to tell 
-the client to use `PRIVATE_KEY` authorization
+When using this approach you won't need an API Token because the SDK will request an access token for you. In order to use OAuth 2.0, construct a client instance by passing the following parameters:
 
 ```php
 $client = (new \Okta\ClientBuilder)
             ->setAuthorizationMode(new \Okta\Utilities\AuthorizationMode(\Okta\Utilities\AuthorizationMode::PRIVATE_KEY))
+            ->setClientId({{clientId}})
+            ->setScopes("okta.users.read okta.apps.read")
+            ->setPrivateKey("{{PEM PRIVATE KEY BLOCK}}")
             ->build();
 ```
+
 
 ## Users
 ### Finding a user by id
@@ -180,11 +176,32 @@ $clientBuilder = new ClientBuilder();
 ```
 
 ### Contents of the okta.yaml File
-```php
+```yaml
 okta:
   client:
-    orgUrl: null
-    token: null
+    orgUrl: "https://{yourOktaDomain}"
+    token: "{token}"
+```
+
+When you use OAuth 2.0 the full YAML configuration looks like:
+
+```yaml
+okta:
+  client:
+    connectionTimeout: 30 # seconds
+    orgUrl: "https://{yourOktaDomain}"
+    proxy:
+      port: null
+      host: null
+      username: null
+      password: null
+    authorizationMode: "PrivateKey"
+    clientId: "{yourClientId}"
+    Scopes: "scope.1 scope.2"
+    PrivateKey: "{PEM PRIVATE KEY}"
+    requestTimeout: 0 # seconds
+    rateLimit:
+      maxRetries: 4
 ```
 
 For information on what can go into the query property, visit 
