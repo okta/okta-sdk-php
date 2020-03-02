@@ -33,6 +33,7 @@ use Okta\Exceptions\Error;
 use Okta\Exceptions\ResourceException;
 use Okta\Resource\AbstractCollection;
 use Okta\Resource\AbstractResource;
+use Okta\Utilities\AuthorizationMode;
 use Okta\Utilities\SswsAuth;
 use Okta\Utilities\UserAgentBuilder;
 use Psr\Http\Message\UriInterface;
@@ -86,14 +87,18 @@ class DefaultDataStore
      * @param string          $token
      * @param string          $organizationUrl
      * @param HttpClient|NULL $httpClient
+     * @param AuthorizationMode|NULL $authorizationMode
      */
-    public function __construct(string $token, string $organizationUrl, HttpClient $httpClient = null)
+    public function __construct(string $token, string $organizationUrl, HttpClient $httpClient = null, AuthorizationMode $authorizationMode = null)
     {
         $this->token = $token;
         $this->organizationUrl = $organizationUrl;
+        if($authorizationMode === null) {
+            $authorizationMode = new AuthorizationMode(AuthorizationMode::SSWS);
+        }
 
         $authenticationPlugin = new AuthenticationPlugin(
-            new SswsAuth($this->token)
+            $authorizationMode->getDriver()
         );
 
         $this->httpClient = new PluginClient(
