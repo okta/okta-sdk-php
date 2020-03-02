@@ -88,7 +88,7 @@ dump($foundUser);
 ### Creating a User
 ```php
 $user = new \Okta\Users\User();
-$profile = new \Okta\Users\Profile();
+$profile = new \Okta\Users\UserProfile();
 
 $profile->setFirstName('John')
     ->setLastName('User')
