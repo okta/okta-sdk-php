@@ -115,7 +115,7 @@ class OauthCommTest extends BaseIntegrationTestCase
 
             $this->assertInstanceOf(User::class, $user);
             $this->assertNotEmpty($user->id, 'It appears the user was not created');
-            
+
             $user->deactivate();
             $user->delete();
 
