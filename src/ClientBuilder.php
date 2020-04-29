@@ -182,7 +182,7 @@ class ClientBuilder
 
     /**
      * Set the Authorizaiton Mode.
-     * 
+     *
      * @param AuthorizationMode $authorizationMode The Authorization mode for api calls.
      * @return ClientBuilder
      */
@@ -194,7 +194,7 @@ class ClientBuilder
 
     /**
      * Set the Client Id
-     * 
+     *
      * @param string $clientId The Client id for the application
      * @return ClientBuilder
      */
@@ -206,7 +206,7 @@ class ClientBuilder
 
     /**
      * Set the scopes for the token
-     * 
+     *
      * @param string $scopes The scopes for the bearer token
      * @return ClientBuilder
      */
@@ -218,7 +218,7 @@ class ClientBuilder
 
     /**
      * Set the private key
-     * 
+     *
      * @param string $privateKey The private key for the bearer token. This accepts PEM string, JWK string, or file location of PEM
      * @return ClientBuilder
      */
@@ -311,7 +311,13 @@ class ClientBuilder
         }
 
         if (key_exists('privateKey', $parsed['okta']['client'])) {
-            $this->setPrivateKey($parsed['okta']['client']['privateKey']);
+            $privateKey = $parsed['okta']['client']['privateKey'];
+            if ($this->endsWith($privateKey, ".pem")) {
+                // This is a path to pem file. Get contents of the file
+                $privateKey = file_get_contents($parsed['okta']['client']['privateKey']);
+            }
+
+            $this->setPrivateKey($privateKey);
         }
     }
 
@@ -342,5 +348,15 @@ class ClientBuilder
         if (false !== $privateKey) {
             $this->setPrivateKey($privateKey);
         }
+    }
+
+    // Function to check if a string ends with given substring or not
+    private function endsWith($string, $endString)
+    {
+        $len = strlen($endString);
+        if ($len == 0) {
+            return true;
+        }
+        return (substr($string, -$len) === $endString);
     }
 }
