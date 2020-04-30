@@ -182,7 +182,7 @@ class ClientBuilder
 
     /**
      * Set the Authorizaiton Mode.
-     * 
+     *
      * @param AuthorizationMode $authorizationMode The Authorization mode for api calls.
      * @return ClientBuilder
      */
@@ -194,7 +194,7 @@ class ClientBuilder
 
     /**
      * Set the Client Id
-     * 
+     *
      * @param string $clientId The Client id for the application
      * @return ClientBuilder
      */
@@ -206,7 +206,7 @@ class ClientBuilder
 
     /**
      * Set the scopes for the token
-     * 
+     *
      * @param string $scopes The scopes for the bearer token
      * @return ClientBuilder
      */
@@ -218,7 +218,7 @@ class ClientBuilder
 
     /**
      * Set the private key
-     * 
+     *
      * @param string $privateKey The private key for the bearer token. This accepts PEM string, JWK string, or file location of PEM
      * @return ClientBuilder
      */
@@ -307,11 +307,19 @@ class ClientBuilder
         }
 
         if (key_exists('scopes', $parsed['okta']['client'])) {
-            $this->setScopes($parsed['okta']['client']['scopes']);
+            // Convert array to string of scopes
+            $scopesString = implode(" ", $parsed['okta']['client']['scopes']);
+            $this->setScopes($scopesString);
         }
 
         if (key_exists('privateKey', $parsed['okta']['client'])) {
-            $this->setPrivateKey($parsed['okta']['client']['privateKey']);
+            $privateKey = $parsed['okta']['client']['privateKey'];
+
+            if(file_exists($privateKey)) {
+                $privateKey = file_get_contents($parsed['okta']['client']['privateKey']);
+            }
+
+            $this->setPrivateKey($privateKey);
         }
     }
 
