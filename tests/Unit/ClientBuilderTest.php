@@ -225,16 +225,19 @@ class ClientBuilderTest extends TestCase
                 ]
             ]));
 
-        $parser->expects($this->at(2))
-            ->method('parse')
-            ->will($this->returnValue([
-                'okta' => [
-                    'client' => [
-                        'token' => 'xyz789',
-                        'orgUrl' => 'https://okta.com'
+        if(function_exists('posix_getpwuid') && function_exists('posix_getuid') && file_exists(posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml')) {
+            $parser->expects($this->at(2))
+                ->method('parse')
+                ->will($this->returnValue([
+                    'okta' => [
+                        'client' => [
+                            'token' => 'xyz789',
+                            'orgUrl' => 'https://okta.com'
+                        ]
                     ]
-                ]
-            ]));
+                ]));
+        }
+
 
         $clientBuilderDefault = new ClientBuilder($parser, 'okta.yaml');
         $clientBuilder = new ClientBuilder($parser);
