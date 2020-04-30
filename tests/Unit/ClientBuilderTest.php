@@ -225,7 +225,7 @@ class ClientBuilderTest extends TestCase
                 ]
             ]));
 
-        if(function_exists('posix_getpwuid') && function_exists('posix_getuid') && posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml') {
+        if(function_exists('posix_getpwuid') && function_exists('posix_getuid') && file_exists(posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml')) {
             $parser->expects($this->at(2))
                 ->method('parse')
                 ->will($this->returnValue([
