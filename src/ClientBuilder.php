@@ -314,8 +314,8 @@ class ClientBuilder
 
         if (key_exists('privateKey', $parsed['okta']['client'])) {
             $privateKey = $parsed['okta']['client']['privateKey'];
-            if ($this->endsWith($privateKey, ".pem")) {
-                // This is a path to pem file. Get contents of the file
+
+            if(file_exists($privateKey)) {
                 $privateKey = file_get_contents($parsed['okta']['client']['privateKey']);
             }
 
@@ -350,15 +350,5 @@ class ClientBuilder
         if (false !== $privateKey) {
             $this->setPrivateKey($privateKey);
         }
-    }
-
-    // Function to check if a string ends with given substring or not
-    private function endsWith($string, $endString)
-    {
-        $len = strlen($endString);
-        if ($len == 0) {
-            return true;
-        }
-        return (substr($string, -$len) === $endString);
     }
 }
