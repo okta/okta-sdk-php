@@ -67,7 +67,7 @@ class PrivateKeyAuthentication {
 
     public function getBearerToken() {
         if($this->memory->pool()->hasItem('Okta_Oauth_Token')) {
-            
+
             $token = $this->memory->pool()->getItem('Okta_Oauth_Token')->get();
             $constraint = new ValidAt($this->clock);
             try {
@@ -99,11 +99,11 @@ class PrivateKeyAuthentication {
         }
 
         throw new \Exception("Could not get a token");
-        
+
 
     }
 
-    private function tokenRequest($clientAssertion) 
+    private function tokenRequest($clientAssertion)
     {
         $curl = curl_init();
         $query = http_build_query([
@@ -118,16 +118,17 @@ class PrivateKeyAuthentication {
             'Accept: application/json',
             'Content-Type: application/x-www-form-urlencoded'
         ]);
-        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true); 
-        
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+
         $token = json_decode(curl_exec($curl));
         $info = curl_getinfo($curl);
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        curl_close($curl);
         if ($httpcode < 200 || $httpcode > 299) {
             $error = new Error(json_encode($token));
             throw new ResourceException($error);
         }
-        
+
         return $token->access_token;
 
     }
