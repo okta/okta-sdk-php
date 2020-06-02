@@ -24,7 +24,7 @@
         "psr/cache": "^1.0",
         "league/flysystem-memory": "^1.0",
         "cache/filesystem-adapter": "^1.0",
-        "vlucas/phpdotenv": "^4.1",
+        "vlucas/phpdotenv": "^3.3|^4.1",
         "lcobucci/jwt": "^4.0@alpha"
     },
     "require-dev": {
