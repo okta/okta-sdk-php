@@ -308,7 +308,11 @@ class ClientBuilder
 
         if (key_exists('scopes', $parsed['okta']['client'])) {
             // Convert array to string of scopes
-            $scopesString = implode(" ", $parsed['okta']['client']['scopes']);
+            $scopesString = $parsed['okta']['client']['scopes'];
+
+            if(is_array($scopesString)) {
+                $scopesString = implode(" ", $scopesString);
+            }
             $this->setScopes($scopesString);
         }
 
