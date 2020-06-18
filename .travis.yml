@@ -4,7 +4,7 @@ env:
   - COVERAGE=false
   - DEPLOY_DOCS=false
 install:
-- travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+- travis_retry composer install --prefer-dist --no-interaction --no-suggest
 before_script:
 - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
 - mkdir -p ~/.okta
