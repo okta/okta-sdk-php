@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class WebAuthnUserFactor extends \Okta\Resource\AbstractResource
 {
     const PROFILE = 'profile';

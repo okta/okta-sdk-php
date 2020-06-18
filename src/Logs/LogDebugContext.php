@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogDebugContext extends \Okta\Resource\AbstractResource
 {
     const DEBUG_DATA = 'debugData';

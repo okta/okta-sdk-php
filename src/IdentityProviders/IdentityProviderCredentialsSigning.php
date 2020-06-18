@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class IdentityProviderCredentialsSigning extends \Okta\Resource\AbstractResource
 {
     const KID = 'kid';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyUserNameTemplate extends \Okta\Resource\AbstractResource
 {
     const TEMPLATE = 'template';

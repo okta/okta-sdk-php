@@ -10,17 +10,11 @@
     <exclude-pattern>*/openapi/*</exclude-pattern>
 
     <rule ref="PSR2">
-        <rule ref="Generic.Files.LineLength">
-            <properties>
-                <property name="lineLimit" value="0"/>
-            </properties>
-        </rule>
+        <exclude name="Generic.Files.LineLength"/>
     </rule>
     <rule ref="Generic.Commenting.Fixme"/>
     <rule ref="Generic.Commenting.Todo"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
     <rule ref="Generic.PHP.ForbiddenFunctions"/>
-
-
 
 </ruleset>

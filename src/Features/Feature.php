@@ -17,7 +17,6 @@
 
 namespace Okta\Features;
 
-
 class Feature extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

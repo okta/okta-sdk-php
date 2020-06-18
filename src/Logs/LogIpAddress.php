@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogIpAddress extends \Okta\Resource\AbstractResource
 {
     const IP = 'ip';
@@ -70,5 +69,4 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class OktaSignOnPolicyRuleActions extends \Okta\Resource\AbstractResource
 {
     const SIGNON = 'signon';

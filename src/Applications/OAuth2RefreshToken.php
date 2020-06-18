@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogClient extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -97,5 +96,4 @@ class LogClient extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

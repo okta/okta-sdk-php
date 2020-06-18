@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class UserIdentifierPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

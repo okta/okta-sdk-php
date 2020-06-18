@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class Protocol extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

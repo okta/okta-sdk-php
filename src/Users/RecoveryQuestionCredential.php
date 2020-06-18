@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';

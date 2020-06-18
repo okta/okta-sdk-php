@@ -55,4 +55,5 @@ class FactorType extends Enum
             default:
                 return \Okta\UserFactors\UserFactor::class;
         }
-    }}
+    }
+}

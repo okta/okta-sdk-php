@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class RiskScorePolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const LEVEL = 'level';

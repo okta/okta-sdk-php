@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SamlAttributeStatement extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';

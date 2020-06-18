@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const TARGET_URL = 'targetURL';
@@ -37,7 +36,6 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Applications\App
      */
     public function getTargetUrl()
     {
-        var_dump($this->getProperty(self::TARGET_URL));
         return $this->getProperty(self::TARGET_URL);
     }
 

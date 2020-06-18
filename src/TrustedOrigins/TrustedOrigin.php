@@ -17,7 +17,6 @@
 
 namespace Okta\TrustedOrigins;
 
-
 class TrustedOrigin extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -32,7 +31,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     const LAST_UPDATED_BY = 'lastUpdatedBy';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

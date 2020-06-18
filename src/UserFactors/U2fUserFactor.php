@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class U2fUserFactor extends \Okta\Resource\AbstractResource
 {
     const PROFILE = 'profile';

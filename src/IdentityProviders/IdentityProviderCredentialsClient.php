@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class IdentityProviderCredentialsClient extends \Okta\Resource\AbstractResource
 {
     const CLIENT_ID = 'client_id';

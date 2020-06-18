@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class AppUserCredentials extends \Okta\Resource\AbstractResource
 {
     const PASSWORD = 'password';

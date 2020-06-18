@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class OktaSignOnPolicyRuleSignonSessionActions extends \Okta\Resource\AbstractResource
 {
     const USE_PERSISTENT_COOKIE = 'usePersistentCookie';

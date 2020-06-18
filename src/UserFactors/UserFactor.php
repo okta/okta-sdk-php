@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class UserFactor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -199,7 +198,7 @@ class UserFactor extends \Okta\Resource\AbstractResource
     /**
     * Verifies an OTP for a &#x60;token&#x60; or &#x60;token:hardware&#x60; factor
     *
-    
+
     * @return mixed|null
     */
     public function verify(VerifyFactorRequest $verifyFactorRequest, $tokenLifetimeSeconds = 300)
@@ -229,4 +228,5 @@ class UserFactor extends \Okta\Resource\AbstractResource
         }
     
         return new $realFactor(null, $properties);
-    }}
+    }
+}

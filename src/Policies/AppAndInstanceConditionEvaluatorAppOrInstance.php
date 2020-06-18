@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class AppAndInstanceConditionEvaluatorAppOrInstance extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

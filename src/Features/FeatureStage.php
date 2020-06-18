@@ -17,7 +17,6 @@
 
 namespace Okta\Features;
 
-
 class FeatureStage extends \Okta\Resource\AbstractResource
 {
     const STATE = 'state';

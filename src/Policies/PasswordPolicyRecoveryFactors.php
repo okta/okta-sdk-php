@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
 {
     const OKTA_SMS = 'okta_sms';

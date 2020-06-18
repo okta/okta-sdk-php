@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class IdentityProviderCredentials extends \Okta\Resource\AbstractResource
 {
     const TRUST = 'trust';

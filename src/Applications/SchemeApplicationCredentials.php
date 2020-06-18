@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredentials
 {
     const SCHEME = 'scheme';

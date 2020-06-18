@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class ResponseLinks extends \Okta\Resource\AbstractResource
 {
 

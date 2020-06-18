@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogUserAgent extends \Okta\Resource\AbstractResource
 {
     const OS = 'os';

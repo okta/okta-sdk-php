@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryEmail extends \Okta\Resource\AbstractResource
 {
     const STATUS = 'status';

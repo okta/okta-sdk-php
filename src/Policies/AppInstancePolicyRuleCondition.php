@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class AppInstancePolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';

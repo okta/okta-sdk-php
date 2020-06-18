@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BrowserPluginApplication extends \Okta\Applications\Application
 {
     const CREDENTIALS = 'credentials';

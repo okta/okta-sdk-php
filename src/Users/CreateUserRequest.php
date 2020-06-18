@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class CreateUserRequest extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

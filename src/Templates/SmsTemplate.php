@@ -17,7 +17,6 @@
 
 namespace Okta\Templates;
 
-
 class SmsTemplate extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -29,7 +28,7 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     const TRANSLATIONS = 'translations';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

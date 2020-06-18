@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolRelayState extends \Okta\Resource\AbstractResource
 {
     const FORMAT = 'format';

@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class PasswordCredentialHook extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

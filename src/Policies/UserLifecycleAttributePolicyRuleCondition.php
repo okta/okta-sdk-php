@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class UserLifecycleAttributePolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const ATTRIBUTE_NAME = 'attributeName';

@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

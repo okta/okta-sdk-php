@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolAlgorithmType extends \Okta\Resource\AbstractResource
 {
     const SIGNATURE = 'signature';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyPeopleCondition extends \Okta\Resource\AbstractResource
 {
     const USERS = 'users';

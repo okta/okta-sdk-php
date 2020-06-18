@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class SecurityQuestionUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const ANSWER = 'answer';

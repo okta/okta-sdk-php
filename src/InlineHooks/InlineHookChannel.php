@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookChannel extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

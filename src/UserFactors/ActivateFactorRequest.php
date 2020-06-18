@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class ActivateFactorRequest extends \Okta\Resource\AbstractResource
 {
     const PASS_CODE = 'passCode';

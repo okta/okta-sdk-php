@@ -17,7 +17,6 @@
 
 namespace Okta\Ions;
 
-
 class IonField extends \Okta\Resource\AbstractResource
 {
     const FORM = 'form';

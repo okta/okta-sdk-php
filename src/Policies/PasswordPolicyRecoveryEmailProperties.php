@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryEmailProperties extends \Okta\Resource\AbstractResource
 {
     const RECOVERY_TOKEN = 'recoveryToken';

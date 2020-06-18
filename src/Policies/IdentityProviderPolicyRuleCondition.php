@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class IdentityProviderPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const IDP_IDS = 'idpIds';

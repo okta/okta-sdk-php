@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProvisioningConditions extends \Okta\Resource\AbstractResource
 {
     const SUSPENDED = 'suspended';

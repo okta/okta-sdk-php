@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProvisioningGroups extends \Okta\Resource\AbstractResource
 {
     const ACTION = 'action';

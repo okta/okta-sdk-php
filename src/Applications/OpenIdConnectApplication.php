@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OpenIdConnectApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';

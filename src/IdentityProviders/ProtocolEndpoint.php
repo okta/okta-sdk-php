@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolEndpoint extends \Okta\Resource\AbstractResource
 {
     const URL = 'url';

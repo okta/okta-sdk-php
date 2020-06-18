@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class EmailUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';

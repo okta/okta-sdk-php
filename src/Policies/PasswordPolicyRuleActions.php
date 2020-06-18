@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRuleActions extends \Okta\Resource\AbstractResource
 {
     const PASSWORD_CHANGE = 'passwordChange';

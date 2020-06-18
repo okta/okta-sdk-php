@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PlatformConditionEvaluatorPlatformOperatingSystemVersion extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';

@@ -17,7 +17,6 @@
 
 namespace Okta\UserTypes;
 
-
 class UserType extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -32,7 +31,7 @@ class UserType extends \Okta\Resource\AbstractResource
     const LAST_UPDATED_BY = 'lastUpdatedBy';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -66,14 +65,14 @@ class UserType extends \Okta\Resource\AbstractResource
                         "/meta"
                     );
     }
-            public function delete()
+    public function delete()
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->deleteResource(
-                    "/meta",
-                    $this
-                );
+        ->getDataStore()
+        ->deleteResource(
+            "/meta",
+            $this
+        );
     }
         
     /**

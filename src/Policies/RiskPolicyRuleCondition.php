@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class RiskPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const BEHAVIORS = 'behaviors';

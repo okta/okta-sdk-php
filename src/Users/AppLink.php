@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class AppLink extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

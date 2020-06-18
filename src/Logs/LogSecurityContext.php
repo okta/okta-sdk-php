@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogSecurityContext extends \Okta\Resource\AbstractResource
 {
     const ISP = 'isp';

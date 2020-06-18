@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class WsFederationApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';

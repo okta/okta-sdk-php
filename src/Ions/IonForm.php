@@ -17,7 +17,6 @@
 
 namespace Okta\Ions;
 
-
 class IonForm extends \Okta\Resource\AbstractResource
 {
     const REL = 'rel';

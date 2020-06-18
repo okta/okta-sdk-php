@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2ScopesMediationPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const INCLUDE = 'include';

@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BookmarkApplication extends \Okta\Applications\Application
 {
     const NAME = 'name';

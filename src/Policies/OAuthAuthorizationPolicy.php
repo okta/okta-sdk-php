@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class OAuthAuthorizationPolicy extends \Okta\Resource\AbstractResource
 {
 

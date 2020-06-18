@@ -17,7 +17,6 @@
 
 namespace Okta\Roles;
 
-
 class Scope extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

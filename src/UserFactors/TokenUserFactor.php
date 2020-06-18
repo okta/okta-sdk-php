@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class TokenUserFactor extends \Okta\UserFactors\UserFactor
 {
     const PROFILE = 'profile';

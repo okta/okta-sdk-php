@@ -17,11 +17,9 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryEmailRecoveryToken extends \Okta\Resource\AbstractResource
 {
     const TOKEN_LIFETIME_MINUTES = 'tokenLifetimeMinutes';
 
     private $tokenLifetimeMinutes = '10080';
-
 }

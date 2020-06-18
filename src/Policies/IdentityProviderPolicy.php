@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class IdentityProviderPolicy extends \Okta\Resource\AbstractResource
 {
     const SUBJECT = 'subject';

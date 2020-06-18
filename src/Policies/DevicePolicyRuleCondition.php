@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class DevicePolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const ROOTED = 'rooted';

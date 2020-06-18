@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicySubject extends \Okta\Resource\AbstractResource
 {
     const FILTER = 'filter';

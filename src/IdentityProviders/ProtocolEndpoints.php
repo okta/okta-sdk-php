@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolEndpoints extends \Okta\Resource\AbstractResource
 {
     const ACS = 'acs';

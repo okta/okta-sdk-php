@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class LifecycleExpirationPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const UNIT = 'unit';

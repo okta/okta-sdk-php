@@ -17,7 +17,6 @@
 
 namespace Okta\EventHooks;
 
-
 class EventHook extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -32,7 +31,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     const VERIFICATION_STATUS = 'verificationStatus';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

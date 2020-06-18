@@ -17,11 +17,9 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryFactorSettings extends \Okta\Resource\AbstractResource
 {
     const STATUS = 'status';
 
     private $status = 'INACTIVE';
-
 }

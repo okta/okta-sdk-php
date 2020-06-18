@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryQuestion extends \Okta\Resource\AbstractResource
 {
     const STATUS = 'status';
@@ -48,5 +47,4 @@ class PasswordPolicyRecoveryQuestion extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 }

@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
 {
     const CLIENT_ID = 'client_id';

@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationVisibility extends \Okta\Resource\AbstractResource
 {
     const HIDE = 'hide';

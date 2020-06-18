@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookChannelConfig extends \Okta\Resource\AbstractResource
 {
     const URI = 'uri';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class ScheduledUserLifecycleAction extends \Okta\Resource\AbstractResource
 {
     const STATUS = 'status';

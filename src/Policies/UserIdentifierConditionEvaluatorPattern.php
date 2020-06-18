@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class UserIdentifierConditionEvaluatorPattern extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';

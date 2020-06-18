@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2Claim extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

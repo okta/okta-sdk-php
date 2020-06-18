@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class UserProfile extends \Okta\Resource\AbstractResource
 {
     const CITY = 'city';

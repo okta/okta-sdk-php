@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class Role extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -183,7 +182,7 @@ class Role extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null

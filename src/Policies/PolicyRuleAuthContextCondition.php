@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyRuleAuthContextCondition extends \Okta\Resource\AbstractResource
 {
     const AUTH_TYPE = 'authType';

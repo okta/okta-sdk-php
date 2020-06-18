@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
 {
     const I_OS = 'iOS';

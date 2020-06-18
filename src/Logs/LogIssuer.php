@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogIssuer extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

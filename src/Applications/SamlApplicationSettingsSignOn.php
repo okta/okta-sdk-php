@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
 {
     const AUDIENCE = 'audience';

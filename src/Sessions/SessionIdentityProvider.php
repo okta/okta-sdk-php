@@ -17,7 +17,6 @@
 
 namespace Okta\Sessions;
 
-
 class SessionIdentityProvider extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

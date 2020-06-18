@@ -17,7 +17,6 @@
 
 namespace Okta\Logs;
 
-
 class LogGeolocation extends \Okta\Resource\AbstractResource
 {
     const LAT = 'lat';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class UserStatusPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';

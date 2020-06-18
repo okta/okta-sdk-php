@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyRule extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

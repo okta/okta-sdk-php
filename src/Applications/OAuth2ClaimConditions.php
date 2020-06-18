@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2ClaimConditions extends \Okta\Resource\AbstractResource
 {
     const SCOPES = 'scopes';

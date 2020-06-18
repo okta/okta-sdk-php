@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class Csr extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

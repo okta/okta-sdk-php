@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRuleAction extends \Okta\Resource\AbstractResource
 {
     const ACCESS = 'access';

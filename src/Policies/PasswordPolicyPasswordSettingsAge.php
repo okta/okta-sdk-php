@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
 {
     const MAX_AGE_DAYS = 'maxAgeDays';

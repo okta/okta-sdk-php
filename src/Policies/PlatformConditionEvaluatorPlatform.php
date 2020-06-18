@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PlatformConditionEvaluatorPlatform extends \Okta\Resource\AbstractResource
 {
     const OS = 'os';

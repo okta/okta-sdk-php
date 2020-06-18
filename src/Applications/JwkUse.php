@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class JwkUse extends \Okta\Resource\AbstractResource
 {
     const USE = 'use';

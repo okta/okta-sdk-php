@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class ClientPolicyCondition extends \Okta\Resource\AbstractResource
 {
     const INCLUDE = 'include';

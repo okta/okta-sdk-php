@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class CsrMetadataSubjectAltNames extends \Okta\Resource\AbstractResource
 {
     const DNS_NAMES = 'dnsNames';

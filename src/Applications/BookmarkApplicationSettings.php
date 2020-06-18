@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class BookmarkApplicationSettings extends \Okta\Applications\ApplicationSettings
 {
     const APP = 'app';

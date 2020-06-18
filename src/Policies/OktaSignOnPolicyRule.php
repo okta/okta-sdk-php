@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class OktaSignOnPolicyRule extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';

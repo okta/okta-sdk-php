@@ -17,7 +17,6 @@
 
 namespace Okta\Users;
 
-
 class PasswordCredentialHash extends \Okta\Resource\AbstractResource
 {
     const SALT = 'salt';

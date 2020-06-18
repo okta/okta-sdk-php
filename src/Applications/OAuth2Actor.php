@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2Actor extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

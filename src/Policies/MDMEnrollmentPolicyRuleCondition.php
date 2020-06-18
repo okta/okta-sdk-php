@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class MDMEnrollmentPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const ENROLLMENT = 'enrollment';

@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class Application extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -662,7 +661,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -682,7 +681,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -722,7 +721,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -742,7 +741,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -762,7 +761,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -782,7 +781,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -802,7 +801,7 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null
@@ -1022,4 +1021,5 @@ class Application extends \Okta\Resource\AbstractResource
         }
     
         return new $appClass(null, $properties);
-    }}
+    }
+}

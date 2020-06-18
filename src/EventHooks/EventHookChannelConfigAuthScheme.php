@@ -17,7 +17,6 @@
 
 namespace Okta\EventHooks;
 
-
 class EventHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
 {
     const KEY = 'key';

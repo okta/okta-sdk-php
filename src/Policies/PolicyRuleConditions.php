@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyRuleConditions extends \Okta\Resource\AbstractResource
 {
     const APP = 'app';

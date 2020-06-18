@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class BeforeScheduledActionPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const DURATION = 'duration';

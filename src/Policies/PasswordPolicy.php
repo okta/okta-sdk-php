@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicy extends \Okta\Resource\AbstractResource
 {
     const SETTINGS = 'settings';

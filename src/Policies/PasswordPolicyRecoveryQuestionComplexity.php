@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryQuestionComplexity extends \Okta\Resource\AbstractResource
 {
     const MIN_LENGTH = 'minLength';

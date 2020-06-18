@@ -17,7 +17,6 @@
 
 namespace Okta\GroupRules;
 
-
 class GroupRuleAction extends \Okta\Resource\AbstractResource
 {
     const ASSIGN_USER_TO_GROUPS = 'assignUserToGroups';

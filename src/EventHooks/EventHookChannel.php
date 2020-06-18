@@ -17,7 +17,6 @@
 
 namespace Okta\EventHooks;
 
-
 class EventHookChannel extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

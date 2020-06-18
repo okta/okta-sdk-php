@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoverySettings extends \Okta\Resource\AbstractResource
 {
     const FACTORS = 'factors';

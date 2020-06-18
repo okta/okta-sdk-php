@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class ContextPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const EXPRESSION = 'expression';

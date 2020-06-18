@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRecoveryQuestionProperties extends \Okta\Resource\AbstractResource
 {
     const COMPLEXITY = 'complexity';
@@ -37,5 +36,4 @@ class PasswordPolicyRecoveryQuestionProperties extends \Okta\Resource\AbstractRe
             $options
         );
     }
-
 }

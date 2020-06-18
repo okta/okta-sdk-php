@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class UserIdentityProviderLinkRequest extends \Okta\Resource\AbstractResource
 {
     const EXTERNAL_ID = 'externalId';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyAccountLink extends \Okta\Resource\AbstractResource
 {
     const ACTION = 'action';

@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class AppUser extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -36,7 +35,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
 
 
-    public function save( $appId )
+    public function save($appId)
     {
         return \Okta\Client::getInstance()
             ->getDataStore()
@@ -47,7 +46,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
-    public function delete( $appId )
+    public function delete($appId)
     {
         return \Okta\Client::getInstance()
             ->getDataStore()

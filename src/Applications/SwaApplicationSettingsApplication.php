@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSettingsApplication
 {
     const URL = 'url';

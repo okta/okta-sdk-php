@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordDictionary extends \Okta\Resource\AbstractResource
 {
     const COMMON = 'common';

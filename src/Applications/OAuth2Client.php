@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class OAuth2Client extends \Okta\Resource\AbstractResource
 {
     const LINKS = '_links';

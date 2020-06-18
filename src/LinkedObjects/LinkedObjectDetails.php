@@ -17,7 +17,6 @@
 
 namespace Okta\LinkedObjects;
 
-
 class LinkedObjectDetails extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';

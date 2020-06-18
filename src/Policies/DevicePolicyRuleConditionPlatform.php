@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class DevicePolicyRuleConditionPlatform extends \Okta\Resource\AbstractResource
 {
     const TYPES = 'types';

@@ -40,7 +40,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

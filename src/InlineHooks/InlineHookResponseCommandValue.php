@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookResponseCommandValue extends \Okta\Resource\AbstractResource
 {
     const OP = 'op';

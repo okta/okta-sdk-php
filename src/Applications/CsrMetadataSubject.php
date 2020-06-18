@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class CsrMetadataSubject extends \Okta\Resource\AbstractResource
 {
     const COMMON_NAME = 'commonName';

@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
 {
     const KEY = 'key';

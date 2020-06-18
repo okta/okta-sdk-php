@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookResponseCommands extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

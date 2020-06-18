@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordExpirationPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const UNIT = 'unit';

@@ -17,7 +17,6 @@
 
 namespace Okta\Roles;
 
-
 class CatalogApplication extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';

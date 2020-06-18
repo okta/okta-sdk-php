@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolSettings extends \Okta\Resource\AbstractResource
 {
     const NAME_FORMAT = 'nameFormat';

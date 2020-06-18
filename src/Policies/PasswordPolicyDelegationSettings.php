@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyDelegationSettings extends \Okta\Resource\AbstractResource
 {
     const OPTIONS = 'options';

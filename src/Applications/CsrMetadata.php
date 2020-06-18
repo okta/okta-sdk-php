@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class CsrMetadata extends \Okta\Resource\AbstractResource
 {
     const SUBJECT = 'subject';

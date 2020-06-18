@@ -17,7 +17,6 @@
 
 namespace Okta\GroupRules;
 
-
 class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
 {
     const USERS = 'users';

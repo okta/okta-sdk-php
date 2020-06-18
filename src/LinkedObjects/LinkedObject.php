@@ -17,7 +17,6 @@
 
 namespace Okta\LinkedObjects;
 
-
 class LinkedObject extends \Okta\Resource\AbstractResource
 {
     const LINKS = '_links';
@@ -25,7 +24,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     const ASSOCIATED = 'associated';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -47,14 +46,14 @@ class LinkedObject extends \Okta\Resource\AbstractResource
                         "/meta"
                     );
     }
-            public function delete()
+    public function delete()
     {
         return \Okta\Client::getInstance()
-                ->getDataStore()
-                ->deleteResource(
-                    "/meta",
-                    $this
-                );
+        ->getDataStore()
+        ->deleteResource(
+            "/meta",
+            $this
+        );
     }
         
     /**

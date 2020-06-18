@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyRuleConditions extends \Okta\Resource\AbstractResource
 {
     const PEOPLE = 'people';

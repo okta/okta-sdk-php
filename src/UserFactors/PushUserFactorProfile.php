@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class PushUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const NAME = 'name';

@@ -17,7 +17,6 @@
 
 namespace Okta\AuthorizationServers;
 
-
 class AuthorizationServerCredentialsSigningConfig extends \Okta\Resource\AbstractResource
 {
     const KID = 'kid';

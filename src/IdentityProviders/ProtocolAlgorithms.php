@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolAlgorithms extends \Okta\Resource\AbstractResource
 {
     const REQUEST = 'request';

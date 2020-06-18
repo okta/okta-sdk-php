@@ -17,7 +17,6 @@
 
 namespace Okta\Applications;
 
-
 class ApplicationAccessibility extends \Okta\Resource\AbstractResource
 {
     const SELF_SERVICE = 'selfService';

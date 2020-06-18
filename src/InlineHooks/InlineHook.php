@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHook extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
@@ -31,7 +30,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()

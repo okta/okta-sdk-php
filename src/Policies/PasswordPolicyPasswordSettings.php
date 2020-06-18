@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyPasswordSettings extends \Okta\Resource\AbstractResource
 {
     const AGE = 'age';

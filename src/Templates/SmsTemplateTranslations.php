@@ -17,7 +17,6 @@
 
 namespace Okta\Templates;
 
-
 class SmsTemplateTranslations extends \Okta\Resource\AbstractResource
 {
 

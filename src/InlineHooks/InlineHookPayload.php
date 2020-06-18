@@ -17,7 +17,6 @@
 
 namespace Okta\InlineHooks;
 
-
 class InlineHookPayload extends \Okta\Resource\AbstractResource
 {
 

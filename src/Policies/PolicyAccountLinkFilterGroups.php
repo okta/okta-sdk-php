@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PolicyAccountLinkFilterGroups extends \Okta\Resource\AbstractResource
 {
     const INCLUDE = 'include';

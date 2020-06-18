@@ -17,7 +17,6 @@
 
 namespace Okta\UserFactors;
 
-
 class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
 {
     const LINKS = '_links';

@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResource
 {
     const MAX_ATTEMPTS = 'maxAttempts';

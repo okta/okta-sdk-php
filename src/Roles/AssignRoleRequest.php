@@ -17,7 +17,6 @@
 
 namespace Okta\Roles;
 
-
 class AssignRoleRequest extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';

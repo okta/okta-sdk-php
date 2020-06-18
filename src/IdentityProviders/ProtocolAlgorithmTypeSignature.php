@@ -17,7 +17,6 @@
 
 namespace Okta\IdentityProviders;
 
-
 class ProtocolAlgorithmTypeSignature extends \Okta\Resource\AbstractResource
 {
     const SCOPE = 'scope';

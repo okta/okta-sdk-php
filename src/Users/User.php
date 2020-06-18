@@ -44,7 +44,7 @@ class User extends \Okta\Resource\AbstractResource
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
 
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -675,7 +675,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Gets a refresh token issued for the specified User and Client.
     *
-    
+
     * @return mixed|null
     */
     public function getRefreshTokenForUserAndClient($clientId, $tokenId, $limit = 20)
@@ -975,7 +975,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Enrolls a user with a supported factor.
     *
-    
+
     * @return mixed|null
     */
     public function enrollFactor(UserFactor $userFactor, $activate = false, $tokenLifetimeSeconds = 300, $updatePhone = false)
@@ -1073,7 +1073,7 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    * 
+    *
     *
     *
     * @return mixed|null

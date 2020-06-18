@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class PasswordPolicyAuthenticationProviderCondition extends \Okta\Resource\AbstractResource
 {
     const INCLUDE = 'include';

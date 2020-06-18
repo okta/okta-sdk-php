@@ -17,7 +17,6 @@
 
 namespace Okta\Policies;
 
-
 class OktaSignOnPolicy extends \Okta\Resource\AbstractResource
 {
     const CONDITIONS = 'conditions';
