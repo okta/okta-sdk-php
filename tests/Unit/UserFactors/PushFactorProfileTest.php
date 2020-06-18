@@ -19,7 +19,7 @@ class PushFactorProfileTest extends BaseUnitTestCase
 {
 
     protected $model = '/UserFactors/factorProfilePush.json';
-    protected $modelType = \Okta\UserFactors\PushFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\PushUserFactorProfile::class;
 
     /** @test */
     public function name_is_gettable()

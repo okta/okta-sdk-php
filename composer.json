@@ -49,7 +49,7 @@
             "@fix-code"
         ],
         "delete-resources": [
-            "rm -rf ./src/Generated"
+            "cd ./openapi && npm run cleanFiles"
         ],
         "generate-resources": "cd ./openapi && npm run generator",
         "fix-code": "phpcbf ."

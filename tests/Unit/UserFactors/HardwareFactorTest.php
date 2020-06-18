@@ -20,7 +20,7 @@ use Okta\ClientBuilder;
 class HardwareFactorTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/hardwareFactor.json';
-    protected $modelType = \Okta\UserFactors\HardwareFactor::class;
+    protected $modelType = \Okta\UserFactors\HardwareUserFactor::class;
 
 
     /** @test */
@@ -28,19 +28,19 @@ class HardwareFactorTest extends BaseUnitTestCase
     {
          $profile = $this->testable->getProfile();
 
-         $this->assertInstanceOf(\Okta\UserFactors\HardwareFactorProfile::class, $profile);
+         $this->assertInstanceOf(\Okta\UserFactors\HardwareUserFactorProfile::class, $profile);
 
     }
 
     /** @test */
     public function a_profile_can_be_set_on_the_factor()
     {
-        /** @var \Okta\UserFactors\SecurityQuestionFactorProfile $profile */
+        /** @var \Okta\UserFactors\SecurityQuestionUserFactorProfile $profile */
         $profile = $this->testable->getProfile();
         $profile->setAnswer = 'Test';
 
         $factor = $this->testable->setProfile($profile);
-        $this->assertInstanceOf(\Okta\UserFactors\HardwareFactor::class, $factor);
+        $this->assertInstanceOf(\Okta\UserFactors\HardwareUserFactor::class, $factor);
     }
 
 

@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Generated\\{{namespace}};
+namespace Okta\\{{namespace}};
 
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
@@ -156,7 +156,7 @@ class {{modelName}} extends {{getExtends modelName}}
             self::{{upperSnakeCase propertyName}},
             ${{propertyName}}
         );
-        
+
         return $this;
     }
     {{/unless}}
@@ -239,4 +239,12 @@ class {{modelName}} extends {{getExtends modelName}}
     }
     {{/if}}
     {{/each}}
+    {{#if (eq modelName "Application")}}
+
+    {{> convertFromGenericApplication }}
+    {{/if}}
+    {{#if (eq modelName "UserFactor")}}
+
+    {{> convertFromGenericFactor }}
+    {{/if}}
 }

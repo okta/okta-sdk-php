@@ -258,7 +258,7 @@ class UserTest extends BaseUnitTestCase
             'getBody' => '[{"id":"0gabcd1234"}]'
         ]);
         $user = $this->createNewUser();
-        $user->getRoles();
+        $user->getAssignedRoles();
         $request = $httpClient->getRequests();
         $this->assertEquals('GET', $request[0]->getMethod());
         $this->assertEquals(
@@ -273,14 +273,14 @@ class UserTest extends BaseUnitTestCase
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
-        $role = new \Okta\Users\Role();
-        $role->setDescription('description');
+        $role = new \Okta\Roles\AssignRoleRequest();
+        $role->setType(\Okta\Roles\RoleType::APP_ADMIN);
 
-        $user->addRole($role);
+        $user->assignRole($role);
 
         $request = $httpClient->getRequests();
         $this->assertEquals(
-            '{"description":"description"}',
+            '{"type":"APP_ADMIN"}',
             $request[0]->getBody()->getContents()
         );
         $this->assertEquals('POST', $request[0]->getMethod());
@@ -316,7 +316,7 @@ class UserTest extends BaseUnitTestCase
         ]);
         $user = $this->createNewUser();
 
-        $user->getGroupTargetsForRole('123');
+        $user->getGroupTargets('123');
 
         $request = $httpClient->getRequests();
         $this->assertEquals('GET', $request[0]->getMethod());
@@ -332,7 +332,7 @@ class UserTest extends BaseUnitTestCase
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
-        $user->removeGroupTargetFromRole('123', 'abc');
+        $user->removeGroupTarget('123', 'abc');
 
         $request = $httpClient->getRequests();
         $this->assertEquals('DELETE', $request[0]->getMethod());
@@ -348,7 +348,7 @@ class UserTest extends BaseUnitTestCase
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
-        $user->addGroupTargetToRole('123', 'abc');
+        $user->addGroupTarget('123', 'abc');
 
         $request = $httpClient->getRequests();
         $this->assertEquals('PUT', $request[0]->getMethod());
@@ -452,7 +452,7 @@ class UserTest extends BaseUnitTestCase
             $request[0]->getUri()->getPath()
         );
         $this->assertEquals(
-            '',
+            'sendEmail=false',
             $request[0]->getUri()->getQuery()
         );
 
@@ -465,7 +465,7 @@ class UserTest extends BaseUnitTestCase
         $httpClient = $this->createNewHttpClient();
         $user = $this->createNewUser();
 
-        $user->endAllSessions();
+        $user->clearSessions();
 
         $request = $httpClient->getRequests();
 
@@ -557,8 +557,8 @@ class UserTest extends BaseUnitTestCase
         $userCredentials = new \Okta\Users\UserCredentials(null, $userCredentialsProperties);
         $userCredentials->setPassword($password);
 
-        $user->forgotPassword($userCredentials);
-        $user->forgotPassword($userCredentials,false);
+        $user->forgotPasswordSetNewPassword($userCredentials);
+        $user->forgotPasswordSetNewPassword($userCredentials,false);
 
         $request = $httpClient->getRequests();
         $this->assertEquals(
@@ -760,7 +760,7 @@ class UserTest extends BaseUnitTestCase
         $user = $this->createNewUser();
 
         $user->expirePassword();
-        $user->expirePassword(true);
+        $user->expirePasswordAndGetTemporaryPassword();
 
         $request = $httpClient->getRequests();
 
@@ -789,10 +789,9 @@ class UserTest extends BaseUnitTestCase
         ]);
         $user = $this->createNewUser();
 
-        $factor = new\Okta\UserFactors\Factor;
-        $factor->setUserId($user->getId());
+        $factor = new\Okta\UserFactors\UserFactor;
 
-        $user->addFactor($factor);
+        $user->enrollFactor($factor);
 
         $request = $httpClient->getRequests();
         $this->assertEquals('POST', $request[0]->getMethod());
@@ -834,13 +833,13 @@ class UserTest extends BaseUnitTestCase
         );
 
         $this->assertInstanceOf(
-            \Okta\UserFactors\SecurityQuestionFactor::class,
-            $supportedFactors->first()
+            \Okta\UserFactors\SecurityQuestionUserFactor::class,
+            $supportedFactors->first()->convertFromGenericFactor()
         );
 
         $this->assertInstanceOf(
-            \Okta\UserFactors\TotpFactor::class,
-            $supportedFactors[1]
+            \Okta\UserFactors\TotpUserFactor::class,
+            $supportedFactors[1]->convertFromGenericFactor()
         );
 
     }
@@ -880,7 +879,7 @@ class UserTest extends BaseUnitTestCase
 
         $securityQuestions = $user->getSupportedSecurityQuestions();
 
-        $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionsCollection::class, $securityQuestions);
+        $this->assertInstanceOf(\Okta\UserFactors\Collection::class, $securityQuestions);
 
     }
 

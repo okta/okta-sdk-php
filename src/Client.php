@@ -96,7 +96,7 @@ class Client
             $this->authorizationMode
         );
 
-        if(null === $this->cacheManager) {
+        if (null === $this->cacheManager) {
             $this->cacheManager = new MemoryManager();
         }
 
@@ -155,7 +155,7 @@ class Client
 
     /**
      * Get the authorization mode for api calls
-     * 
+     *
      * @return AuthorizationMode
      */
     public function getAuthorizationMode(): AuthorizationMode

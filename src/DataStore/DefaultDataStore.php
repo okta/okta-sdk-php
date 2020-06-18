@@ -93,7 +93,7 @@ class DefaultDataStore
     {
         $this->token = $token;
         $this->organizationUrl = $organizationUrl;
-        if($authorizationMode === null) {
+        if ($authorizationMode === null) {
             $authorizationMode = new AuthorizationMode(AuthorizationMode::SSWS);
         }
 
@@ -110,7 +110,6 @@ class DefaultDataStore
         $this->messageFactory = MessageFactoryDiscovery::find();
 
         $this->baseUrl = $this->organizationUrl . '/api/v1';
-
     }
 
     /**
@@ -219,11 +218,11 @@ class DefaultDataStore
      *
      * @return mixed
      */
-    public function createResource($href, $resource, $returnType, $query=[])
+    public function createResource($href, $resource, $returnType, $query = [])
     {
         $this->resource = $resource;
         $uri = $this->uriFactory->createUri($this->organizationUrl . '/api/v1' . $href);
-        if(!empty($query)) {
+        if (!empty($query)) {
             $uri = $uri->withQuery(http_build_query($query));
         }
 
@@ -266,7 +265,7 @@ class DefaultDataStore
         $cacheManager = $cacheManager = Client::getInstance()->getCacheManager();
         $cacheKey = $cacheManager->createCacheKey($uri);
 
-        if('GET' == $method && $cacheManager->pool()->hasItem($cacheKey)) {
+        if ('GET' == $method && $cacheManager->pool()->hasItem($cacheKey)) {
             return $cacheManager->pool()->getItem($cacheKey)->get();
         }
 
@@ -305,20 +304,20 @@ class DefaultDataStore
         }
 
         if (!is_array($result)) {
-            switch($method) {
+            switch ($method) {
                 case 'GET':
-                    if(null !== $result) {
+                    if (null !== $result) {
                         $cacheManager->save($uri, $result);
                     }
                     break;
                 case 'POST':
-                    if(null !== $result) {
+                    if (null !== $result) {
                         $cacheManager->delete($uri, $result);
                         $cacheManager->save($uri, $result);
                     }
                     break;
                 case 'DELETE':
-                    if(null !== $this->resource) {
+                    if (null !== $this->resource) {
                         $cacheManager->delete($uri, $this->toStdClass($this->resource));
                     }
                     break;

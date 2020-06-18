@@ -123,8 +123,8 @@ class JsonWebKeyTest extends BaseUnitTestCase
         $this->assertEquals($ts, $this->testable->getExpiresAt()->timestamp);
         $this->assertEquals($ts, $this->testable->expiresAt->timestamp);
     }
-    
-    
+
+
     /** @test */
     public function last_updated_is_accessible()
     {
@@ -133,5 +133,5 @@ class JsonWebKeyTest extends BaseUnitTestCase
         $this->assertEquals($ts, $this->testable->getLastUpdated()->timestamp);
         $this->assertEquals($ts, $this->testable->lastUpdated->timestamp);
     }
-    
+
 }

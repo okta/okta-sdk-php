@@ -17,6 +17,7 @@
 
 use Okta\ClientBuilder;
 use PHPUnit\Framework\TestCase;
+use Okta\Utilities\AuthorizationMode;
 
 class BaseTestCase extends TestCase
 {
@@ -33,7 +34,7 @@ class BaseTestCase extends TestCase
      *
      * @return \Http\Client\HttpClient
      */
-    protected function createNewHttpClient($returns = []): \Http\Client\HttpClient
+    protected function createNewHttpClient($returns = [], AuthorizationMode $authorizationMode = null): \Http\Client\HttpClient
     {
         $defaults = [
             'getStatusCode' => 200,
@@ -52,11 +53,20 @@ class BaseTestCase extends TestCase
         }
         $httpClient->addResponse($response);
 
-        (new \Okta\ClientBuilder())
-            ->setOrganizationUrl('https://dev.okta.com')
-            ->setToken($this->token)
-            ->setHttpClient($httpClient)
-            ->build();
+        if($authorizationMode === null) {
+            (new \Okta\ClientBuilder())
+                ->setOrganizationUrl('https://dev.okta.com')
+                ->setToken($this->token)
+                ->setHttpClient($httpClient)
+                ->build();
+        } else {
+            (new \Okta\ClientBuilder())
+                ->setOrganizationUrl('https://dev.okta.com')
+                ->setToken($this->token)
+                ->setHttpClient($httpClient)
+                ->setAuthorizationMode($authorizationMode)
+                ->build();
+        }
         return $httpClient;
     }
 

@@ -36,23 +36,6 @@ class SwaThreeFieldApplicationSettingsApplicationTest extends BaseUnitTestCase
     }';
     protected $modelType = \Okta\Applications\SwaThreeFieldApplicationSettingsApplication::class;
 
-    /** @test */
-    public function target_url_is_accessible()
-    {
-        $this->assertEquals($this->properties->targetUrl, $this->testable->getTargetUrl());
-        $this->assertEquals($this->properties->targetUrl, $this->testable->targetUrl);
-    }
-
-    /** @test */
-    public function target_url_is_settable()
-    {
-        $this->testable->setTargetUrl('http://example.com');
-        $this->assertEquals('http://example.com', $this->testable->getTargetUrl());
-    
-        $this->testable->targetUrl = 'http://example.org';
-        $this->assertEquals('http://example.org', $this->testable->getTargetUrl());
-    }
-    
 
     /** @test */
     public function button_selector_is_accessible()
@@ -138,7 +121,7 @@ class SwaThreeFieldApplicationSettingsApplicationTest extends BaseUnitTestCase
         $this->testable->extraFieldSelector = 'sel2';
         $this->assertEquals('sel2', $this->testable->getExtraFieldSelector());
     }
-    
+
     /** @test */
     public function login_url_regex_is_accessible()
     {
@@ -151,11 +134,11 @@ class SwaThreeFieldApplicationSettingsApplicationTest extends BaseUnitTestCase
     {
         $this->testable->setLoginUrlRegex('regex1');
         $this->assertEquals('regex1', $this->testable->getLoginUrlRegex());
-    
+
         $this->testable->loginUrlRegex = 'regex2';
         $this->assertEquals('regex2', $this->testable->getLoginUrlRegex());
     }
-    
+
 
 
 }

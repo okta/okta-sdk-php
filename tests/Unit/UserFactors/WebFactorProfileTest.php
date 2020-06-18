@@ -18,7 +18,7 @@
 class WebFactorProfileTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/factorProfileWeb.json';
-    protected $modelType = \Okta\UserFactors\WebFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\WebUserFactorProfile::class;
 
     /** @test */
     public function credential_id_is_gettable()
@@ -36,5 +36,5 @@ class WebFactorProfileTest extends BaseUnitTestCase
         $this->testable->credentialId = 'test2@mailinator.com';
         static::assertEquals('test2@mailinator.com', $this->testable->getCredentialId());
     }
-    
+
 }

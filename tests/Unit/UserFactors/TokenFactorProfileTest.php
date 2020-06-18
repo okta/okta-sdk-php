@@ -18,7 +18,7 @@
 class TokenFactorProfileTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/factorProfileToken.json';
-    protected $modelType = \Okta\UserFactors\TokenFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\TokenUserFactorProfile::class;
 
     /** @test */
     public function credential_id_is_gettable()
@@ -36,5 +36,5 @@ class TokenFactorProfileTest extends BaseUnitTestCase
         $this->testable->credentialId = 'test2@mailinator.com';
         static::assertEquals('test2@mailinator.com', $this->testable->getCredentialId());
     }
-    
+
 }

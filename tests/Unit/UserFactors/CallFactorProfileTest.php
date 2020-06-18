@@ -1,6 +1,6 @@
 <?php
 
-use Okta\UserFactors\CallFactorProfile;
+use Okta\UserFactors\CallUserFactorProfile;
 
 /******************************************************************************
  * Copyright 2017 Okta, Inc.                                                  *
@@ -22,7 +22,7 @@ class CallFactorProfileTest extends BaseUnitTestCase
 {
 
     protected $model = '/UserFactors/factorProfileCall.json';
-    protected $modelType = CallFactorProfile::class;
+    protected $modelType = CallUserFactorProfile::class;
 
     /** @test */
     public function phone_number_is_gettable()
@@ -58,5 +58,5 @@ class CallFactorProfileTest extends BaseUnitTestCase
         static::assertEquals('789', $this->testable->getPhoneExtension());
     }
 
-    
+
 }

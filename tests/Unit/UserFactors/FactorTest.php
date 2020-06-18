@@ -15,13 +15,13 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\UserFactors\Factor;
+use Okta\UserFactors\UserFactor;
 use PHPUnit\Framework\TestCase;
 
 class FactorTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/generalFactor.json';
-    protected $modelType = \Okta\UserFactors\Factor::class;
+    protected $modelType = \Okta\UserFactors\UserFactor::class;
 
     /** @test */
     public function id_is_accessible()
@@ -38,44 +38,9 @@ class FactorTest extends BaseUnitTestCase
     }
 
     /** @test */
-    public function device_is_accessible()
-    {
-        $this->assertEquals($this->properties->device, $this->testable->getDevice());
-        $this->assertEquals($this->properties->device, $this->testable->device);
-    }
-
-    /** @test */
-    public function device_is_settable()
-    {
-        $this->testable->setDevice('test1');
-        static::assertEquals('test1', $this->testable->getDevice());
-
-        $this->testable->device = 'test2';
-        static::assertEquals('test2', $this->testable->getDevice());
-    }
-
-    /** @test */
     public function status_is_accessible()
     {
         $this->assertEquals($this->properties->status, $this->testable->getStatus());
         $this->assertEquals($this->properties->status, $this->testable->status);
     }
-
-    /** @test */
-    public function user_id_is_accessible()
-    {
-        $this->assertEquals($this->properties->userId, $this->testable->getUserId());
-        $this->assertEquals($this->properties->userId, $this->testable->userId);
-    }
-
-    /** @test */
-    public function user_id_is_settable()
-    {
-        $this->testable->setUserId('123');
-        static::assertEquals('123', $this->testable->getUserId());
-
-        $this->testable->userId = '456';
-        static::assertEquals('456', $this->testable->getUserId());
-    }
-
 }

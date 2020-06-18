@@ -17,7 +17,73 @@
 
 namespace Okta\Applications;
 
-class AutoLoginApplication extends \Okta\Generated\Applications\AutoLoginApplication
-{
 
+class AutoLoginApplication extends \Okta\Applications\Application
+{
+    const SETTINGS = 'settings';
+    const CREDENTIALS = 'credentials';
+
+
+
+    /**
+     * Get the settings.
+     *
+     * @return \Okta\Applications\ApplicationSettings
+     */
+    public function getSettings(array $options = []): \Okta\Applications\ApplicationSettings
+    {
+        return $this->getResourceProperty(
+            self::SETTINGS,
+            \Okta\Applications\AutoLoginApplicationSettings::class,
+            $options
+        );
+    }
+
+
+    /**
+     * Set the settings.
+     *
+     * @param \Okta\Applications\ApplicationSettings $settings The AutoLoginApplicationSettings instance.
+     * @return self
+     */
+    public function setSettings(\Okta\Applications\ApplicationSettings $settings)
+    {
+        $this->setResourceProperty(
+            self::SETTINGS,
+            $settings
+        );
+
+        return $this;
+    }
+
+    /**
+     * Get the credentials.
+     *
+     * @return \Okta\Applications\ApplicationCredentials
+     */
+    public function getCredentials(array $options = []): \Okta\Applications\ApplicationCredentials
+    {
+        return $this->getResourceProperty(
+            self::CREDENTIALS,
+            \Okta\Applications\SchemeApplicationCredentials::class,
+            $options
+        );
+    }
+
+
+    /**
+     * Set the credentials.
+     *
+     * @param \Okta\Applications\ApplicationCredentials $credentials The SchemeApplicationCredentials instance.
+     * @return self
+     */
+    public function setCredentials(\Okta\Applications\ApplicationCredentials $credentials)
+    {
+        $this->setResourceProperty(
+            self::CREDENTIALS,
+            $credentials
+        );
+
+        return $this;
+    }
 }

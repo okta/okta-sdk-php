@@ -10,17 +10,6 @@ function getType(obj, model) {
             return String.raw`\Carbon\Carbon|null`;
         case 'object':
             switch (obj.model) {
-                case 'CallFactorProfile':
-                case 'EmailFactorProfile':
-                case 'HardwareFactorProfile':
-                case 'PushFactorProfile':
-                case 'SecurityQuestionFactorProfile':
-                case 'SmsFactorProfile':
-                case 'TokenFactorProfile':
-                case 'TotpFactorProfile':
-                case 'WebFactorProfile':
-                case 'FactorProfile':
-                    return '\\Okta\\UserFactors\\FactorProfile';
                 case 'AutoLoginApplicationSettings':
                 case 'BasicAuthApplicationSettings':
                 case 'BasicApplicationSettings':
@@ -78,17 +67,6 @@ function getSafeType(obj, model) {
             return ``;
         case 'object':
             switch (obj.model) {
-                case 'CallFactorProfile':
-                case 'EmailFactorProfile':
-                case 'HardwareFactorProfile':
-                case 'PushFactorProfile':
-                case 'SecurityQuestionFactorProfile':
-                case 'SmsFactorProfile':
-                case 'TokenFactorProfile':
-                case 'TotpFactorProfile':
-                case 'WebFactorProfile':
-                case 'FactorProfile':
-                    return ': \\Okta\\UserFactors\\FactorProfile';
                 case 'AutoLoginApplicationSettings':
                 case 'BasicAuthApplicationSettings':
                 case 'BasicApplicationSettings':
@@ -146,17 +124,6 @@ function getSafeType(obj, model) {
 
 function getTypeHint(obj) {
     switch(obj.model) {
-        case 'CallFactorProfile':
-        case 'EmailFactorProfile':
-        case 'HardwareFactorProfile':
-        case 'PushFactorProfile':
-        case 'SecurityQuestionFactorProfile':
-        case 'SmsFactorProfile':
-        case 'TokenFactorProfile':
-        case 'TotpFactorProfile':
-        case 'WebFactorProfile':
-        case 'FactorProfile':
-            return '\\Okta\\UserFactors\\FactorProfile';
         case 'AutoLoginApplicationSettings':
         case 'BasicAuthApplicationSettings':
         case 'BasicApplicationSettings':
@@ -199,16 +166,16 @@ function getTypeHint(obj) {
 
 function getExtends(modelName) {
     switch (modelName) {
-        case 'CallFactor':
-        case 'EmailFactor':
-        case 'HardwareFactor':
-        case 'PushFactor':
-        case 'SecurityQuestionFactor':
-        case 'SmsFactor':
-        case 'TokenFactor':
-        case 'TotpFactor':
-        case 'WebFactor':
-            return '\\Okta\\UserFactors\\Factor';
+        case 'CallUserFactor':
+        case 'EmailUserFactor':
+        case 'HardwareUserFactor':
+        case 'PushUserFactor':
+        case 'SecurityQuestionUserFactor':
+        case 'SmsUserFactor':
+        case 'TokenUserFactor':
+        case 'TotpUserFactor':
+        case 'WebUserFactor':
+            return '\\Okta\\UserFactors\\UserFactor';
         case 'AutoLoginApplication':
         case 'BasicAuthApplication':
         case 'BookmarkApplication':
@@ -256,16 +223,6 @@ function getExtends(modelName) {
         case 'SwaApplication':
         case 'SwaThreeFieldApplication':
             return '\\Okta\\Applications\\BrowserPluginApplication';
-        case 'CallFactorProfile':
-        case 'EmailFactorProfile':
-        case 'HardwareFactorProfile':
-        case 'PushFactorProfile':
-        case 'SecurityQuestionFactorProfile':
-        case 'SmsFactorProfile':
-        case 'TokenFactorProfile':
-        case 'TotpFactorProfile':
-        case 'WebFactorProfile':
-            return '\\Okta\\UserFactors\\FactorProfile';
         default:
             return '\\Okta\\Resource\\AbstractResource';
     }
@@ -435,7 +392,7 @@ function getClassNameForCollection(obj) {
           return '\\Okta\\Users\\User';
       case 'listFactors':
       case 'listSupportedFactors':
-          return '\\Okta\\UserFactors\\Factor';
+          return '\\Okta\\UserFactors\\UserFactor';
       case 'listSupportedSecurityQuestions':
           return `\\Okta\\UserFactors\\SecurityQuestion`;
       default:
@@ -455,7 +412,7 @@ function getCollectionName(obj) {
       case 'listSupportedFactors':
           return '\\Okta\\UserFactors\\Collection';
       case 'listSupportedSecurityQuestions':
-          return `\\Okta\\UserFactors\\SecurityQuestionsCollection`;
+          return `\\Okta\\UserFactors\\Collection`;
       default:
           return `\\${obj.baseClass}\\Collection`;
   }
@@ -481,7 +438,7 @@ function buildGetResourceParams(model) {
 
     switch(model.operation.operationId) {
         case 'getFactor':
-            return String.raw`"factors/{$factorId}", \Okta\UserFactors\Factor::class, "/users/{$this->id}", []`;
+            return String.raw`"factors/{$factorId}", \Okta\UserFactors\UserFactor::class, "/users/{$this->id}", []`;
     }
 
 }
@@ -616,6 +573,17 @@ php.process = ({ spec, operations, models, handlebars }) => {
   handlebars.registerPartial('updateApplicationUser', fs.readFileSync('generator/templates/updateApplicationUser.php.hbs', 'utf8'))
   handlebars.registerPartial('deleteApplicationUser', fs.readFileSync('generator/templates/deleteApplicationUser.php.hbs', 'utf8'))
   handlebars.registerPartial('deleteApplicationGroupAssignment', fs.readFileSync('generator/templates/deleteApplicationGroupAssignment.php.hbs', 'utf8'))
+  handlebars.registerPartial('convertFromGenericApplication', fs.readFileSync('generator/templates/convertFromGenericApplication.php.hbs', 'utf8'))
+  handlebars.registerPartial('convertFromGenericFactor', fs.readFileSync('generator/templates/convertFromGenericFactor.php.hbs', 'utf8'))
+  handlebars.registerPartial('mapToFactorType', fs.readFileSync('generator/templates/mapToFactorType.php.hbs', 'utf8'))
+  createdFiles = []
+  for (let template of templates) {
+    createdFiles.push(template['dest']);
+  }
+
+  fs.writeFile("generator/createdFiles.json", JSON.stringify(createdFiles), function(error) {
+    console.log(error);
+  });
 
   return templates;
 };

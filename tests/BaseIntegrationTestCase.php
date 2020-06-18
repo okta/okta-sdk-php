@@ -34,7 +34,7 @@ class BaseIntegrationTestCase extends BaseTestCase
      *
      * @return \Http\Client\HttpClient
      */
-    protected function createNewHttpClient($returns = [], AuthorizationMode $authzMode = null): \Http\Client\HttpClient
+    protected function createNewHttpClient($returns = [], AuthorizationMode $authorizationMode = null): \Http\Client\HttpClient
     {
         if( ! $this->isMockingResponses() ) {
             return \Okta\Client::getInstance()->getDataStore()->getHttpClient();
@@ -66,17 +66,17 @@ class BaseIntegrationTestCase extends BaseTestCase
             $httpClient->addResponse($response);
         }
 
-        if($authzMode && $authzMode->getValue() == AuthorizationMode::PRIVATE_KEY){
-            (new ClientBuilder)
-                ->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::PRIVATE_KEY))
-                ->setHttpClient($httpClient)
-                ->build();
-        } else {
-
+        if($authorizationMode === null) {
             (new \Okta\ClientBuilder())
                 ->setOrganizationUrl('https://dev.okta.com')
                 ->setToken($this->token)
                 ->setHttpClient($httpClient)
+                ->build();
+        } else {
+            (new \Okta\ClientBuilder())
+                ->setOrganizationUrl('https://dev.okta.com')
+                ->setHttpClient($httpClient)
+                ->setAuthorizationMode($authorizationMode)
                 ->build();
         }
 
