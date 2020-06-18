@@ -46,6 +46,7 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
+        
     public function delete($appId)
     {
         return \Okta\Client::getInstance()

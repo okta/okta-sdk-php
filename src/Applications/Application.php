@@ -734,6 +734,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
+                ->setAcceptHeader("application/x-x509-ca-cert")
                 ->executeRequest('POST', $uri, $string);
 
         return new \Okta\Applications\JsonWebKey(null, $body);
@@ -754,6 +755,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
+                ->setAcceptHeader("application/x-x509-ca-cert")
                 ->executeRequest('POST', $uri, $string);
 
         return new \Okta\Applications\JsonWebKey(null, $body);
@@ -774,6 +776,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
+                ->setAcceptHeader("application/pkix-cert")
                 ->executeRequest('POST', $uri, $string);
 
         return new \Okta\Applications\JsonWebKey(null, $body);
@@ -794,6 +797,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
+                ->setAcceptHeader("application/pkix-cert")
                 ->executeRequest('POST', $uri, $string);
 
         return new \Okta\Applications\JsonWebKey(null, $body);
@@ -814,6 +818,7 @@ class Application extends \Okta\Resource\AbstractResource
         );
         $body = $this
                 ->getDataStore()
+                ->setAcceptHeader("application/x-pem-file")
                 ->executeRequest('POST', $uri, $string);
 
         return new \Okta\Applications\JsonWebKey(null, $body);

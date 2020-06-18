@@ -40,6 +40,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         $factor = \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -52,6 +58,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         $application = \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -64,6 +76,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -77,6 +95,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->createResource(
                     "{{getCrudOperationPath this}}",
                     $this,
@@ -95,6 +119,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->saveResource(
                     "{{getCrudOperationPath this}}",
                     $this,
@@ -106,6 +136,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {{/if}}
     {{#if (eq alias "delete")}}
         {{#if (eq this.operation.operationId "deleteApplicationUser")}}
+        {{customLog this}}
     {{> deleteApplicationUser }}
         {{else if (eq this.operation.operationId "deleteApplicationGroupAssignment")}}
     {{> deleteApplicationGroupAssignment }}
@@ -115,6 +146,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->deleteResource(
                     "{{getCrudOperationPath this}}",
                     $this
@@ -201,6 +238,12 @@ class {{modelName}} extends {{getExtends modelName}}
 
         return $this
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->getCollection(
                     "{{{getMethodPath this}}}",
                     {{getClassNameForCollection this}}::class,
@@ -224,6 +267,12 @@ class {{modelName}} extends {{getExtends modelName}}
         );
         $body = $this
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
 
         {{#if this.operation.responseModel}}
