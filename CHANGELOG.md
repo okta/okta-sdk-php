@@ -1,4 +1,6 @@
 ## Version 2.0.0-beta.1
+ - Allow setting `Content-Type` and `Accept` headers during request, defaults to `application/json`
+ - Update travis to test 7.2, 7.3, and 7.4
  - Deleted: .env.example
  - Deleted Object: Okta\Applications/ApplicationTemplateName
  - Deleted Object: Okta\Applications/JsonWebKeyRSAMediated
