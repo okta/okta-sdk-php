@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
 
-
     public function create($query = [])
     {
         return \Okta\Client::getInstance()
@@ -74,7 +73,8 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -258,7 +258,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the credentials.
      *
@@ -311,7 +310,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
         return $this->getDateProperty(self::LAST_UPDATED);
     }
 
-
     /**
     * Get the OAuth2Claim object.
     *
@@ -335,7 +333,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function createOAuth2Claim(OAuth2Claim $oAuth2Claim)
@@ -354,7 +351,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */
@@ -375,7 +371,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function getOAuth2Claim($claimId)
@@ -395,7 +390,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function updateOAuth2Claim($claimId, OAuth2Claim $oAuth2Claim)
@@ -410,7 +404,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
         return new \Okta\AuthorizationServers\OAuth2Claim(null, $body);
     }
-
 
     /**
     * Get the OAuth2Client object.
@@ -435,7 +428,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function revokeRefreshTokensForClient($clientId)
@@ -450,7 +442,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the OAuth2RefreshToken object.
@@ -475,7 +466,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function getRefreshTokenForClient($clientId, $tokenId)
@@ -495,7 +485,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function revokeRefreshTokenForClient($clientId, $tokenId)
@@ -510,7 +499,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the JsonWebKey object.
@@ -530,7 +518,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the JsonWebKey object.
@@ -555,7 +542,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -575,7 +561,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -590,7 +575,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the Policy object.
@@ -615,7 +599,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function createPolicy(Policy $policy)
@@ -634,7 +617,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */
@@ -655,7 +637,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function getPolicy($policyId)
@@ -675,7 +656,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function updatePolicy($policyId, Policy $policy)
@@ -690,7 +670,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
         return new \Okta\AuthorizationServers\Policy(null, $body);
     }
-
 
     /**
     * Get the OAuth2Scope object.
@@ -715,7 +694,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function createOAuth2Scope(OAuth2Scope $oAuth2Scope)
@@ -734,7 +712,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */
@@ -755,7 +732,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function getOAuth2Scope($scopeId)
@@ -774,7 +750,6 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */

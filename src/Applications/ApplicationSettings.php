@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     const IMPLICIT_ASSIGNMENT = 'implicitAssignment';
 
 
-
     /**
      * Get the app.
      *
@@ -39,7 +38,6 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the app.
@@ -96,7 +94,6 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the notifications.

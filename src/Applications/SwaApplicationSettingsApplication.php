@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ class SwaApplicationSettingsApplication extends \Okta\Applications\ApplicationSe
     const LOGIN_URL_REGEX = 'loginUrlRegex';
     const PASSWORD_FIELD = 'passwordField';
     const USERNAME_FIELD = 'usernameField';
-
 
 
     /**

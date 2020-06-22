@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,6 @@ class Application extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const ACCESSIBILITY = 'accessibility';
 
-
     public function get($query)
     {
         $application = \Okta\Client::getInstance()
@@ -60,7 +59,8 @@ class Application extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -212,7 +212,6 @@ class Application extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the settings.
      *
@@ -252,7 +251,6 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the licensing.
@@ -310,7 +308,6 @@ class Application extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the visibility.
      *
@@ -340,7 +337,6 @@ class Application extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the credentials.
@@ -382,7 +378,6 @@ class Application extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the accessibility.
      *
@@ -403,7 +398,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Activates an inactive application.
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -423,7 +417,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Deactivates an active application.
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -438,7 +431,6 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the AppUser object.
@@ -463,7 +455,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
     *
-    *
     * @return mixed|null
     */
     public function assignUserToApplication(AppUser $appUser)
@@ -482,7 +473,6 @@ class Application extends \Okta\Resource\AbstractResource
 
     /**
     * Fetches a specific user assignment for application by &#x60;id&#x60;.
-    *
     *
     * @return mixed|null
     */
@@ -503,7 +493,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Assigns a group to an application
     *
-    *
     * @return mixed|null
     */
     public function createApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
@@ -522,7 +511,6 @@ class Application extends \Okta\Resource\AbstractResource
 
     /**
     * Fetches an application group assignment
-    *
     *
     * @return mixed|null
     */
@@ -543,7 +531,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Clones a X.509 certificate for an application key credential from a source application to target application.
     *
-    *
     * @return mixed|null
     */
     public function cloneApplicationKey($keyId)
@@ -563,7 +550,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Gets a specific application key credential by kid
     *
-    *
     * @return mixed|null
     */
     public function getApplicationKey($keyId)
@@ -578,7 +564,6 @@ class Application extends \Okta\Resource\AbstractResource
 
         return new \Okta\Applications\JsonWebKey(null, $body);
     }
-
 
     /**
     * Get the ApplicationGroupAssignment object.
@@ -598,7 +583,6 @@ class Application extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the JsonWebKey object.
@@ -623,7 +607,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Generates a new X.509 certificate for an application key credential
     *
-    *
     * @return mixed|null
     */
     public function generateKey()
@@ -643,7 +626,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Generates a new key pair and returns the Certificate Signing Request for it.
     *
-    *
     * @return mixed|null
     */
     public function generateCsr(CsrMetadata $csrMetadata)
@@ -661,9 +643,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function getCsr($csrId)
@@ -681,9 +660,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function revokeCsr($csrId)
@@ -698,7 +674,6 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the Csr object.
@@ -721,9 +696,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function publishCerCert($csrId, string $string)
@@ -742,9 +714,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function publishBinaryCerCert($csrId, string $string)
@@ -763,9 +732,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function publishDerCert($csrId, string $string)
@@ -784,9 +750,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function publishBinaryDerCert($csrId, string $string)
@@ -805,9 +768,6 @@ class Application extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function publishBinaryPemCert($csrId, string $string)
@@ -823,7 +783,6 @@ class Application extends \Okta\Resource\AbstractResource
 
         return new \Okta\Applications\JsonWebKey(null, $body);
     }
-
 
     /**
     * Get the OAuth2Token object.
@@ -848,7 +807,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Revokes the specified token for the specified application
     *
-    *
     * @return mixed|null
     */
     public function revokeOAuth2TokenForApplication($tokenId)
@@ -867,7 +825,6 @@ class Application extends \Okta\Resource\AbstractResource
 
     /**
     * Gets a token for the specified application
-    *
     *
     * @return mixed|null
     */
@@ -888,7 +845,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Revokes all tokens for the specified application
     *
-    *
     * @return mixed|null
     */
     public function revokeOAuth2Tokens()
@@ -903,7 +859,6 @@ class Application extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the OAuth2ScopeConsentGrant object.
@@ -928,7 +883,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Grants consent for the application to request an OAuth 2.0 Okta scope
     *
-    *
     * @return mixed|null
     */
     public function grantConsentToScope(OAuth2ScopeConsentGrant $oAuth2ScopeConsentGrant)
@@ -948,7 +902,6 @@ class Application extends \Okta\Resource\AbstractResource
     /**
     * Revokes permission for the application to request the given scope
     *
-    *
     * @return mixed|null
     */
     public function revokeScopeConsentGrant($grantId)
@@ -967,7 +920,6 @@ class Application extends \Okta\Resource\AbstractResource
 
     /**
     * Fetches a single scope consent grant for the application
-    *
     *
     * @return mixed|null
     */

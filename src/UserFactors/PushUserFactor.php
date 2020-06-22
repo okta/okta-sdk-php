@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ class PushUserFactor extends \Okta\UserFactors\UserFactor
     const FACTOR_RESULT = 'factorResult';
 
 
-
     /**
      * Get the profile.
      *
@@ -38,7 +37,6 @@ class PushUserFactor extends \Okta\UserFactors\UserFactor
             $options
         );
     }
-
 
     /**
      * Set the profile.

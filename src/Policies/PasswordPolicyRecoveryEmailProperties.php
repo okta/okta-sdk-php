@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ class PasswordPolicyRecoveryEmailProperties extends \Okta\Resource\AbstractResou
     const RECOVERY_TOKEN = 'recoveryToken';
 
 
-
     /**
      * Get the recoveryToken.
      *
@@ -36,7 +35,6 @@ class PasswordPolicyRecoveryEmailProperties extends \Okta\Resource\AbstractResou
             $options
         );
     }
-
 
     /**
      * Set the recoveryToken.

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ class PasswordPolicyConditions extends \Okta\Resource\AbstractResource
     const AUTH_PROVIDER = 'authProvider';
 
 
-
     /**
      * Get the people.
      *
@@ -37,7 +36,6 @@ class PasswordPolicyConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the people.
@@ -68,7 +66,6 @@ class PasswordPolicyConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the authProvider.

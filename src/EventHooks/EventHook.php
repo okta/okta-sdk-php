@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class EventHook extends \Okta\Resource\AbstractResource
     const CREATED_BY = 'createdBy';
     const LAST_UPDATED = 'lastUpdated';
     const VERIFICATION_STATUS = 'verificationStatus';
-
 
     public function create($query = [])
     {
@@ -65,7 +64,8 @@ class EventHook extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -135,7 +135,6 @@ class EventHook extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the events.
      *
@@ -191,7 +190,6 @@ class EventHook extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the channel.
@@ -285,7 +283,6 @@ class EventHook extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -305,7 +302,6 @@ class EventHook extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -324,7 +320,6 @@ class EventHook extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */

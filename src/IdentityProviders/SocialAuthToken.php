@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     const EXPIRES_AT = 'expiresAt';
     const TOKEN_TYPE = 'tokenType';
     const TOKEN_AUTH_SCHEME = 'tokenAuthScheme';
-
 
 
     /**

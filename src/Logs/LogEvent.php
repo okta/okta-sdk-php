@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
     const AUTHENTICATION_CONTEXT = 'authenticationContext';
 
 
-
     /**
      * Get the uuid.
      *
@@ -62,7 +61,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Get the client.
      *
@@ -76,7 +74,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the target.
@@ -102,7 +99,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Get the request.
      *
@@ -116,7 +112,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the version.
@@ -172,7 +167,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Get the debugContext.
      *
@@ -186,7 +180,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the displayMessage.
@@ -221,7 +214,6 @@ class LogEvent extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the authenticationContext.

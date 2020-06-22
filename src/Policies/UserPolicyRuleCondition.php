@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
     const PASSWORD_EXPIRATION = 'passwordExpiration';
     const LIFECYCLE_EXPIRATION = 'lifecycleExpiration';
     const USER_LIFECYCLE_ATTRIBUTE = 'userLifecycleAttribute';
-
 
 
     /**
@@ -94,7 +93,6 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the inactivity.
      *
@@ -124,7 +122,6 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the passwordExpiration.
@@ -156,7 +153,6 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the lifecycleExpiration.
      *
@@ -186,7 +182,6 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the userLifecycleAttribute.

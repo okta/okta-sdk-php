@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ class User extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
-
     public function create($query = [])
     {
         return \Okta\Client::getInstance()
@@ -78,7 +77,8 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -111,7 +111,6 @@ class User extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the type.
@@ -173,7 +172,6 @@ class User extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the profile.
      *
@@ -234,7 +232,6 @@ class User extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the credentials.
      *
@@ -291,7 +288,6 @@ class User extends \Okta\Resource\AbstractResource
         return $this->getProperty(self::TRANSITIONING_TO_STATUS);
     }
 
-
     /**
     * Get the AppLink object.
     *
@@ -315,7 +311,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Changes a user&#x27;s password by validating the user&#x27;s current password. This operation can only be performed on users in &#x60;STAGED&#x60;, &#x60;ACTIVE&#x60;, &#x60;PASSWORD_EXPIRED&#x60;, or &#x60;RECOVERY&#x60; status that have a valid password credential
     *
-    *
     * @return mixed|null
     */
     public function changePassword(ChangePasswordRequest $changePasswordRequest)
@@ -334,7 +329,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Changes a user&#x27;s recovery question &amp; answer credential by validating the user&#x27;s current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** &#x60;status&#x60; that have a valid password credential
-    *
     *
     * @return mixed|null
     */
@@ -355,7 +349,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Sets a new password for a user by validating the user&#x27;s answer to their current recovery question
     *
-    * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
     public function forgotPasswordSetNewPassword(UserCredentials $userCredentials, $sendEmail = true)
@@ -375,7 +368,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password
     *
-    * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
     public function forgotPasswordGenerateOneTimeToken($sendEmail = true)
@@ -394,7 +386,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Assigns a role to a user.
-    *
     *
     * @return mixed|null
     */
@@ -415,7 +406,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Unassigns a role from a user.
     *
-    *
     * @return mixed|null
     */
     public function removeRole($roleId)
@@ -430,7 +420,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the Group object.
@@ -455,7 +444,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function removeGroupTarget($roleId, $groupId)
@@ -475,7 +463,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function addGroupTarget($roleId, $groupId)
@@ -490,7 +477,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the Role object.
@@ -515,7 +501,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function addAllAppsAsTarget($roleId)
@@ -530,7 +515,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the Group object.
@@ -550,7 +534,6 @@ class User extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the OAuth2ScopeConsentGrant object.
@@ -575,7 +558,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Revokes all grants for a specified user
     *
-    *
     * @return mixed|null
     */
     public function revokeGrants()
@@ -594,7 +576,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Revokes one grant for a specified user
-    *
     *
     * @return mixed|null
     */
@@ -615,7 +596,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Revokes all grants for the specified user and client
     *
-    *
     * @return mixed|null
     */
     public function revokeGrantsForUserAndClient($clientId)
@@ -630,7 +610,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the OAuth2RefreshToken object.
@@ -655,7 +634,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Revokes the specified refresh token.
     *
-    *
     * @return mixed|null
     */
     public function revokeTokenForUserAndClient($clientId, $tokenId)
@@ -675,7 +653,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Gets a refresh token issued for the specified User and Client.
     *
-
     * @return mixed|null
     */
     public function getRefreshTokenForUserAndClient($clientId, $tokenId, $limit = 20)
@@ -695,7 +672,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Revokes all refresh tokens issued for the specified User and Client.
     *
-    *
     * @return mixed|null
     */
     public function revokeTokensForUserAndClient($clientId)
@@ -710,7 +686,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the OAuth2Client object.
@@ -735,7 +710,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Activates a user.  This operation can only be performed on users with a &#x60;STAGED&#x60; status.  Activation of a user is an asynchronous operation. The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;ACTIVE&#x60; during activation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;ACTIVE&#x60; when the activation process is complete.
     *
-    * @param bool $sendEmail Sets the sendEmail flag.
     * @return mixed|null
     */
     public function activate($sendEmail = true)
@@ -754,7 +728,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Reactivates a user.  This operation can only be performed on users with a &#x60;PROVISIONED&#x60; status.  This operation restarts the activation workflow if for some reason the user activation was not completed when using the activationToken from [Activate User](#activate-user).
-    *
     *
     * @return mixed|null
     */
@@ -775,7 +748,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Deactivates a user.  This operation can only be performed on users that do not have a &#x60;DEPROVISIONED&#x60; status.  Deactivation of a user is an asynchronous operation.  The user will have the &#x60;transitioningToStatus&#x60; property with a value of &#x60;DEPROVISIONED&#x60; during deactivation to indicate that the user hasn&#x27;t completed the asynchronous operation.  The user will have a status of &#x60;DEPROVISIONED&#x60; when the deactivation process is complete.
     *
-    *
     * @return mixed|null
     */
     public function deactivate($sendEmail = false)
@@ -794,7 +766,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Suspends a user.  This operation can only be performed on users with an &#x60;ACTIVE&#x60; status.  The user will have a status of &#x60;SUSPENDED&#x60; when the process is complete.
-    *
     *
     * @return mixed|null
     */
@@ -815,7 +786,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Unsuspends a user and returns them to the &#x60;ACTIVE&#x60; state.  This operation can only be performed on users that have a &#x60;SUSPENDED&#x60; status.
     *
-    *
     * @return mixed|null
     */
     public function unsuspend()
@@ -834,7 +804,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Generates a one-time token (OTT) that can be used to reset a user&#x27;s password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.
-    *
     *
     * @return mixed|null
     */
@@ -855,7 +824,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * This operation transitions the user to the status of &#x60;PASSWORD_EXPIRED&#x60; so that the user is required to change their password at their next login.
     *
-    *
     * @return mixed|null
     */
     public function expirePassword()
@@ -874,7 +842,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * This operation transitions the user to the status of &#x60;PASSWORD_EXPIRED&#x60; and the user&#x27;s password is reset to a temporary password that is returned.
-    *
     *
     * @return mixed|null
     */
@@ -895,7 +862,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Unlocks a user with a &#x60;LOCKED_OUT&#x60; status and returns them to &#x60;ACTIVE&#x60; status.  Users will be able to login with their current password.
     *
-    *
     * @return mixed|null
     */
     public function unlock()
@@ -914,7 +880,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * This operation resets all factors for the specified user. All MFA factor enrollments returned to the unenrolled state. The user&#x27;s status remains ACTIVE. This link is present only if the user is currently enrolled in one or more MFA factors.
-    *
     *
     * @return mixed|null
     */
@@ -935,7 +900,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
     *
-    *
     * @return mixed|null
     */
     public function deleteFactor($factorId)
@@ -954,7 +918,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Adds a user to a group with &#x27;OKTA_GROUP&#x27; type.
-    *
     *
     * @return mixed|null
     */
@@ -975,7 +938,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Enrolls a user with a supported factor.
     *
-
     * @return mixed|null
     */
     public function enrollFactor(UserFactor $userFactor, $activate = false, $tokenLifetimeSeconds = 300, $updatePhone = false)
@@ -990,7 +952,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return new \Okta\UserFactors\UserFactor(null, $body);
     }
-
 
     /**
     * Get the UserFactor object.
@@ -1011,7 +972,6 @@ class User extends \Okta\Resource\AbstractResource
                 );
     }
 
-
     /**
     * Get the UserFactor object.
     *
@@ -1030,7 +990,6 @@ class User extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the SecurityQuestion object.
@@ -1055,7 +1014,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Fetches a factor for the specified user
     *
-    *
     * @return mixed|null
     */
     public function getFactor($factorId)
@@ -1073,9 +1031,6 @@ class User extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function setLinkedObject($primaryRelationshipName, $primaryUserId)
@@ -1090,7 +1045,6 @@ class User extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the IdentityProvider object.
@@ -1110,7 +1064,6 @@ class User extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the ResponseLinks object.
@@ -1135,7 +1088,6 @@ class User extends \Okta\Resource\AbstractResource
     /**
     * Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
     *
-    *
     * @return mixed|null
     */
     public function clearSessions($oauthTokens = false)
@@ -1154,7 +1106,6 @@ class User extends \Okta\Resource\AbstractResource
 
     /**
     * Delete linked objects for a user, relationshipName can be ONLY a primary relationship name
-    *
     *
     * @return mixed|null
     */

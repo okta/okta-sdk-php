@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
     const RECOVERY_QUESTION = 'recovery_question';
 
 
-
     /**
      * Get the okta_sms.
      *
@@ -39,7 +38,6 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the okta_sms.
@@ -71,7 +69,6 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the okta_call.
      *
@@ -102,7 +99,6 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the okta_email.
      *
@@ -132,7 +128,6 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the recovery_question.

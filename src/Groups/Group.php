@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,6 @@ class Group extends \Okta\Resource\AbstractResource
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
 
-
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -47,7 +46,8 @@ class Group extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -111,7 +111,6 @@ class Group extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the profile.
      *
@@ -172,7 +171,6 @@ class Group extends \Okta\Resource\AbstractResource
     /**
     * Removes a user from a group with &#x27;OKTA_GROUP&#x27; type.
     *
-    *
     * @return mixed|null
     */
     public function removeUser($userId)
@@ -187,7 +185,6 @@ class Group extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the User object.
@@ -207,7 +204,6 @@ class Group extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the Application object.
@@ -231,7 +227,6 @@ class Group extends \Okta\Resource\AbstractResource
 
     /**
     * Assigns a Role to a Group
-    *
     *
     * @return mixed|null
     */

@@ -45,8 +45,8 @@
         "build": [
             "@delete-resources",
             "@generate-resources",
-            "@test",
-            "@fix-code"
+            "@fix-code",
+            "@test"
         ],
         "delete-resources": [
             "cd ./openapi && npm run cleanFiles"

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
     const BEFORE_SCHEDULED_ACTION = 'beforeScheduledAction';
 
 
-
     /**
      * Get the app.
      *
@@ -56,7 +55,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the app.
@@ -88,7 +86,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the apps.
      *
@@ -118,7 +115,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the risk.
@@ -150,7 +146,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the users.
      *
@@ -180,7 +175,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the device.
@@ -212,7 +206,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the groups.
      *
@@ -242,7 +235,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the people.
@@ -274,7 +266,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the scopes.
      *
@@ -304,7 +295,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the clients.
@@ -336,7 +326,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the context.
      *
@@ -366,7 +355,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the network.
@@ -398,7 +386,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the platform.
      *
@@ -428,7 +415,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the riskScore.
@@ -460,7 +446,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the grantTypes.
      *
@@ -490,7 +475,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the userStatus.
@@ -522,7 +506,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the authContext.
      *
@@ -552,7 +535,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the authProvider.
@@ -584,7 +566,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the mdmEnrollment.
      *
@@ -614,7 +595,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the userIdentifier.
@@ -646,7 +626,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the identityProvider.
      *
@@ -676,7 +655,6 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the beforeScheduledAction.

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     const CLIENT_SECRET = 'client_secret';
     const AUTO_KEY_ROTATION = 'autoKeyRotation';
     const TOKEN_ENDPOINT_AUTH_METHOD = 'token_endpoint_auth_method';
-
 
 
     /**

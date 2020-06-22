@@ -25,10 +25,11 @@ use Okta\Utilities\Enum;
 class {{modelName}} extends Enum
 {
     {{#each enum}}
-    const {{upperSnakeCase this}} = '{{this}}';
+    const {{mySnakeCase this}} = '{{this}}';
     {{/each}}
     {{#if (eq modelName "FactorType")}}
 
     {{> mapToFactorType }}
+
     {{/if}}
 }

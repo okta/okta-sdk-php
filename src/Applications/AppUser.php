@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ class AppUser extends \Okta\Resource\AbstractResource
     const STATUS_CHANGED = 'statusChanged';
     const PASSWORD_CHANGED = 'passwordChanged';
 
-
     public function save($appId)
     {
         return \Okta\Client::getInstance()
@@ -46,7 +45,6 @@ class AppUser extends \Okta\Resource\AbstractResource
             );
     }
     
-        
     public function delete($appId)
     {
         return \Okta\Client::getInstance()
@@ -219,7 +217,6 @@ class AppUser extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the credentials.

@@ -1,17 +1,17 @@
 ## Version 2.0.0-beta.1
- - Allow setting `Content-Type` and `Accept` headers during request, defaults to `application/json`
+ - Allow setting `Content-Type` and `Accept` headers during request, defaults to `application\json`
  - Update travis to test 7.2, 7.3, and 7.4
  - Deleted: .env.example
- - Deleted Object: Okta\Applications/ApplicationTemplateName
- - Deleted Object: Okta\Applications/JsonWebKeyRSAMediated
- - Deleted Object: Okta\Applications/PublicSignOnModeMediated
- - Deleted Object: Okta\Generated/Applications/Collection
- - Deleted Object: Okta\Generated/UserFactors/Collection
- - Deleted Object: Okta\Generated/UserFactors/SecurityQuestionFactor
- - Deleted Object: Okta\Generated/UserFactors/TokenFactor
- - Deleted Object: Okta\Generated/UserFactors/WebFactor
- - Deleted Object: Okta\Generated/Users/UserProfile
- - Deleted Object: Okta\Sessions/AuthenticationMethod
+ - Deleted Object: Okta\Applications\ApplicationTemplateName
+ - Deleted Object: Okta\Applications\JsonWebKeyRSAMediated
+ - Deleted Object: Okta\Applications\PublicSignOnModeMediated
+ - Deleted Object: Okta\Generated\Applications\Collection
+ - Deleted Object: Okta\Generated\UserFactors\Collection
+ - Deleted Object: Okta\Generated\UserFactors\SecurityQuestionFactor
+ - Deleted Object: Okta\Generated\UserFactors\TokenFactor
+ - Deleted Object: Okta\Generated\UserFactors\WebFactor
+ - Deleted Object: Okta\Generated\Users\UserProfile
+ - Deleted Object: Okta\Sessions\AuthenticationMethod
  - Moved all generated files out of `Generated` folder and into `src` directly
  - Added New Object: Okta\Applications\AuthorizationServerCredentials
  - Added New Object: Okta\Applications\Csr

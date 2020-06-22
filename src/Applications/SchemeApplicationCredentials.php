@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
     const PASSWORD = 'password';
     const USER_NAME = 'userName';
     const REVEAL_PASSWORD = 'revealPassword';
-
 
 
     /**
@@ -67,7 +66,6 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
         );
     }
 
-
     /**
      * Set the signing.
      *
@@ -97,7 +95,6 @@ class SchemeApplicationCredentials extends \Okta\Applications\ApplicationCredent
             $options
         );
     }
-
 
     /**
      * Set the password.

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,8 @@ namespace Okta\Applications;
 
 class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
 {
-    const I_OS = 'iOS';
+    const IOS = 'iOS';
     const WEB = 'web';
-
 
 
     /**
@@ -31,7 +30,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
      */
     public function getIOs()
     {
-        return $this->getProperty(self::I_OS);
+        return $this->getProperty(self::IOS);
     }
 
     /**
@@ -43,7 +42,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     public function setIOs($iOS)
     {
         $this->setProperty(
-            self::I_OS,
+            self::IOS,
             $iOS
         );
 

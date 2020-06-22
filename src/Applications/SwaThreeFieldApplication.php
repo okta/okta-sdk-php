@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplicati
 
     private $name = 'template_swa3field';
 
-
     /**
      * Get the settings.
      *
@@ -38,7 +37,6 @@ class SwaThreeFieldApplication extends \Okta\Applications\BrowserPluginApplicati
             $options
         );
     }
-
 
     /**
      * Set the settings.

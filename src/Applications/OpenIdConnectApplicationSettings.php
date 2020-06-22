@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ class OpenIdConnectApplicationSettings extends \Okta\Applications\ApplicationSet
     const OAUTH_CLIENT = 'oauthClient';
 
 
-
     /**
      * Get the oauthClient.
      *
@@ -36,7 +35,6 @@ class OpenIdConnectApplicationSettings extends \Okta\Applications\ApplicationSet
             $options
         );
     }
-
 
     /**
      * Set the oauthClient.

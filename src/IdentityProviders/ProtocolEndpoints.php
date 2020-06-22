@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
     const AUTHORIZATION = 'authorization';
 
 
-
     /**
      * Get the acs.
      *
@@ -43,7 +42,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the acs.
@@ -75,7 +73,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the slo.
      *
@@ -105,7 +102,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the sso.
@@ -137,7 +133,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the jwks.
      *
@@ -167,7 +162,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the token.
@@ -199,7 +193,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the metadata.
      *
@@ -230,7 +223,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the userInfo.
      *
@@ -260,7 +252,6 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the authorization.

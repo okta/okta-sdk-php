@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ class InlineHook extends \Okta\Resource\AbstractResource
     const CREATED = 'created';
     const VERSION = 'version';
     const LAST_UPDATED = 'lastUpdated';
-
 
     public function create($query = [])
     {
@@ -64,7 +63,8 @@ class InlineHook extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -186,7 +186,6 @@ class InlineHook extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the channel.
      *
@@ -253,7 +252,6 @@ class InlineHook extends \Okta\Resource\AbstractResource
     /**
     * Activates the Inline Hook matching the provided id
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -273,7 +271,6 @@ class InlineHook extends \Okta\Resource\AbstractResource
     /**
     * Deactivates the Inline Hook matching the provided id
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -292,7 +289,6 @@ class InlineHook extends \Okta\Resource\AbstractResource
 
     /**
     * Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This will send the provided data through the Channel and return a response if it matches the correct data contract. This execution endpoint should only be used for testing purposes.
-    *
     *
     * @return mixed|null
     */

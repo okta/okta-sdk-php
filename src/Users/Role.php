@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class Role extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
     const ASSIGNMENT_TYPE = 'assignmentType';
-
 
 
     /**
@@ -182,9 +181,6 @@ class Role extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function addAdminGroupTarget($targetGroupId)
@@ -203,7 +199,6 @@ class Role extends \Okta\Resource\AbstractResource
 
     /**
     * Add App Instance Target to App Administrator Role given to a Group
-    *
     *
     * @return mixed|null
     */
@@ -224,7 +219,6 @@ class Role extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function addAppTargetToAdminRole($appName)
@@ -243,7 +237,6 @@ class Role extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */
@@ -264,7 +257,6 @@ class Role extends \Okta\Resource\AbstractResource
     /**
     * Add App Instance Target to App Administrator Role given to a User
     *
-    *
     * @return mixed|null
     */
     public function addAppTargetToAppAdminRoleForUser($appName, $applicationId)
@@ -283,7 +275,6 @@ class Role extends \Okta\Resource\AbstractResource
 
     /**
     * Success
-    *
     *
     * @return mixed|null
     */

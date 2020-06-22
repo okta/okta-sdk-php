@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,22 +17,25 @@
 
 namespace Okta\\{{namespace}};
 
+{{#if namespacedModels}}
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
 {{/each}}
 
+{{/if}}
 class {{modelName}} extends {{getExtends modelName}}
 {
     {{#each properties}}
-    const {{upperSnakeCase propertyName}} = '{{propertyName}}';
+    const {{mySnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
+    {{#if properties}}
     {{#each properties}}
     {{#if this.default}}
     private ${{propertyName}} = '{{this.default}}';
     {{/if}}
     {{/each}}
-
+    {{/if}}
     {{#each crudOperations}}
     {{#if (eq alias "read")}}
         {{#if (eq this.operation.operationId "getFactor")}}
@@ -91,7 +94,7 @@ class {{modelName}} extends {{getExtends modelName}}
         {{/if}}
     {{/if}}
     {{#if (eq alias "create")}}
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -136,13 +139,13 @@ class {{modelName}} extends {{getExtends modelName}}
     {{/if}}
     {{#if (eq alias "delete")}}
         {{#if (eq this.operation.operationId "deleteApplicationUser")}}
-        {{customLog this}}
     {{> deleteApplicationUser }}
         {{else if (eq this.operation.operationId "deleteApplicationGroupAssignment")}}
     {{> deleteApplicationGroupAssignment }}
         {{else}}
     {{#unless (eq this.operation.operationId "deleteFactor")}}
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -173,12 +176,11 @@ class {{modelName}} extends {{getExtends modelName}}
     public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this baseClass}}
     {
         return $this->getResourceProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             \Okta\\{{getFirstTagFromReference this.reference}}\\{{model}}::class,
             $options
         );
     }
-
     {{#unless readOnly}}
 
     /**
@@ -190,7 +192,7 @@ class {{modelName}} extends {{getExtends modelName}}
     public function set{{pascalCase propertyName}}({{getTypeHint this}} ${{propertyName}})
     {
         $this->setResourceProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             ${{propertyName}}
         );
 
@@ -200,7 +202,7 @@ class {{modelName}} extends {{getExtends modelName}}
     {{else}}
     public function get{{pascalCase propertyName}}(){{getSafeType this baseClass}}
     {
-        return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
+        return $this->{{getAccessMethodType this}}(self::{{mySnakeCase propertyName}});
     }
     {{#unless readOnly}}
 
@@ -213,7 +215,7 @@ class {{modelName}} extends {{getExtends modelName}}
     public function set{{pascalCase propertyName}}(${{propertyName}})
     {
         $this->setProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             ${{propertyName}}
         );
 
@@ -226,7 +228,6 @@ class {{modelName}} extends {{getExtends modelName}}
     {{#each methods}}
 
     {{#if operation.isArray}}
-
     /**
     * Get the {{operation.responseModel}} object.
     *
@@ -254,9 +255,13 @@ class {{modelName}} extends {{getExtends modelName}}
     {{else}}
 
     /**
+    {{#if this.operation.description}}
     * {{this.operation.description}}
     *
+    {{/if}}
+    {{#if method.operation.queryParams}}
     {{getMethodParamsComment this}}
+    {{/if}}
     * @return mixed|null
     */
     public function {{camelCase alias}}({{{getMethodParams this}}})
@@ -291,9 +296,11 @@ class {{modelName}} extends {{getExtends modelName}}
     {{#if (eq modelName "Application")}}
 
     {{> convertFromGenericApplication }}
+
     {{/if}}
     {{#if (eq modelName "UserFactor")}}
 
     {{> convertFromGenericFactor }}
+
     {{/if}}
 }

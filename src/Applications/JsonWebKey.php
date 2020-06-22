@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,17 +25,16 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     const KID = 'kid';
     const KTY = 'kty';
     const USE = 'use';
-    const X_5_C = 'x5c';
-    const X_5_T = 'x5t';
-    const X_5_U = 'x5u';
+    const X5C = 'x5c';
+    const X5T = 'x5t';
+    const X5U = 'x5u';
     const LINKS = '_links';
     const STATUS = 'status';
     const CREATED = 'created';
     const KEY_OPS = 'key_ops';
-    const X_5_T_S_256 = 'x5t#S256';
+    const X5TS256 = 'x5t#S256';
     const EXPIRES_AT = 'expiresAt';
     const LAST_UPDATED = 'lastUpdated';
-
 
 
     /**
@@ -105,7 +104,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      */
     public function getX5C()
     {
-        return $this->getProperty(self::X_5_C);
+        return $this->getProperty(self::X5C);
     }
 
     /**
@@ -117,7 +116,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     public function setX5C($x5c)
     {
         $this->setProperty(
-            self::X_5_C,
+            self::X5C,
             $x5c
         );
 
@@ -131,7 +130,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      */
     public function getX5T()
     {
-        return $this->getProperty(self::X_5_T);
+        return $this->getProperty(self::X5T);
     }
 
     /**
@@ -141,7 +140,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      */
     public function getX5U()
     {
-        return $this->getProperty(self::X_5_U);
+        return $this->getProperty(self::X5U);
     }
 
     /**
@@ -191,7 +190,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      */
     public function getX5TS256()
     {
-        return $this->getProperty(self::X_5_T_S_256);
+        return $this->getProperty(self::X5TS256);
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,6 @@ class Session extends \Okta\Resource\AbstractResource
     const LAST_FACTOR_VERIFICATION = 'lastFactorVerification';
     const LAST_PASSWORD_VERIFICATION = 'lastPasswordVerification';
 
-
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -42,14 +41,15 @@ class Session extends \Okta\Resource\AbstractResource
                         "/sessions"
                     );
     }
-    public function delete()
+        
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/sessions",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/sessions",
+                    $this
+                );
     }
         
     /**
@@ -85,7 +85,6 @@ class Session extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the login.
@@ -169,9 +168,6 @@ class Session extends \Okta\Resource\AbstractResource
 
 
     /**
-    *
-    *
-    *
     * @return mixed|null
     */
     public function refresh()

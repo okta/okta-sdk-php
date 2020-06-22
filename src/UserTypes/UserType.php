@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class UserType extends \Okta\Resource\AbstractResource
     const DISPLAY_NAME = 'displayName';
     const LAST_UPDATED = 'lastUpdated';
     const LAST_UPDATED_BY = 'lastUpdatedBy';
-
 
     public function create($query = [])
     {
@@ -65,14 +64,15 @@ class UserType extends \Okta\Resource\AbstractResource
                         "/meta"
                     );
     }
-    public function delete()
+        
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/meta",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/meta",
+                    $this
+                );
     }
         
     /**

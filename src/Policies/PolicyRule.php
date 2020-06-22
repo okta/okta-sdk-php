@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class PolicyRule extends \Okta\Resource\AbstractResource
 
     private $status = 'ACTIVE';
 
-
     public function save()
     {
         return \Okta\Client::getInstance()
@@ -41,7 +40,8 @@ class PolicyRule extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -163,7 +163,6 @@ class PolicyRule extends \Okta\Resource\AbstractResource
     /**
     * Activates a policy rule.
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -182,7 +181,6 @@ class PolicyRule extends \Okta\Resource\AbstractResource
 
     /**
     * Deactivates a policy rule.
-    *
     *
     * @return mixed|null
     */

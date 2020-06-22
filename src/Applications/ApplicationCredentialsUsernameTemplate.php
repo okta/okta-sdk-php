@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     const TYPE = 'type';
     const SUFFIX = 'suffix';
     const TEMPLATE = 'template';
-
 
 
     /**

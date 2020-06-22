@@ -443,6 +443,31 @@ function buildGetResourceParams(model) {
 
 }
 
+function mySnakeCase(string) {
+  let newString = (_.snakeCase(string)).toUpperCase();
+
+
+  switch(newString) {
+    case 'I_OS':
+      newString = 'IOS';
+      break;
+    case 'X_5_C':
+      newString = 'X5C';
+      break;
+    case 'X_5_T':
+      newString = 'X5T';
+      break;
+    case 'X_5_U':
+      newString = 'X5U';
+      break;
+    case 'X_5_T_S_256':
+      newString = 'X5TS256';
+      break;
+  }
+
+  return newString
+}
+
 function lookUpRef(model) {
     const ref = model['$ref'].split("/").pop();
     return php.spec.definitions[ref];
@@ -566,7 +591,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     buildGetResourceParams,
     lookUpRef,
     getRefTag,
-    getFirstTagFromReference
+    getFirstTagFromReference,
+    mySnakeCase
 
   });
 

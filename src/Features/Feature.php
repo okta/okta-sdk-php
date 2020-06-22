@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ class Feature extends \Okta\Resource\AbstractResource
     const LINKS = '_links';
     const STATUS = 'status';
     const DESCRIPTION = 'description';
-
 
     public function get($query)
     {
@@ -115,7 +114,6 @@ class Feature extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the stage.
      *
@@ -198,7 +196,6 @@ class Feature extends \Okta\Resource\AbstractResource
     /**
     * Success
     *
-    *
     * @return mixed|null
     */
     public function updateLifecycle($lifecycle)
@@ -213,7 +210,6 @@ class Feature extends \Okta\Resource\AbstractResource
 
         return new \Okta\Features\Feature(null, $body);
     }
-
 
     /**
     * Get the Feature object.
@@ -233,7 +229,6 @@ class Feature extends \Okta\Resource\AbstractResource
                     $options
                 );
     }
-
 
     /**
     * Get the Feature object.

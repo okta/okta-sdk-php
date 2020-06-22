@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ class LogClient extends \Okta\Resource\AbstractResource
     const IP_ADDRESS = 'ipAddress';
     const USER_AGENT = 'userAgent';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
-
 
 
     /**
@@ -81,7 +80,6 @@ class LogClient extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Get the geographicalContext.

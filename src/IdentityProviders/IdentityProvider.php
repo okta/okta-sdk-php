@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     const PROTOCOL = 'protocol';
     const ISSUER_MODE = 'issuerMode';
     const LAST_UPDATED = 'lastUpdated';
-
 
     public function create($query = [])
     {
@@ -70,7 +69,8 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -166,7 +166,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the policy.
      *
@@ -233,7 +232,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the protocol.
      *
@@ -286,7 +284,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
         return $this->getDateProperty(self::LAST_UPDATED);
     }
 
-
     /**
     * Get the Csr object.
     *
@@ -310,7 +307,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Generates a new key pair and returns a Certificate Signing Request for it.
     *
-    *
     * @return mixed|null
     */
     public function generateCsr(CsrMetadata $csrMetadata)
@@ -329,7 +325,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
     /**
     * Revoke a Certificate Signing Request and delete the key pair from the IdP
-    *
     *
     * @return mixed|null
     */
@@ -350,7 +345,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Gets a specific Certificate Signing Request model by id
     *
-    *
     * @return mixed|null
     */
     public function getSigningCsr($csrId)
@@ -365,7 +359,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
         return new \Okta\IdentityProviders\Csr(null, $body);
     }
-
 
     /**
     * Get the JsonWebKey object.
@@ -390,7 +383,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Generates a new X.509 certificate for an IdP signing key credential to be used for signing assertions sent to the IdP
     *
-    *
     * @return mixed|null
     */
     public function generateSigningKey()
@@ -409,7 +401,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
     /**
     * Gets a specific IdP Key Credential by &#x60;kid&#x60;
-    *
     *
     * @return mixed|null
     */
@@ -430,7 +421,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Clones a X.509 certificate for an IdP signing key credential from a source IdP to target IdP
     *
-    *
     * @return mixed|null
     */
     public function cloneKey($keyId)
@@ -449,7 +439,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
     /**
     * Activates an inactive IdP.
-    *
     *
     * @return mixed|null
     */
@@ -470,7 +459,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Deactivates an active IdP.
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -485,7 +473,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
         return new \Okta\IdentityProviders\IdentityProvider(null, $body);
     }
-
 
     /**
     * Get the IdentityProviderApplicationUser object.
@@ -510,7 +497,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Removes the link between the Okta user and the IdP user.
     *
-    *
     * @return mixed|null
     */
     public function unlinkUser($userId)
@@ -529,7 +515,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
     /**
     * Fetches a linked IdP user by ID
-    *
     *
     * @return mixed|null
     */
@@ -550,7 +535,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
     * Links an Okta user to an existing Social Identity Provider. This does not support the SAML2 Identity Provider Type
     *
-    *
     * @return mixed|null
     */
     public function linkUser($userId, UserIdentityProviderLinkRequest $userIdentityProviderLinkRequest)
@@ -565,7 +549,6 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
 
         return new \Okta\IdentityProviders\IdentityProviderApplicationUser(null, $body);
     }
-
 
     /**
     * Get the SocialAuthToken object.

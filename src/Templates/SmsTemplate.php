@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     const TEMPLATE = 'template';
     const LAST_UPDATED = 'lastUpdated';
     const TRANSLATIONS = 'translations';
-
 
     public function create($query = [])
     {
@@ -62,7 +61,8 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -194,7 +194,6 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the translations.
      *
@@ -214,7 +213,6 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
 
     /**
     * Updates only some of the SMS template properties:
-    *
     *
     * @return mixed|null
     */

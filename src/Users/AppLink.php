@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ class AppLink extends \Okta\Resource\AbstractResource
     const APP_INSTANCE_ID = 'appInstanceId';
     const APP_ASSIGNMENT_ID = 'appAssignmentId';
     const CREDENTIALS_SETUP = 'credentialsSetup';
-
 
 
     /**

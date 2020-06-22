@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     const LINKS = '_links';
     const PRIMARY = 'primary';
     const ASSOCIATED = 'associated';
-
 
     public function create($query = [])
     {
@@ -46,14 +45,15 @@ class LinkedObject extends \Okta\Resource\AbstractResource
                         "/meta"
                     );
     }
-    public function delete()
+        
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
-        ->getDataStore()
-        ->deleteResource(
-            "/meta",
-            $this
-        );
+                ->getDataStore()
+                ->deleteResource(
+                    "/meta",
+                    $this
+                );
     }
         
     /**
@@ -79,7 +79,6 @@ class LinkedObject extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the primary.
@@ -110,7 +109,6 @@ class LinkedObject extends \Okta\Resource\AbstractResource
             $options
         );
     }
-
 
     /**
      * Set the associated.

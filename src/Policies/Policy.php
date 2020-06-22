@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ class Policy extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
 
-
     public function get($query)
     {
         return \Okta\Client::getInstance()
@@ -55,7 +54,8 @@ class Policy extends \Okta\Resource\AbstractResource
                 );
     }
 
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
@@ -249,7 +249,6 @@ class Policy extends \Okta\Resource\AbstractResource
         );
     }
 
-
     /**
      * Set the conditions.
      *
@@ -306,7 +305,6 @@ class Policy extends \Okta\Resource\AbstractResource
     /**
     * Activates a policy.
     *
-    *
     * @return mixed|null
     */
     public function activate()
@@ -326,7 +324,6 @@ class Policy extends \Okta\Resource\AbstractResource
     /**
     * Deactivates a policy.
     *
-    *
     * @return mixed|null
     */
     public function deactivate()
@@ -341,7 +338,6 @@ class Policy extends \Okta\Resource\AbstractResource
 
         return $body;
     }
-
 
     /**
     * Get the PolicyRule object.
@@ -366,7 +362,6 @@ class Policy extends \Okta\Resource\AbstractResource
     /**
     * Creates a policy rule.
     *
-    *
     * @return mixed|null
     */
     public function createRule(PolicyRule $policyRule)
@@ -385,7 +380,6 @@ class Policy extends \Okta\Resource\AbstractResource
 
     /**
     * Gets a policy rule.
-    *
     *
     * @return mixed|null
     */
