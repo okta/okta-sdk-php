@@ -55,7 +55,7 @@ abstract class CacheManager
     {
         $url = "{$uri->getHost()}{$uri->getPath()}";
 
-        return str_replace(['/', '.', '-', '@', '+'],'_',$url);
+        return str_replace(['/', '.', '-', '@', '+'], '_', $url);
     }
 
     /**
@@ -78,8 +78,7 @@ abstract class CacheManager
     public function save(UriInterface $uri, \stdClass $itemToCache): CacheItemInterface
     {
 
-        if(
-            property_exists($itemToCache, '_links') &&
+        if (property_exists($itemToCache, '_links') &&
             property_exists($itemToCache->_links, 'self') &&
             property_exists($itemToCache->_links->self, 'href')
         ) {
@@ -106,15 +105,15 @@ abstract class CacheManager
     {
         $this->cachePool->deleteItem($this->createCacheKey($uri));
 
-        if(!property_exists($resource, '_links')) {
+        if (!property_exists($resource, '_links')) {
             return;
         }
 
         $links = $resource->_links;
 
-        if($links) {
+        if ($links) {
             foreach ($links as $link) {
-                if(is_object($link) && property_exists($link, 'href')) {
+                if (is_object($link) && property_exists($link, 'href')) {
                     $uri = Client::getInstance()
                         ->getDataStore()
                         ->getUriFactory()
@@ -124,7 +123,5 @@ abstract class CacheManager
                 $this->cachePool->deleteItem($this->createCacheKey($uri));
             }
         }
-
     }
-
 }

@@ -20,7 +20,7 @@ namespace Okta\\{{namespace}};
 class {{modelName}}
 {
     {{#each properties}}
-    const {{upperSnakeCase propertyName}} = '{{propertyName}}';
+    const {{mySnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
     public function newPassword(PasswordCredential $passwordCredential);

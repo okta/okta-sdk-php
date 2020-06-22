@@ -15,7 +15,7 @@
  * limitations under the License.                                             *
  ******************************************************************************/
 
-use Okta\Generated\Applications\SamlAttributeStatement;
+use Okta\Applications\SamlAttributeStatement;
 use PHPUnit\Framework\TestCase;
 
 class SamlAttributeStatementTest extends BaseUnitTestCase

@@ -15,7 +15,7 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Generated\\{{namespace}};
+namespace Okta\\{{namespace}};
 
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
@@ -25,6 +25,11 @@ use Okta\Utilities\Enum;
 class {{modelName}} extends Enum
 {
     {{#each enum}}
-    const {{upperSnakeCase this}} = '{{this}}';
+    const {{mySnakeCase this}} = '{{this}}';
     {{/each}}
+    {{#if (eq modelName "FactorType")}}
+
+    {{> mapToFactorType }}
+
+    {{/if}}
 }

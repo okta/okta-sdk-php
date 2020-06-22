@@ -1,6 +1,6 @@
 <?php
 /*******************************************************************************
- * Copyright 2017 Okta, Inc.
+ * Copyright 2017-Present Okta, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,24 +15,27 @@
  * limitations under the License.
  ******************************************************************************/
 
-namespace Okta\Generated\\{{namespace}};
+namespace Okta\\{{namespace}};
 
+{{#if namespacedModels}}
 {{#each namespacedModels as |namespacedModel|}}
 use Okta\\{{namespacedModel.namespace}}\\{{namespacedModel.modelName}};
 {{/each}}
 
+{{/if}}
 class {{modelName}} extends {{getExtends modelName}}
 {
     {{#each properties}}
-    const {{upperSnakeCase propertyName}} = '{{propertyName}}';
+    const {{mySnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
+    {{#if properties}}
     {{#each properties}}
     {{#if this.default}}
     private ${{propertyName}} = '{{this.default}}';
     {{/if}}
     {{/each}}
-
+    {{/if}}
     {{#each crudOperations}}
     {{#if (eq alias "read")}}
         {{#if (eq this.operation.operationId "getFactor")}}
@@ -40,6 +43,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         $factor = \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -52,6 +61,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         $application = \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -64,6 +79,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                     ->getDataStore()
+                    {{#if (ne this.operation.consumes.[0] "application/json")}}
+                    ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                    {{/if}}
+                    {{#if (ne this.operation.produces.[0] "application/json")}}
+                    ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                    {{/if}}
                     ->getResource(
                         $query,
                         \\{{this.defaultReturnType}}::class,
@@ -73,10 +94,16 @@ class {{modelName}} extends {{getExtends modelName}}
         {{/if}}
     {{/if}}
     {{#if (eq alias "create")}}
-    public function create($query=[])
+    public function create($query = [])
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->createResource(
                     "{{getCrudOperationPath this}}",
                     $this,
@@ -95,6 +122,12 @@ class {{modelName}} extends {{getExtends modelName}}
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->saveResource(
                     "{{getCrudOperationPath this}}",
                     $this,
@@ -111,10 +144,17 @@ class {{modelName}} extends {{getExtends modelName}}
     {{> deleteApplicationGroupAssignment }}
         {{else}}
     {{#unless (eq this.operation.operationId "deleteFactor")}}
-    public function delete()
+
+    public function delete() //test
     {
         return \Okta\Client::getInstance()
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->deleteResource(
                     "{{getCrudOperationPath this}}",
                     $this
@@ -136,12 +176,11 @@ class {{modelName}} extends {{getExtends modelName}}
     public function get{{pascalCase propertyName}}(array $options = []){{getSafeType this baseClass}}
     {
         return $this->getResourceProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             \Okta\\{{getFirstTagFromReference this.reference}}\\{{model}}::class,
             $options
         );
     }
-
     {{#unless readOnly}}
 
     /**
@@ -153,17 +192,17 @@ class {{modelName}} extends {{getExtends modelName}}
     public function set{{pascalCase propertyName}}({{getTypeHint this}} ${{propertyName}})
     {
         $this->setResourceProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             ${{propertyName}}
         );
-        
+
         return $this;
     }
     {{/unless}}
     {{else}}
     public function get{{pascalCase propertyName}}(){{getSafeType this baseClass}}
     {
-        return $this->{{getAccessMethodType this}}(self::{{upperCase (snakeCase propertyName)}});
+        return $this->{{getAccessMethodType this}}(self::{{mySnakeCase propertyName}});
     }
     {{#unless readOnly}}
 
@@ -176,7 +215,7 @@ class {{modelName}} extends {{getExtends modelName}}
     public function set{{pascalCase propertyName}}(${{propertyName}})
     {
         $this->setProperty(
-            self::{{upperSnakeCase propertyName}},
+            self::{{mySnakeCase propertyName}},
             ${{propertyName}}
         );
 
@@ -189,7 +228,6 @@ class {{modelName}} extends {{getExtends modelName}}
     {{#each methods}}
 
     {{#if operation.isArray}}
-
     /**
     * Get the {{operation.responseModel}} object.
     *
@@ -201,6 +239,12 @@ class {{modelName}} extends {{getExtends modelName}}
 
         return $this
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->getCollection(
                     "{{{getMethodPath this}}}",
                     {{getClassNameForCollection this}}::class,
@@ -211,9 +255,13 @@ class {{modelName}} extends {{getExtends modelName}}
     {{else}}
 
     /**
+    {{#if this.operation.description}}
     * {{this.operation.description}}
     *
+    {{/if}}
+    {{#if method.operation.queryParams}}
     {{getMethodParamsComment this}}
+    {{/if}}
     * @return mixed|null
     */
     public function {{camelCase alias}}({{{getMethodParams this}}})
@@ -224,6 +272,12 @@ class {{modelName}} extends {{getExtends modelName}}
         );
         $body = $this
                 ->getDataStore()
+                {{#if (ne this.operation.consumes.[0] "application/json")}}
+                ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+                {{/if}}
+                {{#if (ne this.operation.produces.[0] "application/json")}}
+                ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+                {{/if}}
                 ->executeRequest({{{getMethodRequestParams this}}}{{path}});
 
         {{#if this.operation.responseModel}}
@@ -239,4 +293,14 @@ class {{modelName}} extends {{getExtends modelName}}
     }
     {{/if}}
     {{/each}}
+    {{#if (eq modelName "Application")}}
+
+    {{> convertFromGenericApplication }}
+
+    {{/if}}
+    {{#if (eq modelName "UserFactor")}}
+
+    {{> convertFromGenericFactor }}
+
+    {{/if}}
 }

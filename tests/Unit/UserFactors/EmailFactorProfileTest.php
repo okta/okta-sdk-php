@@ -19,7 +19,7 @@ class EmailFactorProfileTest extends BaseUnitTestCase
 {
 
     protected $model = '/UserFactors/factorProfileEmail.json';
-    protected $modelType = \Okta\UserFactors\EmailFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\EmailUserFactorProfile::class;
 
     /** @test */
     public function email_is_gettable()
@@ -37,5 +37,5 @@ class EmailFactorProfileTest extends BaseUnitTestCase
         $this->testable->email = 'test2@mailinator.com';
         static::assertEquals('test2@mailinator.com', $this->testable->getEmail());
     }
-    
+
 }

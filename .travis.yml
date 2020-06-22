@@ -2,15 +2,9 @@ language: php
 env:
   global:
   - COVERAGE=false
-  - SETUP=basic
   - DEPLOY_DOCS=false
 install:
-- if [[ $SETUP = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction
-  --no-suggest; fi
-- if [[ $SETUP = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction
-  --no-suggest --prefer-stable; fi
-- if [[ $SETUP = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction
-  --no-suggest --prefer-stable --prefer-lowest; fi
+- travis_retry composer install --prefer-dist --no-interaction --no-suggest
 before_script:
 - mkdir -p ~/.phpenv/versions/$(phpenv version-name)/etc
 - mkdir -p ~/.okta
@@ -31,7 +25,7 @@ deploy:
   email: deploy-php@okta.com
   name: PHP Deployment Bot
   on:
-    php: 7.1
+    php: 7.3
     condition: "$DEPLOY_DOCS = true"
     tags: true
 - provider: pages
@@ -41,18 +35,14 @@ deploy:
   email: deploy-php@okta.com
   name: PHP Deployment Bot
   on:
-    php: 7.1
+    php: 7.3
     condition: "$DEPLOY_DOCS = true"
     branch: develop
 matrix:
   include:
   - php: 7.2
-    env: SETUP=lowest
-  - php: 7.2
-    env: SETUP=stable
   - php: 7.3
-    env: SETUP=lowest
-  - php: 7.3
+  - php: 7.4
     env:
     - COVERAGE=true
     - SETUP=stable

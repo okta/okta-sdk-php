@@ -1,7 +1,13 @@
-public function delete( $appId )
+public function delete($appId)
 {
     return \Okta\Client::getInstance()
         ->getDataStore()
+        {{#if (ne this.operation.consumes.[0] "application/json")}}
+        ->setAcceptHeader("{{this.operation.consumes.[0]}}")
+        {{/if}}
+        {{#if (ne this.operation.produces.[0] "application/json")}}
+        ->setContentTypeHeader("{{this.operation.produces.[0]}}")
+        {{/if}}
         ->deleteResource(
             "/apps/{$appId}/group",
             $this

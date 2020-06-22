@@ -12,7 +12,8 @@ use Cache\Adapter\Common\CacheItem;
 use Okta\Exceptions\ResourceException;
 use Lcobucci\JWT\Validation\Constraint\ValidAt;
 
-class PrivateKeyAuthentication {
+class PrivateKeyAuthentication
+{
 
     /**
      * @var MemoryManager
@@ -51,7 +52,8 @@ class PrivateKeyAuthentication {
     protected $jwtConfig;
 
 
-    public function __construct($clientId, $scopes, $privateKey, $orgUrl) {
+    public function __construct($clientId, $scopes, $privateKey, $orgUrl)
+    {
         $this->memory = new MemoryManager();
         $this->clientId = $clientId;
         $this->scopes = $scopes;
@@ -65,18 +67,17 @@ class PrivateKeyAuthentication {
         );
     }
 
-    public function getBearerToken() {
-        if($this->memory->pool()->hasItem('Okta_Oauth_Token')) {
-
+    public function getBearerToken()
+    {
+        if ($this->memory->pool()->hasItem('Okta_Oauth_Token')) {
             $token = $this->memory->pool()->getItem('Okta_Oauth_Token')->get();
             $constraint = new ValidAt($this->clock);
             try {
                 $constraint->assert($token);
                 return $token;
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 $this->memory->pool()->delete('Okta_Oauth_Token');
             }
-
         }
 
         $now = \DateTimeImmutable::createFromFormat("Y-m-d H:i:s", date('Y-m-d H:i:s'));
@@ -89,7 +90,7 @@ class PrivateKeyAuthentication {
             ->getToken($this->jwtConfig->getSigner(), $this->jwtConfig->getSigningKey());
 
         $token = $this->tokenRequest($clientAssertion);
-        if($token) {
+        if ($token) {
             $cacheItem = (new CacheItem('Okta_Oauth_Token'))
                 ->set($token)
                 ->expiresAfter(new \DateInterval('PT3600S'));
@@ -99,8 +100,6 @@ class PrivateKeyAuthentication {
         }
 
         throw new \Exception("Could not get a token");
-
-
     }
 
     private function tokenRequest($clientAssertion)
@@ -112,13 +111,13 @@ class PrivateKeyAuthentication {
             'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
             'client_assertion' => (string)$clientAssertion
         ]);
-        curl_setopt($curl,CURLOPT_URL, $this->orgUrl . '/oauth2/v1/token?'.$query);
-        curl_setopt($curl,CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_URL, $this->orgUrl . '/oauth2/v1/token?'.$query);
+        curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
             'Accept: application/json',
             'Content-Type: application/x-www-form-urlencoded'
         ]);
-        curl_setopt($curl,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
         $token = json_decode(curl_exec($curl));
         $info = curl_getinfo($curl);
@@ -130,6 +129,5 @@ class PrivateKeyAuthentication {
         }
 
         return $token->access_token;
-
     }
 }

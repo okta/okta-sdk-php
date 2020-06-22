@@ -18,7 +18,7 @@
 class SecurityQuestionFactorProfileTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/factorProfileQuestion.json';
-    protected $modelType = \Okta\UserFactors\SecurityQuestionFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\SecurityQuestionUserFactorProfile::class;
 
     /** @test */
     public function answer_is_accessible()

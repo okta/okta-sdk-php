@@ -85,7 +85,7 @@ class ClientBuilder
 
     public function __construct($yamlParser = null, $defaultFilePath = null)
     {
-        if(function_exists('posix_getpwuid') && function_exists('posix_getuid')) {
+        if (function_exists('posix_getpwuid') && function_exists('posix_getuid')) {
             $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
         }
         if (null != $defaultFilePath) {
@@ -310,7 +310,7 @@ class ClientBuilder
             // Convert array to string of scopes
             $scopesString = $parsed['okta']['client']['scopes'];
 
-            if(is_array($scopesString)) {
+            if (is_array($scopesString)) {
                 $scopesString = implode(" ", $scopesString);
             }
             $this->setScopes($scopesString);
@@ -319,7 +319,7 @@ class ClientBuilder
         if (key_exists('privateKey', $parsed['okta']['client'])) {
             $privateKey = $parsed['okta']['client']['privateKey'];
 
-            if(file_exists($privateKey)) {
+            if (file_exists($privateKey)) {
                 $privateKey = file_get_contents($parsed['okta']['client']['privateKey']);
             }
 
@@ -335,23 +335,23 @@ class ClientBuilder
         $scopes = getenv('OKTA_CLIENT_SCOPES');
         $privateKey = getenv('OKTA_CLIENT_PRIVATEKEY');
 
-        if (false !== $token) {
+        if ($token != false) {
             $this->setToken($token);
         }
 
-        if (false !== $orgUrl) {
+        if ($orgUrl != false) {
             $this->setOrganizationUrl($orgUrl);
         }
 
-        if (false !== $clientId) {
+        if ($clientId != false) {
             $this->setClientId($clientId);
         }
 
-        if (false !== $scopes) {
+        if ($scopes != false) {
             $this->setScopes($scopes);
         }
 
-        if (false !== $privateKey) {
+        if ($privateKey != false) {
             $this->setPrivateKey($privateKey);
         }
     }

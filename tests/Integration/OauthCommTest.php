@@ -29,7 +29,7 @@ class OauthCommTest extends BaseIntegrationTestCase
     public function a_call_with_ssws_uses_correct_header()
     {
         if(!$this->isMockingResponses()) {
-            $this->markTestSkipped('This test is skipped as we need to mock responses');
+            $this->markTestSkipped('This test is skipped since were need to mock response to test heders');
         }
 
         $time=time();
@@ -60,21 +60,14 @@ class OauthCommTest extends BaseIntegrationTestCase
     }
 
     /** @test */
-    public function a_call_with_private_key_uses_correct_header()
+    public function a_call_with_correct_scopes_to_create_user_will_work()
     {
-        $this->markTestSkipped('This test is skipped due to some issues with previous tests.');
+        // $this->markTestSkipped('This test is skipped due to some issues with previous tests.');
         \Okta\Client::destroy();
-        if(!$this->isMockingResponses()) {
-            $this->markTestSkipped('This test is skipped as we need to mock responses');
-        }
-
-        $time=time();
-        $userResponse = file_get_contents(__DIR__ .'/../responses/users/activateUser/create.json');
-
-        $client = $this->createNewHttpClient([
-            ["getBody"=>$userResponse] //create user
-        ],
-        new AuthorizationMode(AuthorizationMode::PRIVATE_KEY));
+        $time = time();
+        $client = (new ClientBuilder)
+            ->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::PRIVATE_KEY))
+            ->build();
 
         // Create a user
         $userProfile = (new UserProfile)
@@ -87,41 +80,11 @@ class OauthCommTest extends BaseIntegrationTestCase
             ->setProfile($userProfile)
             ->create();
 
-        $createdUser = $user->create(['activate'=>'false']);
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertNotEmpty($user->id, 'It appears the user was not created');
 
-        $createdUser->deactivate();
-        $createdUser->delete();
-
-        $requests = $client->getRequests();
-        $this->assertStringContainsString('Bearer ', $requests[0]->getHeaders()['Authorization'][0]);
-    }
-
-    /** @test */
-    public function a_call_with_correct_scopes_to_create_user_will_work()
-    {
-        $this->markTestSkipped('This test is skipped due to some issues with previous tests.');
-        \Okta\Client::destroy();
-        $time = time();
-        $client = (new ClientBuilder)
-            ->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::PRIVATE_KEY))
-            ->build();
-
-            // Create a user
-            $userProfile = (new UserProfile)
-                ->setFirstName('Oauth')
-                ->setLastName('User')
-                ->setLogin('php_oauth_user_'.$time.'@mailinator.com')
-                ->setEmail('php_oauth_user_'.$time.'@mailinator.com');
-
-            $user = (new User)
-                ->setProfile($userProfile)
-                ->create();
-
-            $this->assertInstanceOf(User::class, $user);
-            $this->assertNotEmpty($user->id, 'It appears the user was not created');
-
-            $user->deactivate();
-            $user->delete();
+        $user->deactivate();
+        $user->delete();
 
     }
 }

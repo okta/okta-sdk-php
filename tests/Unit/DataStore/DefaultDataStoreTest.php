@@ -541,7 +541,52 @@ class DefaultDataStoreTest extends TestCase
         $this->assertTrue($cacheManager->pool()->hasItem($key2));
     }
 
-    
+    /** @test */
+    public function a_call_can_set_accept_header() {
+        $httpClient = $this->createNewHttpClient();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $dataStore->setAcceptHeader('test/header');
+
+        $dataStore->getResource(
+            '123',
+            \Okta\Users\User::class,
+            'users',
+            ['query'=>['limit'=>1]]
+
+        );
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals(
+            'test/header',
+            $request[0]->getHeader('Accept')[0]
+        );
+    }
+
+    /** @test */
+    public function a_call_can_set_content_type_header() {
+        $httpClient = $this->createNewHttpClient();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $dataStore->setContentTypeHeader('test/contentTypeHeader');
+
+        $uri = "/api/v1/apps";
+        $uri = $dataStore->buildUri(
+            $dataStore->getOrganizationUrl() . $uri
+        );
+
+        $dataStore->executeRequest('POST', $uri, "test");
+
+        $request = $httpClient->getRequests();
+
+        $this->assertEquals(
+            'test/contentTypeHeader',
+            $request[0]->getHeader('Content-Type')[0]
+        );
+    }
+
+
 
 
     /**

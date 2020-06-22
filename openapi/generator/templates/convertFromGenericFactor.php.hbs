@@ -1,0 +1,15 @@
+public function convertFromGenericFactor()
+{
+    $factorType = $this->getFactorType();
+
+    $factorEnum = (new FactorType($factorType));
+
+    $realFactor = $factorEnum->mapToFactorType();
+
+    $properties = new \stdClass();
+    foreach ($this->getPropertyNames() as $name) {
+        $properties->$name = $this->getProperty($name);
+    }
+
+    return new $realFactor(null, $properties);
+}

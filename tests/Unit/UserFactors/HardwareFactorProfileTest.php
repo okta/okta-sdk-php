@@ -19,7 +19,7 @@ class HardwareFactorProfileTest extends BaseUnitTestCase
 {
 
     protected $model = '/UserFactors/factorProfileHardware.json';
-    protected $modelType = \Okta\UserFactors\HardwareFactorProfile::class;
+    protected $modelType = \Okta\UserFactors\HardwareUserFactorProfile::class;
 
     /** @test */
     public function credential_id_is_gettable()
@@ -37,5 +37,5 @@ class HardwareFactorProfileTest extends BaseUnitTestCase
         $this->testable->credentialId = 'test2@mailinator.com';
         static::assertEquals('test2@mailinator.com', $this->testable->getCredentialId());
     }
-    
+
 }

@@ -32,7 +32,7 @@ class FactorsTest extends BaseTestCase
 
         $this->assertEquals("/api/v1/users/{$user->getId()}/factors/FactorId123", $requests[0]->getUri()->getPath());
 
-        $this->assertInstanceOf(\Okta\UserFactors\SmsFactor::class, $factor);
+        $this->assertInstanceOf(\Okta\UserFactors\SmsUserFactor::class, $factor->convertFromGenericFactor());
         $this->assertequals('application/json', $requests[0]->getHeaderLine('Accept'));
         $this->assertEmpty($requests[0]->getHeaderLine('Content-Type'));
         $this->assertEquals("SSWS {$this->token}", $requests[0]->getHeaderLine('Authorization'));
@@ -62,9 +62,9 @@ class FactorsTest extends BaseTestCase
         $this->assertEquals("SSWS {$this->token}", $requests[0]->getHeaderLine('Authorization'));
 
         $this->assertCount(3, $allFactors);
-        $this->assertInstanceof(\Okta\UserFactors\SecurityQuestionFactor::class, $allFactors[0]);
-        $this->assertInstanceof(\Okta\UserFactors\TotpFactor::class, $allFactors[1]);
-        $this->assertInstanceof(\Okta\UserFactors\SmsFactor::class, $allFactors[2]);
+        $this->assertInstanceof(\Okta\UserFactors\SecurityQuestionUserFactor::class, $allFactors[0]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\TotpUserFactor::class, $allFactors[1]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\SmsUserFactor::class, $allFactors[2]->convertFromGenericFactor());
 
     }
 
@@ -90,14 +90,14 @@ class FactorsTest extends BaseTestCase
 
         $this->assertCount(7, $allFactors);
 
-        $this->assertInstanceof(\Okta\UserFactors\SecurityQuestionFactor::class, $allFactors[0]);
-        $this->assertInstanceof(\Okta\UserFactors\TotpFactor::class, $allFactors[1]);
-        $this->assertInstanceof(\Okta\UserFactors\TotpFactor::class, $allFactors[2]);
-        $this->assertInstanceof(\Okta\UserFactors\SmsFactor::class, $allFactors[3]);
-        $this->assertInstanceof(\Okta\UserFactors\CallFactor::class, $allFactors[4]);
-        $this->assertInstanceof(\Okta\UserFactors\TokenFactor::class, $allFactors[5]);
-        $this->assertInstanceof(\Okta\UserFactors\TokenFactor::class, $allFactors[6]);
+        $this->assertInstanceof(\Okta\UserFactors\SecurityQuestionUserFactor::class, $allFactors[0]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\TotpUserFactor::class, $allFactors[1]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\TotpUserFactor::class, $allFactors[2]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\SmsUserFactor::class, $allFactors[3]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\CallUserFactor::class, $allFactors[4]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\TokenUserFactor::class, $allFactors[5]->convertFromGenericFactor());
+        $this->assertInstanceof(\Okta\UserFactors\TokenUserFactor::class, $allFactors[6]->convertFromGenericFactor());
     }
 
-    
+
 }

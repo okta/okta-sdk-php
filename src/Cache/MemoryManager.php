@@ -27,7 +27,7 @@ class MemoryManager extends CacheManager
 
     public function __construct(AbstractAdapter $adapter = null)
     {
-        if(null === $adapter) {
+        if (null === $adapter) {
             $adapter = new MemoryAdapter();
         }
 
@@ -38,6 +38,5 @@ class MemoryManager extends CacheManager
                 )
             )
         );
-
     }
 }

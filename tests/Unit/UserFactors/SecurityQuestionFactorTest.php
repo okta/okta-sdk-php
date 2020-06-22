@@ -20,26 +20,26 @@ use Okta\ClientBuilder;
 class SecurityQuestionFactorTest extends BaseUnitTestCase
 {
     protected $model = '/UserFactors/securityQuestionFactor.json';
-    protected $modelType = \Okta\UserFactors\SecurityQuestionFactor::class;
+    protected $modelType = \Okta\UserFactors\SecurityQuestionUserFactor::class;
 
     /** @test */
     public function can_get_profile_from_factor()
     {
          $profile = $this->testable->getProfile();
 
-         $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionFactorProfile::class, $profile);
+         $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionUserFactorProfile::class, $profile);
 
     }
 
     /** @test */
     public function a_profile_can_be_set_on_the_factor()
     {
-        /** @var \Okta\UserFactors\SecurityQuestionFactorProfile $profile */
+        /** @var \Okta\UserFactors\SecurityQuestionUserFactorProfile $profile */
         $profile = $this->testable->getProfile();
         $profile->setAnswer = 'Test';
 
         $factor = $this->testable->setProfile($profile);
-        $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionFactor::class, $factor);
+        $this->assertInstanceOf(\Okta\UserFactors\SecurityQuestionUserFactor::class, $factor);
     }
 
 

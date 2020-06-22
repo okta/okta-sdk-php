@@ -42,14 +42,14 @@
         "test": "phpunit --colors=always",
         "test:unit": "phpunit --testsuite=Unit --colors=always",
         "test:integration": "phpunit --testsuite=Integration --colors=always",
-        "rebuild-resources": [
+        "build": [
             "@delete-resources",
             "@generate-resources",
-            "@test",
-            "@fix-code"
+            "@fix-code",
+            "@test"
         ],
         "delete-resources": [
-            "rm -rf ./src/Generated"
+            "cd ./openapi && npm run cleanFiles"
         ],
         "generate-resources": "cd ./openapi && npm run generator",
         "fix-code": "phpcbf ."
