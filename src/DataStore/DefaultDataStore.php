@@ -102,6 +102,26 @@ class DefaultDataStore
     private $defaultContentTypeHeader = 'application/json';
 
     /**
+     * @var UriInterface The URI to use for requests
+     */
+    private $uri;
+
+    /**
+     * @var string The request method
+     */
+    private $requestMethod;
+
+    /**
+     * @var mixed The body for your request
+     */
+    private $requestBody;
+
+    /**
+     * @var array Query params for the requst
+     */
+    private $queryParams;
+
+    /**
      * DefaultDataStore constructor.
      *
      * @param string          $token
@@ -274,20 +294,15 @@ class DefaultDataStore
     /**
      * Make the request.
      *
-     * @param string $method The type of request.
-     * @param UriInterface $uri The URI object of the request.
-     * @param string       $body The body of the request.
-     * @param array        $options The options for the request.
-     *
      * @return mixed|null
      * @throws ResourceException
      */
-    public function executeRequest($method, UriInterface $uri, $body = '', array $options = [])
+    public function executeRequest()
     {
         $cacheManager = $cacheManager = Client::getInstance()->getCacheManager();
-        $cacheKey = $cacheManager->createCacheKey($uri);
+        $cacheKey = $cacheManager->createCacheKey($this->uri);
 
-        if ('GET' == $method && $cacheManager->pool()->hasItem($cacheKey)) {
+        if ('GET' == $this->requestMethod && $cacheManager->pool()->hasItem($cacheKey)) {
             return $cacheManager->pool()->getItem($cacheKey)->get();
         }
 
@@ -300,17 +315,17 @@ class DefaultDataStore
             ->setPhpVersion(phpversion())
             ->build();
 
-        if ($body) {
+        if ($this->requestBody) {
             $headers['Content-Type'] = $this->contentTypeHeader;
-            $headers['Content-Length'] = strlen($body);
+            $headers['Content-Length'] = strlen($this->requestBody);
         }
 
-        if (key_exists('query', $options)) {
-            $queryString = $this->getQueryString($options['query']);
-            $uri = $uri->withQuery($this->appendQueryValues($uri->getQuery(), $queryString));
+        if (key_exists('query', $this->queryParams)) {
+            $queryString = $this->getQueryString($this->queryParams['query']);
+            $this->uri = $this->uri->withQuery($this->appendQueryValues($this->uri->getQuery(), $queryString));
         }
 
-        $request = $this->messageFactory->createRequest($method, $uri, $headers, $body);
+        $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, $this->requestBody);
 
         $response = $this->httpClient->sendRequest($request);
 
@@ -326,21 +341,21 @@ class DefaultDataStore
         }
 
         if (!is_array($result)) {
-            switch ($method) {
+            switch ($this->requestMethod) {
                 case 'GET':
                     if (null !== $result) {
-                        $cacheManager->save($uri, $result);
+                        $cacheManager->save($this->uri, $result);
                     }
                     break;
                 case 'POST':
                     if (null !== $result) {
-                        $cacheManager->delete($uri, $result);
-                        $cacheManager->save($uri, $result);
+                        $cacheManager->delete($this->uri, $result);
+                        $cacheManager->save($this->uri, $result);
                     }
                     break;
                 case 'DELETE':
                     if (null !== $this->resource) {
-                        $cacheManager->delete($uri, $this->toStdClass($this->resource));
+                        $cacheManager->delete($this->uri, $this->toStdClass($this->resource));
                     }
                     break;
             }
@@ -470,7 +485,7 @@ class DefaultDataStore
      */
     public function buildUri(string $uri): UriInterface
     {
-        return $this->uriFactory->createUri($uri);
+        return $this->uriFactory->createUri($this->getOrganizationurl() . $uri);
     }
 
     /**
@@ -494,6 +509,30 @@ class DefaultDataStore
     public function setContentTypeHeader(string $contentType): DefaultDataStore
     {
         $this->contentTypeHeader = $contentType;
+        return $this;
+    }
+
+    public function setUri(UriInterface $uri): DefaultDataStore
+    {
+        $this->uri = $uri;
+        return $this;
+    }
+
+    public function setRequestMethod(string $requestMethod): DefaultDataStore
+    {
+        $this->requestMethod = $requestMethod;
+        return $this;
+    }
+
+    public function setRequestBody($body = ""): DefaultDataStore
+    {
+        $this->requestBody = $body;
+        return $this;
+    }
+
+    public function setQueryParams(array $queryParams = []): DefaultDataStore
+    {
+        $this->queryParams = $queryParams;
         return $this;
     }
 }

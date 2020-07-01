@@ -1,0 +1,15 @@
+/**
+ * Set the {{pascalCase propertyName}}.
+ *
+ * @param mixed ${{property.propertyName}} The {{property.propertyName}} to set.
+ * @return self
+ */
+function set{{pascalCase property.propertyName}}(${{property.propertyName}}) : {{modelName}}
+{
+    $this->setProperty(
+        self::{{upperSnakeCase property.propertyName}},
+        ${{property.propertyName}}
+    );
+
+    return $this;
+}

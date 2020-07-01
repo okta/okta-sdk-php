@@ -1,0 +1,29 @@
+/**
+ * {{{this.operation.description}}}
+ */
+function {{this.alias}}({{{ methodArgumentBuilder this }}}){{#if this.operation.responseModel}} : {{buildFullClassname (getDefinitionTag this.operation.responseModel) this.operation.responseModel}} {{/if}}
+{
+    $uri = $this->getDataStore()->buildUri(
+        "{{{buildMethodUri this}}}"
+    );
+    $body = $this
+            ->getDataStore()
+            ->setRequestMethod("{{upperCase this.operation.method}}")
+            ->setUri($uri)
+            {{#if this.operation.bodyModel}}
+            ->setRequestBody({{{executeRequestBodyArgument this}}})
+            {{/if}}
+            {{#if this.operation.queryParams.length}}
+            ->setQueryParams($queryParameters)
+            {{/if}}
+            {{#if (ne this.operation.produces.[0] "application/json")}}
+            ->setAcceptHeader({{this.operation.produces.[0]}})
+            {{/if}}
+            {{#if (ne this.operation.consumes.[0] "application/json")}}
+            ->setContentTypeHeader({{this.operation.consumes.[0]}})
+            {{/if}}
+            ->executeRequest();
+    {{#if this.operation.responseModel}}
+    return new {{buildFullClassname (getDefinitionTag this.operation.responseModel) this.operation.responseModel }}(null, $body);
+    {{/if}}
+}

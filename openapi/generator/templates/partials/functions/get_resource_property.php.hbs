@@ -1,0 +1,14 @@
+/**
+ * Get the {{pascalCase propertyName}}.
+ *
+ * @param array $options Additional options to pass, Typically query params.
+ * @return {{returnType property}}
+ */
+function get{{pascalCase property.propertyName}}(array $options = []) : {{returnType property}}
+{
+    return $this->getResourceProperty(
+        self::{{upperSnakeCase property.propertyName}},
+        {{buildFullClassnameFromPropertyRef property}}::class,
+        $options
+    );
+}

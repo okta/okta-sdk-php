@@ -1,0 +1,14 @@
+/**
+ * Get the {{pascalCase propertyName}}.
+ *
+ * @param mixed ${{property.propertyName}} The {{property.propertyName}} to set.
+ * @return {{returnType property}}
+ */
+function get{{pascalCase property.propertyName}}() : {{returnType property}}
+{
+    return $this->getDateTimeProperty(
+        self::{{upperSnakeCase property.propertyName}}
+    );
+
+    return $this;
+}
