@@ -45,7 +45,6 @@
         "build": [
             "@delete-resources",
             "@generate-resources",
-            "@fix-code",
             "@test"
         ],
         "delete-resources": [

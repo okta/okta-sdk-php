@@ -1,0 +1,12 @@
+/**
+ * Get the {{pascalCase propertyName}}.
+ *
+ * @return {{returnType property}}
+ */
+function get{{pascalCase property.propertyName}}() : {{returnType property}}
+{
+    return $this->getEnumProperty(
+        self::{{upperSnakeCase property.propertyName}},
+        {{buildFullClassnameFromPropertyRef property.$ref}}::class,
+    );
+}

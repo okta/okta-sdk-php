@@ -17,9 +17,10 @@
 
 namespace Okta\Resource;
 
-use Carbon\Carbon;
 use Okta\Client;
+use Carbon\Carbon;
 use Okta\DataStore\DefaultDataStore;
+use Http\Discovery\UriFactoryDiscovery;
 
 /**
  * Class AbstractResource
@@ -43,6 +44,10 @@ abstract class AbstractResource
      * @var bool $materialized Has the resource been full retrieved from the API.
      */
     private $materialized;
+    /**
+     * @var UriFactory $uriFactory The discovered URI Factory
+     */
+    private $uriFactory;
     /**
      * @var bool $dirty Are there dirty properties on the resource.
      */
@@ -72,6 +77,9 @@ abstract class AbstractResource
         $this->options = $options;
 
         $this->methods = array_flip(get_class_methods(get_class($this)));
+        $this->uriFactory = UriFactoryDiscovery::find();
+
+
     }
 
     /**
@@ -124,6 +132,13 @@ abstract class AbstractResource
         return $property;
     }
 
+    public function getEnumProperty($name, $enum) {
+        $prop = strtoupper($this->getProperty($name));
+
+        $enumClass = new $enum(constant("$enum::$prop"));
+        return $enumClass;
+    }
+
     /**
      * Get a HAL Linked property.
      *
@@ -152,7 +167,7 @@ abstract class AbstractResource
      * @param string $name Get this date property of the resource.
      * @return Carbon|null
      */
-    public function getDateProperty($name)
+    public function getDateTimeProperty($name)
     {
         $value = $this->readProperty($name);
 
@@ -256,6 +271,20 @@ abstract class AbstractResource
     protected function setResourceProperty($name, AbstractResource $resource)
     {
         $this->setProperty($name, $resource->properties);
+    }
+
+    /**
+     * Set a dateTime property on a resource.
+     *
+     * @param string $name Which property do you want to set.
+     * @param string $dateTime What dateTime to instantiate Carbon with.
+     *
+     * @return void
+     */
+    protected function setDateTimeProperty($name, string $dateTime)
+    {
+        $carbon = new Carbon($dateTime);
+        $this->setProperty($name, $carbon);
     }
 
     /**
