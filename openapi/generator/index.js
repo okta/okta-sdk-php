@@ -10,10 +10,6 @@ function buildFullClassnameFromPropertyRef(propertyRef) {
   const ref = propertyRef.split("/").pop();
   const def = getDefinition(ref);
 
-  // if(def['x-okta-parent']) {
-  //   return buildFullClassnameFromPropertyRef(def['x-okta-parent']);
-  // }
-
   return buildFullClassname(def['x-okta-tags'][0], ref);
 }
 
