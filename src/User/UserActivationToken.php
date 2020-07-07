@@ -26,6 +26,7 @@ class UserActivationToken extends \Okta\Resource\AbstractResource
     const ACTIVATION_URL = 'activationUrl';
     const ACTIVATION_TOKEN = 'activationToken';
 
+
     /**
      * Get the ActivationUrl.
      *
@@ -35,7 +36,7 @@ class UserActivationToken extends \Okta\Resource\AbstractResource
     function getActivationUrl() : string
     {
         return $this->getProperty(
-            self::ACTIVATION_URL
+            self::ACTIVATION_URL,
         );
     }
     
@@ -48,7 +49,7 @@ class UserActivationToken extends \Okta\Resource\AbstractResource
     function getActivationToken() : string
     {
         return $this->getProperty(
-            self::ACTIVATION_TOKEN
+            self::ACTIVATION_TOKEN,
         );
     }
     

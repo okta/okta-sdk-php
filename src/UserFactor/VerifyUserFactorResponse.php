@@ -29,6 +29,7 @@ class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
     const FACTOR_RESULT = 'factorResult';
     const FACTOR_RESULT_MESSAGE = 'factorResultMessage';
 
+
     /**
      * Set the FactorResult.
      *
@@ -70,7 +71,7 @@ class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -83,7 +84,7 @@ class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -111,7 +112,7 @@ class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
     function getFactorResult() : string
     {
         return $this->getProperty(
-            self::FACTOR_RESULT
+            self::FACTOR_RESULT,
         );
     }
     
@@ -124,7 +125,7 @@ class VerifyUserFactorResponse extends \Okta\Resource\AbstractResource
     function getFactorResultMessage() : string
     {
         return $this->getProperty(
-            self::FACTOR_RESULT_MESSAGE
+            self::FACTOR_RESULT_MESSAGE,
         );
     }
     

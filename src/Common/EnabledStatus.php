@@ -23,6 +23,8 @@ namespace Okta\Common;
 
 class EnabledStatus extends \Okta\Utilities\Enum
 {
+    const ENABLED = 'ENABLED';
+    const DISABLED = 'DISABLED';
 
 
 }

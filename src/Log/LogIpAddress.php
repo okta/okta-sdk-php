@@ -28,6 +28,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     const VERSION = 'version';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
 
+
     /**
      * Get the Ip.
      *
@@ -37,7 +38,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     function getIp() : string
     {
         return $this->getProperty(
-            self::IP
+            self::IP,
         );
     }
     
@@ -50,7 +51,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     function getSource() : string
     {
         return $this->getProperty(
-            self::SOURCE
+            self::SOURCE,
         );
     }
     
@@ -63,7 +64,7 @@ class LogIpAddress extends \Okta\Resource\AbstractResource
     function getVersion() : string
     {
         return $this->getProperty(
-            self::VERSION
+            self::VERSION,
         );
     }
     

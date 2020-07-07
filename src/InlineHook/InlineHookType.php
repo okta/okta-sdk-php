@@ -23,6 +23,11 @@ namespace Okta\InlineHook;
 
 class InlineHookType extends \Okta\Utilities\Enum
 {
+    const COM_OKTA_OAUTH_2_TOKENS_TRANSFORM = 'com.okta.oauth2.tokens.transform';
+    const COM_OKTA_IMPORT_TRANSFORM = 'com.okta.import.transform';
+    const COM_OKTA_SAML_TOKENS_TRANSFORM = 'com.okta.saml.tokens.transform';
+    const COM_OKTA_USER_PRE_REGISTRATION = 'com.okta.user.pre-registration';
+    const COM_OKTA_USER_CREDENTIAL_PASSWORD_IMPORT = 'com.okta.user.credential.password.import';
 
 
 }

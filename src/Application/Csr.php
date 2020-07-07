@@ -28,6 +28,7 @@ class Csr extends \Okta\Resource\AbstractResource
     const KTY = 'kty';
     const CREATED = 'created';
 
+
     /**
      * Get the Id.
      *
@@ -37,7 +38,7 @@ class Csr extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -50,7 +51,7 @@ class Csr extends \Okta\Resource\AbstractResource
     function getCsr() : string
     {
         return $this->getProperty(
-            self::CSR
+            self::CSR,
         );
     }
     
@@ -63,7 +64,7 @@ class Csr extends \Okta\Resource\AbstractResource
     function getKty() : string
     {
         return $this->getProperty(
-            self::KTY
+            self::KTY,
         );
     }
     

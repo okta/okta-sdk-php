@@ -27,6 +27,7 @@ class EventHookChannelConfig extends \Okta\Resource\AbstractResource
     const HEADERS = 'headers';
     const AUTH_SCHEME = 'authScheme';
 
+
     /**
      * Set the Uri.
      *
@@ -84,7 +85,7 @@ class EventHookChannelConfig extends \Okta\Resource\AbstractResource
     function getUri() : string
     {
         return $this->getProperty(
-            self::URI
+            self::URI,
         );
     }
     
@@ -97,7 +98,7 @@ class EventHookChannelConfig extends \Okta\Resource\AbstractResource
     function getHeaders() : array
     {
         return $this->getProperty(
-            self::HEADERS
+            self::HEADERS,
         );
     }
     

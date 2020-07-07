@@ -23,6 +23,8 @@ namespace Okta\Role;
 
 class ScopeType extends \Okta\Utilities\Enum
 {
+    const CORS = 'CORS';
+    const REDIRECT = 'REDIRECT';
 
 
 }

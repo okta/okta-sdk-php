@@ -1,14 +1,18 @@
 const _ = require('lodash');
 _.mixin(require('lodash-inflection'));
 const fs = require('fs');
-const util = require('util');
+const util = require('@okta/openapi/lib/util');
 
 const php = module.exports;
 
 // Return the full namespaced typehint for a $ref
-function buildFullClassnameFromPropertyRef(property) {
-  const ref = property['$ref'].split("/").pop();
+function buildFullClassnameFromPropertyRef(propertyRef) {
+  const ref = propertyRef.split("/").pop();
   const def = getDefinition(ref);
+
+  // if(def['x-okta-parent']) {
+  //   return buildFullClassnameFromPropertyRef(def['x-okta-parent']);
+  // }
 
   return buildFullClassname(def['x-okta-tags'][0], ref);
 }
@@ -27,6 +31,63 @@ function buildFullClassname(tag, cls) {
   return "\\Okta\\" + tag + "\\" + cls;
 }
 
+function modelProperties(model) {
+  const modelProperties = [];
+
+  model.properties.forEach(prop => {
+    modelProperties.push(prop);
+  });
+
+  if(model.extends) {
+    const def = getDefinition(model.extends)
+    if(def.properties !== undefined && def['x-openapi-v3-discriminator']) {
+      for(let [propName, prop] of Object.entries(def.properties)) {
+        prop.propertyName = propName;
+        prop.commonType = util.getCommonType(prop);
+        modelProperties.push(prop);
+      }
+    }
+  }
+
+  const seen = {};
+  const output = modelProperties.filter( item => {
+     if(seen[item.propertyName]) {
+        return false;
+     }
+     seen[item.propertyName] = true;
+     return true;
+  } );
+
+
+  return removeParentPropertyFix(output, model);
+}
+
+function removeParentPropertyFix(propList, model) {
+  const modelIgnoreParentProps = [
+    'SchemeApplicationCredentials',
+    'BasicApplicationSettings',
+    'BookmarkApplicationSettings',
+    'SecurePasswordStoreApplicationSettings',
+    'SwaApplicationSettings',
+    'SwaThreeFieldApplicationSettings',
+    'WsFederationApplicationSettings',
+  ]
+  if(modelIgnoreParentProps.indexOf(model.modelName) >= 0) {
+
+    const parentDef = getDefinition(model.extends);
+    const parentProps = parentDef.properties;
+    // if property exists on parent, remove from propList
+    for(let [ind, val] of Object.entries(parentProps)) {
+      propList.forEach((prop, propIndex) => {
+        if(ind == prop.propertyName) {
+          let test = propList.splice(propIndex, 1);
+        }
+      })
+    }
+  }
+  return propList;
+}
+
 // Get the PHP safe return type for the property
 function returnType(property) {
   switch (property.commonType) {
@@ -34,12 +95,12 @@ function returnType(property) {
       return String.raw`\Carbon\Carbon`;
     case 'object':
       if(property['$ref']) {
-        return buildFullClassnameFromPropertyRef(property);
+        return buildFullClassnameFromPropertyRef(property['$ref']);
       }
       return String.raw`\stdClass`;
     case 'enum':
       if(property['$ref']) {
-        return buildFullClassnameFromPropertyRef(property);
+        return buildFullClassnameFromPropertyRef(property['$ref']);
       }
       return String.raw`string`;
     case 'hash':
@@ -71,10 +132,25 @@ function methodArgumentBuilder(method) {
 
   const operation = method.operation;
 
-  operation.pathParams.forEach(param => {
+  operation.parameters.forEach(param => {
     const matchingArgument = method.arguments.filter(argument => argument.dest === param.name)[0];
-    if (!matchingArgument || !matchingArgument.src){
-      args.push('$'+param.name);
+    if ((!matchingArgument || !matchingArgument.src) && param.in != "query"){
+
+      if(method.alias == "create" && method.operation.operationId == "createUser") {
+      console.log(param, matchingArgument)
+      }
+
+      if(matchingArgument && matchingArgument.self == true) {
+        return;
+      }
+
+      if(param.in == "body" && param.schema) {
+        const resourceType = buildFullClassnameFromPropertyRef(param.schema['$ref'])
+
+        args.push(resourceType + ' $'+param.name)
+      } else {
+        args.push('$'+param.name);
+      }
     }
   });
 
@@ -115,6 +191,10 @@ function executeRequestBodyArgument(method) {
     const matchingArgument = arguments.filter(argument => argument.dest === param.name)[0];
     if(matchingArgument && matchingArgument.self) {
       bodyArgument = String.raw`$this`;
+    } else {
+      if(param.in == "body") {
+        bodyArgument = '$'+param.name
+      }
     }
   });
   return bodyArgument;
@@ -145,7 +225,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     getDefinitionTag,
     methodArgumentBuilder,
     executeRequestBodyArgument,
-    buildMethodUri
+    buildMethodUri,
+    modelProperties
   });
 
   handlebars.registerPartial('copyright', fs.readFileSync('generator/templates/partials/copyright.hbs', 'utf8'))
@@ -157,6 +238,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
   handlebars.registerPartial('function_getProperty', fs.readFileSync('generator/templates/partials/functions/get_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_getDateTimeProperty', fs.readFileSync('generator/templates/partials/functions/get_datetime_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_getResourceProperty', fs.readFileSync('generator/templates/partials/functions/get_resource_property.php.hbs', 'utf8'))
+  handlebars.registerPartial('function_getEnumProperty', fs.readFileSync('generator/templates/partials/functions/get_enum_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_default_operation', fs.readFileSync('generator/templates/partials/functions/default_operation.php.hbs', 'utf8'))
 
 

@@ -26,6 +26,7 @@ class PasswordPolicyRuleConditions extends \Okta\Resource\AbstractResource
     const PEOPLE = 'people';
     const NETWORK = 'network';
 
+
     /**
      * Set the People.
      *

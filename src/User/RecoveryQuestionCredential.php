@@ -26,6 +26,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
     const ANSWER = 'answer';
     const QUESTION = 'question';
 
+
     /**
      * Set the Answer.
      *
@@ -67,7 +68,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
     function getAnswer() : string
     {
         return $this->getProperty(
-            self::ANSWER
+            self::ANSWER,
         );
     }
     
@@ -80,7 +81,7 @@ class RecoveryQuestionCredential extends \Okta\Resource\AbstractResource
     function getQuestion() : string
     {
         return $this->getProperty(
-            self::QUESTION
+            self::QUESTION,
         );
     }
     

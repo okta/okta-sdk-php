@@ -27,6 +27,7 @@ class PolicyNetworkCondition extends \Okta\Resource\AbstractResource
     const INCLUDE = 'include';
     const CONNECTION = 'connection';
 
+
     /**
      * Set the Exclude.
      *
@@ -84,7 +85,7 @@ class PolicyNetworkCondition extends \Okta\Resource\AbstractResource
     function getExclude() : array
     {
         return $this->getProperty(
-            self::EXCLUDE
+            self::EXCLUDE,
         );
     }
     
@@ -97,7 +98,7 @@ class PolicyNetworkCondition extends \Okta\Resource\AbstractResource
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     
@@ -110,7 +111,7 @@ class PolicyNetworkCondition extends \Okta\Resource\AbstractResource
     function getConnection() : string
     {
         return $this->getProperty(
-            self::CONNECTION
+            self::CONNECTION,
         );
     }
     

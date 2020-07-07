@@ -23,6 +23,8 @@ namespace Okta\Application;
 
 class OAuth2ScopeConsentGrantSource extends \Okta\Utilities\Enum
 {
+    const END_USER = 'END_USER';
+    const ADMIN = 'ADMIN';
 
 
 }

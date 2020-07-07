@@ -26,6 +26,7 @@ class CallUserFactorProfile extends \Okta\Resource\AbstractResource
     const PHONE_NUMBER = 'phoneNumber';
     const PHONE_EXTENSION = 'phoneExtension';
 
+
     /**
      * Set the PhoneNumber.
      *
@@ -67,7 +68,7 @@ class CallUserFactorProfile extends \Okta\Resource\AbstractResource
     function getPhoneNumber() : string
     {
         return $this->getProperty(
-            self::PHONE_NUMBER
+            self::PHONE_NUMBER,
         );
     }
     
@@ -80,7 +81,7 @@ class CallUserFactorProfile extends \Okta\Resource\AbstractResource
     function getPhoneExtension() : string
     {
         return $this->getProperty(
-            self::PHONE_EXTENSION
+            self::PHONE_EXTENSION,
         );
     }
     

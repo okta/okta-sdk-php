@@ -26,6 +26,7 @@ class LogOutcome extends \Okta\Resource\AbstractResource
     const REASON = 'reason';
     const RESULT = 'result';
 
+
     /**
      * Get the Reason.
      *
@@ -35,7 +36,7 @@ class LogOutcome extends \Okta\Resource\AbstractResource
     function getReason() : string
     {
         return $this->getProperty(
-            self::REASON
+            self::REASON,
         );
     }
     
@@ -48,7 +49,7 @@ class LogOutcome extends \Okta\Resource\AbstractResource
     function getResult() : string
     {
         return $this->getProperty(
-            self::RESULT
+            self::RESULT,
         );
     }
     

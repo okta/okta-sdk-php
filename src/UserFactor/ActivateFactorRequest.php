@@ -29,6 +29,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     const ATTESTATION = 'attestation';
     const REGISTRATION_DATA = 'registrationData';
 
+
     /**
      * Set the PassCode.
      *
@@ -118,7 +119,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     function getPassCode() : string
     {
         return $this->getProperty(
-            self::PASS_CODE
+            self::PASS_CODE,
         );
     }
     
@@ -131,7 +132,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     function getClientData() : string
     {
         return $this->getProperty(
-            self::CLIENT_DATA
+            self::CLIENT_DATA,
         );
     }
     
@@ -144,7 +145,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     function getStateToken() : string
     {
         return $this->getProperty(
-            self::STATE_TOKEN
+            self::STATE_TOKEN,
         );
     }
     
@@ -157,7 +158,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     function getAttestation() : string
     {
         return $this->getProperty(
-            self::ATTESTATION
+            self::ATTESTATION,
         );
     }
     
@@ -170,7 +171,7 @@ class ActivateFactorRequest extends \Okta\Resource\AbstractResource
     function getRegistrationData() : string
     {
         return $this->getProperty(
-            self::REGISTRATION_DATA
+            self::REGISTRATION_DATA,
         );
     }
     

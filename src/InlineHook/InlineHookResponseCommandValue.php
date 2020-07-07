@@ -27,6 +27,7 @@ class InlineHookResponseCommandValue extends \Okta\Resource\AbstractResource
     const PATH = 'path';
     const VALUE = 'value';
 
+
     /**
      * Set the Op.
      *
@@ -84,7 +85,7 @@ class InlineHookResponseCommandValue extends \Okta\Resource\AbstractResource
     function getOp() : string
     {
         return $this->getProperty(
-            self::OP
+            self::OP,
         );
     }
     
@@ -97,7 +98,7 @@ class InlineHookResponseCommandValue extends \Okta\Resource\AbstractResource
     function getPath() : string
     {
         return $this->getProperty(
-            self::PATH
+            self::PATH,
         );
     }
     
@@ -110,7 +111,7 @@ class InlineHookResponseCommandValue extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

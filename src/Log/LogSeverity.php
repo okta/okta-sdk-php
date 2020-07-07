@@ -23,6 +23,10 @@ namespace Okta\Log;
 
 class LogSeverity extends \Okta\Utilities\Enum
 {
+    const DEBUG = 'DEBUG';
+    const INFO = 'INFO';
+    const WARN = 'WARN';
+    const ERROR = 'ERROR';
 
 
 }

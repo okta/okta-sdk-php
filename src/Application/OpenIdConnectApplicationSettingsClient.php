@@ -36,6 +36,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     const INITIATE_LOGIN_URI = 'initiate_login_uri';
     const POST_LOGOUT_REDIRECT_URIS = 'post_logout_redirect_uris';
 
+
     /**
      * Set the TosUri.
      *
@@ -237,7 +238,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getTosUri() : string
     {
         return $this->getProperty(
-            self::TOS_URI
+            self::TOS_URI,
         );
     }
     
@@ -250,7 +251,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getLogoUri() : string
     {
         return $this->getProperty(
-            self::LOGO_URI
+            self::LOGO_URI,
         );
     }
     
@@ -263,7 +264,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getClientUri() : string
     {
         return $this->getProperty(
-            self::CLIENT_URI
+            self::CLIENT_URI,
         );
     }
     
@@ -276,7 +277,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getPolicyUri() : string
     {
         return $this->getProperty(
-            self::POLICY_URI
+            self::POLICY_URI,
         );
     }
     
@@ -289,23 +290,23 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getGrantTypes() : array
     {
         return $this->getProperty(
-            self::GRANT_TYPES
+            self::GRANT_TYPES,
         );
     }
     
     /**
      * Get the IssuerMode.
      *
-     * @param mixed $issuer_mode The issuer_mode to set.
      * @return \Okta\Application\OpenIdConnectApplicationIssuerMode
      */
     function getIssuerMode() : \Okta\Application\OpenIdConnectApplicationIssuerMode
     {
-        return $this->getProperty(
-            self::ISSUER_MODE
+        return $this->getEnumProperty(
+            self::ISSUER_MODE,
+            \Okta\Application\OpenIdConnectApplicationIssuerMode::class,
         );
     }
-    
+
     /**
      * Get the RedirectUris.
      *
@@ -315,23 +316,23 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getRedirectUris() : array
     {
         return $this->getProperty(
-            self::REDIRECT_URIS
+            self::REDIRECT_URIS,
         );
     }
     
     /**
      * Get the ConsentMethod.
      *
-     * @param mixed $consent_method The consent_method to set.
      * @return \Okta\Application\OpenIdConnectApplicationConsentMethod
      */
     function getConsentMethod() : \Okta\Application\OpenIdConnectApplicationConsentMethod
     {
-        return $this->getProperty(
-            self::CONSENT_METHOD
+        return $this->getEnumProperty(
+            self::CONSENT_METHOD,
+            \Okta\Application\OpenIdConnectApplicationConsentMethod::class,
         );
     }
-    
+
     /**
      * Get the ResponseTypes.
      *
@@ -341,23 +342,23 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getResponseTypes() : array
     {
         return $this->getProperty(
-            self::RESPONSE_TYPES
+            self::RESPONSE_TYPES,
         );
     }
     
     /**
      * Get the ApplicationType.
      *
-     * @param mixed $application_type The application_type to set.
      * @return \Okta\Application\OpenIdConnectApplicationType
      */
     function getApplicationType() : \Okta\Application\OpenIdConnectApplicationType
     {
-        return $this->getProperty(
-            self::APPLICATION_TYPE
+        return $this->getEnumProperty(
+            self::APPLICATION_TYPE,
+            \Okta\Application\OpenIdConnectApplicationType::class,
         );
     }
-    
+
     /**
      * Get the InitiateLoginUri.
      *
@@ -367,7 +368,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getInitiateLoginUri() : string
     {
         return $this->getProperty(
-            self::INITIATE_LOGIN_URI
+            self::INITIATE_LOGIN_URI,
         );
     }
     
@@ -380,7 +381,7 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     function getPostLogoutRedirectUris() : array
     {
         return $this->getProperty(
-            self::POST_LOGOUT_REDIRECT_URIS
+            self::POST_LOGOUT_REDIRECT_URIS,
         );
     }
     

@@ -27,6 +27,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     const MESSAGE = 'message';
     const NETWORK = 'network';
 
+
     /**
      * Set the HelpUrl.
      *
@@ -84,7 +85,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     function getHelpUrl() : string
     {
         return $this->getProperty(
-            self::HELP_URL
+            self::HELP_URL,
         );
     }
     
@@ -97,7 +98,7 @@ class ApplicationSettingsNotificationsVpn extends \Okta\Resource\AbstractResourc
     function getMessage() : string
     {
         return $this->getProperty(
-            self::MESSAGE
+            self::MESSAGE,
         );
     }
     

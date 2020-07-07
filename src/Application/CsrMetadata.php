@@ -26,6 +26,7 @@ class CsrMetadata extends \Okta\Resource\AbstractResource
     const SUBJECT = 'subject';
     const SUBJECT_ALT_NAMES = 'subjectAltNames';
 
+
     /**
      * Set the Subject.
      *

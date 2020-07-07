@@ -33,6 +33,7 @@ class IonField extends \Okta\Resource\AbstractResource
     const VISIBLE = 'visible';
     const REQUIRED = 'required';
 
+
     /**
      * Set the Form.
      *
@@ -201,7 +202,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -214,7 +215,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -227,7 +228,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getLabel() : string
     {
         return $this->getProperty(
-            self::LABEL
+            self::LABEL,
         );
     }
     
@@ -240,7 +241,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getValue() : \stdClass
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     
@@ -253,7 +254,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getSecret() : bool
     {
         return $this->getProperty(
-            self::SECRET
+            self::SECRET,
         );
     }
     
@@ -266,7 +267,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getMutable() : bool
     {
         return $this->getProperty(
-            self::MUTABLE
+            self::MUTABLE,
         );
     }
     
@@ -279,7 +280,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getVisible() : bool
     {
         return $this->getProperty(
-            self::VISIBLE
+            self::VISIBLE,
         );
     }
     
@@ -292,7 +293,7 @@ class IonField extends \Okta\Resource\AbstractResource
     function getRequired() : bool
     {
         return $this->getProperty(
-            self::REQUIRED
+            self::REQUIRED,
         );
     }
     

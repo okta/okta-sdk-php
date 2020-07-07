@@ -25,6 +25,7 @@ class PasswordPolicyDelegationSettingsOptions extends \Okta\Resource\AbstractRes
 {
     const SKIP_UNLOCK = 'skipUnlock';
 
+
     /**
      * Set the SkipUnlock.
      *
@@ -50,7 +51,7 @@ class PasswordPolicyDelegationSettingsOptions extends \Okta\Resource\AbstractRes
     function getSkipUnlock() : bool
     {
         return $this->getProperty(
-            self::SKIP_UNLOCK
+            self::SKIP_UNLOCK,
         );
     }
     

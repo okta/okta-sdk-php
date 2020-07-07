@@ -23,6 +23,7 @@ namespace Okta\User;
 
 class UserNextLogin extends \Okta\Utilities\Enum
 {
+    const CHANGE_PASSWORD = 'changePassword';
 
 
 }

@@ -23,6 +23,8 @@ namespace Okta\IdentityProvider;
 
 class ProtocolRelayStateFormat extends \Okta\Utilities\Enum
 {
+    const OPAQUE = 'OPAQUE';
+    const FROM_URL = 'FROM_URL';
 
 
 }

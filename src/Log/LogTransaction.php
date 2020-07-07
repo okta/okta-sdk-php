@@ -27,6 +27,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const DETAIL = 'detail';
 
+
     /**
      * Get the Id.
      *
@@ -36,7 +37,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -49,7 +50,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -62,7 +63,7 @@ class LogTransaction extends \Okta\Resource\AbstractResource
     function getDetail() : \stdClass
     {
         return $this->getProperty(
-            self::DETAIL
+            self::DETAIL,
         );
     }
     

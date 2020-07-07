@@ -34,6 +34,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const LAST_UPDATED_BY = 'lastUpdatedBy';
 
+
     /**
      * Set the Name.
      *
@@ -139,7 +140,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -152,7 +153,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -165,7 +166,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -178,7 +179,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getOrigin() : string
     {
         return $this->getProperty(
-            self::ORIGIN
+            self::ORIGIN,
         );
     }
     
@@ -191,7 +192,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getScopes() : array
     {
         return $this->getProperty(
-            self::SCOPES
+            self::SCOPES,
         );
     }
     
@@ -204,7 +205,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -232,7 +233,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getCreatedBy() : string
     {
         return $this->getProperty(
-            self::CREATED_BY
+            self::CREATED_BY,
         );
     }
     
@@ -260,7 +261,7 @@ class TrustedOrigin extends \Okta\Resource\AbstractResource
     function getLastUpdatedBy() : string
     {
         return $this->getProperty(
-            self::LAST_UPDATED_BY
+            self::LAST_UPDATED_BY,
         );
     }
     

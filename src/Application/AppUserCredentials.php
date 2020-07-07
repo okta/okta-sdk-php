@@ -26,6 +26,7 @@ class AppUserCredentials extends \Okta\Resource\AbstractResource
     const PASSWORD = 'password';
     const USER_NAME = 'userName';
 
+
     /**
      * Set the Password.
      *
@@ -82,7 +83,7 @@ class AppUserCredentials extends \Okta\Resource\AbstractResource
     function getUserName() : string
     {
         return $this->getProperty(
-            self::USER_NAME
+            self::USER_NAME,
         );
     }
     

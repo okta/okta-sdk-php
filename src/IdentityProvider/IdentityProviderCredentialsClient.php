@@ -26,6 +26,7 @@ class IdentityProviderCredentialsClient extends \Okta\Resource\AbstractResource
     const CLIENT_ID = 'client_id';
     const CLIENT_SECRET = 'client_secret';
 
+
     /**
      * Set the ClientId.
      *
@@ -67,7 +68,7 @@ class IdentityProviderCredentialsClient extends \Okta\Resource\AbstractResource
     function getClientId() : string
     {
         return $this->getProperty(
-            self::CLIENT_ID
+            self::CLIENT_ID,
         );
     }
     
@@ -80,7 +81,7 @@ class IdentityProviderCredentialsClient extends \Okta\Resource\AbstractResource
     function getClientSecret() : string
     {
         return $this->getProperty(
-            self::CLIENT_SECRET
+            self::CLIENT_SECRET,
         );
     }
     

@@ -25,6 +25,7 @@ class HardwareUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const CREDENTIAL_ID = 'credentialId';
 
+
     /**
      * Set the CredentialId.
      *
@@ -50,7 +51,7 @@ class HardwareUserFactorProfile extends \Okta\Resource\AbstractResource
     function getCredentialId() : string
     {
         return $this->getProperty(
-            self::CREDENTIAL_ID
+            self::CREDENTIAL_ID,
         );
     }
     

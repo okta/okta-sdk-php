@@ -24,5 +24,4 @@ namespace Okta\User;
 class ResponseLinks extends \Okta\Resource\AbstractResource
 {
 
-
 }

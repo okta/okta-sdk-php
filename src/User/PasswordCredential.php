@@ -27,6 +27,7 @@ class PasswordCredential extends \Okta\Resource\AbstractResource
     const HOOK = 'hook';
     const VALUE = 'value';
 
+
     /**
      * Set the Hash.
      *
@@ -114,7 +115,7 @@ class PasswordCredential extends \Okta\Resource\AbstractResource
     function getValue() : password
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

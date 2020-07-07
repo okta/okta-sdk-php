@@ -30,6 +30,7 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
     const LIFECYCLE_EXPIRATION = 'lifecycleExpiration';
     const USER_LIFECYCLE_ATTRIBUTE = 'userLifecycleAttribute';
 
+
     /**
      * Set the Exclude.
      *
@@ -135,7 +136,7 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getExclude() : array
     {
         return $this->getProperty(
-            self::EXCLUDE
+            self::EXCLUDE,
         );
     }
     
@@ -148,7 +149,7 @@ class UserPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     

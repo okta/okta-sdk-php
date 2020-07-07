@@ -26,6 +26,7 @@ class PasswordPolicyRecoveryQuestion extends \Okta\Resource\AbstractResource
     const STATUS = 'status';
     const PROPERTIES = 'properties';
 
+
     /**
      * Get the Status.
      *
@@ -35,7 +36,7 @@ class PasswordPolicyRecoveryQuestion extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     

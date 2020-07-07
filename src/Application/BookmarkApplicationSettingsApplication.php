@@ -26,6 +26,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Application\Applicati
     const URL = 'url';
     const REQUEST_INTEGRATION = 'requestIntegration';
 
+
     /**
      * Set the Url.
      *
@@ -67,7 +68,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Application\Applicati
     function getUrl() : string
     {
         return $this->getProperty(
-            self::URL
+            self::URL,
         );
     }
     
@@ -80,7 +81,7 @@ class BookmarkApplicationSettingsApplication extends \Okta\Application\Applicati
     function getRequestIntegration() : bool
     {
         return $this->getProperty(
-            self::REQUEST_INTEGRATION
+            self::REQUEST_INTEGRATION,
         );
     }
     

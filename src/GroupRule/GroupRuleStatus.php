@@ -23,6 +23,9 @@ namespace Okta\GroupRule;
 
 class GroupRuleStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
+    const INVALID = 'INVALID';
 
 
 }

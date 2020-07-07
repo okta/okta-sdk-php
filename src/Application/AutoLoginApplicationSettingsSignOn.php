@@ -26,6 +26,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const LOGIN_URL = 'loginUrl';
     const REDIRECT_URL = 'redirectUrl';
 
+
     /**
      * Set the LoginUrl.
      *
@@ -67,7 +68,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getLoginUrl() : string
     {
         return $this->getProperty(
-            self::LOGIN_URL
+            self::LOGIN_URL,
         );
     }
     
@@ -80,7 +81,7 @@ class AutoLoginApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getRedirectUrl() : string
     {
         return $this->getProperty(
-            self::REDIRECT_URL
+            self::REDIRECT_URL,
         );
     }
     

@@ -34,6 +34,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     const ISSUER_MODE = 'issuerMode';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Name.
      *
@@ -139,7 +140,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -152,7 +153,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -165,7 +166,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -178,7 +179,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -206,7 +207,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -249,7 +250,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     function getIssuerMode() : string
     {
         return $this->getProperty(
-            self::ISSUER_MODE
+            self::ISSUER_MODE,
         );
     }
     
@@ -271,7 +272,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
      * Adds a new IdP to your organization.
      */
-    function create() : \Okta\IdentityProvider\IdentityProvider 
+    function create(\Okta\IdentityProvider\IdentityProvider $identityProvider) : \Okta\IdentityProvider\IdentityProvider 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/idps"
@@ -280,7 +281,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($identityProvider)
                 ->executeRequest();
         return new \Okta\IdentityProvider\IdentityProvider(null, $body);
     }
@@ -302,7 +303,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
      * Updates the configuration for an IdP.
      */
-    function update() : \Okta\IdentityProvider\IdentityProvider 
+    function update(\Okta\IdentityProvider\IdentityProvider $identityProvider) : \Okta\IdentityProvider\IdentityProvider 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/idps/".$this->id.""
@@ -311,7 +312,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("PUT")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($identityProvider)
                 ->executeRequest();
         return new \Okta\IdentityProvider\IdentityProvider(null, $body);
     }
@@ -347,7 +348,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
      * Generates a new key pair and returns a Certificate Signing Request for it.
      */
-    function generateCsr() : \Okta\Application\Csr 
+    function generateCsr(\Okta\Application\CsrMetadata $metadata) : \Okta\Application\Csr 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/idps/".$this->id."/credentials/csrs"
@@ -356,7 +357,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($metadata)
                 ->executeRequest();
         return new \Okta\Application\Csr(null, $body);
     }
@@ -528,7 +529,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
     /**
      * Links an Okta user to an existing Social Identity Provider. This does not support the SAML2 Identity Provider Type
      */
-    function linkUser($userId) : \Okta\IdentityProvider\IdentityProviderApplicationUser 
+    function linkUser($userId, \Okta\Policy\UserIdentityProviderLinkRequest $userIdentityProviderLinkRequest) : \Okta\IdentityProvider\IdentityProviderApplicationUser 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/idps/".$this->id."/users/${userId}"
@@ -537,7 +538,7 @@ class IdentityProvider extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($userIdentityProviderLinkRequest)
                 ->executeRequest();
         return new \Okta\IdentityProvider\IdentityProviderApplicationUser(null, $body);
     }

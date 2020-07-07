@@ -28,6 +28,7 @@ class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResou
     const SHOW_LOCKOUT_FAILURES = 'showLockoutFailures';
     const USER_LOCKOUT_NOTIFICATION_CHANNELS = 'userLockoutNotificationChannels';
 
+
     /**
      * Set the MaxAttempts.
      *
@@ -101,7 +102,7 @@ class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResou
     function getMaxAttempts() : int
     {
         return $this->getProperty(
-            self::MAX_ATTEMPTS
+            self::MAX_ATTEMPTS,
         );
     }
     
@@ -114,7 +115,7 @@ class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResou
     function getAutoUnlockMinutes() : int
     {
         return $this->getProperty(
-            self::AUTO_UNLOCK_MINUTES
+            self::AUTO_UNLOCK_MINUTES,
         );
     }
     
@@ -127,7 +128,7 @@ class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResou
     function getShowLockoutFailures() : bool
     {
         return $this->getProperty(
-            self::SHOW_LOCKOUT_FAILURES
+            self::SHOW_LOCKOUT_FAILURES,
         );
     }
     
@@ -140,7 +141,7 @@ class PasswordPolicyPasswordSettingsLockout extends \Okta\Resource\AbstractResou
     function getUserLockoutNotificationChannels() : array
     {
         return $this->getProperty(
-            self::USER_LOCKOUT_NOTIFICATION_CHANNELS
+            self::USER_LOCKOUT_NOTIFICATION_CHANNELS,
         );
     }
     

@@ -23,6 +23,12 @@ namespace Okta\Log;
 
 class LogCredentialProvider extends \Okta\Utilities\Enum
 {
+    const OKTA_AUTHENTICATION_PROVIDER = 'OKTA_AUTHENTICATION_PROVIDER';
+    const RSA = 'RSA';
+    const SYMANTEC = 'SYMANTEC';
+    const GOOGLE = 'GOOGLE';
+    const DUO = 'DUO';
+    const YUBIKEY = 'YUBIKEY';
 
 
 }

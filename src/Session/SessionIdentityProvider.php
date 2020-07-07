@@ -26,6 +26,7 @@ class SessionIdentityProvider extends \Okta\Resource\AbstractResource
     const ID = 'id';
     const TYPE = 'type';
 
+
     /**
      * Get the Id.
      *
@@ -35,22 +36,22 @@ class SessionIdentityProvider extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Session\SessionIdentityProviderType
      */
     function getType() : \Okta\Session\SessionIdentityProviderType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Session\SessionIdentityProviderType::class,
         );
     }
-    
+
 
 }

@@ -36,6 +36,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     const SIGN_ON_MODES = 'signOnModes';
     const VERIFICATION_STATUS = 'verificationStatus';
 
+
     /**
      * Set the Name.
      *
@@ -189,7 +190,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -202,7 +203,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -215,23 +216,23 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\Role\CatalogApplicationStatus
      */
     function getStatus() : \Okta\Role\CatalogApplicationStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\Role\CatalogApplicationStatus::class,
         );
     }
-    
+
     /**
      * Get the Website.
      *
@@ -241,7 +242,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getWebsite() : string
     {
         return $this->getProperty(
-            self::WEBSITE
+            self::WEBSITE,
         );
     }
     
@@ -254,7 +255,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getCategory() : string
     {
         return $this->getProperty(
-            self::CATEGORY
+            self::CATEGORY,
         );
     }
     
@@ -267,7 +268,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getFeatures() : array
     {
         return $this->getProperty(
-            self::FEATURES
+            self::FEATURES,
         );
     }
     
@@ -280,7 +281,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     
@@ -293,7 +294,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getDisplayName() : string
     {
         return $this->getProperty(
-            self::DISPLAY_NAME
+            self::DISPLAY_NAME,
         );
     }
     
@@ -321,7 +322,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getSignOnModes() : array
     {
         return $this->getProperty(
-            self::SIGN_ON_MODES
+            self::SIGN_ON_MODES,
         );
     }
     
@@ -334,7 +335,7 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     function getVerificationStatus() : string
     {
         return $this->getProperty(
-            self::VERIFICATION_STATUS
+            self::VERIFICATION_STATUS,
         );
     }
     

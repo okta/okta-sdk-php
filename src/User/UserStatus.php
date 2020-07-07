@@ -23,6 +23,14 @@ namespace Okta\User;
 
 class UserStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const DEPROVISIONED = 'DEPROVISIONED';
+    const LOCKED_OUT = 'LOCKED_OUT';
+    const PASSWORD_EXPIRED = 'PASSWORD_EXPIRED';
+    const PROVISIONED = 'PROVISIONED';
+    const RECOVERY = 'RECOVERY';
+    const STAGED = 'STAGED';
+    const SUSPENDED = 'SUSPENDED';
 
 
 }

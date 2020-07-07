@@ -23,6 +23,7 @@ namespace Okta\Feature;
 
 class FeatureType extends \Okta\Utilities\Enum
 {
+    const SELF_SERVICE = 'self-service';
 
 
 }

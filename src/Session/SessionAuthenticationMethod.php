@@ -23,6 +23,16 @@ namespace Okta\Session;
 
 class SessionAuthenticationMethod extends \Okta\Utilities\Enum
 {
+    const PWD = 'pwd';
+    const SWK = 'swk';
+    const HWK = 'hwk';
+    const OTP = 'otp';
+    const SMS = 'sms';
+    const TEL = 'tel';
+    const GEO = 'geo';
+    const FPT = 'fpt';
+    const KBA = 'kba';
+    const MFA = 'mfa';
 
 
 }

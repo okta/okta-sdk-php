@@ -28,6 +28,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     const NOTIFICATIONS = 'notifications';
     const IMPLICIT_ASSIGNMENT = 'implicitAssignment';
 
+
     /**
      * Set the App.
      *
@@ -116,7 +117,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     function getInlineHookId() : string
     {
         return $this->getProperty(
-            self::INLINE_HOOK_ID
+            self::INLINE_HOOK_ID,
         );
     }
     
@@ -144,7 +145,7 @@ class ApplicationSettings extends \Okta\Resource\AbstractResource
     function getImplicitAssignment() : bool
     {
         return $this->getProperty(
-            self::IMPLICIT_ASSIGNMENT
+            self::IMPLICIT_ASSIGNMENT,
         );
     }
     

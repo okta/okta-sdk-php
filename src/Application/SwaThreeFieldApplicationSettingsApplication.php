@@ -31,6 +31,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     const USER_NAME_SELECTOR = 'userNameSelector';
     const EXTRA_FIELD_SELECTOR = 'extraFieldSelector';
 
+
     /**
      * Set the TargetUrl.
      *
@@ -152,7 +153,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getTargetUrl() : string
     {
         return $this->getProperty(
-            self::TARGET_URL
+            self::TARGET_URL,
         );
     }
     
@@ -165,7 +166,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getLoginUrlRegex() : string
     {
         return $this->getProperty(
-            self::LOGIN_URL_REGEX
+            self::LOGIN_URL_REGEX,
         );
     }
     
@@ -178,7 +179,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getButtonSelector() : string
     {
         return $this->getProperty(
-            self::BUTTON_SELECTOR
+            self::BUTTON_SELECTOR,
         );
     }
     
@@ -191,7 +192,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getExtraFieldValue() : string
     {
         return $this->getProperty(
-            self::EXTRA_FIELD_VALUE
+            self::EXTRA_FIELD_VALUE,
         );
     }
     
@@ -204,7 +205,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getPasswordSelector() : string
     {
         return $this->getProperty(
-            self::PASSWORD_SELECTOR
+            self::PASSWORD_SELECTOR,
         );
     }
     
@@ -217,7 +218,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getUserNameSelector() : string
     {
         return $this->getProperty(
-            self::USER_NAME_SELECTOR
+            self::USER_NAME_SELECTOR,
         );
     }
     
@@ -230,7 +231,7 @@ class SwaThreeFieldApplicationSettingsApplication extends \Okta\Application\Appl
     function getExtraFieldSelector() : string
     {
         return $this->getProperty(
-            self::EXTRA_FIELD_SELECTOR
+            self::EXTRA_FIELD_SELECTOR,
         );
     }
     

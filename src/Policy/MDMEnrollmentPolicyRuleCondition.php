@@ -26,6 +26,7 @@ class MDMEnrollmentPolicyRuleCondition extends \Okta\Resource\AbstractResource
     const ENROLLMENT = 'enrollment';
     const BLOCK_NON_SAFE_ANDROID = 'blockNonSafeAndroid';
 
+
     /**
      * Set the Enrollment.
      *
@@ -67,7 +68,7 @@ class MDMEnrollmentPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getEnrollment() : string
     {
         return $this->getProperty(
-            self::ENROLLMENT
+            self::ENROLLMENT,
         );
     }
     
@@ -80,7 +81,7 @@ class MDMEnrollmentPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getBlockNonSafeAndroid() : bool
     {
         return $this->getProperty(
-            self::BLOCK_NON_SAFE_ANDROID
+            self::BLOCK_NON_SAFE_ANDROID,
         );
     }
     

@@ -23,6 +23,15 @@ namespace Okta\Role;
 
 class RoleType extends \Okta\Utilities\Enum
 {
+    const SUPER_ADMIN = 'SUPER_ADMIN';
+    const ORG_ADMIN = 'ORG_ADMIN';
+    const APP_ADMIN = 'APP_ADMIN';
+    const USER_ADMIN = 'USER_ADMIN';
+    const HELP_DESK_ADMIN = 'HELP_DESK_ADMIN';
+    const READ_ONLY_ADMIN = 'READ_ONLY_ADMIN';
+    const MOBILE_ADMIN = 'MOBILE_ADMIN';
+    const API_ACCESS_MANAGEMENT_ADMIN = 'API_ACCESS_MANAGEMENT_ADMIN';
+    const REPORT_ADMIN = 'REPORT_ADMIN';
 
 
 }

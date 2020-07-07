@@ -26,6 +26,7 @@ class ApplicationCredentials extends \Okta\Resource\AbstractResource
     const SIGNING = 'signing';
     const USER_NAME_TEMPLATE = 'userNameTemplate';
 
+
     /**
      * Set the Signing.
      *

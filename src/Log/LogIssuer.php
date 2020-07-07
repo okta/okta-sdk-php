@@ -26,6 +26,7 @@ class LogIssuer extends \Okta\Resource\AbstractResource
     const ID = 'id';
     const TYPE = 'type';
 
+
     /**
      * Get the Id.
      *
@@ -35,7 +36,7 @@ class LogIssuer extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -48,7 +49,7 @@ class LogIssuer extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     

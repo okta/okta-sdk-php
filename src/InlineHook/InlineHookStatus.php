@@ -23,6 +23,8 @@ namespace Okta\InlineHook;
 
 class InlineHookStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
 
 
 }

@@ -26,6 +26,7 @@ class PlatformConditionEvaluatorPlatform extends \Okta\Resource\AbstractResource
     const OS = 'os';
     const TYPE = 'type';
 
+
     /**
      * Set the Os.
      *
@@ -82,7 +83,7 @@ class PlatformConditionEvaluatorPlatform extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     

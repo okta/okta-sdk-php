@@ -23,6 +23,9 @@ namespace Okta\Application;
 
 class OAuthResponseType extends \Okta\Utilities\Enum
 {
+    const CODE = 'code';
+    const TOKEN = 'token';
+    const ID_TOKEN = 'id_token';
 
 
 }

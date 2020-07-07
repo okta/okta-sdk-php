@@ -35,6 +35,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     const GROUP_FILTER_TYPE = 'group_filter_type';
     const ALWAYS_INCLUDE_IN_TOKEN = 'alwaysIncludeInToken';
 
+
     /**
      * Set the Name.
      *
@@ -188,7 +189,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -201,7 +202,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -214,7 +215,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     
@@ -227,7 +228,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -240,7 +241,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -253,7 +254,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getSystem() : bool
     {
         return $this->getProperty(
-            self::SYSTEM
+            self::SYSTEM,
         );
     }
     
@@ -266,7 +267,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getClaimType() : string
     {
         return $this->getProperty(
-            self::CLAIM_TYPE
+            self::CLAIM_TYPE,
         );
     }
     
@@ -279,7 +280,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getValueType() : string
     {
         return $this->getProperty(
-            self::VALUE_TYPE
+            self::VALUE_TYPE,
         );
     }
     
@@ -307,7 +308,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getGroupFilterType() : string
     {
         return $this->getProperty(
-            self::GROUP_FILTER_TYPE
+            self::GROUP_FILTER_TYPE,
         );
     }
     
@@ -320,7 +321,7 @@ class OAuth2Claim extends \Okta\Resource\AbstractResource
     function getAlwaysIncludeInToken() : bool
     {
         return $this->getProperty(
-            self::ALWAYS_INCLUDE_IN_TOKEN
+            self::ALWAYS_INCLUDE_IN_TOKEN,
         );
     }
     

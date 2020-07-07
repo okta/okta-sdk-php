@@ -26,6 +26,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystemVersion extends \Okta\Res
     const VALUE = 'value';
     const MATCH_TYPE = 'matchType';
 
+
     /**
      * Set the Value.
      *
@@ -67,7 +68,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystemVersion extends \Okta\Res
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     
@@ -80,7 +81,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystemVersion extends \Okta\Res
     function getMatchType() : string
     {
         return $this->getProperty(
-            self::MATCH_TYPE
+            self::MATCH_TYPE,
         );
     }
     

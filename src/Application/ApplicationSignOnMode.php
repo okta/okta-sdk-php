@@ -23,6 +23,15 @@ namespace Okta\Application;
 
 class ApplicationSignOnMode extends \Okta\Utilities\Enum
 {
+    const BOOKMARK = 'BOOKMARK';
+    const BASIC_AUTH = 'BASIC_AUTH';
+    const BROWSER_PLUGIN = 'BROWSER_PLUGIN';
+    const SECURE_PASSWORD_STORE = 'SECURE_PASSWORD_STORE';
+    const AUTO_LOGIN = 'AUTO_LOGIN';
+    const WS_FEDERATION = 'WS_FEDERATION';
+    const SAML_2_0 = 'SAML_2_0';
+    const OPENID_CONNECT = 'OPENID_CONNECT';
+    const SAML_1_1 = 'SAML_1_1';
 
 
 }

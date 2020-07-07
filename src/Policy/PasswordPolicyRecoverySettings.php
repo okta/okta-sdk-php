@@ -25,6 +25,7 @@ class PasswordPolicyRecoverySettings extends \Okta\Resource\AbstractResource
 {
     const FACTORS = 'factors';
 
+
     /**
      * Set the Factors.
      *

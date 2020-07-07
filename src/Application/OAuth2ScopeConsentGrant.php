@@ -36,6 +36,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     const CREATED_BY = 'createdBy';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Issuer.
      *
@@ -157,7 +158,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -170,7 +171,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -183,36 +184,36 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getIssuer() : string
     {
         return $this->getProperty(
-            self::ISSUER
+            self::ISSUER,
         );
     }
     
     /**
      * Get the Source.
      *
-     * @param mixed $source The source to set.
      * @return \Okta\Application\OAuth2ScopeConsentGrantSource
      */
     function getSource() : \Okta\Application\OAuth2ScopeConsentGrantSource
     {
-        return $this->getProperty(
-            self::SOURCE
+        return $this->getEnumProperty(
+            self::SOURCE,
+            \Okta\Application\OAuth2ScopeConsentGrantSource::class,
         );
     }
-    
+
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\Application\OAuth2ScopeConsentGrantStatus
      */
     function getStatus() : \Okta\Application\OAuth2ScopeConsentGrantStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\Application\OAuth2ScopeConsentGrantStatus::class,
         );
     }
-    
+
     /**
      * Get the UserId.
      *
@@ -222,7 +223,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getUserId() : string
     {
         return $this->getProperty(
-            self::USER_ID
+            self::USER_ID,
         );
     }
     
@@ -250,7 +251,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getScopeId() : string
     {
         return $this->getProperty(
-            self::SCOPE_ID
+            self::SCOPE_ID,
         );
     }
     
@@ -263,7 +264,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getClientId() : string
     {
         return $this->getProperty(
-            self::CLIENT_ID
+            self::CLIENT_ID,
         );
     }
     
@@ -276,7 +277,7 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     

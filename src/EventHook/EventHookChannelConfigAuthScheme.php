@@ -27,6 +27,7 @@ class EventHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const VALUE = 'value';
 
+
     /**
      * Set the Key.
      *
@@ -84,23 +85,23 @@ class EventHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     function getKey() : string
     {
         return $this->getProperty(
-            self::KEY
+            self::KEY,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\EventHook\EventHookChannelConfigAuthSchemeType
      */
     function getType() : \Okta\EventHook\EventHookChannelConfigAuthSchemeType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\EventHook\EventHookChannelConfigAuthSchemeType::class,
         );
     }
-    
+
     /**
      * Get the Value.
      *
@@ -110,7 +111,7 @@ class EventHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

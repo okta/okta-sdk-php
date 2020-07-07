@@ -25,6 +25,7 @@ class ProtocolSettings extends \Okta\Resource\AbstractResource
 {
     const NAME_FORMAT = 'nameFormat';
 
+
     /**
      * Set the NameFormat.
      *
@@ -50,7 +51,7 @@ class ProtocolSettings extends \Okta\Resource\AbstractResource
     function getNameFormat() : string
     {
         return $this->getProperty(
-            self::NAME_FORMAT
+            self::NAME_FORMAT,
         );
     }
     

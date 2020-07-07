@@ -29,6 +29,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     const IS_PROXY = 'isProxy';
     const AS_NUMBER = 'asNumber';
 
+
     /**
      * Get the Isp.
      *
@@ -38,7 +39,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     function getIsp() : string
     {
         return $this->getProperty(
-            self::ISP
+            self::ISP,
         );
     }
     
@@ -51,7 +52,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     function getAsOrg() : string
     {
         return $this->getProperty(
-            self::AS_ORG
+            self::AS_ORG,
         );
     }
     
@@ -64,7 +65,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     function getDomain() : string
     {
         return $this->getProperty(
-            self::DOMAIN
+            self::DOMAIN,
         );
     }
     
@@ -77,7 +78,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     function getIsProxy() : bool
     {
         return $this->getProperty(
-            self::IS_PROXY
+            self::IS_PROXY,
         );
     }
     
@@ -90,7 +91,7 @@ class LogSecurityContext extends \Okta\Resource\AbstractResource
     function getAsNumber() : int
     {
         return $this->getProperty(
-            self::AS_NUMBER
+            self::AS_NUMBER,
         );
     }
     

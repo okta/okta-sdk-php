@@ -27,6 +27,7 @@ class UserCredentials extends \Okta\Resource\AbstractResource
     const PROVIDER = 'provider';
     const RECOVERY_QUESTION = 'recovery_question';
 
+
     /**
      * Set the Password.
      *

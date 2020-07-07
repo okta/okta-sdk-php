@@ -23,6 +23,11 @@ namespace Okta\User;
 
 class PasswordCredentialHashAlgorithm extends \Okta\Utilities\Enum
 {
+    const BCRYPT = 'BCRYPT';
+    const SHA_512 = 'SHA-512';
+    const SHA_256 = 'SHA-256';
+    const SHA_1 = 'SHA-1';
+    const MD_5 = 'MD5';
 
 
 }

@@ -28,6 +28,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     const AUTO_KEY_ROTATION = 'autoKeyRotation';
     const TOKEN_ENDPOINT_AUTH_METHOD = 'token_endpoint_auth_method';
 
+
     /**
      * Set the ClientId.
      *
@@ -101,7 +102,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     function getClientId() : string
     {
         return $this->getProperty(
-            self::CLIENT_ID
+            self::CLIENT_ID,
         );
     }
     
@@ -114,7 +115,7 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     function getClientSecret() : string
     {
         return $this->getProperty(
-            self::CLIENT_SECRET
+            self::CLIENT_SECRET,
         );
     }
     
@@ -127,22 +128,22 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     function getAutoKeyRotation() : bool
     {
         return $this->getProperty(
-            self::AUTO_KEY_ROTATION
+            self::AUTO_KEY_ROTATION,
         );
     }
     
     /**
      * Get the TokenEndpointAuthMethod.
      *
-     * @param mixed $token_endpoint_auth_method The token_endpoint_auth_method to set.
      * @return \Okta\Application\OAuthEndpointAuthenticationMethod
      */
     function getTokenEndpointAuthMethod() : \Okta\Application\OAuthEndpointAuthenticationMethod
     {
-        return $this->getProperty(
-            self::TOKEN_ENDPOINT_AUTH_METHOD
+        return $this->getEnumProperty(
+            self::TOKEN_ENDPOINT_AUTH_METHOD,
+            \Okta\Application\OAuthEndpointAuthenticationMethod::class,
         );
     }
-    
+
 
 }

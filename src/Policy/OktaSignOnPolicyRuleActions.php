@@ -25,6 +25,7 @@ class OktaSignOnPolicyRuleActions extends \Okta\Resource\AbstractResource
 {
     const SIGNON = 'signon';
 
+
     /**
      * Set the Signon.
      *

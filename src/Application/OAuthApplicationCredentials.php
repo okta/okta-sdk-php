@@ -25,6 +25,7 @@ class OAuthApplicationCredentials extends \Okta\Application\ApplicationCredentia
 {
     const OAUTH_CLIENT = 'oauthClient';
 
+
     /**
      * Set the OauthClient.
      *

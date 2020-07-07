@@ -25,6 +25,7 @@ class AuthorizationServerCredentials extends \Okta\Resource\AbstractResource
 {
     const SIGNING = 'signing';
 
+
     /**
      * Set the Signing.
      *

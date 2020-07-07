@@ -35,6 +35,7 @@ class Session extends \Okta\Resource\AbstractResource
     const LAST_FACTOR_VERIFICATION = 'lastFactorVerification';
     const LAST_PASSWORD_VERIFICATION = 'lastPasswordVerification';
 
+
     /**
      * Get the Id.
      *
@@ -44,7 +45,7 @@ class Session extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -57,7 +58,7 @@ class Session extends \Okta\Resource\AbstractResource
     function getAmr() : array
     {
         return $this->getProperty(
-            self::AMR
+            self::AMR,
         );
     }
     
@@ -85,7 +86,7 @@ class Session extends \Okta\Resource\AbstractResource
     function getLogin() : string
     {
         return $this->getProperty(
-            self::LOGIN
+            self::LOGIN,
         );
     }
     
@@ -98,23 +99,23 @@ class Session extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\Session\SessionStatus
      */
     function getStatus() : \Okta\Session\SessionStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\Session\SessionStatus::class,
         );
     }
-    
+
     /**
      * Get the UserId.
      *
@@ -124,7 +125,7 @@ class Session extends \Okta\Resource\AbstractResource
     function getUserId() : string
     {
         return $this->getProperty(
-            self::USER_ID
+            self::USER_ID,
         );
     }
     

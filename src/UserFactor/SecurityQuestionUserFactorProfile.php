@@ -27,6 +27,7 @@ class SecurityQuestionUserFactorProfile extends \Okta\Resource\AbstractResource
     const QUESTION = 'question';
     const QUESTION_TEXT = 'questionText';
 
+
     /**
      * Set the Answer.
      *
@@ -84,7 +85,7 @@ class SecurityQuestionUserFactorProfile extends \Okta\Resource\AbstractResource
     function getAnswer() : string
     {
         return $this->getProperty(
-            self::ANSWER
+            self::ANSWER,
         );
     }
     
@@ -97,7 +98,7 @@ class SecurityQuestionUserFactorProfile extends \Okta\Resource\AbstractResource
     function getQuestion() : string
     {
         return $this->getProperty(
-            self::QUESTION
+            self::QUESTION,
         );
     }
     
@@ -110,7 +111,7 @@ class SecurityQuestionUserFactorProfile extends \Okta\Resource\AbstractResource
     function getQuestionText() : string
     {
         return $this->getProperty(
-            self::QUESTION_TEXT
+            self::QUESTION_TEXT,
         );
     }
     

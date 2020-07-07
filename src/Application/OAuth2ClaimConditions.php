@@ -25,6 +25,7 @@ class OAuth2ClaimConditions extends \Okta\Resource\AbstractResource
 {
     const SCOPES = 'scopes';
 
+
     /**
      * Set the Scopes.
      *
@@ -50,7 +51,7 @@ class OAuth2ClaimConditions extends \Okta\Resource\AbstractResource
     function getScopes() : array
     {
         return $this->getProperty(
-            self::SCOPES
+            self::SCOPES,
         );
     }
     

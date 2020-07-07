@@ -40,371 +40,19 @@ class Application extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const ACCESSIBILITY = 'accessibility';
 
-    /**
-     * Set the Label.
-     *
-     * @param mixed $label The label to set.
-     * @return self
-     */
-    function setLabel($label) : Application
-    {
-        $this->setProperty(
-            self::LABEL,
-            $label
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Set the Profile.
-     *
-     * @param mixed $profile The profile to set.
-     * @return self
-     */
-    function setProfile($profile) : Application
-    {
-        $this->setProperty(
-            self::PROFILE,
-            $profile
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Set the Features.
-     *
-     * @param mixed $features The features to set.
-     * @return self
-     */
-    function setFeatures($features) : Application
-    {
-        $this->setProperty(
-            self::FEATURES,
-            $features
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Set the Settings.
-     *
-     * @param mixed $settings The settings to set.
-     * @return self
-     */
-    function setSettings(\Okta\Application\ApplicationSettings $settings) : Application
-    {
-        $this->setResourceProperty(
-            self::SETTINGS,
-            $settings
-        );
-    
-        return $this;
-    }
+    protected $requiresResolution = true;
+    protected $resolutionPropertyName = "signOnMode";
+    protected $resolutionMapping = [
+        "AUTO_LOGIN" => \Okta\Application\AutoLoginApplication::class,
+        "BASIC_AUTH" => \Okta\Application\BasicAuthApplication::class,
+        "BOOKMARK" => \Okta\Application\BookmarkApplication::class,
+        "BROWSER_PLUGIN" => \Okta\Application\BrowserPluginApplication::class,
+        "OPENID_CONNECT" => \Okta\Application\OpenIdConnectApplication::class,
+        "SAML_2_0" => \Okta\Application\SamlApplication::class,
+        "SECURE_PASSWORD_STORE" => \Okta\Application\SecurePasswordStoreApplication::class,
+        "WS_FEDERATION" => \Okta\Application\WsFederationApplication::class,
+    ];
 
-    /**
-     * Set the Licensing.
-     *
-     * @param mixed $licensing The licensing to set.
-     * @return self
-     */
-    function setLicensing(\Okta\Application\ApplicationLicensing $licensing) : Application
-    {
-        $this->setResourceProperty(
-            self::LICENSING,
-            $licensing
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Set the SignOnMode.
-     *
-     * @param mixed $signOnMode The signOnMode to set.
-     * @return self
-     */
-    function setSignOnMode($signOnMode) : Application
-    {
-        $this->setProperty(
-            self::SIGN_ON_MODE,
-            $signOnMode
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Set the Visibility.
-     *
-     * @param mixed $visibility The visibility to set.
-     * @return self
-     */
-    function setVisibility(\Okta\Application\ApplicationVisibility $visibility) : Application
-    {
-        $this->setResourceProperty(
-            self::VISIBILITY,
-            $visibility
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Set the Credentials.
-     *
-     * @param mixed $credentials The credentials to set.
-     * @return self
-     */
-    function setCredentials(\Okta\Application\ApplicationCredentials $credentials) : Application
-    {
-        $this->setResourceProperty(
-            self::CREDENTIALS,
-            $credentials
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Set the Accessibility.
-     *
-     * @param mixed $accessibility The accessibility to set.
-     * @return self
-     */
-    function setAccessibility(\Okta\Application\ApplicationAccessibility $accessibility) : Application
-    {
-        $this->setResourceProperty(
-            self::ACCESSIBILITY,
-            $accessibility
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the Id.
-     *
-     * @param mixed $id The id to set.
-     * @return string
-     */
-    function getId() : string
-    {
-        return $this->getProperty(
-            self::ID
-        );
-    }
-    
-    /**
-     * Get the Name.
-     *
-     * @param mixed $name The name to set.
-     * @return string
-     */
-    function getName() : string
-    {
-        return $this->getProperty(
-            self::NAME
-        );
-    }
-    
-    /**
-     * Get the Label.
-     *
-     * @param mixed $label The label to set.
-     * @return string
-     */
-    function getLabel() : string
-    {
-        return $this->getProperty(
-            self::LABEL
-        );
-    }
-    
-    /**
-     * Get the Links.
-     *
-     * @param mixed $_links The _links to set.
-     * @return \stdClass
-     */
-    function getLinks() : \stdClass
-    {
-        return $this->getProperty(
-            self::LINKS
-        );
-    }
-    
-    /**
-     * Get the Status.
-     *
-     * @param mixed $status The status to set.
-     * @return string
-     */
-    function getStatus() : string
-    {
-        return $this->getProperty(
-            self::STATUS
-        );
-    }
-    
-    /**
-     * Get the Created.
-     *
-     * @param mixed $created The created to set.
-     * @return \Carbon\Carbon
-     */
-    function getCreated() : \Carbon\Carbon
-    {
-        return $this->getDateTimeProperty(
-            self::CREATED
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the Profile.
-     *
-     * @param mixed $profile The profile to set.
-     * @return \stdClass
-     */
-    function getProfile() : \stdClass
-    {
-        return $this->getProperty(
-            self::PROFILE
-        );
-    }
-    
-    /**
-     * Get the Features.
-     *
-     * @param mixed $features The features to set.
-     * @return array
-     */
-    function getFeatures() : array
-    {
-        return $this->getProperty(
-            self::FEATURES
-        );
-    }
-    
-    /**
-     * Get the Settings.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationSettings
-     */
-    function getSettings(array $options = []) : \Okta\Application\ApplicationSettings
-    {
-        return $this->getResourceProperty(
-            self::SETTINGS,
-            \Okta\Application\ApplicationSettings::class,
-            $options
-        );
-    }
-
-    /**
-     * Get the Embedded.
-     *
-     * @param mixed $_embedded The _embedded to set.
-     * @return \stdClass
-     */
-    function getEmbedded() : \stdClass
-    {
-        return $this->getProperty(
-            self::EMBEDDED
-        );
-    }
-    
-    /**
-     * Get the Licensing.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationLicensing
-     */
-    function getLicensing(array $options = []) : \Okta\Application\ApplicationLicensing
-    {
-        return $this->getResourceProperty(
-            self::LICENSING,
-            \Okta\Application\ApplicationLicensing::class,
-            $options
-        );
-    }
-
-    /**
-     * Get the SignOnMode.
-     *
-     * @param mixed $signOnMode The signOnMode to set.
-     * @return \Okta\Application\ApplicationSignOnMode
-     */
-    function getSignOnMode() : \Okta\Application\ApplicationSignOnMode
-    {
-        return $this->getProperty(
-            self::SIGN_ON_MODE
-        );
-    }
-    
-    /**
-     * Get the Visibility.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationVisibility
-     */
-    function getVisibility(array $options = []) : \Okta\Application\ApplicationVisibility
-    {
-        return $this->getResourceProperty(
-            self::VISIBILITY,
-            \Okta\Application\ApplicationVisibility::class,
-            $options
-        );
-    }
-
-    /**
-     * Get the Credentials.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationCredentials
-     */
-    function getCredentials(array $options = []) : \Okta\Application\ApplicationCredentials
-    {
-        return $this->getResourceProperty(
-            self::CREDENTIALS,
-            \Okta\Application\ApplicationCredentials::class,
-            $options
-        );
-    }
-
-    /**
-     * Get the LastUpdated.
-     *
-     * @param mixed $lastUpdated The lastUpdated to set.
-     * @return \Carbon\Carbon
-     */
-    function getLastUpdated() : \Carbon\Carbon
-    {
-        return $this->getDateTimeProperty(
-            self::LAST_UPDATED
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the Accessibility.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationAccessibility
-     */
-    function getAccessibility(array $options = []) : \Okta\Application\ApplicationAccessibility
-    {
-        return $this->getResourceProperty(
-            self::ACCESSIBILITY,
-            \Okta\Application\ApplicationAccessibility::class,
-            $options
-        );
-    }
 
     /**
      * Fetches an application from your Okta organization by `id`.
@@ -499,7 +147,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
      */
-    function assignUserToApplication() : \Okta\Application\AppUser 
+    function assignUserToApplication(\Okta\Application\AppUser $appUser) : \Okta\Application\AppUser 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/users"
@@ -508,7 +156,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($appUser)
                 ->executeRequest();
         return new \Okta\Application\AppUser(null, $body);
     }
@@ -531,7 +179,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * Assigns a group to an application
      */
-    function createApplicationGroupAssignment($groupId) : \Okta\Application\ApplicationGroupAssignment 
+    function createApplicationGroupAssignment($groupId, \Okta\Application\ApplicationGroupAssignment $applicationGroupAssignment) : \Okta\Application\ApplicationGroupAssignment 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/groups/${groupId}"
@@ -540,7 +188,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("PUT")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($applicationGroupAssignment)
                 ->executeRequest();
         return new \Okta\Application\ApplicationGroupAssignment(null, $body);
     }
@@ -641,7 +289,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * Generates a new key pair and returns the Certificate Signing Request for it.
      */
-    function generateCsr() : \Okta\Application\Csr 
+    function generateCsr(\Okta\Application\CsrMetadata $metadata) : \Okta\Application\Csr 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs"
@@ -650,7 +298,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($metadata)
                 ->executeRequest();
         return new \Okta\Application\Csr(null, $body);
     }
@@ -701,7 +349,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * 
      */
-    function publishCerCert($csrId) : \Okta\Application\JsonWebKey 
+    function publishCerCert($certificate, $csrId) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs/${csrId}/lifecycle/publish"
@@ -710,7 +358,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($certificate)
                 ->setContentTypeHeader(application/x-x509-ca-cert)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
@@ -718,7 +366,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * 
      */
-    function publishBinaryCerCert($csrId) : \Okta\Application\JsonWebKey 
+    function publishBinaryCerCert($certificate, $csrId) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs/${csrId}/lifecycle/publish"
@@ -727,7 +375,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($certificate)
                 ->setContentTypeHeader(application/x-x509-ca-cert)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
@@ -735,7 +383,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * 
      */
-    function publishDerCert($csrId) : \Okta\Application\JsonWebKey 
+    function publishDerCert($certificate, $csrId) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs/${csrId}/lifecycle/publish"
@@ -744,7 +392,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($certificate)
                 ->setContentTypeHeader(application/pkix-cert)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
@@ -752,7 +400,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * 
      */
-    function publishBinaryDerCert($csrId) : \Okta\Application\JsonWebKey 
+    function publishBinaryDerCert($certificate, $csrId) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs/${csrId}/lifecycle/publish"
@@ -761,7 +409,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($certificate)
                 ->setContentTypeHeader(application/pkix-cert)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
@@ -769,7 +417,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * 
      */
-    function publishBinaryPemCert($csrId) : \Okta\Application\JsonWebKey 
+    function publishBinaryPemCert($certificate, $csrId) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/credentials/csrs/${csrId}/lifecycle/publish"
@@ -778,7 +426,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($certificate)
                 ->setContentTypeHeader(application/x-pem-file)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
@@ -862,7 +510,7 @@ class Application extends \Okta\Resource\AbstractResource
     /**
      * Grants consent for the application to request an OAuth 2.0 Okta scope
      */
-    function grantConsentToScope() : \Okta\Application\OAuth2ScopeConsentGrant 
+    function grantConsentToScope(\Okta\Application\OAuth2ScopeConsentGrant $oAuth2ScopeConsentGrant) : \Okta\Application\OAuth2ScopeConsentGrant 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/apps/".$this->id."/grants"
@@ -871,7 +519,7 @@ class Application extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($oAuth2ScopeConsentGrant)
                 ->executeRequest();
         return new \Okta\Application\OAuth2ScopeConsentGrant(null, $body);
     }

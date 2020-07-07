@@ -23,6 +23,11 @@ namespace Okta\Application;
 
 class OAuthGrantType extends \Okta\Utilities\Enum
 {
+    const AUTHORIZATION_CODE = 'authorization_code';
+    const IMPLICIT = 'implicit';
+    const PASSWORD = 'password';
+    const REFRESH_TOKEN = 'refresh_token';
+    const CLIENT_CREDENTIALS = 'client_credentials';
 
 
 }

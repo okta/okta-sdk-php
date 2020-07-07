@@ -23,6 +23,8 @@ namespace Okta\AuthorizationServer;
 
 class AuthorizationServerCredentialsRotationMode extends \Okta\Utilities\Enum
 {
+    const AUTO = 'AUTO';
+    const MANUAL = 'MANUAL';
 
 
 }

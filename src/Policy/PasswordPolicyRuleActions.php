@@ -27,6 +27,7 @@ class PasswordPolicyRuleActions extends \Okta\Resource\AbstractResource
     const SELF_SERVICE_UNLOCK = 'selfServiceUnlock';
     const SELF_SERVICE_PASSWORD_RESET = 'selfServicePasswordReset';
 
+
     /**
      * Set the PasswordChange.
      *

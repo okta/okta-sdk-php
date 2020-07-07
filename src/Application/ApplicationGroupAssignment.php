@@ -30,6 +30,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     const EMBEDDED = '_embedded';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Profile.
      *
@@ -71,7 +72,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -84,7 +85,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -97,7 +98,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     function getProfile() : \stdClass
     {
         return $this->getProperty(
-            self::PROFILE
+            self::PROFILE,
         );
     }
     
@@ -110,7 +111,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     function getPriority() : int
     {
         return $this->getProperty(
-            self::PRIORITY
+            self::PRIORITY,
         );
     }
     
@@ -123,7 +124,7 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     

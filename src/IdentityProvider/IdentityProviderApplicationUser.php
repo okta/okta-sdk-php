@@ -31,6 +31,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     const EXTERNAL_ID = 'externalId';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Created.
      *
@@ -104,7 +105,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -117,7 +118,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -130,7 +131,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getCreated() : string
     {
         return $this->getProperty(
-            self::CREATED
+            self::CREATED,
         );
     }
     
@@ -143,7 +144,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getProfile() : \stdClass
     {
         return $this->getProperty(
-            self::PROFILE
+            self::PROFILE,
         );
     }
     
@@ -156,7 +157,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -169,7 +170,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getExternalId() : string
     {
         return $this->getProperty(
-            self::EXTERNAL_ID
+            self::EXTERNAL_ID,
         );
     }
     
@@ -182,7 +183,7 @@ class IdentityProviderApplicationUser extends \Okta\Resource\AbstractResource
     function getLastUpdated() : string
     {
         return $this->getProperty(
-            self::LAST_UPDATED
+            self::LAST_UPDATED,
         );
     }
     

@@ -6,12 +6,42 @@ namespace Okta\\{{this.tags.[0]}};
 class {{this.modelName}} extends {{modelExtends this}}
 {
     {{!- Property Mappings -}}
+    {{#if this.properties}}
     {{#each this.properties}}
     const {{upperSnakeCase propertyName}} = '{{propertyName}}';
     {{/each}}
 
-    {{!- Property Setters -}}
+    {{/if}}
+    {{!- Enum Mapping -}}
+    {{#if this.enum}}
+    {{#each this.enum}}
+    const {{upperSnakeCase this}} = '{{this}}';
+    {{/each}}
+
+    {{/if}}
+    {{!- Resolution Strategy -}}
+    {{#if this.requiresResolution}}
+    protected $requiresResolution = {{this.requiresResolution}};
+    protected $resolutionPropertyName = "{{this.resolutionStrategy.propertyName}}";
+    protected $resolutionMapping = [
+    {{#each this.resolutionStrategy.valueToModelMapping}}
+        "{{@key}}" => {{ buildFullClassnameFromPropertyRef this }}::class,
+    {{/each}}
+    ];
+
+    {{/if}}
+    {{!- Default Property Setting -}}
+    {{#if this.properties}}
     {{#each this.properties}}
+    {{#if this.default}}
+    private ${{propertyName}} = '{{default}}';
+    {{/if}}
+    {{/each}}
+
+    {{/if}}
+    {{#unless this.resolutionStrategy}}
+    {{!- Property Setters -}}
+    {{#each (modelProperties this)}}
     {{#unless readOnly}}
     {{#if ( eq this.commonType "dateTime" ) }}
     {{> function_setDateTimeProperty property=this modelName=../modelName}}
@@ -24,9 +54,11 @@ class {{this.modelName}} extends {{modelExtends this}}
     {{/unless}}
     {{/each}}
     {{!- Property Getters -}}
-    {{#each this.properties}}
+    {{#each  (modelProperties this)}}
     {{#if ( eq this.commonType "dateTime" ) }}
     {{> function_getDateTimeProperty property=this modelName=../modelName}}
+    {{else if ( and ( eq this.commonType "enum" ) this.$ref ) }}
+    {{> function_getEnumProperty property=this modelName=../modelName}}
     {{else if ( and ( eq this.commonType "object" ) this.$ref ) }}
     {{> function_getResourceProperty property=this modelName=../modelName}}
     {{else}}
@@ -34,6 +66,7 @@ class {{this.modelName}} extends {{modelExtends this}}
     {{/if}}
 
     {{/each}}
+    {{/unless}}
     {{!- Crud Methods -}}
     {{#if this.crud.length}}
     {{#each this.crud}}

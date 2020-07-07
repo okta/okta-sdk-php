@@ -23,6 +23,14 @@ namespace Okta\Log;
 
 class LogCredentialType extends \Okta\Utilities\Enum
 {
+    const OTP = 'OTP';
+    const SMS = 'SMS';
+    const PASSWORD = 'PASSWORD';
+    const ASSERTION = 'ASSERTION';
+    const IWA = 'IWA';
+    const EMAIL = 'EMAIL';
+    const OAUTH_2 = 'OAUTH2';
+    const JWT = 'JWT';
 
 
 }

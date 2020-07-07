@@ -23,6 +23,8 @@ namespace Okta\Application;
 
 class OpenIdConnectApplicationConsentMethod extends \Okta\Utilities\Enum
 {
+    const REQUIRED = 'REQUIRED';
+    const TRUSTED = 'TRUSTED';
 
 
 }

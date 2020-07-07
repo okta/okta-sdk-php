@@ -27,6 +27,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystem extends \Okta\Resource\A
     const VERSION = 'version';
     const EXPRESSION = 'expression';
 
+
     /**
      * Set the Type.
      *
@@ -84,7 +85,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystem extends \Okta\Resource\A
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -112,7 +113,7 @@ class PlatformConditionEvaluatorPlatformOperatingSystem extends \Okta\Resource\A
     function getExpression() : string
     {
         return $this->getProperty(
-            self::EXPRESSION
+            self::EXPRESSION,
         );
     }
     

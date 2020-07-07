@@ -25,6 +25,7 @@ class RiskPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const BEHAVIORS = 'behaviors';
 
+
     /**
      * Set the Behaviors.
      *
@@ -50,7 +51,7 @@ class RiskPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getBehaviors() : array
     {
         return $this->getProperty(
-            self::BEHAVIORS
+            self::BEHAVIORS,
         );
     }
     

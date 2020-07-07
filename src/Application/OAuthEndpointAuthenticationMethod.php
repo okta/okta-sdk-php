@@ -23,6 +23,10 @@ namespace Okta\Application;
 
 class OAuthEndpointAuthenticationMethod extends \Okta\Utilities\Enum
 {
+    const NONE = 'none';
+    const CLIENT_SECRET_POST = 'client_secret_post';
+    const CLIENT_SECRET_BASIC = 'client_secret_basic';
+    const CLIENT_SECRET_JWT = 'client_secret_jwt';
 
 
 }

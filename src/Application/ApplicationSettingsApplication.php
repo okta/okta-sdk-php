@@ -24,5 +24,4 @@ namespace Okta\Application;
 class ApplicationSettingsApplication extends \Okta\Resource\AbstractResource
 {
 
-
 }

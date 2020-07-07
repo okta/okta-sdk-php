@@ -26,6 +26,7 @@ class GroupRulePeopleCondition extends \Okta\Resource\AbstractResource
     const USERS = 'users';
     const GROUPS = 'groups';
 
+
     /**
      * Set the Users.
      *

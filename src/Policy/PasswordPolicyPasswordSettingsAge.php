@@ -28,6 +28,7 @@ class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
     const MIN_AGE_MINUTES = 'minAgeMinutes';
     const EXPIRE_WARN_DAYS = 'expireWarnDays';
 
+
     /**
      * Set the MaxAgeDays.
      *
@@ -101,7 +102,7 @@ class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
     function getMaxAgeDays() : int
     {
         return $this->getProperty(
-            self::MAX_AGE_DAYS
+            self::MAX_AGE_DAYS,
         );
     }
     
@@ -114,7 +115,7 @@ class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
     function getHistoryCount() : int
     {
         return $this->getProperty(
-            self::HISTORY_COUNT
+            self::HISTORY_COUNT,
         );
     }
     
@@ -127,7 +128,7 @@ class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
     function getMinAgeMinutes() : int
     {
         return $this->getProperty(
-            self::MIN_AGE_MINUTES
+            self::MIN_AGE_MINUTES,
         );
     }
     
@@ -140,7 +141,7 @@ class PasswordPolicyPasswordSettingsAge extends \Okta\Resource\AbstractResource
     function getExpireWarnDays() : int
     {
         return $this->getProperty(
-            self::EXPIRE_WARN_DAYS
+            self::EXPIRE_WARN_DAYS,
         );
     }
     

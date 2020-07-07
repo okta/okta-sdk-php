@@ -25,6 +25,8 @@ class PasswordPolicyRecoveryFactorSettings extends \Okta\Resource\AbstractResour
 {
     const STATUS = 'status';
 
+    private $status = 'INACTIVE';
+
     /**
      * Set the Status.
      *
@@ -50,7 +52,7 @@ class PasswordPolicyRecoveryFactorSettings extends \Okta\Resource\AbstractResour
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     

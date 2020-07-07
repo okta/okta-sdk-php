@@ -25,6 +25,7 @@ class PasswordDictionaryCommon extends \Okta\Resource\AbstractResource
 {
     const EXCLUDE = 'exclude';
 
+
     /**
      * Set the Exclude.
      *
@@ -50,7 +51,7 @@ class PasswordDictionaryCommon extends \Okta\Resource\AbstractResource
     function getExclude() : bool
     {
         return $this->getProperty(
-            self::EXCLUDE
+            self::EXCLUDE,
         );
     }
     

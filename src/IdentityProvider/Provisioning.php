@@ -28,6 +28,7 @@ class Provisioning extends \Okta\Resource\AbstractResource
     const CONDITIONS = 'conditions';
     const PROFILE_MASTER = 'profileMaster';
 
+
     /**
      * Set the Action.
      *
@@ -101,7 +102,7 @@ class Provisioning extends \Okta\Resource\AbstractResource
     function getAction() : string
     {
         return $this->getProperty(
-            self::ACTION
+            self::ACTION,
         );
     }
     
@@ -144,7 +145,7 @@ class Provisioning extends \Okta\Resource\AbstractResource
     function getProfileMaster() : bool
     {
         return $this->getProperty(
-            self::PROFILE_MASTER
+            self::PROFILE_MASTER,
         );
     }
     

@@ -31,6 +31,7 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const TRANSLATIONS = 'translations';
 
+
     /**
      * Set the Name.
      *
@@ -104,7 +105,7 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -117,23 +118,23 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Template\SmsTemplateType
      */
     function getType() : \Okta\Template\SmsTemplateType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Template\SmsTemplateType::class,
         );
     }
-    
+
     /**
      * Get the Created.
      *
@@ -158,7 +159,7 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     function getTemplate() : string
     {
         return $this->getProperty(
-            self::TEMPLATE
+            self::TEMPLATE,
         );
     }
     

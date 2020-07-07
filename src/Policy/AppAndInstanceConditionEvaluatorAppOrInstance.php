@@ -27,6 +27,7 @@ class AppAndInstanceConditionEvaluatorAppOrInstance extends \Okta\Resource\Abstr
     const NAME = 'name';
     const TYPE = 'type';
 
+
     /**
      * Set the Name.
      *
@@ -68,7 +69,7 @@ class AppAndInstanceConditionEvaluatorAppOrInstance extends \Okta\Resource\Abstr
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -81,7 +82,7 @@ class AppAndInstanceConditionEvaluatorAppOrInstance extends \Okta\Resource\Abstr
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -94,7 +95,7 @@ class AppAndInstanceConditionEvaluatorAppOrInstance extends \Okta\Resource\Abstr
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     

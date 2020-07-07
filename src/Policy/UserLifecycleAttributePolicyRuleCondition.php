@@ -26,6 +26,7 @@ class UserLifecycleAttributePolicyRuleCondition extends \Okta\Resource\AbstractR
     const ATTRIBUTE_NAME = 'attributeName';
     const MATCHING_VALUE = 'matchingValue';
 
+
     /**
      * Set the AttributeName.
      *
@@ -67,7 +68,7 @@ class UserLifecycleAttributePolicyRuleCondition extends \Okta\Resource\AbstractR
     function getAttributeName() : string
     {
         return $this->getProperty(
-            self::ATTRIBUTE_NAME
+            self::ATTRIBUTE_NAME,
         );
     }
     
@@ -80,7 +81,7 @@ class UserLifecycleAttributePolicyRuleCondition extends \Okta\Resource\AbstractR
     function getMatchingValue() : string
     {
         return $this->getProperty(
-            self::MATCHING_VALUE
+            self::MATCHING_VALUE,
         );
     }
     

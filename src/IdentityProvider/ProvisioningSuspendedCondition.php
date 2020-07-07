@@ -25,6 +25,7 @@ class ProvisioningSuspendedCondition extends \Okta\Resource\AbstractResource
 {
     const ACTION = 'action';
 
+
     /**
      * Set the Action.
      *
@@ -50,7 +51,7 @@ class ProvisioningSuspendedCondition extends \Okta\Resource\AbstractResource
     function getAction() : string
     {
         return $this->getProperty(
-            self::ACTION
+            self::ACTION,
         );
     }
     

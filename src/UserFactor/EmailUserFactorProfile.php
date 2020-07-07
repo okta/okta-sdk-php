@@ -25,6 +25,7 @@ class EmailUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const EMAIL = 'email';
 
+
     /**
      * Set the Email.
      *
@@ -50,7 +51,7 @@ class EmailUserFactorProfile extends \Okta\Resource\AbstractResource
     function getEmail() : string
     {
         return $this->getProperty(
-            self::EMAIL
+            self::EMAIL,
         );
     }
     

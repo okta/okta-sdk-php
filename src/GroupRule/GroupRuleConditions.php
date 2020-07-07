@@ -26,6 +26,7 @@ class GroupRuleConditions extends \Okta\Resource\AbstractResource
     const PEOPLE = 'people';
     const EXPRESSION = 'expression';
 
+
     /**
      * Set the People.
      *

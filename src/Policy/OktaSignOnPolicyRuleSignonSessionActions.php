@@ -27,6 +27,8 @@ class OktaSignOnPolicyRuleSignonSessionActions extends \Okta\Resource\AbstractRe
     const MAX_SESSION_IDLE_MINUTES = 'maxSessionIdleMinutes';
     const MAX_SESSION_LIFETIME_MINUTES = 'maxSessionLifetimeMinutes';
 
+    private $maxSessionIdleMinutes = '120';
+
     /**
      * Set the UsePersistentCookie.
      *
@@ -84,7 +86,7 @@ class OktaSignOnPolicyRuleSignonSessionActions extends \Okta\Resource\AbstractRe
     function getUsePersistentCookie() : bool
     {
         return $this->getProperty(
-            self::USE_PERSISTENT_COOKIE
+            self::USE_PERSISTENT_COOKIE,
         );
     }
     
@@ -97,7 +99,7 @@ class OktaSignOnPolicyRuleSignonSessionActions extends \Okta\Resource\AbstractRe
     function getMaxSessionIdleMinutes() : int
     {
         return $this->getProperty(
-            self::MAX_SESSION_IDLE_MINUTES
+            self::MAX_SESSION_IDLE_MINUTES,
         );
     }
     
@@ -110,7 +112,7 @@ class OktaSignOnPolicyRuleSignonSessionActions extends \Okta\Resource\AbstractRe
     function getMaxSessionLifetimeMinutes() : int
     {
         return $this->getProperty(
-            self::MAX_SESSION_LIFETIME_MINUTES
+            self::MAX_SESSION_LIFETIME_MINUTES,
         );
     }
     

@@ -26,6 +26,8 @@ class SwaApplication extends \Okta\Application\BrowserPluginApplication
     const NAME = 'name';
     const SETTINGS = 'settings';
 
+    private $name = 'template_swa';
+
     /**
      * Set the Name.
      *
@@ -59,6 +61,22 @@ class SwaApplication extends \Okta\Application\BrowserPluginApplication
     }
 
     /**
+     * Set the Credentials.
+     *
+     * @param mixed $credentials The credentials to set.
+     * @return self
+     */
+    function setCredentials(\Okta\Application\SchemeApplicationCredentials $credentials) : SwaApplication
+    {
+        $this->setResourceProperty(
+            self::CREDENTIALS,
+            $credentials
+        );
+    
+        return $this;
+    }
+
+    /**
      * Get the Name.
      *
      * @param mixed $name The name to set.
@@ -67,7 +85,7 @@ class SwaApplication extends \Okta\Application\BrowserPluginApplication
     function getName() : \stdClass
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -82,6 +100,21 @@ class SwaApplication extends \Okta\Application\BrowserPluginApplication
         return $this->getResourceProperty(
             self::SETTINGS,
             \Okta\Application\SwaApplicationSettings::class,
+            $options
+        );
+    }
+
+    /**
+     * Get the Credentials.
+     *
+     * @param array $options Additional options to pass, Typically query params.
+     * @return \Okta\Application\SchemeApplicationCredentials
+     */
+    function getCredentials(array $options = []) : \Okta\Application\SchemeApplicationCredentials
+    {
+        return $this->getResourceProperty(
+            self::CREDENTIALS,
+            \Okta\Application\SchemeApplicationCredentials::class,
             $options
         );
     }

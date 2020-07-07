@@ -25,6 +25,7 @@ class LogRequest extends \Okta\Resource\AbstractResource
 {
     const IP_CHAIN = 'ipChain';
 
+
     /**
      * Get the IpChain.
      *
@@ -34,7 +35,7 @@ class LogRequest extends \Okta\Resource\AbstractResource
     function getIpChain() : array
     {
         return $this->getProperty(
-            self::IP_CHAIN
+            self::IP_CHAIN,
         );
     }
     

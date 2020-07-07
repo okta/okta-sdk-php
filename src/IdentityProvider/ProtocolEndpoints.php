@@ -32,6 +32,7 @@ class ProtocolEndpoints extends \Okta\Resource\AbstractResource
     const USER_INFO = 'userInfo';
     const AUTHORIZATION = 'authorization';
 
+
     /**
      * Set the Acs.
      *

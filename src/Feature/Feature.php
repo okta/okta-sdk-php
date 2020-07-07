@@ -31,6 +31,7 @@ class Feature extends \Okta\Resource\AbstractResource
     const STATUS = 'status';
     const DESCRIPTION = 'description';
 
+
     /**
      * Set the Name.
      *
@@ -120,7 +121,7 @@ class Feature extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -133,23 +134,23 @@ class Feature extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Feature\FeatureType
      */
     function getType() : \Okta\Feature\FeatureType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Feature\FeatureType::class,
         );
     }
-    
+
     /**
      * Get the Stage.
      *
@@ -174,23 +175,23 @@ class Feature extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\Common\EnabledStatus
      */
     function getStatus() : \Okta\Common\EnabledStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\Common\EnabledStatus::class,
         );
     }
-    
+
     /**
      * Get the Description.
      *
@@ -200,7 +201,7 @@ class Feature extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     

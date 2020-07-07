@@ -25,6 +25,7 @@ class PasswordPolicyDelegationSettings extends \Okta\Resource\AbstractResource
 {
     const OPTIONS = 'options';
 
+
     /**
      * Set the Options.
      *

@@ -25,6 +25,7 @@ class OAuth2ScopesMediationPolicyRuleCondition extends \Okta\Resource\AbstractRe
 {
     const INCLUDE = 'include';
 
+
     /**
      * Set the Include.
      *
@@ -50,7 +51,7 @@ class OAuth2ScopesMediationPolicyRuleCondition extends \Okta\Resource\AbstractRe
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     

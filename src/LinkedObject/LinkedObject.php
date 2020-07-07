@@ -27,6 +27,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     const PRIMARY = 'primary';
     const ASSOCIATED = 'associated';
 
+
     /**
      * Set the Primary.
      *
@@ -68,7 +69,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -105,7 +106,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function create() : \Okta\LinkedObject\LinkedObject 
+    function create(\Okta\LinkedObject\LinkedObject $linkedObject) : \Okta\LinkedObject\LinkedObject 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/meta/schemas/user/linkedObjects"
@@ -114,7 +115,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($linkedObject)
                 ->executeRequest();
         return new \Okta\LinkedObject\LinkedObject(null, $body);
     }
@@ -136,7 +137,7 @@ class LinkedObject extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function delete($linkedObjectName)
+    function delete()
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/meta/schemas/user/linkedObjects/${linkedObjectName}"

@@ -27,6 +27,7 @@ class OktaSignOnPolicyRuleConditions extends \Okta\Resource\AbstractResource
     const NETWORK = 'network';
     const AUTH_CONTEXT = 'authContext';
 
+
     /**
      * Set the People.
      *

@@ -23,6 +23,9 @@ namespace Okta\Session;
 
 class SessionStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const MFA_ENROLL = 'MFA_ENROLL';
+    const MFA_REQUIRED = 'MFA_REQUIRED';
 
 
 }

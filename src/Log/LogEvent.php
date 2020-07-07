@@ -40,6 +40,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     const SECURITY_CONTEXT = 'securityContext';
     const AUTHENTICATION_CONTEXT = 'authenticationContext';
 
+
     /**
      * Get the Uuid.
      *
@@ -49,7 +50,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getUuid() : string
     {
         return $this->getProperty(
-            self::UUID
+            self::UUID,
         );
     }
     
@@ -92,7 +93,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getTarget() : array
     {
         return $this->getProperty(
-            self::TARGET
+            self::TARGET,
         );
     }
     
@@ -135,23 +136,23 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getVersion() : string
     {
         return $this->getProperty(
-            self::VERSION
+            self::VERSION,
         );
     }
     
     /**
      * Get the Severity.
      *
-     * @param mixed $severity The severity to set.
      * @return \Okta\Log\LogSeverity
      */
     function getSeverity() : \Okta\Log\LogSeverity
     {
-        return $this->getProperty(
-            self::SEVERITY
+        return $this->getEnumProperty(
+            self::SEVERITY,
+            \Okta\Log\LogSeverity::class,
         );
     }
-    
+
     /**
      * Get the EventType.
      *
@@ -161,7 +162,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getEventType() : string
     {
         return $this->getProperty(
-            self::EVENT_TYPE
+            self::EVENT_TYPE,
         );
     }
     
@@ -219,7 +220,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getDisplayMessage() : string
     {
         return $this->getProperty(
-            self::DISPLAY_MESSAGE
+            self::DISPLAY_MESSAGE,
         );
     }
     
@@ -232,7 +233,7 @@ class LogEvent extends \Okta\Resource\AbstractResource
     function getLegacyEventType() : string
     {
         return $this->getProperty(
-            self::LEGACY_EVENT_TYPE
+            self::LEGACY_EVENT_TYPE,
         );
     }
     

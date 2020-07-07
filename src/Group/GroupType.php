@@ -23,6 +23,9 @@ namespace Okta\Group;
 
 class GroupType extends \Okta\Utilities\Enum
 {
+    const OKTA_GROUP = 'OKTA_GROUP';
+    const APP_GROUP = 'APP_GROUP';
+    const BUILT_IN = 'BUILT_IN';
 
 
 }

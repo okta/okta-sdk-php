@@ -23,6 +23,8 @@ namespace Okta\Feature;
 
 class FeatureStageValue extends \Okta\Utilities\Enum
 {
+    const EA = 'EA';
+    const BETA = 'BETA';
 
 
 }

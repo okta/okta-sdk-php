@@ -25,6 +25,7 @@ class UserIdentityProviderLinkRequest extends \Okta\Resource\AbstractResource
 {
     const EXTERNAL_ID = 'externalId';
 
+
     /**
      * Set the ExternalId.
      *
@@ -50,7 +51,7 @@ class UserIdentityProviderLinkRequest extends \Okta\Resource\AbstractResource
     function getExternalId() : string
     {
         return $this->getProperty(
-            self::EXTERNAL_ID
+            self::EXTERNAL_ID,
         );
     }
     

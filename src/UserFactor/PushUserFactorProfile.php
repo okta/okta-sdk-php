@@ -30,6 +30,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     const DEVICE_TOKEN = 'deviceToken';
     const CREDENTIAL_ID = 'credentialId';
 
+
     /**
      * Set the Name.
      *
@@ -135,7 +136,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -148,7 +149,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getVersion() : string
     {
         return $this->getProperty(
-            self::VERSION
+            self::VERSION,
         );
     }
     
@@ -161,7 +162,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getPlatform() : string
     {
         return $this->getProperty(
-            self::PLATFORM
+            self::PLATFORM,
         );
     }
     
@@ -174,7 +175,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getDeviceType() : string
     {
         return $this->getProperty(
-            self::DEVICE_TYPE
+            self::DEVICE_TYPE,
         );
     }
     
@@ -187,7 +188,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getDeviceToken() : string
     {
         return $this->getProperty(
-            self::DEVICE_TOKEN
+            self::DEVICE_TOKEN,
         );
     }
     
@@ -200,7 +201,7 @@ class PushUserFactorProfile extends \Okta\Resource\AbstractResource
     function getCredentialId() : string
     {
         return $this->getProperty(
-            self::CREDENTIAL_ID
+            self::CREDENTIAL_ID,
         );
     }
     

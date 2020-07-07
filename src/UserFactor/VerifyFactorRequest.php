@@ -32,6 +32,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     const ACTIVATION_TOKEN = 'activationToken';
     const REGISTRATION_DATA = 'registrationData';
 
+
     /**
      * Set the Answer.
      *
@@ -169,7 +170,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getAnswer() : string
     {
         return $this->getProperty(
-            self::ANSWER
+            self::ANSWER,
         );
     }
     
@@ -182,7 +183,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getPassCode() : string
     {
         return $this->getProperty(
-            self::PASS_CODE
+            self::PASS_CODE,
         );
     }
     
@@ -195,7 +196,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getClientData() : string
     {
         return $this->getProperty(
-            self::CLIENT_DATA
+            self::CLIENT_DATA,
         );
     }
     
@@ -208,7 +209,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getStateToken() : string
     {
         return $this->getProperty(
-            self::STATE_TOKEN
+            self::STATE_TOKEN,
         );
     }
     
@@ -221,7 +222,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getAttestation() : string
     {
         return $this->getProperty(
-            self::ATTESTATION
+            self::ATTESTATION,
         );
     }
     
@@ -234,7 +235,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getNextPassCode() : string
     {
         return $this->getProperty(
-            self::NEXT_PASS_CODE
+            self::NEXT_PASS_CODE,
         );
     }
     
@@ -247,7 +248,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getActivationToken() : string
     {
         return $this->getProperty(
-            self::ACTIVATION_TOKEN
+            self::ACTIVATION_TOKEN,
         );
     }
     
@@ -260,7 +261,7 @@ class VerifyFactorRequest extends \Okta\Resource\AbstractResource
     function getRegistrationData() : string
     {
         return $this->getProperty(
-            self::REGISTRATION_DATA
+            self::REGISTRATION_DATA,
         );
     }
     

@@ -25,6 +25,7 @@ class InlineHookResponse extends \Okta\Resource\AbstractResource
 {
     const COMMANDS = 'commands';
 
+
     /**
      * Set the Commands.
      *
@@ -50,7 +51,7 @@ class InlineHookResponse extends \Okta\Resource\AbstractResource
     function getCommands() : array
     {
         return $this->getProperty(
-            self::COMMANDS
+            self::COMMANDS,
         );
     }
     

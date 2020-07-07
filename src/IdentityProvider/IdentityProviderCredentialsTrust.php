@@ -29,6 +29,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     const REVOCATION = 'revocation';
     const REVOCATION_CACHE_LIFETIME = 'revocationCacheLifetime';
 
+
     /**
      * Set the Kid.
      *
@@ -118,7 +119,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     function getKid() : string
     {
         return $this->getProperty(
-            self::KID
+            self::KID,
         );
     }
     
@@ -131,7 +132,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     function getIssuer() : string
     {
         return $this->getProperty(
-            self::ISSUER
+            self::ISSUER,
         );
     }
     
@@ -144,7 +145,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     function getAudience() : string
     {
         return $this->getProperty(
-            self::AUDIENCE
+            self::AUDIENCE,
         );
     }
     
@@ -157,7 +158,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     function getRevocation() : string
     {
         return $this->getProperty(
-            self::REVOCATION
+            self::REVOCATION,
         );
     }
     
@@ -170,7 +171,7 @@ class IdentityProviderCredentialsTrust extends \Okta\Resource\AbstractResource
     function getRevocationCacheLifetime() : int
     {
         return $this->getProperty(
-            self::REVOCATION_CACHE_LIFETIME
+            self::REVOCATION_CACHE_LIFETIME,
         );
     }
     

@@ -25,6 +25,7 @@ class ApplicationSettingsNotifications extends \Okta\Resource\AbstractResource
 {
     const VPN = 'vpn';
 
+
     /**
      * Set the Vpn.
      *

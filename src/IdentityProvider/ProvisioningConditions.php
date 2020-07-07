@@ -26,6 +26,7 @@ class ProvisioningConditions extends \Okta\Resource\AbstractResource
     const SUSPENDED = 'suspended';
     const DEPROVISIONED = 'deprovisioned';
 
+
     /**
      * Set the Suspended.
      *

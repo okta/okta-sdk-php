@@ -26,6 +26,7 @@ class WebAuthnUserFactorProfile extends \Okta\Resource\AbstractResource
     const CREDENTIAL_ID = 'credentialId';
     const AUTHENTICATOR_NAME = 'authenticatorName';
 
+
     /**
      * Set the CredentialId.
      *
@@ -67,7 +68,7 @@ class WebAuthnUserFactorProfile extends \Okta\Resource\AbstractResource
     function getCredentialId() : string
     {
         return $this->getProperty(
-            self::CREDENTIAL_ID
+            self::CREDENTIAL_ID,
         );
     }
     
@@ -80,7 +81,7 @@ class WebAuthnUserFactorProfile extends \Okta\Resource\AbstractResource
     function getAuthenticatorName() : string
     {
         return $this->getProperty(
-            self::AUTHENTICATOR_NAME
+            self::AUTHENTICATOR_NAME,
         );
     }
     

@@ -23,6 +23,7 @@ namespace Okta\AuthorizationServer;
 
 class AuthorizationServerCredentialsUse extends \Okta\Utilities\Enum
 {
+    const SIG = 'sig';
 
 
 }

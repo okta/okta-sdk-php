@@ -32,6 +32,14 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     const EXCLUDE_USERNAME = 'excludeUsername';
     const EXCLUDE_ATTRIBUTES = 'excludeAttributes';
 
+    private $minLength = '8';
+    private $minNumber = '1';
+    private $minSymbol = '1';
+    private $minLowerCase = '1';
+    private $minUpperCase = '1';
+    private $excludeUsername = 'true';
+    private $excludeAttributes = '1';
+
     /**
      * Set the MinLength.
      *
@@ -169,7 +177,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getMinLength() : int
     {
         return $this->getProperty(
-            self::MIN_LENGTH
+            self::MIN_LENGTH,
         );
     }
     
@@ -182,7 +190,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getMinNumber() : int
     {
         return $this->getProperty(
-            self::MIN_NUMBER
+            self::MIN_NUMBER,
         );
     }
     
@@ -195,7 +203,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getMinSymbol() : int
     {
         return $this->getProperty(
-            self::MIN_SYMBOL
+            self::MIN_SYMBOL,
         );
     }
     
@@ -223,7 +231,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getMinLowerCase() : int
     {
         return $this->getProperty(
-            self::MIN_LOWER_CASE
+            self::MIN_LOWER_CASE,
         );
     }
     
@@ -236,7 +244,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getMinUpperCase() : int
     {
         return $this->getProperty(
-            self::MIN_UPPER_CASE
+            self::MIN_UPPER_CASE,
         );
     }
     
@@ -249,7 +257,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getExcludeUsername() : bool
     {
         return $this->getProperty(
-            self::EXCLUDE_USERNAME
+            self::EXCLUDE_USERNAME,
         );
     }
     
@@ -262,7 +270,7 @@ class PasswordPolicyPasswordSettingsComplexity extends \Okta\Resource\AbstractRe
     function getExcludeAttributes() : array
     {
         return $this->getProperty(
-            self::EXCLUDE_ATTRIBUTES
+            self::EXCLUDE_ATTRIBUTES,
         );
     }
     

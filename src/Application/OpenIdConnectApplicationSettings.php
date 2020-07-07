@@ -25,6 +25,7 @@ class OpenIdConnectApplicationSettings extends \Okta\Application\ApplicationSett
 {
     const OAUTH_CLIENT = 'oauthClient';
 
+
     /**
      * Set the OauthClient.
      *

@@ -29,6 +29,7 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
     const USER_NAME = 'userName';
     const REVEAL_PASSWORD = 'revealPassword';
 
+
     /**
      * Set the Scheme.
      *
@@ -45,22 +46,6 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
         return $this;
     }
     
-    /**
-     * Set the Signing.
-     *
-     * @param mixed $signing The signing to set.
-     * @return self
-     */
-    function setSigning(\Okta\Application\ApplicationCredentialsSigning $signing) : SchemeApplicationCredentials
-    {
-        $this->setResourceProperty(
-            self::SIGNING,
-            $signing
-        );
-    
-        return $this;
-    }
-
     /**
      * Set the Password.
      *
@@ -112,28 +97,13 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
     /**
      * Get the Scheme.
      *
-     * @param mixed $scheme The scheme to set.
      * @return \Okta\Application\ApplicationCredentialsScheme
      */
     function getScheme() : \Okta\Application\ApplicationCredentialsScheme
     {
-        return $this->getProperty(
-            self::SCHEME
-        );
-    }
-    
-    /**
-     * Get the Signing.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\ApplicationCredentialsSigning
-     */
-    function getSigning(array $options = []) : \Okta\Application\ApplicationCredentialsSigning
-    {
-        return $this->getResourceProperty(
-            self::SIGNING,
-            \Okta\Application\ApplicationCredentialsSigning::class,
-            $options
+        return $this->getEnumProperty(
+            self::SCHEME,
+            \Okta\Application\ApplicationCredentialsScheme::class,
         );
     }
 
@@ -161,7 +131,7 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
     function getUserName() : string
     {
         return $this->getProperty(
-            self::USER_NAME
+            self::USER_NAME,
         );
     }
     
@@ -174,7 +144,7 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
     function getRevealPassword() : bool
     {
         return $this->getProperty(
-            self::REVEAL_PASSWORD
+            self::REVEAL_PASSWORD,
         );
     }
     

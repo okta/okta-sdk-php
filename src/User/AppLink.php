@@ -34,6 +34,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     const APP_ASSIGNMENT_ID = 'appAssignmentId';
     const CREDENTIALS_SETUP = 'credentialsSetup';
 
+
     /**
      * Get the Id.
      *
@@ -43,7 +44,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -56,7 +57,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getLabel() : string
     {
         return $this->getProperty(
-            self::LABEL
+            self::LABEL,
         );
     }
     
@@ -69,7 +70,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getHidden() : bool
     {
         return $this->getProperty(
-            self::HIDDEN
+            self::HIDDEN,
         );
     }
     
@@ -82,7 +83,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getAppName() : string
     {
         return $this->getProperty(
-            self::APP_NAME
+            self::APP_NAME,
         );
     }
     
@@ -95,7 +96,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getLinkUrl() : string
     {
         return $this->getProperty(
-            self::LINK_URL
+            self::LINK_URL,
         );
     }
     
@@ -108,7 +109,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getLogoUrl() : string
     {
         return $this->getProperty(
-            self::LOGO_URL
+            self::LOGO_URL,
         );
     }
     
@@ -121,7 +122,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getSortOrder() : int
     {
         return $this->getProperty(
-            self::SORT_ORDER
+            self::SORT_ORDER,
         );
     }
     
@@ -134,7 +135,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getAppInstanceId() : string
     {
         return $this->getProperty(
-            self::APP_INSTANCE_ID
+            self::APP_INSTANCE_ID,
         );
     }
     
@@ -147,7 +148,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getAppAssignmentId() : string
     {
         return $this->getProperty(
-            self::APP_ASSIGNMENT_ID
+            self::APP_ASSIGNMENT_ID,
         );
     }
     
@@ -160,7 +161,7 @@ class AppLink extends \Okta\Resource\AbstractResource
     function getCredentialsSetup() : bool
     {
         return $this->getProperty(
-            self::CREDENTIALS_SETUP
+            self::CREDENTIALS_SETUP,
         );
     }
     

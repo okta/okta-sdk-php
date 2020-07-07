@@ -27,6 +27,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     const SUFFIX = 'suffix';
     const TEMPLATE = 'template';
 
+
     /**
      * Set the Type.
      *
@@ -84,7 +85,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -97,7 +98,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     function getSuffix() : string
     {
         return $this->getProperty(
-            self::SUFFIX
+            self::SUFFIX,
         );
     }
     
@@ -110,7 +111,7 @@ class ApplicationCredentialsUsernameTemplate extends \Okta\Resource\AbstractReso
     function getTemplate() : string
     {
         return $this->getProperty(
-            self::TEMPLATE
+            self::TEMPLATE,
         );
     }
     

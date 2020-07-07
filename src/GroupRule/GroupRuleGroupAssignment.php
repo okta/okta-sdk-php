@@ -25,6 +25,7 @@ class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
 {
     const GROUP_IDS = 'groupIds';
 
+
     /**
      * Set the GroupIds.
      *
@@ -50,7 +51,7 @@ class GroupRuleGroupAssignment extends \Okta\Resource\AbstractResource
     function getGroupIds() : array
     {
         return $this->getProperty(
-            self::GROUP_IDS
+            self::GROUP_IDS,
         );
     }
     

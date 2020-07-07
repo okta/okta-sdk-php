@@ -25,6 +25,7 @@ class PolicyAccountLinkFilter extends \Okta\Resource\AbstractResource
 {
     const GROUPS = 'groups';
 
+
     /**
      * Set the Groups.
      *

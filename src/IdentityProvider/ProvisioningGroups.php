@@ -28,6 +28,7 @@ class ProvisioningGroups extends \Okta\Resource\AbstractResource
     const ASSIGNMENTS = 'assignments';
     const SOURCE_ATTRIBUTE_NAME = 'sourceAttributeName';
 
+
     /**
      * Set the Action.
      *
@@ -101,7 +102,7 @@ class ProvisioningGroups extends \Okta\Resource\AbstractResource
     function getAction() : string
     {
         return $this->getProperty(
-            self::ACTION
+            self::ACTION,
         );
     }
     
@@ -114,7 +115,7 @@ class ProvisioningGroups extends \Okta\Resource\AbstractResource
     function getFilter() : array
     {
         return $this->getProperty(
-            self::FILTER
+            self::FILTER,
         );
     }
     
@@ -127,7 +128,7 @@ class ProvisioningGroups extends \Okta\Resource\AbstractResource
     function getAssignments() : array
     {
         return $this->getProperty(
-            self::ASSIGNMENTS
+            self::ASSIGNMENTS,
         );
     }
     
@@ -140,7 +141,7 @@ class ProvisioningGroups extends \Okta\Resource\AbstractResource
     function getSourceAttributeName() : string
     {
         return $this->getProperty(
-            self::SOURCE_ATTRIBUTE_NAME
+            self::SOURCE_ATTRIBUTE_NAME,
         );
     }
     

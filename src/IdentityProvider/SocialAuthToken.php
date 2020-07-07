@@ -30,6 +30,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     const TOKEN_TYPE = 'tokenType';
     const TOKEN_AUTH_SCHEME = 'tokenAuthScheme';
 
+
     /**
      * Set the Token.
      *
@@ -103,7 +104,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -116,7 +117,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     function getToken() : string
     {
         return $this->getProperty(
-            self::TOKEN
+            self::TOKEN,
         );
     }
     
@@ -129,7 +130,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     function getScopes() : array
     {
         return $this->getProperty(
-            self::SCOPES
+            self::SCOPES,
         );
     }
     
@@ -157,7 +158,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     function getTokenType() : string
     {
         return $this->getProperty(
-            self::TOKEN_TYPE
+            self::TOKEN_TYPE,
         );
     }
     
@@ -170,7 +171,7 @@ class SocialAuthToken extends \Okta\Resource\AbstractResource
     function getTokenAuthScheme() : string
     {
         return $this->getProperty(
-            self::TOKEN_AUTH_SCHEME
+            self::TOKEN_AUTH_SCHEME,
         );
     }
     

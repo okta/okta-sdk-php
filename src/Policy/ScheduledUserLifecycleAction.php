@@ -25,6 +25,7 @@ class ScheduledUserLifecycleAction extends \Okta\Resource\AbstractResource
 {
     const STATUS = 'status';
 
+
     /**
      * Set the Status.
      *
@@ -50,7 +51,7 @@ class ScheduledUserLifecycleAction extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     

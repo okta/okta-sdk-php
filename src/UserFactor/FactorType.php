@@ -23,6 +23,18 @@ namespace Okta\UserFactor;
 
 class FactorType extends \Okta\Utilities\Enum
 {
+    const CALL = 'call';
+    const EMAIL = 'email';
+    const PUSH = 'push';
+    const QUESTION = 'question';
+    const SMS = 'sms';
+    const TOKEN_HARDWARE = 'token:hardware';
+    const TOKEN_HOTP = 'token:hotp';
+    const TOKEN_SOFTWARE_TOTP = 'token:software:totp';
+    const TOKEN = 'token';
+    const U_2_F = 'u2f';
+    const WEB = 'web';
+    const WEBAUTHN = 'webauthn';
 
 
 }

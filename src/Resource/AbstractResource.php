@@ -45,6 +45,10 @@ abstract class AbstractResource
      */
     private $materialized;
     /**
+     * @var UriFactory $uriFactory The discovered URI Factory
+     */
+    private $uriFactory;
+    /**
      * @var bool $dirty Are there dirty properties on the resource.
      */
     private $dirty;
@@ -126,6 +130,13 @@ abstract class AbstractResource
         }
 
         return $property;
+    }
+
+    public function getEnumProperty($name, $enum) {
+        $prop = strtoupper($this->getProperty($name));
+
+        $enumClass = new $enum(constant("$enum::$prop"));
+        return $enumClass;
     }
 
     /**

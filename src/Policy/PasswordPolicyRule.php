@@ -27,6 +27,7 @@ class PasswordPolicyRule extends \Okta\Policy\PolicyRule
     const ACTIONS = 'actions';
     const CONDITIONS = 'conditions';
 
+
     /**
      * Set the Name.
      *
@@ -76,6 +77,70 @@ class PasswordPolicyRule extends \Okta\Policy\PolicyRule
     }
 
     /**
+     * Set the Priority.
+     *
+     * @param mixed $priority The priority to set.
+     * @return self
+     */
+    function setPriority($priority) : PasswordPolicyRule
+    {
+        $this->setProperty(
+            self::PRIORITY,
+            $priority
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Status.
+     *
+     * @param mixed $status The status to set.
+     * @return self
+     */
+    function setStatus($status) : PasswordPolicyRule
+    {
+        $this->setProperty(
+            self::STATUS,
+            $status
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the System.
+     *
+     * @param mixed $system The system to set.
+     * @return self
+     */
+    function setSystem($system) : PasswordPolicyRule
+    {
+        $this->setProperty(
+            self::SYSTEM,
+            $system
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Type.
+     *
+     * @param mixed $type The type to set.
+     * @return self
+     */
+    function setType($type) : PasswordPolicyRule
+    {
+        $this->setProperty(
+            self::TYPE,
+            $type
+        );
+    
+        return $this;
+    }
+    
+    /**
      * Get the Name.
      *
      * @param mixed $name The name to set.
@@ -84,7 +149,7 @@ class PasswordPolicyRule extends \Okta\Policy\PolicyRule
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -118,5 +183,100 @@ class PasswordPolicyRule extends \Okta\Policy\PolicyRule
         );
     }
 
+    /**
+     * Get the Created.
+     *
+     * @param mixed $created The created to set.
+     * @return \Carbon\Carbon
+     */
+    function getCreated() : \Carbon\Carbon
+    {
+        return $this->getDateTimeProperty(
+            self::CREATED
+        );
+    
+        return $this;
+    }
+
+    /**
+     * Get the Id.
+     *
+     * @param mixed $id The id to set.
+     * @return string
+     */
+    function getId() : string
+    {
+        return $this->getProperty(
+            self::ID,
+        );
+    }
+    
+    /**
+     * Get the LastUpdated.
+     *
+     * @param mixed $lastUpdated The lastUpdated to set.
+     * @return \Carbon\Carbon
+     */
+    function getLastUpdated() : \Carbon\Carbon
+    {
+        return $this->getDateTimeProperty(
+            self::LAST_UPDATED
+        );
+    
+        return $this;
+    }
+
+    /**
+     * Get the Priority.
+     *
+     * @param mixed $priority The priority to set.
+     * @return int
+     */
+    function getPriority() : int
+    {
+        return $this->getProperty(
+            self::PRIORITY,
+        );
+    }
+    
+    /**
+     * Get the Status.
+     *
+     * @param mixed $status The status to set.
+     * @return string
+     */
+    function getStatus() : string
+    {
+        return $this->getProperty(
+            self::STATUS,
+        );
+    }
+    
+    /**
+     * Get the System.
+     *
+     * @param mixed $system The system to set.
+     * @return bool
+     */
+    function getSystem() : bool
+    {
+        return $this->getProperty(
+            self::SYSTEM,
+        );
+    }
+    
+    /**
+     * Get the Type.
+     *
+     * @param mixed $type The type to set.
+     * @return string
+     */
+    function getType() : string
+    {
+        return $this->getProperty(
+            self::TYPE,
+        );
+    }
+    
 
 }

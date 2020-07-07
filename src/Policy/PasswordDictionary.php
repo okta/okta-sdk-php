@@ -25,6 +25,7 @@ class PasswordDictionary extends \Okta\Resource\AbstractResource
 {
     const COMMON = 'common';
 
+
     /**
      * Set the Common.
      *

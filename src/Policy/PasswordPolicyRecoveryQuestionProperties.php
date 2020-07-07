@@ -25,6 +25,7 @@ class PasswordPolicyRecoveryQuestionProperties extends \Okta\Resource\AbstractRe
 {
     const COMPLEXITY = 'complexity';
 
+
     /**
      * Get the Complexity.
      *

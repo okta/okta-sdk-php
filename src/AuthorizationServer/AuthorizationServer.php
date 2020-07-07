@@ -35,6 +35,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     const DESCRIPTION = 'description';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Name.
      *
@@ -156,7 +157,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -169,7 +170,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -182,7 +183,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -195,7 +196,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getIssuer() : string
     {
         return $this->getProperty(
-            self::ISSUER
+            self::ISSUER,
         );
     }
     
@@ -208,7 +209,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -236,7 +237,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getAudiences() : array
     {
         return $this->getProperty(
-            self::AUDIENCES
+            self::AUDIENCES,
         );
     }
     
@@ -249,7 +250,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getIssuerMode() : string
     {
         return $this->getProperty(
-            self::ISSUER_MODE
+            self::ISSUER_MODE,
         );
     }
     
@@ -277,7 +278,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     
@@ -375,7 +376,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function createOAuth2Claim() : \Okta\Application\OAuth2Claim 
+    function createOAuth2Claim(\Okta\Application\OAuth2Claim $oAuth2Claim) : \Okta\Application\OAuth2Claim 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/claims"
@@ -384,7 +385,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($oAuth2Claim)
                 ->executeRequest();
         return new \Okta\Application\OAuth2Claim(null, $body);
     }
@@ -420,7 +421,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function updateOAuth2Claim($claimId) : \Okta\Application\OAuth2Claim 
+    function updateOAuth2Claim($claimId, \Okta\Application\OAuth2Claim $oAuth2Claim) : \Okta\Application\OAuth2Claim 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/claims/${claimId}"
@@ -429,7 +430,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("PUT")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($oAuth2Claim)
                 ->executeRequest();
         return new \Okta\Application\OAuth2Claim(null, $body);
     }
@@ -526,7 +527,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function rotateKeys() : \Okta\Application\JsonWebKey 
+    function rotateKeys(\Okta\Application\JwkUse $use) : \Okta\Application\JsonWebKey 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/credentials/lifecycle/keyRotate"
@@ -535,7 +536,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($use)
                 ->executeRequest();
         return new \Okta\Application\JsonWebKey(null, $body);
     }
@@ -585,7 +586,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function createPolicy() : \Okta\Policy\Policy 
+    function createPolicy(\Okta\Policy\Policy $policy) : \Okta\Policy\Policy 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/policies"
@@ -594,7 +595,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($policy)
                 ->executeRequest();
         return new \Okta\Policy\Policy(null, $body);
     }
@@ -630,7 +631,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function updatePolicy($policyId) : \Okta\Policy\Policy 
+    function updatePolicy($policyId, \Okta\Policy\Policy $policy) : \Okta\Policy\Policy 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/policies/${policyId}"
@@ -639,7 +640,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("PUT")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($policy)
                 ->executeRequest();
         return new \Okta\Policy\Policy(null, $body);
     }
@@ -662,7 +663,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function createOAuth2Scope() : \Okta\Application\OAuth2Scope 
+    function createOAuth2Scope(\Okta\Application\OAuth2Scope $oAuth2Scope) : \Okta\Application\OAuth2Scope 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/scopes"
@@ -671,7 +672,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($oAuth2Scope)
                 ->executeRequest();
         return new \Okta\Application\OAuth2Scope(null, $body);
     }
@@ -707,7 +708,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
     /**
      * Success
      */
-    function updateOAuth2Scope($scopeId) : \Okta\Application\OAuth2Scope 
+    function updateOAuth2Scope($scopeId, \Okta\Application\OAuth2Scope $oAuth2Scope) : \Okta\Application\OAuth2Scope 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/authorizationServers/".$this->id."/scopes/${scopeId}"
@@ -716,7 +717,7 @@ class AuthorizationServer extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("PUT")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($oAuth2Scope)
                 ->executeRequest();
         return new \Okta\Application\OAuth2Scope(null, $body);
     }

@@ -26,6 +26,7 @@ class ProtocolAlgorithms extends \Okta\Resource\AbstractResource
     const REQUEST = 'request';
     const RESPONSE = 'response';
 
+
     /**
      * Set the Request.
      *

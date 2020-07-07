@@ -81,7 +81,7 @@ class AbstractResourceTest extends TestCase
     public function returns_null_if_date_property_does_not_exist()
     {
         $this->assertNull(
-            self::$testable->getDateProperty('non-exist')
+            self::$testable->getDateTimeProperty('non-exist')
         );
     }
 

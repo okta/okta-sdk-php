@@ -28,6 +28,7 @@ class DevicePolicyRuleCondition extends \Okta\Resource\AbstractResource
     const PLATFORM = 'platform';
     const TRUST_LEVEL = 'trustLevel';
 
+
     /**
      * Set the Rooted.
      *
@@ -101,7 +102,7 @@ class DevicePolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getRooted() : bool
     {
         return $this->getProperty(
-            self::ROOTED
+            self::ROOTED,
         );
     }
     
@@ -114,7 +115,7 @@ class DevicePolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getMigrated() : bool
     {
         return $this->getProperty(
-            self::MIGRATED
+            self::MIGRATED,
         );
     }
     
@@ -142,7 +143,7 @@ class DevicePolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getTrustLevel() : string
     {
         return $this->getProperty(
-            self::TRUST_LEVEL
+            self::TRUST_LEVEL,
         );
     }
     

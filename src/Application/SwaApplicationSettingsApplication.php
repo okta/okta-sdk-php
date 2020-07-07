@@ -29,6 +29,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     const PASSWORD_FIELD = 'passwordField';
     const USERNAME_FIELD = 'usernameField';
 
+
     /**
      * Set the Url.
      *
@@ -118,7 +119,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     function getUrl() : string
     {
         return $this->getProperty(
-            self::URL
+            self::URL,
         );
     }
     
@@ -131,7 +132,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     function getButtonField() : string
     {
         return $this->getProperty(
-            self::BUTTON_FIELD
+            self::BUTTON_FIELD,
         );
     }
     
@@ -144,7 +145,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     function getLoginUrlRegex() : string
     {
         return $this->getProperty(
-            self::LOGIN_URL_REGEX
+            self::LOGIN_URL_REGEX,
         );
     }
     
@@ -157,7 +158,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     function getPasswordField() : string
     {
         return $this->getProperty(
-            self::PASSWORD_FIELD
+            self::PASSWORD_FIELD,
         );
     }
     
@@ -170,7 +171,7 @@ class SwaApplicationSettingsApplication extends \Okta\Application\ApplicationSet
     function getUsernameField() : string
     {
         return $this->getProperty(
-            self::USERNAME_FIELD
+            self::USERNAME_FIELD,
         );
     }
     

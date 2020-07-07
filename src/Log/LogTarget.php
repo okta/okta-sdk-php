@@ -29,6 +29,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     const DETAIL_ENTRY = 'detailEntry';
     const DISPLAY_NAME = 'displayName';
 
+
     /**
      * Get the Id.
      *
@@ -38,7 +39,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -51,7 +52,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -64,7 +65,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     function getAlternateId() : string
     {
         return $this->getProperty(
-            self::ALTERNATE_ID
+            self::ALTERNATE_ID,
         );
     }
     
@@ -77,7 +78,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     function getDetailEntry() : \stdClass
     {
         return $this->getProperty(
-            self::DETAIL_ENTRY
+            self::DETAIL_ENTRY,
         );
     }
     
@@ -90,7 +91,7 @@ class LogTarget extends \Okta\Resource\AbstractResource
     function getDisplayName() : string
     {
         return $this->getProperty(
-            self::DISPLAY_NAME
+            self::DISPLAY_NAME,
         );
     }
     

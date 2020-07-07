@@ -26,6 +26,7 @@ class IdentityProviderPolicyRuleCondition extends \Okta\Resource\AbstractResourc
     const IDP_IDS = 'idpIds';
     const PROVIDER = 'provider';
 
+
     /**
      * Set the IdpIds.
      *
@@ -67,7 +68,7 @@ class IdentityProviderPolicyRuleCondition extends \Okta\Resource\AbstractResourc
     function getIdpIds() : array
     {
         return $this->getProperty(
-            self::IDP_IDS
+            self::IDP_IDS,
         );
     }
     
@@ -80,7 +81,7 @@ class IdentityProviderPolicyRuleCondition extends \Okta\Resource\AbstractResourc
     function getProvider() : string
     {
         return $this->getProperty(
-            self::PROVIDER
+            self::PROVIDER,
         );
     }
     

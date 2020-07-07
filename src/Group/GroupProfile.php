@@ -26,6 +26,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     const NAME = 'name';
     const DESCRIPTION = 'description';
 
+
     /**
      * Set the Name.
      *
@@ -67,7 +68,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -80,7 +81,7 @@ class GroupProfile extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     

@@ -26,6 +26,7 @@ class PlatformPolicyRuleCondition extends \Okta\Resource\AbstractResource
     const EXCLUDE = 'exclude';
     const INCLUDE = 'include';
 
+
     /**
      * Set the Exclude.
      *
@@ -67,7 +68,7 @@ class PlatformPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getExclude() : array
     {
         return $this->getProperty(
-            self::EXCLUDE
+            self::EXCLUDE,
         );
     }
     
@@ -80,7 +81,7 @@ class PlatformPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     

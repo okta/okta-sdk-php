@@ -65,39 +65,16 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
 
-        $dataStore->getResource(
-            '123',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123"
         );
 
-        $request = $httpClient->getRequests();
+        $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
 
-        $this->assertEquals(
-            'limit=1',
-            $request[0]->getUri()->getQuery()
-        );
-
-    }
-
-    /** @test */
-    public function can_set_query_when_getting_collection()
-    {
-        $httpClient = $this->createNewHttpClient([
-            'getBody' => '[]'
-        ]);
-
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
-
-        $dataStore->getCollection(
-            '/api/v1/users',
-            \Okta\Users\User::class,
-            \Okta\Users\Collection::class,
-            ['query'=>['limit'=>1]]
-
-        );
 
         $request = $httpClient->getRequests();
 
@@ -119,13 +96,16 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
 
-        $dataStore->getResource(
-            '123',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123"
         );
+
+        $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
+
     }
 
     /** @test */
@@ -135,13 +115,15 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
 
-        $dataStore->getResource(
-            '123?limit=4&start=2',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123?limit=4&start=2"
         );
+
+        $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
 
         $request = $httpClient->getRequests();
 
@@ -151,35 +133,6 @@ class DefaultDataStoreTest extends TestCase
         );
 
     }
-
-    /** @test */
-    public function execute_request_can_have_query()
-    {
-        $httpClient = $this->createNewHttpClient();
-
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
-
-        $uri = "test";
-        $uri = $dataStore->buildUri(
-            'http://example.com/' . $uri
-        );
-
-        $dataStore->executeRequest(
-            'GET',
-            $uri,
-            null,
-            ['query' => ['limit'=>1]]
-        );
-
-        $request = $httpClient->getRequests();
-
-        $this->assertEquals(
-            'limit=1',
-            $request[0]->getUri()->getQuery()
-        );
-
-    }
-
 
     /** @test */
     public function getting_a_resource_will_pull_from_cache_the_second_time_its_requested()
@@ -212,24 +165,29 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
 
-        $response = $dataStore->getResource(
-            '123',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123"
         );
 
-        $this->assertEquals('abc123', $response->getId(), 'The ID did not return what was expected');
+        $response = $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
 
-        $response = $dataStore->getResource(
-            '123',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
+        $this->assertEquals('abc123', $response->id, 'The ID did not return what was expected');
 
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123"
         );
-        $this->assertEquals('abc123', $response->getId(), 'It appears the cache was not hit.');
+
+        $response = $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
+
+        $this->assertEquals('abc123', $response->id, 'It appears the cache was not hit.');
 
     }
 
@@ -266,19 +224,23 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
 
-        $user = new \Okta\Users\User();
+        $user = new \Okta\User\User();
         $profile = $user->getProfile();
         $profile->setFirstName('Okta');
         $user->setProfile($profile);
-        $user = $user->create();
 
-        $response = $dataStore->getResource(
-            $user->getId(),
-            \Okta\Users\User::class,
-            '/users'
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users"
         );
-        $this->assertEquals('abc123', $response->getId(), 'It appears the cache was not hit.');
+
+        $response = $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('POST')
+            ->setRequestBody($user)
+            ->executeRequest();
+
+        $responseUser = new \Okta\User\User($dataStore, $response);
+        $this->assertEquals('abc123', $responseUser->getId(), 'It appears the cache was not hit.');
 
 
     }
@@ -317,12 +279,11 @@ class DefaultDataStoreTest extends TestCase
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
 
-        $user = new \Okta\Users\User();
-        $profile = $user->getProfile();
+        $createUserRequest = new \Okta\User\CreateUserRequest();
+        $profile = $createUserRequest->getProfile();
         $profile->setFirstName('Okta');
-        $user->setProfile($profile);
-        /** @var \Okta\Users\User $user */
-        $user = $user->create();
+        $createUserRequest->setProfile($profile);
+        $user = (new \Okta\User\User)->create($createUserRequest);
 
         $cacheManager = $client->getCacheManager();
         $this->assertTrue(
@@ -345,84 +306,12 @@ class DefaultDataStoreTest extends TestCase
     }
 
     /** @test */
-    public function saving_a_resource_will_clear_all_linked_resources()
-    {
-        $mockReturns = [
-            [
-                'getStatusCode' => 201,
-                'getBody' => '{"id": "abc123", "profile": {"firstName": "Okta"}, "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
-            ],
-            [
-                'getStatusCode' => 200,
-                'getBody' => '{"id": "abc123", "profile": {"firstName": "OktaDev"}, "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}, "anotherLink": {"href": "http://example.com/abc123"}}}'
-            ]
-        ];
-
-        $httpClient = new \Http\Mock\Client;
-
-        foreach($mockReturns as $returnValues) {
-            $response = $this->createMock('Psr\Http\Message\ResponseInterface');
-            foreach($returnValues as $method=>$return) {
-                $response->method($method)->willReturn($return);
-            }
-            $httpClient->addResponse($response);
-        }
-
-
-        $client = (new \Okta\ClientBuilder())
-            ->setOrganizationUrl('https://dev.okta.com')
-            ->setToken('abc123')
-            ->setHttpClient($httpClient)
-            ->build();
-
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
-
-        $user = new \Okta\Users\User();
-        $profile = $user->getProfile();
-        $profile->setFirstName('Okta');
-        $user->setProfile($profile);
-        /** @var \Okta\Users\User $user */
-        $user = $user->create();
-
-        $cacheManager = $client->getCacheManager();
-        $cacheManager->save($dataStore->getUriFactory()->createUri('http://example.com/abc123'), new \stdClass());
-
-        $this->assertTrue(
-            $cacheManager->pool()->hasItem(
-                $cacheManager->createCacheKey(
-                    $dataStore->getUriFactory()->createUri('http://example.com/abc123')
-                )
-            )
-        );
-
-        $profile = $user->getProfile();
-        $profile->setFirstName('OktaDev');
-        $user->setProfile($profile);
-        $user->save();
-
-
-        $this->assertFalse(
-            $cacheManager->pool()->hasItem(
-                $cacheManager->createCacheKey(
-                    $dataStore->getUriFactory()->createUri('http://example.com/abc123')
-                )
-            )
-        );
-
-        $this->assertEquals(
-            'OktaDev',
-            $user->getProfile()->getFirstName(),
-            'The cache was not updated'
-        );
-    }
-
-    /** @test */
     public function calling_execute_request_through_resource_method_will_update_cache()
     {
         $mockReturns = [
             [
                 'getStatusCode' => 201,
-                'getBody' => '{"id": "abc123", "status": "PENDING", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
+                'getBody' => '{"id": "abc123", "status": "STAGED", "_links": {"self": {"href": "https://dev.okta.com/api/v1/users/abc123"}}}'
             ],
             [
                 'getStatusCode' => 200,
@@ -459,24 +348,23 @@ class DefaultDataStoreTest extends TestCase
             )
         );
 
-        $user = new \Okta\Users\User();
-        $profile = $user->getProfile();
+        $createUserRequest = new \Okta\User\CreateUserRequest();
+        $profile = $createUserRequest->getProfile();
         $profile->setFirstName('Okta');
-        $user->setProfile($profile);
-        /** @var \Okta\Users\User $user */
-        $user = $user->create();
+        $createUserRequest->setProfile($profile);
+        $user = (new \Okta\User\User)->create($createUserRequest);
 
 
 
         $this->assertEquals(
-            'PENDING',
+            'STAGED',
             $user->getStatus(),
             'The cache was not setup correctly for test.'
         );
 
-        $user->activate(false);
+        $user->activate();
 
-        $user = (new \Okta\Users\User())->get('abc123');
+        $user = (new \Okta\User\User())->read('abc123');
 
         $this->assertEquals(
             'ACTIVE',
@@ -534,8 +422,8 @@ class DefaultDataStoreTest extends TestCase
         );
 
 
-        $user = new \Okta\Users\User();
-        $user = $user->get('php@okta.com');
+        $user = new \Okta\User\User();
+        $user = $user->read('php@okta.com');
 
         $this->assertFalse($cacheManager->pool()->hasItem($key));
         $this->assertTrue($cacheManager->pool()->hasItem($key2));
@@ -548,13 +436,15 @@ class DefaultDataStoreTest extends TestCase
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
         $dataStore->setAcceptHeader('test/header');
 
-        $dataStore->getResource(
-            '123',
-            \Okta\Users\User::class,
-            'users',
-            ['query'=>['limit'=>1]]
-
+        $uri = $dataStore->buildUri(
+            "/api/v1/users/123"
         );
+
+        $response = $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
 
         $request = $httpClient->getRequests();
 
@@ -565,24 +455,34 @@ class DefaultDataStoreTest extends TestCase
     }
 
     /** @test */
-    public function a_call_can_set_content_type_header() {
+    public function a_call_can_set_content_type_and_accept_headers() {
         $httpClient = $this->createNewHttpClient();
 
         $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
-        $dataStore->setContentTypeHeader('test/contentTypeHeader');
 
-        $uri = "/api/v1/apps";
         $uri = $dataStore->buildUri(
-            $dataStore->getOrganizationUrl() . $uri
+            "/api/v1/apps"
         );
 
-        $dataStore->executeRequest('POST', $uri, "test");
+        $response = $dataStore
+            ->setUri($uri)
+            ->setRequestMethod('GET')
+            ->setContentTypeHeader('test/contentTypeHeader')
+            ->setAcceptHeader('test/acceptHeader')
+            ->setRequestBody("test")
+            ->setQueryParams(['limit'=>1])
+            ->executeRequest();
 
         $request = $httpClient->getRequests();
 
         $this->assertEquals(
             'test/contentTypeHeader',
             $request[0]->getHeader('Content-Type')[0]
+        );
+
+        $this->assertEquals(
+            'test/acceptHeader',
+            $request[0]->getHeader('Accept')[0]
         );
     }
 

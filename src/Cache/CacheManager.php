@@ -95,33 +95,14 @@ abstract class CacheManager
     }
 
     /**
-     * Delete item from cache. This will also delete all linked items from cache as well.
+     * Delete item from cache.
      *
      * @param UriInterface     $uri
-     * @param \stdClass $resource
      * @return void
      */
-    public function delete(UriInterface $uri, \stdClass $resource)
+    public function delete(UriInterface $uri)
     {
         $this->cachePool->deleteItem($this->createCacheKey($uri));
 
-        if (!property_exists($resource, '_links')) {
-            return;
-        }
-
-        $links = $resource->_links;
-
-        if ($links) {
-            foreach ($links as $link) {
-                if (is_object($link) && property_exists($link, 'href')) {
-                    $uri = Client::getInstance()
-                        ->getDataStore()
-                        ->getUriFactory()
-                        ->createUri($link->href);
-                }
-
-                $this->cachePool->deleteItem($this->createCacheKey($uri));
-            }
-        }
     }
 }

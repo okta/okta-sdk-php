@@ -25,6 +25,7 @@ class ProtocolRelayState extends \Okta\Resource\AbstractResource
 {
     const FORMAT = 'format';
 
+
     /**
      * Set the Format.
      *
@@ -44,15 +45,15 @@ class ProtocolRelayState extends \Okta\Resource\AbstractResource
     /**
      * Get the Format.
      *
-     * @param mixed $format The format to set.
      * @return \Okta\IdentityProvider\ProtocolRelayStateFormat
      */
     function getFormat() : \Okta\IdentityProvider\ProtocolRelayStateFormat
     {
-        return $this->getProperty(
-            self::FORMAT
+        return $this->getEnumProperty(
+            self::FORMAT,
+            \Okta\IdentityProvider\ProtocolRelayStateFormat::class,
         );
     }
-    
+
 
 }

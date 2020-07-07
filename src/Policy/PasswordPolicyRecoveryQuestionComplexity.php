@@ -25,6 +25,7 @@ class PasswordPolicyRecoveryQuestionComplexity extends \Okta\Resource\AbstractRe
 {
     const MIN_LENGTH = 'minLength';
 
+
     /**
      * Get the MinLength.
      *
@@ -34,7 +35,7 @@ class PasswordPolicyRecoveryQuestionComplexity extends \Okta\Resource\AbstractRe
     function getMinLength() : int
     {
         return $this->getProperty(
-            self::MIN_LENGTH
+            self::MIN_LENGTH,
         );
     }
     

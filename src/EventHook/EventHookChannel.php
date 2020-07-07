@@ -27,6 +27,7 @@ class EventHookChannel extends \Okta\Resource\AbstractResource
     const CONFIG = 'config';
     const VERSION = 'version';
 
+
     /**
      * Set the Type.
      *
@@ -84,7 +85,7 @@ class EventHookChannel extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -112,7 +113,7 @@ class EventHookChannel extends \Okta\Resource\AbstractResource
     function getVersion() : string
     {
         return $this->getProperty(
-            self::VERSION
+            self::VERSION,
         );
     }
     

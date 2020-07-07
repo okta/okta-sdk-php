@@ -29,6 +29,7 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     const SALT_ORDER = 'saltOrder';
     const WORKER_FACTOR = 'workerFactor';
 
+
     /**
      * Set the Salt.
      *
@@ -118,7 +119,7 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     function getSalt() : string
     {
         return $this->getProperty(
-            self::SALT
+            self::SALT,
         );
     }
     
@@ -131,23 +132,23 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     
     /**
      * Get the Algorithm.
      *
-     * @param mixed $algorithm The algorithm to set.
      * @return \Okta\User\PasswordCredentialHashAlgorithm
      */
     function getAlgorithm() : \Okta\User\PasswordCredentialHashAlgorithm
     {
-        return $this->getProperty(
-            self::ALGORITHM
+        return $this->getEnumProperty(
+            self::ALGORITHM,
+            \Okta\User\PasswordCredentialHashAlgorithm::class,
         );
     }
-    
+
     /**
      * Get the SaltOrder.
      *
@@ -157,7 +158,7 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     function getSaltOrder() : string
     {
         return $this->getProperty(
-            self::SALT_ORDER
+            self::SALT_ORDER,
         );
     }
     
@@ -170,7 +171,7 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     function getWorkerFactor() : int
     {
         return $this->getProperty(
-            self::WORKER_FACTOR
+            self::WORKER_FACTOR,
         );
     }
     

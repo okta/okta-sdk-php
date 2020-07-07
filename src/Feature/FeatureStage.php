@@ -26,6 +26,7 @@ class FeatureStage extends \Okta\Resource\AbstractResource
     const STATE = 'state';
     const VALUE = 'value';
 
+
     /**
      * Set the State.
      *
@@ -61,28 +62,28 @@ class FeatureStage extends \Okta\Resource\AbstractResource
     /**
      * Get the State.
      *
-     * @param mixed $state The state to set.
      * @return \Okta\Feature\FeatureStageState
      */
     function getState() : \Okta\Feature\FeatureStageState
     {
-        return $this->getProperty(
-            self::STATE
+        return $this->getEnumProperty(
+            self::STATE,
+            \Okta\Feature\FeatureStageState::class,
         );
     }
-    
+
     /**
      * Get the Value.
      *
-     * @param mixed $value The value to set.
      * @return \Okta\Feature\FeatureStageValue
      */
     function getValue() : \Okta\Feature\FeatureStageValue
     {
-        return $this->getProperty(
-            self::VALUE
+        return $this->getEnumProperty(
+            self::VALUE,
+            \Okta\Feature\FeatureStageValue::class,
         );
     }
-    
+
 
 }

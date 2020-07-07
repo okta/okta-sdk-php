@@ -25,6 +25,7 @@ class SamlApplicationSettings extends \Okta\Application\ApplicationSettings
 {
     const SIGN_ON = 'signOn';
 
+
     /**
      * Set the SignOn.
      *

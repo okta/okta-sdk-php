@@ -23,6 +23,13 @@ namespace Okta\UserFactor;
 
 class FactorStatus extends \Okta\Utilities\Enum
 {
+    const PENDING_ACTIVATION = 'PENDING_ACTIVATION';
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
+    const NOT_SETUP = 'NOT_SETUP';
+    const ENROLLED = 'ENROLLED';
+    const DISABLED = 'DISABLED';
+    const EXPIRED = 'EXPIRED';
 
 
 }

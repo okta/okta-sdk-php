@@ -33,6 +33,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
     const VERSION = 'version';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Name.
      *
@@ -122,7 +123,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -135,23 +136,23 @@ class InlineHook extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\InlineHook\InlineHookType
      */
     function getType() : \Okta\InlineHook\InlineHookType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\InlineHook\InlineHookType::class,
         );
     }
-    
+
     /**
      * Get the Links.
      *
@@ -161,23 +162,23 @@ class InlineHook extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\InlineHook\InlineHookStatus
      */
     function getStatus() : \Okta\InlineHook\InlineHookStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\InlineHook\InlineHookStatus::class,
         );
     }
-    
+
     /**
      * Get the Channel.
      *
@@ -217,7 +218,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
     function getVersion() : string
     {
         return $this->getProperty(
-            self::VERSION
+            self::VERSION,
         );
     }
     
@@ -330,7 +331,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
     /**
      * Executes the Inline Hook matching the provided inlineHookId using the request body as the input. This will send the provided data through the Channel and return a response if it matches the correct data contract. This execution endpoint should only be used for testing purposes.
      */
-    function execute() : \Okta\InlineHook\InlineHookResponse 
+    function execute(\Okta\InlineHook\InlineHookPayload $payloadData) : \Okta\InlineHook\InlineHookResponse 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/inlineHooks/".$this->id."/execute"
@@ -339,7 +340,7 @@ class InlineHook extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($payloadData)
                 ->executeRequest();
         return new \Okta\InlineHook\InlineHookResponse(null, $body);
     }

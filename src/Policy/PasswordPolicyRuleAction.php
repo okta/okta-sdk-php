@@ -25,6 +25,7 @@ class PasswordPolicyRuleAction extends \Okta\Resource\AbstractResource
 {
     const ACCESS = 'access';
 
+
     /**
      * Set the Access.
      *
@@ -50,7 +51,7 @@ class PasswordPolicyRuleAction extends \Okta\Resource\AbstractResource
     function getAccess() : string
     {
         return $this->getProperty(
-            self::ACCESS
+            self::ACCESS,
         );
     }
     

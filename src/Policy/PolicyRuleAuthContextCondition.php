@@ -25,6 +25,7 @@ class PolicyRuleAuthContextCondition extends \Okta\Resource\AbstractResource
 {
     const AUTH_TYPE = 'authType';
 
+
     /**
      * Set the AuthType.
      *
@@ -50,7 +51,7 @@ class PolicyRuleAuthContextCondition extends \Okta\Resource\AbstractResource
     function getAuthType() : string
     {
         return $this->getProperty(
-            self::AUTH_TYPE
+            self::AUTH_TYPE,
         );
     }
     

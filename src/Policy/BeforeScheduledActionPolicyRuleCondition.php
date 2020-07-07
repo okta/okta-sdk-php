@@ -26,6 +26,7 @@ class BeforeScheduledActionPolicyRuleCondition extends \Okta\Resource\AbstractRe
     const DURATION = 'duration';
     const LIFECYCLE_ACTION = 'lifecycleAction';
 
+
     /**
      * Set the Duration.
      *

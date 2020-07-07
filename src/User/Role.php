@@ -34,6 +34,7 @@ class Role extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const ASSIGNMENT_TYPE = 'assignmentType';
 
+
     /**
      * Set the Type.
      *
@@ -91,23 +92,23 @@ class Role extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Role\RoleType
      */
     function getType() : \Okta\Role\RoleType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Role\RoleType::class,
         );
     }
-    
+
     /**
      * Get the Label.
      *
@@ -117,7 +118,7 @@ class Role extends \Okta\Resource\AbstractResource
     function getLabel() : string
     {
         return $this->getProperty(
-            self::LABEL
+            self::LABEL,
         );
     }
     
@@ -130,23 +131,23 @@ class Role extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\User\RoleStatus
      */
     function getStatus() : \Okta\User\RoleStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\User\RoleStatus::class,
         );
     }
-    
+
     /**
      * Get the Created.
      *
@@ -171,7 +172,7 @@ class Role extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -184,7 +185,7 @@ class Role extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     
@@ -206,16 +207,16 @@ class Role extends \Okta\Resource\AbstractResource
     /**
      * Get the AssignmentType.
      *
-     * @param mixed $assignmentType The assignmentType to set.
      * @return \Okta\Role\RoleAssignmentType
      */
     function getAssignmentType() : \Okta\Role\RoleAssignmentType
     {
-        return $this->getProperty(
-            self::ASSIGNMENT_TYPE
+        return $this->getEnumProperty(
+            self::ASSIGNMENT_TYPE,
+            \Okta\Role\RoleAssignmentType::class,
         );
     }
-    
+
     /**
      * 
      */

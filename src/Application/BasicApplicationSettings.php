@@ -25,36 +25,6 @@ class BasicApplicationSettings extends \Okta\Application\ApplicationSettings
 {
     const APP = 'app';
 
-    /**
-     * Set the App.
-     *
-     * @param mixed $app The app to set.
-     * @return self
-     */
-    function setApp(\Okta\Application\BasicApplicationSettingsApplication $app) : BasicApplicationSettings
-    {
-        $this->setResourceProperty(
-            self::APP,
-            $app
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the App.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\BasicApplicationSettingsApplication
-     */
-    function getApp(array $options = []) : \Okta\Application\BasicApplicationSettingsApplication
-    {
-        return $this->getResourceProperty(
-            self::APP,
-            \Okta\Application\BasicApplicationSettingsApplication::class,
-            $options
-        );
-    }
 
 
 }

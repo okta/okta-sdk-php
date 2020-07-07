@@ -25,36 +25,13 @@ class BrowserPluginApplication extends \Okta\Application\Application
 {
     const CREDENTIALS = 'credentials';
 
-    /**
-     * Set the Credentials.
-     *
-     * @param mixed $credentials The credentials to set.
-     * @return self
-     */
-    function setCredentials(\Okta\Application\SchemeApplicationCredentials $credentials) : BrowserPluginApplication
-    {
-        $this->setResourceProperty(
-            self::CREDENTIALS,
-            $credentials
-        );
-    
-        return $this;
-    }
+    protected $requiresResolution = true;
+    protected $resolutionPropertyName = "name";
+    protected $resolutionMapping = [
+        "template_swa" => \Okta\Application\SwaApplication::class,
+        "template_swa3field" => \Okta\Application\SwaThreeFieldApplication::class,
+    ];
 
-    /**
-     * Get the Credentials.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\SchemeApplicationCredentials
-     */
-    function getCredentials(array $options = []) : \Okta\Application\SchemeApplicationCredentials
-    {
-        return $this->getResourceProperty(
-            self::CREDENTIALS,
-            \Okta\Application\SchemeApplicationCredentials::class,
-            $options
-        );
-    }
 
 
 }

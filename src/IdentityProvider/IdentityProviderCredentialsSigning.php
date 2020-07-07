@@ -25,6 +25,7 @@ class IdentityProviderCredentialsSigning extends \Okta\Resource\AbstractResource
 {
     const KID = 'kid';
 
+
     /**
      * Set the Kid.
      *
@@ -50,7 +51,7 @@ class IdentityProviderCredentialsSigning extends \Okta\Resource\AbstractResource
     function getKid() : string
     {
         return $this->getProperty(
-            self::KID
+            self::KID,
         );
     }
     

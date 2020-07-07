@@ -25,6 +25,8 @@ class PasswordPolicyRecoveryEmailRecoveryToken extends \Okta\Resource\AbstractRe
 {
     const TOKEN_LIFETIME_MINUTES = 'tokenLifetimeMinutes';
 
+    private $tokenLifetimeMinutes = '10080';
+
     /**
      * Set the TokenLifetimeMinutes.
      *
@@ -50,7 +52,7 @@ class PasswordPolicyRecoveryEmailRecoveryToken extends \Okta\Resource\AbstractRe
     function getTokenLifetimeMinutes() : int
     {
         return $this->getProperty(
-            self::TOKEN_LIFETIME_MINUTES
+            self::TOKEN_LIFETIME_MINUTES,
         );
     }
     

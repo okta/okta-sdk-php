@@ -25,36 +25,6 @@ class SwaApplicationSettings extends \Okta\Application\ApplicationSettings
 {
     const APP = 'app';
 
-    /**
-     * Set the App.
-     *
-     * @param mixed $app The app to set.
-     * @return self
-     */
-    function setApp(\Okta\Application\SwaApplicationSettingsApplication $app) : SwaApplicationSettings
-    {
-        $this->setResourceProperty(
-            self::APP,
-            $app
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the App.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\SwaApplicationSettingsApplication
-     */
-    function getApp(array $options = []) : \Okta\Application\SwaApplicationSettingsApplication
-    {
-        return $this->getResourceProperty(
-            self::APP,
-            \Okta\Application\SwaApplicationSettingsApplication::class,
-            $options
-        );
-    }
 
 
 }

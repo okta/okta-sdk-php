@@ -55,6 +55,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     const HONORIFIC_SUFFIX = 'honorificSuffix';
     const PREFERRED_LANGUAGE = 'preferredLanguage';
 
+
     /**
      * Set the City.
      *
@@ -560,7 +561,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getCity() : string
     {
         return $this->getProperty(
-            self::CITY
+            self::CITY,
         );
     }
     
@@ -573,7 +574,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getEmail() : string
     {
         return $this->getProperty(
-            self::EMAIL
+            self::EMAIL,
         );
     }
     
@@ -586,7 +587,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getLogin() : string
     {
         return $this->getProperty(
-            self::LOGIN
+            self::LOGIN,
         );
     }
     
@@ -599,7 +600,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getState() : string
     {
         return $this->getProperty(
-            self::STATE
+            self::STATE,
         );
     }
     
@@ -612,7 +613,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getTitle() : string
     {
         return $this->getProperty(
-            self::TITLE
+            self::TITLE,
         );
     }
     
@@ -625,7 +626,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getLocale() : string
     {
         return $this->getProperty(
-            self::LOCALE
+            self::LOCALE,
         );
     }
     
@@ -638,7 +639,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getManager() : string
     {
         return $this->getProperty(
-            self::MANAGER
+            self::MANAGER,
         );
     }
     
@@ -651,7 +652,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getZipCode() : string
     {
         return $this->getProperty(
-            self::ZIP_CODE
+            self::ZIP_CODE,
         );
     }
     
@@ -664,7 +665,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getDivision() : string
     {
         return $this->getProperty(
-            self::DIVISION
+            self::DIVISION,
         );
     }
     
@@ -677,7 +678,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getLastName() : string
     {
         return $this->getProperty(
-            self::LAST_NAME
+            self::LAST_NAME,
         );
     }
     
@@ -690,7 +691,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getNickName() : string
     {
         return $this->getProperty(
-            self::NICK_NAME
+            self::NICK_NAME,
         );
     }
     
@@ -703,7 +704,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getTimezone() : string
     {
         return $this->getProperty(
-            self::TIMEZONE
+            self::TIMEZONE,
         );
     }
     
@@ -716,7 +717,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getUserType() : string
     {
         return $this->getProperty(
-            self::USER_TYPE
+            self::USER_TYPE,
         );
     }
     
@@ -729,7 +730,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getFirstName() : string
     {
         return $this->getProperty(
-            self::FIRST_NAME
+            self::FIRST_NAME,
         );
     }
     
@@ -742,7 +743,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getManagerId() : string
     {
         return $this->getProperty(
-            self::MANAGER_ID
+            self::MANAGER_ID,
         );
     }
     
@@ -755,7 +756,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getCostCenter() : string
     {
         return $this->getProperty(
-            self::COST_CENTER
+            self::COST_CENTER,
         );
     }
     
@@ -768,7 +769,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getDepartment() : string
     {
         return $this->getProperty(
-            self::DEPARTMENT
+            self::DEPARTMENT,
         );
     }
     
@@ -781,7 +782,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getMiddleName() : string
     {
         return $this->getProperty(
-            self::MIDDLE_NAME
+            self::MIDDLE_NAME,
         );
     }
     
@@ -794,7 +795,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getProfileUrl() : string
     {
         return $this->getProperty(
-            self::PROFILE_URL
+            self::PROFILE_URL,
         );
     }
     
@@ -807,7 +808,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getCountryCode() : string
     {
         return $this->getProperty(
-            self::COUNTRY_CODE
+            self::COUNTRY_CODE,
         );
     }
     
@@ -820,7 +821,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getDisplayName() : string
     {
         return $this->getProperty(
-            self::DISPLAY_NAME
+            self::DISPLAY_NAME,
         );
     }
     
@@ -833,7 +834,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getMobilePhone() : string
     {
         return $this->getProperty(
-            self::MOBILE_PHONE
+            self::MOBILE_PHONE,
         );
     }
     
@@ -846,7 +847,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getSecondEmail() : string
     {
         return $this->getProperty(
-            self::SECOND_EMAIL
+            self::SECOND_EMAIL,
         );
     }
     
@@ -859,7 +860,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getOrganization() : string
     {
         return $this->getProperty(
-            self::ORGANIZATION
+            self::ORGANIZATION,
         );
     }
     
@@ -872,7 +873,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getPrimaryPhone() : string
     {
         return $this->getProperty(
-            self::PRIMARY_PHONE
+            self::PRIMARY_PHONE,
         );
     }
     
@@ -885,7 +886,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getPostalAddress() : string
     {
         return $this->getProperty(
-            self::POSTAL_ADDRESS
+            self::POSTAL_ADDRESS,
         );
     }
     
@@ -898,7 +899,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getStreetAddress() : string
     {
         return $this->getProperty(
-            self::STREET_ADDRESS
+            self::STREET_ADDRESS,
         );
     }
     
@@ -911,7 +912,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getEmployeeNumber() : string
     {
         return $this->getProperty(
-            self::EMPLOYEE_NUMBER
+            self::EMPLOYEE_NUMBER,
         );
     }
     
@@ -924,7 +925,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getHonorificPrefix() : string
     {
         return $this->getProperty(
-            self::HONORIFIC_PREFIX
+            self::HONORIFIC_PREFIX,
         );
     }
     
@@ -937,7 +938,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getHonorificSuffix() : string
     {
         return $this->getProperty(
-            self::HONORIFIC_SUFFIX
+            self::HONORIFIC_SUFFIX,
         );
     }
     
@@ -950,7 +951,7 @@ class UserProfile extends \Okta\Resource\AbstractResource
     function getPreferredLanguage() : string
     {
         return $this->getProperty(
-            self::PREFERRED_LANGUAGE
+            self::PREFERRED_LANGUAGE,
         );
     }
     

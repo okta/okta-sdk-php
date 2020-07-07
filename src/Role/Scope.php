@@ -26,6 +26,7 @@ class Scope extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const STRING_VALUE = 'stringValue';
 
+
     /**
      * Set the Type.
      *
@@ -61,16 +62,16 @@ class Scope extends \Okta\Resource\AbstractResource
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Role\ScopeType
      */
     function getType() : \Okta\Role\ScopeType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Role\ScopeType::class,
         );
     }
-    
+
     /**
      * Get the StringValue.
      *
@@ -80,7 +81,7 @@ class Scope extends \Okta\Resource\AbstractResource
     function getStringValue() : string
     {
         return $this->getProperty(
-            self::STRING_VALUE
+            self::STRING_VALUE,
         );
     }
     

@@ -33,6 +33,7 @@ class Group extends \Okta\Resource\AbstractResource
     const OBJECT_CLASS = 'objectClass';
     const LAST_MEMBERSHIP_UPDATED = 'lastMembershipUpdated';
 
+
     /**
      * Set the Profile.
      *
@@ -58,23 +59,23 @@ class Group extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\Group\GroupType
      */
     function getType() : \Okta\Group\GroupType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\Group\GroupType::class,
         );
     }
-    
+
     /**
      * Get the Links.
      *
@@ -84,7 +85,7 @@ class Group extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -127,7 +128,7 @@ class Group extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -155,7 +156,7 @@ class Group extends \Okta\Resource\AbstractResource
     function getObjectClass() : array
     {
         return $this->getProperty(
-            self::OBJECT_CLASS
+            self::OBJECT_CLASS,
         );
     }
     
@@ -253,7 +254,7 @@ class Group extends \Okta\Resource\AbstractResource
     /**
      * Assigns a Role to a Group
      */
-    function assignRole(array $queryParameters = []) : \Okta\User\Role 
+    function assignRole(\Okta\Role\AssignRoleRequest $assignRoleRequest, array $queryParameters = []) : \Okta\User\Role 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/groups/".$this->id."/roles"
@@ -262,7 +263,7 @@ class Group extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($assignRoleRequest)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\User\Role(null, $body);

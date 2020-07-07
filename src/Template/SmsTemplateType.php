@@ -23,6 +23,7 @@ namespace Okta\Template;
 
 class SmsTemplateType extends \Okta\Utilities\Enum
 {
+    const SMS_VERIFY_CODE = 'SMS_VERIFY_CODE';
 
 
 }

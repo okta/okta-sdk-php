@@ -27,6 +27,7 @@ class PasswordPolicyPasswordSettings extends \Okta\Resource\AbstractResource
     const LOCKOUT = 'lockout';
     const COMPLEXITY = 'complexity';
 
+
     /**
      * Set the Age.
      *

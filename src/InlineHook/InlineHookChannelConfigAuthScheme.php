@@ -27,6 +27,7 @@ class InlineHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const VALUE = 'value';
 
+
     /**
      * Set the Key.
      *
@@ -84,7 +85,7 @@ class InlineHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     function getKey() : string
     {
         return $this->getProperty(
-            self::KEY
+            self::KEY,
         );
     }
     
@@ -97,7 +98,7 @@ class InlineHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -110,7 +111,7 @@ class InlineHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

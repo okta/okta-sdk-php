@@ -26,6 +26,7 @@ class PasswordPolicyConditions extends \Okta\Resource\AbstractResource
     const PEOPLE = 'people';
     const AUTH_PROVIDER = 'authProvider';
 
+
     /**
      * Set the People.
      *

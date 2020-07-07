@@ -23,6 +23,8 @@ namespace Okta\Application;
 
 class OpenIdConnectApplicationIssuerMode extends \Okta\Utilities\Enum
 {
+    const CUSTOM_URL = 'CUSTOM_URL';
+    const ORG_URL = 'ORG_URL';
 
 
 }

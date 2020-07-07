@@ -23,6 +23,10 @@ namespace Okta\Application;
 
 class OpenIdConnectApplicationType extends \Okta\Utilities\Enum
 {
+    const WEB = 'web';
+    const NATIVE = 'native';
+    const BROWSER = 'browser';
+    const SERVICE = 'service';
 
 
 }

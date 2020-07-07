@@ -27,6 +27,7 @@ class PasswordPolicySettings extends \Okta\Resource\AbstractResource
     const RECOVERY = 'recovery';
     const DELEGATION = 'delegation';
 
+
     /**
      * Set the Password.
      *

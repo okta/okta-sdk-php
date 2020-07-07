@@ -36,6 +36,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     const EXPIRES_AT = 'expiresAt';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Issuer.
      *
@@ -141,7 +142,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -154,7 +155,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -167,7 +168,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getIssuer() : string
     {
         return $this->getProperty(
-            self::ISSUER
+            self::ISSUER,
         );
     }
     
@@ -180,7 +181,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getScopes() : array
     {
         return $this->getProperty(
-            self::SCOPES
+            self::SCOPES,
         );
     }
     
@@ -193,7 +194,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -206,7 +207,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getUserId() : string
     {
         return $this->getProperty(
-            self::USER_ID
+            self::USER_ID,
         );
     }
     
@@ -234,7 +235,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getClientId() : string
     {
         return $this->getProperty(
-            self::CLIENT_ID
+            self::CLIENT_ID,
         );
     }
     
@@ -247,7 +248,7 @@ class OAuth2RefreshToken extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     

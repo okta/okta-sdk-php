@@ -33,6 +33,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     const OPTIONAL_FIELD_2_VALUE = 'optionalField2Value';
     const OPTIONAL_FIELD_3_VALUE = 'optionalField3Value';
 
+
     /**
      * Set the Url.
      *
@@ -186,7 +187,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getUrl() : string
     {
         return $this->getProperty(
-            self::URL
+            self::URL,
         );
     }
     
@@ -199,7 +200,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getPasswordField() : string
     {
         return $this->getProperty(
-            self::PASSWORD_FIELD
+            self::PASSWORD_FIELD,
         );
     }
     
@@ -212,7 +213,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getUsernameField() : string
     {
         return $this->getProperty(
-            self::USERNAME_FIELD
+            self::USERNAME_FIELD,
         );
     }
     
@@ -225,7 +226,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField1() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_1
+            self::OPTIONAL_FIELD_1,
         );
     }
     
@@ -238,7 +239,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField2() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_2
+            self::OPTIONAL_FIELD_2,
         );
     }
     
@@ -251,7 +252,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField3() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_3
+            self::OPTIONAL_FIELD_3,
         );
     }
     
@@ -264,7 +265,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField1Value() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_1_VALUE
+            self::OPTIONAL_FIELD_1_VALUE,
         );
     }
     
@@ -277,7 +278,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField2Value() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_2_VALUE
+            self::OPTIONAL_FIELD_2_VALUE,
         );
     }
     
@@ -290,7 +291,7 @@ class SecurePasswordStoreApplicationSettingsApplication extends \Okta\Applicatio
     function getOptionalField3Value() : string
     {
         return $this->getProperty(
-            self::OPTIONAL_FIELD_3_VALUE
+            self::OPTIONAL_FIELD_3_VALUE,
         );
     }
     

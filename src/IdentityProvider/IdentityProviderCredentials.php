@@ -27,6 +27,7 @@ class IdentityProviderCredentials extends \Okta\Resource\AbstractResource
     const CLIENT = 'client';
     const SIGNING = 'signing';
 
+
     /**
      * Set the Trust.
      *

@@ -29,6 +29,7 @@ class PolicySubject extends \Okta\Resource\AbstractResource
     const MATCH_ATTRIBUTE = 'matchAttribute';
     const USER_NAME_TEMPLATE = 'userNameTemplate';
 
+
     /**
      * Set the Filter.
      *
@@ -118,7 +119,7 @@ class PolicySubject extends \Okta\Resource\AbstractResource
     function getFilter() : string
     {
         return $this->getProperty(
-            self::FILTER
+            self::FILTER,
         );
     }
     
@@ -131,23 +132,23 @@ class PolicySubject extends \Okta\Resource\AbstractResource
     function getFormat() : array
     {
         return $this->getProperty(
-            self::FORMAT
+            self::FORMAT,
         );
     }
     
     /**
      * Get the MatchType.
      *
-     * @param mixed $matchType The matchType to set.
      * @return \Okta\Policy\PolicySubjectMatchType
      */
     function getMatchType() : \Okta\Policy\PolicySubjectMatchType
     {
-        return $this->getProperty(
-            self::MATCH_TYPE
+        return $this->getEnumProperty(
+            self::MATCH_TYPE,
+            \Okta\Policy\PolicySubjectMatchType::class,
         );
     }
-    
+
     /**
      * Get the MatchAttribute.
      *
@@ -157,7 +158,7 @@ class PolicySubject extends \Okta\Resource\AbstractResource
     function getMatchAttribute() : string
     {
         return $this->getProperty(
-            self::MATCH_ATTRIBUTE
+            self::MATCH_ATTRIBUTE,
         );
     }
     

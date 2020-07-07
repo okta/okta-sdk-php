@@ -30,6 +30,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     const USER_AGENT = 'userAgent';
     const GEOGRAPHICAL_CONTEXT = 'geographicalContext';
 
+
     /**
      * Get the Id.
      *
@@ -39,7 +40,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -52,7 +53,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     function getZone() : string
     {
         return $this->getProperty(
-            self::ZONE
+            self::ZONE,
         );
     }
     
@@ -65,7 +66,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     function getDevice() : string
     {
         return $this->getProperty(
-            self::DEVICE
+            self::DEVICE,
         );
     }
     
@@ -78,7 +79,7 @@ class LogClient extends \Okta\Resource\AbstractResource
     function getIpAddress() : string
     {
         return $this->getProperty(
-            self::IP_ADDRESS
+            self::IP_ADDRESS,
         );
     }
     

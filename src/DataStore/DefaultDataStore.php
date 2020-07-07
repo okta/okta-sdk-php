@@ -320,8 +320,8 @@ class DefaultDataStore
             $headers['Content-Length'] = strlen($this->requestBody);
         }
 
-        if (key_exists('query', $this->queryParams)) {
-            $queryString = $this->getQueryString($this->queryParams['query']);
+        if (!empty($this->queryParams)) {
+            $queryString = $this->getQueryString($this->queryParams);
             $this->uri = $this->uri->withQuery($this->appendQueryValues($this->uri->getQuery(), $queryString));
         }
 
@@ -348,15 +348,14 @@ class DefaultDataStore
                     }
                     break;
                 case 'POST':
+                case 'PUT':
                     if (null !== $result) {
                         $cacheManager->delete($this->uri, $result);
                         $cacheManager->save($this->uri, $result);
                     }
                     break;
                 case 'DELETE':
-                    if (null !== $this->resource) {
-                        $cacheManager->delete($this->uri, $this->toStdClass($this->resource));
-                    }
+                    $cacheManager->delete($this->uri);
                     break;
             }
         }

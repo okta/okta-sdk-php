@@ -23,6 +23,8 @@ namespace Okta\Role;
 
 class RoleAssignmentType extends \Okta\Utilities\Enum
 {
+    const GROUP = 'GROUP';
+    const USER = 'USER';
 
 
 }

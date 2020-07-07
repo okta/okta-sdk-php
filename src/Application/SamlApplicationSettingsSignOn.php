@@ -45,6 +45,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
     const SUBJECT_NAME_ID_TEMPLATE = 'subjectNameIdTemplate';
 
+
     /**
      * Set the Audience.
      *
@@ -390,7 +391,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getAudience() : string
     {
         return $this->getProperty(
-            self::AUDIENCE
+            self::AUDIENCE,
         );
     }
     
@@ -403,7 +404,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSpIssuer() : string
     {
         return $this->getProperty(
-            self::SP_ISSUER
+            self::SP_ISSUER,
         );
     }
     
@@ -416,7 +417,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getIdpIssuer() : string
     {
         return $this->getProperty(
-            self::IDP_ISSUER
+            self::IDP_ISSUER,
         );
     }
     
@@ -429,7 +430,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getRecipient() : string
     {
         return $this->getProperty(
-            self::RECIPIENT
+            self::RECIPIENT,
         );
     }
     
@@ -442,7 +443,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSsoAcsUrl() : string
     {
         return $this->getProperty(
-            self::SSO_ACS_URL
+            self::SSO_ACS_URL,
         );
     }
     
@@ -455,7 +456,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getDestination() : string
     {
         return $this->getProperty(
-            self::DESTINATION
+            self::DESTINATION,
         );
     }
     
@@ -468,7 +469,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getResponseSigned() : bool
     {
         return $this->getProperty(
-            self::RESPONSE_SIGNED
+            self::RESPONSE_SIGNED,
         );
     }
     
@@ -481,7 +482,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getAssertionSigned() : bool
     {
         return $this->getProperty(
-            self::ASSERTION_SIGNED
+            self::ASSERTION_SIGNED,
         );
     }
     
@@ -494,7 +495,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getDigestAlgorithm() : string
     {
         return $this->getProperty(
-            self::DIGEST_ALGORITHM
+            self::DIGEST_ALGORITHM,
         );
     }
     
@@ -507,7 +508,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getHonorForceAuthn() : bool
     {
         return $this->getProperty(
-            self::HONOR_FORCE_AUTHN
+            self::HONOR_FORCE_AUTHN,
         );
     }
     
@@ -520,7 +521,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getAudienceOverride() : string
     {
         return $this->getProperty(
-            self::AUDIENCE_OVERRIDE
+            self::AUDIENCE_OVERRIDE,
         );
     }
     
@@ -533,7 +534,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getDefaultRelayState() : string
     {
         return $this->getProperty(
-            self::DEFAULT_RELAY_STATE
+            self::DEFAULT_RELAY_STATE,
         );
     }
     
@@ -546,7 +547,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getRecipientOverride() : string
     {
         return $this->getProperty(
-            self::RECIPIENT_OVERRIDE
+            self::RECIPIENT_OVERRIDE,
         );
     }
     
@@ -559,7 +560,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getRequestCompressed() : bool
     {
         return $this->getProperty(
-            self::REQUEST_COMPRESSED
+            self::REQUEST_COMPRESSED,
         );
     }
     
@@ -572,7 +573,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSsoAcsUrlOverride() : string
     {
         return $this->getProperty(
-            self::SSO_ACS_URL_OVERRIDE
+            self::SSO_ACS_URL_OVERRIDE,
         );
     }
     
@@ -585,7 +586,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSignatureAlgorithm() : string
     {
         return $this->getProperty(
-            self::SIGNATURE_ALGORITHM
+            self::SIGNATURE_ALGORITHM,
         );
     }
     
@@ -598,7 +599,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getAttributeStatements() : array
     {
         return $this->getProperty(
-            self::ATTRIBUTE_STATEMENTS
+            self::ATTRIBUTE_STATEMENTS,
         );
     }
     
@@ -611,7 +612,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getDestinationOverride() : string
     {
         return $this->getProperty(
-            self::DESTINATION_OVERRIDE
+            self::DESTINATION_OVERRIDE,
         );
     }
     
@@ -624,7 +625,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSubjectNameIdFormat() : string
     {
         return $this->getProperty(
-            self::SUBJECT_NAME_ID_FORMAT
+            self::SUBJECT_NAME_ID_FORMAT,
         );
     }
     
@@ -637,7 +638,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getAuthnContextClassRef() : string
     {
         return $this->getProperty(
-            self::AUTHN_CONTEXT_CLASS_REF
+            self::AUTHN_CONTEXT_CLASS_REF,
         );
     }
     
@@ -650,7 +651,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     function getSubjectNameIdTemplate() : string
     {
         return $this->getProperty(
-            self::SUBJECT_NAME_ID_TEMPLATE
+            self::SUBJECT_NAME_ID_TEMPLATE,
         );
     }
     

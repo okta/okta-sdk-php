@@ -32,6 +32,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     const CONDITIONS = 'conditions';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the Name.
      *
@@ -105,7 +106,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -118,7 +119,7 @@ class GroupRule extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -131,23 +132,23 @@ class GroupRule extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\GroupRule\GroupRuleStatus
      */
     function getStatus() : \Okta\GroupRule\GroupRuleStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\GroupRule\GroupRuleStatus::class,
         );
     }
-    
+
     /**
      * Get the Actions.
      *

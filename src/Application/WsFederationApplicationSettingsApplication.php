@@ -36,6 +36,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     const AUDIENCE_RESTRICTION = 'audienceRestriction';
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
 
+
     /**
      * Set the Realm.
      *
@@ -237,7 +238,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getRealm() : string
     {
         return $this->getProperty(
-            self::REALM
+            self::REALM,
         );
     }
     
@@ -250,7 +251,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getSiteUrl() : string
     {
         return $this->getProperty(
-            self::SITE_URL
+            self::SITE_URL,
         );
     }
     
@@ -263,7 +264,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getGroupName() : string
     {
         return $this->getProperty(
-            self::GROUP_NAME
+            self::GROUP_NAME,
         );
     }
     
@@ -276,7 +277,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getWReplyUrl() : string
     {
         return $this->getProperty(
-            self::W_REPLY_URL
+            self::W_REPLY_URL,
         );
     }
     
@@ -289,7 +290,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getGroupFilter() : string
     {
         return $this->getProperty(
-            self::GROUP_FILTER
+            self::GROUP_FILTER,
         );
     }
     
@@ -302,7 +303,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getNameIdFormat() : string
     {
         return $this->getProperty(
-            self::NAME_ID_FORMAT
+            self::NAME_ID_FORMAT,
         );
     }
     
@@ -315,7 +316,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getWReplyOverride() : bool
     {
         return $this->getProperty(
-            self::W_REPLY_OVERRIDE
+            self::W_REPLY_OVERRIDE,
         );
     }
     
@@ -328,7 +329,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getGroupValueFormat() : string
     {
         return $this->getProperty(
-            self::GROUP_VALUE_FORMAT
+            self::GROUP_VALUE_FORMAT,
         );
     }
     
@@ -341,7 +342,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getUsernameAttribute() : string
     {
         return $this->getProperty(
-            self::USERNAME_ATTRIBUTE
+            self::USERNAME_ATTRIBUTE,
         );
     }
     
@@ -354,7 +355,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getAttributeStatements() : string
     {
         return $this->getProperty(
-            self::ATTRIBUTE_STATEMENTS
+            self::ATTRIBUTE_STATEMENTS,
         );
     }
     
@@ -367,7 +368,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getAudienceRestriction() : string
     {
         return $this->getProperty(
-            self::AUDIENCE_RESTRICTION
+            self::AUDIENCE_RESTRICTION,
         );
     }
     
@@ -380,7 +381,7 @@ class WsFederationApplicationSettingsApplication extends \Okta\Application\Appli
     function getAuthnContextClassRef() : string
     {
         return $this->getProperty(
-            self::AUTHN_CONTEXT_CLASS_REF
+            self::AUTHN_CONTEXT_CLASS_REF,
         );
     }
     

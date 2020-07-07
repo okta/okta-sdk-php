@@ -25,36 +25,6 @@ class BookmarkApplicationSettings extends \Okta\Application\ApplicationSettings
 {
     const APP = 'app';
 
-    /**
-     * Set the App.
-     *
-     * @param mixed $app The app to set.
-     * @return self
-     */
-    function setApp(\Okta\Application\BookmarkApplicationSettingsApplication $app) : BookmarkApplicationSettings
-    {
-        $this->setResourceProperty(
-            self::APP,
-            $app
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the App.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\BookmarkApplicationSettingsApplication
-     */
-    function getApp(array $options = []) : \Okta\Application\BookmarkApplicationSettingsApplication
-    {
-        return $this->getResourceProperty(
-            self::APP,
-            \Okta\Application\BookmarkApplicationSettingsApplication::class,
-            $options
-        );
-    }
 
 
 }

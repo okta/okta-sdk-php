@@ -27,6 +27,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
     const ERROR_REDIRECT_URL = 'errorRedirectUrl';
     const LOGIN_REDIRECT_URL = 'loginRedirectUrl';
 
+
     /**
      * Set the SelfService.
      *
@@ -84,7 +85,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
     function getSelfService() : bool
     {
         return $this->getProperty(
-            self::SELF_SERVICE
+            self::SELF_SERVICE,
         );
     }
     
@@ -97,7 +98,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
     function getErrorRedirectUrl() : string
     {
         return $this->getProperty(
-            self::ERROR_REDIRECT_URL
+            self::ERROR_REDIRECT_URL,
         );
     }
     
@@ -110,7 +111,7 @@ class ApplicationAccessibility extends \Okta\Resource\AbstractResource
     function getLoginRedirectUrl() : string
     {
         return $this->getProperty(
-            self::LOGIN_REDIRECT_URL
+            self::LOGIN_REDIRECT_URL,
         );
     }
     

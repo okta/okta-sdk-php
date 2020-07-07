@@ -26,6 +26,7 @@ class LogGeolocation extends \Okta\Resource\AbstractResource
     const LAT = 'lat';
     const LON = 'lon';
 
+
     /**
      * Get the Lat.
      *
@@ -35,7 +36,7 @@ class LogGeolocation extends \Okta\Resource\AbstractResource
     function getLat() : double
     {
         return $this->getProperty(
-            self::LAT
+            self::LAT,
         );
     }
     
@@ -48,7 +49,7 @@ class LogGeolocation extends \Okta\Resource\AbstractResource
     function getLon() : double
     {
         return $this->getProperty(
-            self::LON
+            self::LON,
         );
     }
     

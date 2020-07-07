@@ -26,6 +26,7 @@ class ProtocolAlgorithmTypeSignature extends \Okta\Resource\AbstractResource
     const SCOPE = 'scope';
     const ALGORITHM = 'algorithm';
 
+
     /**
      * Set the Scope.
      *
@@ -67,7 +68,7 @@ class ProtocolAlgorithmTypeSignature extends \Okta\Resource\AbstractResource
     function getScope() : string
     {
         return $this->getProperty(
-            self::SCOPE
+            self::SCOPE,
         );
     }
     
@@ -80,7 +81,7 @@ class ProtocolAlgorithmTypeSignature extends \Okta\Resource\AbstractResource
     function getAlgorithm() : string
     {
         return $this->getProperty(
-            self::ALGORITHM
+            self::ALGORITHM,
         );
     }
     

@@ -34,6 +34,7 @@ class UserType extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const LAST_UPDATED_BY = 'lastUpdatedBy';
 
+
     /**
      * Set the Id.
      *
@@ -107,7 +108,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -120,7 +121,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -133,7 +134,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -161,7 +162,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getDefault() : bool
     {
         return $this->getProperty(
-            self::DEFAULT
+            self::DEFAULT,
         );
     }
     
@@ -174,7 +175,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getCreatedBy() : string
     {
         return $this->getProperty(
-            self::CREATED_BY
+            self::CREATED_BY,
         );
     }
     
@@ -187,7 +188,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     
@@ -200,7 +201,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getDisplayName() : string
     {
         return $this->getProperty(
-            self::DISPLAY_NAME
+            self::DISPLAY_NAME,
         );
     }
     
@@ -228,7 +229,7 @@ class UserType extends \Okta\Resource\AbstractResource
     function getLastUpdatedBy() : string
     {
         return $this->getProperty(
-            self::LAST_UPDATED_BY
+            self::LAST_UPDATED_BY,
         );
     }
     

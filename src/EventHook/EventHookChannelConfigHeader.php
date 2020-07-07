@@ -26,6 +26,7 @@ class EventHookChannelConfigHeader extends \Okta\Resource\AbstractResource
     const KEY = 'key';
     const VALUE = 'value';
 
+
     /**
      * Set the Key.
      *
@@ -67,7 +68,7 @@ class EventHookChannelConfigHeader extends \Okta\Resource\AbstractResource
     function getKey() : string
     {
         return $this->getProperty(
-            self::KEY
+            self::KEY,
         );
     }
     
@@ -80,7 +81,7 @@ class EventHookChannelConfigHeader extends \Okta\Resource\AbstractResource
     function getValue() : string
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

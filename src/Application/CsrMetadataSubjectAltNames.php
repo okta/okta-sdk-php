@@ -25,6 +25,7 @@ class CsrMetadataSubjectAltNames extends \Okta\Resource\AbstractResource
 {
     const DNS_NAMES = 'dnsNames';
 
+
     /**
      * Set the DnsNames.
      *
@@ -50,7 +51,7 @@ class CsrMetadataSubjectAltNames extends \Okta\Resource\AbstractResource
     function getDnsNames() : array
     {
         return $this->getProperty(
-            self::DNS_NAMES
+            self::DNS_NAMES,
         );
     }
     

@@ -26,6 +26,7 @@ class PasswordPolicyAuthenticationProviderCondition extends \Okta\Resource\Abstr
     const INCLUDE = 'include';
     const PROVIDER = 'provider';
 
+
     /**
      * Set the Include.
      *
@@ -67,7 +68,7 @@ class PasswordPolicyAuthenticationProviderCondition extends \Okta\Resource\Abstr
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     
@@ -80,7 +81,7 @@ class PasswordPolicyAuthenticationProviderCondition extends \Okta\Resource\Abstr
     function getProvider() : string
     {
         return $this->getProperty(
-            self::PROVIDER
+            self::PROVIDER,
         );
     }
     

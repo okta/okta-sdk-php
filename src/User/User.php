@@ -38,6 +38,7 @@ class User extends \Okta\Resource\AbstractResource
     const PASSWORD_CHANGED = 'passwordChanged';
     const TRANSITIONING_TO_STATUS = 'transitioningToStatus';
 
+
     /**
      * Set the Type.
      *
@@ -95,7 +96,7 @@ class User extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -123,23 +124,23 @@ class User extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return \Okta\User\UserStatus
      */
     function getStatus() : \Okta\User\UserStatus
     {
-        return $this->getProperty(
-            self::STATUS
+        return $this->getEnumProperty(
+            self::STATUS,
+            \Okta\User\UserStatus::class,
         );
     }
-    
+
     /**
      * Get the Created.
      *
@@ -179,7 +180,7 @@ class User extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -276,20 +277,20 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Get the TransitioningToStatus.
      *
-     * @param mixed $transitioningToStatus The transitioningToStatus to set.
      * @return \Okta\User\UserStatus
      */
     function getTransitioningToStatus() : \Okta\User\UserStatus
     {
-        return $this->getProperty(
-            self::TRANSITIONING_TO_STATUS
+        return $this->getEnumProperty(
+            self::TRANSITIONING_TO_STATUS,
+            \Okta\User\UserStatus::class,
         );
     }
-    
+
     /**
      * Creates a new user in your Okta organization with or without credentials.
      */
-    function create(array $queryParameters = []) : \Okta\User\User 
+    function create(\Okta\User\CreateUserRequest $body, array $queryParameters = []) : \Okta\User\User 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users"
@@ -298,7 +299,7 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($body)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\User\User(null, $body);
@@ -368,7 +369,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Changes a user's password by validating the user's current password. This operation can only be performed on users in `STAGED`, `ACTIVE`, `PASSWORD_EXPIRED`, or `RECOVERY` status that have a valid password credential
      */
-    function changePassword(array $queryParameters = []) : \Okta\User\UserCredentials 
+    function changePassword(\Okta\User\ChangePasswordRequest $changePasswordRequest, array $queryParameters = []) : \Okta\User\UserCredentials 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/".$this->id."/credentials/change_password"
@@ -377,7 +378,7 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($changePasswordRequest)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\User\UserCredentials(null, $body);
@@ -385,7 +386,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Changes a user's recovery question & answer credential by validating the user's current password.  This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** `status` that have a valid password credential
      */
-    function changeRecoveryQuestion() : \Okta\User\UserCredentials 
+    function changeRecoveryQuestion(\Okta\User\UserCredentials $userCredentials) : \Okta\User\UserCredentials 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/".$this->id."/credentials/change_recovery_question"
@@ -394,14 +395,14 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($userCredentials)
                 ->executeRequest();
         return new \Okta\User\UserCredentials(null, $body);
     }
     /**
      * Sets a new password for a user by validating the user's answer to their current recovery question
      */
-    function forgotPasswordSetNewPassword(array $queryParameters = []) : \Okta\User\ForgotPasswordResponse 
+    function forgotPasswordSetNewPassword(\Okta\User\UserCredentials $user, array $queryParameters = []) : \Okta\User\ForgotPasswordResponse 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/".$this->id."/credentials/forgot_password"
@@ -410,7 +411,7 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($user)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\User\ForgotPasswordResponse(null, $body);
@@ -434,7 +435,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Assigns a role to a user.
      */
-    function assignRole(array $queryParameters = []) : \Okta\User\Role 
+    function assignRole(\Okta\Role\AssignRoleRequest $assignRoleRequest, array $queryParameters = []) : \Okta\User\Role 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/".$this->id."/roles"
@@ -443,7 +444,7 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($assignRoleRequest)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\User\Role(null, $body);
@@ -864,7 +865,7 @@ class User extends \Okta\Resource\AbstractResource
     /**
      * Enrolls a user with a supported factor.
      */
-    function enrollFactor(array $queryParameters = []) : \Okta\UserFactor\UserFactor 
+    function enrollFactor(\Okta\UserFactor\UserFactor $body, array $queryParameters = []) : \Okta\UserFactor\UserFactor 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/".$this->id."/factors"
@@ -873,7 +874,7 @@ class User extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($body)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\UserFactor\UserFactor(null, $body);

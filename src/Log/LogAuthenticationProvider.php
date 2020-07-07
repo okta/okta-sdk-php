@@ -23,6 +23,12 @@ namespace Okta\Log;
 
 class LogAuthenticationProvider extends \Okta\Utilities\Enum
 {
+    const OKTA_AUTHENTICATION_PROVIDER = 'OKTA_AUTHENTICATION_PROVIDER';
+    const ACTIVE_DIRECTORY = 'ACTIVE_DIRECTORY';
+    const LDAP = 'LDAP';
+    const FEDERATION = 'FEDERATION';
+    const SOCIAL = 'SOCIAL';
+    const FACTOR_PROVIDER = 'FACTOR_PROVIDER';
 
 
 }

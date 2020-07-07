@@ -25,6 +25,7 @@ class JwkUse extends \Okta\Resource\AbstractResource
 {
     const USE = 'use';
 
+
     /**
      * Set the Use.
      *
@@ -50,7 +51,7 @@ class JwkUse extends \Okta\Resource\AbstractResource
     function getUse() : string
     {
         return $this->getProperty(
-            self::USE
+            self::USE,
         );
     }
     

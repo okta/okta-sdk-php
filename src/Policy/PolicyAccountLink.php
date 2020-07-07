@@ -26,6 +26,7 @@ class PolicyAccountLink extends \Okta\Resource\AbstractResource
     const ACTION = 'action';
     const FILTER = 'filter';
 
+
     /**
      * Set the Action.
      *
@@ -67,7 +68,7 @@ class PolicyAccountLink extends \Okta\Resource\AbstractResource
     function getAction() : string
     {
         return $this->getProperty(
-            self::ACTION
+            self::ACTION,
         );
     }
     

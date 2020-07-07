@@ -26,6 +26,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     const I_OS = 'iOS';
     const WEB = 'web';
 
+
     /**
      * Set the IOs.
      *
@@ -67,7 +68,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     function getIOs() : bool
     {
         return $this->getProperty(
-            self::I_OS
+            self::I_OS,
         );
     }
     
@@ -80,7 +81,7 @@ class ApplicationVisibilityHide extends \Okta\Resource\AbstractResource
     function getWeb() : bool
     {
         return $this->getProperty(
-            self::WEB
+            self::WEB,
         );
     }
     

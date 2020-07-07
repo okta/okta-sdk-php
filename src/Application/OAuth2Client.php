@@ -29,6 +29,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     const CLIENT_URI = 'client_uri';
     const CLIENT_NAME = 'client_name';
 
+
     /**
      * Get the Links.
      *
@@ -38,7 +39,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -51,7 +52,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     function getLogoUri() : string
     {
         return $this->getProperty(
-            self::LOGO_URI
+            self::LOGO_URI,
         );
     }
     
@@ -64,7 +65,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     function getClientId() : string
     {
         return $this->getProperty(
-            self::CLIENT_ID
+            self::CLIENT_ID,
         );
     }
     
@@ -77,7 +78,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     function getClientUri() : string
     {
         return $this->getProperty(
-            self::CLIENT_URI
+            self::CLIENT_URI,
         );
     }
     
@@ -90,7 +91,7 @@ class OAuth2Client extends \Okta\Resource\AbstractResource
     function getClientName() : string
     {
         return $this->getProperty(
-            self::CLIENT_NAME
+            self::CLIENT_NAME,
         );
     }
     

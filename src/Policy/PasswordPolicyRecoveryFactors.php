@@ -28,6 +28,7 @@ class PasswordPolicyRecoveryFactors extends \Okta\Resource\AbstractResource
     const OKTA_EMAIL = 'okta_email';
     const RECOVERY_QUESTION = 'recovery_question';
 
+
     /**
      * Set the OktaSms.
      *

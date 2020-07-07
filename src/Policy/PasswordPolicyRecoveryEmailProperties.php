@@ -25,6 +25,7 @@ class PasswordPolicyRecoveryEmailProperties extends \Okta\Resource\AbstractResou
 {
     const RECOVERY_TOKEN = 'recoveryToken';
 
+
     /**
      * Set the RecoveryToken.
      *

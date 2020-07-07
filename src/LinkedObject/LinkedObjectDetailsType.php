@@ -23,6 +23,7 @@ namespace Okta\LinkedObject;
 
 class LinkedObjectDetailsType extends \Okta\Utilities\Enum
 {
+    const USER = 'USER';
 
 
 }

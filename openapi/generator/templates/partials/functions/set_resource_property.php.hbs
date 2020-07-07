@@ -4,7 +4,7 @@
  * @param mixed ${{property.propertyName}} The {{property.propertyName}} to set.
  * @return self
  */
-function set{{pascalCase property.propertyName}}({{buildFullClassnameFromPropertyRef property}} ${{property.propertyName}}) : {{modelName}}
+function set{{pascalCase property.propertyName}}({{buildFullClassnameFromPropertyRef property.$ref}} ${{property.propertyName}}) : {{modelName}}
 {
     $this->setResourceProperty(
         self::{{upperSnakeCase property.propertyName}},

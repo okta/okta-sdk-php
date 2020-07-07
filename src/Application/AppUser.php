@@ -38,6 +38,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     const STATUS_CHANGED = 'statusChanged';
     const PASSWORD_CHANGED = 'passwordChanged';
 
+
     /**
      * Set the Id.
      *
@@ -111,7 +112,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -124,7 +125,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getScope() : string
     {
         return $this->getProperty(
-            self::SCOPE
+            self::SCOPE,
         );
     }
     
@@ -137,7 +138,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -150,7 +151,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -178,7 +179,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getProfile() : \stdClass
     {
         return $this->getProperty(
-            self::PROFILE
+            self::PROFILE,
         );
     }
     
@@ -206,7 +207,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getEmbedded() : \stdClass
     {
         return $this->getProperty(
-            self::EMBEDDED
+            self::EMBEDDED,
         );
     }
     
@@ -219,7 +220,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getSyncState() : string
     {
         return $this->getProperty(
-            self::SYNC_STATE
+            self::SYNC_STATE,
         );
     }
     
@@ -232,7 +233,7 @@ class AppUser extends \Okta\Resource\AbstractResource
     function getExternalId() : string
     {
         return $this->getProperty(
-            self::EXTERNAL_ID
+            self::EXTERNAL_ID,
         );
     }
     

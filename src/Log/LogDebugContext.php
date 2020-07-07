@@ -25,6 +25,7 @@ class LogDebugContext extends \Okta\Resource\AbstractResource
 {
     const DEBUG_DATA = 'debugData';
 
+
     /**
      * Get the DebugData.
      *
@@ -34,7 +35,7 @@ class LogDebugContext extends \Okta\Resource\AbstractResource
     function getDebugData() : \stdClass
     {
         return $this->getProperty(
-            self::DEBUG_DATA
+            self::DEBUG_DATA,
         );
     }
     

@@ -27,6 +27,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
     const APP_LINKS = 'appLinks';
     const AUTO_SUBMIT_TOOLBAR = 'autoSubmitToolbar';
 
+
     /**
      * Set the Hide.
      *
@@ -99,7 +100,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
     function getAppLinks() : \stdClass
     {
         return $this->getProperty(
-            self::APP_LINKS
+            self::APP_LINKS,
         );
     }
     
@@ -112,7 +113,7 @@ class ApplicationVisibility extends \Okta\Resource\AbstractResource
     function getAutoSubmitToolbar() : bool
     {
         return $this->getProperty(
-            self::AUTO_SUBMIT_TOOLBAR
+            self::AUTO_SUBMIT_TOOLBAR,
         );
     }
     

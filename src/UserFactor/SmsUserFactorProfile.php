@@ -25,6 +25,7 @@ class SmsUserFactorProfile extends \Okta\Resource\AbstractResource
 {
     const PHONE_NUMBER = 'phoneNumber';
 
+
     /**
      * Set the PhoneNumber.
      *
@@ -50,7 +51,7 @@ class SmsUserFactorProfile extends \Okta\Resource\AbstractResource
     function getPhoneNumber() : string
     {
         return $this->getProperty(
-            self::PHONE_NUMBER
+            self::PHONE_NUMBER,
         );
     }
     

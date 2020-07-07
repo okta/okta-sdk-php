@@ -26,6 +26,7 @@ class PolicyPeopleCondition extends \Okta\Resource\AbstractResource
     const USERS = 'users';
     const GROUPS = 'groups';
 
+
     /**
      * Set the Users.
      *

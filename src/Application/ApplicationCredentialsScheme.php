@@ -23,6 +23,11 @@ namespace Okta\Application;
 
 class ApplicationCredentialsScheme extends \Okta\Utilities\Enum
 {
+    const SHARED_USERNAME_AND_PASSWORD = 'SHARED_USERNAME_AND_PASSWORD';
+    const EXTERNAL_PASSWORD_SYNC = 'EXTERNAL_PASSWORD_SYNC';
+    const EDIT_USERNAME_AND_PASSWORD = 'EDIT_USERNAME_AND_PASSWORD';
+    const EDIT_PASSWORD_ONLY = 'EDIT_PASSWORD_ONLY';
+    const ADMIN_SETS_CREDENTIALS = 'ADMIN_SETS_CREDENTIALS';
 
 
 }

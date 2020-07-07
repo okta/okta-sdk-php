@@ -40,6 +40,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     const EXPIRES_AT = 'expiresAt';
     const LAST_UPDATED = 'lastUpdated';
 
+
     /**
      * Set the X5C.
      *
@@ -65,7 +66,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getE() : string
     {
         return $this->getProperty(
-            self::E
+            self::E,
         );
     }
     
@@ -78,7 +79,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getN() : string
     {
         return $this->getProperty(
-            self::N
+            self::N,
         );
     }
     
@@ -91,7 +92,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getAlg() : string
     {
         return $this->getProperty(
-            self::ALG
+            self::ALG,
         );
     }
     
@@ -104,7 +105,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getKid() : string
     {
         return $this->getProperty(
-            self::KID
+            self::KID,
         );
     }
     
@@ -117,7 +118,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getKty() : string
     {
         return $this->getProperty(
-            self::KTY
+            self::KTY,
         );
     }
     
@@ -130,7 +131,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getUse() : string
     {
         return $this->getProperty(
-            self::USE
+            self::USE,
         );
     }
     
@@ -143,7 +144,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getX5C() : array
     {
         return $this->getProperty(
-            self::X_5_C
+            self::X_5_C,
         );
     }
     
@@ -156,7 +157,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getX5T() : string
     {
         return $this->getProperty(
-            self::X_5_T
+            self::X_5_T,
         );
     }
     
@@ -169,7 +170,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getX5U() : string
     {
         return $this->getProperty(
-            self::X_5_U
+            self::X_5_U,
         );
     }
     
@@ -182,7 +183,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -195,7 +196,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -223,7 +224,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getKeyOps() : array
     {
         return $this->getProperty(
-            self::KEY_OPS
+            self::KEY_OPS,
         );
     }
     
@@ -236,7 +237,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
     function getX5TS256() : string
     {
         return $this->getProperty(
-            self::X_5_T_S_256
+            self::X_5_T_S_256,
         );
     }
     

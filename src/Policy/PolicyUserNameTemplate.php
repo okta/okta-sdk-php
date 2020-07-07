@@ -25,6 +25,7 @@ class PolicyUserNameTemplate extends \Okta\Resource\AbstractResource
 {
     const TEMPLATE = 'template';
 
+
     /**
      * Set the Template.
      *
@@ -50,7 +51,7 @@ class PolicyUserNameTemplate extends \Okta\Resource\AbstractResource
     function getTemplate() : string
     {
         return $this->getProperty(
-            self::TEMPLATE
+            self::TEMPLATE,
         );
     }
     

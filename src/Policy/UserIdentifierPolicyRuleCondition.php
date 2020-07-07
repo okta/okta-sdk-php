@@ -27,6 +27,7 @@ class UserIdentifierPolicyRuleCondition extends \Okta\Resource\AbstractResource
     const PATTERNS = 'patterns';
     const ATTRIBUTE = 'attribute';
 
+
     /**
      * Set the Type.
      *
@@ -84,7 +85,7 @@ class UserIdentifierPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -97,7 +98,7 @@ class UserIdentifierPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getPatterns() : array
     {
         return $this->getProperty(
-            self::PATTERNS
+            self::PATTERNS,
         );
     }
     
@@ -110,7 +111,7 @@ class UserIdentifierPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getAttribute() : string
     {
         return $this->getProperty(
-            self::ATTRIBUTE
+            self::ATTRIBUTE,
         );
     }
     

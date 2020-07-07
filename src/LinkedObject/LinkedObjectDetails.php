@@ -28,6 +28,7 @@ class LinkedObjectDetails extends \Okta\Resource\AbstractResource
     const TITLE = 'title';
     const DESCRIPTION = 'description';
 
+
     /**
      * Set the Name.
      *
@@ -101,23 +102,23 @@ class LinkedObjectDetails extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\LinkedObject\LinkedObjectDetailsType
      */
     function getType() : \Okta\LinkedObject\LinkedObjectDetailsType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\LinkedObject\LinkedObjectDetailsType::class,
         );
     }
-    
+
     /**
      * Get the Title.
      *
@@ -127,7 +128,7 @@ class LinkedObjectDetails extends \Okta\Resource\AbstractResource
     function getTitle() : string
     {
         return $this->getProperty(
-            self::TITLE
+            self::TITLE,
         );
     }
     
@@ -140,7 +141,7 @@ class LinkedObjectDetails extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     

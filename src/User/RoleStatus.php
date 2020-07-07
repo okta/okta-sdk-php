@@ -23,6 +23,8 @@ namespace Okta\User;
 
 class RoleStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
 
 
 }

@@ -23,6 +23,16 @@ namespace Okta\UserFactor;
 
 class FactorResultType extends \Okta\Utilities\Enum
 {
+    const SUCCESS = 'SUCCESS';
+    const CHALLENGE = 'CHALLENGE';
+    const WAITING = 'WAITING';
+    const FAILED = 'FAILED';
+    const REJECTED = 'REJECTED';
+    const TIMEOUT = 'TIMEOUT';
+    const TIME_WINDOW_EXCEEDED = 'TIME_WINDOW_EXCEEDED';
+    const PASSCODE_REPLAYED = 'PASSCODE_REPLAYED';
+    const ERROR = 'ERROR';
+    const CANCELLED = 'CANCELLED';
 
 
 }

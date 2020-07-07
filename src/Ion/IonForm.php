@@ -33,6 +33,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     const PRODUCES = 'produces';
     const RELATES_TO = 'relatesTo';
 
+
     /**
      * Set the Rel.
      *
@@ -170,7 +171,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getRel() : array
     {
         return $this->getProperty(
-            self::REL
+            self::REL,
         );
     }
     
@@ -183,7 +184,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getHref() : string
     {
         return $this->getProperty(
-            self::HREF
+            self::HREF,
         );
     }
     
@@ -196,7 +197,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -209,7 +210,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getValue() : array
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     
@@ -222,7 +223,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getMethod() : string
     {
         return $this->getProperty(
-            self::METHOD
+            self::METHOD,
         );
     }
     
@@ -235,7 +236,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getAccepts() : string
     {
         return $this->getProperty(
-            self::ACCEPTS
+            self::ACCEPTS,
         );
     }
     
@@ -248,7 +249,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getRefresh() : int
     {
         return $this->getProperty(
-            self::REFRESH
+            self::REFRESH,
         );
     }
     
@@ -261,7 +262,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getProduces() : string
     {
         return $this->getProperty(
-            self::PRODUCES
+            self::PRODUCES,
         );
     }
     
@@ -274,7 +275,7 @@ class IonForm extends \Okta\Resource\AbstractResource
     function getRelatesTo() : array
     {
         return $this->getProperty(
-            self::RELATES_TO
+            self::RELATES_TO,
         );
     }
     

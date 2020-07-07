@@ -32,6 +32,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     const DISPLAY_NAME = 'displayName';
     const METADATA_PUBLISH = 'metadataPublish';
 
+
     /**
      * Set the Name.
      *
@@ -153,7 +154,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -166,7 +167,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -179,7 +180,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getSystem() : bool
     {
         return $this->getProperty(
-            self::SYSTEM
+            self::SYSTEM,
         );
     }
     
@@ -192,7 +193,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getConsent() : string
     {
         return $this->getProperty(
-            self::CONSENT
+            self::CONSENT,
         );
     }
     
@@ -205,7 +206,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getDefault() : bool
     {
         return $this->getProperty(
-            self::DEFAULT
+            self::DEFAULT,
         );
     }
     
@@ -218,7 +219,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getDescription() : string
     {
         return $this->getProperty(
-            self::DESCRIPTION
+            self::DESCRIPTION,
         );
     }
     
@@ -231,7 +232,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getDisplayName() : string
     {
         return $this->getProperty(
-            self::DISPLAY_NAME
+            self::DISPLAY_NAME,
         );
     }
     
@@ -244,7 +245,7 @@ class OAuth2Scope extends \Okta\Resource\AbstractResource
     function getMetadataPublish() : string
     {
         return $this->getProperty(
-            self::METADATA_PUBLISH
+            self::METADATA_PUBLISH,
         );
     }
     

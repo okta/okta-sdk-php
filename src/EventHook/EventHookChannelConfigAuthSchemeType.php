@@ -23,6 +23,7 @@ namespace Okta\EventHook;
 
 class EventHookChannelConfigAuthSchemeType extends \Okta\Utilities\Enum
 {
+    const HEADER = 'HEADER';
 
 
 }

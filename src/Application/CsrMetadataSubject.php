@@ -30,6 +30,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     const STATE_OR_PROVINCE_NAME = 'stateOrProvinceName';
     const ORGANIZATIONAL_UNIT_NAME = 'organizationalUnitName';
 
+
     /**
      * Set the CommonName.
      *
@@ -135,7 +136,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getCommonName() : string
     {
         return $this->getProperty(
-            self::COMMON_NAME
+            self::COMMON_NAME,
         );
     }
     
@@ -148,7 +149,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getCountryName() : string
     {
         return $this->getProperty(
-            self::COUNTRY_NAME
+            self::COUNTRY_NAME,
         );
     }
     
@@ -161,7 +162,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getLocalityName() : string
     {
         return $this->getProperty(
-            self::LOCALITY_NAME
+            self::LOCALITY_NAME,
         );
     }
     
@@ -174,7 +175,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getOrganizationName() : string
     {
         return $this->getProperty(
-            self::ORGANIZATION_NAME
+            self::ORGANIZATION_NAME,
         );
     }
     
@@ -187,7 +188,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getStateOrProvinceName() : string
     {
         return $this->getProperty(
-            self::STATE_OR_PROVINCE_NAME
+            self::STATE_OR_PROVINCE_NAME,
         );
     }
     
@@ -200,7 +201,7 @@ class CsrMetadataSubject extends \Okta\Resource\AbstractResource
     function getOrganizationalUnitName() : string
     {
         return $this->getProperty(
-            self::ORGANIZATIONAL_UNIT_NAME
+            self::ORGANIZATIONAL_UNIT_NAME,
         );
     }
     

@@ -26,6 +26,7 @@ class Duration extends \Okta\Resource\AbstractResource
     const UNIT = 'unit';
     const NUMBER = 'number';
 
+
     /**
      * Set the Unit.
      *
@@ -67,7 +68,7 @@ class Duration extends \Okta\Resource\AbstractResource
     function getUnit() : string
     {
         return $this->getProperty(
-            self::UNIT
+            self::UNIT,
         );
     }
     
@@ -80,7 +81,7 @@ class Duration extends \Okta\Resource\AbstractResource
     function getNumber() : int
     {
         return $this->getProperty(
-            self::NUMBER
+            self::NUMBER,
         );
     }
     

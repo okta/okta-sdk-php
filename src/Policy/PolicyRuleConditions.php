@@ -45,6 +45,7 @@ class PolicyRuleConditions extends \Okta\Resource\AbstractResource
     const IDENTITY_PROVIDER = 'identityProvider';
     const BEFORE_SCHEDULED_ACTION = 'beforeScheduledAction';
 
+
     /**
      * Set the App.
      *

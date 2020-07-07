@@ -26,6 +26,7 @@ class OAuth2Actor extends \Okta\Resource\AbstractResource
     const ID = 'id';
     const TYPE = 'type';
 
+
     /**
      * Set the Type.
      *
@@ -51,7 +52,7 @@ class OAuth2Actor extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -64,7 +65,7 @@ class OAuth2Actor extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     

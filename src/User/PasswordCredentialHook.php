@@ -25,6 +25,7 @@ class PasswordCredentialHook extends \Okta\Resource\AbstractResource
 {
     const TYPE = 'type';
 
+
     /**
      * Set the Type.
      *
@@ -50,7 +51,7 @@ class PasswordCredentialHook extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     

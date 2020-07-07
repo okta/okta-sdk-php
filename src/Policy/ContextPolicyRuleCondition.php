@@ -25,6 +25,7 @@ class ContextPolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const EXPRESSION = 'expression';
 
+
     /**
      * Set the Expression.
      *
@@ -50,7 +51,7 @@ class ContextPolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getExpression() : string
     {
         return $this->getProperty(
-            self::EXPRESSION
+            self::EXPRESSION,
         );
     }
     

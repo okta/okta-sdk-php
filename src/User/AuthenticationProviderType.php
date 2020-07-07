@@ -23,6 +23,12 @@ namespace Okta\User;
 
 class AuthenticationProviderType extends \Okta\Utilities\Enum
 {
+    const ACTIVE_DIRECTORY = 'ACTIVE_DIRECTORY';
+    const FEDERATION = 'FEDERATION';
+    const LDAP = 'LDAP';
+    const OKTA = 'OKTA';
+    const SOCIAL = 'SOCIAL';
+    const IMPORT = 'IMPORT';
 
 
 }

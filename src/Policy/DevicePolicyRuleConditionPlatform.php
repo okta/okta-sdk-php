@@ -26,6 +26,7 @@ class DevicePolicyRuleConditionPlatform extends \Okta\Resource\AbstractResource
     const TYPES = 'types';
     const SUPPORTED_MDM_FRAMEWORKS = 'supportedMDMFrameworks';
 
+
     /**
      * Set the Types.
      *
@@ -67,7 +68,7 @@ class DevicePolicyRuleConditionPlatform extends \Okta\Resource\AbstractResource
     function getTypes() : array
     {
         return $this->getProperty(
-            self::TYPES
+            self::TYPES,
         );
     }
     
@@ -80,7 +81,7 @@ class DevicePolicyRuleConditionPlatform extends \Okta\Resource\AbstractResource
     function getSupportedMdmFrameworks() : array
     {
         return $this->getProperty(
-            self::SUPPORTED_MDM_FRAMEWORKS
+            self::SUPPORTED_MDM_FRAMEWORKS,
         );
     }
     

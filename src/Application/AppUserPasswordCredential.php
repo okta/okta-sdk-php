@@ -25,6 +25,7 @@ class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
 {
     const VALUE = 'value';
 
+
     /**
      * Set the Value.
      *
@@ -50,7 +51,7 @@ class AppUserPasswordCredential extends \Okta\Resource\AbstractResource
     function getValue() : password
     {
         return $this->getProperty(
-            self::VALUE
+            self::VALUE,
         );
     }
     

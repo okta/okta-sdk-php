@@ -23,6 +23,8 @@ namespace Okta\Role;
 
 class CatalogApplicationStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const INACTIVE = 'INACTIVE';
 
 
 }

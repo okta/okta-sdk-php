@@ -33,176 +33,22 @@ class UserFactor extends \Okta\Resource\AbstractResource
     const FACTOR_TYPE = 'factorType';
     const LAST_UPDATED = 'lastUpdated';
 
-    /**
-     * Set the Verify.
-     *
-     * @param mixed $verify The verify to set.
-     * @return self
-     */
-    function setVerify(\Okta\UserFactor\VerifyFactorRequest $verify) : UserFactor
-    {
-        $this->setResourceProperty(
-            self::VERIFY,
-            $verify
-        );
-    
-        return $this;
-    }
+    protected $requiresResolution = true;
+    protected $resolutionPropertyName = "factorType";
+    protected $resolutionMapping = [
+        "call" => \Okta\UserFactor\CallUserFactor::class,
+        "email" => \Okta\UserFactor\EmailUserFactor::class,
+        "push" => \Okta\UserFactor\PushUserFactor::class,
+        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
+        "sms" => \Okta\UserFactor\SmsUserFactor::class,
+        "token" => \Okta\UserFactor\TokenUserFactor::class,
+        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
+        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
+        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
+        "web" => \Okta\UserFactor\WebUserFactor::class,
+        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
+    ];
 
-    /**
-     * Set the Provider.
-     *
-     * @param mixed $provider The provider to set.
-     * @return self
-     */
-    function setProvider($provider) : UserFactor
-    {
-        $this->setProperty(
-            self::PROVIDER,
-            $provider
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Set the FactorType.
-     *
-     * @param mixed $factorType The factorType to set.
-     * @return self
-     */
-    function setFactorType($factorType) : UserFactor
-    {
-        $this->setProperty(
-            self::FACTOR_TYPE,
-            $factorType
-        );
-    
-        return $this;
-    }
-    
-    /**
-     * Get the Id.
-     *
-     * @param mixed $id The id to set.
-     * @return string
-     */
-    function getId() : string
-    {
-        return $this->getProperty(
-            self::ID
-        );
-    }
-    
-    /**
-     * Get the Links.
-     *
-     * @param mixed $_links The _links to set.
-     * @return \stdClass
-     */
-    function getLinks() : \stdClass
-    {
-        return $this->getProperty(
-            self::LINKS
-        );
-    }
-    
-    /**
-     * Get the Status.
-     *
-     * @param mixed $status The status to set.
-     * @return \Okta\UserFactor\FactorStatus
-     */
-    function getStatus() : \Okta\UserFactor\FactorStatus
-    {
-        return $this->getProperty(
-            self::STATUS
-        );
-    }
-    
-    /**
-     * Get the Verify.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\UserFactor\VerifyFactorRequest
-     */
-    function getVerify(array $options = []) : \Okta\UserFactor\VerifyFactorRequest
-    {
-        return $this->getResourceProperty(
-            self::VERIFY,
-            \Okta\UserFactor\VerifyFactorRequest::class,
-            $options
-        );
-    }
-
-    /**
-     * Get the Created.
-     *
-     * @param mixed $created The created to set.
-     * @return \Carbon\Carbon
-     */
-    function getCreated() : \Carbon\Carbon
-    {
-        return $this->getDateTimeProperty(
-            self::CREATED
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the Provider.
-     *
-     * @param mixed $provider The provider to set.
-     * @return \Okta\UserFactor\FactorProvider
-     */
-    function getProvider() : \Okta\UserFactor\FactorProvider
-    {
-        return $this->getProperty(
-            self::PROVIDER
-        );
-    }
-    
-    /**
-     * Get the Embedded.
-     *
-     * @param mixed $_embedded The _embedded to set.
-     * @return \stdClass
-     */
-    function getEmbedded() : \stdClass
-    {
-        return $this->getProperty(
-            self::EMBEDDED
-        );
-    }
-    
-    /**
-     * Get the FactorType.
-     *
-     * @param mixed $factorType The factorType to set.
-     * @return \Okta\UserFactor\FactorType
-     */
-    function getFactorType() : \Okta\UserFactor\FactorType
-    {
-        return $this->getProperty(
-            self::FACTOR_TYPE
-        );
-    }
-    
-    /**
-     * Get the LastUpdated.
-     *
-     * @param mixed $lastUpdated The lastUpdated to set.
-     * @return \Carbon\Carbon
-     */
-    function getLastUpdated() : \Carbon\Carbon
-    {
-        return $this->getDateTimeProperty(
-            self::LAST_UPDATED
-        );
-    
-        return $this;
-    }
 
     /**
      * Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
@@ -221,7 +67,7 @@ class UserFactor extends \Okta\Resource\AbstractResource
     /**
      * The `sms` and `token:software:totp` factor types require activation to complete the enrollment process.
      */
-    function activate($userId) : \Okta\UserFactor\UserFactor 
+    function activate($userId, \Okta\UserFactor\ActivateFactorRequest $body) : \Okta\UserFactor\UserFactor 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/${userId}/factors/".$this->id."/lifecycle/activate"
@@ -230,14 +76,14 @@ class UserFactor extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($body)
                 ->executeRequest();
         return new \Okta\UserFactor\UserFactor(null, $body);
     }
     /**
      * Verifies an OTP for a `token` or `token:hardware` factor
      */
-    function verify($userId, array $queryParameters = []) : \Okta\UserFactor\VerifyUserFactorResponse 
+    function verify($userId, \Okta\UserFactor\VerifyFactorRequest $body, $X-Forwarded-For, $User-Agent, $Accept-Language, array $queryParameters = []) : \Okta\UserFactor\VerifyUserFactorResponse 
     {
         $uri = $this->getDataStore()->buildUri(
             "/api/v1/users/${userId}/factors/".$this->id."/verify"
@@ -246,7 +92,7 @@ class UserFactor extends \Okta\Resource\AbstractResource
                 ->getDataStore()
                 ->setRequestMethod("POST")
                 ->setUri($uri)
-                ->setRequestBody()
+                ->setRequestBody($body)
                 ->setQueryParams($queryParameters)
                 ->executeRequest();
         return new \Okta\UserFactor\VerifyUserFactorResponse(null, $body);

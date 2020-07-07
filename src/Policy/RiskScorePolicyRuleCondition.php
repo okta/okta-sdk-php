@@ -25,6 +25,7 @@ class RiskScorePolicyRuleCondition extends \Okta\Resource\AbstractResource
 {
     const LEVEL = 'level';
 
+
     /**
      * Set the Level.
      *
@@ -50,7 +51,7 @@ class RiskScorePolicyRuleCondition extends \Okta\Resource\AbstractResource
     function getLevel() : string
     {
         return $this->getProperty(
-            self::LEVEL
+            self::LEVEL,
         );
     }
     

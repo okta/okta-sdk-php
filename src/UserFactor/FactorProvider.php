@@ -23,6 +23,12 @@ namespace Okta\UserFactor;
 
 class FactorProvider extends \Okta\Utilities\Enum
 {
+    const OKTA = 'OKTA';
+    const RSA = 'RSA';
+    const GOOGLE = 'GOOGLE';
+    const SYMANTEC = 'SYMANTEC';
+    const DUO = 'DUO';
+    const YUBICO = 'YUBICO';
 
 
 }

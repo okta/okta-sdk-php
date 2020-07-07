@@ -26,6 +26,7 @@ class EventSubscriptions extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const ITEMS = 'items';
 
+
     /**
      * Set the Type.
      *
@@ -67,7 +68,7 @@ class EventSubscriptions extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -80,7 +81,7 @@ class EventSubscriptions extends \Okta\Resource\AbstractResource
     function getItems() : array
     {
         return $this->getProperty(
-            self::ITEMS
+            self::ITEMS,
         );
     }
     

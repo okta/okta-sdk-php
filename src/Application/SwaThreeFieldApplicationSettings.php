@@ -25,36 +25,6 @@ class SwaThreeFieldApplicationSettings extends \Okta\Application\ApplicationSett
 {
     const APP = 'app';
 
-    /**
-     * Set the App.
-     *
-     * @param mixed $app The app to set.
-     * @return self
-     */
-    function setApp(\Okta\Application\SwaThreeFieldApplicationSettingsApplication $app) : SwaThreeFieldApplicationSettings
-    {
-        $this->setResourceProperty(
-            self::APP,
-            $app
-        );
-    
-        return $this;
-    }
-
-    /**
-     * Get the App.
-     *
-     * @param array $options Additional options to pass, Typically query params.
-     * @return \Okta\Application\SwaThreeFieldApplicationSettingsApplication
-     */
-    function getApp(array $options = []) : \Okta\Application\SwaThreeFieldApplicationSettingsApplication
-    {
-        return $this->getResourceProperty(
-            self::APP,
-            \Okta\Application\SwaThreeFieldApplicationSettingsApplication::class,
-            $options
-        );
-    }
 
 
 }

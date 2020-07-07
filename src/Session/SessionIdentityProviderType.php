@@ -23,6 +23,11 @@ namespace Okta\Session;
 
 class SessionIdentityProviderType extends \Okta\Utilities\Enum
 {
+    const ACTIVE_DIRECTORY = 'ACTIVE_DIRECTORY';
+    const LDAP = 'LDAP';
+    const OKTA = 'OKTA';
+    const FEDERATION = 'FEDERATION';
+    const SOCIAL = 'SOCIAL';
 
 
 }

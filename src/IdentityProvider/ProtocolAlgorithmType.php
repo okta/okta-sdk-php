@@ -25,6 +25,7 @@ class ProtocolAlgorithmType extends \Okta\Resource\AbstractResource
 {
     const SIGNATURE = 'signature';
 
+
     /**
      * Set the Signature.
      *

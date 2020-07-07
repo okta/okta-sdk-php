@@ -23,6 +23,8 @@ namespace Okta\Application;
 
 class OAuth2ScopeConsentGrantStatus extends \Okta\Utilities\Enum
 {
+    const ACTIVE = 'ACTIVE';
+    const REVOKED = 'REVOKED';
 
 
 }

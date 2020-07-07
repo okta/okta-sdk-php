@@ -31,6 +31,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     const CREDENTIAL_PROVIDER = 'credentialProvider';
     const AUTHENTICATION_PROVIDER = 'authenticationProvider';
 
+
     /**
      * Set the CredentialType.
      *
@@ -87,23 +88,23 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     function getInterface() : string
     {
         return $this->getProperty(
-            self::INTERFACE
+            self::INTERFACE,
         );
     }
     
     /**
      * Get the CredentialType.
      *
-     * @param mixed $credentialType The credentialType to set.
      * @return \Okta\Log\LogCredentialType
      */
     function getCredentialType() : \Okta\Log\LogCredentialType
     {
-        return $this->getProperty(
-            self::CREDENTIAL_TYPE
+        return $this->getEnumProperty(
+            self::CREDENTIAL_TYPE,
+            \Okta\Log\LogCredentialType::class,
         );
     }
-    
+
     /**
      * Get the ExternalSessionId.
      *
@@ -113,7 +114,7 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     function getExternalSessionId() : string
     {
         return $this->getProperty(
-            self::EXTERNAL_SESSION_ID
+            self::EXTERNAL_SESSION_ID,
         );
     }
     
@@ -126,35 +127,35 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     function getAuthenticationStep() : int
     {
         return $this->getProperty(
-            self::AUTHENTICATION_STEP
+            self::AUTHENTICATION_STEP,
         );
     }
     
     /**
      * Get the CredentialProvider.
      *
-     * @param mixed $credentialProvider The credentialProvider to set.
      * @return \Okta\Log\LogCredentialProvider
      */
     function getCredentialProvider() : \Okta\Log\LogCredentialProvider
     {
-        return $this->getProperty(
-            self::CREDENTIAL_PROVIDER
+        return $this->getEnumProperty(
+            self::CREDENTIAL_PROVIDER,
+            \Okta\Log\LogCredentialProvider::class,
         );
     }
-    
+
     /**
      * Get the AuthenticationProvider.
      *
-     * @param mixed $authenticationProvider The authenticationProvider to set.
      * @return \Okta\Log\LogAuthenticationProvider
      */
     function getAuthenticationProvider() : \Okta\Log\LogAuthenticationProvider
     {
-        return $this->getProperty(
-            self::AUTHENTICATION_PROVIDER
+        return $this->getEnumProperty(
+            self::AUTHENTICATION_PROVIDER,
+            \Okta\Log\LogAuthenticationProvider::class,
         );
     }
-    
+
 
 }

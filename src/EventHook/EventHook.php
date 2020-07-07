@@ -34,6 +34,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     const LAST_UPDATED = 'lastUpdated';
     const VERIFICATION_STATUS = 'verificationStatus';
 
+
     /**
      * Set the Name.
      *
@@ -139,7 +140,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getId() : string
     {
         return $this->getProperty(
-            self::ID
+            self::ID,
         );
     }
     
@@ -152,7 +153,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
@@ -165,7 +166,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getLinks() : \stdClass
     {
         return $this->getProperty(
-            self::LINKS
+            self::LINKS,
         );
     }
     
@@ -193,7 +194,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getStatus() : string
     {
         return $this->getProperty(
-            self::STATUS
+            self::STATUS,
         );
     }
     
@@ -236,7 +237,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getCreatedBy() : string
     {
         return $this->getProperty(
-            self::CREATED_BY
+            self::CREATED_BY,
         );
     }
     
@@ -264,7 +265,7 @@ class EventHook extends \Okta\Resource\AbstractResource
     function getVerificationStatus() : string
     {
         return $this->getProperty(
-            self::VERIFICATION_STATUS
+            self::VERIFICATION_STATUS,
         );
     }
     

@@ -30,6 +30,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     const FACTOR_PROMPT_MODE = 'factorPromptMode';
     const REMEMBER_DEVICE_BY_DEFAULT = 'rememberDeviceByDefault';
 
+
     /**
      * Set the Access.
      *
@@ -135,7 +136,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     function getAccess() : string
     {
         return $this->getProperty(
-            self::ACCESS
+            self::ACCESS,
         );
     }
     
@@ -163,7 +164,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     function getRequireFactor() : bool
     {
         return $this->getProperty(
-            self::REQUIRE_FACTOR
+            self::REQUIRE_FACTOR,
         );
     }
     
@@ -176,7 +177,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     function getFactorLifetime() : int
     {
         return $this->getProperty(
-            self::FACTOR_LIFETIME
+            self::FACTOR_LIFETIME,
         );
     }
     
@@ -189,7 +190,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     function getFactorPromptMode() : string
     {
         return $this->getProperty(
-            self::FACTOR_PROMPT_MODE
+            self::FACTOR_PROMPT_MODE,
         );
     }
     
@@ -202,7 +203,7 @@ class OktaSignOnPolicyRuleSignonActions extends \Okta\Resource\AbstractResource
     function getRememberDeviceByDefault() : bool
     {
         return $this->getProperty(
-            self::REMEMBER_DEVICE_BY_DEFAULT
+            self::REMEMBER_DEVICE_BY_DEFAULT,
         );
     }
     

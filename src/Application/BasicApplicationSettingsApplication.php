@@ -26,6 +26,7 @@ class BasicApplicationSettingsApplication extends \Okta\Application\ApplicationS
     const URL = 'url';
     const AUTH_URL = 'authURL';
 
+
     /**
      * Set the Url.
      *
@@ -67,7 +68,7 @@ class BasicApplicationSettingsApplication extends \Okta\Application\ApplicationS
     function getUrl() : string
     {
         return $this->getProperty(
-            self::URL
+            self::URL,
         );
     }
     
@@ -80,7 +81,7 @@ class BasicApplicationSettingsApplication extends \Okta\Application\ApplicationS
     function getAuthUrl() : string
     {
         return $this->getProperty(
-            self::AUTH_URL
+            self::AUTH_URL,
         );
     }
     

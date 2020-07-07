@@ -23,6 +23,10 @@ namespace Okta\Policy;
 
 class PolicySubjectMatchType extends \Okta\Utilities\Enum
 {
+    const USERNAME = 'USERNAME';
+    const EMAIL = 'EMAIL';
+    const USERNAME_OR_EMAIL = 'USERNAME_OR_EMAIL';
+    const CUSTOM_ATTRIBUTE = 'CUSTOM_ATTRIBUTE';
 
 
 }

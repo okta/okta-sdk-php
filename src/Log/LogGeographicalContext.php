@@ -29,6 +29,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     const POSTAL_CODE = 'postalCode';
     const GEOLOCATION = 'geolocation';
 
+
     /**
      * Get the City.
      *
@@ -38,7 +39,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     function getCity() : string
     {
         return $this->getProperty(
-            self::CITY
+            self::CITY,
         );
     }
     
@@ -51,7 +52,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     function getState() : string
     {
         return $this->getProperty(
-            self::STATE
+            self::STATE,
         );
     }
     
@@ -64,7 +65,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     function getCountry() : string
     {
         return $this->getProperty(
-            self::COUNTRY
+            self::COUNTRY,
         );
     }
     
@@ -77,7 +78,7 @@ class LogGeographicalContext extends \Okta\Resource\AbstractResource
     function getPostalCode() : string
     {
         return $this->getProperty(
-            self::POSTAL_CODE
+            self::POSTAL_CODE,
         );
     }
     

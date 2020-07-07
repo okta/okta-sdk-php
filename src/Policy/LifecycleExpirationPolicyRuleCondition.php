@@ -27,6 +27,7 @@ class LifecycleExpirationPolicyRuleCondition extends \Okta\Resource\AbstractReso
     const NUMBER = 'number';
     const LIFECYCLE_STATUS = 'lifecycleStatus';
 
+
     /**
      * Set the Unit.
      *
@@ -84,7 +85,7 @@ class LifecycleExpirationPolicyRuleCondition extends \Okta\Resource\AbstractReso
     function getUnit() : string
     {
         return $this->getProperty(
-            self::UNIT
+            self::UNIT,
         );
     }
     
@@ -97,7 +98,7 @@ class LifecycleExpirationPolicyRuleCondition extends \Okta\Resource\AbstractReso
     function getNumber() : int
     {
         return $this->getProperty(
-            self::NUMBER
+            self::NUMBER,
         );
     }
     
@@ -110,7 +111,7 @@ class LifecycleExpirationPolicyRuleCondition extends \Okta\Resource\AbstractReso
     function getLifecycleStatus() : string
     {
         return $this->getProperty(
-            self::LIFECYCLE_STATUS
+            self::LIFECYCLE_STATUS,
         );
     }
     

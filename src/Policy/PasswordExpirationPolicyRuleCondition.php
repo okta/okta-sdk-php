@@ -26,6 +26,7 @@ class PasswordExpirationPolicyRuleCondition extends \Okta\Resource\AbstractResou
     const UNIT = 'unit';
     const NUMBER = 'number';
 
+
     /**
      * Set the Unit.
      *
@@ -67,7 +68,7 @@ class PasswordExpirationPolicyRuleCondition extends \Okta\Resource\AbstractResou
     function getUnit() : string
     {
         return $this->getProperty(
-            self::UNIT
+            self::UNIT,
         );
     }
     
@@ -80,7 +81,7 @@ class PasswordExpirationPolicyRuleCondition extends \Okta\Resource\AbstractResou
     function getNumber() : int
     {
         return $this->getProperty(
-            self::NUMBER
+            self::NUMBER,
         );
     }
     

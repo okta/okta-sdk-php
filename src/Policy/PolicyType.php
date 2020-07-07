@@ -23,6 +23,10 @@ namespace Okta\Policy;
 
 class PolicyType extends \Okta\Utilities\Enum
 {
+    const OAUTH_AUTHORIZATION_POLICY = 'OAUTH_AUTHORIZATION_POLICY';
+    const OKTA_SIGN_ON = 'OKTA_SIGN_ON';
+    const PASSWORD = 'PASSWORD';
+    const IDP_DISCOVERY = 'IDP_DISCOVERY';
 
 
 }

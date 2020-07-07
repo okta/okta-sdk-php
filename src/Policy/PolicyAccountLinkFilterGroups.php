@@ -25,6 +25,7 @@ class PolicyAccountLinkFilterGroups extends \Okta\Resource\AbstractResource
 {
     const INCLUDE = 'include';
 
+
     /**
      * Set the Include.
      *
@@ -50,7 +51,7 @@ class PolicyAccountLinkFilterGroups extends \Okta\Resource\AbstractResource
     function getInclude() : array
     {
         return $this->getProperty(
-            self::INCLUDE
+            self::INCLUDE,
         );
     }
     

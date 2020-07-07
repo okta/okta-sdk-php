@@ -23,6 +23,8 @@ namespace Okta\Feature;
 
 class FeatureStageState extends \Okta\Utilities\Enum
 {
+    const OPEN = 'OPEN';
+    const CLOSED = 'CLOSED';
 
 
 }

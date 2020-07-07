@@ -32,6 +32,7 @@ class Protocol extends \Okta\Resource\AbstractResource
     const RELAY_STATE = 'relayState';
     const CREDENTIALS = 'credentials';
 
+
     /**
      * Set the Type.
      *
@@ -169,7 +170,7 @@ class Protocol extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -197,7 +198,7 @@ class Protocol extends \Okta\Resource\AbstractResource
     function getScopes() : array
     {
         return $this->getProperty(
-            self::SCOPES
+            self::SCOPES,
         );
     }
     

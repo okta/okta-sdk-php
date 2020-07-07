@@ -28,6 +28,7 @@ class ProtocolEndpoint extends \Okta\Resource\AbstractResource
     const BINDING = 'binding';
     const DESTINATION = 'destination';
 
+
     /**
      * Set the Url.
      *
@@ -101,7 +102,7 @@ class ProtocolEndpoint extends \Okta\Resource\AbstractResource
     function getUrl() : string
     {
         return $this->getProperty(
-            self::URL
+            self::URL,
         );
     }
     
@@ -114,7 +115,7 @@ class ProtocolEndpoint extends \Okta\Resource\AbstractResource
     function getType() : string
     {
         return $this->getProperty(
-            self::TYPE
+            self::TYPE,
         );
     }
     
@@ -127,7 +128,7 @@ class ProtocolEndpoint extends \Okta\Resource\AbstractResource
     function getBinding() : string
     {
         return $this->getProperty(
-            self::BINDING
+            self::BINDING,
         );
     }
     
@@ -140,7 +141,7 @@ class ProtocolEndpoint extends \Okta\Resource\AbstractResource
     function getDestination() : string
     {
         return $this->getProperty(
-            self::DESTINATION
+            self::DESTINATION,
         );
     }
     

@@ -28,6 +28,7 @@ class CreateUserRequest extends \Okta\Resource\AbstractResource
     const GROUP_IDS = 'groupIds';
     const CREDENTIALS = 'credentials';
 
+
     /**
      * Set the Type.
      *
@@ -131,7 +132,7 @@ class CreateUserRequest extends \Okta\Resource\AbstractResource
     function getGroupIds() : array
     {
         return $this->getProperty(
-            self::GROUP_IDS
+            self::GROUP_IDS,
         );
     }
     

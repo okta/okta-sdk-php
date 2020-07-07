@@ -26,6 +26,7 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
     const NAME = 'name';
     const TYPE = 'type';
 
+
     /**
      * Set the Name.
      *
@@ -67,22 +68,22 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
     function getName() : string
     {
         return $this->getProperty(
-            self::NAME
+            self::NAME,
         );
     }
     
     /**
      * Get the Type.
      *
-     * @param mixed $type The type to set.
      * @return \Okta\User\AuthenticationProviderType
      */
     function getType() : \Okta\User\AuthenticationProviderType
     {
-        return $this->getProperty(
-            self::TYPE
+        return $this->getEnumProperty(
+            self::TYPE,
+            \Okta\User\AuthenticationProviderType::class,
         );
     }
-    
+
 
 }

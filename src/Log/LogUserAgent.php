@@ -27,6 +27,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     const BROWSER = 'browser';
     const RAW_USER_AGENT = 'rawUserAgent';
 
+
     /**
      * Get the Os.
      *
@@ -36,7 +37,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     function getOs() : string
     {
         return $this->getProperty(
-            self::OS
+            self::OS,
         );
     }
     
@@ -49,7 +50,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     function getBrowser() : string
     {
         return $this->getProperty(
-            self::BROWSER
+            self::BROWSER,
         );
     }
     
@@ -62,7 +63,7 @@ class LogUserAgent extends \Okta\Resource\AbstractResource
     function getRawUserAgent() : string
     {
         return $this->getProperty(
-            self::RAW_USER_AGENT
+            self::RAW_USER_AGENT,
         );
     }
     
