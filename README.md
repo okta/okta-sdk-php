@@ -140,6 +140,20 @@ $user = new \Okta\Users\User();
     $foundUser->save();
 ```
 
+## Building a Request
+The `DefaultDataStore` handles all of our requests. The main method for calling the API is `executeRequest()`. In order to use this method, all necessary items for the request must be set using the setters. Here is an example with all possible setters for a request:
+
+```php
+$response = $dataStore
+              ->setUri($dataStore->buildUri("api/v1/users"))
+              ->setAcceptHeader("application/json") // Optional: Defaults to application/json
+              ->setContentTypeHeader("application/json") // Optional: Defaults to application/json
+              ->setRequestMethod("POST")
+              ->setRequestBody($user) // Instance of the resource. This is required for POST/PUT calls
+              ->setQueryParams(['limit' => 1]) // Optional
+              ->executeRequest();
+```
+
 ## Pagination and Collections
 All of our calls that return a set of items will return a Collection object. The collection object we built on top of
  is the tightenco/collect object.

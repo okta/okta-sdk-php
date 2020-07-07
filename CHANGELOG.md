@@ -1,5 +1,6 @@
 ## Version 2.0.0-beta.1
  - Updates generator templates to stop hard coding logic
+ - `ExecuteRequest` on the `DefaultDataStore` no longer takes arguments.  Setters are used to build the request
  - Allow setting `Content-Type` and `Accept` headers during request, defaults to `application\json`
  - Update travis to test 7.3, and 7.4 (removing 7.1 and 7.2 support)
  - Deleted: .env.example
