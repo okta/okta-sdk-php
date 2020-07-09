@@ -124,27 +124,21 @@ class DefaultDataStore
     /**
      * DefaultDataStore constructor.
      *
-     * @param string          $token
-     * @param string          $organizationUrl
-     * @param HttpClient|NULL $httpClient
-     * @param AuthorizationMode|NULL $authorizationMode
+     * @param Okta\Client     $oktaClient
      */
-    public function __construct(string $token, string $organizationUrl, HttpClient $httpClient = null, AuthorizationMode $authorizationMode = null)
+    public function __construct(\Okta\Client $oktaClient)
     {
-        $this->token = $token;
-        $this->organizationUrl = $organizationUrl;
+        $this->token = $oktaClient->getToken();
+        $this->organizationUrl = $oktaClient->getOrganizationUrl();
         $this->acceptHeader = $this->defaultAcceptHeader;
         $this->contentTypeHeader = $this->defaultContentTypeHeader;
-        if ($authorizationMode === null) {
-            $authorizationMode = new AuthorizationMode(AuthorizationMode::SSWS);
-        }
 
         $authenticationPlugin = new AuthenticationPlugin(
-            $authorizationMode->getDriver()
+            $oktaClient->getAuthorizationMode()->getDriver()
         );
 
         $this->httpClient = new PluginClient(
-            $httpClient ?: HttpClientDiscovery::find(),
+            $oktaClient->getHttpClient() ?: HttpClientDiscovery::find(),
             [ $authenticationPlugin ]
         );
 

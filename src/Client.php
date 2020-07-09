@@ -89,16 +89,13 @@ class Client
         $this->cacheManager = $cacheManager;
         $this->authorizationMode = $authorizationMode;
 
-        $this->dataStore = new DefaultDataStore(
-            $this->token,
-            $this->organizationUrl,
-            $this->httpClient,
-            $this->authorizationMode
-        );
-
         if (null === $this->cacheManager) {
             $this->cacheManager = new MemoryManager();
         }
+
+        $this->dataStore = new DefaultDataStore(
+            $this
+        );
 
         self::$instance = $this;
     }
@@ -111,6 +108,16 @@ class Client
     public function getOrganizationUrl(): string
     {
         return $this->organizationUrl;
+    }
+
+    /**
+     * Get the http client from the client.
+     *
+     * @return string
+     */
+    public function getHttpClient(): HttpClient
+    {
+        return $this->httpClient;
     }
 
     /**

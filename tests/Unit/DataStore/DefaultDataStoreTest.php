@@ -23,7 +23,7 @@ class DefaultDataStoreTest extends TestCase
     /** @test */
     public function returns_instance_of_plugin_client_from_http_client()
     {
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com');
+        $dataStore = new Okta\DataStore\DefaultDataStore((new \Okta\ClientBuilder)->build());
 
         $this->assertInstanceOf(
             \Http\Client\Common\PluginClient::class,
@@ -36,7 +36,7 @@ class DefaultDataStoreTest extends TestCase
     /** @test */
     public function returns_instance_of_message_factory()
     {
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com');
+        $dataStore = new Okta\DataStore\DefaultDataStore((new \Okta\ClientBuilder)->build());
 
         $this->assertInstanceOf(
             \Http\Message\MessageFactory::class,
@@ -49,7 +49,7 @@ class DefaultDataStoreTest extends TestCase
     /** @test */
     public function returns_instance_of_uri_factory()
     {
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com');
+        $dataStore = new Okta\DataStore\DefaultDataStore((new \Okta\ClientBuilder)->build());
 
         $this->assertInstanceOf(
             \Http\Message\UriFactory::class,
@@ -62,8 +62,9 @@ class DefaultDataStoreTest extends TestCase
     public function can_set_query_when_getting_resource()
     {
         $httpClient = $this->createNewHttpClient();
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $uri = $dataStore->buildUri(
             "/api/v1/users/123"
@@ -94,7 +95,9 @@ class DefaultDataStoreTest extends TestCase
             'getBody' => '{"errorCode":"E0000005","errorSummary":"Invalid session","errorLink":"E0000005","errorId":"oae6VxJiR3xSTKFwE2Ppx3HHA","errorCauses":[]}'
         ]);
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $uri = $dataStore->buildUri(
             "/api/v1/users/123"
@@ -113,7 +116,9 @@ class DefaultDataStoreTest extends TestCase
     {
         $httpClient = $this->createNewHttpClient();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $uri = $dataStore->buildUri(
             "/api/v1/users/123?limit=4&start=2"
@@ -163,7 +168,9 @@ class DefaultDataStoreTest extends TestCase
             ->setHttpClient($httpClient)
             ->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $uri = $dataStore->buildUri(
             "/api/v1/users/123"
@@ -222,7 +229,9 @@ class DefaultDataStoreTest extends TestCase
             ->setHttpClient($httpClient)
             ->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $user = new \Okta\User\User();
         $profile = $user->getProfile();
@@ -277,7 +286,7 @@ class DefaultDataStoreTest extends TestCase
             ->setHttpClient($httpClient)
             ->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $createUserRequest = new \Okta\User\CreateUserRequest();
         $profile = $createUserRequest->getProfile();
@@ -336,7 +345,7 @@ class DefaultDataStoreTest extends TestCase
             ->setHttpClient($httpClient)
             ->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $cacheManager = $client->getCacheManager();
 
@@ -410,7 +419,9 @@ class DefaultDataStoreTest extends TestCase
             ->setHttpClient($httpClient)
             ->build();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://dev.okta.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $cacheManager = $client->getCacheManager();
         $key = $cacheManager->createCacheKey(
@@ -433,7 +444,9 @@ class DefaultDataStoreTest extends TestCase
     public function a_call_can_set_accept_header() {
         $httpClient = $this->createNewHttpClient();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
         $dataStore->setAcceptHeader('test/header');
 
         $uri = $dataStore->buildUri(
@@ -458,7 +471,9 @@ class DefaultDataStoreTest extends TestCase
     public function a_call_can_set_content_type_and_accept_headers() {
         $httpClient = $this->createNewHttpClient();
 
-        $dataStore = new Okta\DataStore\DefaultDataStore('123', 'https://example.com', $httpClient);
+        $client = (new \Okta\ClientBuilder)->setHttpClient($httpClient)->build();
+
+        $dataStore = new Okta\DataStore\DefaultDataStore($client);
 
         $uri = $dataStore->buildUri(
             "/api/v1/apps"

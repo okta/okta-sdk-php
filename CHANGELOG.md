@@ -1,4 +1,10 @@
 ## Version 2.0.0-beta.1
+ - `DefaultDataStore` parameter changes
+    - No longer accepts `$token`
+    - No longer accepts `$organizationUrl`
+    - No longer accepts `$httpClient`
+    - No longer accepts `$authorizationMode`
+    - Requires instance of `\Okta\Client`
  - Updates generator templates to stop hard coding logic
  - `ExecuteRequest` on the `DefaultDataStore` no longer takes arguments.  Setters are used to build the request
  - Allow setting `Content-Type` and `Accept` headers during request, defaults to `application\json`
