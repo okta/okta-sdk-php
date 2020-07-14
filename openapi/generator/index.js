@@ -2,6 +2,7 @@ const _ = require('lodash');
 _.mixin(require('lodash-inflection'));
 const fs = require('fs');
 const util = require('@okta/openapi/lib/util');
+const jutil = require('util');
 
 const php = module.exports;
 
@@ -23,10 +24,12 @@ function getDefinitionTag(definitionName) {
   return def['x-okta-tags'][0];
 }
 
+// Returns the full namespaced classname
 function buildFullClassname(tag, cls) {
   return "\\Okta\\" + tag + "\\" + cls;
 }
 
+// Gets a list of all model properties for a model
 function modelProperties(model) {
   const modelProperties = [];
 
@@ -58,6 +61,7 @@ function modelProperties(model) {
   return removeParentPropertyFix(output, model);
 }
 
+// Fix property for things that list a parent that shouldnt
 function removeParentPropertyFix(propList, model) {
   const modelIgnoreParentProps = [
     'SchemeApplicationCredentials',
@@ -110,6 +114,7 @@ function returnType(property) {
   }
 }
 
+// Return the full namespaced Resource a model should extend
 function modelExtends(model) {
   if (model.extends) {
     const def = getDefinition(model.extends);
@@ -123,34 +128,41 @@ function modelExtends(model) {
   return String.raw`\Okta\Resource\AbstractResource`;
 }
 
-function methodArgumentBuilder(method) {
-  const args = [];
+function methodArgumentBuilder(operation) {
 
-  const operation = method.operation;
+  const args = [];
+  let hasQueryParams = false;
+  let hasHeaderParams = false;
 
   operation.parameters.forEach(param => {
-    const matchingArgument = method.arguments.filter(argument => argument.dest === param.name)[0];
-    if ((!matchingArgument || !matchingArgument.src) && param.in != "query"){
+    if(param.in == "query") {
+      hasQueryParams = true;
+      return;
+    }
+    if(param.in == "header") {
+      hasHeaderParams = true;
+      return;
+    }
 
-      if(method.alias == "create" && method.operation.operationId == "createUser") {
-      console.log(param, matchingArgument)
-      }
+    let paramOptional = " = null";
+    if(param.required) {
+      paramOptional = "";
+    }
 
-      if(matchingArgument && matchingArgument.self == true) {
-        return;
-      }
+    if(param.in == "body" && param.schema) {
+      const resourceType = buildFullClassnameFromPropertyRef(param.schema['$ref'])
 
-      if(param.in == "body" && param.schema) {
-        const resourceType = buildFullClassnameFromPropertyRef(param.schema['$ref'])
-
-        args.push(resourceType + ' $'+param.name)
-      } else {
-        args.push('$'+param.name);
-      }
+      args.push(resourceType + ' $'+param.name + paramOptional)
+    } else {
+        args.push('$'+param.name + paramOptional);
     }
   });
 
-  if (operation.queryParams.length) {
+  if (hasHeaderParams) {
+    args.push('array $headers = []');
+  }
+
+  if (hasQueryParams) {
     args.push('array $queryParameters = []');
   }
 
@@ -158,40 +170,40 @@ function methodArgumentBuilder(method) {
 
 }
 
-function buildMethodUri(method) {
-  let uri = method.operation.path;
+function responseModelRequiresResolution(responseModel) {
+  def = getDefinition(responseModel)
+  return !!def['x-openapi-v3-discriminator']
+}
+
+function getMethodReturnType(operation) {
+  if(operation.isArray) {
+    return String.raw`\Okta\Resource\Collection`;
+  }
+  return buildFullClassname(getDefinitionTag(operation.responseModel), operation.responseModel);
+}
+
+// Builds the URI for the api call
+function buildMethodUri(operation) {
+  let uri = operation.path;
   let replace = uri.match(/{.*?}/g);
 
   if(!replace) return uri;
 
   replace.forEach(orig => {
-    const matchingArgument = method.arguments.filter(argument => argument.dest === orig.substring(1, orig.length-1))[0];
-    if (!matchingArgument || !matchingArgument.src) {
       uri = uri.replace(orig, "$"+orig)
-    } else {
-      uri = uri.replace(orig, "\".$this->"+matchingArgument.src+".\"")
-    }
-
-
   })
 
   return uri
 }
 
-function executeRequestBodyArgument(method) {
-  const operation = method.operation;
-  const arguments = method.arguments;
+function executeRequestBodyArgument(operation) {
+  const arguments = operation.arguments;
   let bodyArgument = null;
 
   operation.parameters.forEach(param => {
-    const matchingArgument = arguments.filter(argument => argument.dest === param.name)[0];
-    if(matchingArgument && matchingArgument.self) {
-      bodyArgument = String.raw`$this`;
-    } else {
       if(param.in == "body") {
         bodyArgument = '$'+param.name
       }
-    }
   });
   return bodyArgument;
 }
@@ -200,16 +212,61 @@ function executeRequestBodyArgument(method) {
 php.process = ({ spec, operations, models, handlebars }) => {
   php.spec = spec;
   const templates = [];
+  const taggedOps = [];
 
   for (let model of models) {
     model.properties = _.sortBy(model.properties, [p => p.propertyName.length]);
-
     templates.push({
       src: 'templates/model.php.hbs',
       dest: `${model.tags[0]}/${model.modelName}.php`,
       context: model
     })
   }
+
+  for (let operation of operations) {
+    taggedOps[operation.tags[0]] = taggedOps[operation.tags[0]] || []
+
+    for (let model of models) {
+      if(model.crud) {
+        for (let crud of model.crud) {
+          if(operation.operationId == crud.operation.operationId) {
+            operation['alias'] = crud;
+          }
+        }
+      }
+
+      if(model.methods) {
+        for (let method of model.methods) {
+          if(operation.operationId == method.operation.operationId) {
+            operation['alias'] = method;
+          }
+        }
+      }
+    }
+
+    taggedOps[operation.tags[0]].push(operation);
+
+  }
+
+  for (let op in taggedOps) {
+    templates.push({
+      src: 'templates/opClient.php.hbs',
+      dest: `Clients/${op}.php`,
+      context: {
+        name: op,
+        operation: taggedOps[op]
+      }
+    })
+  }
+
+  templates.push({
+    src: 'templates/okta.php.hbs',
+    dest: `Okta.php`,
+    context: {
+      ops: Object.keys(taggedOps)
+    }
+  })
+
 
 
   handlebars.registerHelper({
@@ -222,7 +279,9 @@ php.process = ({ spec, operations, models, handlebars }) => {
     methodArgumentBuilder,
     executeRequestBodyArgument,
     buildMethodUri,
-    modelProperties
+    modelProperties,
+    getMethodReturnType,
+    responseModelRequiresResolution
   });
 
   handlebars.registerPartial('copyright', fs.readFileSync('generator/templates/partials/copyright.hbs', 'utf8'))

@@ -103,50 +103,5 @@ class LinkedObject extends \Okta\Resource\AbstractResource
         );
     }
 
-    /**
-     * Success
-     */
-    function create(\Okta\LinkedObject\LinkedObject $linkedObject) : \Okta\LinkedObject\LinkedObject 
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/meta/schemas/user/linkedObjects"
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("POST")
-                ->setUri($uri)
-                ->setRequestBody($linkedObject)
-                ->executeRequest();
-        return new \Okta\LinkedObject\LinkedObject(null, $body);
-    }
-    /**
-     * Success
-     */
-    function read($linkedObjectName) : \Okta\LinkedObject\LinkedObject 
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/meta/schemas/user/linkedObjects/${linkedObjectName}"
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("GET")
-                ->setUri($uri)
-                ->executeRequest();
-        return new \Okta\LinkedObject\LinkedObject(null, $body);
-    }
-    /**
-     * Success
-     */
-    function delete()
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/meta/schemas/user/linkedObjects/${linkedObjectName}"
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("DELETE")
-                ->setUri($uri)
-                ->executeRequest();
-    }
 
 }

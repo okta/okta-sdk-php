@@ -61,6 +61,8 @@ abstract class AbstractResource
      */
     private $methods;
 
+
+
     const ID = "id";
 
     /**
@@ -80,6 +82,12 @@ abstract class AbstractResource
         $this->uriFactory = UriFactoryDiscovery::find();
 
 
+    }
+
+    public function resolve()
+    {
+        $resProp = $this->getProperty($this->resolutionPropertyName);
+        return new $this->resolutionMapping[$resProp]($this->dataStore, $this->properties, $this->options);
     }
 
     /**

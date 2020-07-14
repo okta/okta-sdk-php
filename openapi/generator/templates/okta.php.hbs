@@ -1,0 +1,38 @@
+<?php
+{{> copyright }}
+
+namespace Okta;
+
+use Okta\DataStore\DefaultDataStore;
+
+class Okta
+{
+
+    const VERSION = '2.0.0-beta.1';
+
+    {{#each ops}}
+    /**
+     * The {{this}} client contains all methods to make your api calls
+     * @var \Okta\Clients\\{{this}}
+     */
+    public ${{lowerCase this}};
+
+    {{/each}}
+    /**
+     * The DataStore to use for the Clients
+     * @var \Okta\DataStore\DefaultDataStore
+     */
+    public $dataStore;
+
+    public function __construct(Client $client = null, DefaultDataStore $dataStore = null)
+    {
+        $this->client = $client ?: Client::getInstance();
+        $this->dataStore = $dataStore ?: $this->client->getDataStore();
+
+        {{#each ops}}
+        $this->{{lowerCase this}} = new \Okta\Clients\\{{this}}($this->dataStore);
+        {{/each}}
+    }
+
+
+}

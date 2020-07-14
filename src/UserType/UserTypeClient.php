@@ -19,36 +19,56 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\UserType;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class UserTypeClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Fetches all User Types in your org
+     */
+    function listUserTypes()
+    {
 
+    }
 
+    /**
+     * Creates a new User Type. A default User Type is automatically created along with your org, and you may add another 9 User Types for a maximum of 10.
+     */
+    function createUserType()
+    {
+
+    }
+
+    /**
+     * Deletes a User Type permanently. This operation is not permitted for the default type, nor for any User Type that has existing users
+     */
+    function deleteUserType()
+    {
+
+    }
+
+    /**
+     * Fetches a User Type by ID. The special identifier &#x60;default&#x60; may be used to fetch the default User Type.
+     */
+    function getUserType()
+    {
+
+    }
+
+    /**
+     * Updates an existing User Type
+     */
+    function updateUserType()
+    {
+
+    }
+
+    /**
+     * Replace an existing User Type
+     */
+    function replaceUserType()
+    {
+
+    }
 
 }

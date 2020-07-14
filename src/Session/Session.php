@@ -189,49 +189,5 @@ class Session extends \Okta\Resource\AbstractResource
         return $this;
     }
 
-    /**
-     * Get details about a session.
-     */
-    function read() : \Okta\Session\Session 
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/sessions/".$this->id.""
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("GET")
-                ->setUri($uri)
-                ->executeRequest();
-        return new \Okta\Session\Session(null, $body);
-    }
-    /**
-     * 
-     */
-    function delete()
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/sessions/".$this->id.""
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("DELETE")
-                ->setUri($uri)
-                ->executeRequest();
-    }
-    /**
-     * 
-     */
-    function refresh() : \Okta\Session\Session 
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/sessions/".$this->id."/lifecycle/refresh"
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("POST")
-                ->setUri($uri)
-                ->executeRequest();
-        return new \Okta\Session\Session(null, $body);
-    }
 
 }

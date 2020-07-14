@@ -67,19 +67,5 @@ class {{this.modelName}} extends {{modelExtends this}}
 
     {{/each}}
     {{/unless}}
-    {{!- Crud Methods -}}
-    {{#if this.crud.length}}
-    {{#each this.crud}}
-    {{> function_default_operation }}
-
-    {{/each}}
-    {{/if}}
-    {{!- Methods -}}
-    {{#if this.methods.length}}
-    {{#each this.methods}}
-    {{> function_default_operation }}
-
-    {{/each}}
-    {{/if}}
 
 }

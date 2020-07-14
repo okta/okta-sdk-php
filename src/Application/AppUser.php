@@ -297,36 +297,5 @@ class AppUser extends \Okta\Resource\AbstractResource
         return $this;
     }
 
-    /**
-     * Updates a user's profile for an application
-     */
-    function update($appId) : \Okta\Application\AppUser 
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/apps/${appId}/users/".$this->id.""
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("POST")
-                ->setUri($uri)
-                ->setRequestBody($this)
-                ->executeRequest();
-        return new \Okta\Application\AppUser(null, $body);
-    }
-    /**
-     * Removes an assignment for a user from an application.
-     */
-    function delete($appId, array $queryParameters = [])
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/apps/${appId}/users/".$this->id.""
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("DELETE")
-                ->setUri($uri)
-                ->setQueryParams($queryParameters)
-                ->executeRequest();
-    }
 
 }

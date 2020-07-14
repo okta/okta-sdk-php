@@ -17,10 +17,10 @@
 
 namespace Okta\Resource;
 
-use Tightenco\Collect\Support\Collection;
+use Tightenco\Collect\Support\Collection as TCollection;
 use Tightenco\Collect\Support\Arr;
 
-class AbstractCollection extends Collection
+class Collection extends TCollection
 {
     /**
      * Get an operator checker callback.

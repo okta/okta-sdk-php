@@ -19,36 +19,120 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\Policy;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class PolicyClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Gets all policies with the specified type.
+     */
+    function listPolicies()
+    {
 
+    }
 
+    /**
+     * Creates a policy.
+     */
+    function createPolicy()
+    {
+
+    }
+
+    /**
+     * Removes a policy.
+     */
+    function deletePolicy()
+    {
+
+    }
+
+    /**
+     * Gets a policy.
+     */
+    function getPolicy()
+    {
+
+    }
+
+    /**
+     * Updates a policy.
+     */
+    function updatePolicy()
+    {
+
+    }
+
+    /**
+     * Activates a policy.
+     */
+    function activatePolicy()
+    {
+
+    }
+
+    /**
+     * Deactivates a policy.
+     */
+    function deactivatePolicy()
+    {
+
+    }
+
+    /**
+     * Enumerates all policy rules.
+     */
+    function listPolicyRules()
+    {
+
+    }
+
+    /**
+     * Creates a policy rule.
+     */
+    function createPolicyRule()
+    {
+
+    }
+
+    /**
+     * Removes a policy rule.
+     */
+    function deletePolicyRule()
+    {
+
+    }
+
+    /**
+     * Gets a policy rule.
+     */
+    function getPolicyRule()
+    {
+
+    }
+
+    /**
+     * Updates a policy rule.
+     */
+    function updatePolicyRule()
+    {
+
+    }
+
+    /**
+     * Activates a policy rule.
+     */
+    function activatePolicyRule()
+    {
+
+    }
+
+    /**
+     * Deactivates a policy rule.
+     */
+    function deactivatePolicyRule()
+    {
+
+    }
 
 }
