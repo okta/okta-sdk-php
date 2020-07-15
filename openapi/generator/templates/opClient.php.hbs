@@ -1,0 +1,69 @@
+<?php
+{{> copyright }}
+
+namespace Okta\Clients;
+
+class {{name}} {
+
+    /**
+     * The DataStore we are going to use for our Client
+     * @var \Okta\DataStore\DefaultDataStore
+     */
+    protected $dataStore;
+
+    public function __construct(\Okta\DataStore\DefaultDataStore $dataStore)
+    {
+        $this->dataStore = $dataStore;
+    }
+
+    {{#each this.operation}}
+    /**
+     * {{description}}
+     */
+    function {{operationId}}({{{methodArgumentBuilder this}}}){{#if responseModel}} : {{{getMethodReturnType this}}} {{/if}}
+    {
+        $uri = $this->dataStore->buildUri(
+            "{{{buildMethodUri this}}}"
+        );
+
+        $body = $this
+            ->dataStore
+            ->setRequestMethod("{{upperCase this.method}}")
+            ->setUri($uri)
+            {{#if this.bodyModel}}
+            ->setRequestBody({{{executeRequestBodyArgument this}}})
+            {{/if}}
+            {{#if this.queryParams.length}}
+            ->setQueryParams($queryParameters)
+            {{/if}}
+            {{#if (ne this.produces.[0] "application/json")}}
+            ->setAcceptHeader("{{this.produces.[0]}}")
+            {{/if}}
+            {{#if (ne this.consumes.[0] "application/json")}}
+            ->setContentTypeHeader("{{this.consumes.[0]}}")
+            {{/if}}
+            ->executeRequest();
+
+        {{#if responseModel}}
+        {{#if isArray}}
+        $items = [];
+        foreach($body as $item) {
+            $responseModel = new {{buildFullClassname (getDefinitionTag responseModel) responseModel }}(null, $item);
+            {{#if (responseModelRequiresResolution responseModel)}}
+            $responseModel = $responseModel->resolve();
+            {{/if}}
+            $items[] = $responseModel;
+        }
+        return new \Okta\Resource\Collection($items);
+        {{else}}
+        $responseModel = new {{buildFullClassname (getDefinitionTag responseModel) responseModel }}(null, $body);
+        {{#if (responseModelRequiresResolution responseModel)}}
+        $responseModel = $responseModel->resolve();
+        {{/if}}
+        return $responseModel;
+        {{/if}}
+        {{/if}}
+    }
+
+    {{/each}}
+}

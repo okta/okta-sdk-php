@@ -19,36 +19,43 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\Clients;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class Log {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * The DataStore we are going to use for our Client
+     * @var \Okta\DataStore\DefaultDataStore
+     */
+    protected $dataStore;
 
+    public function __construct(\Okta\DataStore\DefaultDataStore $dataStore)
+    {
+        $this->dataStore = $dataStore;
+    }
 
+    /**
+     * The Okta System Log API provides read access to your organization’s system log. This API provides more functionality than the Events API
+     */
+    function getLogs(array $queryParameters = []) : \Okta\Resource\Collection 
+    {
+        $uri = $this->dataStore->buildUri(
+            "/api/v1/logs"
+        );
+
+        $body = $this
+            ->dataStore
+            ->setRequestMethod("GET")
+            ->setUri($uri)
+            ->setQueryParams($queryParameters)
+            ->executeRequest();
+
+        $items = [];
+        foreach($body as $item) {
+            $responseModel = new \Okta\Log\LogEvent(null, $item);
+            $items[] = $responseModel;
+        }
+        return new \Okta\Resource\Collection($items);
+    }
 
 }

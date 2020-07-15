@@ -22,6 +22,7 @@ use Okta\Utilities\AuthorizationMode;
 class BaseTestCase extends TestCase
 {
     protected $token = 'abc123';
+    protected $sdkPrefix = 'php_sdk';
 
     public static function setUpBeforeClass(): void
     {

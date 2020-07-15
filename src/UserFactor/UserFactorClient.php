@@ -21,34 +21,78 @@
 
 namespace Okta\UserFactor;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class UserFactorClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Enumerates all the enrolled factors for the specified user
+     */
+    function listFactors()
+    {
 
+    }
 
+    /**
+     * Enrolls a user with a supported factor.
+     */
+    function enrollFactor()
+    {
+
+    }
+
+    /**
+     * Enumerates all the supported factors that can be enrolled for the specified user
+     */
+    function listSupportedFactors()
+    {
+
+    }
+
+    /**
+     * Enumerates all available security questions for a user&#x27;s &#x60;question&#x60; factor
+     */
+    function listSupportedSecurityQuestions()
+    {
+
+    }
+
+    /**
+     * Unenrolls an existing factor for the specified user, allowing the user to enroll a new factor.
+     */
+    function deleteFactor()
+    {
+
+    }
+
+    /**
+     * Fetches a factor for the specified user
+     */
+    function getFactor()
+    {
+
+    }
+
+    /**
+     * The &#x60;sms&#x60; and &#x60;token:software:totp&#x60; factor types require activation to complete the enrollment process.
+     */
+    function activateFactor()
+    {
+
+    }
+
+    /**
+     * Polls factors verification transaction for status.
+     */
+    function getFactorTransactionStatus()
+    {
+
+    }
+
+    /**
+     * Verifies an OTP for a &#x60;token&#x60; or &#x60;token:hardware&#x60; factor
+     */
+    function verifyFactor()
+    {
+
+    }
 
 }

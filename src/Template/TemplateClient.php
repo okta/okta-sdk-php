@@ -19,36 +19,56 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\Template;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class TemplateClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Enumerates custom SMS templates in your organization. A subset of templates can be returned that match a template type.
+     */
+    function listSmsTemplates()
+    {
 
+    }
 
+    /**
+     * Adds a new custom SMS template to your organization.
+     */
+    function createSmsTemplate()
+    {
+
+    }
+
+    /**
+     * Removes an SMS template.
+     */
+    function deleteSmsTemplate()
+    {
+
+    }
+
+    /**
+     * Fetches a specific template by &#x60;id&#x60;
+     */
+    function getSmsTemplate()
+    {
+
+    }
+
+    /**
+     * Updates only some of the SMS template properties:
+     */
+    function partialUpdateSmsTemplate()
+    {
+
+    }
+
+    /**
+     * Updates the SMS template.
+     */
+    function updateSmsTemplate()
+    {
+
+    }
 
 }

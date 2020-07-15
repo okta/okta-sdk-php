@@ -15,16 +15,15 @@
  * limitations under the License.
  ******************************************************************************/
 
-use Okta\Resource\AbstractCollection;
-use Okta\Resource\AbstractResource;
+use Okta\Resource\Collection;
 use PHPUnit\Framework\TestCase;
 
-class AbstractCollectionTest extends TestCase
+class CollectionTest extends TestCase
 {
     /** @test */
     public function where_operators_work()
     {
-        $c = new AbstractCollection([['v' => 1], ['v' => 2], ['v' => 3], ['v' => '3'], ['v' => 4]]);
+        $c = new Collection([['v' => 1], ['v' => 2], ['v' => 3], ['v' => '3'], ['v' => 4]]);
         $this->assertEquals(
             [['v' => 3], ['v' => '3']],
             $c->where('v', 3)->values()->all()
@@ -78,7 +77,7 @@ class AbstractCollectionTest extends TestCase
     /** @test */
     public function data_get_returns_target_if_key_is_null()
     {
-         $c = new AbstractCollection([['v' => 1]]);
+         $c = new Collection([['v' => 1]]);
 
         $this->assertEquals(
             [],
@@ -94,7 +93,7 @@ class AbstractCollectionTest extends TestCase
         $object2->test = new \StdClass;
         $object2->test->hello = 'world';
 
-        $collection = new AbstractCollection([
+        $collection = new Collection([
             $object1, $object2
         ]);
 
@@ -113,7 +112,7 @@ class AbstractCollectionTest extends TestCase
         $object2->test = new \StdClass;
         $object2->test->hello = 'world';
 
-        $collection = new AbstractCollection([
+        $collection = new Collection([
             $object1, $object2
         ]);
 

@@ -143,19 +143,5 @@ class ApplicationGroupAssignment extends \Okta\Resource\AbstractResource
         return $this;
     }
 
-    /**
-     * Removes a group assignment from an application.
-     */
-    function delete($appId)
-    {
-        $uri = $this->getDataStore()->buildUri(
-            "/api/v1/apps/${appId}/groups/".$this->id.""
-        );
-        $body = $this
-                ->getDataStore()
-                ->setRequestMethod("DELETE")
-                ->setUri($uri)
-                ->executeRequest();
-    }
 
 }

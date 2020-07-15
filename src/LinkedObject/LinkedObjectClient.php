@@ -19,36 +19,40 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\LinkedObject;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class LinkedObjectClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Success
+     */
+    function listLinkedObjectDefinitions()
+    {
 
+    }
 
+    /**
+     * Success
+     */
+    function addLinkedObjectDefinition()
+    {
+
+    }
+
+    /**
+     * Success
+     */
+    function deleteLinkedObjectDefinition()
+    {
+
+    }
+
+    /**
+     * Success
+     */
+    function getLinkedObjectDefinition()
+    {
+
+    }
 
 }

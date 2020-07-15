@@ -19,36 +19,40 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\Session;
 
-class UserFactor extends \Okta\Resource\AbstractResource
-{
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
+class SessionClient {
 
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    /**
+     * Creates a new session for a user with a valid session token. Use this API if, for example, you want to set the session cookie yourself instead of allowing Okta to set it, or want to hold the session ID in order to delete a session via the API instead of visiting the logout URL.
+     */
+    function createSession()
+    {
 
+    }
 
+    /**
+     * 
+     */
+    function endSession()
+    {
+
+    }
+
+    /**
+     * Get details about a session.
+     */
+    function getSession()
+    {
+
+    }
+
+    /**
+     * 
+     */
+    function refreshSession()
+    {
+
+    }
 
 }

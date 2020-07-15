@@ -319,7 +319,12 @@ class DefaultDataStore
             $this->uri = $this->uri->withQuery($this->appendQueryValues($this->uri->getQuery(), $queryString));
         }
 
-        $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, $this->requestBody);
+        $resource = $this->requestBody;
+        $body = null;
+        if($resource) {
+            $body = json_encode($this->toStdClass($resource));
+        }
+        $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, $body);
 
         $response = $this->httpClient->sendRequest($request);
 
@@ -517,7 +522,7 @@ class DefaultDataStore
         return $this;
     }
 
-    public function setRequestBody($body = ""): DefaultDataStore
+    public function setRequestBody(\Okta\Resource\AbstractResource $body): DefaultDataStore
     {
         $this->requestBody = $body;
         return $this;
