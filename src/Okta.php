@@ -38,13 +38,13 @@ class Okta
      * The AuthorizationServer client contains all methods to make your api calls
      * @var \Okta\Clients\AuthorizationServer
      */
-    public $authorizationserver;
+    public $authorizationServer;
 
     /**
      * The EventHook client contains all methods to make your api calls
      * @var \Okta\Clients\EventHook
      */
-    public $eventhook;
+    public $eventHook;
 
     /**
      * The Feature client contains all methods to make your api calls
@@ -62,13 +62,13 @@ class Okta
      * The IdentityProvider client contains all methods to make your api calls
      * @var \Okta\Clients\IdentityProvider
      */
-    public $identityprovider;
+    public $identityProvider;
 
     /**
      * The InlineHook client contains all methods to make your api calls
      * @var \Okta\Clients\InlineHook
      */
-    public $inlinehook;
+    public $inlineHook;
 
     /**
      * The Log client contains all methods to make your api calls
@@ -80,13 +80,13 @@ class Okta
      * The LinkedObject client contains all methods to make your api calls
      * @var \Okta\Clients\LinkedObject
      */
-    public $linkedobject;
+    public $linkedObject;
 
     /**
      * The UserType client contains all methods to make your api calls
      * @var \Okta\Clients\UserType
      */
-    public $usertype;
+    public $userType;
 
     /**
      * The Policy client contains all methods to make your api calls
@@ -110,7 +110,7 @@ class Okta
      * The TrustedOrigin client contains all methods to make your api calls
      * @var \Okta\Clients\TrustedOrigin
      */
-    public $trustedorigin;
+    public $trustedOrigin;
 
     /**
      * The User client contains all methods to make your api calls
@@ -122,7 +122,7 @@ class Okta
      * The UserFactor client contains all methods to make your api calls
      * @var \Okta\Clients\UserFactor
      */
-    public $userfactor;
+    public $userFactor;
 
     /**
      * The DataStore to use for the Clients
@@ -136,21 +136,21 @@ class Okta
         $this->dataStore = $dataStore ?: $this->client->getDataStore();
 
         $this->application = new \Okta\Clients\Application($this->dataStore);
-        $this->authorizationserver = new \Okta\Clients\AuthorizationServer($this->dataStore);
-        $this->eventhook = new \Okta\Clients\EventHook($this->dataStore);
+        $this->authorizationServer = new \Okta\Clients\AuthorizationServer($this->dataStore);
+        $this->eventHook = new \Okta\Clients\EventHook($this->dataStore);
         $this->feature = new \Okta\Clients\Feature($this->dataStore);
         $this->group = new \Okta\Clients\Group($this->dataStore);
-        $this->identityprovider = new \Okta\Clients\IdentityProvider($this->dataStore);
-        $this->inlinehook = new \Okta\Clients\InlineHook($this->dataStore);
+        $this->identityProvider = new \Okta\Clients\IdentityProvider($this->dataStore);
+        $this->inlineHook = new \Okta\Clients\InlineHook($this->dataStore);
         $this->log = new \Okta\Clients\Log($this->dataStore);
-        $this->linkedobject = new \Okta\Clients\LinkedObject($this->dataStore);
-        $this->usertype = new \Okta\Clients\UserType($this->dataStore);
+        $this->linkedObject = new \Okta\Clients\LinkedObject($this->dataStore);
+        $this->userType = new \Okta\Clients\UserType($this->dataStore);
         $this->policy = new \Okta\Clients\Policy($this->dataStore);
         $this->session = new \Okta\Clients\Session($this->dataStore);
         $this->template = new \Okta\Clients\Template($this->dataStore);
-        $this->trustedorigin = new \Okta\Clients\TrustedOrigin($this->dataStore);
+        $this->trustedOrigin = new \Okta\Clients\TrustedOrigin($this->dataStore);
         $this->user = new \Okta\Clients\User($this->dataStore);
-        $this->userfactor = new \Okta\Clients\UserFactor($this->dataStore);
+        $this->userFactor = new \Okta\Clients\UserFactor($this->dataStore);
     }
 
 
