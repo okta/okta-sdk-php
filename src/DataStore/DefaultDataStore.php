@@ -320,7 +320,11 @@ class DefaultDataStore
         }
 
         $resource = $this->requestBody;
-        $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, json_encode($this->toStdClass($resource)));
+        $body = null;
+        if($resource) {
+            $body = json_encode($this->toStdClass($resource));
+        }
+        $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, $body);
 
         $response = $this->httpClient->sendRequest($request);
 

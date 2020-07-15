@@ -292,7 +292,7 @@ class DefaultDataStoreTest extends TestCase
         $profile = $createUserRequest->getProfile();
         $profile->setFirstName('Okta');
         $createUserRequest->setProfile($profile);
-        $user = (new \Okta\User\User)->create($createUserRequest);
+        $user = (new \Okta\Okta())->user->createUser($createUserRequest);
 
         $cacheManager = $client->getCacheManager();
         $this->assertTrue(
@@ -303,7 +303,7 @@ class DefaultDataStoreTest extends TestCase
             )
         );
 
-        $user->delete();
+        (new \Okta\Okta())->user->deactivateOrDeleteUser($user->id);
 
         $this->assertFalse(
             $cacheManager->pool()->hasItem(
@@ -361,7 +361,7 @@ class DefaultDataStoreTest extends TestCase
         $profile = $createUserRequest->getProfile();
         $profile->setFirstName('Okta');
         $createUserRequest->setProfile($profile);
-        $user = (new \Okta\User\User)->create($createUserRequest);
+        $user = (new \Okta\Okta())->user->createUser($createUserRequest);
 
 
 
@@ -371,9 +371,9 @@ class DefaultDataStoreTest extends TestCase
             'The cache was not setup correctly for test.'
         );
 
-        $user->activate();
+        (new \Okta\Okta())->user->activateUser($user->id);
 
-        $user = (new \Okta\User\User())->read('abc123');
+        $user = (new \Okta\Okta())->user->getUser($user->id);
 
         $this->assertEquals(
             'ACTIVE',
@@ -434,7 +434,7 @@ class DefaultDataStoreTest extends TestCase
 
 
         $user = new \Okta\User\User();
-        $user = $user->read('php@okta.com');
+        $user = (new \Okta\Okta())->user->getUser('php@okta.com');
 
         $this->assertFalse($cacheManager->pool()->hasItem($key));
         $this->assertTrue($cacheManager->pool()->hasItem($key2));
@@ -479,12 +479,17 @@ class DefaultDataStoreTest extends TestCase
             "/api/v1/apps"
         );
 
+        $createUserRequest = new \Okta\User\CreateUserRequest();
+        $profile = $createUserRequest->getProfile();
+        $profile->setFirstName('Okta');
+        $createUserRequest->setProfile($profile);
+
         $response = $dataStore
             ->setUri($uri)
             ->setRequestMethod('GET')
             ->setContentTypeHeader('test/contentTypeHeader')
             ->setAcceptHeader('test/acceptHeader')
-            ->setRequestBody("test")
+            ->setRequestBody($createUserRequest)
             ->setQueryParams(['limit'=>1])
             ->executeRequest();
 
