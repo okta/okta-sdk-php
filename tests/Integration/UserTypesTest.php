@@ -29,7 +29,7 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-        $userType = (new \Okta\Okta())->usertype->createUserType($userTypeObj);
+        $userType = (new \Okta\Okta())->userType->createUserType($userTypeObj);
 
         try {
             $this->assertInstanceOf(UserType::class, $userType, "Creating a userType did not return an instance of " . UserType::class);
@@ -38,7 +38,7 @@ class UserTypesTest extends \BaseIntegrationTestCase
             $this->assertEquals("{$this->sdkPrefix}_Test_DisplayName", $userType->getDisplayName(), "DisplayName does not match what was set in the request");
             $this->assertEquals("{$this->sdkPrefix}_Test_User_Type", $userType->getName(), "Name does not match what was set in the request");
         } finally {
-            (new \Okta\Okta())->usertype->deleteUserType($userType->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType->id);
         }
      }
 
@@ -48,18 +48,18 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-        $userType = (new \Okta\Okta())->usertype->createUserType($userTypeObj);
+        $userType = (new \Okta\Okta())->userType->createUserType($userTypeObj);
 
         try {
             $userTypeId = $userType->id;
-            $foundUserType = (new \Okta\Okta())->usertype->getUserType($userTypeId);
+            $foundUserType = (new \Okta\Okta())->userType->getUserType($userTypeId);
             $this->assertInstanceOf(UserType::class, $foundUserType, "Creating a userType did not return an instance of " . UserType::class);
             $this->assertNotEmpty($foundUserType->id, "Did not create a userType. ID is empty");
             $this->assertEquals("{$this->sdkPrefix}_Test Description", $foundUserType->getDescription(), "Description was not as expected");
             $this->assertEquals("{$this->sdkPrefix}_Test_DisplayName", $foundUserType->getDisplayName(), "DisplayName was not as expected");
             $this->assertEquals("{$this->sdkPrefix}_Test_User_Type", $foundUserType->getName(), "Name was not as expected");
         } finally {
-            (new \Okta\Okta())->usertype->deleteUserType($userType->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType->id);
         }
      }
 
@@ -69,12 +69,12 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-        $userType = (new \Okta\Okta())->usertype->createUserType($userTypeObj);
+        $userType = (new \Okta\Okta())->userType->createUserType($userTypeObj);
         try {
             $this->assertInstanceOf(UserType::class, $userType, "Creating a userType did not return an instance of " . UserType::class);
             $updatedUserTypeObj = $userType->setDescription("{$this->sdkPrefix}_Updated")
                                         ->setDisplayName("{$this->sdkPrefix}_UpdatedDisplay");
-            $updatedUserType = (new \Okta\Okta())->usertype->updateUserType($userType->id, $updatedUserTypeObj);
+            $updatedUserType = (new \Okta\Okta())->userType->updateUserType($userType->id, $updatedUserTypeObj);
 
             $this->assertInstanceOf(UserType::class, $updatedUserType, "Creating a userType did not return an instance of " . UserType::class);
             $this->assertNotEmpty($updatedUserType->id, "Did not create a userType. ID is empty");
@@ -84,7 +84,7 @@ class UserTypesTest extends \BaseIntegrationTestCase
             $this->assertEquals("{$this->sdkPrefix}_Test_User_Type", $updatedUserType->getName(), "Name was not as expected");
 
         } finally {
-            (new \Okta\Okta())->usertype->deleteUserType($userType->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType->id);
         }
      }
 
@@ -94,19 +94,19 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test_Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-        $userType = (new \Okta\Okta())->usertype->createUserType($userTypeObj);
+        $userType = (new \Okta\Okta())->userType->createUserType($userTypeObj);
         try {
             $this->assertInstanceOf(UserType::class, $userType, "Creating a userType did not return an instance of " . UserType::class);
             $replaceUserTypeObj = $userType->setDescription("{$this->sdkPrefix}_Replaced")
                                         ->setDisplayName("{$this->sdkPrefix}_ReplacedDisplay")
                                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-            $replacedUserType = (new \Okta\Okta())->usertype->replaceUserType($userType->id, $replaceUserTypeObj);
+            $replacedUserType = (new \Okta\Okta())->userType->replaceUserType($userType->id, $replaceUserTypeObj);
             $this->assertEquals($userType->id, $replacedUserType->id, "Replaced User Type Id is not the same as User Type");
             $this->assertEquals("{$this->sdkPrefix}_Replaced", $replacedUserType->getDescription(), "Description is not the replaced version");
             $this->assertEquals("{$this->sdkPrefix}_ReplacedDisplay", $replacedUserType->getDisplayName(), "Description is not the replaced version");
 
         } finally {
-            (new \Okta\Okta())->usertype->deleteUserType($userType->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType->id);
         }
      }
 
@@ -116,7 +116,7 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type");
-        $userType = (new \Okta\Okta())->usertype->createUserType($userTypeObj);
+        $userType = (new \Okta\Okta())->userType->createUserType($userTypeObj);
 
         $this->assertInstanceOf(UserType::class, $userType, "Creating a userType did not return an instance of " . UserType::class);
         $this->assertNotEmpty($userType->id, "Did not create a userType. ID is empty");
@@ -124,10 +124,10 @@ class UserTypesTest extends \BaseIntegrationTestCase
         $this->assertEquals("{$this->sdkPrefix}_Test_DisplayName", $userType->getDisplayName(), "DisplayName does not match what was set in the request");
         $this->assertEquals("{$this->sdkPrefix}_Test_User_Type", $userType->getName(), "Name does not match what was set in the request");
 
-        (new \Okta\Okta())->usertype->deleteUserType($userType->id);
+        (new \Okta\Okta())->userType->deleteUserType($userType->id);
 
         $this->expectException(\Okta\Exceptions\ResourceException::class);
-        $foundUserType = (new \Okta\Okta())->usertype->getUserType($userType->id);
+        $foundUserType = (new \Okta\Okta())->userType->getUserType($userType->id);
 
      }
 
@@ -137,18 +137,18 @@ class UserTypesTest extends \BaseIntegrationTestCase
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type1");
-        $userType1 = (new \Okta\Okta())->usertype->createUserType($userTypeObj1);
+        $userType1 = (new \Okta\Okta())->userType->createUserType($userTypeObj1);
 
         $userTypeObj2 = (new UserType())
                         ->setDescription("{$this->sdkPrefix}_Test Description")
                         ->setDisplayName("{$this->sdkPrefix}_Test_DisplayName")
                         ->setName("{$this->sdkPrefix}_Test_User_Type2");
-        $userType2 = (new \Okta\Okta())->usertype->createUserType($userTypeObj2);
+        $userType2 = (new \Okta\Okta())->userType->createUserType($userTypeObj2);
         try {
             $this->assertInstanceOf(UserType::class, $userType1, "Creating a userType did not return an instance of " . UserType::class);
             $this->assertInstanceOf(UserType::class, $userType2, "Creating a userType did not return an instance of " . UserType::class);
 
-            $userTypes = (new \Okta\Okta())->usertype->listUserTypes();
+            $userTypes = (new \Okta\Okta())->userType->listUserTypes();
             $this->assertInstanceOf(Collection::class, $userTypes, "Getting list of User Types did not return " . Collection::class);
 
             $this->assertTrue($userTypes->contains(function ($obj) use ($userType1) {
@@ -159,8 +159,8 @@ class UserTypesTest extends \BaseIntegrationTestCase
             }));
 
         } finally {
-            (new \Okta\Okta())->usertype->deleteUserType($userType1->id);
-            (new \Okta\Okta())->usertype->deleteUserType($userType2->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType1->id);
+            (new \Okta\Okta())->userType->deleteUserType($userType2->id);
         }
      }
  }

@@ -15,7 +15,7 @@ class Okta
      * The {{this}} client contains all methods to make your api calls
      * @var \Okta\Clients\\{{this}}
      */
-    public ${{lowerCase this}};
+    public ${{camelCase this}};
 
     {{/each}}
     /**
@@ -30,7 +30,7 @@ class Okta
         $this->dataStore = $dataStore ?: $this->client->getDataStore();
 
         {{#each ops}}
-        $this->{{lowerCase this}} = new \Okta\Clients\\{{this}}($this->dataStore);
+        $this->{{camelCase this}} = new \Okta\Clients\\{{this}}($this->dataStore);
         {{/each}}
     }
 
