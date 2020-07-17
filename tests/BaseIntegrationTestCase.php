@@ -1,5 +1,6 @@
 <?php
 
+use Cache\Adapter\Void\VoidCachePool;
 use Okta\ClientBuilder;
 use Okta\Utilities\AuthorizationMode;
 
@@ -25,7 +26,7 @@ class BaseIntegrationTestCase extends BaseTestCase
     public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
-        (new ClientBuilder())->build();
+        (new ClientBuilder())->setCacheManager(new TestCacheManager())->build();
     }
 
     /**
