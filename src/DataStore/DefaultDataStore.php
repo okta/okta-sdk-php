@@ -330,10 +330,6 @@ class DefaultDataStore
 
         $result = $response->getBody() ? json_decode($response->getBody()) : null;
 
-        // if (isset($result) && $result instanceof \stdClass) {
-        //     $result->httpStatus = $response->getStatusCode();
-        // }
-
         if ($response->getStatusCode() < 200 || $response->getStatusCode() > 299) {
             $error = new Error($result);
             throw new ResourceException($error);
