@@ -330,10 +330,6 @@ class DefaultDataStore
 
         $result = $response->getBody() ? json_decode($response->getBody()) : null;
 
-        if (isset($result) && $result instanceof \stdClass) {
-            $result->httpStatus = $response->getStatusCode();
-        }
-
         if ($response->getStatusCode() < 200 || $response->getStatusCode() > 299) {
             $error = new Error($result);
             throw new ResourceException($error);
@@ -358,7 +354,17 @@ class DefaultDataStore
                     break;
             }
         }
+        $this->resetDefaults();
         return $result;
+    }
+
+    private function resetDefaults()
+    {
+        $this->requestBody = null;
+        $this->uri = null;
+        $this->queryParams = [];
+        $this->acceptHeader = $this->defaultAcceptHeader;
+        $this->contentTypeHeader = $this->defaultContentTypeHeader;
     }
 
     /**
@@ -370,7 +376,7 @@ class DefaultDataStore
     private function toStdClass(AbstractResource $resource)
     {
 
-        $propertyNames = $resource->getPropertyNames(true);
+        $propertyNames = $resource->getPropertyNames();
 
         $properties = new \stdClass();
         foreach ($propertyNames as $name) {
