@@ -175,7 +175,7 @@ class GroupsTest extends \BaseIntegrationTestCase
 
         try {
             $this->okta->group->addUserToGroup($group->id, $user->id);
-
+            sleep(1);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertInstanceOf(Collection::class, $groupUsersList, "Returned group users list was not an instance of " . Collection::class);
             $this->assertCount(1, $groupUsersList, "Group Users should contain exactly 1 user");
@@ -215,7 +215,7 @@ class GroupsTest extends \BaseIntegrationTestCase
 
         try {
             $this->okta->group->addUserToGroup($group->id, $user->id);
-
+            sleep(1);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertInstanceOf(Collection::class, $groupUsersList, "Returned group users list was not an instance of " . Collection::class);
             $this->assertCount(1, $groupUsersList, "Group Users should contain exactly 1 user");
@@ -223,6 +223,7 @@ class GroupsTest extends \BaseIntegrationTestCase
             $this->assertEquals($user->id, $groupUser->id, "Group user was not correct");
 
             $this->okta->group->removeUserFromGroup($group->id, $user->id);
+            sleep(1);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertCount(0, $groupUsersList, "Group Users should not contain any users");
 
@@ -241,8 +242,8 @@ class GroupsTest extends \BaseIntegrationTestCase
             (new Group())
                 ->setProfile(
                     (new GroupProfile())
-                        ->setName("{$this->sdkPrefix} RemoveUserFromGroup Test")
-                        ->setDescription("{$this->sdkPrefix} RemoveUserFromGroup Description")
+                        ->setName("{$this->sdkPrefix} removeDeletedUserFromGroup Test")
+                        ->setDescription("{$this->sdkPrefix} removeDeletedUserFromGroup Description")
                 )
             );
 
@@ -250,9 +251,9 @@ class GroupsTest extends \BaseIntegrationTestCase
             (new CreateUserRequest())
                 ->setProfile((new UserProfile())
                     ->setFirstName("{$this->sdkPrefix}")
-                    ->setLastName("RemoveUserFromGroup")
-                    ->setEmail("RemoveUserFromGroup@example.com")
-                    ->setLogin("RemoveUserFromGroup@example.com"))
+                    ->setLastName("removeDeletedUserFromGroup")
+                    ->setEmail("removeDeletedUserFromGroup@example.com")
+                    ->setLogin("removeDeletedUserFromGroup@example.com"))
                 ->setCredentials((new UserCredentials())
                     ->setPassword((new PasswordCredential())
                         ->setValue("Abcd1234")))
