@@ -223,6 +223,7 @@ class GroupsTest extends \BaseIntegrationTestCase
             $this->assertEquals($user->id, $groupUser->id, "Group user was not correct");
 
             $this->okta->group->removeUserFromGroup($group->id, $user->id);
+            sleep(1);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertCount(0, $groupUsersList, "Group Users should not contain any users");
 
