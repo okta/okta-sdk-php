@@ -86,7 +86,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
     }
 
     /** @test */
-    public function retrieveEventHook() {
+    public function retrieve_event_hook() {
         $eventHook = $this->okta->eventHook->createEventHook(
             (new EventHook())
                 ->setName("{$this->sdkPrefix} GetEventHook")
@@ -133,7 +133,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
     }
 
     /** @test */
-    public function updateEventHook() {
+    public function update_event_hook() {
         $eventHook = $this->okta->eventHook->createEventHook(
             (new EventHook())
                 ->setName("{$this->sdkPrefix} UpdateEventHook")
@@ -210,7 +210,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
     }
 
     /** @test */
-    public function deleteEventHook() {
+    public function delete_event_hook() {
         $eventHook = $this->okta->eventHook->createEventHook(
             (new EventHook())
                 ->setName("{$this->sdkPrefix} DeleteEventHook")
@@ -243,6 +243,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
         $this->okta->eventHook->deleteEventHook($eventHook->id);
 
         $this->expectException(ResourceException::class);
+        $this->okta->eventHook->getEventHook($eventHook->id);
 
     }
 
