@@ -241,8 +241,8 @@ class GroupsTest extends \BaseIntegrationTestCase
             (new Group())
                 ->setProfile(
                     (new GroupProfile())
-                        ->setName("{$this->sdkPrefix} RemoveUserFromGroup Test")
-                        ->setDescription("{$this->sdkPrefix} RemoveUserFromGroup Description")
+                        ->setName("{$this->sdkPrefix} removeDeletedUserFromGroup Test")
+                        ->setDescription("{$this->sdkPrefix} removeDeletedUserFromGroup Description")
                 )
             );
 
@@ -250,9 +250,9 @@ class GroupsTest extends \BaseIntegrationTestCase
             (new CreateUserRequest())
                 ->setProfile((new UserProfile())
                     ->setFirstName("{$this->sdkPrefix}")
-                    ->setLastName("RemoveUserFromGroup")
-                    ->setEmail("RemoveUserFromGroup@example.com")
-                    ->setLogin("RemoveUserFromGroup@example.com"))
+                    ->setLastName("removeDeletedUserFromGroup")
+                    ->setEmail("removeDeletedUserFromGroup@example.com")
+                    ->setLogin("removeDeletedUserFromGroup@example.com"))
                 ->setCredentials((new UserCredentials())
                     ->setPassword((new PasswordCredential())
                         ->setValue("Abcd1234")))
