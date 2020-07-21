@@ -189,7 +189,7 @@ class AuthorizationServerTest extends \BaseIntegrationTestCase
     }
 
     /** @test */
-    public function list_authorizaiton_server_policies() {
+    public function list_authorization_server_policies() {
         $authorizationServer = $this->okta->authorizationServer->createAuthorizationServer(
             (new AuthorizationServer)
                 ->setName("{$this->sdkPrefix} listAuthServerPolicy")
