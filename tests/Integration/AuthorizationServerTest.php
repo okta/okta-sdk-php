@@ -260,7 +260,7 @@ class AuthorizationServerTest extends \BaseIntegrationTestCase
             $this->assertInstanceOf(AuthorizationServer::class, $authorizationServer, "Authorization server returned should be instance of " . AuthorizationServer::class);
 
             $foundPolicy = $this->okta->authorizationServer->getAuthorizationServerPolicy($authorizationServer->id, $policy->id);
-            $this->assertInstanceOf(Policy::class, $policy, "Listed Authorization Server Policies did not return an instance of " . Policy::class);
+            $this->assertInstanceOf(OAuthAuthorizationPolicy::class, $policy, "Listed Authorization Server Policies did not return an instance of " . OAuthAuthorizationPolicy::class);
             $this->assertEquals($policy->getName(), $foundPolicy->getName(), "found policy was incorrect");
         }
         finally {
@@ -304,7 +304,7 @@ class AuthorizationServerTest extends \BaseIntegrationTestCase
             $this->okta->authorizationServer->updateAuthorizationServerPolicy($authorizationServer->id, $policy->id, $policy);
 
             $foundPolicy = $this->okta->authorizationServer->getAuthorizationServerPolicy($authorizationServer->id, $policy->id);
-            $this->assertInstanceOf(Policy::class, $policy, "Listed Authorization Server Policies did not return an instance of " . Policy::class);
+            $this->assertInstanceOf(OAuthAuthorizationPolicy::class, $policy, "Listed Authorization Server Policies did not return an instance of " . OAuthAuthorizationPolicy::class);
             $this->assertEquals("{$this->sdkPrefix} Policy Updated", $foundPolicy->getName(), "found policy was incorrect");
         }
         finally {
