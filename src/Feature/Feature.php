@@ -51,19 +51,18 @@ class Feature extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : Feature
+    function setType(\Okta\Feature\FeatureType $type) : Feature
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Stage.
      *
@@ -83,19 +82,18 @@ class Feature extends \Okta\Resource\AbstractResource
     /**
      * Set the Status.
      *
-     * @param mixed $status The status to set.
      * @return self
      */
-    function setStatus($status) : Feature
+    function setStatus(\Okta\Common\EnabledStatus $status) : Feature
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::STATUS,
             $status
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Description.
      *

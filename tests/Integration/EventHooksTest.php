@@ -26,6 +26,7 @@ use Okta\Exceptions\ResourceException;
 use Okta\EventHook\EventHookChannelConfig;
 use Okta\EventHook\EventHookChannelConfigHeader;
 use Okta\EventHook\EventHookChannelConfigAuthScheme;
+use Okta\EventHook\EventHookChannelConfigAuthSchemeType;
 
 class EventHooksTest extends \BaseIntegrationTestCase
 {
@@ -61,7 +62,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )
@@ -107,7 +108,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )
@@ -154,7 +155,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )
@@ -185,7 +186,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                     ->setUri("https://www.example.com/eventHooks")
                                     ->setAuthScheme(
                                         (new EventHookChannelConfigAuthScheme())
-                                            ->setType("HEADER")
+                                            ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                             ->setKey("Authorization")
                                             ->setValue("Test-Api-Key")
                                     )
@@ -231,7 +232,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )
@@ -272,7 +273,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                     ->setUri("https://www.example.com/eventHooks")
                                     ->setAuthScheme(
                                         (new EventHookChannelConfigAuthScheme())
-                                            ->setType("HEADER")
+                                            ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                             ->setKey("Authorization")
                                             ->setValue("Test-Api-Key")
                                     )
@@ -321,7 +322,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )
@@ -363,7 +364,7 @@ class EventHooksTest extends \BaseIntegrationTestCase
                                 ->setUri("https://www.example.com/eventHooks")
                                 ->setAuthScheme(
                                     (new EventHookChannelConfigAuthScheme())
-                                        ->setType("HEADER")
+                                        ->setType(new EventHookChannelConfigAuthSchemeType(EventHookChannelConfigAuthSchemeType::HEADER))
                                         ->setKey("Authorization")
                                         ->setValue("Test-Api-Key")
                                 )

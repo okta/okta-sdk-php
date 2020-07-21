@@ -128,6 +128,23 @@ function modelExtends(model) {
   return String.raw`\Okta\Resource\AbstractResource`;
 }
 
+function isEnumProperty(prop) {
+  if (prop.commonType == "enum" && prop.$ref) {
+    return true;
+  }
+
+  if (prop.$ref) {
+    const propref = prop.$ref.split("/").pop();
+    const def = getDefinition(propref);
+
+    if (def.enum) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function methodArgumentBuilder(operation) {
 
   const args = [];
@@ -281,7 +298,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     buildMethodUri,
     modelProperties,
     getMethodReturnType,
-    responseModelRequiresResolution
+    responseModelRequiresResolution,
+    isEnumProperty
   });
 
   handlebars.registerPartial('copyright', fs.readFileSync('generator/templates/partials/copyright.hbs', 'utf8'))
@@ -290,6 +308,7 @@ php.process = ({ spec, operations, models, handlebars }) => {
   handlebars.registerPartial('function_setProperty', fs.readFileSync('generator/templates/partials/functions/set_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_setDateTimeProperty', fs.readFileSync('generator/templates/partials/functions/set_datetime_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_setResourceProperty', fs.readFileSync('generator/templates/partials/functions/set_resource_property.php.hbs', 'utf8'))
+  handlebars.registerPartial('function_setEnumProperty', fs.readFileSync('generator/templates/partials/functions/set_enum_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_getProperty', fs.readFileSync('generator/templates/partials/functions/get_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_getDateTimeProperty', fs.readFileSync('generator/templates/partials/functions/get_datetime_property.php.hbs', 'utf8'))
   handlebars.registerPartial('function_getResourceProperty', fs.readFileSync('generator/templates/partials/functions/get_resource_property.php.hbs', 'utf8'))

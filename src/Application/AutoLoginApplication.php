@@ -142,12 +142,11 @@ class AutoLoginApplication extends \Okta\Application\Application
     /**
      * Set the SignOnMode.
      *
-     * @param mixed $signOnMode The signOnMode to set.
      * @return self
      */
     function setSignOnMode(\Okta\Application\ApplicationSignOnMode $signOnMode) : AutoLoginApplication
     {
-        $this->setResourceProperty(
+        $this->setEnumProperty(
             self::SIGN_ON_MODE,
             $signOnMode
         );
@@ -355,15 +354,13 @@ class AutoLoginApplication extends \Okta\Application\Application
     /**
      * Get the SignOnMode.
      *
-     * @param array $options Additional options to pass, Typically query params.
      * @return \Okta\Application\ApplicationSignOnMode
      */
-    function getSignOnMode(array $options = []) : \Okta\Application\ApplicationSignOnMode
+    function getSignOnMode() : \Okta\Application\ApplicationSignOnMode
     {
-        return $this->getResourceProperty(
+        return $this->getEnumProperty(
             self::SIGN_ON_MODE,
             \Okta\Application\ApplicationSignOnMode::class,
-            $options
         );
     }
 

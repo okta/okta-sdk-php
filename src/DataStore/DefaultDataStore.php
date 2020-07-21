@@ -17,26 +17,27 @@
 
 namespace Okta\DataStore;
 
+use Okta\Client;
+use Okta\Utilities\Enum;
+use Okta\Exceptions\Error;
+use Http\Client\HttpClient;
+use Http\Message\UriFactory;
+use Okta\Utilities\SswsAuth;
+use Http\Message\MessageFactory;
+use Psr\Http\Message\UriInterface;
 use Cache\Adapter\Common\CacheItem;
+use Okta\Resource\AbstractResource;
+use Http\Client\Common\PluginClient;
+use Okta\Utilities\UserAgentBuilder;
+use Okta\Resource\AbstractCollection;
+use Okta\Utilities\AuthorizationMode;
+use Okta\Exceptions\ResourceException;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\UriFactoryDiscovery;
 use function GuzzleHttp\Psr7\build_query;
 use function GuzzleHttp\Psr7\parse_query;
-use Http\Client\Common\Plugin\AuthenticationPlugin;
-use Http\Client\Common\PluginClient;
-use Http\Client\HttpClient;
-use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\MessageFactoryDiscovery;
-use Http\Discovery\UriFactoryDiscovery;
-use Http\Message\MessageFactory;
-use Http\Message\UriFactory;
-use Okta\Client;
-use Okta\Exceptions\Error;
-use Okta\Exceptions\ResourceException;
-use Okta\Resource\AbstractCollection;
-use Okta\Resource\AbstractResource;
-use Okta\Utilities\AuthorizationMode;
-use Okta\Utilities\SswsAuth;
-use Okta\Utilities\UserAgentBuilder;
-use Psr\Http\Message\UriInterface;
+use Http\Client\Common\Plugin\AuthenticationPlugin;
 
 class DefaultDataStore
 {
@@ -381,6 +382,10 @@ class DefaultDataStore
         $properties = new \stdClass();
         foreach ($propertyNames as $name) {
             $property = $resource->getProperty($name);
+
+            if($property instanceof Enum) {
+                $property = (string)$property;
+            }
 
             $properties->$name = $property;
         }

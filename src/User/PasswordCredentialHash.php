@@ -65,19 +65,18 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     /**
      * Set the Algorithm.
      *
-     * @param mixed $algorithm The algorithm to set.
      * @return self
      */
-    function setAlgorithm($algorithm) : PasswordCredentialHash
+    function setAlgorithm(\Okta\User\PasswordCredentialHashAlgorithm $algorithm) : PasswordCredentialHash
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::ALGORITHM,
             $algorithm
         );
     
         return $this;
     }
-    
+
     /**
      * Set the SaltOrder.
      *

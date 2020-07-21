@@ -51,19 +51,18 @@ class SmsTemplate extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : SmsTemplate
+    function setType(\Okta\Template\SmsTemplateType $type) : SmsTemplate
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Template.
      *

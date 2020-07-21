@@ -48,19 +48,18 @@ class LinkedObjectDetails extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : LinkedObjectDetails
+    function setType(\Okta\LinkedObject\LinkedObjectDetailsType $type) : LinkedObjectDetails
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Title.
      *

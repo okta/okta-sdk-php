@@ -35,35 +35,33 @@ class LogAuthenticationContext extends \Okta\Resource\AbstractResource
     /**
      * Set the CredentialType.
      *
-     * @param mixed $credentialType The credentialType to set.
      * @return self
      */
-    function setCredentialType($credentialType) : LogAuthenticationContext
+    function setCredentialType(\Okta\Log\LogCredentialType $credentialType) : LogAuthenticationContext
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::CREDENTIAL_TYPE,
             $credentialType
         );
     
         return $this;
     }
-    
+
     /**
      * Set the CredentialProvider.
      *
-     * @param mixed $credentialProvider The credentialProvider to set.
      * @return self
      */
-    function setCredentialProvider($credentialProvider) : LogAuthenticationContext
+    function setCredentialProvider(\Okta\Log\LogCredentialProvider $credentialProvider) : LogAuthenticationContext
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::CREDENTIAL_PROVIDER,
             $credentialProvider
         );
     
         return $this;
     }
-    
+
     /**
      * Get the Issuer.
      *

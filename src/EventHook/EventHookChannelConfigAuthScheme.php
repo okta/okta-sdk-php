@@ -47,19 +47,18 @@ class EventHookChannelConfigAuthScheme extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : EventHookChannelConfigAuthScheme
+    function setType(\Okta\EventHook\EventHookChannelConfigAuthSchemeType $type) : EventHookChannelConfigAuthScheme
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Value.
      *

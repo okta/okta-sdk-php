@@ -33,19 +33,18 @@ class SchemeApplicationCredentials extends \Okta\Application\ApplicationCredenti
     /**
      * Set the Scheme.
      *
-     * @param mixed $scheme The scheme to set.
      * @return self
      */
-    function setScheme($scheme) : SchemeApplicationCredentials
+    function setScheme(\Okta\Application\ApplicationCredentialsScheme $scheme) : SchemeApplicationCredentials
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::SCHEME,
             $scheme
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Password.
      *

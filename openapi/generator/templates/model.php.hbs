@@ -45,6 +45,8 @@ class {{this.modelName}} extends {{modelExtends this}}
     {{#unless readOnly}}
     {{#if ( eq this.commonType "dateTime" ) }}
     {{> function_setDateTimeProperty property=this modelName=../modelName}}
+    {{else if ( isEnumProperty this ) }}
+    {{> function_setEnumProperty property=this modelName=../modelName}}
     {{else if ( and ( eq this.commonType "object" ) this.$ref ) }}
     {{> function_setResourceProperty property=this modelName=../modelName}}
     {{else}}
@@ -57,7 +59,7 @@ class {{this.modelName}} extends {{modelExtends this}}
     {{#each  (modelProperties this)}}
     {{#if ( eq this.commonType "dateTime" ) }}
     {{> function_getDateTimeProperty property=this modelName=../modelName}}
-    {{else if ( and ( eq this.commonType "enum" ) this.$ref ) }}
+    {{else if ( isEnumProperty this ) }}
     {{> function_getEnumProperty property=this modelName=../modelName}}
     {{else if ( and ( eq this.commonType "object" ) this.$ref ) }}
     {{> function_getResourceProperty property=this modelName=../modelName}}

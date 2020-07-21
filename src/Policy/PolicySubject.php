@@ -65,19 +65,18 @@ class PolicySubject extends \Okta\Resource\AbstractResource
     /**
      * Set the MatchType.
      *
-     * @param mixed $matchType The matchType to set.
      * @return self
      */
-    function setMatchType($matchType) : PolicySubject
+    function setMatchType(\Okta\Policy\PolicySubjectMatchType $matchType) : PolicySubject
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::MATCH_TYPE,
             $matchType
         );
     
         return $this;
     }
-    
+
     /**
      * Set the MatchAttribute.
      *

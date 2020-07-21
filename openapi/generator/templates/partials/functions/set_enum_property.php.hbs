@@ -1,0 +1,14 @@
+/**
+ * Set the {{pascalCase propertyName}}.
+ *
+ * @return self
+ */
+function set{{pascalCase property.propertyName}}({{buildFullClassnameFromPropertyRef property.$ref}} ${{property.propertyName}}) : {{modelName}}
+{
+    $this->setEnumProperty(
+        self::{{upperSnakeCase property.propertyName}},
+        ${{property.propertyName}}
+    );
+
+    return $this;
+}

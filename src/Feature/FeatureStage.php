@@ -30,35 +30,33 @@ class FeatureStage extends \Okta\Resource\AbstractResource
     /**
      * Set the State.
      *
-     * @param mixed $state The state to set.
      * @return self
      */
-    function setState($state) : FeatureStage
+    function setState(\Okta\Feature\FeatureStageState $state) : FeatureStage
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::STATE,
             $state
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Value.
      *
-     * @param mixed $value The value to set.
      * @return self
      */
-    function setValue($value) : FeatureStage
+    function setValue(\Okta\Feature\FeatureStageValue $value) : FeatureStage
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::VALUE,
             $value
         );
     
         return $this;
     }
-    
+
     /**
      * Get the State.
      *

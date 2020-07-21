@@ -20,6 +20,7 @@
 use Okta\Okta;
 use Okta\Resource\Collection;
 use Okta\InlineHook\InlineHook;
+use Okta\InlineHook\InlineHookType;
 use Okta\Exceptions\ResourceException;
 use Okta\InlineHook\InlineHookChannel;
 use Okta\InlineHook\InlineHookChannelConfig;
@@ -43,7 +44,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} createInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
@@ -78,7 +79,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} getInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
@@ -115,7 +116,6 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} updateInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
@@ -131,6 +131,8 @@ class InlineHooksTest extends \BaseIntegrationTestCase
                                 )
                         )
                 )
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
+
         );
 
         try {
@@ -139,7 +141,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
                 (new InlineHook())
                     ->setName("{$this->sdkPrefix} updateInlineHook")
                     ->setVersion("1.0.0")
-                    ->setType("com.okta.oauth2.tokens.transform")
+                    ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                     ->setChannel(
                         (new InlineHookChannel())
                             ->setType("HTTP")
@@ -173,7 +175,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} createInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
@@ -211,7 +213,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
                 (new InlineHook())
                     ->setName("{$this->sdkPrefix} listInlineHook {$i}")
                     ->setVersion("1.0.0")
-                    ->setType("com.okta.oauth2.tokens.transform")
+                    ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                     ->setChannel(
                         (new InlineHookChannel())
                             ->setType("HTTP")
@@ -256,7 +258,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} deactivateInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
@@ -293,7 +295,7 @@ class InlineHooksTest extends \BaseIntegrationTestCase
             (new InlineHook())
                 ->setName("{$this->sdkPrefix} activateInlineHook")
                 ->setVersion("1.0.0")
-                ->setType("com.okta.oauth2.tokens.transform")
+                ->setType(new InlineHookType(InlineHookType::COM_OKTA_OAUTH_2_TOKENS_TRANSFORM))
                 ->setChannel(
                     (new InlineHookChannel())
                         ->setType("HTTP")
