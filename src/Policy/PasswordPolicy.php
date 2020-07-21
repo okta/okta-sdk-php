@@ -142,12 +142,11 @@ class PasswordPolicy extends \Okta\Policy\Policy
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
     function setType(\Okta\Policy\PolicyType $type) : PasswordPolicy
     {
-        $this->setResourceProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
@@ -322,15 +321,13 @@ class PasswordPolicy extends \Okta\Policy\Policy
     /**
      * Get the Type.
      *
-     * @param array $options Additional options to pass, Typically query params.
      * @return \Okta\Policy\PolicyType
      */
-    function getType(array $options = []) : \Okta\Policy\PolicyType
+    function getType() : \Okta\Policy\PolicyType
     {
-        return $this->getResourceProperty(
+        return $this->getEnumProperty(
             self::TYPE,
             \Okta\Policy\PolicyType::class,
-            $options
         );
     }
 

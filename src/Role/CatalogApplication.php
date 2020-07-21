@@ -56,19 +56,18 @@ class CatalogApplication extends \Okta\Resource\AbstractResource
     /**
      * Set the Status.
      *
-     * @param mixed $status The status to set.
      * @return self
      */
-    function setStatus($status) : CatalogApplication
+    function setStatus(\Okta\Role\CatalogApplicationStatus $status) : CatalogApplication
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::STATUS,
             $status
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Website.
      *

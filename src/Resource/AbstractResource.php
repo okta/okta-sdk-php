@@ -19,6 +19,7 @@ namespace Okta\Resource;
 
 use Okta\Client;
 use Carbon\Carbon;
+use Okta\Utilities\Enum;
 use Okta\DataStore\DefaultDataStore;
 use Http\Discovery\UriFactoryDiscovery;
 
@@ -141,10 +142,18 @@ abstract class AbstractResource
     }
 
     public function getEnumProperty($name, $enum) {
-        $prop = strtoupper($this->getProperty($name));
+        $prop = $this->getProperty($name);
+        $enumReflect = new \ReflectionClass($enum);
+        $enumConsts = $enumReflect->getConstants();
 
-        $enumClass = new $enum(constant("$enum::$prop"));
-        return $enumClass;
+        foreach($enumConsts as $constName => $constValue) {
+            if($constValue == $prop) {
+                $enumClass = new $enum(constant("$enum::$constName"));
+                return $enumClass;
+            }
+        }
+
+        throw new \InvalidArgumentException("Could not find a constant with the value {$name} in the class {$enum}");
     }
 
     /**
@@ -279,6 +288,10 @@ abstract class AbstractResource
     protected function setResourceProperty($name, AbstractResource $resource)
     {
         $this->setProperty($name, $resource->properties);
+    }
+
+    public function setEnumProperty($name, Enum $enum) {
+        $this->setProperty($name, (string)$enum);
     }
 
     /**

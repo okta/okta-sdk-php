@@ -38,19 +38,18 @@ class Role extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : Role
+    function setType(\Okta\Role\RoleType $type) : Role
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Description.
      *
@@ -70,19 +69,18 @@ class Role extends \Okta\Resource\AbstractResource
     /**
      * Set the AssignmentType.
      *
-     * @param mixed $assignmentType The assignmentType to set.
      * @return self
      */
-    function setAssignmentType($assignmentType) : Role
+    function setAssignmentType(\Okta\Role\RoleAssignmentType $assignmentType) : Role
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::ASSIGNMENT_TYPE,
             $assignmentType
         );
     
         return $this;
     }
-    
+
     /**
      * Get the Id.
      *

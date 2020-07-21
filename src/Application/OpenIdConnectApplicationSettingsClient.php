@@ -120,19 +120,18 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     /**
      * Set the IssuerMode.
      *
-     * @param mixed $issuer_mode The issuer_mode to set.
      * @return self
      */
-    function setIssuerMode($issuer_mode) : OpenIdConnectApplicationSettingsClient
+    function setIssuerMode(\Okta\Application\OpenIdConnectApplicationIssuerMode $issuer_mode) : OpenIdConnectApplicationSettingsClient
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::ISSUER_MODE,
             $issuer_mode
         );
     
         return $this;
     }
-    
+
     /**
      * Set the RedirectUris.
      *
@@ -152,19 +151,18 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     /**
      * Set the ConsentMethod.
      *
-     * @param mixed $consent_method The consent_method to set.
      * @return self
      */
-    function setConsentMethod($consent_method) : OpenIdConnectApplicationSettingsClient
+    function setConsentMethod(\Okta\Application\OpenIdConnectApplicationConsentMethod $consent_method) : OpenIdConnectApplicationSettingsClient
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::CONSENT_METHOD,
             $consent_method
         );
     
         return $this;
     }
-    
+
     /**
      * Set the ResponseTypes.
      *
@@ -184,19 +182,18 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     /**
      * Set the ApplicationType.
      *
-     * @param mixed $application_type The application_type to set.
      * @return self
      */
-    function setApplicationType($application_type) : OpenIdConnectApplicationSettingsClient
+    function setApplicationType(\Okta\Application\OpenIdConnectApplicationType $application_type) : OpenIdConnectApplicationSettingsClient
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::APPLICATION_TYPE,
             $application_type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the InitiateLoginUri.
      *

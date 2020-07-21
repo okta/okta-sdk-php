@@ -56,35 +56,33 @@ class OAuth2ScopeConsentGrant extends \Okta\Resource\AbstractResource
     /**
      * Set the Source.
      *
-     * @param mixed $source The source to set.
      * @return self
      */
-    function setSource($source) : OAuth2ScopeConsentGrant
+    function setSource(\Okta\Application\OAuth2ScopeConsentGrantSource $source) : OAuth2ScopeConsentGrant
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::SOURCE,
             $source
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Status.
      *
-     * @param mixed $status The status to set.
      * @return self
      */
-    function setStatus($status) : OAuth2ScopeConsentGrant
+    function setStatus(\Okta\Application\OAuth2ScopeConsentGrantStatus $status) : OAuth2ScopeConsentGrant
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::STATUS,
             $status
         );
     
         return $this;
     }
-    
+
     /**
      * Set the UserId.
      *

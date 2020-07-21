@@ -45,12 +45,11 @@ class CallUserFactor extends \Okta\UserFactor\UserFactor
     /**
      * Set the FactorType.
      *
-     * @param mixed $factorType The factorType to set.
      * @return self
      */
     function setFactorType(\Okta\UserFactor\FactorType $factorType) : CallUserFactor
     {
-        $this->setResourceProperty(
+        $this->setEnumProperty(
             self::FACTOR_TYPE,
             $factorType
         );
@@ -61,12 +60,11 @@ class CallUserFactor extends \Okta\UserFactor\UserFactor
     /**
      * Set the Provider.
      *
-     * @param mixed $provider The provider to set.
      * @return self
      */
     function setProvider(\Okta\UserFactor\FactorProvider $provider) : CallUserFactor
     {
-        $this->setResourceProperty(
+        $this->setEnumProperty(
             self::PROVIDER,
             $provider
         );
@@ -149,15 +147,13 @@ class CallUserFactor extends \Okta\UserFactor\UserFactor
     /**
      * Get the FactorType.
      *
-     * @param array $options Additional options to pass, Typically query params.
      * @return \Okta\UserFactor\FactorType
      */
-    function getFactorType(array $options = []) : \Okta\UserFactor\FactorType
+    function getFactorType() : \Okta\UserFactor\FactorType
     {
-        return $this->getResourceProperty(
+        return $this->getEnumProperty(
             self::FACTOR_TYPE,
             \Okta\UserFactor\FactorType::class,
-            $options
         );
     }
 
@@ -192,31 +188,29 @@ class CallUserFactor extends \Okta\UserFactor\UserFactor
     /**
      * Get the Provider.
      *
-     * @param array $options Additional options to pass, Typically query params.
      * @return \Okta\UserFactor\FactorProvider
      */
-    function getProvider(array $options = []) : \Okta\UserFactor\FactorProvider
+    function getProvider() : \Okta\UserFactor\FactorProvider
     {
-        return $this->getResourceProperty(
+        return $this->getEnumProperty(
             self::PROVIDER,
             \Okta\UserFactor\FactorProvider::class,
-            $options
         );
     }
 
     /**
      * Get the Status.
      *
-     * @param mixed $status The status to set.
      * @return string
      */
     function getStatus() : string
     {
-        return $this->getProperty(
+        return $this->getEnumProperty(
             self::STATUS,
+            \Okta\UserFactor\FactorStatus::class,
         );
     }
-    
+
     /**
      * Get the Verify.
      *

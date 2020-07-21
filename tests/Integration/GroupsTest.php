@@ -340,13 +340,13 @@ class GroupsTest extends \BaseIntegrationTestCase
         try {
             $role1 = $this->okta->group->assignRoleToGroup(
                 (new AssignRoleRequest())
-                    ->setType(RoleType::USER_ADMIN),
+                    ->setType(new RoleType(RoleType::USER_ADMIN)),
                 $group->id
             );
 
             $role2 = $this->okta->group->assignRoleToGroup(
                 (new AssignRoleRequest())
-                    ->setType(RoleType::APP_ADMIN),
+                    ->setType(new RoleType(RoleType::APP_ADMIN)),
                 $group->id
             );
 
@@ -382,7 +382,7 @@ class GroupsTest extends \BaseIntegrationTestCase
         try {
             $role = $this->okta->group->assignRoleToGroup(
                 (new AssignRoleRequest())
-                    ->setType(RoleType::USER_ADMIN),
+                    ->setType(new RoleType(RoleType::USER_ADMIN)),
                 $group->id
             );
 
@@ -430,7 +430,7 @@ class GroupsTest extends \BaseIntegrationTestCase
         try {
             $role = $this->okta->group->assignRoleToGroup(
                 (new AssignRoleRequest())
-                    ->setType(RoleType::USER_ADMIN),
+                    ->setType(new RoleType(RoleType::USER_ADMIN)),
                 $group1->id
             );
 
@@ -483,7 +483,7 @@ class GroupsTest extends \BaseIntegrationTestCase
         try {
             $role = $this->okta->group->assignRoleToGroup(
                 (new AssignRoleRequest())
-                    ->setType(RoleType::USER_ADMIN),
+                    ->setType(new RoleType(RoleType::USER_ADMIN)),
                 $group1->id
             );
 

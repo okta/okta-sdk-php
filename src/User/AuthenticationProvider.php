@@ -46,19 +46,18 @@ class AuthenticationProvider extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : AuthenticationProvider
+    function setType(\Okta\User\AuthenticationProviderType $type) : AuthenticationProvider
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Get the Name.
      *

@@ -49,35 +49,33 @@ class AuthorizationServerCredentialsSigningConfig extends \Okta\Resource\Abstrac
     /**
      * Set the Use.
      *
-     * @param mixed $use The use to set.
      * @return self
      */
-    function setUse($use) : AuthorizationServerCredentialsSigningConfig
+    function setUse(\Okta\AuthorizationServer\AuthorizationServerCredentialsUse $use) : AuthorizationServerCredentialsSigningConfig
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::USE,
             $use
         );
     
         return $this;
     }
-    
+
     /**
      * Set the RotationMode.
      *
-     * @param mixed $rotationMode The rotationMode to set.
      * @return self
      */
-    function setRotationMode($rotationMode) : AuthorizationServerCredentialsSigningConfig
+    function setRotationMode(\Okta\AuthorizationServer\AuthorizationServerCredentialsRotationMode $rotationMode) : AuthorizationServerCredentialsSigningConfig
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::ROTATION_MODE,
             $rotationMode
         );
     
         return $this;
     }
-    
+
     /**
      * Get the Kid.
      *

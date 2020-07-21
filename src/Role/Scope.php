@@ -30,19 +30,18 @@ class Scope extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : Scope
+    function setType(\Okta\Role\ScopeType $type) : Scope
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the StringValue.
      *

@@ -53,35 +53,33 @@ class InlineHook extends \Okta\Resource\AbstractResource
     /**
      * Set the Type.
      *
-     * @param mixed $type The type to set.
      * @return self
      */
-    function setType($type) : InlineHook
+    function setType(\Okta\InlineHook\InlineHookType $type) : InlineHook
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TYPE,
             $type
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Status.
      *
-     * @param mixed $status The status to set.
      * @return self
      */
-    function setStatus($status) : InlineHook
+    function setStatus(\Okta\InlineHook\InlineHookStatus $status) : InlineHook
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::STATUS,
             $status
         );
     
         return $this;
     }
-    
+
     /**
      * Set the Channel.
      *

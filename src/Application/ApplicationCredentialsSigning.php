@@ -49,19 +49,18 @@ class ApplicationCredentialsSigning extends \Okta\Resource\AbstractResource
     /**
      * Set the Use.
      *
-     * @param mixed $use The use to set.
      * @return self
      */
-    function setUse($use) : ApplicationCredentialsSigning
+    function setUse(\Okta\AuthorizationServer\ApplicationCredentialsSigningUse $use) : ApplicationCredentialsSigning
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::USE,
             $use
         );
     
         return $this;
     }
-    
+
     /**
      * Set the RotationMode.
      *

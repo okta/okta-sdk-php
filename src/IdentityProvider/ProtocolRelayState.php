@@ -29,19 +29,18 @@ class ProtocolRelayState extends \Okta\Resource\AbstractResource
     /**
      * Set the Format.
      *
-     * @param mixed $format The format to set.
      * @return self
      */
-    function setFormat($format) : ProtocolRelayState
+    function setFormat(\Okta\IdentityProvider\ProtocolRelayStateFormat $format) : ProtocolRelayState
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::FORMAT,
             $format
         );
     
         return $this;
     }
-    
+
     /**
      * Get the Format.
      *

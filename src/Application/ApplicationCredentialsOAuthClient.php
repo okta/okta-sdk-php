@@ -80,19 +80,18 @@ class ApplicationCredentialsOAuthClient extends \Okta\Resource\AbstractResource
     /**
      * Set the TokenEndpointAuthMethod.
      *
-     * @param mixed $token_endpoint_auth_method The token_endpoint_auth_method to set.
      * @return self
      */
-    function setTokenEndpointAuthMethod($token_endpoint_auth_method) : ApplicationCredentialsOAuthClient
+    function setTokenEndpointAuthMethod(\Okta\Application\OAuthEndpointAuthenticationMethod $token_endpoint_auth_method) : ApplicationCredentialsOAuthClient
     {
-        $this->setProperty(
+        $this->setEnumProperty(
             self::TOKEN_ENDPOINT_AUTH_METHOD,
             $token_endpoint_auth_method
         );
     
         return $this;
     }
-    
+
     /**
      * Get the ClientId.
      *
