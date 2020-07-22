@@ -30,6 +30,12 @@ class BaseTestCase extends TestCase
         (new ClientBuilder())->build();
     }
 
+    protected function setup(): void
+    {
+        parent::setup();
+        $this->sdkPrefix = $this->sdkPrefix . random_int(0, 99);
+    }
+
     /**
      * @param array $returns
      *
