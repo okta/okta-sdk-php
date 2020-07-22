@@ -175,7 +175,7 @@ class GroupsTest extends \BaseIntegrationTestCase
 
         try {
             $this->okta->group->addUserToGroup($group->id, $user->id);
-            sleep(1);
+            sleep(3);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertInstanceOf(Collection::class, $groupUsersList, "Returned group users list was not an instance of " . Collection::class);
             $this->assertCount(1, $groupUsersList, "Group Users should contain exactly 1 user");
@@ -261,7 +261,7 @@ class GroupsTest extends \BaseIntegrationTestCase
 
         try {
             $this->okta->group->addUserToGroup($group->id, $user->id);
-
+            sleep(3);
             $groupUsersList = $this->okta->group->listGroupUsers($group->id);
             $this->assertInstanceOf(Collection::class, $groupUsersList, "Returned group users list was not an instance of " . Collection::class);
             $this->assertCount(1, $groupUsersList, "Group Users should contain exactly 1 user");
