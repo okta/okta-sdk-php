@@ -82,6 +82,11 @@ class DefaultDataStore
     private $resource;
 
     /**
+     * @var array|null If there where headers from the last response you will find them in this variable.
+     */
+    private $lastResponseHeaders;
+
+    /**
      * DefaultDataStore constructor.
      *
      * @param string          $token
@@ -179,7 +184,7 @@ class DefaultDataStore
 
         $toCollect = [];
 
-        $result = $this->executeRequest('GET', $uri);
+        $result = $this->executeRequest('GET', $uri, '', $options);
 
 
         foreach ($result as $item) {
@@ -291,6 +296,8 @@ class DefaultDataStore
 
         $request = $this->messageFactory->createRequest($method, $uri, $headers, $body);
 
+        $this->lastResponseHeaders = null;
+
         $response = $this->httpClient->sendRequest($request);
 
         $result = $response->getBody() ? json_decode($response->getBody()) : null;
@@ -299,9 +306,21 @@ class DefaultDataStore
             $result->httpStatus = $response->getStatusCode();
         }
 
+        if ($response->getHeaders()) {
+            $this->lastResponseHeaders = $response->getHeaders();
+        }
+
         if ($response->getStatusCode() < 200 || $response->getStatusCode() > 299) {
             $error = new Error($result);
             throw new ResourceException($error);
+        }
+
+        if (is_array($result) && !key_exists('no_follow_links', $options) && $response->hasHeader('Link') && count($response->getHeader('Link')) > 1) {
+            $responseNextLink = $response->getHeader('Link')[1];
+            $nextLink         = substr($responseNextLink, 1, strrpos($responseNextLink, '>') -1);
+            $uri              = $this->uriFactory->createUri($nextLink);
+
+            return array_merge($this->executeRequest($method, $uri, $body, $options), $result);
         }
 
         if (!is_array($result)) {
@@ -450,5 +469,13 @@ class DefaultDataStore
     public function buildUri(string $uri): UriInterface
     {
         return $this->uriFactory->createUri($uri);
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getLastResponseHeaders(): ?array
+    {
+        return $this->lastResponseHeaders;
     }
 }
