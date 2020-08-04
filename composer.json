@@ -19,7 +19,7 @@
         "php-http/curl-client": "^1.7",
         "symfony/yaml": "^3.2|^4.3",
         "nesbot/carbon": "^2.0",
-        "tightenco/collect": "5.8.31",
+        "tightenco/collect": "5.8.31 || ^6.0 || ^7.0",
         "guzzlehttp/psr7": "^1.4",
         "psr/cache": "^1.0",
         "league/flysystem-memory": "^1.0",
