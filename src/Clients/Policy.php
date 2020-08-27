@@ -56,7 +56,10 @@ class Policy {
             $responseModel = $responseModel->resolve();
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Policy\Policy::class);
+        return $collection;
     }
 
     /**
@@ -195,7 +198,10 @@ class Policy {
             $responseModel = $responseModel->resolve();
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Policy\PolicyRule::class);
+        return $collection;
     }
 
     /**

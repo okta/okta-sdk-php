@@ -172,6 +172,19 @@ To start at the second entry and get the next two items:
 $users = (new \Okta\Okta)->getUsers(['query' => ['limit' = 2, 'after' = 2]]);
 ```
 
+### Getting Next Set
+We have provided a method on the collection to allow you to get your next set of items. This works based on the last responses link header `rel="next"`. When you call `->nextSet()` off the collection that is returned, we will make a call to the API for you.
+```php
+$users = $this->okta->user->listUsers(['limit'=>'1']);
+
+foreach($users as $user) {
+  //do stuff with your list of users
+}
+
+//when you get to the end of list,
+$users = $users->nextSet();  // Returns your next set of users based on the query params from the initial request
+```
+
 ## Caching
 The Okta PHP SDK allows any resource with a self link to be cached by default. The SDK uses any PSR-6
 caching adaptor that you would like to use. By default, we ship with the

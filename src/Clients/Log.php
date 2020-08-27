@@ -55,7 +55,10 @@ class Log {
             $responseModel = new \Okta\Log\LogEvent(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Log\LogEvent::class);
+        return $collection;
     }
 
 }

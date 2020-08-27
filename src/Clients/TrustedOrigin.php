@@ -55,7 +55,10 @@ class TrustedOrigin {
             $responseModel = new \Okta\TrustedOrigin\TrustedOrigin(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\TrustedOrigin\TrustedOrigin::class);
+        return $collection;
     }
 
     /**

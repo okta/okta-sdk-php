@@ -21,7 +21,7 @@
 
 namespace Okta\Group;
 
- class Group extends \Okta\Resource\AbstractResource
+class Group extends \Okta\Resource\AbstractResource
 {
     const ID = 'id';
     const TYPE = 'type';
@@ -46,7 +46,7 @@ namespace Okta\Group;
             self::PROFILE,
             $profile
         );
-
+    
         return $this;
     }
 
@@ -62,7 +62,7 @@ namespace Okta\Group;
             self::ID,
         );
     }
-
+    
     /**
      * Get the Type.
      *
@@ -88,7 +88,7 @@ namespace Okta\Group;
             self::LINKS,
         );
     }
-
+    
     /**
      * Get the Created.
      *
@@ -100,7 +100,7 @@ namespace Okta\Group;
         return $this->getDateTimeProperty(
             self::CREATED
         );
-
+    
         return $this;
     }
 
@@ -131,7 +131,7 @@ namespace Okta\Group;
             self::EMBEDDED,
         );
     }
-
+    
     /**
      * Get the LastUpdated.
      *
@@ -143,7 +143,7 @@ namespace Okta\Group;
         return $this->getDateTimeProperty(
             self::LAST_UPDATED
         );
-
+    
         return $this;
     }
 
@@ -159,7 +159,7 @@ namespace Okta\Group;
             self::OBJECT_CLASS,
         );
     }
-
+    
     /**
      * Get the LastMembershipUpdated.
      *
@@ -171,7 +171,7 @@ namespace Okta\Group;
         return $this->getDateTimeProperty(
             self::LAST_MEMBERSHIP_UPDATED
         );
-
+    
         return $this;
     }
 

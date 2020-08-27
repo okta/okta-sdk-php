@@ -55,7 +55,10 @@ class UserFactor {
             $responseModel = $responseModel->resolve();
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\UserFactor\UserFactor::class);
+        return $collection;
     }
 
     /**
@@ -101,7 +104,10 @@ class UserFactor {
             $responseModel = $responseModel->resolve();
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\UserFactor\UserFactor::class);
+        return $collection;
     }
 
     /**
@@ -124,7 +130,10 @@ class UserFactor {
             $responseModel = new \Okta\UserFactor\SecurityQuestion(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\UserFactor\SecurityQuestion::class);
+        return $collection;
     }
 
     /**

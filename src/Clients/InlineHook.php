@@ -55,7 +55,10 @@ class InlineHook {
             $responseModel = new \Okta\InlineHook\InlineHook(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\InlineHook\InlineHook::class);
+        return $collection;
     }
 
     /**
