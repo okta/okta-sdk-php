@@ -17,11 +17,75 @@
 
 namespace Okta\Resource;
 
-use Tightenco\Collect\Support\Collection as TCollection;
 use Tightenco\Collect\Support\Arr;
+use Okta\Resource\AbstractResource;
+use Okta\DataStore\DefaultDataStore;
+use Psr\Http\Message\ResponseInterface;
+use Tightenco\Collect\Support\Collection as TCollection;
 
 class Collection extends TCollection
 {
+
+    /**
+     * The DataStore
+     *
+     * @var DefaultDataStore
+     */
+    protected $dataStore;
+
+    /**
+     * Response Model to use for items from nextSet call
+     *
+     * @var string
+     */
+    protected $responseModel;
+
+    public function setDataStore(DefaultDataStore $ds): Collection
+    {
+        $this->dataStore = $ds;
+        return $this;
+    }
+
+    public function setResponseModel(string $responseModel): Collection
+    {
+        $this->responseModel = $responseModel;
+        return $this;
+    }
+
+    public function nextSet(): Collection
+    {
+        if(count($this->dataStore->getLastResponse()->getHeader("Link")) < 2) {
+            return null;
+        }
+
+        $responseNextLink = $this->dataStore->getLastResponse()->getHeader("Link")[1];
+        $nextLink = substr($responseNextLink, 1, strrpos($responseNextLink, ">") -1);
+        $urlParts = parse_url($nextLink);
+        parse_str($urlParts["query"], $query);
+
+        $uri = $this->dataStore->buildUri(
+            $urlParts["path"]
+        );
+
+        $body = $this
+            ->dataStore
+            ->setRequestMethod("GET")
+            ->setUri($uri)
+            ->setQueryParams($query)
+            ->executeRequest();
+
+        $items = [];
+        foreach($body as $item) {
+            $responseModel = new $this->responseModel(null, $item);
+            $items[] = $responseModel;
+        }
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel($this->responseModel);
+        return $collection;
+
+    }
+
     /**
      * Get an operator checker callback.
      *

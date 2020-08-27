@@ -55,7 +55,10 @@ class IdentityProvider {
             $responseModel = new \Okta\IdentityProvider\IdentityProvider(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\IdentityProvider\IdentityProvider::class);
+        return $collection;
     }
 
     /**
@@ -99,7 +102,10 @@ class IdentityProvider {
             $responseModel = new \Okta\Application\JsonWebKey(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\JsonWebKey::class);
+        return $collection;
     }
 
     /**
@@ -234,7 +240,10 @@ class IdentityProvider {
             $responseModel = new \Okta\Application\Csr(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\Csr::class);
+        return $collection;
     }
 
     /**
@@ -418,7 +427,10 @@ class IdentityProvider {
             $responseModel = new \Okta\Application\JsonWebKey(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\JsonWebKey::class);
+        return $collection;
     }
 
     /**
@@ -538,7 +550,10 @@ class IdentityProvider {
             $responseModel = new \Okta\IdentityProvider\IdentityProviderApplicationUser(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\IdentityProvider\IdentityProviderApplicationUser::class);
+        return $collection;
     }
 
     /**
@@ -617,7 +632,10 @@ class IdentityProvider {
             $responseModel = new \Okta\IdentityProvider\SocialAuthToken(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\IdentityProvider\SocialAuthToken::class);
+        return $collection;
     }
 
 }

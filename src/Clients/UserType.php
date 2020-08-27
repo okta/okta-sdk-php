@@ -54,7 +54,10 @@ class UserType {
             $responseModel = new \Okta\UserType\UserType(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\UserType\UserType::class);
+        return $collection;
     }
 
     /**

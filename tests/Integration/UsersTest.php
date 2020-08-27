@@ -88,6 +88,68 @@ class UsersTest extends \BaseIntegrationTestCase
     }
 
     /** @test */
+    public function list_users_paged()
+    {
+        $user1 = $this->okta->user->createUser(
+            (new CreateUserRequest)
+                ->setProfile(
+                    (new UserProfile)
+                        ->setFirstName("{$this->sdkPrefix}")
+                        ->setLastName("ListUsers")
+                        ->setEmail("{$this->sdkPrefix}listUsers1@example.com")
+                        ->setLogin("{$this->sdkPrefix}listUsers1@example.com")
+                )
+                ->setCredentials(
+                    (new UserCredentials)
+                        ->setPassword(
+                            (new PasswordCredential)
+                                ->setValue("Abcd1234")
+                        )
+                )
+        );
+
+        $user2 = $this->okta->user->createUser(
+            (new CreateUserRequest)
+                ->setProfile(
+                    (new UserProfile)
+                        ->setFirstName("{$this->sdkPrefix}")
+                        ->setLastName("ListUsers")
+                        ->setEmail("{$this->sdkPrefix}listUsers2@example.com")
+                        ->setLogin("{$this->sdkPrefix}listUsers2@example.com")
+                )
+                ->setCredentials(
+                    (new UserCredentials)
+                        ->setPassword(
+                            (new PasswordCredential)
+                                ->setValue("Abcd1234")
+                        )
+                )
+        );
+
+        try {
+            $foundUser = $this->okta->user->listUsers(['limit'=>'1']);
+            $foundUser1 = $foundUser->first();
+            $this->assertInstanceOf(Collection::class, $foundUser, "Listing user did not return instance of " . Collection::class);
+            $this->assertInstanceOf(User::class, $foundUser1, "foundUser1 is not an instance of " . User::class);
+            $this->assertTrue($foundUser->count() == 1, "user count should be 1");
+
+            $foundUser = $foundUser->nextSet();
+            $foundUser2 = $foundUser->first();
+            $this->assertInstanceOf(User::class, $foundUser2, "foundUser2 is not an instance of " . User::class);
+            $this->assertInstanceOf(Collection::class, $foundUser, "Listing user did not return instance of " . Collection::class);
+            $this->assertTrue($foundUser->count() == 1, "user count should be 1");
+
+        }
+        finally {
+            $this->okta->user->deactivateUser($user1->id);
+            $this->okta->user->deactivateOrDeleteUser($user1->id);
+
+            $this->okta->user->deactivateUser($user2->id);
+            $this->okta->user->deactivateOrDeleteUser($user2->id);
+        }
+    }
+
+    /** @test */
     public function get_user()
     {
         $user = $this->okta->user->createUser(

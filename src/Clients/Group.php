@@ -55,7 +55,10 @@ class Group {
             $responseModel = new \Okta\Group\Group(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Group\Group::class);
+        return $collection;
     }
 
     /**
@@ -99,7 +102,10 @@ class Group {
             $responseModel = new \Okta\GroupRule\GroupRule(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\GroupRule\GroupRule::class);
+        return $collection;
     }
 
     /**
@@ -291,7 +297,10 @@ class Group {
             $responseModel = $responseModel->resolve();
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\Application::class);
+        return $collection;
     }
 
     /**
@@ -315,7 +324,10 @@ class Group {
             $responseModel = new \Okta\User\Role(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\Role::class);
+        return $collection;
     }
 
     /**
@@ -396,7 +408,10 @@ class Group {
             $responseModel = new \Okta\Role\CatalogApplication(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Role\CatalogApplication::class);
+        return $collection;
     }
 
     /**
@@ -488,7 +503,10 @@ class Group {
             $responseModel = new \Okta\Group\Group(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Group\Group::class);
+        return $collection;
     }
 
     /**
@@ -546,7 +564,10 @@ class Group {
             $responseModel = new \Okta\User\User(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\User::class);
+        return $collection;
     }
 
     /**

@@ -54,7 +54,10 @@ class {{name}} {
             {{/if}}
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel({{buildFullClassname (getDefinitionTag responseModel) responseModel }}::class);
+        return $collection;
         {{else}}
         $responseModel = new {{buildFullClassname (getDefinitionTag responseModel) responseModel }}(null, $body);
         {{#if (responseModelRequiresResolution responseModel)}}

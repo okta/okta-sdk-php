@@ -54,7 +54,10 @@ class EventHook {
             $responseModel = new \Okta\EventHook\EventHook(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\EventHook\EventHook::class);
+        return $collection;
     }
 
     /**

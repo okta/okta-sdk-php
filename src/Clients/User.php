@@ -55,7 +55,10 @@ class User {
             $responseModel = new \Okta\User\User(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\User::class);
+        return $collection;
     }
 
     /**
@@ -195,7 +198,10 @@ class User {
             $responseModel = new \Okta\User\AppLink(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\AppLink::class);
+        return $collection;
     }
 
     /**
@@ -218,7 +224,10 @@ class User {
             $responseModel = new \Okta\Application\OAuth2Client(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\OAuth2Client::class);
+        return $collection;
     }
 
     /**
@@ -259,7 +268,10 @@ class User {
             $responseModel = new \Okta\Application\OAuth2ScopeConsentGrant(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\OAuth2ScopeConsentGrant::class);
+        return $collection;
     }
 
     /**
@@ -300,7 +312,10 @@ class User {
             $responseModel = new \Okta\Application\OAuth2RefreshToken(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\OAuth2RefreshToken::class);
+        return $collection;
     }
 
     /**
@@ -460,7 +475,10 @@ class User {
             $responseModel = new \Okta\Application\OAuth2ScopeConsentGrant(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Application\OAuth2ScopeConsentGrant::class);
+        return $collection;
     }
 
     /**
@@ -520,7 +538,10 @@ class User {
             $responseModel = new \Okta\Group\Group(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Group\Group::class);
+        return $collection;
     }
 
     /**
@@ -543,7 +564,10 @@ class User {
             $responseModel = new \Okta\IdentityProvider\IdentityProvider(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\IdentityProvider\IdentityProvider::class);
+        return $collection;
     }
 
     /**
@@ -768,7 +792,10 @@ class User {
             $responseModel = new \Okta\User\ResponseLinks(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\ResponseLinks::class);
+        return $collection;
     }
 
     /**
@@ -792,7 +819,10 @@ class User {
             $responseModel = new \Okta\User\Role(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\User\Role::class);
+        return $collection;
     }
 
     /**
@@ -854,7 +884,10 @@ class User {
             $responseModel = new \Okta\Role\CatalogApplication(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Role\CatalogApplication::class);
+        return $collection;
     }
 
     /**
@@ -963,7 +996,10 @@ class User {
             $responseModel = new \Okta\Group\Group(null, $item);
             $items[] = $responseModel;
         }
-        return new \Okta\Resource\Collection($items);
+        $collection = new \Okta\Resource\Collection($items);
+        $collection->setDataStore($this->dataStore);
+        $collection->setResponseModel(\Okta\Group\Group::class);
+        return $collection;
     }
 
     /**

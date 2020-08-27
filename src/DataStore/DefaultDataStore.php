@@ -34,6 +34,7 @@ use Okta\Utilities\AuthorizationMode;
 use Okta\Exceptions\ResourceException;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
+use Psr\Http\Message\ResponseInterface;
 use function GuzzleHttp\Psr7\build_query;
 use function GuzzleHttp\Psr7\parse_query;
 use Http\Discovery\MessageFactoryDiscovery;
@@ -121,6 +122,11 @@ class DefaultDataStore
      * @var array Query params for the requst
      */
     private $queryParams;
+
+    /**
+     * @var ResponseInterface Last Response recieved
+     */
+    private $lastResponse;
 
     /**
      * DefaultDataStore constructor.
@@ -328,6 +334,7 @@ class DefaultDataStore
         $request = $this->messageFactory->createRequest($this->requestMethod, $this->uri, $headers, $body);
 
         $response = $this->httpClient->sendRequest($request);
+        $this->lastResponse = $response;
 
         $result = $response->getBody() ? json_decode($response->getBody()) : null;
 
@@ -543,5 +550,10 @@ class DefaultDataStore
     {
         $this->queryParams = $queryParams;
         return $this;
+    }
+
+    public function getLastResponse(): ResponseInterface
+    {
+        return $this->lastResponse;
     }
 }
