@@ -255,6 +255,8 @@ class ClientBuilder
                 ->setOrgurl($this->organizationUrl);
         }
 
+        $this->validateConfig();
+
         return new Client(
             $this->token,
             $this->organizationUrl,
@@ -353,6 +355,66 @@ class ClientBuilder
 
         if ($privateKey != false) {
             $this->setPrivateKey($privateKey);
+        }
+    }
+
+    protected function validateConfig()
+    {
+        $this->validateOktaDomain();
+
+        if($this->authorizationMode == "SSWS") {
+            $this->validateApiToken();
+        }
+
+        $this->validateAuthorization();
+    }
+
+    protected function validateOktaDomain()
+    {
+        if($this->organizationUrl == "") {
+            throw new \InvalidArgumentException("Your Okta URL is missing. You can copy your domain from the Okta Developer Console. Follow these instructions to find it: https://bit.ly/finding-okta-domain");
+        }
+
+        if($this->organizationUrl == "{yourOktaDomain}") {
+            throw new \InvalidArgumentException("Rplace {yourOktaDomain} with your Okta domain. You can copy your domain from the Okta Developer Console. Follow these instructions to find it: https://bit.ly/finding-okta-domain");
+        }
+
+        if(strpos($this->organizationUrl, "-admin.okta") !== false ) {
+            throw new \InvalidArgumentException("Your Okta domain should not contain -admin. Current value: " . $this->organizationUrl . ". You can copy your domain from the Okta Developer Console. Follow these instructions to find it: https://bit.ly/finding-okta-domain");
+        }
+
+        if(strpos($this->organizationUrl, ".com.com") !== false ) {
+            throw new \InvalidArgumentException("It looks like there's a typo in your Okta domain. Current value: " . $this->organizationUrl . ". You can copy your domain from the Okta Developer Console. Follow these instructions to find it: https://bit.ly/finding-okta-domain");
+        }
+
+    }
+
+    protected function validateApiToken()
+    {
+        if($this->token == "") {
+            throw new \InvalidArgumentException("Your Okta API token is missing. You can generate one in the Okta Developer Console. Follow these instructions: https://bit.ly/get-okta-api-token");
+        }
+
+        if($this->token == "{apiToken}") {
+            throw new \InvalidArgumentException("Replace {apiToken} with your Okta API token. You can generate one in the Okta Developer Console. Follow these instructions: https://bit.ly/get-okta-api-token");
+        }
+    }
+
+    protected function validateAuthorization()
+    {
+        if($this->authorizationMode != "SSWS" &&
+            $this->authorizationMode != "PrivateKey") {
+                throw new \InvalidArgumentException("The AuthorizaitonMode config option must be one of [SSWS, PrivateKey]. You provided the SDK with " . $this->authorizationMode);
+        }
+
+        if($this->authorizationMode == "PrivateKey" &&
+            (
+                $this->clientId == "" ||
+                $this->scopes == null ||
+                $this->privateKey == ""
+            )
+        ) {
+            throw new \InvalidArgumentException("When using AuthorizationMode 'PrivateKey', you must supply 'ClientId', 'Scopes', and 'PrivateKey'");
         }
     }
 }
