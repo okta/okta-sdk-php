@@ -27,6 +27,8 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
     const TYPE = 'type';
     const VALUES = 'values';
     const NAMESPACE = 'namespace';
+    const FILTER_TYPE = 'filterType';
+    const FILTER_VALUE = 'filterValue';
 
 
     /**
@@ -94,6 +96,38 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
     }
     
     /**
+     * Set the FilterType.
+     *
+     * @param mixed $filterType The filterType to set.
+     * @return self
+     */
+    function setFilterType($filterType) : SamlAttributeStatement
+    {
+        $this->setProperty(
+            self::FILTER_TYPE,
+            $filterType
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the FilterValue.
+     *
+     * @param mixed $filterValue The filterValue to set.
+     * @return self
+     */
+    function setFilterValue($filterValue) : SamlAttributeStatement
+    {
+        $this->setProperty(
+            self::FILTER_VALUE,
+            $filterValue
+        );
+    
+        return $this;
+    }
+    
+    /**
      * Get the Name.
      *
      * @param mixed $name The name to set.
@@ -142,6 +176,32 @@ class SamlAttributeStatement extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(
             self::NAMESPACE,
+        );
+    }
+    
+    /**
+     * Get the FilterType.
+     *
+     * @param mixed $filterType The filterType to set.
+     * @return string
+     */
+    function getFilterType() : string
+    {
+        return $this->getProperty(
+            self::FILTER_TYPE,
+        );
+    }
+    
+    /**
+     * Get the FilterValue.
+     *
+     * @param mixed $filterValue The filterValue to set.
+     * @return string
+     */
+    function getFilterValue() : string
+    {
+        return $this->getProperty(
+            self::FILTER_VALUE,
         );
     }
     

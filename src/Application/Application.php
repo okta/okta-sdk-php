@@ -48,6 +48,7 @@ class Application extends \Okta\Resource\AbstractResource
         "BOOKMARK" => \Okta\Application\BookmarkApplication::class,
         "BROWSER_PLUGIN" => \Okta\Application\BrowserPluginApplication::class,
         "OPENID_CONNECT" => \Okta\Application\OpenIdConnectApplication::class,
+        "SAML_1_1" => \Okta\Application\SamlApplication::class,
         "SAML_2_0" => \Okta\Application\SamlApplication::class,
         "SECURE_PASSWORD_STORE" => \Okta\Application\SecurePasswordStoreApplication::class,
         "WS_FEDERATION" => \Okta\Application\WsFederationApplication::class,

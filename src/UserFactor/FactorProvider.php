@@ -29,6 +29,7 @@ class FactorProvider extends \Okta\Utilities\Enum
     const SYMANTEC = 'SYMANTEC';
     const DUO = 'DUO';
     const YUBICO = 'YUBICO';
+    const CUSTOM = 'CUSTOM';
 
 
 }

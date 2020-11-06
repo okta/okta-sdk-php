@@ -19,37 +19,71 @@
 /** This file is auto-generated.  Do Not Edit! **/
 /************************************************/
 
-namespace Okta\UserFactor;
+namespace Okta\Application;
 
-class UserFactor extends \Okta\Resource\AbstractResource
+class AcsEndpoint extends \Okta\Resource\AbstractResource
 {
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
-
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:hotp" => \Okta\UserFactor\CustomHotpUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    const URL = 'url';
+    const INDEX = 'index';
 
 
+    /**
+     * Set the Url.
+     *
+     * @param mixed $url The url to set.
+     * @return self
+     */
+    function setUrl($url) : AcsEndpoint
+    {
+        $this->setProperty(
+            self::URL,
+            $url
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Index.
+     *
+     * @param mixed $index The index to set.
+     * @return self
+     */
+    function setIndex($index) : AcsEndpoint
+    {
+        $this->setProperty(
+            self::INDEX,
+            $index
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Get the Url.
+     *
+     * @param mixed $url The url to set.
+     * @return string
+     */
+    function getUrl() : string
+    {
+        return $this->getProperty(
+            self::URL,
+        );
+    }
+    
+    /**
+     * Get the Index.
+     *
+     * @param mixed $index The index to set.
+     * @return int
+     */
+    function getIndex() : int
+    {
+        return $this->getProperty(
+            self::INDEX,
+        );
+    }
+    
 
 }

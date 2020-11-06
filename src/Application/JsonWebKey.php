@@ -42,6 +42,102 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
 
 
     /**
+     * Set the E.
+     *
+     * @param mixed $e The e to set.
+     * @return self
+     */
+    function setE($e) : JsonWebKey
+    {
+        $this->setProperty(
+            self::E,
+            $e
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the N.
+     *
+     * @param mixed $n The n to set.
+     * @return self
+     */
+    function setN($n) : JsonWebKey
+    {
+        $this->setProperty(
+            self::N,
+            $n
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Alg.
+     *
+     * @param mixed $alg The alg to set.
+     * @return self
+     */
+    function setAlg($alg) : JsonWebKey
+    {
+        $this->setProperty(
+            self::ALG,
+            $alg
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Kid.
+     *
+     * @param mixed $kid The kid to set.
+     * @return self
+     */
+    function setKid($kid) : JsonWebKey
+    {
+        $this->setProperty(
+            self::KID,
+            $kid
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Kty.
+     *
+     * @param mixed $kty The kty to set.
+     * @return self
+     */
+    function setKty($kty) : JsonWebKey
+    {
+        $this->setProperty(
+            self::KTY,
+            $kty
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the Use.
+     *
+     * @param mixed $use The use to set.
+     * @return self
+     */
+    function setUse($use) : JsonWebKey
+    {
+        $this->setProperty(
+            self::USE,
+            $use
+        );
+    
+        return $this;
+    }
+    
+    /**
      * Set the X5C.
      *
      * @param mixed $x5c The x5c to set.
@@ -52,6 +148,70 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
         $this->setProperty(
             self::X_5_C,
             $x5c
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the X5T.
+     *
+     * @param mixed $x5t The x5t to set.
+     * @return self
+     */
+    function setX5T($x5t) : JsonWebKey
+    {
+        $this->setProperty(
+            self::X_5_T,
+            $x5t
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the X5U.
+     *
+     * @param mixed $x5u The x5u to set.
+     * @return self
+     */
+    function setX5U($x5u) : JsonWebKey
+    {
+        $this->setProperty(
+            self::X_5_U,
+            $x5u
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the KeyOps.
+     *
+     * @param mixed $key_ops The key_ops to set.
+     * @return self
+     */
+    function setKeyOps($key_ops) : JsonWebKey
+    {
+        $this->setProperty(
+            self::KEY_OPS,
+            $key_ops
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the X5TS256.
+     *
+     * @param mixed $x5t#S256 The x5t#S256 to set.
+     * @return self
+     */
+    function setX5TS256($x5t#S256) : JsonWebKey
+    {
+        $this->setProperty(
+            self::X_5_T_S_256,
+            $x5t#S256
         );
     
         return $this;

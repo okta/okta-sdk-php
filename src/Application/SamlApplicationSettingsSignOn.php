@@ -29,6 +29,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const RECIPIENT = 'recipient';
     const SSO_ACS_URL = 'ssoAcsUrl';
     const DESTINATION = 'destination';
+    const ACS_ENDPOINTS = 'acsEndpoints';
     const RESPONSE_SIGNED = 'responseSigned';
     const ASSERTION_SIGNED = 'assertionSigned';
     const DIGEST_ALGORITHM = 'digestAlgorithm';
@@ -44,6 +45,7 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     const SUBJECT_NAME_ID_FORMAT = 'subjectNameIdFormat';
     const AUTHN_CONTEXT_CLASS_REF = 'authnContextClassRef';
     const SUBJECT_NAME_ID_TEMPLATE = 'subjectNameIdTemplate';
+    const ALLOW_MULTIPLE_ACS_ENDPOINTS = 'allowMultipleAcsEndpoints';
 
 
     /**
@@ -137,6 +139,22 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
         $this->setProperty(
             self::DESTINATION,
             $destination
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Set the AcsEndpoints.
+     *
+     * @param mixed $acsEndpoints The acsEndpoints to set.
+     * @return self
+     */
+    function setAcsEndpoints($acsEndpoints) : SamlApplicationSettingsSignOn
+    {
+        $this->setProperty(
+            self::ACS_ENDPOINTS,
+            $acsEndpoints
         );
     
         return $this;
@@ -383,6 +401,22 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     }
     
     /**
+     * Set the AllowMultipleAcsEndpoints.
+     *
+     * @param mixed $allowMultipleAcsEndpoints The allowMultipleAcsEndpoints to set.
+     * @return self
+     */
+    function setAllowMultipleAcsEndpoints($allowMultipleAcsEndpoints) : SamlApplicationSettingsSignOn
+    {
+        $this->setProperty(
+            self::ALLOW_MULTIPLE_ACS_ENDPOINTS,
+            $allowMultipleAcsEndpoints
+        );
+    
+        return $this;
+    }
+    
+    /**
      * Get the Audience.
      *
      * @param mixed $audience The audience to set.
@@ -457,6 +491,19 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(
             self::DESTINATION,
+        );
+    }
+    
+    /**
+     * Get the AcsEndpoints.
+     *
+     * @param mixed $acsEndpoints The acsEndpoints to set.
+     * @return array
+     */
+    function getAcsEndpoints() : array
+    {
+        return $this->getProperty(
+            self::ACS_ENDPOINTS,
         );
     }
     
@@ -652,6 +699,19 @@ class SamlApplicationSettingsSignOn extends \Okta\Resource\AbstractResource
     {
         return $this->getProperty(
             self::SUBJECT_NAME_ID_TEMPLATE,
+        );
+    }
+    
+    /**
+     * Get the AllowMultipleAcsEndpoints.
+     *
+     * @param mixed $allowMultipleAcsEndpoints The allowMultipleAcsEndpoints to set.
+     * @return bool
+     */
+    function getAllowMultipleAcsEndpoints() : bool
+    {
+        return $this->getProperty(
+            self::ALLOW_MULTIPLE_ACS_ENDPOINTS,
         );
     }
     

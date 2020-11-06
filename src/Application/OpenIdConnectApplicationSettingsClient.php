@@ -23,6 +23,7 @@ namespace Okta\Application;
 
 class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractResource
 {
+    const JWKS = 'jwks';
     const TOS_URI = 'tos_uri';
     const LOGO_URI = 'logo_uri';
     const CLIENT_URI = 'client_uri';
@@ -30,12 +31,29 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     const GRANT_TYPES = 'grant_types';
     const ISSUER_MODE = 'issuer_mode';
     const REDIRECT_URIS = 'redirect_uris';
+    const REFRESH_TOKEN = 'refresh_token';
     const CONSENT_METHOD = 'consent_method';
     const RESPONSE_TYPES = 'response_types';
     const APPLICATION_TYPE = 'application_type';
     const INITIATE_LOGIN_URI = 'initiate_login_uri';
     const POST_LOGOUT_REDIRECT_URIS = 'post_logout_redirect_uris';
 
+
+    /**
+     * Set the Jwks.
+     *
+     * @param mixed $jwks The jwks to set.
+     * @return self
+     */
+    function setJwks(\Okta\Application\OpenIdConnectApplicationSettingsClientKeys $jwks) : OpenIdConnectApplicationSettingsClient
+    {
+        $this->setResourceProperty(
+            self::JWKS,
+            $jwks
+        );
+    
+        return $this;
+    }
 
     /**
      * Set the TosUri.
@@ -149,6 +167,22 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
     }
     
     /**
+     * Set the RefreshToken.
+     *
+     * @param mixed $refresh_token The refresh_token to set.
+     * @return self
+     */
+    function setRefreshToken(\Okta\Application\OpenIdConnectApplicationSettingsRefreshToken $refresh_token) : OpenIdConnectApplicationSettingsClient
+    {
+        $this->setResourceProperty(
+            self::REFRESH_TOKEN,
+            $refresh_token
+        );
+    
+        return $this;
+    }
+
+    /**
      * Set the ConsentMethod.
      *
      * @return self
@@ -226,6 +260,21 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
         return $this;
     }
     
+    /**
+     * Get the Jwks.
+     *
+     * @param array $options Additional options to pass, Typically query params.
+     * @return \Okta\Application\OpenIdConnectApplicationSettingsClientKeys
+     */
+    function getJwks(array $options = []) : \Okta\Application\OpenIdConnectApplicationSettingsClientKeys
+    {
+        return $this->getResourceProperty(
+            self::JWKS,
+            \Okta\Application\OpenIdConnectApplicationSettingsClientKeys::class,
+            $options
+        );
+    }
+
     /**
      * Get the TosUri.
      *
@@ -317,6 +366,21 @@ class OpenIdConnectApplicationSettingsClient extends \Okta\Resource\AbstractReso
         );
     }
     
+    /**
+     * Get the RefreshToken.
+     *
+     * @param array $options Additional options to pass, Typically query params.
+     * @return \Okta\Application\OpenIdConnectApplicationSettingsRefreshToken
+     */
+    function getRefreshToken(array $options = []) : \Okta\Application\OpenIdConnectApplicationSettingsRefreshToken
+    {
+        return $this->getResourceProperty(
+            self::REFRESH_TOKEN,
+            \Okta\Application\OpenIdConnectApplicationSettingsRefreshToken::class,
+            $options
+        );
+    }
+
     /**
      * Get the ConsentMethod.
      *

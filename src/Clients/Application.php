@@ -566,7 +566,7 @@ class Application {
     /**
      * Assigns a group to an application
      */
-    function createApplicationGroupAssignment($appId, $groupId, \Okta\Application\ApplicationGroupAssignment $applicationGroupAssignment) : \Okta\Application\ApplicationGroupAssignment 
+    function createApplicationGroupAssignment($appId, $groupId, \Okta\Application\ApplicationGroupAssignment $applicationGroupAssignment = null) : \Okta\Application\ApplicationGroupAssignment 
     {
         $uri = $this->dataStore->buildUri(
             "/api/v1/apps/${appId}/groups/${groupId}"

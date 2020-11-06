@@ -27,7 +27,7 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     const VALUE = 'value';
     const ALGORITHM = 'algorithm';
     const SALT_ORDER = 'saltOrder';
-    const WORKER_FACTOR = 'workerFactor';
+    const WORK_FACTOR = 'workFactor';
 
 
     /**
@@ -94,16 +94,16 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     }
     
     /**
-     * Set the WorkerFactor.
+     * Set the WorkFactor.
      *
-     * @param mixed $workerFactor The workerFactor to set.
+     * @param mixed $workFactor The workFactor to set.
      * @return self
      */
-    function setWorkerFactor($workerFactor) : PasswordCredentialHash
+    function setWorkFactor($workFactor) : PasswordCredentialHash
     {
         $this->setProperty(
-            self::WORKER_FACTOR,
-            $workerFactor
+            self::WORK_FACTOR,
+            $workFactor
         );
     
         return $this;
@@ -162,15 +162,15 @@ class PasswordCredentialHash extends \Okta\Resource\AbstractResource
     }
     
     /**
-     * Get the WorkerFactor.
+     * Get the WorkFactor.
      *
-     * @param mixed $workerFactor The workerFactor to set.
+     * @param mixed $workFactor The workFactor to set.
      * @return int
      */
-    function getWorkerFactor() : int
+    function getWorkFactor() : int
     {
         return $this->getProperty(
-            self::WORKER_FACTOR,
+            self::WORK_FACTOR,
         );
     }
     

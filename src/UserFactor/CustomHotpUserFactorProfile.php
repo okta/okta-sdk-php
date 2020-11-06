@@ -21,35 +21,39 @@
 
 namespace Okta\UserFactor;
 
-class UserFactor extends \Okta\Resource\AbstractResource
+class CustomHotpUserFactorProfile extends \Okta\Resource\AbstractResource
 {
-    const ID = 'id';
-    const LINKS = '_links';
-    const STATUS = 'status';
-    const VERIFY = 'verify';
-    const CREATED = 'created';
-    const PROVIDER = 'provider';
-    const EMBEDDED = '_embedded';
-    const FACTOR_TYPE = 'factorType';
-    const LAST_UPDATED = 'lastUpdated';
-
-    protected $requiresResolution = true;
-    protected $resolutionPropertyName = "factorType";
-    protected $resolutionMapping = [
-        "call" => \Okta\UserFactor\CallUserFactor::class,
-        "email" => \Okta\UserFactor\EmailUserFactor::class,
-        "push" => \Okta\UserFactor\PushUserFactor::class,
-        "question" => \Okta\UserFactor\SecurityQuestionUserFactor::class,
-        "sms" => \Okta\UserFactor\SmsUserFactor::class,
-        "token" => \Okta\UserFactor\TokenUserFactor::class,
-        "token:hardware" => \Okta\UserFactor\HardwareUserFactor::class,
-        "token:hotp" => \Okta\UserFactor\CustomHotpUserFactor::class,
-        "token:software:totp" => \Okta\UserFactor\TotpUserFactor::class,
-        "u2f" => \Okta\UserFactor\U2fUserFactor::class,
-        "web" => \Okta\UserFactor\WebUserFactor::class,
-        "webauthn" => \Okta\UserFactor\WebAuthnUserFactor::class,
-    ];
+    const SHARED_SECRET = 'sharedSecret';
 
 
+    /**
+     * Set the SharedSecret.
+     *
+     * @param mixed $sharedSecret The sharedSecret to set.
+     * @return self
+     */
+    function setSharedSecret($sharedSecret) : CustomHotpUserFactorProfile
+    {
+        $this->setProperty(
+            self::SHARED_SECRET,
+            $sharedSecret
+        );
+    
+        return $this;
+    }
+    
+    /**
+     * Get the SharedSecret.
+     *
+     * @param mixed $sharedSecret The sharedSecret to set.
+     * @return string
+     */
+    function getSharedSecret() : string
+    {
+        return $this->getProperty(
+            self::SHARED_SECRET,
+        );
+    }
+    
 
 }
