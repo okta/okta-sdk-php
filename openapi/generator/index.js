@@ -225,6 +225,13 @@ function executeRequestBodyArgument(operation) {
   return bodyArgument;
 }
 
+function safeProperty(property) {
+  if(property == "x5t#S256") {
+    property = "x5tS256"
+  }
+  return property
+}
+
 
 php.process = ({ spec, operations, models, handlebars }) => {
   php.spec = spec;
@@ -299,7 +306,8 @@ php.process = ({ spec, operations, models, handlebars }) => {
     modelProperties,
     getMethodReturnType,
     responseModelRequiresResolution,
-    isEnumProperty
+    isEnumProperty,
+    safeProperty
   });
 
   handlebars.registerPartial('copyright', fs.readFileSync('generator/templates/partials/copyright.hbs', 'utf8'))

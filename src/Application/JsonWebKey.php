@@ -207,7 +207,7 @@ class JsonWebKey extends \Okta\Resource\AbstractResource
      * @param mixed $x5t#S256 The x5t#S256 to set.
      * @return self
      */
-    function setX5TS256($x5t#S256) : JsonWebKey
+    function setX5TS256($x5tS256) : JsonWebKey
     {
         $this->setProperty(
             self::X_5_T_S_256,

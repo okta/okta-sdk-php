@@ -4,7 +4,7 @@
  * @param mixed ${{property.propertyName}} The {{property.propertyName}} to set.
  * @return self
  */
-function set{{pascalCase property.propertyName}}(${{property.propertyName}}) : {{modelName}}
+function set{{pascalCase property.propertyName}}(${{safeProperty property.propertyName}}) : {{modelName}}
 {
     $this->setProperty(
         self::{{upperSnakeCase property.propertyName}},
