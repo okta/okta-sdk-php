@@ -1,3 +1,6 @@
+## Version 2.1.0
+ - Update to OpenAPI Spec 2.1.6
+
 ## Version 2.0.0-beta.1
  - `DefaultDataStore` parameter changes
     - No longer accepts `$token`
