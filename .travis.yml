@@ -31,7 +31,7 @@ deploy:
   email: deploy-php@okta.com
   name: PHP Deployment Bot
   on:
-    php: 7.1
+    php: 8.0
     condition: "$DEPLOY_DOCS = true"
     tags: true
 - provider: pages
@@ -41,18 +41,22 @@ deploy:
   email: deploy-php@okta.com
   name: PHP Deployment Bot
   on:
-    php: 7.1
+    php: 8.0
     condition: "$DEPLOY_DOCS = true"
     branch: develop
 matrix:
   include:
-  - php: 7.2
+  - php: 7.3
     env: SETUP=lowest
-  - php: 7.2
+  - php: 7.3
     env: SETUP=stable
-  - php: 7.3
+  - php: 7.4
     env: SETUP=lowest
-  - php: 7.3
+  - php: 7.4
+    env: SETUP=stable
+  - php: 8.0
+    env: SETUP=lowest
+  - php: 8.0
     env:
     - COVERAGE=true
     - SETUP=stable
