@@ -789,7 +789,7 @@ class UserTest extends BaseUnitTestCase
         ]);
         $user = $this->createNewUser();
 
-        $factor = new\Okta\UserFactors\Factor;
+        $factor = new \Okta\UserFactors\Factor;
         $factor->setUserId($user->getId());
 
         $user->addFactor($factor);
