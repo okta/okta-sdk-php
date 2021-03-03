@@ -49,12 +49,13 @@ matrix:
   - php: 7.3
     env: SETUP=stable
   - php: 7.4
-    env: SETUP=stable
+    env:
+    - SETUP=stable
+    - DEPLOY_DOCS=true
   - php: 8.0
     env:
     - COVERAGE=true
     - SETUP=stable
-    - DEPLOY_DOCS=true
 notifications:
   slack:
     if: type = cron
