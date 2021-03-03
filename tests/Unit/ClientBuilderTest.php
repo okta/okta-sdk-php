@@ -18,6 +18,7 @@
 use Okta\Cache\MemoryManager;
 use Okta\Client;
 use Okta\ClientBuilder;
+use Okta\Utilities\AuthorizationMode;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Yaml\Parser;
 
@@ -112,6 +113,42 @@ class ClientBuilderTest extends TestCase
     }
 
     /** @test */
+    public function it_returns_self_when_setting_authorization_mode()
+    {
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
+        $response = $clientBuilder->setAuthorizationMode(new AuthorizationMode(AuthorizationMode::SSWS));
+        $this->assertInstanceOf(
+            ClientBuilder::class,
+            $response,
+            "Setting the authorizationMode did not return an instance of " . ClientBuilder::class
+        );
+    }
+
+    /** @test */
+    public function it_returns_self_when_setting_client_id()
+    {
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
+        $response = $clientBuilder->setClientId('clientId123');
+        $this->assertInstanceOf(
+            ClientBuilder::class,
+            $response,
+            "Setting the client id did not return an instance of " . ClientBuilder::class
+        );
+    }
+
+    /** @test */
+    public function it_returns_self_when_setting_scopes()
+    {
+        $clientBuilder = new ClientBuilder(null, 'okta.yaml');
+        $response = $clientBuilder->setScopes('');
+        $this->assertInstanceOf(
+            ClientBuilder::class,
+            $response,
+            "Setting the scopes did not return an instance of " . ClientBuilder::class
+        );
+    }
+
+    /** @test */
     public function a_client_instance_is_returned_when_building()
     {
         $clientBuilder = (new ClientBuilder(null, 'okta.yaml'))
@@ -187,6 +224,20 @@ class ClientBuilderTest extends TestCase
                     ]
                 ]
             ]));
+
+        if(function_exists('posix_getpwuid') && function_exists('posix_getuid') && file_exists(posix_getpwuid(posix_getuid())['dir'] . '/.okta/okta.yaml')) {
+            $parser->expects($this->at(2))
+                ->method('parse')
+                ->will($this->returnValue([
+                    'okta' => [
+                        'client' => [
+                            'token' => 'xyz789',
+                            'orgUrl' => 'https://okta.com'
+                        ]
+                    ]
+                ]));
+        }
+
 
         $clientBuilderDefault = new ClientBuilder($parser, 'okta.yaml');
         $clientBuilder = new ClientBuilder($parser);
