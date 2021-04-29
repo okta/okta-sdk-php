@@ -96,17 +96,17 @@ $profile->setFirstName('John')
     ->setEmail('auser@example.com');
 $user->setProfile($profile);
 
-$credentials = new \Okta\Users\Credentials();
+$credentials = new \Okta\Users\UserCredentials();
 
-$password = new \Okta\Users\Password();
-$password->setPassword('Abcd1234!');
+$password = new \Okta\Users\PasswordCredential();
+$password->setValue('Abcd1234!');
 
-$recoveryQuestion = new \Okta\Users\RecoveryQuestion();
+$recoveryQuestion = new \Okta\Users\RecoveryQuestionCredential();
 $recoveryQuestion->setQuestion('What Language do I write in?')
     ->setAnswer('PHP!');
 
 
-$provider = new \Okta\Users\Provider();
+$provider = new \Okta\Users\AuthenticationProvider();
 $provider->setName('OKTA')
     ->setType('OKTA');
 
@@ -118,10 +118,6 @@ $credentials->setProvider($provider);
 
 $user->setCredentials($credentials);
 
-$user->setGroupIds([
-    '00gajavp1anBX8svy0h7',
-    '00gajb08d19WCvbsC0h7'
-]);
 
 $user->create();
 ```
@@ -132,12 +128,11 @@ profile.
 
 ```php
 $user = new \Okta\Users\User();
-    $foundUser = $user->get('00uak5dkxjhg4AQ230h7');
-    $profile = $foundUser->getProfile();
-    $profile->middleName = 'Middle Name';
-    $profile->someField = 'Just Testing Field';
-    $foundUser->setProfile($profile);
-    $foundUser->save();
+$foundUser = $user->get('00unz7r7oRzov7Hm55d6');
+$profile = $foundUser->getProfile();
+$profile->middleName = 'Middle Name';
+$foundUser->setProfile($profile);
+$foundUser->save();
 ```
 
 ## Pagination and Collections
@@ -155,7 +150,7 @@ $firstUser = $users->first();
 ### Narrowing Responses
 To start at the second entry and get the next two items:
 ```php
-$users = (new \Okta\Okta)->getUsers(['query' => ['limit' = 2, 'after' = 2]]);
+$users = (new \Okta\Okta)->getUsers(['query' => ['limit' => 2, 'after' => 2]]);
 ```
 
 ## Caching
