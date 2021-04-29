@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6698673b2b6289db8e1378eedee1d45",
+    "content-hash": "a1f0052d4ae0b970743c21c4b284785e",
     "packages": [
         {
             "name": "cache/adapter-common",
@@ -5065,9 +5065,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "lcobucci/jwt": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

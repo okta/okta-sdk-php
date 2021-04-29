@@ -155,7 +155,7 @@ class Client
 
     /**
      * Get the authorization mode for api calls
-     * 
+     *
      * @return AuthorizationMode
      */
     public function getAuthorizationMode(): AuthorizationMode
@@ -172,9 +172,14 @@ class Client
     public static function getInstance(): Client
     {
         if (null === self::$instance) {
+            $msg = 'The client has not be instantiated yet, please
+                    build the client with the ClientBuilder first.
+                    If you are using Private Key authorization mode.
+                    Please also confirm that your scopes are set correcty for your application.';
+
+
             throw new \RuntimeException(
-                'The client has not be instantiated yet, please
-                build the client with the ClientBuilder first.'
+                $msg
             );
         }
 
