@@ -4,7 +4,6 @@ namespace Okta\Utilities;
 
 use Lcobucci\JWT\Signer;
 use Okta\Exceptions\Error;
-use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Token\Plain;
 use Okta\Cache\MemoryManager;
 use Lcobucci\JWT\Configuration;
@@ -55,7 +54,7 @@ class PrivateKeyAuthentication {
         $this->memory = new MemoryManager();
         $this->clientId = $clientId;
         $this->scopes = $scopes;
-        $this->privateKey = InMemory::plainText($privateKey);
+        $this->privateKey = \Lcobucci\JWT\Signer\Key\InMemory::plainText($privateKey);
         $this->orgUrl = $orgUrl;
 
         $this->jwtConfig = Configuration::forAsymmetricSigner(
@@ -106,11 +105,18 @@ class PrivateKeyAuthentication {
     private function tokenRequest($clientAssertion)
     {
         $curl = curl_init();
+        $ca = "";
+        if(\method_exists($clientAssertion, "toString")) {
+            $ca = $clientAssertion->toString();
+        } else {
+            $ca = (string)$clientAssertion;
+        }
+
         $query = http_build_query([
             'grant_type' => 'client_credentials',
             'scope' => $this->scopes,
             'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-            'client_assertion' => $clientAssertion->toString()
+            'client_assertion' => $ca
         ]);
         curl_setopt($curl,CURLOPT_URL, $this->orgUrl . '/oauth2/v1/token?'.$query);
         curl_setopt($curl,CURLOPT_POST, true);
