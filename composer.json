@@ -19,7 +19,7 @@
         "php-http/curl-client": "^2.2",
         "symfony/yaml": "^3.2|^4.3|^5.0",
         "nesbot/carbon": "^2.0",
-        "illuminate/collections": "^8.29.0",
+        "illuminate/collections": "^8.3",
         "guzzlehttp/psr7": "^1.7.0",
         "psr/cache": "^1.0",
         "league/flysystem-memory": "^1.0",
