@@ -480,7 +480,7 @@ class Application extends \Okta\Resource\AbstractResource
     *
     * @return mixed|null
     */
-    public function createApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment)
+    public function createApplicationGroupAssignment($groupId, ApplicationGroupAssignment $applicationGroupAssignment = null)
     {
         $uri = "/api/v1/apps/{$this->getId()}/groups/{$groupId}";
         $uri = $this->getDataStore()->buildUri(
