@@ -5,6 +5,9 @@
 [![License](https://poser.pugx.org/okta/sdk/license.svg)](https://packagist.org/packages/okta/sdk)
 [![Support](https://img.shields.io/badge/support-Developer%20Forum-blue.svg)](https://devforum.okta.com/)
 
+
+> NOTICE: We're excited about the acquisition of Auth0 to bring you better support in PHP. This repo will be placed into security patch only mode and we will not be adding any further features. If you are looking for an API that is not supported in this library, please call the API directly. Our documentation for the supported Management APIs are located here: https://developer.okta.com/docs/reference/core-okta-api/. Please reach out to the [DevForum](https://devforum.okta.com/) for any questions.
+
 ## Installation
 **okta-sdk-php** is available on Packagist as the [okta/sdk](http://packagist.org/packages/okta/sdk) package.
 
