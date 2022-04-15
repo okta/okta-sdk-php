@@ -5,6 +5,9 @@
 [![License](https://poser.pugx.org/okta/sdk/license.svg)](https://packagist.org/packages/okta/sdk)
 [![Support](https://img.shields.io/badge/support-Developer%20Forum-blue.svg)](https://devforum.okta.com/)
 
+
+> NOTICE: We're excited about the acquisition of Auth0 to bring you better support in PHP. This repo will be placed into security patch only mode and we will not be adding any further features. If you are looking for an API that is not supported in this library, please call the API directly. Our documentation for the supported Management APIs are located here: https://developer.okta.com/docs/reference/core-okta-api/. Please reach out to the [DevForum](https://devforum.okta.com/) for any questions.
+
 ## Installation
 **okta-sdk-php** is available on Packagist as the [okta/sdk](http://packagist.org/packages/okta/sdk) package.
 
@@ -96,17 +99,17 @@ $profile->setFirstName('John')
     ->setEmail('auser@example.com');
 $user->setProfile($profile);
 
-$credentials = new \Okta\Users\UserCredentials();
+$credentials = new \Okta\Users\Credentials();
 
-$password = new \Okta\Users\PasswordCredential();
-$password->setValue('Abcd1234!');
+$password = new \Okta\Users\Password();
+$password->setPassword('Abcd1234!');
 
-$recoveryQuestion = new \Okta\Users\RecoveryQuestionCredential();
+$recoveryQuestion = new \Okta\Users\RecoveryQuestion();
 $recoveryQuestion->setQuestion('What Language do I write in?')
     ->setAnswer('PHP!');
 
 
-$provider = new \Okta\Users\AuthenticationProvider();
+$provider = new \Okta\Users\Provider();
 $provider->setName('OKTA')
     ->setType('OKTA');
 
@@ -118,6 +121,10 @@ $credentials->setProvider($provider);
 
 $user->setCredentials($credentials);
 
+$user->setGroupIds([
+    '00gajavp1anBX8svy0h7',
+    '00gajb08d19WCvbsC0h7'
+]);
 
 $user->create();
 ```
@@ -128,11 +135,12 @@ profile.
 
 ```php
 $user = new \Okta\Users\User();
-$foundUser = $user->get('00unz7r7oRzov7Hm55d6');
-$profile = $foundUser->getProfile();
-$profile->middleName = 'Middle Name';
-$foundUser->setProfile($profile);
-$foundUser->save();
+    $foundUser = $user->get('00uak5dkxjhg4AQ230h7');
+    $profile = $foundUser->getProfile();
+    $profile->middleName = 'Middle Name';
+    $profile->someField = 'Just Testing Field';
+    $foundUser->setProfile($profile);
+    $foundUser->save();
 ```
 
 ## Pagination and Collections
@@ -150,7 +158,7 @@ $firstUser = $users->first();
 ### Narrowing Responses
 To start at the second entry and get the next two items:
 ```php
-$users = (new \Okta\Okta)->getUsers(['query' => ['limit' => 2, 'after' => 2]]);
+$users = (new \Okta\Okta)->getUsers(['query' => ['limit' = 2, 'after' = 2]]);
 ```
 
 ## Caching
