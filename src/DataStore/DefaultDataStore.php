@@ -312,6 +312,7 @@ class DefaultDataStore
                     }
                     break;
                 case 'POST':
+                case 'PUT':
                     if(null !== $result) {
                         $cacheManager->delete($uri, $result);
                         $cacheManager->save($uri, $result);

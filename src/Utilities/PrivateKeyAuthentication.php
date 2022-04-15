@@ -80,13 +80,13 @@ class PrivateKeyAuthentication {
         }
 
         $now = \DateTimeImmutable::createFromFormat("Y-m-d H:i:s", date('Y-m-d H:i:s'));
-        $clientAssertion = $this->jwtConfig->createBuilder()
+        $clientAssertion = $this->jwtConfig->builder()
             ->issuedBy($this->clientId)
             ->permittedFor($this->orgUrl . '/oauth2/v1/token')
             ->issuedAt($now->sub(new \DateInterval('PT1M')))
             ->expiresAt($now->add(new \DateInterval('PT50M')))
             ->relatedTo($this->clientId)
-            ->getToken($this->jwtConfig->getSigner(), $this->jwtConfig->getSigningKey());
+            ->getToken($this->jwtConfig->signer(), $this->jwtConfig->signingKey());
 
         $token = $this->tokenRequest($clientAssertion);
         if($token) {
@@ -106,11 +106,18 @@ class PrivateKeyAuthentication {
     private function tokenRequest($clientAssertion)
     {
         $curl = curl_init();
+        $ca = "";
+        if(\method_exists($clientAssertion, "toString")) {
+            $ca = $clientAssertion->toString();
+        } else {
+            $ca = (string)$clientAssertion;
+        }
+
         $query = http_build_query([
             'grant_type' => 'client_credentials',
             'scope' => $this->scopes,
             'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-            'client_assertion' => (string)$clientAssertion
+            'client_assertion' => $ca
         ]);
         curl_setopt($curl,CURLOPT_URL, $this->orgUrl . '/oauth2/v1/token?'.$query);
         curl_setopt($curl,CURLOPT_POST, true);
@@ -125,7 +132,7 @@ class PrivateKeyAuthentication {
         $httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         curl_close($curl);
         if ($httpcode < 200 || $httpcode > 299) {
-            $error = new Error(json_encode($token));
+            $error = new Error($token);
             throw new ResourceException($error);
         }
 
