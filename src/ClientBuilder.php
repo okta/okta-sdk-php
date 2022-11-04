@@ -86,7 +86,11 @@ class ClientBuilder
     public function __construct($yamlParser = null, $defaultFilePath = null)
     {
         if(function_exists('posix_getpwuid') && function_exists('posix_getuid')) {
-            $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
+            $userInfo = posix_getpwuid(posix_getuid());
+
+            if (false !== $userInfo) {
+                $this->defaultFile = $userInfo['dir'] . '/' . $this->defaultFile;
+            }
         }
         if (null != $defaultFilePath) {
             $this->defaultFile = $defaultFilePath;
