@@ -89,7 +89,7 @@ class ClientBuilder
             $userInfo = posix_getpwuid(posix_getuid());
 
             if (false !== $userInfo) {
-                $this->defaultFile = posix_getpwuid(posix_getuid())['dir'] . '/' . $this->defaultFile;
+                $this->defaultFile = $userInfo['dir'] . '/' . $this->defaultFile;
             }
         }
         if (null != $defaultFilePath) {
