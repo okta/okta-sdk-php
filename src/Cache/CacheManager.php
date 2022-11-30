@@ -55,7 +55,7 @@ abstract class CacheManager
     {
         $url = "{$uri->getHost()}{$uri->getPath()}";
 
-        return str_replace(['/', '.', '-', '@', '+'],'_',$url);
+        return preg_replace('/[^a-zA-Z0-9_\.!]/', '_', $url);
     }
 
     /**
